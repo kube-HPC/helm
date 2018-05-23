@@ -1,0 +1,16 @@
+dependencies:
+  - name: storm-dev
+    repository: "file://charts/storm-dev"
+    version: ">= 0.0.1"
+    tags:
+      - dev-values
+    import-values:
+      - data
+
+  - name: storm-prd
+    repository: "file://charts/storm-prd"
+    version: ">= 0.0.1"
+    tags:
+      - prd-values
+    import-values:
+      - data
