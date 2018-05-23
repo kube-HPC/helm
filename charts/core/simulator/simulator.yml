@@ -1,0 +1,45 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: simulator
+  labels:
+    app: simulator
+    group: hkube
+    core: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simulator
+  template:
+    metadata:
+      labels:
+        app: simulator
+        group: hkube
+    spec:
+      nodeSelector:
+        core: "true"
+      containers:
+        - name: simulator
+          image: 'hkube/simulator:latest'
+          ports:
+            - containerPort: 9050
+          env:
+            - name: MONITOR_BACKEND_PATH
+              value: "/hkube/monitor-server/socket.io"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: simulator
+  labels:
+    app: simulator
+    group: hkube
+    core: "true"
+spec:
+  selector:
+    app: simulator
+  ports:
+    - protocol: TCP
+      port: 9050
+      targetPort: 9050
