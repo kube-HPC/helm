@@ -1,16 +1,16 @@
 dependencies:
   - name: storm-dev
-    repository: "file://charts/storm-dev"
-    version: ">= 0.0.1"
+    repository: "file://charts/core/simulator"
+    version: ">= 0.1.0"
     tags:
-      - dev-values
+      - hkube
     import-values:
       - data
 
   - name: storm-prd
-    repository: "file://charts/storm-prd"
-    version: ">= 0.0.1"
+    repository: "file://charts/core/monitor-server"
+    version: ">= 0.1.0"
     tags:
-      - prd-values
+      - hkube
     import-values:
       - data
