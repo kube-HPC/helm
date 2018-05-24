@@ -2,6 +2,7 @@ apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: {{ template "monitor-server.fullname" . }}
+  namespace: {{ .Values.Namespace }}
   labels:
     app: {{ template "monitor-server.name" . }}
     chart: {{ template "monitor-server.chart" . }}
