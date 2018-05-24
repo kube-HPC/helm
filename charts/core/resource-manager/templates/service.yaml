@@ -1,12 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "simulator.fullname" . }}
+  name: {{ template "resource-manager.fullname" . }}
   labels:
-    app: {{ template "simulator.name" . }}
-    chart: {{ template "simulator.chart" . }}
-    group: {{ .Values.lables.group.value }}
-    core: {{ .Values.lables.core.value }}
+    app: {{ template "resource-manager.name" . }}
+    chart: {{ template "resource-manager.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
@@ -15,6 +13,7 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
       protocol: TCP
+      name: http
   selector:
-    app: {{ template "simulator.name" . }}
+    app: {{ template "resource-manager.name" . }}
     release: {{ .Release.Name }}
