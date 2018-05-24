@@ -6,7 +6,7 @@ metadata:
     app: {{ template "monitor-server.name" . }}
     chart: {{ template "monitor-server.chart" . }}
     release: {{ .Release.Name }}
-    core: "true"
+    core: {{ .Values.lables.core.value }}
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}

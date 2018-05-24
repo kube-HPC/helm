@@ -4,8 +4,7 @@
 
 replicaCount: 1
 
-metadata:
-    namespace: default
+namespace: default
 
 image:
   repository: hkube/monitor-server

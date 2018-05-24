@@ -2,12 +2,13 @@ apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: {{ template "simulator.fullname" . }}
+  namespace: {{ .Values.Namespace }}
   labels:
     app: {{ template "simulator.name" . }}
     chart: {{ template "simulator.chart" . }}
     release: {{ .Release.Name }}
     group: {{ .Values.lables.group.value }}
-    core: "true"
+    core: {{ .Values.lables.core.value }}
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
