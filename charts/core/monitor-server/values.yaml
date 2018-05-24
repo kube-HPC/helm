@@ -1,4 +1,4 @@
-# Default values for simulator.
+# Default values for monitor-server.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -8,16 +8,13 @@ metadata:
     namespace: default
 
 image:
-  repository: hkube/simulator
+  repository: hkube/monitor-server
   tag: latest
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
-  port: 9050
-
-env:
-  monitor_backend_path: "/hkube/monitor-server/socket.io"
+  port: 30010
 
 lables:
    group:
@@ -25,18 +22,12 @@ lables:
    core:
      value: "true"
 
-# servers:
-#   foo:
-#     port: 80
-#   bar:
-#     port: 81
-
 ingress:
   enabled: false
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  path: /hkube/simulator
+  path: /hkube/monitor-server
 
   hosts: {}
   
