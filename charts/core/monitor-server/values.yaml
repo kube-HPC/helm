@@ -19,7 +19,7 @@ lables:
    group:
      value: hkube
    core:
-     value: "true"
+     value: true
 
 ingress:
   enabled: false

@@ -7,8 +7,8 @@ metadata:
     app: {{ template "simulator.name" . }}
     chart: {{ template "simulator.chart" . }}
     release: {{ .Release.Name }}
-    group: {{ .Values.lables.group.value }}
-    core: {{ .Values.lables.core.value }}
+    group: hkube
+    core: "true"
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}

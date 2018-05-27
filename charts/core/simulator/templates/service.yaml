@@ -6,7 +6,7 @@ metadata:
     app: {{ template "simulator.name" . }}
     chart: {{ template "simulator.chart" . }}
     group: {{ .Values.lables.group.value }}
-    core: {{ .Values.lables.core.value }}
+    #core: {{ .Values.lables.core.value }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
