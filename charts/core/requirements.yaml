@@ -1,16 +1,19 @@
 dependencies:
-- name: simulator 
+- name: simulator
   version: "0.1.0"
   repository: "file://../simulator"
-- name: simulator 
+- name: monitor-server
   version: "0.1.0"
   repository: "file://../monitor-server"
-- name: simulator 
+- name: pipeline-driver
   version: "0.1.0"
   repository: "file://../pipeline-driver"
-- name: simulator 
+- name: resource-manager
   version: "0.1.0"
   repository: "file://../resource-manager"
-- name: simulator 
+- name: task-executor 
   version: "0.1.0"
   repository: "file://../task-executor"
+- name: api-server 
+  version: "0.1.0"
+  repository: "file://../api-server"

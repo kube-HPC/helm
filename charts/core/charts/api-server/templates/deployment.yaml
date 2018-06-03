@@ -7,6 +7,8 @@ metadata:
     chart: {{ template "api-server.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    group: hkube
+    core: "true"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -18,27 +20,46 @@ spec:
       labels:
         app: {{ template "api-server.name" . }}
         release: {{ .Release.Name }}
+        group: hkube
     spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: http
-              containerPort: 80
+            - containerPort: {{ .Values.service.port }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.env.node_env }}
+            - name: BASE_URL_PATH
+              value: {{ .Values.env.base_url_path }}
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsKey
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsSecret
+            - name: S3_ENDPOINT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsEndpointUrl
+            - name: DEFAULT_STORAGE
+              value: {{ .Values.env.default_storage }}
+            - name: JAEGER_AGENT_SERVICE_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
+      core: "true"
 {{ toYaml . | indent 8 }}
     {{- end }}
     {{- with .Values.affinity }}

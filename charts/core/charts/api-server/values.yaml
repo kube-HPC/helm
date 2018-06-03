@@ -4,27 +4,44 @@
 
 replicaCount: 1
 
+metadata:
+    namespace: default
+
 image:
-  repository: nginx
-  tag: stable
+  repository: hkube/api-server
+  tag: latest
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
-  port: 80
+  port: 3000
+
+env:
+  node_env: kube
+  metrics_port: "3000"
+  base+url_path: "/hkube/api-server"
+  default_storage: "s3"
+
+lables:
+   group:
+     value: hkube
+   core:
+     value: "true"
 
 ingress:
   enabled: false
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  path: /
-  hosts:
-    - chart-example.local
+  path: /hkube/api-server
+
+  hosts: {}
+  
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

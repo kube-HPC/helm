@@ -14,7 +14,6 @@ service:
   port: 3000
 
 env:
-  monitor_backend_path: "/hkube/monitor-server/socket.io"
   node_env: kube
   metrics_port: "3000"
 
