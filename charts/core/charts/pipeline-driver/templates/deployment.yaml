@@ -30,21 +30,31 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           env:
-           - name: NODE_ENV
-             value: {{ .Values.env.node_env }}
-           - name: METRICS_POTR
-             value: {{ .Values.env.metrics_port }}
-           - name: AWS_ACCESS_KEY_ID
-             value: {{ .Values.env.aws_access_key_id }}
-           - name: AWS_SECRET_ACCESS_KEY
-             value: {{ .Values.env.aws_secret_access_key }}
-           - name: S3_ENDPOINT_URL
-             value: {{ .Values.env.s3_endpoint_url }}
-           - name: DEFAULT_STORAGE
-             value: {{ .Values.env.default_storage }}
-           - name: JAEGER_AGENT_SERVICE_HOST
-             value: {{ .Values.env.jaeger_agent_service_host }}
-
+            - name: NODE_ENV
+              value: {{ .Values.env.node_env }}
+            - name: METRICS_PORT
+              value: "3000"
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsKey
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsSecret
+            - name: S3_ENDPOINT_URL
+              valueFrom: 
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsEndpointUrl
+            - name: DEFAULT_STORAGE
+              value: "s3"
+            - name: JAEGER_AGENT_SERVICE_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "pipeline-driver.fullname" . -}}
+{{- $fullName := include "core.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1
@@ -7,8 +7,8 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app: {{ template "pipeline-driver.name" . }}
-    chart: {{ template "pipeline-driver.chart" . }}
+    app: {{ template "core.name" . }}
+    chart: {{ template "core.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 {{- with .Values.ingress.annotations }}

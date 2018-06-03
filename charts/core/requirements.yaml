@@ -1,0 +1,16 @@
+dependencies:
+- name: simulator 
+  version: "0.1.0"
+  repository: "file://../simulator"
+- name: simulator 
+  version: "0.1.0"
+  repository: "file://../monitor-server"
+- name: simulator 
+  version: "0.1.0"
+  repository: "file://../pipeline-driver"
+- name: simulator 
+  version: "0.1.0"
+  repository: "file://../resource-manager"
+- name: simulator 
+  version: "0.1.0"
+  repository: "file://../task-executor"

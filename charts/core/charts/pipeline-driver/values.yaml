@@ -15,32 +15,14 @@ service:
 
 env:
   monitor_backend_path: "/hkube/monitor-server/socket.io"
-  NODE_ENV: kube
-  METRICS_PORT: "3000"
-  AWS_ACCESS_KEY_ID: awsKey
-  AWS_SECRET_ACCESS_KEY: awsSecret
-  S3_ENDPOINT_URL: awsEndpointUrl
-  DEFAULT_STORAGE: "s3"
-  JAEGER_AGENT_SERVICE_HOST: status.hostIP
+  node_env: kube
+  metrics_port: "3000"
 
 lables:
    group:
      value: hkube
    core:
      value: "true"
-
-ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  path: /
-  hosts:
-    - chart-example.local
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
