@@ -32,7 +32,7 @@ spec:
               protocol: TCP
           env:
             - name: PUBLIC_URL
-            value: "{{ .Values.env.public_url }}"
+              value: "{{ .Values.env.public_url }}"
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
