@@ -19,7 +19,7 @@ spec:
   selector:
     app: {{ template "trigger-service.name" . }}
     release: {{ .Release.Name }}
-   ports:
-      - name: metrics
-        port: {{ .Values.env.ports.metrics }}
-        targetPort: {{ .Values.env.ports.metrics }}
+  ports:
+     - name: metrics
+       port: {{ .Values.service.port }}
+       targetPort: {{ .Values.service.port }}

@@ -38,7 +38,7 @@ spec:
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:
-                  fieldPath: status.hostIP- name: JAEGER_AGENT_SERVICE_HOST
+                  fieldPath: status.hostIP
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

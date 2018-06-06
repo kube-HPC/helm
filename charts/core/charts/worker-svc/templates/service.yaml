@@ -24,6 +24,6 @@ spec:
     group: {{ .Values.lables.group.value }}
     core: "true"
     ports:
-      - name: metrics
-        port: {{ .Values.env.ports.metrics }}
-        targetPort: {{ .Values.env.ports.metrics }}
+    - name: metrics
+      port: 3001
+      targetPort: 3001
