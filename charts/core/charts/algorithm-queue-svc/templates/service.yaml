@@ -7,13 +7,14 @@ metadata:
     chart: {{ template "algorithm-queue-svc.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    group: {{ .Values.lables.group.value }}
+    core: "true"
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: {{ .Values.service.port }}
       protocol: TCP
-      name: http
   selector:
     app: {{ template "algorithm-queue-svc.name" . }}
     release: {{ .Release.Name }}
