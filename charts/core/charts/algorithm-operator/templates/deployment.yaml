@@ -1,23 +1,26 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "core.fullname" . }}
+  name: {{ template "algorithm-operator.fullname" . }}
   labels:
-    app: {{ template "core.name" . }}
-    chart: {{ template "core.chart" . }}
+    app: {{ template "algorithm-operator.name" . }}
+    chart: {{ template "algorithm-operator.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    group: {{ .Values.lables.group.value }}
+    core: "Release.Name"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "core.name" . }}
+      app: {{ template "algorithm-operator.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "core.name" . }}
+        app: {{ template "algorithm-operator.name" . }}
         release: {{ .Release.Name }}
+        group: {{ .Values.lables.group.value }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -25,20 +28,22 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.env.node_env }}
+            - name: METRICS_PORT
+              value: "{{ .Values.env.metrics_port }}"
+            - name: JAEGER_AGENT_SERVICE_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
+      core: "true"
 {{ toYaml . | indent 8 }}
     {{- end }}
     {{- with .Values.affinity }}
@@ -49,3 +54,6 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+
+
+          

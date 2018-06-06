@@ -1,26 +1,23 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "task-executor.fullname" . }}
+  name: {{ template "worker-svc.fullname" . }}
   labels:
-    app: {{ template "task-executor.name" . }}
-    chart: {{ template "task-executor.chart" . }}
+    app: {{ template "worker-svc.name" . }}
+    chart: {{ template "worker-svc.chart" . }}
     release: {{ .Release.Name }}
-    group: {{ .Values.lables.group.value }}
-    core: "true"
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "task-executor.name" . }}
+      app: {{ template "worker-svc.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "task-executor.name" . }}
+        app: {{ template "worker-svc.name" . }}
         release: {{ .Release.Name }}
-        group: {{ .Values.lables.group.value }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -28,22 +25,20 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: 80
               protocol: TCP
-          env:
-            - name: NODE_ENV
-              value: {{ .Values.env.node_env }}
-            - name: METRICS_PORT
-              value: "{{ .Values.env.metrics_port }}" 
-            - name: JAEGER_AGENT_SERVICE_HOST
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.hostIP- name: JAEGER_AGENT_SERVICE_HOST
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
-      core: "true"
 {{ toYaml . | indent 8 }}
     {{- end }}
     {{- with .Values.affinity }}

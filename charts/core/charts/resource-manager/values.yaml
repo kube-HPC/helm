@@ -15,6 +15,18 @@ service:
   type: ClusterIP
   port: 3000
 
+env:
+  node_env: kube
+  metrics_port: "3000"
+  internal: "2000"
+  prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
+
+lables:
+   group:
+     value: hkube
+   core:
+     value: "true"
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little

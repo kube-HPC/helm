@@ -17,3 +17,18 @@ dependencies:
 - name: api-server 
   version: "0.1.0"
   repository: "file://../api-server"
+- name: worker-svc
+  version: "0.1.0"
+  repository: "file://../worker-svc"
+- name: webhook-stub-ui
+  version: "0.1.0"
+  repository: "file://../webhook-stub-ui"
+- name: algorithm-operator
+  version: "0.1.0"
+  repository: "file://../algorithm-operator"
+- name: algorithm-queue-svc
+  version: "0.1.0"
+  repository: "file://../algorithm-queue-svc"
+- name: trigger-service
+  version: "0.1.0"
+  repository: "file://../trigger-service"
