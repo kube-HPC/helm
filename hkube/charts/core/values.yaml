@@ -14,26 +14,26 @@ lables:
    core:
      value: "true"
 
-[api-server.Values.image]
-tag: v1.1.37
-[simulator.Values.image]
-tag: v1.1.5
-[monitor-server.Values.image]
-tag: v1.1.5
-[webhook-stub-ui.Values.image]
-tag: v1.1.1
-[pipeline-driver.Values.image]
-tag: v1.1.9
-[algorunner.Values.image]
-tag: v1.1.3
-[worker.Values.image]
-tag: v1.1.27
-[task-executor.Values.image]
-tag: v1.1.30
-[trigger-service.Values.image]
-tag: v1.1.10
-[algorithm-operator.Values.image]
-tag: v1.1.5
+api-server.Values.image:
+                   tag: v1.1.37
+simulator.Values.image:
+                   tag: v1.1.5
+monitor-server.Values.image:
+                  tag: v1.1.5
+webhook-stub-ui.Values.image:
+                  tag: v1.1.1
+pipeline-driver.Values.image:
+                  tag: v1.1.9
+algorunner.Values.image:
+                  tag: v1.1.3
+worker.Values.image:
+                  tag: v1.1.27
+task-executor.Values.image:
+                  tag: v1.1.30
+trigger-service.Values.image:
+                  tag: v1.1.10
+algorithm-operator.Values.image:
+                  tag: v1.1.5
 
 resources: {}
 
