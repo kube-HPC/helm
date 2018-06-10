@@ -6,6 +6,8 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
     app: {{ template "api-server.name" . }}
     chart: {{ template "api-server.chart" . }}
