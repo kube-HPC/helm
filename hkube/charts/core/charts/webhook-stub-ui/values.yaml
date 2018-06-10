@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: hkube/webhook-stub-ui
-  tag: v1.1.1
+  tag: latest #v1.1.1
   pullPolicy: IfNotPresent
 
 service:
@@ -15,7 +15,7 @@ service:
 
 env:
   publick_url: "/hkube/webhook-stub-ui"
-  
+
 lables:
    group:
      value: hkube

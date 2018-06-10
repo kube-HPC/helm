@@ -35,7 +35,7 @@ spec:
       volumes:
         - name: versions-config
           configMap:
-            name: hkube-versions          
+            name: hkube-versions
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

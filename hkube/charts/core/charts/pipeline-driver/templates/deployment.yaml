@@ -45,7 +45,7 @@ spec:
                   name: s3-secret
                   key: awsSecret
             - name: S3_ENDPOINT_URL
-              valueFrom: 
+              valueFrom:
                 secretKeyRef:
                   name: s3-secret
                   key: awsEndpointUrl
