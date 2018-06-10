@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: hkube/webhook-stub-ui
-  tag: latest
+  tag: v1.1.1
   pullPolicy: IfNotPresent
 
 service:
@@ -28,8 +28,6 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   path: /hkube/webhook-stub-ui
-  hosts:
-    - chart-example.local
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

@@ -9,7 +9,7 @@ metadata:
 
 image:
   repository: hkube/simulator
-  tag: latest
+  tag: v1.1.5
   pullPolicy: IfNotPresent
 
 service:
