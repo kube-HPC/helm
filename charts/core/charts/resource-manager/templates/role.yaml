@@ -20,7 +20,7 @@ metadata:
     core: "true"
 rules:
 - apiGroups: [""]
-  resource: ["pods"]
+  resources: ["pods"]
   verbs: ["get", "list", "watch"]
 
 ---
