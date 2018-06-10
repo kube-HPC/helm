@@ -14,10 +14,18 @@ lables:
    core:
      value: "true"
 
-api-server.Values.image.tag: v1.1.37
-simulator.Values.image.tag: v1.1.5
-monitor-server.Values.image.tag: v1.1.5
-webhook-stub-ui.Values.image.tag: v1.1.1
+api-server:
+     image:
+       tag: v1.1.37
+simulator:
+      image:
+       tag: v1.1.5
+monitor-server:
+      image:
+       tag: v1.1.5
+webhook-stub-ui:
+      image:
+       tag: v1.1.1
 
 resources: {}
 
