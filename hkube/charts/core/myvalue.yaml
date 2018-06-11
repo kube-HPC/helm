@@ -1,4 +1,0 @@
-api-server.Values.image.tag: v1.1.37
-simulator.Values.image.tag: v1.1.5
-monitor-server.Values.image.tag: v1.1.5
-webhook-stub-ui.Values.image.tag: v1.1.1
