@@ -19,7 +19,7 @@ service:
 env:
   node_env: kube
   metrics_port: "3000"
-  base+url_path: "/hkube/api-server"
+  base_url_path: "/hkube/api-server"
   default_storage: "s3"
 
 lables:
