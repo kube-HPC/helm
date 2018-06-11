@@ -22,6 +22,7 @@ spec:
         release: {{ .Release.Name }}
         group: {{ .Values.lables.group.value }}
     spec:
+      serviceAccountName: algorithm-operator-serviceaccount
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -44,7 +45,6 @@ spec:
     {{- with .Values.nodeSelector }}
       nodeSelector:
       core: "true"
-      serviceAccountName: algorithm-operator-serviceaccount
 {{ toYaml . | indent 8 }}
     {{- end }}
     {{- with .Values.affinity }}

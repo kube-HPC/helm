@@ -22,6 +22,7 @@ spec:
         release: {{ .Release.Name }}
         group: {{ .Values.lables.group.value }}
     spec:
+      serviceAccountName: task-executor-serviceaccount
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -43,8 +44,7 @@ spec:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
-      core: "true"
-      serviceAccountName: task-executor-serviceaccount
+         core: "true"
 {{ toYaml . | indent 8 }}
     {{- end }}
     {{- with .Values.affinity }}
