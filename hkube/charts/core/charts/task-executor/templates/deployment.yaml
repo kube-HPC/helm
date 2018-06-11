@@ -44,6 +44,7 @@ spec:
     {{- with .Values.nodeSelector }}
       nodeSelector:
       core: "true"
+      serviceAccountName: task-executor-serviceaccount
 {{ toYaml . | indent 8 }}
     {{- end }}
     {{- with .Values.affinity }}
