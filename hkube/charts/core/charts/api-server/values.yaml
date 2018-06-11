@@ -9,7 +9,7 @@ metadata:
 
 image:
   repository: hkube/api-server
-  tag: latest #v1.1.37
+  tag: latest 
   pullPolicy: IfNotPresent
 
 service:

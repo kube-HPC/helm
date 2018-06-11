@@ -1,0 +1,44 @@
+systemVersion: 1.1.188
+
+api-server:
+     image:
+       tag: v1.1.37
+worker:
+  image:
+    tag: v1.1.27
+pipeline-driver:
+  image:
+    tag: v1.1.9
+algorunner:
+  image:
+    tag: v1.1.3
+simulator:
+  image:
+    tag: v1.1.5
+webhook-stub-ui:
+  image:
+    tag: v1.1.1
+algorithm-example:
+  image:
+    tag: v1.1.7
+deployment:
+  image:
+    tag: v1.1.28
+monitor-server:
+  image:
+    tag:: v1.1.5
+algorithm-queue:
+  image:
+    tag: v1.1.12
+resource-manager:
+  image:
+  tag: v1.1.13
+task-executor:
+  image:
+    tag: v1.1.30
+trigger-service:
+  image:
+    tag: v1.1.10
+algorithm-operator:
+  image:
+    tag: v1.1.5

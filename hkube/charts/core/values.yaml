@@ -14,18 +14,20 @@ lables:
    core:
      value: "true"
 
+systemVersion: latest #1.1.188     
+
 api-server:
-     image:
+    image:
        tag: v1.1.37
 simulator:
-      image:
-       tag: v1.1.5
+   image:
+      tag: v1.1.5
 monitor-server:
-      image:
-       tag: v1.1.5
+        image:
+           tag: v1.1.5
 webhook-stub-ui:
-      image:
-       tag: v1.1.1
+         image:
+            tag: v1.1.1
 
 resources: {}
 
