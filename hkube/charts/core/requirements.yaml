@@ -32,3 +32,6 @@ dependencies:
 - name: trigger-service
   version: "0.1.0"
   repository: "file://../trigger-service"
+- name: job-cleaner
+  version: "0.1.0"
+  repository: "file://../job-cleaner"
