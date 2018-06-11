@@ -49,6 +49,7 @@ spec:
     {{- with .Values.nodeSelector }}
       nodeSelector:
       core: "true"
+      serviceAccountName: resource-manager-serviceaccount
 {{ toYaml . | indent 8 }}
     {{- end }}
       serviceAccountName: resource-manager-serviceaccount
