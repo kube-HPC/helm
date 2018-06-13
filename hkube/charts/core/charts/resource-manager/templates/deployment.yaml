@@ -35,10 +35,12 @@ spec:
           env:
             - name: NODE_ENV
               value: {{ .Values.env.node_env }}
-            - name: METRIC_PORT
-              value: "{{ .Values.env.metric_port }}"
-            - name: INTERNAL
-              value: "{{ .Values.env.internal }}"
+            - name: METRICS_PORT
+              value: "{{ .Values.env.metrics_port }}"
+            - name: INTERVAL
+              value: "{{ .Values.env.interval }}"
+            - name: HKUBE_LOG_LEVEL
+              value: "{{ .Values.env.hkube_log_level }}"
             - name: PROMETHEUS_ENDPOINT
               value: {{ .Values.env.promethues_endpoint }}
             - name: JAEGER_AGENT_SERVICE_HOST
