@@ -6,6 +6,7 @@ metadata:
     group: {{ .Values.lables.group.value }}
     app: task-executor
     core: "true"
+
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
@@ -26,12 +27,13 @@ rules:
 - apiGroups: ["batch", "extensions"]
   resources: ["jobs"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: task-executor
-  namespace: default
+  namespace: {{ .Values.Namespace }}
   labels:
     group: {{ .Values.lables.group.value }}
     app: task-executor
@@ -43,8 +45,43 @@ roleRef:
   kind: Role
   name: task-executor
   apiGroup: rbac.authorization.k8s.io
----
 
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: task-executor-clusterrole
+  labels:
+    group: {{ .Values.lables.group.value }}
+    app: task-executor
+    core: "true"
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: task-executor-clusterrolebinding
+  labels:
+    group: {{ .Values.lables.group.value }}
+    app: task-executor
+    core: "true"
+subjects:
+- kind: ServiceAccount
+  name: task-executor-serviceaccount
+  namespace: {{ .Values.Namespace }}
+roleRef:
+  kind: ClusterRole
+  name: task-executor-clusterrole
+  apiGroup: rbac.authorization.k8s.io
+
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -52,7 +89,8 @@ metadata:
   labels:
     group: {{ .Values.lables.group.value }}
     app: task-executor
-    core: "true"    
+    core: "true"
+
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
