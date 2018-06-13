@@ -50,7 +50,7 @@ spec:
                   name: s3-secret
                   key: awsEndpointUrl
             - name: DEFAULT_STORAGE
-              value: "s3"
+              value: {{ .Values.env.default_storage }}
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:
