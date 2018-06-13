@@ -14,7 +14,7 @@ service:
   port: 3002
 
 env:
-  publick_url: "/hkube/webhook-stub-ui"
+  public_url: "/hkube/webhook-stub-ui"
 
 lables:
    group:
