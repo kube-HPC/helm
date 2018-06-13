@@ -16,7 +16,8 @@ service:
 env:
   node_env: kube
   metrics_port: "3000"
-  internal: "2000"
+  interval: "2000"
+  hkube_log_level: "0"
   prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
 
 lables:
