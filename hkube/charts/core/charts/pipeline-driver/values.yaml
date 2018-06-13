@@ -16,6 +16,7 @@ service:
 env:
   node_env: kube
   metrics_port: "3000"
+  default_storage: "s3"
 
 lables:
    group:
