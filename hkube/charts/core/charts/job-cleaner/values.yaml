@@ -12,10 +12,6 @@ image:
   tag: stable
   pullPolicy: IfNotPresent
 
-service:
-  type: ClusterIP
-  port: 80
-
 lables:
    group:
      value: hkube
