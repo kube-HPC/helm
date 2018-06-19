@@ -4,6 +4,9 @@
 
 replicaCount: 1
 
+metadata:
+    namespace: default
+
 image:
   repository: 'hkube/resource-manager'
   tag: latest

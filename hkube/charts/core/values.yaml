@@ -4,7 +4,8 @@
 
 replicaCount: 1
 
-namespace: helmut
+metadata:
+    namespace: default
 
 privteregistry: {}
 

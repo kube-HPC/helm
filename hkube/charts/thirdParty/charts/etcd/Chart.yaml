@@ -1,12 +1,5 @@
-appVersion: 2.2.5
-description: Distributed reliable key-value store for the most critical data of a
-  distributed system.
-home: https://github.com/coreos/etcd
-icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
-maintainers:
-- email: lachlan@deis.com
-  name: Lachlan Evenson
+apiVersion: v1
+appVersion: "1.0"
+description: A Helm chart for Kubernetes
 name: etcd
-sources:
-- https://github.com/coreos/etcd
-version: 0.4.0
+version: 0.1.0

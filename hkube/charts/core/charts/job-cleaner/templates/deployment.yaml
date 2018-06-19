@@ -18,20 +18,23 @@ spec:
       labels:
         app: {{ template "job-cleaner.name" . }}
         release: {{ .Release.Name }}
-        group: {{ .Values.lables.group.value }}
-        core: "Release.Name"
     spec:
-      serviceAccountName: cleanup-operator
       containers:
-        - args:
-          - --namespace=default
-          - --keep-successful=1
-          name: {{ .Chart.Name }}
+        - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-        dnsPolicy: ClusterFirst
-        restartPolicy: Always
-        terminationGracePeriodSeconds: 30  
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
@@ -46,4 +49,3 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
-
