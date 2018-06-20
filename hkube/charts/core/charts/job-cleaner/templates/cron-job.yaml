@@ -49,3 +49,27 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+   
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: clean-old-jobs
+  labels:
+    group: hkube
+    core: "true"
+spec:
+  schedule: "*/10 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: clean-old-jobs
+          containers:
+          - name: clean-old-jobs
+            image: hkube/clean-old-jobs:latest
+            env:
+            - name: "MAX_COMPLETED_JOB_AGE_HOURS"
+              value: "1"
+          restartPolicy: Never
+
