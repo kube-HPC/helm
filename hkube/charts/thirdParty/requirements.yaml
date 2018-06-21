@@ -1,7 +1,7 @@
 dependencies:
 - name: etcd
   version: ^0.4.0
-  repository: "file://../redis-ha"
+  repository: "file://../etcd"
 - name: redis-ha
   version: ^2.1.3
   repository: "file://../redis-ha"

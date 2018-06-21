@@ -1,118 +1,85 @@
-{{- if .Values.collector.enabled -}}
+# Source: jaeger/templates/collector-deploy.yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "jaeger.collector.name" . }}
+  name: jaeger-jaeger-collector
   labels:
-    app: {{ template "jaeger.name" . }}
+    app: jaeger
     jaeger-infra: collector-deployment
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    chart: jaeger-0.3.5
     component: collector
-    heritage: {{ .Release.Service }}
-    release: {{ .Release.Name }}
-{{- if .Values.collector.annotations }}
-  annotations:
-{{ toYaml .Values.collector.annotations | indent 4 }}
-{{- end }}
+    heritage: Tiller
+    release: jaeger
+    group: hkube
+    thirdparty: "true"
 spec:
-  replicas: {{ .Values.collector.replicaCount }}
+  replicas: 1
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: {{ template "jaeger.name" . }}
+        app: jaeger
         component: collector
-        release: {{ .Release.Name }}
+        release: jaeger
         jaeger-infra: collector-pod
-{{- if .Values.collector.podLabels }}
-{{ toYaml .Values.collector.podLabels | indent 8 }}
-{{- end }}
+        group: hkube
+        thirdparty: "true"
     spec:
       nodeSelector:
-{{ toYaml .Values.collector.nodeSelector | indent 8 }}
+        third-party: "true"
       containers:
-      - name: {{ template "jaeger.collector.name" . }}
-        image: {{ .Values.collector.image }}:{{ .Values.tag }}
-        imagePullPolicy: {{ .Values.collector.pullPolicy }}
+      - name: jaeger-jaeger-collector
+        image: jaegertracing/jaeger-collector:1.2.0
+        imagePullPolicy: IfNotPresent
         env:
           - name: SPAN_STORAGE_TYPE
             valueFrom:
               configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
+                name: jaeger-jaeger
                 key: span-storage.type
-          {{- if eq .Values.storage.type "cassandra" }}
           - name: CASSANDRA_SERVERS
             valueFrom:
               configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
+                name: jaeger-jaeger
                 key: cassandra.servers
           - name: CASSANDRA_PORT
             valueFrom:
               configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
+                name: jaeger-jaeger
                 key: cassandra.port
           - name: CASSANDRA_KEYSPACE
             valueFrom:
               configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
+                name: jaeger-jaeger
                 key: cassandra.keyspace
-          {{- end }}
-          {{- if eq .Values.storage.type "elasticsearch" }}
-          - name: ES_PASSWORD
-            valueFrom:
-              configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
-                key: es.password
-          - name: ES_SERVER_URLS
-            valueFrom:
-              configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
-                key: es.server-urls
-          - name: ES_USERNAME
-            valueFrom:
-              configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
-                key: es.username
-          {{- end }}
           - name: COLLECTOR_PORT
             valueFrom:
               configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
+                name: jaeger-jaeger
                 key: collector.port
           - name: COLLECTOR_HTTP_PORT
             valueFrom:
               configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
+                name: jaeger-jaeger
                 key: collector.http-port
           - name: COLLECTOR_ZIPKIN_HTTP_PORT
             valueFrom:
               configMapKeyRef:
-                name: {{ template "jaeger.fullname" . }}
+                name: jaeger-jaeger
                 key: collector.zipkin.http-port
         ports:
-        - containerPort: {{ .Values.collector.service.tchannelPort }}
+        - containerPort: 14267
           name: tchannel
           protocol: TCP
-        - containerPort: {{ .Values.collector.service.httpPort }}
+        - containerPort: 14268
           name: http
           protocol: TCP
-        - containerPort: {{ .Values.collector.service.healthCheckPort }}
-          name: healthcheck
-          protocol: TCP
-        - containerPort: {{ .Values.collector.service.zipkinPort }}
+        - containerPort: 9411
           name: zipkin
           protocol: TCP
-        readinessProbe:
-          httpGet:
-            port: healthcheck
-          initialDelaySeconds: 10
-        livenessProbe:
-          httpGet:
-            port: healthcheck
-          initialDelaySeconds: 10
         resources:
-{{ toYaml .Values.collector.resources | indent 10 }}
-      dnsPolicy: {{ .Values.collector.dnsPolicy }}
+          {}
+          
+      dnsPolicy: ClusterFirst
       restartPolicy: Always
-{{- end -}}

@@ -4,10 +4,13 @@
 
 replicaCount: 1
 
-#image:
-#  repository: nginx
-#  tag: stable
-#  pullPolicy: IfNotPresent
+metadata:
+    namespace: default
+
+image:
+ repository: gcr.io/etcd-development/etcd
+ tag: 3.3.1
+ pullPolicy: IfNotPresent
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -20,6 +23,12 @@ resources: {}
   # requests:
   #  cpu: 100m
   #  memory: 128Mi
+
+lables:
+   group:
+     value: hkube
+   thirdparty:
+     value: "true"
 
 nodeSelector: {}
 
