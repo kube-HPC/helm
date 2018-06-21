@@ -1,44 +1,47 @@
-systemVersion: 1.1.188
+systemVersion: 1.1.235
 
 api-server:
      image:
-       tag: v1.1.37
+       tag: v1.1.47
 worker:
   image:
-    tag: v1.1.27
+    tag: v1.1.29
 pipeline-driver:
   image:
-    tag: v1.1.9
+    tag: v1.1.13
 algorunner:
   image:
-    tag: v1.1.3
+    tag: v1.1.4
 simulator:
   image:
-    tag: v1.1.5
+    tag: v1.1.6
 webhook-stub-ui:
   image:
-    tag: v1.1.1
+    tag: v1.1.2
 algorithm-example:
   image:
     tag: v1.1.7
 deployment:
   image:
-    tag: v1.1.28
+    tag: v1.1.32
 monitor-server:
   image:
-    tag:: v1.1.5
+    tag:: v1.1.8
 algorithm-queue:
   image:
-    tag: v1.1.12
+    tag: v1.1.15
 resource-manager:
   image:
-  tag: v1.1.13
+  tag: v1.1.17
 task-executor:
   image:
-    tag: v1.1.30
+    tag: v1.1.36
 trigger-service:
   image:
-    tag: v1.1.10
+    tag: v1.1.12
 algorithm-operator:
   image:
-    tag: v1.1.5
+    tag: v1.1.8
+clean-old-jobs:
+  image:
+    tag: v1.1.1
