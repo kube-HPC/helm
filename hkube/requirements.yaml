@@ -4,6 +4,6 @@ dependencies:
   repository: "file://../core"
 - name: thirdParty
   version: "0.1.0"
-  repository: "file://../thirdParty"
+  repository: "file://../thirdparty"
   condition: thirdParty
 
