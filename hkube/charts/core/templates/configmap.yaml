@@ -1,27 +1,8 @@
 apiVersion: v1
 data:
-  versions.html: <table><tr><th class="string">systemVersion</th><td class="string">1.1.167</td></tr><tr><th
-    class="array">versions</th><td class="array"><table><thead><tr><th class="string">project</th><th
-    class="string">tag</th><th class="string">sha</th></tr></thead><tbody><tr><td
-    class="string">api-server</td><td class="string">v1.1.35</td><td class="string">d690d87d29e6fb605d6400fdc8b95b32e28621d1</td></tr><tr><td
-    class="string">worker</td><td class="string">v1.1.20</td><td class="string">1d9f6ab457b1ad704fbf1c11106489602d0edb84</td></tr><tr><td
-    class="string">pipeline-driver</td><td class="string">v1.1.9</td><td class="string">1ea7f6ecb74c0447abc9ff00c8fbd026b56c819f</td></tr><tr><td
-    class="string">algorunner</td><td class="string">v1.1.2</td><td class="string">8253934770dfc64faae6796c4421c8a238820120</td></tr><tr><td
-    class="string">simulator</td><td class="string">v1.1.5</td><td class="string">672e53e566c4a5297838725a0bfebcf30bf5fa76</td></tr><tr><td
-    class="string">webhook-stub-ui</td><td class="string">v1.1.1</td><td class="string">c0abe46c8c4b85f90d15c5efc0fc20216fad55dc</td></tr><tr><td
-    class="string">algorithm-example</td><td class="string">v1.1.3</td><td class="string">c71600cee266ebab6e70b69ec507ff7e74f26262</td></tr><tr><td
-    class="string">deployment</td><td class="string">v1.1.27</td><td class="string">9cb6df71ff3ed04e0657537f3f9abfec5bf4aab7</td></tr><tr><td
-    class="string">monitor-server</td><td class="string">v1.1.5</td><td class="string">71e8048ac9c3a7ba8d60180420a61af04640c061</td></tr><tr><td
-    class="string">algorithm-queue</td><td class="string">v1.1.12</td><td class="string">c896de4566933293299a53c55ec881ee51bb4dce</td></tr><tr><td
-    class="string">resource-manager</td><td class="string">v1.1.13</td><td class="string">505917eb765bc953135bfc251ccbc3a9a3224da0</td></tr><tr><td
-    class="string">task-executor</td><td class="string">v1.1.25</td><td class="string">2bcab71bf134b5e6d0fea684bf74f390c118e3cc</td></tr><tr><td
-    class="string">trigger-service</td><td class="string">v1.1.9</td><td class="string">6321d868aca7150cc54596179091bb25f9318e87</td></tr><tr><td
-    class="string">algorithm-operator</td><td class="string">v1.1.4</td><td class="string">a2ecf53d66a2aa76272c55e9795c08fd80142900</td></tr></tbody></table></td></tr></table>
   versions.json: |
-    {"systemVersion":"1.1.188","versions":[{"project":"api-server","tag":"v1.1.37","sha":"bda96ff09fc5a38c7b46b2eec4d6c79ab082514a"},{"project":"worker","tag":"v1.1.27","sha":"5bfc150d03f42b042bebcd335e27d99c585a97dd"},{"project":"pipeline-driver","tag":"v1.1.9","sha":"1ea7f6ecb74c0447abc9ff00c8fbd026b56c819f"},{"project":"algorunner","tag":"v1.1.3","sha":"1de169eb63fb525e9eb572af8f556a5cef30267e"},{"project":"simulator","tag":"v1.1.5","sha":"672e53e566c4a5297838725a0bfebcf30bf5fa76"},{"project":"webhook-stub-ui","tag":"v1.1.1","sha":"c0abe46c8c4b85f90d15c5efc0fc20216fad55dc"},{"project":"algorithm-example","tag":"v1.1.7","sha":"3f3a646de21af9f9fedb43608ca2e324207678e4"},{"project":"deployment","tag":"v1.1.28","sha":"0dc684edb79bee9694d5d05d415f8f4db811bdb8"},{"project":"monitor-server","tag":"v1.1.5","sha":"71e8048ac9c3a7ba8d60180420a61af04640c061"},{"project":"algorithm-queue","tag":"v1.1.12","sha":"c896de4566933293299a53c55ec881ee51bb4dce"},{"project":"resource-manager","tag":"v1.1.13","sha":"505917eb765bc953135bfc251ccbc3a9a3224da0"},{"project":"task-executor","tag":"v1.1.30","sha":"300788ed6216e7e9bcff5ff49a0552ae433e1a79"},{"project":"trigger-service","tag":"v1.1.10","sha":"a9b82301f35b37ab4c80d56f2d09a566e55119fe"},{"project":"algorithm-operator","tag":"v1.1.5","sha":"97e4b6dd1dbedec05c0422f96cb54d28172f4abb"}]}
+          {"systemVersion":"1.1.237","versions":[{"project":"api-server","tag":"v1.1.47","sha":"e08a704da3ba58f242a31580343554f715838b42"},{"project":"worker","tag":"v1.1.29","sha":"5fe4e7caf301becaf572cdc54f35e9123244495a"},{"project":"pipeline-driver","tag":"v1.1.13","sha":"d2f11ac3cddc62432ed56ca9b29a462cf2c8b1b8"},{"project":"algorunner","tag":"v1.1.4","sha":"539aaf1d9ad66eab92938b2077f47eaa90a56598"},{"project":"simulator","tag":"v1.1.6","sha":"5fa97d90d1ebb572d09761f0b606eabfb5ae707d"},{"project":"webhook-stub-ui","tag":"v1.1.2","sha":"57d5365c17b6fcb54e76bd870dd1a55e420d7865"},{"project":"algorithm-example","tag":"v1.1.7","sha":"3f3a646de21af9f9fedb43608ca2e324207678e4"},{"project":"deployment","tag":"v1.1.32","sha":"cf2889ee556d1a0f80905e9e380e3a74e4af4409"},{"project":"monitor-server","tag":"v1.1.8","sha":"f13827be875ee7cd12a68faa7315d37fa3fa7105"},{"project":"algorithm-queue","tag":"v1.1.15","sha":"ad22a8a37f9ef593b8dbc28da5f3cef57b167026"},{"project":"resource-manager","tag":"v1.1.17","sha":"4e79a14f341ef6f895b4edf799e983009dbc43da"},{"project":"task-executor","tag":"v1.1.37","sha":"11db21afe18c527f9c82201d3dcf13968eb48c19"},{"project":"trigger-service","tag":"v1.1.12","sha":"456c6a78f0f28c6708b745c8f62bea38d870323a"},{"project":"algorithm-operator","tag":"v1.1.8","sha":"e805623c16c05ce89d0ea2a406be929920e3d56e"},{"project":"clean-old-jobs","tag":"v1.1.1","sha":"b61ad09e8dc28bba4234cddd53d41b289c9f9fcf"}]}
 kind: ConfigMap
 metadata:
-
   name: hkube-versions
   namespace: {{ .Release.Namespace }}
-

@@ -1,27 +1,3 @@
-# apiVersion: batch/v1beta1
-# kind: CronJob
-# metadata:
-#   name: {{ template "job-cleaner.fullname" . }}
-#   labels:
-#     chart: {{ template "job-cleaner.chart" . }}
-#     release: {{ .Release.Name }}
-#     heritage: {{ .Release.Service }}
-#     group: {{ .Values.lables.group.value }}
-# spec:
-#   schedule: "*/10 * * * *"
-#      jobTemplate:
-#         spec:
-#           template:
-#             spec:
-#               service_accountName: clean-old-jobs
-#               containers:
-#               - name: {{ .Chart.Name }}
-#                 image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-#                 env:
-#                 - name: "MAX_COMPLETED_JOB_AGE_HOURS"
-#                   value: {{ .Values.env.max_completed_job_age_hours }}
-#               restartPolicy: Never  
-
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:

@@ -1,4 +1,4 @@
-systemVersion: 1.1.237
+systemversion: 1.1.237
 
 api-server:
      image:
@@ -32,7 +32,7 @@ algorithm-queue:
     tag: v1.1.15
 resource-manager:
    image:
-    tag: v1.1.17
+     tag: v1.1.17
 task-executor:
   image:
     tag: v1.1.37

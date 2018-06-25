@@ -34,4 +34,4 @@ tolerations: []
 
 affinity: {}
 
-
+-include: versions.yaml
