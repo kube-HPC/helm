@@ -22,12 +22,10 @@ lables:
    core:
      value: "true"
 env:
-  node_env: kube
+  node_env: production
   metrics_port: "3000"
-  interval: "2000"
   hkube_log_level: "0"
-  prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
-
+  
 ingress:
   enabled: false
   annotations: {}
