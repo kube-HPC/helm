@@ -42,7 +42,7 @@ spec:
             - name: HKUBE_LOG_LEVEL
               value: "{{ .Values.env.hkube_log_level }}"
             - name: PROMETHEUS_ENDPOINT
-              value: {{ .Values.env.promethues_endpoint }}
+              value: {{ .Values.env.prometheus_endpoint }}
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:

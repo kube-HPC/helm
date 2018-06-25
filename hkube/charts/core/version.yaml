@@ -1,4 +1,4 @@
-systemVersion: 1.1.235
+systemVersion: 1.1.237
 
 api-server:
      image:
@@ -26,16 +26,16 @@ deployment:
     tag: v1.1.32
 monitor-server:
   image:
-    tag:: v1.1.8
+    tag: v1.1.8
 algorithm-queue:
   image:
     tag: v1.1.15
 resource-manager:
-  image:
-  tag: v1.1.17
+   image:
+    tag: v1.1.17
 task-executor:
   image:
-    tag: v1.1.36
+    tag: v1.1.37
 trigger-service:
   image:
     tag: v1.1.12

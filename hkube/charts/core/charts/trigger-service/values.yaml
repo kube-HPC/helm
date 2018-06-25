@@ -14,7 +14,7 @@ service:
   port: 3000
 
 env:
-  node_env: kube
+  node_env: production
   metrics_port: "3000"
 
 ports:

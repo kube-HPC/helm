@@ -27,7 +27,7 @@ ingress:
   #      - chart-example.local
 
 env:
-  node_env: kube
+  node_env: production
   metrics_port: "3000"
 
 lables:

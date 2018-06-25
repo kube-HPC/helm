@@ -8,7 +8,7 @@ metadata:
     namespace: default
 
 image:
-  repository: 'hkube/resource-manager'
+  repository: hkube/resource-manager
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -17,7 +17,7 @@ service:
   port: 3000
 
 env:
-  node_env: kube
+  node_env: production
   metrics_port: "3000"
   interval: "2000"
   hkube_log_level: "0"
