@@ -35,7 +35,7 @@ spec:
             - name: NODE_ENV
               value: {{ .Values.env.node_env }}
             - name: HKUBE_LOG_LEVEL
-              value: "{{ .Values.env.hkube_log-level  }}"
+              value: "{{ .Values.env.hkube_log_level }}"
             - name: METRICS_PORT
               value: "{{ .Values.env.metrics_port }}"
             - name: JAEGER_AGENT_SERVICE_HOST
