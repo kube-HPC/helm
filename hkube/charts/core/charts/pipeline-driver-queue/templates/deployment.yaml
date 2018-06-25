@@ -1,0 +1,94 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "pipeline-driver-queue.fullname" . }}
+  labels:
+    app: {{ template "pipeline-driver-queue.name" . }}
+    chart: {{ template "pipeline-driver-queue.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "pipeline-driver-queue.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "pipeline-driver-queue.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: pipeline-driver-queue
+  labels:
+    app: pipeline-driver-queue
+    scale-group: pipeline-driver-queue
+    group: hkube
+    core: "true"
+    metrics-group: pipeline-driver-queue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pipeline-driver-queue
+  template:
+    metadata:
+      labels:
+        app: pipeline-driver-queue
+        group: hkube
+    spec:
+      nodeSelector:
+        core: "true"
+      containers:
+        - name: pipeline-driver-queue
+          image: 'hkube/pipeline-driver-queue:latest'
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: HKUBE_LOG_LEVEL
+              value: "0"
+            - name: METRICS_PORT
+              value: "3000"
+            - name: JAEGER_AGENT_SERVICE_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP    

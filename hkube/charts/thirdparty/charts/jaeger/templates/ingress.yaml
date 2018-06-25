@@ -11,6 +11,8 @@ metadata:
     chart: {{ template "jaeger.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    group: hkube
+    thirdparty: "true"
 {{- with .Values.ingress.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
@@ -33,7 +35,7 @@ spec:
         paths:
           - path: {{ $ingressPath }}
             backend:
-              serviceName: {{ $fullName }}
+              serviceName: jaeger-jaeger-query 
               servicePort: http
   {{- end }}
 {{- end }}
