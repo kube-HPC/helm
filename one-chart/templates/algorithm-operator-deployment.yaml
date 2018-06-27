@@ -13,7 +13,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: algorithm-operator
+      app: algorithm-operator  
       release: {{ .Release.Name }}
   template:
     metadata:
@@ -25,11 +25,11 @@ spec:
       serviceAccountName: algorithm-operator-serviceaccount
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ index .Values "algorithm-operator" "image.repository" }}:{{ index .Values "algorithm-operator" "image.tag" }}"
+          image: "{{ index .Values "algorithm-operator" "image" "repository" }}:{{ index .Values "algorithm-operator" "image" "tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ index .Values "algorithm-operator" "service.port" }}
+              containerPort: {{ index .Values "algorithm-operator" "service" "port" }}
               protocol: TCP
           env:
             - name: NODE_ENV
