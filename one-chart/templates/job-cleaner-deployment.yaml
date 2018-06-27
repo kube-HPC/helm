@@ -14,7 +14,7 @@ spec:
           serviceAccountName: clean-old-jobs
           containers:
           - name: clean-old-jobs
-            image: "{{ .Values.cleanoldjobs.image.repository }}:{{ .Values.cleanoldjobs.image.tag }}"
+            image: "{{ index  .Values "clean-old-jobs" "image.repository" }}:{{ index .Values "clean-old-jobs" "image.tag" }}"
             env:
             - name: "MAX_COMPLETED_JOB_AGE_HOURS"
               value: "{{ .Values.env.max_completed_job_age_hours }}"

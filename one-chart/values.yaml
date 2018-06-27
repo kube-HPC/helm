@@ -76,8 +76,8 @@ algorithm-operator:
    image:
     repository: hkube/algorithm-operator
     tag: v1.1.8
-cleanoldjobs:
-   image: 
+clean-old-jobs:
+   image:
      repository: hkube/clean-old-jobs
      tag: v1.1.1
 

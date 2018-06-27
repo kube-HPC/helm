@@ -8,7 +8,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.lables.group.value }}
-    core: "Release.Name"
+    core: "true"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
