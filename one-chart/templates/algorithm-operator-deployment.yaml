@@ -25,11 +25,11 @@ spec:
       serviceAccountName: algorithm-operator-serviceaccount
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.algorithmoperator.image.repository }}:{{ .Values.algorithmoperator.image.tag }}"
+          image: "{{ index .Values "algorithm-operator" "image.repository" }}:{{ index .Values "algorithm-operator" "image.tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.algorithmoperator.service.port }}
+              containerPort: {{ index .Values "algorithm-operator" "service.port" }}
               protocol: TCP
           env:
             - name: NODE_ENV

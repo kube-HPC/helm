@@ -13,10 +13,10 @@ metadata:
     core: "true"
 spec:
   clusterIP: None
-  type: {{ .Values.algorithmoperator.service.type }}
+  type: {{ index .Values "algorithm-operator" "service.type" }}
   ports:
-    - port: {{ .Values.algorithmoperator.service.port }}
-      targetPort: {{ .Values.algorithmoperator.service.port }}
+    - port: {{ index .Values "algorithm-operator" "service.port" }}
+      targetPort: {{ index .Values "algorithm-operator" "service.port" }}
       protocol: TCP
   selector:
     app: algorithm-operator
