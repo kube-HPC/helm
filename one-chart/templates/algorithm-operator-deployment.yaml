@@ -1,10 +1,10 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "algorithm-operator.fullname" . }}
+  name: algorithm-operator
   labels:
-    app: {{ template "algorithm-operator.name" . }}
-    chart: {{ template "algorithm-operator.chart" . }}
+    app: algorithm-operator
+    chart: algorithm-operator
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.lables.group.value }}
@@ -13,23 +13,23 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "algorithm-operator.name" . }}
+      app: algorithm-operator
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "algorithm-operator.name" . }}
+        app: algorithm-operator
         release: {{ .Release.Name }}
         group: {{ .Values.lables.group.value }}
     spec:
       serviceAccountName: algorithm-operator-serviceaccount
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.algorithmoperator.image.repository }}:{{ .Values.algorithmoperator.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: {{ .Values.algorithmoperator.service.port }}
               protocol: TCP
           env:
             - name: NODE_ENV
