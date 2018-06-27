@@ -1,0 +1,109 @@
+# Default values for hkube.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+metadata:
+    namespace: default
+
+privteregistry: {}
+
+thirdpartyapps:
+  redis-ha: true
+  etcd: true
+
+lables:
+   group:
+     value: hkube
+   thirdparty:
+     value: "true"
+   core:
+     value: "true"
+   
+systemversion: 1.1.237
+
+api-server:
+     image:
+       tag: v1.1.47
+worker:
+  image:
+    tag: v1.1.29
+pipeline-driver:
+  image:
+    tag: v1.1.13
+algorunner:
+  image:
+    tag: v1.1.4
+simulator:
+  image:
+    tag: v1.1.6
+webhook-stub-ui:
+  image:
+    tag: v1.1.2
+algorithm-example:
+  image:
+    tag: v1.1.7
+deployment:
+  image:
+    tag: v1.1.32
+monitor-server:
+  image:
+    tag: v1.1.8
+algorithm-queue:
+  image:
+    tag: v1.1.15
+resource-manager:
+   image:
+     tag: v1.1.17
+task-executor:
+  image:
+    tag: v1.1.37
+trigger-service:
+  image:
+    tag: v1.1.12
+algorithm-operator:
+   service:
+     type: ClusterIP
+     port: 3000
+   image: hkube/algorithm-operator
+     tag: v1.1.8
+clean-old-jobs:
+  image: hkube/clean-old-jobs
+    tag: v1.1.1
+
+env:
+  node_env: production
+  max_completed_job_age_hours: "1"
+  metrics_port: "3000"
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - chart-example.local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

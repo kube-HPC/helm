@@ -12,4 +12,4 @@ dependencies:
 - name: jaeger
   version: 0.1.0
   repository: "file://../jaeger"
-  condition: thirdParty.jeager
+  condition: thirdparty.jeager

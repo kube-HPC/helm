@@ -4,9 +4,9 @@
 
 replicaCount: 1
 
-thirdParty: true
+#thirdparty: true
 
-thirdPartyapps:
+thirdpartyapps:
   redis-ha: true
   etcd: true
 
