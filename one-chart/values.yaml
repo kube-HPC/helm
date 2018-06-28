@@ -35,11 +35,14 @@ api-server:
     type: ClusterIP
     port: "3000"
   image:
-    repository: hkube/algorithm-operator
-    tag: v1.1.47
+    repository: hkube/api-server
+    tag: v1.1.52
+  ingress:
+    enabled: true
+    path: /hkube/api-server
 worker:
   image:
-  tag: v1.1.29
+  tag: v1.1.31
 pipeline-driver:
   image:
   tag: v1.1.13
@@ -57,16 +60,16 @@ algorithm-example:
   tag: v1.1.7
 deployment:
   image:
-  tag: v1.1.32
+  tag: v1.1.35
 monitor-server:
   image:
   tag: v1.1.8
 algorithm-queue:
   image:
-  tag: v1.1.15
+  tag: v1.1.16
 resource-manager:
    image:
-   tag: v1.1.17
+   tag: v1.1.19
 task-executor:
   image:
   tag: v1.1.37
@@ -88,6 +91,10 @@ clean-old-jobs:
    image:
      repository: hkube/clean-old-jobs
      tag: v1.1.1
+cpu-load-algorithm:
+   image:
+     repository: hkube/cpu-load-algorithm
+     tag: v1.1.2
 
 env:
   node_env: production

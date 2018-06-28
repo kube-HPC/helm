@@ -1,11 +1,11 @@
-{{- if .Values.ingress.enabled -}}
-{{- $fullName := include "api-server" . -}}
-{{- $servicePort := .Values.service.port -}}
-{{- $ingressPath := .Values.ingress.path -}}
+{{- if  index .Values "api-server" "ingress" -}}
+{{- $fullName := "api-server" . -}}
+{{- $servicePort := index .Values "api-server" "service" "port" -}}
+{{- $ingressPath := index .Values "api-server" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: api-server
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
