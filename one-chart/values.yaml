@@ -31,8 +31,12 @@ service:
      port: 80
 
 api-server:
+  service:
+    type: ClusterIP
+    port: "3000"
   image:
-  tag: v1.1.47
+    repository: hkube/algorithm-operator
+    tag: v1.1.47
 worker:
   image:
   tag: v1.1.29
@@ -69,10 +73,14 @@ task-executor:
 trigger-service:
   image:
   tag: v1.1.12
+algorithm-queue-svc:
+   service:
+    type: ClusterIP
+    port: "3000"
 algorithm-operator:
    service:
      type: ClusterIP
-     port: 3000
+     port: "3000"
    image:
     repository: hkube/algorithm-operator
     tag: v1.1.8
@@ -85,19 +93,6 @@ env:
   node_env: production
   max_completed_job_age_hours: "1"
   metrics_port: "3000"
-
-ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  path: /
-  hosts:
-    - chart-example.local
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

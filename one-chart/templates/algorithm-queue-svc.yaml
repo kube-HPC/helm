@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: algorithm-queue-svc
+  labels:
+    app: algorithm-queue-svc
+    chart: algorithm-queue-svc
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ index .Values "algorithm-queue-svc" "service" "port" }}
+      targetPort: {{ index .Values "algorithm-queue-svc" "service" "port" }}
+      protocol: TCP
+  selector:
+    app: algorithm-queue-svc
+    release: {{ .Release.Name }}

@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "api-server.fullname" . -}}
+{{- $fullName := include "api-server" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1
@@ -9,8 +9,8 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
-    app: {{ template "api-server.name" . }}
-    chart: {{ template "api-server.chart" . }}
+    app: api-server
+    chart: api-server
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.lables.group.value }}
