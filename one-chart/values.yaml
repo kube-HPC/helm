@@ -24,10 +24,6 @@ systemversion: 1.1.237
 image:
   pullPolicy: IfNotPresent
 
-service:
-     type: ClusterIP
-     port: 80
-
 api-server:
   service:
     type: ClusterIP
@@ -71,6 +67,8 @@ algorunner:
     repository:
     tag: v1.1.4
 simulator:
+  metrics:
+     port: 9050
   service:
     type: ClusterIP
     port: 9050

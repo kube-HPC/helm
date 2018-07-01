@@ -42,7 +42,7 @@ spec:
             - name: DRIVERS_THRESHOLD_MEM
               value: "{{ .Values.env.driver_threshold_mem }}"
             - name: METRICS_PORT
-              value: "{{ index .Values "resource-manager" "metrics" "port" }}""
+              value: "{{ index .Values "resource-manager" "metrics" "port" }}"
             - name: PROMETHEUS_ENDPOINT
               value: {{ .Values.env.prometheus_endpoint }}
             - name: JAEGER_AGENT_SERVICE_HOST
