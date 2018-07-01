@@ -13,7 +13,6 @@ spec:
   selector:
     matchLabels:
       app: algorithm-operator  
-      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
