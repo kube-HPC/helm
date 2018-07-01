@@ -1,0 +1,51 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: resource-manager
+  labels:
+    app: resource-manager
+    scale-group: resource-manager
+    group: hkube
+    core: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resource-manager
+  template:
+    metadata:
+      labels:
+        app: resource-manager
+        group: hkube
+    spec:
+      nodeSelector:
+        core: "true"
+      serviceAccountName: resource-manager-serviceaccount
+      containers:
+        - name: resource-manager
+          image: 'hkube/resource-manager:latest'
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: HKUBE_LOG_LEVEL
+              value: "0"
+            - name: INTERVAL
+              value: "2000"
+            - name: ALGORITHMS_THRESHOLD_CPU
+              value: "0.9"
+            - name: ALGORITHMS_THRESHOLD_MEM
+              value: "0.9"
+            - name: DRIVERS_THRESHOLD_CPU
+              value: "0.1"
+            - name: DRIVERS_THRESHOLD_MEM
+              value: "1"
+            - name: METRICS_PORT
+              value: "3000"
+            - name: PROMETHEUS_ENDPOINT
+              value: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
+            - name: JAEGER_AGENT_SERVICE_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP

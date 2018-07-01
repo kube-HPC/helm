@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: resource-manager
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app: resource-manager
+    group: hkube
+    core: "true"
+spec:
+  selector:
+    app: resource-manager
+  clusterIP: None
+  ports:
+    - name: metrics
+      port: 3000
+      targetPort: 3000

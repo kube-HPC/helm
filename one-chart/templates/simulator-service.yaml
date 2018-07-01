@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: simulator
+  labels:
+    app: simulator
+    group: hkube
+    core: "true"
+spec:
+  selector:
+    app: simulator
+  ports:
+    - protocol: TCP
+      port: 9050
+      targetPort: 9050

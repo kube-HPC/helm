@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "pipeline-driver-queue.fullname" . }}
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app: {{ template "pipeline-driver-queue.name" . }}
+    chart: {{ template "pipeline-driver-queue.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: {{ template "pipeline-driver-queue.name" . }}
+    release: {{ .Release.Name }}
+  clusterIP: None
+  ports:
+    - name: metrics
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
