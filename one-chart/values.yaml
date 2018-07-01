@@ -2,8 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
-
 metadata:
     namespace: default
 
@@ -47,40 +45,69 @@ worker:
   metrics:
     port: 3001
   image:
-  tag: v1.1.31
+   repository:
+   tag: v1.1.31
 pipeline-driver:
+  replicaCount: 20
+  service:
+    type: ClusterIP
+    port: "3000"
   image:
-  tag: v1.1.13
+    repository: hkube/pipeline-driver
+    tag: v1.1.13
+pipeline-driver-queue:
+  replicaCount: 1
+  service:
+    type: ClusterIP
+    port: "3000"
+  image:
+    repository: hkube/pipeline-driver-queue
+    tag: v1.1.13
+  ingress:
+    enabled: true
+    path: /hkube/
 algorunner:
   image:
-  tag: v1.1.4
+    repository:
+    tag: v1.1.4
 simulator:
   image:
-  tag: v1.1.6
+    repository:
+    tag: v1.1.6
 webhook-stub-ui:
   image:
-  tag: v1.1.2
+    repository:
+    tag: v1.1.2
+  metrics:
+    port: 3002
 algorithm-example:
   image:
-  tag: v1.1.7
+    repository:
+    tag: v1.1.7
 deployment:
   image:
-  tag: v1.1.35
+    repository:
+    tag: v1.1.35
 monitor-server:
   image:
-  tag: v1.1.8
+    repository:
+    tag: v1.1.8
 algorithm-queue:
   image:
-  tag: v1.1.16
+    repository:
+    tag: v1.1.16
 resource-manager:
    image:
-   tag: v1.1.19
+     repository:
+     tag: v1.1.19
 task-executor:
   image:
-  tag: v1.1.37
+    repository:
+    tag: v1.1.37
 trigger-service:
   image:
-  tag: v1.1.12
+    repository:
+    tag: v1.1.12
 algorithm-queue-svc:
    service:
     type: ClusterIP
@@ -105,6 +132,7 @@ env:
   node_env: production
   max_completed_job_age_hours: "1"
   metrics_port: "3000"
+  public_url: "/hkube/webhook-stub-ui"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

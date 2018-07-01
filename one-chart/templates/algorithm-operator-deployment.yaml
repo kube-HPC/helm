@@ -9,7 +9,7 @@ metadata:
     group: {{ .Values.lables.group.value }}
     core: "true"
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       app: algorithm-operator  
