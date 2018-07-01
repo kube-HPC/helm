@@ -4,8 +4,7 @@ metadata:
   name: algorithm-operator
   labels:
     app: algorithm-operator
-    chart: algorithm-operator
-    release: {{ .Release.Name }}
+    release: algorithm-operator
     heritage: {{ .Release.Service }}
     group: {{ .Values.lables.group.value }}
     core: "true"
@@ -19,12 +18,12 @@ spec:
     metadata:
       labels:
         app: algorithm-operator
-        release: {{ .Release.Name }}
+        release: algorithm-operator
         group: {{ .Values.lables.group.value }}
     spec:
       serviceAccountName: algorithm-operator-serviceaccount
       containers:
-        - name: {{ .Chart.Name }}
+        - name: algorithm-operator
           image: "{{ index .Values "algorithm-operator" "image" "repository" }}:{{ index .Values "algorithm-operator" "image" "tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:

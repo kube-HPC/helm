@@ -4,7 +4,6 @@ metadata:
   name: api-server
   labels:
     app: api-server
-    chart: api-server
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.lables.group.value }}
@@ -14,18 +13,18 @@ spec:
   selector:
     matchLabels:
       app: api-server
-      release: {{ .Release.Name }}
+      release: api-server
   template:
     metadata:
       labels:
         app: api-server
-        release: {{ .Release.Name }}
+        release: api-server
         group: {{ .Values.lables.group.value }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ index .Values "api-server" "image" "repository" }}:{{ index .Values "image" "tag" }}"
-          imagePullPolicy: {{ index .Values "api-server" "image" "pullPolicy" }}
+        - name: api-server
+          image: "{{ index .Values "api-server" "image" "repository" }}:{{ index .Values "api-server" "image" "tag" }}"
+          imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
           ports:
             - containerPort: {{ index .Values "api-server" "service" "port" }}
               protocol: TCP
