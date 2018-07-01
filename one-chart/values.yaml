@@ -41,6 +41,11 @@ api-server:
     enabled: true
     path: /hkube/api-server
 worker:
+  service:
+    type: ClusterIP
+    port: "3000"
+  metrics:
+    port: 3001
   image:
   tag: v1.1.31
 pipeline-driver:
