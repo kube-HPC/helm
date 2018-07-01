@@ -34,7 +34,7 @@ api-server:
     port: "3000"
   image:
     repository: hkube/api-server
-    tag: v1.1.52
+    tag: v1.1.53
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -71,12 +71,15 @@ algorunner:
     repository:
     tag: v1.1.4
 simulator:
+  service:
+    type: ClusterIP
+    port: 9050
   image:
-    repository:
+    repository: hkube/simulator
     tag: v1.1.6
 webhook-stub-ui:
   image:
-    repository:
+    repository: hkube/webhook-stub-ui
     tag: v1.1.2
   metrics:
     port: 3002
@@ -97,6 +100,11 @@ algorithm-queue:
     repository:
     tag: v1.1.16
 resource-manager:
+   metrics:
+     port: 3000
+   service:
+     type: ClusterIP
+     port: 3000
    image:
      repository:
      tag: v1.1.19
@@ -131,8 +139,15 @@ cpu-load-algorithm:
 env:
   node_env: production
   max_completed_job_age_hours: "1"
-  metrics_port: "3000"
   public_url: "/hkube/webhook-stub-ui"
+  monitor_backend_path: "/hkube/monitor-server/socket.io"
+  interval: "2000"
+  hkube_log_level: "0"
+  prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
+  algorithms_tereshold_cpu: "0.9"
+  algorithms_tereshold_mem: "0.9"
+  driver_threshold_cpu: "0.1"
+  driver_threshold_mem: "1"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

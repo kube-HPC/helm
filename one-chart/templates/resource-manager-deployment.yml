@@ -5,7 +5,7 @@ metadata:
   labels:
     app: resource-manager
     scale-group: resource-manager
-    group: hkube
+    group: {{ .Values.lables.group.value }}
     core: "true"
 spec:
   replicas: 1
@@ -16,35 +16,35 @@ spec:
     metadata:
       labels:
         app: resource-manager
-        group: hkube
+        group: {{ .Values.lables.group.value }}
     spec:
       nodeSelector:
         core: "true"
       serviceAccountName: resource-manager-serviceaccount
       containers:
         - name: resource-manager
-          image: 'hkube/resource-manager:latest'
+          image: "{{ index .Values "resource-manager" "image" "repository" }}:{{ index .Values "resource-manager" "image" "tag" }}"
           ports:
-            - containerPort: 3000
+            - containerPort: {{ index .Values "resource-manager" "service" "port" }}
           env:
             - name: NODE_ENV
-              value: production
+              value: {{ .Values.env.node_env }}
             - name: HKUBE_LOG_LEVEL
-              value: "0"
+              value: "{{ .Values.env.hkube_log_level }}"
             - name: INTERVAL
-              value: "2000"
+              value: "{{ .Values.env.interval }}"
             - name: ALGORITHMS_THRESHOLD_CPU
-              value: "0.9"
+              value: "{{ .Values.env.algorithms_tereshold_cpu }}"
             - name: ALGORITHMS_THRESHOLD_MEM
-              value: "0.9"
+              value: "{{ .Values.env.algorithms_tereshold_mem }}"
             - name: DRIVERS_THRESHOLD_CPU
-              value: "0.1"
+              value: "{{ .Values.env.driver_threshold_cpu }}"
             - name: DRIVERS_THRESHOLD_MEM
-              value: "1"
+              value: "{{ .Values.env.driver_threshold_mem }}"
             - name: METRICS_PORT
-              value: "3000"
+              value: "{{ index .Values "resource-manager" "metrics" "port" }}""
             - name: PROMETHEUS_ENDPOINT
-              value: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
+              value: {{ .Values.env.prometheus_endpoint }}
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:

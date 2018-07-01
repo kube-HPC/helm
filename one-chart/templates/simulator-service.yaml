@@ -4,12 +4,12 @@ metadata:
   name: simulator
   labels:
     app: simulator
-    group: hkube
+    group: {{ .Values.lables.group.value }}
     core: "true"
 spec:
   selector:
     app: simulator
   ports:
     - protocol: TCP
-      port: 9050
-      targetPort: 9050
+      port: {{ index .Values "simulator" "service" "port" }}
+      targetPort: {{ index .Values "simulator" "service" "port" }}

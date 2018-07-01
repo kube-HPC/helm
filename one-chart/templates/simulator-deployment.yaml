@@ -4,7 +4,7 @@ metadata:
   name: simulator
   labels:
     app: simulator
-    group: hkube
+    group: {{ .Values.lables.group.value }}
     core: "true"
 spec:
   replicas: 1
@@ -15,15 +15,15 @@ spec:
     metadata:
       labels:
         app: simulator
-        group: hkube
+        group: {{ .Values.lables.group.value }}
     spec:
       nodeSelector:
         core: "true"
       containers:
         - name: simulator
-          image: 'hkube/simulator:latest'
+          image: "{{ index .Values "simulator" "image" "repository" }}:{{ index .Values "simulator" "image" "tag" }}"
           ports:
-            - containerPort: 9050
+            - containerPort: {{ index .Values "simulator" "metrics" "port" }}
           env:
             - name: MONITOR_BACKEND_PATH
-              value: "/hkube/monitor-server/socket.io"
+              value: {{ index .Values "env" "monitor_backend_path" }}                      
