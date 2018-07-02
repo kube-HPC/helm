@@ -90,6 +90,9 @@ deployment:
     repository:
     tag: v1.1.35
 monitor-server:
+  service:
+     type: ClusterIP
+     port: 30010
   image:
     repository:
     tag: v1.1.8
@@ -107,10 +110,16 @@ resource-manager:
      repository:
      tag: v1.1.19
 task-executor:
+  service:
+    type: ClusterIP
+    port: 3000
   image:
     repository:
     tag: v1.1.37
 trigger-service:
+  service:
+    type: ClusterIP
+    port: 3000
   image:
     repository:
     tag: v1.1.12
