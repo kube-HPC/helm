@@ -2,6 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+clusterName: dev
+
 metadata:
     namespace: default
 
@@ -142,6 +144,34 @@ cpu-load-algorithm:
    image:
      repository: hkube/cpu-load-algorithm
      tag: v1.1.2
+busybox:
+  image:
+    repository: busybox
+    tag: latest
+etcd:
+  image:
+    repository: gcr.io/etcd-development/etcd
+    tag: 3.3.1
+etcd-operator:
+  image:
+    repository:     
+    tag: 
+jaeger:
+  ingress:
+    enabled: true
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    path: /jaeger
+  service:
+    type: ClusterIP
+    port: 80
+  image:
+    repository: nginx
+    tag: stable
+casandra:
+   image: "cassandra"
+   tag: "3.11"
 
 env:
   node_env: production

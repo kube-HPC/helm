@@ -1,0 +1,23 @@
+{{- if index .Values "ingress" "enabled" -}}
+{{- $fullName := "jaeger" -}}
+{{- $servicePort := index .Values "jaeger" "service" "port" -}}
+{{- $ingressPath := index .Values "jaeger" "ingress" "path" -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    app: {{ template "jaeger.name" . }}
+    chart: {{ template "jaeger.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: hkube
+    thirdparty: "true"
+spec:
+  rules:
+       paths:
+       - path: {{ $ingressPath }}
+         backend:
+           serviceName: jaeger-jaeger-query 
+           servicePort: http
+{{- end }}
