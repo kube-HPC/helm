@@ -21,7 +21,7 @@ lables:
    core:
      value: "true"
    
-systemversion: 1.1.237
+systemversion: 1.1.267
 
 image:
   pullPolicy: IfNotPresent
@@ -32,7 +32,7 @@ api-server:
     port: "3000"
   image:
     repository: hkube/api-server
-    tag: v1.1.53
+    tag: v1.1.56
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -43,8 +43,8 @@ worker:
   metrics:
     port: 3001
   image:
-   repository:
-   tag: v1.1.31
+   repository: hkube/worker
+   tag: v1.1.33
 pipeline-driver:
   replicaCount: 20
   service:
@@ -52,18 +52,7 @@ pipeline-driver:
     port: "3000"
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.13
-pipeline-driver-queue:
-  replicaCount: 1
-  service:
-    type: ClusterIP
-    port: "3000"
-  image:
-    repository: hkube/pipeline-driver-queue
-    tag: v1.1.13
-  ingress:
-    enabled: true
-    path: /hkube/
+    tag: v1.1.16
 algorunner:
   image:
     repository:
@@ -85,18 +74,18 @@ webhook-stub-ui:
     port: 3002
 algorithm-example:
   image:
-    repository:
+    repository: hkube/algorithm-example
     tag: v1.1.7
 deployment:
   image:
-    repository:
+    repository: hkube/deployment
     tag: v1.1.35
 monitor-server:
   service:
      type: ClusterIP
      port: 30010
   image:
-    repository:
+    repository: hkube/monitor-server
     tag: v1.1.8
 algorithm-queue:
   image:
@@ -109,21 +98,21 @@ resource-manager:
      type: ClusterIP
      port: 3000
    image:
-     repository:
-     tag: v1.1.19
+     repository: hkube/resource-manager
+     tag: v1.1.20
 task-executor:
   service:
     type: ClusterIP
     port: 3000
   image:
-    repository:
+    repository: hkube/task-executor
     tag: v1.1.37
 trigger-service:
   service:
     type: ClusterIP
     port: 3000
   image:
-    repository:
+    repository: hkube/trigger-service
     tag: v1.1.12
 algorithm-queue-svc:
    service:
@@ -135,7 +124,18 @@ algorithm-operator:
      port: "3000"
    image:
     repository: hkube/algorithm-operator
-    tag: v1.1.8
+    tag: v1.1.9
+pipeline-driver-queue:
+  replicaCount: 1
+  service:
+    type: ClusterIP
+    port: "3000"
+  image:
+    repository: hkube/pipeline-driver-queue
+    tag: v1.1.1
+  ingress:
+    enabled: true
+    path: /hkube/
 clean-old-jobs:
    image:
      repository: hkube/clean-old-jobs
@@ -148,30 +148,6 @@ busybox:
   image:
     repository: busybox
     tag: latest
-etcd:
-  image:
-    repository: gcr.io/etcd-development/etcd
-    tag: 3.3.1
-etcd-operator:
-  image:
-    repository:     
-    tag: 
-jaeger:
-  ingress:
-    enabled: true
-    annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
-    path: /jaeger
-  service:
-    type: ClusterIP
-    port: 80
-  image:
-    repository: nginx
-    tag: stable
-casandra:
-   image: "cassandra"
-   tag: "3.11"
 
 env:
   node_env: production

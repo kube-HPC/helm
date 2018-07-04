@@ -1,16 +1,16 @@
-# Source: jaeger/templates/collector-deploy.yaml
+# Source: jaeger/templates/query-deploy.yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: jaeger-jaeger-collector
+  name: jaeger-jaeger-query
   labels:
     app: jaeger
-    jaeger-infra: collector-deployment
+    jaeger-infra: query-deployment
     chart: jaeger-0.3.5
-    component: collector
+    component: query
     heritage: Tiller
     release: jaeger
-    group: {{ .Values.lables.group.value }}
+    group: hkube
     thirdparty: "true"
 spec:
   replicas: 1
@@ -20,19 +20,24 @@ spec:
     metadata:
       labels:
         app: jaeger
-        component: collector
+        component: query
         release: jaeger
-        jaeger-infra: collector-pod
-        group: {{ .Values.lables.group.value }}
+        jaeger-infra: query-pod
+        group: hkube
         thirdparty: "true"
     spec:
       nodeSelector:
         third-party: "true"
       containers:
-      - name: jaeger-jaeger-collector
-        image: jaegertracing/jaeger-collector:1.2.0
+      - name: jaeger-jaeger-query
+        image: jaegertracing/jaeger-query:1.4.1
         imagePullPolicy: IfNotPresent
         env:
+          - name: QUERY_BASE_PATH
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: query.base-path
           - name: SPAN_STORAGE_TYPE
             valueFrom:
               configMapKeyRef:
@@ -53,33 +58,25 @@ spec:
               configMapKeyRef:
                 name: jaeger-jaeger
                 key: cassandra.keyspace
-          - name: COLLECTOR_PORT
+          - name: QUERY_PORT
             valueFrom:
               configMapKeyRef:
                 name: jaeger-jaeger
-                key: collector.port
-          - name: COLLECTOR_HTTP_PORT
+                key: query.port
+          - name: QUERY_HEALTH_CHECK_HTTP_PORT
             valueFrom:
               configMapKeyRef:
                 name: jaeger-jaeger
-                key: collector.http-port
-          - name: COLLECTOR_ZIPKIN_HTTP_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: jaeger-jaeger
-                key: collector.zipkin.http-port
+                key: query.health-check-http-port
         ports:
-        - containerPort: 14267
-          name: tchannel
-          protocol: TCP
-        - containerPort: 14268
-          name: http
-          protocol: TCP
-        - containerPort: 9411
-          name: zipkin
+        - containerPort: 16686
           protocol: TCP
         resources:
           {}
           
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 16687
       dnsPolicy: ClusterFirst
       restartPolicy: Always

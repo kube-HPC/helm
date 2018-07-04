@@ -132,3 +132,4 @@ spec:
     release: jaeger
     jaeger-infra: query-pod
   type: NodePort
+---

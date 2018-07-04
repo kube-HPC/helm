@@ -1,3 +1,5 @@
+
+---
 # Source: jaeger/templates/cassandra-schema-job.yaml
 apiVersion: batch/v1
 kind: Job
@@ -10,7 +12,7 @@ metadata:
     component: cassandra-schema
     heritage: Tiller
     release: jaeger
-    group: {{ .Values.lables.group.value }}
+    group: hkube
     thirdparty: "true"
 spec:
   activeDeadlineSeconds: 120

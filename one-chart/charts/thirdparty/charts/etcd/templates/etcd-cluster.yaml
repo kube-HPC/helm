@@ -3,13 +3,13 @@ kind: "EtcdCluster"
 metadata:
   name: "etcd"
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: hkube
     app: etcd
     thirdparty: "true"
 spec:
   size: 3
   version: "3.3.1"
-  repository: "{{ index .Values "etcd" "image" "repository" }}:{{ index .Values "etcd" "image" "tag" }}"
+  repository: "gcr.io/etcd-development/etcd"
   pod:
     busyboxImage: "busybox:1.28.0-glibc"
     nodeSelector:

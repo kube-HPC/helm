@@ -9,7 +9,7 @@ metadata:
     chart: jaeger-0.3.5
     heritage: Tiller
     release: jaeger
-    group: {{ .Values.lables.group.value }}
+    group: hkube
     thirdparty: "true"
 data:
   cassandra.contact-points: jaeger-cassandra:9042

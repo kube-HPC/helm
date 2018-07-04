@@ -4,8 +4,6 @@ metadata:
   name: pipeline-driver-queue
   labels:
     app: pipeline-driver-queue
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
     group: {{ .Values.lables.group.value }}
     core: "true"
     metrics-group: pipeline-driver-queue
@@ -14,7 +12,6 @@ spec:
   selector:
     matchLabels:
       app: pipeline-driver-queue
-      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
@@ -22,7 +19,7 @@ spec:
         group: {{ .Values.lables.group.value }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: pipeline-driver-queue
           image: "{{ index .Values "pipeline-driver-queue" "image" "repository" }}:{{ index .Values "pipeline-driver-queue" "image" "tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
