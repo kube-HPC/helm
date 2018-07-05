@@ -4,7 +4,6 @@ metadata:
   name: api-server
   labels:
     app: api-server
-    chart: api-server
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.lables.group.value }}
@@ -17,4 +16,4 @@ spec:
       protocol: TCP
   selector:
     app: api-server
-    release: {{ .Release.Name }}
+    release: api-server

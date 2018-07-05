@@ -63,13 +63,22 @@ simulator:
   service:
     type: ClusterIP
     port: 9050
+  ingress:
+    enabled: true
+    path: /hkube/simulator
   image:
     repository: hkube/simulator
     tag: v1.1.6
 webhook-stub-ui:
+  service:
+    type: ClusterIP
+    port: 3002
   image:
     repository: hkube/webhook-stub-ui
     tag: v1.1.2
+  ingress:
+    enabled: true
+    path: /hkube/webhook-stub-ui
   metrics:
     port: 3002
 algorithm-example:
@@ -84,6 +93,9 @@ monitor-server:
   service:
      type: ClusterIP
      port: 30010
+  ingress:
+    enabled: true
+    path: /hkube/monitor-server   
   image:
     repository: hkube/monitor-server
     tag: v1.1.8
@@ -122,6 +134,9 @@ algorithm-operator:
    service:
      type: ClusterIP
      port: "3000"
+   ingress:
+     enabled: true
+     path: /hkube/
    image:
     repository: hkube/algorithm-operator
     tag: v1.1.9
@@ -130,6 +145,9 @@ pipeline-driver-queue:
   service:
     type: ClusterIP
     port: "3000"
+  ingress:
+    enabled: true
+    path: /hkube/  
   image:
     repository: hkube/pipeline-driver-queue
     tag: v1.1.1
