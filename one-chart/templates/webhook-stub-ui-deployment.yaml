@@ -26,4 +26,4 @@ spec:
             - containerPort: {{ index .Values "webhook-stub-ui" "metrics" "port" }}
           env:
           - name: PUBLIC_URL
-            value: {{ index .Values "env" "public_url" }}
+            value: {{ index .Values "webhook-stub-ui" "env" "public_url" }}

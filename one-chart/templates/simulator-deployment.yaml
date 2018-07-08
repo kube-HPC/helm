@@ -26,4 +26,4 @@ spec:
             - containerPort: {{ index .Values "simulator" "metrics" "port" }}
           env:
             - name: MONITOR_BACKEND_PATH
-              value: {{ index .Values "env" "monitor_backend_path" }}                      
+              value: {{ index .Values "simulator" "env" "monitor_backend_path" }}                      

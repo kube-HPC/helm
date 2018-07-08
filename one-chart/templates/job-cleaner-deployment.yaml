@@ -17,5 +17,5 @@ spec:
             image: "{{ index  .Values "clean-old-jobs" "image" "repository" }}:{{ index .Values "clean-old-jobs" "image" "tag" }}"
             env:
             - name: "MAX_COMPLETED_JOB_AGE_HOURS"
-              value: "{{ .Values.env.max_completed_job_age_hours }}"
+              value: "{{ index .Values "clean-old-jobs" "env" "max_completed_job_age_hours" }}"
           restartPolicy: Never

@@ -30,21 +30,21 @@ spec:
             - name: NODE_ENV
               value: {{ .Values.env.node_env }}
             - name: HKUBE_LOG_LEVEL
-              value: "{{ .Values.env.hkube_log_level }}"
+              value: "{{ index .Values "resource-manager" "env" "hkube_log_level" }}"
             - name: INTERVAL
-              value: "{{ .Values.env.interval }}"
+              value: "{{ index .Values "resource-manager" "env" "interval" }}"
             - name: ALGORITHMS_THRESHOLD_CPU
-              value: "{{ .Values.env.algorithms_tereshold_cpu }}"
+              value: "{{ index .Values "resource-manager" "env" "algorithms_tereshold_cpu" }}"
             - name: ALGORITHMS_THRESHOLD_MEM
-              value: "{{ .Values.env.algorithms_tereshold_mem }}"
+              value: "{{ index .Values "resource-manager"  "env" "algorithms_tereshold_mem" }}"
             - name: DRIVERS_THRESHOLD_CPU
-              value: "{{ .Values.env.driver_threshold_cpu }}"
+              value: "{{ index .Values "resource-manager" "env" "driver_threshold_cpu" }}"
             - name: DRIVERS_THRESHOLD_MEM
-              value: "{{ .Values.env.driver_threshold_mem }}"
+              value: "{{ index .Values "resource-manager" "env" "driver_threshold_mem" }}"
             - name: METRICS_PORT
               value: "{{ index .Values "resource-manager" "metrics" "port" }}"
             - name: PROMETHEUS_ENDPOINT
-              value: {{ .Values.env.prometheus_endpoint }}
+              value: {{ index .Values "resource-manager" "env" "prometheus_endpoint" }}
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:

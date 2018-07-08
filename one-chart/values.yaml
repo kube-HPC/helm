@@ -21,7 +21,7 @@ lables:
    core:
      value: "true"
    
-systemversion: 1.1.267
+systemversion: 1.1.269
 
 image:
   pullPolicy: IfNotPresent
@@ -32,7 +32,7 @@ api-server:
     port: "3000"
   image:
     repository: hkube/api-server
-    tag: v1.1.56
+    tag: v1.1.57
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -56,7 +56,7 @@ pipeline-driver:
 algorunner:
   image:
     repository:
-    tag: v1.1.4
+    tag: v1.1.5
 simulator:
   metrics:
      port: 9050
@@ -69,6 +69,9 @@ simulator:
   image:
     repository: hkube/simulator
     tag: v1.1.6
+  env:
+    monitor_backend_path: "/hkube/monitor-server/socket.io"
+    hkube_log_level: "0"
 webhook-stub-ui:
   service:
     type: ClusterIP
@@ -76,6 +79,8 @@ webhook-stub-ui:
   image:
     repository: hkube/webhook-stub-ui
     tag: v1.1.2
+  env:
+    public_url: "/hkube/webhook-stub-ui"
   ingress:
     enabled: true
     path: /hkube/webhook-stub-ui
@@ -112,6 +117,14 @@ resource-manager:
    image:
      repository: hkube/resource-manager
      tag: v1.1.20
+   env:
+     interval: "2000"
+     hkube_log_level: "0"
+     prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
+     algorithms_tereshold_cpu: "0.9"
+     algorithms_tereshold_mem: "0.9"
+     driver_threshold_cpu: "0.1"
+     driver_threshold_mem: "1"
 task-executor:
   service:
     type: ClusterIP
@@ -158,6 +171,9 @@ clean-old-jobs:
    image:
      repository: hkube/clean-old-jobs
      tag: v1.1.1
+   env:
+     max_completed_job_age_hours: "1"
+     hkube_log_level: "0"
 cpu-load-algorithm:
    image:
      repository: hkube/cpu-load-algorithm
@@ -169,16 +185,7 @@ busybox:
 
 env:
   node_env: production
-  max_completed_job_age_hours: "1"
-  public_url: "/hkube/webhook-stub-ui"
-  monitor_backend_path: "/hkube/monitor-server/socket.io"
-  interval: "2000"
-  hkube_log_level: "0"
-  prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
-  algorithms_tereshold_cpu: "0.9"
-  algorithms_tereshold_mem: "0.9"
-  driver_threshold_cpu: "0.1"
-  driver_threshold_mem: "1"
+  
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
