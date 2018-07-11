@@ -13,6 +13,8 @@ metadata:
     group: {{ .Values.lables.group.value }}
     app: del-deployment-and-jobs
     core: "true"
+  annotations:
+    "helm.sh/hook": post-delete
 rules:
 - apiGroups: [""]
   resources: ["pods"]
@@ -33,6 +35,8 @@ metadata:
     group: {{ .Values.lables.group.value }}
     app: del-deployment-and-jobs
     core: "true"
+  annotations:
+    "helm.sh/hook": post-delete
 subjects:
 - kind: ServiceAccount
   name: del-deployment-and-jobs
@@ -67,4 +71,3 @@ spec:
       containers:
       - name: post-del-dep-and-jobs
         image: "{{ index .Values "delete-deployment-and-jobs" "image" "repository" }}:{{ index .Values "delete-deployment-and-jobs" "image" "tag" }}"
-        
