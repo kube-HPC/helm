@@ -2,4 +2,4 @@
 
  Installing form helm charts  
 1. Installing first thiredparty 
-   'helm install --name hkube  hkube'   
+   'helm install --name hkube  hkube'  

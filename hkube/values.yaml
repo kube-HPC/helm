@@ -21,7 +21,7 @@ lables:
    core:
      value: "true"
    
-systemversion: 1.1.269
+systemversion: 1.1.279
 
 image:
   pullPolicy: IfNotPresent
@@ -52,7 +52,7 @@ pipeline-driver:
     port: "3000"
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.16
+    tag: v1.1.17
 algorunner:
   image:
     repository:
@@ -68,7 +68,7 @@ simulator:
     path: /hkube/simulator
   image:
     repository: hkube/simulator
-    tag: v1.1.6
+    tag: v1.1.7
   env:
     monitor_backend_path: "/hkube/monitor-server/socket.io"
     hkube_log_level: "0"
@@ -103,11 +103,11 @@ monitor-server:
     path: /hkube/monitor-server   
   image:
     repository: hkube/monitor-server
-    tag: v1.1.8
+    tag: v1.1.9
 algorithm-queue:
   image:
     repository:
-    tag: v1.1.16
+    tag: v1.1.19
 resource-manager:
    metrics:
      port: 3000
@@ -116,7 +116,7 @@ resource-manager:
      port: 3000
    image:
      repository: hkube/resource-manager
-     tag: v1.1.20
+     tag: v1.1.24
    env:
      interval: "2000"
      hkube_log_level: "0"
@@ -182,7 +182,14 @@ busybox:
   image:
     repository: busybox
     tag: latest
-
+delete-deployment-and-jobs:
+    image:
+     repository: hkube/del-dep-and-jobs
+     tag: v1.0.5
+storage-cleaner:
+   image:
+     repository: hkube/storage-cleaner
+     tag: v1.1.10
 env:
   node_env: production
   
