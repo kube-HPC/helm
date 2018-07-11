@@ -1,3 +1,44 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: del-deployment-and-jobs
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: del-deployment-and-jobs
+  labels:
+    group: {{ .Values.lables.group.value }}
+    app: del-deployment-and-jobs
+    core: "true"
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["batch", "extensions"]
+  resources: ["jobs"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: del-deployment-and-jobs
+  namespace: {{ .Release.Namespace }}
+  labels:
+    group: {{ .Values.lables.group.value }}
+    app: del-deployment-and-jobs
+    core: "true"
+subjects:
+- kind: ServiceAccount
+  name: del-deployment-and-jobs
+roleRef:
+  kind: Role
+  name: del-deployment-and-jobs
+  apiGroup: rbac.authorization.k8s.io
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
