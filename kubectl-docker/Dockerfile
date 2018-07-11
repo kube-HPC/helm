@@ -7,6 +7,6 @@ RUN apk add --update ca-certificates \
  && apk del --purge deps \
  && rm /var/cache/apk/*
 
-ADD run.sh /run.sh
-ENTRYPOINT [ "/run.sh" ]
+# ADD run.sh /run.sh
+# ENTRYPOINT [ "/run.sh" ]
 

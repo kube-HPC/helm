@@ -66,4 +66,5 @@ spec:
       restartPolicy: Never
       containers:
       - name: post-del-dep-and-jobs
-        image: "hkube/del-dep-and-jobs:v1.0.2"
+        image: "{{ index .Values "delete-deployment-and-jobs" "image" "repository" }}:{{ index .Values "delete-deployment-and-jobs" "image" "tag" }}"
+        
