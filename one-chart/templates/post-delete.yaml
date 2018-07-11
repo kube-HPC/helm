@@ -67,5 +67,5 @@ spec:
       restartPolicy: Never
       containers:
       - name: post-del-dep-and-jobs
-        image: "linuxem/del-dep-and-jobs:v1.0.0"
+        image: "linuxem/del-dep-and-jobs:v1.0.2"
     
