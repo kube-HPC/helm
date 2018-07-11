@@ -1,0 +1,22 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: clean-old-jobs
+  labels:
+    group: {{ .Values.lables.group.value }}
+    delete-group: delete-dep-and-jobs
+    core: "true"
+spec:
+  schedule: "*/10 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: clean-old-jobs
+          containers:
+          - name: clean-old-jobs
+            image: "{{ index  .Values "clean-old-jobs" "image" "repository" }}:{{ index .Values "clean-old-jobs" "image" "tag" }}"
+            env:
+            - name: "MAX_COMPLETED_JOB_AGE_HOURS"
+              value: "{{ index .Values "clean-old-jobs" "env" "max_completed_job_age_hours" }}"
+          restartPolicy: Never

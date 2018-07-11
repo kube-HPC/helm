@@ -1,0 +1,37 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: task-executor
+  labels:
+    app: task-executor
+    scale-group: task-executor
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task-executor
+  template:
+    metadata:
+      labels:
+        app: task-executor
+        group: {{ .Values.lables.group.value }}
+    spec:
+      nodeSelector:
+        core: "true"
+      serviceAccountName: task-executor-serviceaccount
+      containers:
+        - name: task-executor
+          image: "{{ index .Values "task-executor" "image" "repository" }}:{{ index .Values "task-executor" "image" "tag" }}"
+          ports:
+            - containerPort: {{ index .Values "task-executor" "service" "port" }}
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.env.node_env }}
+            - name: METRICS_PORT
+              value: "{{ index .Values "task-executor" "service" "port" }}"
+            - name: JAEGER_AGENT_SERVICE_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP

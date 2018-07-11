@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  versions.json: |
+          {"systemVersion":"1.1.237","versions":[{"project":"api-server","tag":"v1.1.47","sha":"e08a704da3ba58f242a31580343554f715838b42"},{"project":"worker","tag":"v1.1.29","sha":"5fe4e7caf301becaf572cdc54f35e9123244495a"},{"project":"pipeline-driver","tag":"v1.1.13","sha":"d2f11ac3cddc62432ed56ca9b29a462cf2c8b1b8"},{"project":"algorunner","tag":"v1.1.4","sha":"539aaf1d9ad66eab92938b2077f47eaa90a56598"},{"project":"simulator","tag":"v1.1.6","sha":"5fa97d90d1ebb572d09761f0b606eabfb5ae707d"},{"project":"webhook-stub-ui","tag":"v1.1.2","sha":"57d5365c17b6fcb54e76bd870dd1a55e420d7865"},{"project":"algorithm-example","tag":"v1.1.7","sha":"3f3a646de21af9f9fedb43608ca2e324207678e4"},{"project":"deployment","tag":"v1.1.32","sha":"cf2889ee556d1a0f80905e9e380e3a74e4af4409"},{"project":"monitor-server","tag":"v1.1.8","sha":"f13827be875ee7cd12a68faa7315d37fa3fa7105"},{"project":"algorithm-queue","tag":"v1.1.15","sha":"ad22a8a37f9ef593b8dbc28da5f3cef57b167026"},{"project":"resource-manager","tag":"v1.1.17","sha":"4e79a14f341ef6f895b4edf799e983009dbc43da"},{"project":"task-executor","tag":"v1.1.37","sha":"11db21afe18c527f9c82201d3dcf13968eb48c19"},{"project":"trigger-service","tag":"v1.1.12","sha":"456c6a78f0f28c6708b745c8f62bea38d870323a"},{"project":"algorithm-operator","tag":"v1.1.8","sha":"e805623c16c05ce89d0ea2a406be929920e3d56e"},{"project":"clean-old-jobs","tag":"v1.1.1","sha":"b61ad09e8dc28bba4234cddd53d41b289c9f9fcf"}]}
+kind: ConfigMap
+metadata:
+  name: hkube-versions
+  namespace: {{ .Release.Namespace }}

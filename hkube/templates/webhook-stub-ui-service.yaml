@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: webhook-stub-ui
+  labels:
+    app: webhook-stub-ui
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+spec:
+  selector:
+    app: webhook-stub-ui
+  ports:
+    - name: server
+      protocol: TCP
+      port: {{ index .Values "webhook-stub-ui" "metrics" "port" }}
+      targetPort: {{ index .Values "webhook-stub-ui" "metrics" "port" }}

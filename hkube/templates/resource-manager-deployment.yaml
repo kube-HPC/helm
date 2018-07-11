@@ -1,0 +1,51 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: resource-manager
+  labels:
+    app: resource-manager
+    scale-group: resource-manager
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resource-manager
+  template:
+    metadata:
+      labels:
+        app: resource-manager
+        group: {{ .Values.lables.group.value }}
+    spec:
+      nodeSelector:
+        core: "true"
+      serviceAccountName: resource-manager-serviceaccount
+      containers:
+        - name: resource-manager
+          image: "{{ index .Values "resource-manager" "image" "repository" }}:{{ index .Values "resource-manager" "image" "tag" }}"
+          ports:
+            - containerPort: {{ index .Values "resource-manager" "service" "port" }}
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.env.node_env }}
+            - name: HKUBE_LOG_LEVEL
+              value: "{{ index .Values "resource-manager" "env" "hkube_log_level" }}"
+            - name: INTERVAL
+              value: "{{ index .Values "resource-manager" "env" "interval" }}"
+            - name: ALGORITHMS_THRESHOLD_CPU
+              value: "{{ index .Values "resource-manager" "env" "algorithms_tereshold_cpu" }}"
+            - name: ALGORITHMS_THRESHOLD_MEM
+              value: "{{ index .Values "resource-manager"  "env" "algorithms_tereshold_mem" }}"
+            - name: DRIVERS_THRESHOLD_CPU
+              value: "{{ index .Values "resource-manager" "env" "driver_threshold_cpu" }}"
+            - name: DRIVERS_THRESHOLD_MEM
+              value: "{{ index .Values "resource-manager" "env" "driver_threshold_mem" }}"
+            - name: METRICS_PORT
+              value: "{{ index .Values "resource-manager" "metrics" "port" }}"
+            - name: PROMETHEUS_ENDPOINT
+              value: {{ index .Values "resource-manager" "env" "prometheus_endpoint" }}
+            - name: JAEGER_AGENT_SERVICE_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
