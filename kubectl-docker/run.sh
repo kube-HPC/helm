@@ -4,4 +4,4 @@ ALLJOBS=$(kubectl get jobs | grep clean-old-jobs | awk '{ print $1 }')
 echo ALLJOBS=$ALLJOBS
 echo ALLDEPLYS=$ALLDEPLOYS
 kubectl delete deploy -l metrics-group=algorithm-queue 
-#kubectl delete jobs | grep clean-old-jobs | awk '{ print $1 }'
+kubectl delete job -l delete-group=delete-dep-and-jobs

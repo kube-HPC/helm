@@ -4,7 +4,7 @@
 
 replicaCount: 1
 
-clusterName: nimrod
+clusterName: dev
 
 image:
   repository: nginx

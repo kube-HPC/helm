@@ -4,12 +4,12 @@ dependencies:
   repository: "file://../etcd-operator"
   condition: thirdparty.etcd
 - name: etcd
-  version: 0.1.0
+  version: 0.1.2
   repository: "file://../etcd"
 - name: redis-ha
   version: 2.1.3
   repository: "file://../redis-ha"
 - name: jaeger
-  version: 0.1.0
+  version: 0.1.2
   repository: "file://../jaeger"
   condition: thirdparty.jeager
