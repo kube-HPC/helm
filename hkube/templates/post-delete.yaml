@@ -3,6 +3,8 @@ kind: ServiceAccount
 metadata:
   namespace: {{ .Release.Namespace }}
   name: del-deployment-and-jobs
+  annotations:
+    "helm.sh/hook": post-delete
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
