@@ -185,7 +185,7 @@ busybox:
 delete-deployment-and-jobs:
     image:
      repository: hkube/del-dep-and-jobs
-     tag: v1.0.5
+     tag: v1.0.8
 storage-cleaner:
    image:
      repository: hkube/storage-cleaner
