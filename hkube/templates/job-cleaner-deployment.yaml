@@ -11,6 +11,11 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          name: clean-old-jobs
+          labels:
+            group: {{ .Values.lables.group.value }}
+            delete-group: delete-dep-and-jobs
         spec:
           serviceAccountName: clean-old-jobs
           containers:
