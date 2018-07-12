@@ -25,5 +25,10 @@ spec:
       containers:
       - name: post-del-dep-and-jobs
         image: "{{ index .Values "delete-deployment-and-jobs" "image" "repository" }}:{{ index .Values "delete-deployment-and-jobs" "image" "tag" }}"
-        command: ["/usr/local/bin/kubectl", delete deploy -l "metrics-group=algorithm-queue"]
-        command: ["/usr/local/bin/kubectl", delete job -l "delete-group=delete-dep-and-jobs"]
+        command:
+          - /bin/sh
+          - -c
+          - |
+            /usr/local/bin/kubectl delete deploy -l metrics-group=algorithm-queue
+            /usr/local/bin/kubectl  delete job -l delete-group=delete-dep-and-jobs
+            echo Done
