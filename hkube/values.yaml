@@ -21,7 +21,7 @@ lables:
    core:
      value: "true"
    
-systemversion: 1.1.279
+systemversion: 1.1.281
 
 image:
   pullPolicy: IfNotPresent
@@ -131,7 +131,7 @@ task-executor:
     port: 3000
   image:
     repository: hkube/task-executor
-    tag: v1.1.37
+    tag: v1.1.38
 trigger-service:
   service:
     type: ClusterIP
@@ -177,7 +177,7 @@ clean-old-jobs:
 cpu-load-algorithm:
    image:
      repository: hkube/cpu-load-algorithm
-     tag: v1.1.2
+     tag: v1.1.3
 busybox:
   image:
     repository: busybox
