@@ -1,6 +1,8 @@
 # Default values for hkube.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+fullnameOverride: hkube
+nameOverride: hkube
 
 clusterName: dev
 
@@ -20,7 +22,7 @@ lables:
      value: "true"
    core:
      value: "true"
-   
+
 systemversion: 1.1.281
 
 image:
