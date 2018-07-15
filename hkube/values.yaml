@@ -23,7 +23,7 @@ lables:
    core:
      value: "true"
 
-systemversion: 1.1.281
+systemversion: 1.1.286
 
 image:
   pullPolicy: IfNotPresent
@@ -118,7 +118,7 @@ resource-manager:
      port: 3000
    image:
      repository: hkube/resource-manager
-     tag: v1.1.24
+     tag: v1.1.25
    env:
      interval: "2000"
      hkube_log_level: "0"
@@ -133,14 +133,14 @@ task-executor:
     port: 3000
   image:
     repository: hkube/task-executor
-    tag: v1.1.38
+    tag: v1.1.40
 trigger-service:
   service:
     type: ClusterIP
     port: 3000
   image:
     repository: hkube/trigger-service
-    tag: v1.1.12
+    tag: v1.1.14
 algorithm-queue-svc:
    service:
     type: ClusterIP
