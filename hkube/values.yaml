@@ -1,8 +1,6 @@
 # Default values for hkube.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-fullnameOverride: hkube
-nameOverride: hkube
 
 clusterName: dev
 
@@ -14,6 +12,8 @@ privteregistry: {}
 thirdpartyapps:
   redis-ha: true
   etcd: true
+env:
+  node_env: production
 
 lables:
    group:
@@ -102,7 +102,7 @@ monitor-server:
      port: 30010
   ingress:
     enabled: true
-    path: /hkube/monitor-server   
+    path: /hkube/monitor-server
   image:
     repository: hkube/monitor-server
     tag: v1.1.9
@@ -150,8 +150,8 @@ algorithm-operator:
      type: ClusterIP
      port: "3000"
    ingress:
-     enabled: true
-     path: /hkube/
+     enabled: False
+     path: /hkube/trigger-service
    image:
     repository: hkube/algorithm-operator
     tag: v1.1.9
@@ -161,14 +161,14 @@ pipeline-driver-queue:
     type: ClusterIP
     port: "3000"
   ingress:
-    enabled: true
-    path: /hkube/  
+    enabled: False
+    path: /hkube/algorithm-operator
   image:
     repository: hkube/pipeline-driver-queue
     tag: v1.1.1
   ingress:
-    enabled: true
-    path: /hkube/
+    enabled: False
+    path: /hkube/pipeline-driver-queue
 clean-old-jobs:
    image:
      repository: hkube/clean-old-jobs
@@ -192,9 +192,6 @@ storage-cleaner:
    image:
      repository: hkube/storage-cleaner
      tag: v1.1.10
-env:
-  node_env: production
-  
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
