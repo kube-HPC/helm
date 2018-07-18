@@ -10,8 +10,11 @@ metadata:
 privteregistry: {}
 
 thirdpartyapps:
-  redis-ha: true
   etcd: true
+  jaeger: true
+  redis-ha: true
+  prometheus: true
+
 env:
   node_env: production
 
