@@ -3,9 +3,12 @@ var request = require('request');
 request('https://github.com/kube-HPC/release-manager/releases/download/1.1.291/version.json', function (error, response, body) {
   if (!error && response.statusCode == 200) {
      var importedJSON = JSON.parse(body);
-     importedJSON.forEach((o=>console.log(o))) 
      console.log(importedJSON.systemVersion);
      console.log(importedJSON.versions[0].project);
+
+     importedJSON.versions.forEach(obj {
+       console.log(obj)
+     }); 
       //console.log(importedJSON.versions);
      //console.log(importedJSON);
   }
