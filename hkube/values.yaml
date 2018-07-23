@@ -163,9 +163,6 @@ pipeline-driver-queue:
   service:
     type: ClusterIP
     port: "3000"
-  ingress:
-    enabled: False
-    path: /hkube/algorithm-operator
   image:
     repository: hkube/pipeline-driver-queue
     tag: v1.1.2

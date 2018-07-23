@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/load-version/index.js"
-        }
+            "program": "${workspaceFolder}/index.js"
+        },
     ]
 }
