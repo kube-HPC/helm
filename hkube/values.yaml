@@ -26,7 +26,7 @@ lables:
    core:
      value: "true"
 
-systemversion: 1.1.289
+systemversion: 1.1.314
 
 image:
   pullPolicy: IfNotPresent
@@ -37,7 +37,7 @@ api-server:
     port: "3000"
   image:
     repository: hkube/api-server
-    tag: v1.1.57
+    tag: v1.1.62
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -57,7 +57,7 @@ pipeline-driver:
     port: "3000"
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.17
+    tag: v1.1.25
 algorunner:
   image:
     repository:
@@ -73,7 +73,7 @@ simulator:
     path: /hkube/simulator
   image:
     repository: hkube/simulator
-    tag: v1.1.7
+    tag: v1.1.13
   env:
     monitor_backend_path: "/hkube/monitor-server/socket.io"
     hkube_log_level: "0"
@@ -108,7 +108,7 @@ monitor-server:
     path: /hkube/monitor-server
   image:
     repository: hkube/monitor-server
-    tag: v1.1.9
+    tag: v1.1.15
 algorithm-queue:
   image:
     repository:
@@ -165,7 +165,7 @@ pipeline-driver-queue:
     port: "3000"
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.1.2
+    tag: v1.1.3
   ingress:
     enabled: False
     path: /hkube/pipeline-driver-queue
@@ -191,7 +191,7 @@ delete-deployment-and-jobs:
 storage-cleaner:
    image:
      repository: hkube/storage-cleaner
-     tag: v1.1.10
+     tag: v1.1.11
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
