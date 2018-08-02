@@ -37,7 +37,7 @@ api-server:
     port: "3000"
   image:
     repository: hkube/api-server
-    tag: v1.1.62
+    tag: v1.1.64
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -57,7 +57,7 @@ pipeline-driver:
     port: "3000"
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.25
+    tag: v1.1.26
 algorunner:
   image:
     repository:
@@ -98,7 +98,7 @@ algorithm-example:
 deployment:
   image:
     repository: hkube/deployment
-    tag: v1.1.35
+    tag: v1.1.37
 monitor-server:
   service:
      type: ClusterIP
@@ -108,11 +108,11 @@ monitor-server:
     path: /hkube/monitor-server
   image:
     repository: hkube/monitor-server
-    tag: v1.1.15
+    tag: v1.1.17
 algorithm-queue:
   image:
     repository:
-    tag: v1.1.20
+    tag: v1.1.22
 resource-manager:
    metrics:
      port: 3000
@@ -136,14 +136,14 @@ task-executor:
     port: 3000
   image:
     repository: hkube/task-executor
-    tag: v1.1.40
+    tag: v1.1.41
 trigger-service:
   service:
     type: ClusterIP
     port: 3000
   image:
     repository: hkube/trigger-service
-    tag: v1.1.14
+    tag: v1.1.15
 algorithm-queue-svc:
    service:
     type: ClusterIP
