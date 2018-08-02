@@ -31,4 +31,5 @@ spec:
           - |
             /usr/local/bin/kubectl delete deploy -l metrics-group=algorithm-queue
             /usr/local/bin/kubectl  delete job -l delete-group=delete-dep-and-jobs
+            /usr/local/bin/kubectl  delete crd etcdclusters.etcd.database.coreos.com
             echo Done
