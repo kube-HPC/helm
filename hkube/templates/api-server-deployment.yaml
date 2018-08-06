@@ -30,9 +30,15 @@ spec:
               protocol: TCP
           env:
             - name: NODE_ENV
-              value: {{ .Values.env.node_env }}
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: NODE_ENV
             - name: BASE_URL_PATH
-              value: {{ .Values.env.base_url_path }}
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: BASE_URL_PATH
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -49,7 +55,10 @@ spec:
                   name: s3-secret
                   key: awsEndpointUrl
             - name: DEFAULT_STORAGE
-              value: {{ .Values.env.default_storage }}
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: DEFAULT_STORAGE
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:

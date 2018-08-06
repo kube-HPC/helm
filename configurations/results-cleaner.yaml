@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: results-cleaner-configmap
+data:
+  OBJECT_EXPIRATION_DAYS: "90"
+  DEFAULT_STORAGE: "s3"
+  DELETE_DESTINATION: "results"

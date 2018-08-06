@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pipeline-driver-queue-configmap
+data:
+  NODE_ENV: "production"
+  HKUBE_LOG_LEVEL: "0"
+  METRICS_PORT: "3000"

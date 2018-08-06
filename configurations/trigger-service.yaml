@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trigger-service-configmap
+data:
+  NODE_ENV: "production"
+  METRICS_PORT: "3000"
