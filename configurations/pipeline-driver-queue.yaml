@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: pipeline-driver-queue-configmap
-data:
-  NODE_ENV: "{{ .Values.env.node_env }}"
-  HKUBE_LOG_LEVEL: "{{ index .Values "pipeline-driver-queue" "env" "hkube_log_level" }}"
-  METRICS_PORT: "{{ index .Values "pipeline-driver-queue" "env" "metric_port" }}"
