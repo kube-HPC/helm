@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: task-executor-configmap
+data:
+  NODE_ENV: "{{ .Values.env.node_env }}"
+  METRICS_PORT: "{{ index .Values "task-executor" "env" "metric_port" }}"

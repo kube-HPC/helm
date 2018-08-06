@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: resource-manager-configmap
+data:
+  NODE_ENV: "{{ .Values.env.node_env }}"
+  HKUBE_LOG_LEVEL: "{{ index .Values "resource-manager" "env" "hkube_log_level" }}"
+  INTERVAL: "{{ index .Values "resource-manager" "env" "interval" }}"
+  ALGORITHMS_THRESHOLD_CPU: "{{ index .Values "resource-manager" "env" "algorithms_tereshold_cpu" }}"
+  ALGORITHMS_THRESHOLD_MEM: "{{ index .Values "resource-manager" "env" "algorithms_tereshold_mem" }}"
+  DRIVERS_THRESHOLD_CPU: "{{ index .Values "resource-manager" "env" "driver_threshold_cpu" }}"
+  DRIVERS_THRESHOLD_MEM: "{{ index .Values "resource-manager" "env" "driver_threshold_mem" }}"
+  METRICS_PORT": "{{ index .Values "resource-manager" "env" "metric_port" }}"
+  PROMETHEUS_ENDPOINT: "{{ index .Values "resource-manager" "env" "prometheus_endpoint" }}"
