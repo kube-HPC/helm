@@ -205,6 +205,13 @@ storage-cleaner:
      tag: v1.1.11
    env:
      object_expiration_days: "5"
+results-cleaner:
+  image:
+    repository: hkube/results-cleaner
+    tag: v1.1.1
+  env:
+    oblect_expiration_days: "90"
+    delete_destination: "results"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
