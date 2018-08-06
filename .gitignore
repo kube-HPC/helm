@@ -6,7 +6,7 @@
 *.ORIG
 *.TODO
 
-
+.vscode
 .vagrant
 *.retry
 temp

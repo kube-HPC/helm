@@ -150,3 +150,22 @@ etcdCluster:
     ## Node labels for etcd pod assignment
     ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
     nodeSelector: {}
+
+
+replicaCount: 1
+
+metadata:
+    namespace: default
+
+image:
+ repository: gcr.io/etcd-development/etcd
+ tag: 3.3.1
+ pullPolicy: IfNotPresent
+
+lables:
+   group:
+     value: hkube
+   thirdparty:
+     value: "true"
+
+
