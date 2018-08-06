@@ -9,14 +9,18 @@ metadata:
 
 privteregistry: {}
 
+minikube: 
+  enable: true
+
 thirdpartyapps:
-  etcd: true
-  jaeger: true
-  redis-ha: true
-  prometheus: true
+  etcd: false
+  jaeger: false
+  redis-ha: false
+  prometheus: false
 
 env:
   node_env: production
+  default_storage: s3
 
 lables:
    group:
@@ -26,7 +30,7 @@ lables:
    core:
      value: "true"
 
-systemversion: 1.1.314
+systemversion: 1.1.336
 
 image:
   pullPolicy: IfNotPresent
@@ -37,10 +41,12 @@ api-server:
     port: "3000"
   image:
     repository: hkube/api-server
-    tag: v1.1.64
+    tag: v1.1.68
   ingress:
     enabled: true
     path: /hkube/api-server
+  env:
+    base_url_path: 
 worker:
   service:
     type: ClusterIP
@@ -49,15 +55,16 @@ worker:
     port: 3001
   image:
    repository: hkube/worker
-   tag: v1.1.34
+   tag: v1.1.35
 pipeline-driver:
   replicaCount: 20
   service:
     type: ClusterIP
-    port: "3000"
+  env:
+    metric_port: "3000"
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.26
+    tag: v1.1.27
 algorunner:
   image:
     repository:
@@ -108,21 +115,19 @@ monitor-server:
     path: /hkube/monitor-server
   image:
     repository: hkube/monitor-server
-    tag: v1.1.17
+    tag: v1.1.18
 algorithm-queue:
   image:
     repository:
-    tag: v1.1.22
+    tag: v1.1.23
 resource-manager:
-   metrics:
-     port: 3000
    service:
      type: ClusterIP
-     port: 3000
    image:
      repository: hkube/resource-manager
-     tag: v1.1.25
+     tag: v1.1.27
    env:
+     metric_port: "3000"
      interval: "2000"
      hkube_log_level: "0"
      prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
@@ -133,46 +138,52 @@ resource-manager:
 task-executor:
   service:
     type: ClusterIP
-    port: 3000
+  env:
+    metric_port: 3000
   image:
     repository: hkube/task-executor
-    tag: v1.1.41
+    tag: v1.1.42
 trigger-service:
   service:
     type: ClusterIP
-    port: 3000
+  env:
+    metric_port: 3000
   image:
     repository: hkube/trigger-service
-    tag: v1.1.15
+    tag: v1.1.17
 algorithm-queue-svc:
    service:
     type: ClusterIP
-    port: "3000"
+   env:
+     metric_port: 3000
 algorithm-operator:
    service:
      type: ClusterIP
-     port: "3000"
+   env:
+     metric_port: "3000"
    ingress:
      enabled: False
      path: /hkube/trigger-service
    image:
     repository: hkube/algorithm-operator
-    tag: v1.1.9
+    tag: v1.1.10
 pipeline-driver-queue:
   replicaCount: 1
   service:
     type: ClusterIP
-    port: "3000"
+  env:
+    hkube_log_level: "0"
+    metric_port: "3000"
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.1.3
+    tag: v1.1.4
   ingress:
     enabled: False
     path: /hkube/pipeline-driver-queue
 clean-old-jobs:
    image:
      repository: hkube/clean-old-jobs
-     tag: v1.1.1
+     tag: v1.1.2
    env:
      max_completed_job_age_hours: "1"
      hkube_log_level: "0"
@@ -192,6 +203,8 @@ storage-cleaner:
    image:
      repository: hkube/storage-cleaner
      tag: v1.1.11
+   env:
+     object_expiration_days: "5"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

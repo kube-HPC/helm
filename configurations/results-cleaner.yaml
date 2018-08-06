@@ -4,5 +4,5 @@ metadata:
   name: results-cleaner-configmap
 data:
   OBJECT_EXPIRATION_DAYS: "90"
-  DEFAULT_STORAGE: "s3"
+  DEFAULT_STORAGE: "{{ index .Values "env" "default_storage" }}"
   DELETE_DESTINATION: "results"

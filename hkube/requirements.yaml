@@ -1,4 +1,9 @@
 dependencies:
+- name: mini
+  version: "0.1.2"
+  repository: "file://../mini"
+  condition: minikube.enabled
 - name: thirdparty
   version: "0.1.2"
   repository: "file://../thirdparty"
+  condition: minikube.enabled

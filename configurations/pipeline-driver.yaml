@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: pipeline-driver-configmap
 data:
-  NODE_ENV: "production"
-  DEFAULT_STORAGE: "s3"
-  METRICS_PORT: "3000"
+  NODE_ENV: "{{ .Values.env.node_env }}"
+  DEFAULT_STORAGE: "{{ index .Values "env" "default_storage" }}"
+  METRICS_PORT: "{{ index .Values "pipeline-driver" "env" "metric_port" }}"

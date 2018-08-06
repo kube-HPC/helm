@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: algorithm-operator-configmap
 data:
-  NODE_ENV: "production"
-  METRICS_PORT: "3000"
+  NODE_ENV: "{{ .Values.env.node_env }}"
+  METRICS_PORT: {{ index .Values "algorithm-operator" "env" "metric_port" }}

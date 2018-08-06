@@ -4,5 +4,5 @@ metadata:
   name: api-server-configmap
 data:
   NODE_ENV: {{ .Values.env.node_env }}
-  BASE_URL_PATH: {{ .Values.api-server.env.base_url_path }}
-  DEFAULT_STORAGE: {{ .Values.api-server.env.default_storage }}
+  BASE_URL_PATH: {{ index .Values "api-server" "env" "base_url_path" }}
+  DEFAULT_STORAGE: {{ index .Values "env" "default_storage" }}

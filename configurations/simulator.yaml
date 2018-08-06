@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: simulator-configmap
 data:
-  MONITOR_BACKEND_PATH: "/hkube/monitor-server/socket.io"
+  MONITOR_BACKEND_PATH: {{ index .Values "simulator" "env" "monitor_backend_path" }}
