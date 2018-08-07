@@ -16,7 +16,7 @@ algorithm-operator:
     type: ClusterIP
 algorithm-queue:
   image:
-    repository: null
+    repository: hkube/algorithm-queue
     tag: v1.1.23
 algorithm-queue-svc:
   env:
@@ -25,7 +25,7 @@ algorithm-queue-svc:
     type: ClusterIP
 algorunner:
   image:
-    repository: null
+    repository: hkube/algorunner
     tag: v1.1.5
 api-server:
   env:
