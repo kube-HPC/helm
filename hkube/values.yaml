@@ -29,7 +29,7 @@ algorunner:
     tag: v1.1.5
 api-server:
   env:
-    base_url_path: null
+    base_url_path: /hkube/api-server
   image:
     repository: hkube/api-server
     tag: v1.1.70
