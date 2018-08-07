@@ -1,0 +1,5 @@
+dependencies:
+- name: subchart1
+  version: "0.1.0"
+  repository: "file://../subchart1"
+  condition: subchart1.enabled, global.subchart1.enabled
