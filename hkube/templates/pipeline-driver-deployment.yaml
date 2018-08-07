@@ -24,12 +24,18 @@ spec:
         - name: pipeline-driver
           image: "{{ index .Values "pipeline-driver" "image" "repository" }}:{{ index .Values "pipeline-driver" "image" "tag" }}"
           ports:
-            - containerPort: {{ index .Values "pipeline-driver" "service" "port" }}
+            - containerPort: {{ index .Values "pipeline-driver" "service" }}
           env:
             - name: NODE_ENV
-              value: production
+              valueFrom:
+                configMapKeyRef:
+                  name: pipeline-driver-configmap
+                  key: NODE_ENV
             - name: METRICS_PORT
-              value: "{{ index .Values "pipeline-driver" "service" "port" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: pipeline-driver-configmap
+                  key: METRICS_PORT
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:

@@ -1,6 +1,6 @@
 {{- if index .Values "webhook-stub-ui" "ingress" "enabled" -}}
 {{- $fullName := "webhook-stub-ui" -}}
-{{- $servicePort := index .Values "webhook-stub-ui" "service" "port" -}}
+{{- $servicePort := index .Values "webhook-stub-ui" "env" "metric_port" -}}
 {{- $ingressPath := index .Values "webhook-stub-ui" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
 kind: Ingress

@@ -1,6 +1,6 @@
 {{- if index .Values "simulator" "ingress" "enabled" -}}
 {{- $fullName := "simulator" -}}
-{{- $servicePort := index .Values "simulator" "service" "port" -}}
+{{- $servicePort := index .Values "simulator" "env" "metric_port" "port" -}}
 {{- $ingressPath := index .Values "simulator" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
 kind: Ingress

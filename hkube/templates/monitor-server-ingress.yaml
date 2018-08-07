@@ -1,6 +1,6 @@
 {{- if index .Values "monitor-server" "ingress" "enabled" -}}
 {{- $fullName := "monitor-server" -}}
-{{- $servicePort := index .Values "monitor-server" "service" "port" -}}
+{{- $servicePort := index .Values "monitor-server" "env" "metric_port" -}}
 {{- $ingressPath := index .Values "monitor-server" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
 kind: Ingress

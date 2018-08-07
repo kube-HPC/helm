@@ -12,8 +12,8 @@ metadata:
 spec:
   type: {{ index .Values "algorithm-queue-svc" "service" "type" }}
   ports:
-    - port: {{ index .Values "algorithm-queue-svc" "service" "port" }}
-      targetPort: {{ index .Values "algorithm-queue-svc" "service" "port" }}
+    - port: {{ index .Values "algorithm-queue-svc" "env" "metric_port" }}
+      targetPort: {{ index .Values "algorithm-queue-svc" "env" "metric_port" }}
       protocol: TCP
   selector:
     app: algorithm-queue-svc

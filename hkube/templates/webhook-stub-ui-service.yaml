@@ -12,5 +12,5 @@ spec:
   ports:
     - name: server
       protocol: TCP
-      port: {{ index .Values "webhook-stub-ui" "metrics" "port" }}
-      targetPort: {{ index .Values "webhook-stub-ui" "metrics" "port" }}
+      port: {{ index .Values "webhook-stub-ui" "env" "metric_port" }}
+      targetPort: {{ index .Values "webhook-stub-ui" "env" "metric_port" }}

@@ -1,6 +1,6 @@
 {{- if index .Values "algorithm-operator" "ingress" "enabled" -}}
 {{- $fullName := "algorithm-operator" -}}
-{{- $servicePort := index .Values "algorithm-operator" "service" "port" -}}
+{{- $servicePort := index .Values "algorithm-operator" "env" "metric_port" -}}
 {{- $ingressPath := index .Values "algorithm-operator" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
 kind: Ingress

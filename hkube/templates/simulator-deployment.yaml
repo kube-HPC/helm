@@ -23,7 +23,10 @@ spec:
         - name: simulator
           image: "{{ index .Values "simulator" "image" "repository" }}:{{ index .Values "simulator" "image" "tag" }}"
           ports:
-            - containerPort: {{ index .Values "simulator" "metrics" "port" }}
+            - containerPort: {{ index .Values "simulator" "env" "metric_port" "port" }}
           env:
             - name: MONITOR_BACKEND_PATH
-              value: {{ index .Values "simulator" "env" "monitor_backend_path" }}                      
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: MONITOR_BACKEND_PATH

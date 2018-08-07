@@ -15,8 +15,8 @@ spec:
   clusterIP: None
   type: "{{ index .Values "algorithm-operator" "service" "type" }}"
   ports:
-    - port: {{ index .Values "algorithm-operator" "service" "port" }}
-      targetPort: {{ index .Values "algorithm-operator" "service" "port" }}
+    - port: {{ index .Values "algorithm-operator" "env" "metric_port" }}
+      targetPort: {{ index .Values "algorithm-operator" "env" "metric_port" }}
       protocol: TCP
   selector:
     app: algorithm-operator

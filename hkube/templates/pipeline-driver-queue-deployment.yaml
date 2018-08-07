@@ -28,11 +28,20 @@ spec:
               protocol: TCP
           env:
             - name: NODE_ENV
-              value: {{ .Values.env.node_env }}
+              valueFrom:
+                configMapKeyRef:
+                  name: pipeline-driver-queue-configmap
+                  key: NODE_ENV
             - name: HKUBE_LOG_LEVEL
-              value: "{{ .Values.env.hkube_log_level }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: pipeline-driver-queue-configmap
+                  key: KUBE_LOG_LEVEL
             - name: METRICS_PORT
-              value: "{{ .Values.env.metrics_port }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: pipeline-driver-queue-configmap
+                  key: METRICS_PORT
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:

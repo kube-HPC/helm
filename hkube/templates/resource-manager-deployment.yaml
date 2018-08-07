@@ -25,26 +25,53 @@ spec:
         - name: resource-manager
           image: "{{ index .Values "resource-manager" "image" "repository" }}:{{ index .Values "resource-manager" "image" "tag" }}"
           ports:
-            - containerPort: {{ index .Values "resource-manager" "service" "port" }}
+            - containerPort: {{ index .Values "resource-manager" "env" "metric_port" "port" }}
           env:
             - name: NODE_ENV
-              value: "{{ .Values.env.node_env }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: resource-manager-configmap
+                  key: NODE_ENV
             - name: HKUBE_LOG_LEVEL
-              value: "{{ index .Values "resource-manager" "env" "hkube_log_level" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: resource-manager-configmap
+                  key: HKUBE_LOG_LEVEL
             - name: INTERVAL
-              value: "{{ index .Values "resource-manager" "env" "interval" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: resource-manager-configmap
+                  key: INTERVAL
             - name: ALGORITHMS_THRESHOLD_CPU
-              value: "{{ index .Values "resource-manager" "env" "algorithms_tereshold_cpu" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: resource-manager-configmap
+                  key: ALGORITHMS_THRESHOLD_CPU
             - name: ALGORITHMS_THRESHOLD_MEM
-              value: "{{ index .Values "resource-manager"  "env" "algorithms_tereshold_mem" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: resource-manager-configmap
+                  key: ALGORITHMS_THRESHOLD_MEM
             - name: DRIVERS_THRESHOLD_CPU
-              value: "{{ index .Values "resource-manager" "env" "driver_threshold_cpu" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: resource-manager-configmap
+                  key: DRIVERS_THRESHOLD_CPU
             - name: DRIVERS_THRESHOLD_MEM
-              value: "{{ index .Values "resource-manager" "env" "driver_threshold_mem" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: resource-manager-configmap
+                  key: DRIVERS_THRESHOLD_MEM
             - name: METRICS_PORT
-              value: "{{ index .Values "resource-manager" "env" "metrics_port" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: resource-manager-configmap
+                  key: METRICS_PORT
             - name: PROMETHEUS_ENDPOINT
-              value: "{{ index .Values "resource-manager" "env" "prometheus_endpoint" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: resource-manager-configmap
+                  key: PROMETHEUS_ENDPOINT
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:

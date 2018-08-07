@@ -12,7 +12,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: algorithm-operator  
+      app: algorithm-operator
   template:
     metadata:
       labels:
@@ -27,13 +27,19 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ index .Values "algorithm-operator" "service" "port" }}
+              containerPort: {{ index .Values "algorithm-operator" "env" "metric_port" }}
               protocol: TCP
           env:
             - name: NODE_ENV
-              value: {{ .Values.env.node_env }}
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: NODE_ENV
             - name: METRICS_PORT
-              value: "{{ .Values.env.metrics_port }}"
+              valueFrom:
+                configMapKeyRaf:
+                  name: algorithm-operator-configmap
+                  key: METRICS_PORT
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:

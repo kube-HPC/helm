@@ -25,12 +25,18 @@ spec:
         - name: task-executor
           image: "{{ index .Values "task-executor" "image" "repository" }}:{{ index .Values "task-executor" "image" "tag" }}"
           ports:
-            - containerPort: {{ index .Values "task-executor" "service" "port" }}
+            - containerPort: {{ index .Values "task-executor" "env" "metric_port" "port" }}
           env:
             - name: NODE_ENV
-              value: {{ .Values.env.node_env }}
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: NODE_ENV
             - name: METRICS_PORT
-              value: "{{ index .Values "task-executor" "service" "port" }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: METRICS_PORT
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:
