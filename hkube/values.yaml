@@ -1,176 +1,105 @@
-# Default values for hkube.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-clusterName: dev
-
-metadata:
-    namespace: default
-
-privteregistry: {}
-
-minikube: 
-  enable: true
-
-thirdpartyapps:
-  etcd: false
-  jaeger: false
-  redis-ha: false
-  prometheus: false
-
-env:
-  node_env: production
-  default_storage: s3
-
-lables:
-   group:
-     value: hkube
-   thirdparty:
-     value: "true"
-   core:
-     value: "true"
-
-systemversion: 1.1.336
-
-image:
-  pullPolicy: IfNotPresent
-
-api-server:
+affinity: {}
+algorithm-example:
+  image:
+    repository: hkube/algorithm-example
+    tag: v1.1.7
+algorithm-operator:
+  env:
+    metric_port: "3000"
+  image:
+    repository: hkube/algorithm-operator
+    tag: v1.1.10
+  ingress:
+    enabled: false
+    path: /hkube/trigger-service
   service:
     type: ClusterIP
-    port: "3000"
+algorithm-queue:
+  image:
+    repository: null
+    tag: v1.1.23
+algorithm-queue-svc:
+  env:
+    metric_port: 3000
+  service:
+    type: ClusterIP
+algorunner:
+  image:
+    repository: null
+    tag: v1.1.5
+api-server:
+  env:
+    base_url_path: null
   image:
     repository: hkube/api-server
-    tag: v1.1.68
+    tag: v1.1.70
   ingress:
     enabled: true
     path: /hkube/api-server
-  env:
-    base_url_path: 
-worker:
   service:
-    type: ClusterIP
     port: "3000"
-  metrics:
-    port: 3001
-  image:
-   repository: hkube/worker
-   tag: v1.1.35
-pipeline-driver:
-  replicaCount: 20
-  service:
     type: ClusterIP
+busybox:
+  image:
+    repository: busybox
+    tag: latest
+clean-old-jobs:
+  env:
+    hkube_log_level: "0"
+    max_completed_job_age_hours: "1"
+  image:
+    repository: hkube/clean-old-jobs
+    tag: v1.1.2
+clusterName: dev
+cpu-load-algorithm:
+  image:
+    repository: hkube/cpu-load-algorithm
+    tag: v1.1.3
+delete-deployment-and-jobs:
+  image:
+    repository: hkube/del-dep-and-jobs
+    tag: v1.0.8
+deployment:
+  image:
+    repository: hkube/deployment
+    tag: v1.1.37
+env:
+  default_storage: s3
+  node_env: production
+image:
+  pullPolicy: IfNotPresent
+lables:
+  core:
+    value: "true"
+  group:
+    value: hkube
+  thirdparty:
+    value: "true"
+metadata:
+  namespace: default
+minikube:
+  enable: true
+monitor-server:
+  image:
+    repository: hkube/monitor-server
+    tag: v1.1.18
+  ingress:
+    enabled: true
+    path: /hkube/monitor-server
+  service:
+    port: 30010
+    type: ClusterIP
+nodeSelector: {}
+pipeline-driver:
   env:
     metric_port: "3000"
   image:
     repository: hkube/pipeline-driver
     tag: v1.1.27
-algorunner:
-  image:
-    repository:
-    tag: v1.1.5
-simulator:
-  metrics:
-     port: 9050
+  replicaCount: 20
   service:
     type: ClusterIP
-    port: 9050
-  ingress:
-    enabled: true
-    path: /hkube/simulator
-  image:
-    repository: hkube/simulator
-    tag: v1.1.13
-  env:
-    monitor_backend_path: "/hkube/monitor-server/socket.io"
-    hkube_log_level: "0"
-webhook-stub-ui:
-  service:
-    type: ClusterIP
-    port: 3002
-  image:
-    repository: hkube/webhook-stub-ui
-    tag: v1.1.2
-  env:
-    public_url: "/hkube/webhook-stub-ui"
-  ingress:
-    enabled: true
-    path: /hkube/webhook-stub-ui
-  metrics:
-    port: 3002
-algorithm-example:
-  image:
-    repository: hkube/algorithm-example
-    tag: v1.1.7
-deployment:
-  image:
-    repository: hkube/deployment
-    tag: v1.1.37
-monitor-server:
-  service:
-     type: ClusterIP
-     port: 30010
-  ingress:
-    enabled: true
-    path: /hkube/monitor-server
-  image:
-    repository: hkube/monitor-server
-    tag: v1.1.18
-algorithm-queue:
-  image:
-    repository:
-    tag: v1.1.23
-resource-manager:
-   service:
-     type: ClusterIP
-   image:
-     repository: hkube/resource-manager
-     tag: v1.1.27
-   env:
-     metric_port: "3000"
-     interval: "2000"
-     hkube_log_level: "0"
-     prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
-     algorithms_tereshold_cpu: "0.9"
-     algorithms_tereshold_mem: "0.9"
-     driver_threshold_cpu: "0.1"
-     driver_threshold_mem: "1"
-task-executor:
-  service:
-    type: ClusterIP
-  env:
-    metric_port: 3000
-  image:
-    repository: hkube/task-executor
-    tag: v1.1.42
-trigger-service:
-  service:
-    type: ClusterIP
-  env:
-    metric_port: 3000
-  image:
-    repository: hkube/trigger-service
-    tag: v1.1.17
-algorithm-queue-svc:
-   service:
-    type: ClusterIP
-   env:
-     metric_port: 3000
-algorithm-operator:
-   service:
-     type: ClusterIP
-   env:
-     metric_port: "3000"
-   ingress:
-     enabled: False
-     path: /hkube/trigger-service
-   image:
-    repository: hkube/algorithm-operator
-    tag: v1.1.10
 pipeline-driver-queue:
-  replicaCount: 1
-  service:
-    type: ClusterIP
   env:
     hkube_log_level: "0"
     metric_port: "3000"
@@ -178,55 +107,99 @@ pipeline-driver-queue:
     repository: hkube/pipeline-driver-queue
     tag: v1.1.4
   ingress:
-    enabled: False
+    enabled: false
     path: /hkube/pipeline-driver-queue
-clean-old-jobs:
-   image:
-     repository: hkube/clean-old-jobs
-     tag: v1.1.2
-   env:
-     max_completed_job_age_hours: "1"
-     hkube_log_level: "0"
-cpu-load-algorithm:
-   image:
-     repository: hkube/cpu-load-algorithm
-     tag: v1.1.3
-busybox:
+  replicaCount: 1
+  service:
+    type: ClusterIP
+privteregistry: {}
+resource-manager:
+  env:
+    algorithms_tereshold_cpu: "0.9"
+    algorithms_tereshold_mem: "0.9"
+    driver_threshold_cpu: "0.1"
+    driver_threshold_mem: "1"
+    hkube_log_level: "0"
+    interval: "2000"
+    metric_port: "3000"
+    prometheus_endpoint: http://monitoring-prometheus-server.monitoring:9090/api/v1
   image:
-    repository: busybox
-    tag: latest
-delete-deployment-and-jobs:
-    image:
-     repository: hkube/del-dep-and-jobs
-     tag: v1.0.8
-storage-cleaner:
-   image:
-     repository: hkube/storage-cleaner
-     tag: v1.1.11
-   env:
-     object_expiration_days: "5"
+    repository: hkube/resource-manager
+    tag: v1.1.27
+  service:
+    type: ClusterIP
+resources: {}
 results-cleaner:
+  env:
+    delete_destination: results
+    oblect_expiration_days: "90"
   image:
     repository: hkube/results-cleaner
     tag: v1.1.1
+simulator:
   env:
-    oblect_expiration_days: "90"
-    delete_destination: "results"
-
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #  cpu: 100m
-  #  memory: 128Mi
-  # requests:
-  #  cpu: 100m
-  #  memory: 128Mi
-
-nodeSelector: {}
-
+    hkube_log_level: "0"
+    monitor_backend_path: /hkube/monitor-server/socket.io
+  image:
+    repository: hkube/simulator
+    tag: v1.1.13
+  ingress:
+    enabled: true
+    path: /hkube/simulator
+  metrics:
+    port: 9050
+  service:
+    port: 9050
+    type: ClusterIP
+storage-cleaner:
+  env:
+    object_expiration_days: "5"
+  image:
+    repository: hkube/storage-cleaner
+    tag: v1.1.11
+systemversion: 1.1.338
+task-executor:
+  env:
+    metric_port: 3000
+  image:
+    repository: hkube/task-executor
+    tag: v1.1.42
+  service:
+    type: ClusterIP
+thirdpartyapps:
+  etcd: false
+  jaeger: false
+  prometheus: false
+  redis-ha: false
 tolerations: []
-
-affinity: {}
+trigger-service:
+  env:
+    metric_port: 3000
+  image:
+    repository: hkube/trigger-service
+    tag: v1.1.18
+  service:
+    type: ClusterIP
+webhook-stub-ui:
+  env:
+    public_url: /hkube/webhook-stub-ui
+  image:
+    repository: hkube/webhook-stub-ui
+    tag: v1.1.2
+  ingress:
+    enabled: true
+    path: /hkube/webhook-stub-ui
+  metrics:
+    port: 3002
+  service:
+    port: 3002
+    type: ClusterIP
+worker:
+  image:
+    repository: hkube/worker
+    tag: v1.1.35
+  metrics:
+    port: 3001
+  service:
+    port: "3000"
+    type: ClusterIP
