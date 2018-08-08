@@ -6,4 +6,4 @@ dependencies:
 - name: thirdparty
   version: "0.1.2"
   repository: "file://../thirdparty"
-  condition: minikube.enabled
+  condition: thirdparty.enabled

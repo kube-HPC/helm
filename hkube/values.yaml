@@ -20,7 +20,7 @@ algorithm-queue:
     tag: v1.1.23
 algorithm-queue-svc:
   env:
-    metric_port: 3000
+    metric_port: "3000"
   service:
     type: ClusterIP
 algorunner:
@@ -30,6 +30,7 @@ algorunner:
 api-server:
   env:
     base_url_path: /hkube/api-server
+    metric_port: "3000"
   image:
     repository: hkube/api-server
     tag: v1.1.70
@@ -37,7 +38,6 @@ api-server:
     enabled: true
     path: /hkube/api-server
   service:
-    port: "3000"
     type: ClusterIP
 busybox:
   image:
@@ -73,12 +73,12 @@ lables:
     value: "true"
   group:
     value: hkube
-  thirdparty:
-    value: "true"
+thirdparty:
+  enabled: false
 metadata:
   namespace: default
 minikube:
-  enable: true
+  enabled: true
 monitor-server:
   image:
     repository: hkube/monitor-server
@@ -87,8 +87,9 @@ monitor-server:
     enabled: true
     path: /hkube/monitor-server
   service:
-    port: 30010
     type: ClusterIP
+  env:
+    metric_port: 30010
 nodeSelector: {}
 pipeline-driver:
   env:
@@ -140,6 +141,7 @@ simulator:
   env:
     hkube_log_level: "0"
     monitor_backend_path: /hkube/monitor-server/socket.io
+    metric_port: 9050
   image:
     repository: hkube/simulator
     tag: v1.1.13
@@ -160,7 +162,7 @@ storage-cleaner:
 systemversion: 1.1.340
 task-executor:
   env:
-    metric_port: 3000
+    metric_port: "3000"
   image:
     repository: hkube/task-executor
     tag: v1.1.43
@@ -174,7 +176,7 @@ thirdpartyapps:
 tolerations: []
 trigger-service:
   env:
-    metric_port: 3000
+    metric_port: "3000"
   image:
     repository: hkube/trigger-service
     tag: v1.1.18
@@ -182,7 +184,8 @@ trigger-service:
     type: ClusterIP
 webhook-stub-ui:
   env:
-    public_url: /hkube/webhook-stub-ui
+    public_url: "/hkube/webhook-stub-ui"
+    metric_port: 3002
   image:
     repository: hkube/webhook-stub-ui
     tag: v1.1.2
@@ -201,5 +204,6 @@ worker:
   metrics:
     port: 3001
   service:
-    port: "3000"
     type: ClusterIP
+  env:
+    metric_port: "3000"

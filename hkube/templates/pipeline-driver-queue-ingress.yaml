@@ -1,6 +1,6 @@
 {{- if index .Values "pipeline-driver-queue" "ingress" "enabled" -}}
 {{- $fullName := "pipeline-driver-queue" -}}
-{{- $servicePort := index .Values "pipeline-driver-queue" "env""metric_port" "port" -}}
+{{- $servicePort := index .Values "pipeline-driver-queue" "env" "metric_port" -}}
 {{- $ingressPath := index .Values "pipeline-driver-queue" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
 kind: Ingress

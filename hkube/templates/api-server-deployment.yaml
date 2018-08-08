@@ -26,7 +26,7 @@ spec:
           image: "{{ index .Values "api-server" "image" "repository" }}:{{ index .Values "api-server" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
           ports:
-            - containerPort: {{ index .Values "api-server" "env""metric_port" }}
+            - containerPort: {{ index .Values "api-server" "env" "metric_port" }}
               protocol: TCP
           env:
             - name: NODE_ENV

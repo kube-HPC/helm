@@ -25,7 +25,7 @@ spec:
         - name: task-executor
           image: "{{ index .Values "task-executor" "image" "repository" }}:{{ index .Values "task-executor" "image" "tag" }}"
           ports:
-            - containerPort: {{ index .Values "task-executor" "env" "metric_port" "port" }}
+            - containerPort: {{ index .Values "task-executor" "env" "metric_port" }}
           env:
             - name: NODE_ENV
               valueFrom:
