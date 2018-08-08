@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: simulator-configmap
+data:
+  MONITOR_BACKEND_PATH: {{index .Values "simulator" "env" "monitor_backend_path"}}
