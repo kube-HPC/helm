@@ -62,7 +62,7 @@ delete-deployment-and-jobs:
 deployment:
   image:
     repository: hkube/deployment
-    tag: v1.1.37
+    tag: v1.1.38
 env:
   default_storage: s3
   node_env: production
@@ -157,13 +157,13 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.11
-systemversion: 1.1.338
+systemversion: 1.1.340
 task-executor:
   env:
     metric_port: 3000
   image:
     repository: hkube/task-executor
-    tag: v1.1.42
+    tag: v1.1.43
   service:
     type: ClusterIP
 thirdpartyapps:

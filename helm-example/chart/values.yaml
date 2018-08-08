@@ -1,3 +1,9 @@
 global:
   subchart1:
+    enabled: false
+  subchart2:
     enabled: true
+subchart1:
+  enabled: false
+subchart2:
+  enabled: true
