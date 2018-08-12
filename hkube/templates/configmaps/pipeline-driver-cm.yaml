@@ -6,4 +6,4 @@ metadata:
 data:
   NODE_ENV: {{.Values.env.node_env}}
   DEFAULT_STORAGE: {{index .Values "env" "default_storage"}}
-  METRICS_PORT: {{index .Values "pipeline-driver" "env" "metric_port"}}
+  METRICS_PORT: "{{index .Values "pipeline-driver" "env" "metric_port"}}"

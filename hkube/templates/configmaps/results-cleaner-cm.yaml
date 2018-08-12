@@ -4,6 +4,6 @@ kind: ConfigMap
 metadata:
   name: results-cleaner-configmap
 data:
-  OBJECT_EXPIRATION_DAYS: {{index .Values "results-cleaner" "env" "oblect_expiration_days"}}
+  OBJECT_EXPIRATION_DAYS: "{{index .Values "results-cleaner" "env" "oblect_expiration_days"}}"
   DEFAULT_STORAGE: {{index .Values "env" "default_storage"}}
   DELETE_DESTINATION: {{index .Values "results-cleaner" "env" "delete_destination"}}

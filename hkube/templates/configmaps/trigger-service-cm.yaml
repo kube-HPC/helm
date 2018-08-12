@@ -5,4 +5,4 @@ metadata:
   name: trigger-service-configmap
 data:
   NODE_ENV: {{.Values.env.node_env}}
-  METRICS_PORT: {{index .Values "trigger-service" "env" "metric_port"}}
+  METRICS_PORT: "{{index .Values "trigger-service" "env" "metric_port"}}"

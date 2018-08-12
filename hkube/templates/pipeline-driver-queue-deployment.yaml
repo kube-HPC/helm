@@ -24,7 +24,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ index .Values "pipeline-driver-queue" "service" "port" }}
+              containerPort: {{ index .Values "pipeline-driver-queue" "env" "metric_port" }}
               protocol: TCP
           env:
             - name: NODE_ENV

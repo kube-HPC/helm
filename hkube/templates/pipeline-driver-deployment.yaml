@@ -24,7 +24,7 @@ spec:
         - name: pipeline-driver
           image: "{{ index .Values "pipeline-driver" "image" "repository" }}:{{ index .Values "pipeline-driver" "image" "tag" }}"
           ports:
-            - containerPort: {{ index .Values "pipeline-driver" "service" }}
+            - containerPort: {{ index .Values "pipeline-driver" "env" "metric_port" }}
           env:
             - name: NODE_ENV
               valueFrom:

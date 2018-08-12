@@ -37,7 +37,7 @@ spec:
                   key: NODE_ENV
             - name: METRICS_PORT
               valueFrom:
-                configMapKeyRaf:
+                configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: METRICS_PORT
             - name: JAEGER_AGENT_SERVICE_HOST
