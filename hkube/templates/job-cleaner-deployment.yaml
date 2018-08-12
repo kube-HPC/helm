@@ -25,6 +25,6 @@ spec:
             - name: "MAX_COMPLETED_JOB_AGE_HOURS"
               valueFrom:
                 configMapKeyRef:
-                  name: clean-old-jobs-configmap
+                  name: job-cleaner-configmap
                   key: MAX_COMPLETED_JOB_AGE_HOURS
           restartPolicy: Never

@@ -28,5 +28,5 @@ spec:
           - name: PUBLIC_URL
             valueFrom:
                 configMapKeyRef:
-                  name: api-server-configmap
+                  name: webhook-stub-ui-configmap
                   key: PUBLIC_URL

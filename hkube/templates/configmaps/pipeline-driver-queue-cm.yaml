@@ -5,5 +5,5 @@ metadata:
   name: pipeline-driver-queue-configmap
 data:
   NODE_ENV: {{.Values.env.node_env}}
-  HKUBE_LOG_LEVEL: "{{index .Values "pipeline-driver-queue" "env" "hkube_log_level"}}"
+  KUBE_LOG_LEVEL: {{index .Values "pipeline-driver-queue" "env" "hkube_log_level" | quote}}
   METRICS_PORT: "{{index .Values "pipeline-driver-queue" "env" "metric_port"}}"

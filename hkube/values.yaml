@@ -74,11 +74,11 @@ lables:
   group:
     value: hkube
 thirdparty:
-  enabled: false
+  enabled: true
 metadata:
   namespace: default
 minikube:
-  enabled: true
+  enabled: false
 monitor-server:
   image:
     repository: hkube/monitor-server
