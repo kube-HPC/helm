@@ -92,7 +92,7 @@ data:
 apiVersion: v1
 data:
   versions.json: |
-          {"systemVersion":"1.1.354","versions":[{"project":"api-server","tag":"v1.1.73"},{"project":"worker","tag":"v1.1.35"},{"project":"pipeline-driver","tag":"v1.1.28"},{"project":"algorunner","tag":"v1.1.5"},{"project":"simulator","tag":"v1.1.13"},{"project":"webhook-stub-ui","tag":"v1.1.2"},{"project":"algorithm-example","tag":"v1.1.7"},{"project":"deployment","tag":"v1.1.39"},{"project":"monitor-server","tag":"v1.1.18"},{"project":"algorithm-queue","tag":"v1.1.24"},{"project":"resource-manager","tag":"v1.1.32"},{"project":"task-executor","tag":"v1.1.44"},{"project":"trigger-service","tag":"v1.1.19"},{"project":"algorithm-operator","tag":"v1.1.10"}{"project": "pipeline-driver-queue","tag": "v1.1.6"},,{"project":"clean-old-jobs","tag":"v1.1.2"},{"project": "cpu-load-algorithm","tag": "v1.1.3"},{"project": "storage-cleaner","tag": "v1.1.11"}]}
+          {"systemVersion":"1.1.354","versions":[{"project":"api-server","tag":"v1.1.73"},{"project":"worker","tag":"v1.1.35"},{"project":"pipeline-driver","tag":"v1.1.28"},{"project":"algorunner","tag":"v1.1.5"},{"project":"simulator","tag":"v1.1.13"},{"project":"webhook-stub-ui","tag":"v1.1.2"},{"project":"algorithm-example","tag":"v1.1.7"},{"project":"deployment","tag":"v1.1.39"},{"project":"monitor-server","tag":"v1.1.18"},{"project":"algorithm-queue","tag":"v1.1.24"},{"project":"resource-manager","tag":"v1.1.32"},{"project":"task-executor","tag":"v1.1.44"},{"project":"trigger-service","tag":"v1.1.19"},{"project":"algorithm-operator","tag":"v1.1.10"},{"project": "pipeline-driver-queue","tag": "v1.1.6"},{"project":"clean-old-jobs","tag":"v1.1.2"},{"project": "cpu-load-algorithm","tag": "v1.1.3"},{"project": "storage-cleaner","tag": "v1.1.11"}]}
 kind: ConfigMap
 metadata:
   name: hkube-versions
@@ -2364,7 +2364,7 @@ spec:
         core: "true"
       containers:
         - name: trigger-service
-          image: 'hkube/trigger-service'
+          image: 'hkube/trigger-service:latest'
           ports:
             - containerPort: 3000
           env:
