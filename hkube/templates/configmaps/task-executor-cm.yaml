@@ -6,3 +6,4 @@ metadata:
 data:
   NODE_ENV: {{.Values.env.node_env}}
   METRICS_PORT: "{{index .Values "task-executor" "env" "metric_port"}}"
+  PIPELINE_DRIVERS_AMOUNT: "{{index .Values "task-executor" "env" "pipeline_drivers_amount"}}"
