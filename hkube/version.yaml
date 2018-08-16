@@ -1,7 +1,7 @@
-systemversion: 1.1.354
+systemversion: 1.1.367
 api-server:
   image:
-    tag: v1.1.73
+    tag: v1.1.75
 worker:
   image:
     tag: v1.1.35
@@ -13,7 +13,7 @@ algorunner:
     tag: v1.1.5
 simulator:
   image:
-    tag: v1.1.13
+    tag: v1.1.14
 webhook-stub-ui:
   image:
     tag: v1.1.2
@@ -22,19 +22,19 @@ algorithm-example:
     tag: v1.1.7
 deployment:
   image:
-    tag: v1.1.39
+    tag: v1.1.42
 monitor-server:
   image:
-    tag: v1.1.18
+    tag: v1.1.19
 algorithm-queue:
   image:
     tag: v1.1.24
 resource-manager:
   image:
-    tag: v1.1.32
+    tag: v1.1.37
 task-executor:
   image:
-    tag: v1.1.44
+    tag: v1.1.45
 trigger-service:
   image:
     tag: v1.1.19

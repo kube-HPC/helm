@@ -33,7 +33,7 @@ api-server:
     metric_port: "3000"
   image:
     repository: hkube/api-server
-    tag: v1.1.73
+    tag: v1.1.75
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -62,7 +62,7 @@ delete-deployment-and-jobs:
 deployment:
   image:
     repository: hkube/deployment
-    tag: v1.1.39
+    tag: v1.1.42
 env:
   default_storage: s3
   node_env: production
@@ -82,7 +82,7 @@ monitor-server:
     metric_port: 30010
   image:
     repository: hkube/monitor-server
-    tag: v1.1.18
+    tag: v1.1.19
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -124,7 +124,7 @@ resource-manager:
     prometheus_endpoint: http://monitoring-prometheus-server.monitoring:9090/api/v1
   image:
     repository: hkube/resource-manager
-    tag: v1.1.32
+    tag: v1.1.37
   service:
     type: ClusterIP
 resources: {}
@@ -142,7 +142,7 @@ simulator:
     monitor_backend_path: /hkube/monitor-server/socket.io
   image:
     repository: hkube/simulator
-    tag: v1.1.13
+    tag: v1.1.14
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -157,13 +157,13 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.11
-systemversion: 1.1.354
+systemversion: 1.1.367
 task-executor:
   env:
     metric_port: "3000"
   image:
     repository: hkube/task-executor
-    tag: v1.1.44
+    tag: v1.1.45
   service:
     type: ClusterIP
 thirdparty:
