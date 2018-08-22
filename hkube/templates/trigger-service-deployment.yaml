@@ -23,7 +23,7 @@ spec:
         core: "true"
       containers:
         - name: trigger-service
-          image: 'hkube/trigger-service'
+          image: "{{ index .Values "trigger-service" "image" "repository" }}:{{ index .Values "trigger-service" "image" "tag" }}"
           ports:
             - containerPort: {{ index .Values "trigger-service" "env" "metric_port" }}
           env:
