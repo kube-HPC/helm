@@ -1,4 +1,5 @@
 affinity: {}
+private_registry: docker.io
 algorithm-example:
   image:
     repository: hkube/algorithm-example
