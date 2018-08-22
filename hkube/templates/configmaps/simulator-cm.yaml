@@ -5,3 +5,4 @@ metadata:
   name: simulator-configmap
 data:
   MONITOR_BACKEND_PATH: {{index .Values "simulator" "env" "monitor_backend_path"}}
+  MONITOR_BACKEND_PATH_SOCKETIO: {{index .Values "simulator" "env" "monitor_backend_path_socketio"}}
