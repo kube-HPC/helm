@@ -32,11 +32,6 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: NODE_ENV
-            - name: PIPELINE_DRIVERS_AMOUNT
-              valueFrom:
-                configMapKeyRef:
-                  name: task-executor-configmap
-                  key: PIPELINE_DRIVERS_AMOUNT
             - name: METRICS_PORT
               valueFrom:
                 configMapKeyRef:
