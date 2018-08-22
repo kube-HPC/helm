@@ -97,7 +97,7 @@ pipeline-driver:
     metric_port: "3000"
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.29
+    tag: v1.1.30
   replicaCount: 20
   service:
     type: ClusterIP
@@ -143,7 +143,7 @@ simulator:
     hkube_log_level: "0"
     metric_port: 9050
     monitor_backend_path: /hkube/monitor-server/
-    monitor_backend_path_socketio: "/hkube/monitor-server/socketio"
+    monitor_backend_path_socketio: /hkube/monitor-server/socketio
   image:
     repository: hkube/simulator
     tag: v1.1.18
@@ -161,7 +161,7 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.11
-systemversion: 1.1.387
+systemversion: 1.1.390
 task-executor:
   env:
     metric_port: "3000"
@@ -206,7 +206,7 @@ worker:
     metric_port: "3000"
   image:
     repository: hkube/worker
-    tag: v1.1.36
+    tag: v1.1.38
   metrics:
     port: 3001
   service:
