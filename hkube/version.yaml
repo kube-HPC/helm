@@ -1,13 +1,13 @@
-systemversion: 1.1.390
+systemversion: 1.1.393
 api-server:
   image:
-    tag: v1.1.76
+    tag: v1.1.77
 worker:
   image:
     tag: v1.1.38
 pipeline-driver:
   image:
-    tag: v1.1.30
+    tag: v1.1.31
 algorunner:
   image:
     tag: v1.1.6
@@ -52,4 +52,4 @@ storage-cleaner:
     tag: v1.1.11
 debugging-operator:
   image:
-    tag: v1.1.1
+    tag: v1.1.2

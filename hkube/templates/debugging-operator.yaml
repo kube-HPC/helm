@@ -1,0 +1,115 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: debugging-operator-serviceaccount
+  labels:
+    group: {{ .Values.lables.group.value }}
+    app: debugging-operator
+    core: "true"
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: {{ .Values.Namespace }}
+  name: debugging-operator
+  labels:
+    group: {{ .Values.lables.group.value }}
+    app: debugging-operator
+    core: "true"
+rules:
+- apiGroups: [""]
+  resources: ["pods","services"]
+  verbs: ["get", "list", "watch","create","delete"]
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get"]
+- apiGroups: ["extensions", "apps"]
+  resources: ["deployments","ingresses"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] 
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: debugging-operator
+  namespace: {{ .Values.Namespace }}
+  labels:
+    group: {{ .Values.lables.group.value }}
+    app: debugging-operator
+    core: "true"
+subjects:
+- kind: ServiceAccount
+  name: debugging-operator-serviceaccount
+roleRef:
+  kind: Role
+  name: debugging-operator
+  apiGroup: rbac.authorization.k8s.io
+---
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: debugging-operator
+  labels:
+    app: debugging-operator
+    scale-group: debugging-operator
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.lables.group.value }}
+    release: {{ .Release.Name }}
+    core: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debugging-operator
+  template:
+    metadata:
+      labels:
+        app: debugging-operator
+        group: {{ .Values.lables.group.value }}
+        release: {{ .Release.Name }}
+    spec:
+      nodeSelector:
+        core: "true"
+      serviceAccountName: debugging-operator-serviceaccount
+      containers:
+        - name: debugging-operator
+          image: "{{ index .Values "debugging-operator" "image" "repository" }}:{{ index .Values "debugging-operator" "image" "tag" }}"
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: debugging-operator-configmap
+                  key: NODE_ENV
+            - name: METRICS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: debugging-operator-configmap
+                  key: METRICS_PORT
+            - name: JAEGER_AGENT_SERVICE_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: debugging-operator
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app: debugging-operator
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+spec:
+  selector:
+    app: debugging-operator
+    release: {{ .Release.Name }}
+  clusterIP: None
+  ports:
+    - name: metrics
+      port: {{ index .Values "debugging-operator" "env" "metric_port" }}
+      targetPort: {{ index .Values "debugging-operator" "env" "metric_port" }}
