@@ -60,7 +60,7 @@ debugging-operator:
     metric_port: "3000"
   image:
     repository: hkube/debugging-operator
-    tag: v1.1.2
+    tag: v1.1.3
 delete-deployment-and-jobs:
   image:
     repository: hkube/del-dep-and-jobs
@@ -88,7 +88,7 @@ monitor-server:
     metric_port: 30010
   image:
     repository: hkube/monitor-server
-    tag: v1.1.21
+    tag: v1.1.22
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -150,7 +150,7 @@ simulator:
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
   image:
     repository: hkube/simulator
-    tag: v1.1.18
+    tag: v1.1.19
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -165,13 +165,13 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.11
-systemversion: 1.1.393
+systemversion: 1.1.397
 task-executor:
   env:
     metric_port: "3000"
   image:
     repository: hkube/task-executor
-    tag: v1.1.47
+    tag: v1.1.48
   service:
     type: ClusterIP
 thirdparty:

@@ -1,4 +1,4 @@
-systemversion: 1.1.393
+systemversion: 1.1.397
 api-server:
   image:
     tag: v1.1.77
@@ -13,7 +13,7 @@ algorunner:
     tag: v1.1.6
 simulator:
   image:
-    tag: v1.1.18
+    tag: v1.1.19
 algorithm-example:
   image:
     tag: v1.1.7
@@ -22,7 +22,7 @@ deployment:
     tag: v1.1.48
 monitor-server:
   image:
-    tag: v1.1.21
+    tag: v1.1.22
 algorithm-queue:
   image:
     tag: v1.1.24
@@ -31,7 +31,7 @@ resource-manager:
     tag: v1.1.37
 task-executor:
   image:
-    tag: v1.1.47
+    tag: v1.1.48
 trigger-service:
   image:
     tag: v1.1.19
@@ -52,4 +52,4 @@ storage-cleaner:
     tag: v1.1.11
 debugging-operator:
   image:
-    tag: v1.1.2
+    tag: v1.1.3
