@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: pipeline-cleaner
+  labels:
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+    app: "pipeline-cleaner"
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: pipeline-cleaner
+            image: "{{ index  .Values "pipeline-cleaner" "image" "repository" }}:{{ index .Values "pipeline-cleaner" "image" "tag" }}"
+          restartPolicy: Never
+          

@@ -1,0 +1,24 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: etcd-cleaner
+  labels:
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+    app: "etcd-cleaner"
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: etcd-cleaner
+            image: "{{ index  .Values "etcd-cleaner" "image" "repository" }}:{{ index .Values "etcd-cleaner" "image" "tag" }}"
+            env:
+            - name: "OBJECT_EXPIRATION_DAYS"
+              valueFrom:
+                configMapKeyRef:
+                  name: etcd-cleaner-configmap
+                  key: OBJECT_EXPIRATION_DAYS
+            restartPolicy: Never

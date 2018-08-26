@@ -135,13 +135,6 @@ resource-manager:
   service:
     type: ClusterIP
 resources: {}
-results-cleaner:
-  env:
-    delete_destination: results
-    oblect_expiration_days: "90"
-  image:
-    repository: hkube/results-cleaner
-    tag: v1.1.1
 simulator:
   env:
     hkube_log_level: "0"
@@ -159,12 +152,31 @@ simulator:
   service:
     port: 9050
     type: ClusterIP
+etcd-cleaner:
+  env:
+    object_expiration_days: "5"
+  image:
+    repository: hkube/etcd-cleaner
+    tag: v1.0.0
+pipeline-cleaner:
+  env:
+    object_expiration_days: "5"
+  image:
+    repository: hkube/pipeline-cleaner
+    tag: v1.0.0
 storage-cleaner:
   env:
     object_expiration_days: "5"
   image:
     repository: hkube/storage-cleaner
-    tag: v1.1.11
+    tag: v1.0.0
+results-cleaner:
+  env:
+    delete_destination: results
+    oblect_expiration_days: "90"
+  image:
+    repository: hkube/storage-cleaner
+    tag: v1.0.0
 systemversion: 1.1.397
 task-executor:
   env:
