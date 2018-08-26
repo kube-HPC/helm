@@ -21,4 +21,4 @@ spec:
                 configMapKeyRef:
                   name: etcd-cleaner-configmap
                   key: OBJECT_EXPIRATION_DAYS
-            restartPolicy: Never
+          restartPolicy: Never

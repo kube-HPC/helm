@@ -46,4 +46,4 @@ spec:
                 configMapKeyRef:
                   name: result-cleaner-configmap
                   key: DEFAULT_STORAGE
-            restartPolicy: Never
+          restartPolicy: Never

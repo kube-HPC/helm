@@ -15,4 +15,4 @@ temp
 .cache
 *.bak
 **/*.sw[pon]
-
+hkube/version.yaml
