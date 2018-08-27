@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: etcd-cleaner-configmap
+data:
+  OBJECT_EXPIRATION_DAYS: "{{index .Values "etcd-cleaner" "env" "object_expiration_days"}}"

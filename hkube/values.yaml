@@ -102,8 +102,6 @@ monitor-server:
     type: ClusterIP
 nodeSelector: {}
 pipeline-cleaner:
-  env:
-    object_expiration_days: "5"
   image:
     repository: hkube/pipeline-cleaner
     tag: v1.1.4
@@ -150,7 +148,7 @@ resources: {}
 results-cleaner:
   env:
     delete_destination: results
-    oblect_expiration_days: "90"
+    object_expiration_days: "90"
   image:
     repository: hkube/storage-cleaner
     tag: v1.0.0
