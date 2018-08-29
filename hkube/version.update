@@ -1,7 +1,11 @@
 #!/bin/bash
 #yq m -i -a values.yaml version.yaml
 #docker run -it -v ${PWD}:/workdir mikefarah/yq sh  
-export TAG=$(curl -L -s -H 'Accept: application/json' https://github.com/kube-HPC/release-manager/releases/latest | jq -r .tag_name)export TAG=$(curl -L -s -H 'Accept: application/json' https://github.com/kube-HPC/release-manager/releases/latest | jq -r .tag_name)
+export TAG=$(curl -L -s -H 'Accept: application/json' https://github.com/kube-HPC/release-manager/releases/latest | jq -r .tag_name)
+if [ -z "$TAG" ]; then
+  echo error!!!
+  exit
+fi
 echo $TAG
 wget -O version.yaml https://github.com/kube-HPC/release-manager/releases/download/$TAG/version.yaml
 docker run -v ${PWD}:/workdir mikefarah/yq yq m -i -a -x values.yaml version.yaml

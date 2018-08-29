@@ -19,12 +19,12 @@ spec:
             - name: "OBJECT_EXPIRATION_DAYS"
               valueFrom:
                 configMapKeyRef:
-                  name: result-cleaner-configmap
+                  name: results-cleaner-configmap
                   key: OBJECT_EXPIRATION_DAYS
             - name: "DELETE_DESTINATION"
               valueFrom:
                 configMapKeyRef:
-                  name: result-cleaner-configmap
+                  name: results-cleaner-configmap
                   key: DELETE_DESTINATION
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
@@ -44,6 +44,6 @@ spec:
             - name: DEFAULT_STORAGE
               valueFrom:
                 configMapKeyRef:
-                  name: result-cleaner-configmap
+                  name: results-cleaner-configmap
                   key: DEFAULT_STORAGE
           restartPolicy: Never
