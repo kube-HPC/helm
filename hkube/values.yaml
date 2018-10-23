@@ -17,7 +17,7 @@ algorithm-operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.24
+    tag: v1.1.30
 algorithm-queue-svc:
   env:
     metric_port: "3000"
@@ -33,7 +33,7 @@ api-server:
     metric_port: "3000"
   image:
     repository: hkube/api-server
-    tag: v1.1.77
+    tag: v1.1.82
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -49,8 +49,8 @@ clean-old-jobs:
     max_completed_job_age_hours: "1"
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.1.2
-clusterName: dev
+    tag: v1.1.4
+clusterName: test
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
@@ -68,7 +68,7 @@ delete-deployment-and-jobs:
 deployment:
   image:
     repository: hkube/deployment
-    tag: v1.1.48
+    tag: v1.1.50
 env:
   default_storage: s3
   node_env: production
@@ -94,7 +94,7 @@ monitor-server:
     metric_port: 30010
   image:
     repository: hkube/monitor-server
-    tag: v1.1.22
+    tag: v1.1.23
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -104,13 +104,13 @@ nodeSelector: {}
 pipeline-cleaner:
   image:
     repository: hkube/pipeline-cleaner
-    tag: v1.1.4
+    tag: v1.1.5
 pipeline-driver:
   env:
     metric_port: "3000"
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.31
+    tag: v1.1.35
   replicaCount: 20
   service:
     type: ClusterIP
@@ -120,7 +120,7 @@ pipeline-driver-queue:
     metric_port: "3000"
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.1.6
+    tag: v1.1.11
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -141,7 +141,7 @@ resource-manager:
     prometheus_endpoint: http://monitoring-prometheus-server.monitoring:9090/api/v1
   image:
     repository: hkube/resource-manager
-    tag: v1.1.37
+    tag: v1.1.38
   service:
     type: ClusterIP
 resources: {}
@@ -160,7 +160,7 @@ simulator:
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
   image:
     repository: hkube/simulator
-    tag: v1.1.19
+    tag: v1.1.21
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -175,16 +175,17 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.11
-systemversion: 1.1.400
+systemversion: 1.1.439
 task-executor:
   env:
     metric_port: "3000"
   image:
     repository: hkube/task-executor
-    tag: v1.1.48
+    tag: v1.1.50
   service:
     type: ClusterIP
 thirdparty:
+  clusterName: test
   enabled: true
 thirdpartyapps:
   etcd: false
@@ -197,7 +198,7 @@ trigger-service:
     metric_port: "3000"
   image:
     repository: hkube/trigger-service
-    tag: v1.1.19
+    tag: v1.1.21
   service:
     type: ClusterIP
 webhook-stub-ui:
@@ -220,7 +221,7 @@ worker:
     metric_port: "3000"
   image:
     repository: hkube/worker
-    tag: v1.1.38
+    tag: v1.1.45
   metrics:
     port: 3001
   service:
