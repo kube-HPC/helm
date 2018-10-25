@@ -10,7 +10,8 @@ metadata:
     core: "true"
 spec:
   selector:
-    app: pipeline-driver
+    group: hkube
+    metrics-group: pipeline-drivers
   clusterIP: None
   ports:
     - name: metrics

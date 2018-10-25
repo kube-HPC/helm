@@ -17,7 +17,7 @@ algorithm-operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.30
+    tag: v1.1.31
 algorithm-queue-svc:
   env:
     metric_port: "3000"
@@ -26,14 +26,14 @@ algorithm-queue-svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.1.6
+    tag: v1.1.7
 api-server:
   env:
     base_url_path: /hkube/api-server
     metric_port: "3000"
   image:
     repository: hkube/api-server
-    tag: v1.1.82
+    tag: v1.1.83
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -141,7 +141,7 @@ resource-manager:
     prometheus_endpoint: http://monitoring-prometheus-server.monitoring:9090/api/v1
   image:
     repository: hkube/resource-manager
-    tag: v1.1.38
+    tag: v1.1.39
   service:
     type: ClusterIP
 resources: {}
@@ -175,7 +175,7 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.11
-systemversion: 1.1.439
+systemversion: 1.1.446
 task-executor:
   env:
     metric_port: "3000"
@@ -221,7 +221,7 @@ worker:
     metric_port: "3000"
   image:
     repository: hkube/worker
-    tag: v1.1.45
+    tag: v1.1.48
   metrics:
     port: 3001
   service:
