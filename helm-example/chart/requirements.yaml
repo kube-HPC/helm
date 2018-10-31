@@ -1,9 +1,0 @@
-dependencies:
-- name: subchart1
-  version: "0.1.0"
-  repository: "file://../subchart1"
-  condition: subchart1.enabled, global.subchart1.enabled
-- name: subchart2
-  version: "0.1.0"
-  repository: "file://../subchart2"
-  condition: subchart2.enabled, global.subchart2.enabled
