@@ -5,7 +5,7 @@ algorithm-example:
     tag: v1.1.7
 algorithm-operator:
   env:
-    metric_port: "3000"
+    metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
     tag: v1.1.12
@@ -20,20 +20,20 @@ algorithm-queue:
     tag: v1.1.31
 algorithm-queue-svc:
   env:
-    metric_port: "3000"
+    metric_port: '3000'
   service:
     type: ClusterIP
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.1.7
+    tag: v1.1.12
 api-server:
   env:
     base_url_path: /hkube/api-server
-    metric_port: "3000"
+    metric_port: '3000'
   image:
     repository: hkube/api-server
-    tag: v1.1.83
+    tag: v1.1.86
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -45,8 +45,8 @@ busybox:
     tag: latest
 clean-old-jobs:
   env:
-    hkube_log_level: "0"
-    max_completed_job_age_hours: "1"
+    hkube_log_level: '0'
+    max_completed_job_age_hours: '1'
   image:
     repository: hkube/clean-old-jobs
     tag: v1.1.4
@@ -57,7 +57,7 @@ cpu-load-algorithm:
     tag: v1.1.3
 debugging-operator:
   env:
-    metric_port: "3000"
+    metric_port: '3000'
   image:
     repository: hkube/debugging-operator
     tag: v1.1.3
@@ -68,13 +68,13 @@ delete-deployment-and-jobs:
 deployment:
   image:
     repository: hkube/deployment
-    tag: v1.1.50
+    tag: v1.1.52
 env:
   default_storage: s3
   node_env: production
 etcd-cleaner:
   env:
-    object_expiration_days: "5"
+    object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
     tag: v1.1.3
@@ -82,7 +82,7 @@ image:
   pullPolicy: IfNotPresent
 lables:
   core:
-    value: "true"
+    value: 'true'
   group:
     value: hkube
 metadata:
@@ -107,17 +107,17 @@ pipeline-cleaner:
     tag: v1.1.5
 pipeline-driver:
   env:
-    metric_port: "3000"
+    metric_port: '3000'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.35
+    tag: v1.1.40
   replicaCount: 20
   service:
     type: ClusterIP
 pipeline-driver-queue:
   env:
-    hkube_log_level: "0"
-    metric_port: "3000"
+    hkube_log_level: '0'
+    metric_port: '3000'
   image:
     repository: hkube/pipeline-driver-queue
     tag: v1.1.11
@@ -131,14 +131,14 @@ private_registry: docker.io
 privteregistry: {}
 resource-manager:
   env:
-    algorithms_tereshold_cpu: "0.9"
-    algorithms_tereshold_mem: "0.9"
-    driver_threshold_cpu: "0.1"
-    driver_threshold_mem: "1"
-    hkube_log_level: "0"
-    interval: "2000"
-    metric_port: "3000"
-    prometheus_endpoint: http://monitoring-prometheus-server.monitoring:9090/api/v1
+    algorithms_tereshold_cpu: '0.9'
+    algorithms_tereshold_mem: '0.9'
+    driver_threshold_cpu: '0.1'
+    driver_threshold_mem: '1'
+    hkube_log_level: '0'
+    interval: '2000'
+    metric_port: '3000'
+    prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
     tag: v1.1.39
@@ -148,13 +148,13 @@ resources: {}
 results-cleaner:
   env:
     delete_destination: results
-    object_expiration_days: "90"
+    object_expiration_days: '90'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.0.0
+    tag: v1.1.11
 simulator:
   env:
-    hkube_log_level: "0"
+    hkube_log_level: '0'
     metric_port: 9050
     monitor_backend_path: /hkube/monitor-server/
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
@@ -171,14 +171,14 @@ simulator:
     type: ClusterIP
 storage-cleaner:
   env:
-    object_expiration_days: "5"
+    object_expiration_days: '5'
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.11
-systemversion: 1.1.446
+systemversion: 1.1.464
 task-executor:
   env:
-    metric_port: "3000"
+    metric_port: '3000'
   image:
     repository: hkube/task-executor
     tag: v1.1.50
@@ -195,7 +195,7 @@ thirdpartyapps:
 tolerations: []
 trigger-service:
   env:
-    metric_port: "3000"
+    metric_port: '3000'
   image:
     repository: hkube/trigger-service
     tag: v1.1.21
@@ -218,10 +218,10 @@ webhook-stub-ui:
     type: ClusterIP
 worker:
   env:
-    metric_port: "3000"
+    metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.48
+    tag: v1.1.52
   metrics:
     port: 3001
   service:

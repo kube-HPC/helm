@@ -1,9 +1,4 @@
 dependencies:
-- name: mini
-  version: "0.1.2"
-  repository: "file://../mini"
-  condition: minikube.enabled
 - name: thirdparty
-  version: "0.1.2"
-  repository: "file://../thirdparty"
-  condition: thirdparty.enabled
+  version: "0.0.3"
+  repository: "http://hkube.io/helm/"
