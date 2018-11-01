@@ -33,7 +33,7 @@ api-server:
     metric_port: '3000'
   image:
     repository: hkube/api-server
-    tag: v1.1.86
+    tag: v1.1.87
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -110,7 +110,7 @@ pipeline-driver:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.40
+    tag: v1.1.41
   replicaCount: 20
   service:
     type: ClusterIP
@@ -175,7 +175,7 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.11
-systemversion: 1.1.464
+systemversion: 1.1.466
 task-executor:
   env:
     metric_port: '3000'
