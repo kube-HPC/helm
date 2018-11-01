@@ -14,4 +14,4 @@ install:
   - npm version patch -m "bump version [skip ci]"
   - git push origin version-branch:master
 script:
-  - ./publish.sh  
+  - ./package.sh
