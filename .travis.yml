@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '8'
+branches:
+  only:
+  - master
+install:
+  - curl https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
+  - git remote set-url --push origin "https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+  - git remote -v
+  - git checkout -f -b version-branch
+  - npm version patch -m "bump version [skip ci]"
+  - git push origin version-branch:master
+script:
+  - ./publish.sh  

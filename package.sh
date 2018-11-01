@@ -11,4 +11,5 @@ helm repo index --merge ./index.yaml /tmp/helm-charts/
 cp /tmp/helm-charts/index.yaml .
 git add .
 git commit -m "update charts"
+git push
 git checkout master
