@@ -26,14 +26,14 @@ algorithm-queue-svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.1.12
+    tag: v1.1.13
 api-server:
   env:
     base_url_path: /hkube/api-server
     metric_port: '3000'
   image:
     repository: hkube/api-server
-    tag: v1.1.87
+    tag: v1.1.94
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -110,7 +110,7 @@ pipeline-driver:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.41
+    tag: v1.1.45
   replicaCount: 20
   service:
     type: ClusterIP
@@ -141,7 +141,7 @@ resource-manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.1.39
+    tag: v1.1.40
   service:
     type: ClusterIP
 resources: {}
@@ -151,7 +151,7 @@ results-cleaner:
     object_expiration_days: '90'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.1.11
+    tag: v1.1.14
 simulator:
   env:
     hkube_log_level: '0'
@@ -174,14 +174,14 @@ storage-cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.1.11
-systemversion: 1.1.466
+    tag: v1.1.14
+systemversion: 1.1.494
 task-executor:
   env:
     metric_port: '3000'
   image:
     repository: hkube/task-executor
-    tag: v1.1.50
+    tag: v1.1.51
   service:
     type: ClusterIP
 thirdparty:
@@ -198,7 +198,7 @@ trigger-service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.1.21
+    tag: v1.1.22
   service:
     type: ClusterIP
 webhook-stub-ui:
@@ -221,7 +221,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.52
+    tag: v1.1.61
   metrics:
     port: 3001
   service:
