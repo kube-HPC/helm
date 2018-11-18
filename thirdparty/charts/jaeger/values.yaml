@@ -4,8 +4,6 @@
 
 replicaCount: 1
 
-clusterName: dev
-
 image:
   repository: nginx
   tag: stable

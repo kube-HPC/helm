@@ -1,4 +1,8 @@
-affinity: {}
+global:
+  clusterName: test
+
+systemversion: 1.1.494
+
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -50,7 +54,6 @@ clean-old-jobs:
   image:
     repository: hkube/clean-old-jobs
     tag: v1.1.4
-clusterName: test
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
@@ -128,11 +131,10 @@ pipeline-driver-queue:
   service:
     type: ClusterIP
 private_registry: docker.io
-privteregistry: {}
 resource-manager:
   env:
-    algorithms_tereshold_cpu: '0.9'
-    algorithms_tereshold_mem: '0.9'
+    algorithms_threshold_cpu: '0.9'
+    algorithms_threshold_mem: '0.9'
     driver_threshold_cpu: '0.1'
     driver_threshold_mem: '1'
     hkube_log_level: '0'
@@ -175,7 +177,6 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.14
-systemversion: 1.1.494
 task-executor:
   env:
     metric_port: '3000'
@@ -185,13 +186,7 @@ task-executor:
   service:
     type: ClusterIP
 thirdparty:
-  clusterName: test
   enabled: true
-thirdpartyapps:
-  etcd: false
-  jaeger: false
-  prometheus: false
-  redis-ha: false
 tolerations: []
 trigger-service:
   env:
