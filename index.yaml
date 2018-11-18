@@ -3,7 +3,7 @@ entries:
   hkube:
   - apiVersion: v1
     appVersion: 1.1.500
-    created: 2018-11-18T12:41:18.235497944Z
+    created: 2018-11-18T16:30:29.191132061+02:00
     description: Open source project for HPC over kubernetes Hkube is a cloud native
       open source framework to run distributed pipeline of algorithms built on Kubernetes.
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
@@ -25,7 +25,7 @@ entries:
     version: 1.1.500
   - apiVersion: v1
     appVersion: 1.1.494
-    created: 2018-11-15T12:59:18.161971719+02:00
+    created: 2018-11-18T16:30:29.18918847+02:00
     description: Open source project for HPC over kubernetes Hkube is a cloud native
       open source framework to run distributed pipeline of algorithms built on Kubernetes.
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
@@ -47,7 +47,7 @@ entries:
     version: 1.1.494
   - apiVersion: v1
     appVersion: 1.1.466
-    created: 2018-11-01T14:30:41.53706532+02:00
+    created: 2018-11-18T16:30:29.187400294+02:00
     description: Open source project for HPC over kubernetes Hkube is a cloud native
       open source framework to run distributed pipeline of algorithms built on Kubernetes.
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
@@ -69,8 +69,17 @@ entries:
     version: 1.1.466
   thirdparty:
   - apiVersion: v1
+    appVersion: "1"
+    created: 2018-11-18T16:30:29.192845334+02:00
+    description: A Helm chart for Kubernetes
+    digest: bb548882850105c12a87e69fdff14357e7fd60dcf1d9779258d9f06daeca207a
+    name: thirdparty
+    urls:
+    - thirdparty-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-11-01T14:30:41.53898697+02:00
+    created: 2018-11-18T16:30:29.195139673+02:00
     description: A Helm chart for Kubernetes
     digest: 0ad080630cb1fe1a693fd6f0b3aaed3b4deb35d11d73827ca8b5ec509ca5fd8f
     name: thirdparty
@@ -79,11 +88,11 @@ entries:
     version: v0.0.3
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2018-11-01T14:30:41.538022555+02:00
+    created: 2018-11-18T16:30:29.193967827+02:00
     description: A Helm chart for Kubernetes
     digest: 829bf4bf353f3c925ae188eec13490a232638abbe75189275c8e258aab2def6c
     name: thirdparty
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: 2018-11-18T12:41:18.230406311Z
+generated: 2018-11-18T16:30:29.18548504+02:00
