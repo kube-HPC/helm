@@ -6,6 +6,7 @@ branches:
   - master
 install:
   - curl https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash
+  - helm init --client-only
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git remote set-url --push origin "https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
@@ -14,5 +15,6 @@ install:
   - npm version patch -m "bump version [skip ci]"
   - git push origin version-branch:master
 script:
-  - git fetch
+  - git config  remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+  - git fetch origin
   - ./package.sh
