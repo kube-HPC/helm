@@ -1,8 +1,6 @@
 global:
   clusterName: test
-
-systemversion: 1.1.494
-
+systemversion: 1.1.508
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -37,7 +35,7 @@ api-server:
     metric_port: '3000'
   image:
     repository: hkube/api-server
-    tag: v1.1.94
+    tag: v1.1.97
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -53,7 +51,7 @@ clean-old-jobs:
     max_completed_job_age_hours: '1'
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.1.4
+    tag: v1.1.5
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
@@ -97,7 +95,7 @@ monitor-server:
     metric_port: 30010
   image:
     repository: hkube/monitor-server
-    tag: v1.1.23
+    tag: v1.1.25
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -113,7 +111,7 @@ pipeline-driver:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.45
+    tag: v1.1.46
   replicaCount: 20
   service:
     type: ClusterIP
@@ -153,7 +151,7 @@ results-cleaner:
     object_expiration_days: '90'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.1.14
+    tag: v1.1.16
 simulator:
   env:
     hkube_log_level: '0'
@@ -162,7 +160,7 @@ simulator:
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
   image:
     repository: hkube/simulator
-    tag: v1.1.21
+    tag: v1.1.22
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -176,7 +174,7 @@ storage-cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.1.14
+    tag: v1.1.16
 task-executor:
   env:
     metric_port: '3000'
@@ -216,7 +214,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.61
+    tag: v1.1.64
   metrics:
     port: 3001
   service:

@@ -8,9 +8,9 @@ metadata:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
     "resource-policy": delete-on-completion
-    "helm.sh/hook": post-delete,pre-upgrade
+    "helm.sh/hook": pre-delete,pre-upgrade
     "helm.sh/hook-weight": "-5"
-    "helm.sh/hook-delete-policy": hook-succeeded
+    "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   template:
     metadata:
@@ -20,7 +20,7 @@ spec:
         release: {{.Release.Name | quote }}
         chart: "{{.Chart.Name}}-{{.Chart.Version}}"
     spec:
-      serviceAccountName: default
+      serviceAccountName: cleanup-serviceaccount
       restartPolicy: Never
       containers:
       - name: post-del-dep-and-jobs
@@ -29,9 +29,10 @@ spec:
           - /bin/sh
           - -c
           - |
+            /usr/local/bin/kubectl delete deploy task-executor
             /usr/local/bin/kubectl delete deploy -l metrics-group=algorithm-queue
-            /usr/local/bin/kubectl  delete job -l delete-group=delete-dep-and-jobs
-            /usr/local/bin/kubectl  delete job -l metrics-group=worker
-            /usr/local/bin/kubectl  delete job -l type=pipeline-driver
-            /usr/local/bin/kubectl  delete crd etcdclusters.etcd.database.coreos.com etcdbackups.etcd.database.coreos.com etcdrestores.etcd.database.coreos.com 
+            /usr/local/bin/kubectl delete job -l delete-group=delete-dep-and-jobs
+            /usr/local/bin/kubectl delete job -l metrics-group=worker
+            /usr/local/bin/kubectl delete job -l type=pipeline-driver
+            /usr/local/bin/kubectl delete crd etcdclusters.etcd.database.coreos.com etcdbackups.etcd.database.coreos.com etcdrestores.etcd.database.coreos.com 
             echo Done
