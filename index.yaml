@@ -419,6 +419,16 @@ entries:
     urls:
     - hkube-1.1.466.tgz
     version: 1.1.466
+  mini-thirdparty:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-11-21T12:13:07.883997993+02:00
+    description: A Helm chart for Kubernetes
+    digest: 724c014d854b31e03f4387c4e1663290e7a2347d4fc79b1bd2fe81e1b3ef34f5
+    name: mini-thirdparty
+    urls:
+    - mini-thirdparty-0.1.0.tgz
+    version: 0.1.0
   thirdparty:
   - apiVersion: v1
     appVersion: "1"
@@ -447,4 +457,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: 2018-11-21T09:44:40.291809123Z
+generated: 2018-11-21T12:13:07.883603359+02:00
