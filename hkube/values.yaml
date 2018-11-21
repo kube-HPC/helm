@@ -4,7 +4,7 @@ global:
     minio:
       access_key: hkubeminiokey
       secret_key: hkubeminiosecret
-      url: minio-service
+      url: "http://minio-service:9000"
   # production: true
 tags:
   production: false
