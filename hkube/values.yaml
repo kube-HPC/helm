@@ -4,12 +4,11 @@ global:
     minio:
       access_key: hkubeminiokey
       secret_key: hkubeminiosecret
-      url: "http://minio-service:9000"
-  # production: true
+      url: 'http://minio-service:9000'
 tags:
   production: false
   minikube: true
-systemversion: 1.1.510
+systemversion: 1.1.524
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -19,7 +18,7 @@ algorithm-operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.12
+    tag: v1.1.13
   ingress:
     enabled: false
     path: /hkube/trigger-service
@@ -44,7 +43,7 @@ api-server:
     metric_port: '3000'
   image:
     repository: hkube/api-server
-    tag: v1.1.98
+    tag: v1.1.101
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -60,7 +59,7 @@ clean-old-jobs:
     max_completed_job_age_hours: '1'
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.1.6
+    tag: v1.1.8
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
@@ -120,7 +119,7 @@ pipeline-driver:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.46
+    tag: v1.1.47
   replicaCount: 20
   service:
     type: ClusterIP
@@ -169,7 +168,7 @@ simulator:
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
   image:
     repository: hkube/simulator
-    tag: v1.1.22
+    tag: v1.1.23
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -189,7 +188,7 @@ task-executor:
     metric_port: '3000'
   image:
     repository: hkube/task-executor
-    tag: v1.1.51
+    tag: v1.1.52
   service:
     type: ClusterIP
 thirdparty:
@@ -200,7 +199,7 @@ trigger-service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.1.22
+    tag: v1.1.23
   service:
     type: ClusterIP
 webhook-stub-ui:
@@ -223,7 +222,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.64
+    tag: v1.1.68
   metrics:
     port: 3001
   service:
