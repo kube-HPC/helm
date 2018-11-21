@@ -26,9 +26,9 @@ spec:
         env:
         # Minio access key and secret key
         - name: MINIO_ACCESS_KEY
-          value: {{ .Values.globel.storage.minio.access_key }}
+          value: {{ .Values.global.storage.minio.access_key }}
         - name: MINIO_SECRET_KEY
-          value: {{ .Values.globel.storage.minio.secret_key }}
+          value: {{ .Values.global.storage.minio.secret_key }}
         ports:
         - containerPort: 9000
         # Mount the volume into the pod
