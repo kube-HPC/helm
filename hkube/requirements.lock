@@ -1,0 +1,9 @@
+dependencies:
+- name: thirdparty
+  repository: http://hkube.io/helm/
+  version: v0.0.3
+- name: mini-thirdparty
+  repository: http://hkube.io/helm/
+  version: 0.1.0
+digest: sha256:f31824c15e3c77af33fb83e0ea48971ab1789aa84201d227f5345f5f0b90df8e
+generated: 2018-11-21T12:17:40.459976813+02:00

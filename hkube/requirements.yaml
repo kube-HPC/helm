@@ -5,7 +5,7 @@ dependencies:
   tags:
     - production
 - name: mini-thirdparty
-  version: "0.0.1"
+  version: "0.1.0"
   repository: "http://hkube.io/helm/"
   tags:
     - minikube

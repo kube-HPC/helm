@@ -1,5 +1,10 @@
 global:
   clusterName: test
+  storage:
+    minio:
+      access_key: hkubeminiokey
+      secret_key: hkubeminiosecret
+      url: minio-service
 tags:
   production: false
   minikube: true
