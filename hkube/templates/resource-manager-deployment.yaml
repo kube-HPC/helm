@@ -18,8 +18,10 @@ spec:
         app: resource-manager
         group: {{ .Values.lables.group.value }}
     spec:
+      {{- if .Values.global.production }}
       nodeSelector:
         core: "true"
+      {{- end }}
       serviceAccountName: resource-manager-serviceaccount
       containers:
         - name: resource-manager

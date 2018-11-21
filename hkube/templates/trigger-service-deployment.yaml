@@ -19,8 +19,10 @@ spec:
         app: trigger-service
         group: {{ .Values.lables.group.value }}
     spec:
+      {{- if .Values.global.production }}
       nodeSelector:
         core: "true"
+      {{- end }}
       containers:
         - name: trigger-service
           image: "{{ index .Values "trigger-service" "image" "repository" }}:{{ index .Values "trigger-service" "image" "tag" }}"

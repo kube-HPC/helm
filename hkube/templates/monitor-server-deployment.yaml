@@ -17,8 +17,10 @@ spec:
         app: monitor-server
         group: {{ .Values.lables.group.value }}
     spec:
+      {{- if .Values.global.production }}
       nodeSelector:
         core: "true"
+      {{- end }}
       containers:
         - name: monitor-server
           image: "{{ index  .Values "monitor-server" "image" "repository" }}:{{ index .Values "monitor-server" "image" "tag" }}"

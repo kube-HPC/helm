@@ -68,8 +68,10 @@ spec:
         group: {{ .Values.lables.group.value }}
         release: {{ .Release.Name }}
     spec:
+      {{- if .Values.global.production }}
       nodeSelector:
         core: "true"
+      {{- end }}
       serviceAccountName: debugging-operator-serviceaccount
       containers:
         - name: debugging-operator

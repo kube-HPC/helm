@@ -17,8 +17,10 @@ spec:
         app: simulator
         group: {{ .Values.lables.group.value }}
     spec:
+      {{- if .Values.global.production }}
       nodeSelector:
         core: "true"
+      {{- end }}
       containers:
         - name: simulator
           image: "{{ index .Values "simulator" "image" "repository" }}:{{ index .Values "simulator" "image" "tag" }}"

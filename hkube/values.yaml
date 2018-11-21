@@ -5,6 +5,7 @@ global:
       access_key: hkubeminiokey
       secret_key: hkubeminiosecret
       url: minio-service
+  # production: true
 tags:
   production: false
   minikube: true
