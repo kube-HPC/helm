@@ -422,9 +422,9 @@ entries:
   mini-thirdparty:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-11-21T12:13:07.883997993+02:00
+    created: 2018-11-21T13:15:02.180894906+02:00
     description: A Helm chart for Kubernetes
-    digest: 724c014d854b31e03f4387c4e1663290e7a2347d4fc79b1bd2fe81e1b3ef34f5
+    digest: fe64b9e3cf091e4e79e301b2b41922e82c09b1f0489ce7df759bf3cd6794232a
     name: mini-thirdparty
     urls:
     - mini-thirdparty-0.1.0.tgz
@@ -457,4 +457,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: 2018-11-21T12:13:07.883603359+02:00
+generated: 2018-11-21T13:15:02.180458717+02:00
