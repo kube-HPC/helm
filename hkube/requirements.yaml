@@ -2,3 +2,10 @@ dependencies:
 - name: thirdparty
   version: "0.0.3"
   repository: "http://hkube.io/helm/"
+  tags:
+    - production
+- name: mini-thirdparty
+  version: "0.0.1"
+  repository: "http://hkube.io/helm/"
+  tags:
+    - minikube

@@ -1,6 +1,9 @@
 global:
   clusterName: test
-systemversion: 1.1.508
+tags:
+  production: false
+  minikube: true
+systemversion: 1.1.510
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -35,7 +38,7 @@ api-server:
     metric_port: '3000'
   image:
     repository: hkube/api-server
-    tag: v1.1.97
+    tag: v1.1.98
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -51,7 +54,7 @@ clean-old-jobs:
     max_completed_job_age_hours: '1'
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.1.5
+    tag: v1.1.6
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm

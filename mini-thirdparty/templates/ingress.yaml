@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-jaeger
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # tls:
+  # # This assumes tls-secret exists.
+  # - secretName: tls-secret
+  rules:
+  - http:
+      paths:
+        - path: /jaeger
+          backend:
+            serviceName: jaeger-query
+            servicePort: 16686
