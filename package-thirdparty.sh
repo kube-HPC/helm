@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 mkdir -p /tmp/helm-charts
 rm /tmp/helm-charts/*
-helm package -d /tmp/helm-charts thirdparty/chart
+helm package -d /tmp/helm-charts thirdparty/thirdparty
 git stash
 git checkout gh-pages
 cp /tmp/helm-charts/thirdparty-*.tgz .
