@@ -38,11 +38,6 @@ spec:
                 configMapKeyRef:
                   name: caching-service-configmap
                   key: NODE_ENV
-            - name: BASE_URL_PATH
-              valueFrom:
-                configMapKeyRef:
-                  name: caching-service-configmap
-                  key: BASE_URL_PATH
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
