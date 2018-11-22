@@ -1,3 +1,4 @@
+{{- if not .Values.global.production }}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -48,3 +49,4 @@ spec:
       protocol: TCP
   selector:
     app: minio
+{{- end }}

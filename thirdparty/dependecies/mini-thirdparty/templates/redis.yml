@@ -1,3 +1,4 @@
+{{- if not .Values.global.production }}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -35,3 +36,4 @@ spec:
     targetPort: 6379
   selector:
     app: redis
+{{- end }}

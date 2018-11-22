@@ -1,3 +1,4 @@
+{{- if not .Values.global.production }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -388,5 +389,4 @@ metadata:
 data:
   storage-retention: 360h
   storage-memory-chunks: '1048576'
-
-
+{{- end }}

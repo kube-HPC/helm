@@ -5,9 +5,8 @@ global:
       access_key: hkubeminiokey
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
-tags:
   production: false
-  minikube: true
+
 systemversion: 1.1.524
 algorithm-example:
   image:
@@ -120,7 +119,6 @@ pipeline-driver:
   image:
     repository: hkube/pipeline-driver
     tag: v1.1.47
-  replicaCount: 20
   service:
     type: ClusterIP
 pipeline-driver-queue:
@@ -186,6 +184,7 @@ storage-cleaner:
 task-executor:
   env:
     metric_port: '3000'
+    pipeline_drivers_amount: 30
   image:
     repository: hkube/task-executor
     tag: v1.1.52

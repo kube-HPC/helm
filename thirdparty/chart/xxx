@@ -1,0 +1,1096 @@
+---
+# Source: thirdparty/charts/mini-thirdparty/templates/nginx-ingress-controller.yml
+
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: ingress-nginx
+# ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nginx-ingress-serviceaccount
+  # namespace: ingress-nginx
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: nginx-ingress-clusterrole
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+      - endpoints
+      - nodes
+      - pods
+      - secrets
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - nodes
+    verbs:
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - "extensions"
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+        - events
+    verbs:
+        - create
+        - patch
+  - apiGroups:
+      - "extensions"
+    resources:
+      - ingresses/status
+    verbs:
+      - update
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: nginx-ingress-role
+  # namespace: ingress-nginx
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+      - pods
+      - secrets
+      - namespaces
+    verbs:
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    resourceNames:
+      # Defaults to "<election-id>-<ingress-class>"
+      # Here: "<ingress-controller-leader>-<nginx>"
+      # This has to be adapted if you change either parameter
+      # when launching the nginx-ingress-controller.
+      - "ingress-controller-leader-nginx"
+    verbs:
+      - get
+      - update
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - create
+  - apiGroups:
+      - ""
+    resources:
+      - endpoints
+    verbs:
+      - get
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: nginx-ingress-role-nisa-binding
+  # namespace: ingress-nginx
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: nginx-ingress-role
+subjects:
+  - kind: ServiceAccount
+    name: nginx-ingress-serviceaccount
+    # namespace: ingress-nginx
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: nginx-ingress-clusterrole-nisa-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: nginx-ingress-clusterrole
+subjects:
+  - kind: ServiceAccount
+    name: nginx-ingress-serviceaccount
+    namespace: default
+
+---
+
+# This is the backend service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ingress-svc
+  # namespace: ingress-nginx
+  annotations:
+    service.beta.kubernetes.io/external-traffic: OnlyLocal
+  labels:
+    app: nginx-ingress-svc
+spec:
+  ports:
+  - port: 80
+    name: http
+    targetPort: 80
+  - port: 443
+    name: https
+    targetPort: 443
+  # externalIPs:
+  # - 10.32.10.6
+  selector:
+    # Selects nginx-ingress-controller pods
+    k8s-app: nginx-ingress-controller
+
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: nginx-ingress-controller
+  # namespace: ingress-nginx
+  labels:
+    k8s-app: nginx-ingress-controller
+spec:
+  # replicas: 1
+  template:
+    metadata:
+      labels:
+        k8s-app: nginx-ingress-controller
+    spec:
+      # hostNetwork makes it possible to use ipv6 and to preserve the source IP correctly regardless of docker configuration
+      # however, it is not a hard dependency of the nginx-ingress-controller itself and it may cause issues if port 10254 already is taken on the host
+      # that said, since hostPort is broken on CNI (https://github.com/kubernetes/kubernetes/issues/31307) we have to use hostNetwork where CNI is used
+      # like with kubeadm
+      # hostNetwork: true
+      terminationGracePeriodSeconds: 60
+      serviceAccountName: nginx-ingress-serviceaccount
+      containers:
+      - image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.9.0
+        name: nginx-ingress-controller
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 10254
+            scheme: HTTP
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 10254
+            scheme: HTTP
+          initialDelaySeconds: 10
+          timeoutSeconds: 1
+        ports:
+        - containerPort: 10254
+        - containerPort: 80
+          hostPort: 80
+        - containerPort: 443
+          hostPort: 443
+        env:
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+        args:
+        - /nginx-ingress-controller
+        - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
+        # - --publish-service=$(POD_NAMESPACE)/nginx-ingress-svc
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: default-http-backend
+  # namespace: ingress-nginx
+  labels:
+    app: default-http-backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: default-http-backend
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: default-http-backend
+        # Any image is permissable as long as:
+        # 1. It serves a 404 page at /
+        # 2. It serves 200 on a /healthz endpoint
+        image: gcr.io/google_containers/defaultbackend:1.4
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 10m
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 20Mi
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  # namespace: ingress-nginx
+  name: default-http-backend
+  labels:
+    app: default-http-backend
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: default-http-backend
+
+---
+# Source: thirdparty/charts/mini-thirdparty/templates/prometheus.yml
+
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: 'true'
+  labels:
+    name: prometheus-svc # ! DO NOT USE prometheus as a name: https://github.com/kubernetes/kubernetes/issues/25573
+    kubernetes.io/name: "Prometheus"
+  name: prometheus-svc
+spec:
+  selector:
+    app: prometheus
+  type: NodePort
+  ports:
+  - name: prometheus
+    protocol: TCP
+    port: 9090
+    targetPort: 9090
+    nodePort: 30900
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      name: prometheus
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: quay.io/coreos/prometheus:latest
+        args:
+          - '-storage.local.retention=$(STORAGE_RETENTION)'
+          - '-storage.local.memory-chunks=$(STORAGE_MEMORY_CHUNKS)'
+          - '-config.file=/etc/prometheus/prometheus.yml'
+          - '-alertmanager.url=http://alertmanager:9093/alertmanager'
+          # - '-web.external-url=$(EXTERNAL_URL)'
+        ports:
+        - name: web
+          containerPort: 9090
+        env:
+        # - name: EXTERNAL_URL
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: external-url
+        #       key: url
+        - name: STORAGE_RETENTION
+          valueFrom:
+            configMapKeyRef:
+              name: prometheus-env
+              key: storage-retention
+        - name: STORAGE_MEMORY_CHUNKS
+          valueFrom:
+            configMapKeyRef:
+              name: prometheus-env
+              key: storage-memory-chunks
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/prometheus
+        # - name: rules-volume
+        #   mountPath: /etc/prometheus-rules
+        - name: prometheus-data
+          mountPath: /prometheus
+      volumes:
+      - name: config-volume
+        configMap:
+          name: prometheus-configmap
+      # - name: rules-volume
+      #   configMap:
+      #     name: prometheus-rules
+      - name: prometheus-data
+        emptyDir: {}
+
+---
+
+# Useful examples on how to configure Prometheus
+# * https://www.weave.works/prometheus-and-kubernetes-monitoring-your-applications/
+# * https://grafana.net/dashboards/162
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-configmap
+data:
+  prometheus.yml: |-
+    # A scrape configuration for running Prometheus on a Kubernetes cluster.
+    # This uses separate scrape configs for cluster components (i.e. API server, node)
+    # and services to allow each to use different authentication configs.
+    #
+    # Kubernetes labels will be added as Prometheus labels on metrics via the
+    # `labelmap` relabeling action.
+
+    rule_files:
+      - "/etc/prometheus-rules/*.rules"
+
+    # Scrape config for cluster components.
+    scrape_configs:
+    - job_name: 'kubernetes-cluster'
+      # Default to scraping over https. If required, just disable this or change to
+      # `http`.
+      scheme: https
+      # This TLS & bearer token file config is used to connect to the actual scrape
+      # endpoints for cluster components. This is separate to discovery auth
+      # configuration (`in_cluster` below) because discovery & scraping are two
+      # separate concerns in Prometheus.
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        # If your node certificates are self-signed or use a different CA to the
+        # master CA, then disable certificate verification below. Note that
+        # certificate verification is an integral part of a secure infrastructure
+        # so this should only be disabled in a controlled environment. You can
+        # disable certificate verification by uncommenting the line below.
+        #
+        # insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      kubernetes_sd_configs:
+      - api_servers:
+        - https://kubernetes.default.svc
+        in_cluster: true
+        role: apiserver
+
+    - job_name: 'kubernetes-cadvisor'
+
+      # Default to scraping over https. If required, just disable this or change to
+      # `http`.
+      scheme: http
+
+      # This TLS & bearer token file config is used to connect to the actual scrape
+      # endpoints for cluster components. This is separate to discovery auth
+      # configuration (`in_cluster` below) because discovery & scraping are two
+      # separate concerns in Prometheus.
+      #tls_config:
+      #  ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        # If your node certificates are self-signed or use a different CA to the
+        # master CA, then disable certificate verification below. Note that
+        # certificate verification is an integral part of a secure infrastructure
+        # so this should only be disabled in a controlled environment. You can
+        # disable certificate verification by uncommenting the line below.
+        #
+        # insecure_skip_verify: true
+      #bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      kubernetes_sd_configs:
+      - api_servers:
+        - https://kubernetes.default.svc
+        in_cluster: true
+        role: node
+
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      # Use cadvisor 4194 port
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:4194'
+        target_label: __address__
+
+      # Backward compatibility for Kubernetes 1.3 dashboards
+      metric_relabel_configs:
+      - source_labels: [io_kubernetes_container_name,container_name]
+        action: replace
+        regex: (.*);(.*)
+        replacement: '${1}${2}'
+        target_label: io_kubernetes_container_name
+      - source_labels: [kubernetes_pod_name,pod_name]
+        action: replace
+        regex: (.*);(.*)
+        replacement: '${1}${2}'
+        target_label: kubernetes_pod_name
+      - source_labels: [kubernetes_pod_name]
+        action: replace
+        target_label: io_kubernetes_pod_name
+
+    - job_name: 'kubernetes-nodes'
+
+      # Default to scraping over https. If required, just disable this or change to
+      # `http`.
+      scheme: http
+
+      # This TLS & bearer token file config is used to connect to the actual scrape
+      # endpoints for cluster components. This is separate to discovery auth
+      # configuration (`in_cluster` below) because discovery & scraping are two
+      # separate concerns in Prometheus.
+      #tls_config:
+      #  ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        # If your node certificates are self-signed or use a different CA to the
+        # master CA, then disable certificate verification below. Note that
+        # certificate verification is an integral part of a secure infrastructure
+        # so this should only be disabled in a controlled environment. You can
+        # disable certificate verification by uncommenting the line below.
+        #
+        # insecure_skip_verify: true
+      #bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      kubernetes_sd_configs:
+      - api_servers:
+        - https://kubernetes.default.svc
+        in_cluster: true
+        role: node
+
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      # Use insecure read-only HTTP 10255 port
+      # More info is here: https://github.com/kayrus/kubelet-exploit
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:10255'
+        target_label: __address__
+
+      # Backward compatibility for Kubernetes 1.3 dashboards
+      metric_relabel_configs:
+      - source_labels: [io_kubernetes_container_name,container_name]
+        action: replace
+        regex: (.*);(.*)
+        replacement: '${1}${2}'
+        target_label: io_kubernetes_container_name
+      - source_labels: [kubernetes_pod_name,pod_name]
+        action: replace
+        regex: (.*);(.*)
+        replacement: '${1}${2}'
+        target_label: kubernetes_pod_name
+      - source_labels: [kubernetes_pod_name]
+        action: replace
+        target_label: io_kubernetes_pod_name
+
+    # - job_name: 'kubernetes-node-exporter'
+    #   tls_config:
+    #     ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    #   bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    #   kubernetes_sd_configs:
+    #   - api_servers:
+    #     - https://kubernetes.default.svc
+    #     in_cluster: true
+    #     role: node
+
+    #   relabel_configs:
+    #   - action: labelmap
+    #     regex: __meta_kubernetes_node_label_(.+)
+    #   - source_labels: [__meta_kubernetes_role]
+    #     action: replace
+    #     target_label: kubernetes_role
+    #   - source_labels: [__address__]
+    #     regex: '(.*):10250'
+    #     replacement: '${1}:9100'
+    #     target_label: __address__
+    #   - source_labels: [__meta_kubernetes_node_label_kubernetes_io_hostname]
+    #     target_label: __instance__
+    #   # set "name" value to "job"
+    #   - source_labels: [job]
+    #     regex: 'kubernetes-(.*)'
+    #     replacement: '${1}'
+    #     target_label: name
+
+    # Scrape config for service endpoints.
+    #
+    # The relabeling allows the actual service scrape endpoint to be configured
+    # via the following annotations:
+    #
+    # * `prometheus.io/scrape`: Only scrape services that have a value of `true`
+    # * `prometheus.io/scheme`: If the metrics endpoint is secured then you will need
+    # to set this to `https` & most likely set the `tls_config` of the scrape config.
+    # * `prometheus.io/path`: If the metrics path is not `/metrics` override this.
+    # * `prometheus.io/port`: If the metrics are exposed on a different port to the
+    # service then set this appropriately.
+    - job_name: 'kubernetes-service-endpoints'
+
+      kubernetes_sd_configs:
+      - api_servers:
+        - 'https://kubernetes.default.svc'
+        in_cluster: true
+        role: endpoint
+
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+      - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme]
+        action: replace
+        target_label: __scheme__
+        regex: (https?)
+      - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
+      - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+        action: replace
+        target_label: __address__
+        regex: (.+)(?::\d+);(\d+)
+        replacement: $1:$2
+      - action: labelmap
+        regex: __meta_kubernetes_service_label_(.+)
+      - source_labels: [__meta_kubernetes_service_namespace]
+        action: replace
+        target_label: kubernetes_namespace
+      - source_labels: [__meta_kubernetes_service_name]
+        action: replace
+        target_label: kubernetes_name
+
+    # Example scrape config for probing services via the Blackbox Exporter.
+    #
+    # The relabeling allows the actual service scrape endpoint to be configured
+    # via the following annotations:
+    #
+    # * `prometheus.io/probe`: Only probe services that have a value of `true`
+    - job_name: 'kubernetes-services'
+
+      metrics_path: /probe
+      params:
+        module: [http_2xx]
+
+      kubernetes_sd_configs:
+      - api_servers:
+        - 'https://kubernetes.default.svc'
+        in_cluster: true
+        role: service
+
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_probe]
+        action: keep
+        regex: true
+      - source_labels: [__address__]
+        target_label: __param_target
+      - target_label: __address__
+        replacement: blackbox
+      - source_labels: [__param_target]
+        target_label: instance
+      - action: labelmap
+        regex: __meta_kubernetes_service_label_(.+)
+      - source_labels: [__meta_kubernetes_service_namespace]
+        target_label: kubernetes_namespace
+      - source_labels: [__meta_kubernetes_service_name]
+        target_label: kubernetes_name
+
+    # Example scrape config for pods
+    #
+    # The relabeling allows the actual pod scrape endpoint to be configured via the
+    # following annotations:
+    #
+    # * `prometheus.io/scrape`: Only scrape pods that have a value of `true`
+    # * `prometheus.io/path`: If the metrics path is not `/metrics` override this.
+    # * `prometheus.io/port`: Scrape the pod on the indicated port instead of the default of `9102`.
+    - job_name: 'kubernetes-pods'
+
+      kubernetes_sd_configs:
+      - api_servers:
+        - 'https://kubernetes.default.svc'
+        in_cluster: true
+        role: pod
+
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
+      - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+        action: replace
+        regex: (.+):(?:\d+);(\d+)
+        replacement: ${1}:${2}
+        target_label: __address__
+      - action: labelmap
+        regex: __meta_kubernetes_pod_label_(.+)
+      - source_labels: [__meta_kubernetes_pod_namespace]
+        action: replace
+        target_label: kubernetes_namespace
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: replace
+        target_label: kubernetes_pod_name          
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-env
+data:
+  storage-retention: 360h
+  storage-memory-chunks: '1048576'
+
+---
+# Source: thirdparty/charts/mini-thirdparty/templates/etcd.yaml
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: etcd
+  labels:
+    app: etcd
+    group: hkube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etcd
+  template:
+    metadata:
+      labels:
+        app: etcd
+        group: hkube
+    spec:
+      containers:
+        - name: etcd
+          image: 'quay.io/coreos/etcd:latest'
+          command: 
+            - /usr/local/bin/etcd
+            - --name 
+            - my-etcd
+            - --cors
+            - '*'
+            - --initial-advertise-peer-urls
+            - http://0.0.0.0:2380
+            - --listen-peer-urls
+            - http://0.0.0.0:2380
+            - --advertise-client-urls
+            - http://0.0.0.0:4001
+            - --listen-client-urls
+            - http://0.0.0.0:4001
+            - --initial-cluster-state
+            - new
+          # args: ["--data-dir=data.etcd --name "my-etcd" --cors='*' --initial-advertise-peer-urls http://0.0.0.0:2380 --listen-peer-urls http://0.0.0.0:2380 --advertise-client-urls http://0.0.0.0:4001 --listen-client-urls http://0.0.0.0:4001  --initial-cluster-state new" ]
+          # args: ["--data-dir=data.etcd --name my-etcd --cors='*' --initial-advertise-peer-urls http://0.0.0.0:2380 --listen-peer-urls http://0.0.0.0:2380 --advertise-client-urls http://0.0.0.0:4001 --listen-client-urls http://0.0.0.0:4001  --initial-cluster-state new"]
+          ports:
+            - containerPort: 2380
+              name: peer
+            - containerPort: 4001
+              name: client
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: etcd-client
+  labels:
+    app: etcd
+    group: hkube
+spec:
+  selector:
+    app: etcd
+  ports:
+    - name: client
+      protocol: TCP
+      port: 4001
+      targetPort: 4001
+    - name: peer
+      protocol: TCP
+      port: 2380
+      targetPort: 2380
+---
+# Source: thirdparty/charts/mini-thirdparty/templates/jaeger-all-in-one.yml
+
+#
+# Copyright 2017 The Jaeger Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License. You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under the License
+# is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+# or implied. See the License for the specific language governing permissions and limitations under
+# the License.
+#
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jaeger-deployment
+  labels:
+    app: jaeger
+    jaeger-infra: jaeger-deployment
+    group: hkube
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jaeger
+        jaeger-infra: jaeger-pod
+        group: hkube
+    spec:
+        containers:
+        -   env:
+            - name: COLLECTOR_ZIPKIN_HTTP_PORT
+              value: "9411"
+            - name: QUERY_BASE_PATH
+              value: "/jaeger"
+            image: jaegertracing/all-in-one
+            name: jaeger
+            ports:
+              - containerPort: 5775
+                protocol: UDP
+              - containerPort: 6831
+                protocol: UDP
+              - containerPort: 6832
+                protocol: UDP
+              - containerPort: 16686
+                protocol: TCP
+              - containerPort: 9411
+                protocol: TCP
+            readinessProbe:
+              httpGet:
+                path: "/"
+                port: 16686
+              initialDelaySeconds: 5
+---              
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger-query
+  labels:
+    app: jaeger
+    jaeger-infra: jaeger-service
+    group: hkube
+spec:
+  ports:
+    - name: query-http
+      port: 16686
+      protocol: TCP
+      targetPort: 16686
+  selector:
+    jaeger-infra: jaeger-pod
+  type: ClusterIP
+---  
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger-collector
+  labels:
+    app: jaeger
+    jaeger-infra: collector-service
+    group: hkube
+spec:
+  ports:
+  - name: jaeger-collector-tchannel
+    port: 14267
+    protocol: TCP
+    targetPort: 14267
+  - name: jaeger-collector-http
+    port: 14268
+    protocol: TCP
+    targetPort: 14268
+  - name: jaeger-collector-zipkin
+    port: 9411
+    protocol: TCP
+    targetPort: 9411
+  selector:
+    jaeger-infra: jaeger-pod
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger-agent
+  labels:
+    app: jaeger
+    jaeger-infra: agent-service
+    group: hkube
+spec:
+  ports:
+  - name: agent-zipkin-thrift
+    port: 5775
+    protocol: UDP
+    targetPort: 5775
+  - name: agent-compact
+    port: 6831
+    protocol: UDP
+    targetPort: 6831
+  - name: agent-binary
+    port: 6832
+    protocol: UDP
+    targetPort: 6832
+  selector:
+    jaeger-infra: jaeger-pod
+  type: ClusterIP
+---    
+apiVersion: v1
+kind: Service
+metadata:
+  name: zipkin
+  labels:
+    app: jaeger
+    jaeger-infra: zipkin-service
+    group: hkube
+spec:
+  ports:
+  - name: jaeger-collector-zipkin
+    port: 9411
+    protocol: TCP
+    targetPort: 9411
+  clusterIP: None
+  selector:
+    jaeger-infra: jaeger-pod
+
+---
+# Source: thirdparty/charts/mini-thirdparty/templates/minio.yaml
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  # This name uniquely identifies the Deployment
+  name: minio-deployment
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        # Label is used as selector in the service.
+        app: minio
+    spec:
+      # Refer to the PVC created earlier
+      volumes:
+      - name: storage
+        emptyDir: {}
+      containers:
+      - name: minio
+        # Pulls the default Minio image from Docker Hub
+        image: minio/minio
+        args:
+        - server
+        - /storage
+        env:
+        # Minio access key and secret key
+        - name: MINIO_ACCESS_KEY
+          value: hkubeminiokey
+        - name: MINIO_SECRET_KEY
+          value: hkubeminiosecret
+        ports:
+        - containerPort: 9000
+        # Mount the volume into the pod
+        volumeMounts:
+        - name: storage # must match the volume name, above
+          mountPath: "/storage"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
+  selector:
+    app: minio
+
+---
+# Source: thirdparty/charts/mini-thirdparty/templates/redis.yml
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis
+        group: hkube
+    spec:
+      containers:
+      - name: master
+        image: redis:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 6379
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  labels:
+    app: redis
+    group: hkube
+spec:
+  ports:
+  - port: 6379
+    targetPort: 6379
+  selector:
+    app: redis
+
+---
+# Source: thirdparty/templates/etcd-ui.yml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: etcd-ui
+  labels:
+    app: etcd-ui
+    group: hkube
+    third-party: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etcd-ui
+  template:
+    metadata:
+      labels:
+        app: etcd-ui
+        group: hkube
+    spec:
+      containers:
+        - name: etcd-ui
+          image: "hkube/etcd-ui:v1.0.3"
+          env: 
+            - name: HOST
+              value: "0.0.0.0"
+          ports:
+            - containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: etcd-ui
+  labels:
+    app: etcd-ui
+    release: RELEASE-NAME
+    heritage: Tiller
+    third-party: "true"
+spec:
+  selector:
+    app: etcd-ui
+  ports:
+    - name: server
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: etcd-ui
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: etcd-ui
+    release: RELEASE-NAME
+    heritage: Tiller
+    core: "true"
+spec:
+  rules:
+    - http:
+        paths:
+        - path: /hkube/etcd-ui
+          backend:
+            serviceName: etcd-ui
+            servicePort: 8080
+
+
+
+
+---
+# Source: thirdparty/charts/mini-thirdparty/templates/ingress-jaeger.yaml
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-jaeger
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # tls:
+  # # This assumes tls-secret exists.
+  # - secretName: tls-secret
+  rules:
+  - http:
+      paths:
+        - path: /jaeger
+          backend:
+            serviceName: jaeger-query
+            servicePort: 16686
+---
+# Source: thirdparty/charts/mini-thirdparty/templates/ingress-minio.yaml
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: minio-jaeger
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # tls:
+  # # This assumes tls-secret exists.
+  # - secretName: tls-secret
+  rules:
+  - http:
+      paths:
+        - path: /system/minio
+          backend:
+            serviceName: minio-service
+            servicePort: 9000
+

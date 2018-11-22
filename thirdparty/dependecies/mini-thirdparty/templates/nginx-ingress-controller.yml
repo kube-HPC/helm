@@ -1,3 +1,4 @@
+{{- if not .Values.global.production }}
 # apiVersion: v1
 # kind: Namespace
 # metadata:
@@ -272,3 +273,4 @@ spec:
     targetPort: 8080
   selector:
     app: default-http-backend
+{{- end }}

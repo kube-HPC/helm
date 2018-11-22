@@ -34,5 +34,6 @@ spec:
             /usr/local/bin/kubectl delete job -l delete-group=delete-dep-and-jobs
             /usr/local/bin/kubectl delete job -l metrics-group=worker
             /usr/local/bin/kubectl delete job -l type=pipeline-driver
+            /usr/local/bin/kubectl delete secret s3-secret
             /usr/local/bin/kubectl delete crd etcdclusters.etcd.database.coreos.com etcdbackups.etcd.database.coreos.com etcdrestores.etcd.database.coreos.com 
             echo Done
