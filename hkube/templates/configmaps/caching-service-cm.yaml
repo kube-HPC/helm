@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: caching-service-configmap
+data:
+  NODE_ENV: {{ .Values.env.node_env }}
+  METRICS_PORT: "{{index .Values "caching-service" "env" "metric_port"}}"
+  DEFAULT_STORAGE: "s3"

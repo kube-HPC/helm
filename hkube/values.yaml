@@ -226,3 +226,13 @@ worker:
     port: 3001
   service:
     type: ClusterIP
+caching-service:
+  env:
+    metric_port: '3000'
+  image:
+    repository: hkube/caching-service
+    tag: v1.1.1
+  metrics:
+    port: 3001
+  service:
+    type: ClusterIP
