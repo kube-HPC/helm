@@ -7,3 +7,4 @@ data:
   NODE_ENV: {{.Values.env.node_env}}
   BASE_URL_PATH: {{index .Values "api-server" "env" "base_url_path"}}
   DEFAULT_STORAGE: {{index .Values "env" "default_storage"}}
+  METRICS_PORT: "3001"

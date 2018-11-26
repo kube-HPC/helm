@@ -115,7 +115,7 @@ pipeline-cleaner:
     tag: v1.1.5
 pipeline-driver:
   env:
-    metric_port: '3000'
+    metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
     tag: v1.1.47
