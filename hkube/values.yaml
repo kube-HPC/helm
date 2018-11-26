@@ -56,6 +56,7 @@ clean-old-jobs:
   env:
     hkube_log_level: '0'
     max_completed_job_age_hours: '1'
+    clean_cron: "*/1 * * * *"
   image:
     repository: hkube/clean-old-jobs
     tag: v1.1.8

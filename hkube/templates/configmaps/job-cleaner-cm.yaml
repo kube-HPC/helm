@@ -5,3 +5,4 @@ metadata:
   name: job-cleaner-configmap
 data:
   MAX_COMPLETED_JOB_AGE_HOURS: {{ index .Values "clean-old-jobs" "env" "max_completed_job_age_hours" | quote }}
+  CLEAN_CRON: {{ index .Values "clean-old-jobs" "env" "clean_cron" | quote }}
