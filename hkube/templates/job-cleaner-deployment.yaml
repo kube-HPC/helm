@@ -1,30 +1,47 @@
-apiVersion: batch/v1beta1
-kind: CronJob
+apiVersion: apps/v1beta2
+kind: Deployment
 metadata:
   name: clean-old-jobs
   labels:
+    app: clean-old-jobs
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
     group: {{ .Values.lables.group.value }}
-    delete-group: delete-dep-and-jobs
     core: "true"
 spec:
-  schedule: "*/10 * * * *"
-  jobTemplate:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clean-old-jobs
+      release: clean-old-jobs
+  template:
+    metadata:
+      labels:
+        app: clean-old-jobs
+        release: clean-old-jobs
+        group: {{ .Values.lables.group.value }}
     spec:
-      template:
-        metadata:
-          name: clean-old-jobs
-          labels:
-            group: {{ .Values.lables.group.value }}
-            delete-group: delete-dep-and-jobs
-        spec:
-          serviceAccountName: clean-old-jobs
-          containers:
-          - name: clean-old-jobs
-            image: "{{ index  .Values "clean-old-jobs" "image" "repository" }}:{{ index .Values "clean-old-jobs" "image" "tag" }}"
-            env:
+      {{- if .Values.global.production }}
+      nodeSelector:
+        core: "true"
+      {{- end }}
+      serviceAccountName: clean-old-jobs
+      containers:
+        - name: clean-old-jobs
+          image: "{{ index  .Values "clean-old-jobs" "image" "repository" }}:{{ index .Values "clean-old-jobs" "image" "tag" }}"
+          imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
+          ports:
+            - containerPort: {{ index .Values "clean-old-jobs" "env" "metric_port" }}
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: clean-old-jobs-configmap
+                  key: NODE_ENV
             - name: "MAX_COMPLETED_JOB_AGE_HOURS"
               valueFrom:
                 configMapKeyRef:
                   name: job-cleaner-configmap
                   key: MAX_COMPLETED_JOB_AGE_HOURS
-          restartPolicy: Never
+
