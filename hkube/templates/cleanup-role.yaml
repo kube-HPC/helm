@@ -18,7 +18,7 @@ metadata:
     core: "true"
 rules:
 - apiGroups: [""]
-  resources: ["pods", "secrets"]
+  resources: ["pods", "secrets", "svc"]
   verbs: ["get", "list", "delete"]
 - apiGroups: ["batch", "extensions"]
   resources: ["jobs"]

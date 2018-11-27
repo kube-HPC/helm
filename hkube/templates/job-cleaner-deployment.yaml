@@ -30,9 +30,6 @@ spec:
         - name: clean-old-jobs
           image: "{{ index  .Values "clean-old-jobs" "image" "repository" }}:{{ index .Values "clean-old-jobs" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-          ports:
-            - containerPort: {{ index .Values "clean-old-jobs" "env" "metric_port" }}
-              protocol: TCP
           env:
             - name: NODE_ENV
               valueFrom:
@@ -42,6 +39,6 @@ spec:
             - name: "MAX_COMPLETED_JOB_AGE_HOURS"
               valueFrom:
                 configMapKeyRef:
-                  name: job-cleaner-configmap
+                  name: clean-old-jobs-configmap
                   key: MAX_COMPLETED_JOB_AGE_HOURS
 

@@ -1,6 +1,6 @@
 {{- if index .Values "api-server" "ingress" "enabled" -}}
 {{- $fullName := "api-server" -}}
-{{- $servicePort := index .Values "api-server" "env" "metric_port" -}}
+{{- $servicePort := index .Values "api-server" "env" "port" -}}
 {{- $ingressPath := index .Values "api-server" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
