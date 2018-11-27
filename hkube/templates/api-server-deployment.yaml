@@ -32,12 +32,19 @@ spec:
           ports:
             - containerPort: {{ index .Values "api-server" "env" "metric_port" }}
               protocol: TCP
+            - containerPort: {{ index .Values "api-server" "env" "port" }}
+              protocol: TCP
           env:
             - name: METRICS_PORT
               valueFrom:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: METRICS_PORT
+            - name: API_SERVER_REST_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: PORT
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:
