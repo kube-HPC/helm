@@ -1,6 +1,6 @@
 global:
   clusterName: cluster-local
-  registry: docker.io/
+  registry: 'docker.io/'
   storage:
     minio:
       access_key: hkubeminiokey

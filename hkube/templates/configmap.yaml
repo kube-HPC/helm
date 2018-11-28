@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   registry.json: |
-        {"registry":"{{ .Values.global.registry }}"}
+        {"registry":{{ .Values.global.registry | trimSuffix "/" | quote }} }
   clusterOptions.json: |
         {"useNodeSelector":{{ .Values.global.production | default false }}}
   versions.json: |
