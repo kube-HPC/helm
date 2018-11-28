@@ -13,3 +13,7 @@ git add .
 git commit -m "update charts"
 git push
 git checkout master
+git stash apply
+git add hkube/values.yaml
+git commit -m "update version to ${APP_VERSION}"
+git push
