@@ -7,7 +7,7 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
-systemversion: 1.1.551
+systemversion: 1.1.552
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -131,7 +131,7 @@ pipeline-driver-queue:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.1.11
+    tag: v1.1.12
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
