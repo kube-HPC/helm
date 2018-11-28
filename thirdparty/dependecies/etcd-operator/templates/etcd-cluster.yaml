@@ -9,7 +9,7 @@ metadata:
 spec:
   size: 3
   version: "3.3.1"
-  repository: "gcr.io/etcd-development/etcd"
+  repository: "{{ .Values.global.registry }}gcr.io/etcd-development/etcd"
   pod:
     busyboxImage: "{{ .Values.global.registry }}busybox:1.28.0-glibc"
     nodeSelector:
