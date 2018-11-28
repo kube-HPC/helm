@@ -25,7 +25,7 @@ spec:
       serviceAccountName: task-executor-serviceaccount
       containers:
         - name: task-executor
-          image: "{{ index .Values "task-executor" "image" "repository" }}:{{ index .Values "task-executor" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "task-executor" "image" "repository" }}:{{ index .Values "task-executor" "image" "tag" }}"
           ports:
             - containerPort: {{ index .Values "task-executor" "env" "metric_port" }}
           env:

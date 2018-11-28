@@ -25,7 +25,7 @@ spec:
       serviceAccountName: resource-manager-serviceaccount
       containers:
         - name: resource-manager
-          image: "{{ index .Values "resource-manager" "image" "repository" }}:{{ index .Values "resource-manager" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "resource-manager" "image" "repository" }}:{{ index .Values "resource-manager" "image" "tag" }}"
           ports:
             - containerPort: {{ index .Values "resource-manager" "env" "metric_port" }}
           env:

@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
           - name: etcd-cleaner
-            image: "{{ index  .Values "etcd-cleaner" "image" "repository" }}:{{ index .Values "etcd-cleaner" "image" "tag" }}"
+            image: "{{ .Values.global.registry }}{{ index  .Values "etcd-cleaner" "image" "repository" }}:{{ index .Values "etcd-cleaner" "image" "tag" }}"
             env:
             - name: "OBJECT_EXPIRATION_DAYS"
               valueFrom:

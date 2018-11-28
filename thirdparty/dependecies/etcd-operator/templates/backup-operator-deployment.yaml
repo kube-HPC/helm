@@ -21,7 +21,7 @@ spec:
       serviceAccountName: {{ template "etcd-backup-operator.serviceAccountName" . }}
       containers:
       - name: {{ .Values.backupOperator.name }}
-        image: "{{ .Values.backupOperator.image.repository }}:{{ .Values.backupOperator.image.tag }}"
+        image: "{{ .Values.global.registry }}{{ .Values.backupOperator.image.repository }}:{{ .Values.backupOperator.image.tag }}"
         imagePullPolicy: {{ .Values.backupOperator.image.pullPolicy }}
         command:
         - etcd-backup-operator

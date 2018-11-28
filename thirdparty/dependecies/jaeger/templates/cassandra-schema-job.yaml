@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: jaeger-jaeger-cassandra-schema
-        image: jaegertracing/jaeger-cassandra-schema:1.2.0
+        image: {{ .Values.global.registry }}jaegertracing/jaeger-cassandra-schema:1.2.0
         imagePullPolicy: IfNotPresent
         env:
         - name: CQLSH_HOST

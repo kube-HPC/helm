@@ -30,7 +30,7 @@ spec:
         third-party: "true"
       containers:
       - name: jaeger-jaeger-collector
-        image: jaegertracing/jaeger-collector:1.2.0
+        image: {{ .Values.global.registry }}jaegertracing/jaeger-collector:1.2.0
         imagePullPolicy: IfNotPresent
         env:
           - name: SPAN_STORAGE_TYPE

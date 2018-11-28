@@ -30,7 +30,7 @@ spec:
         third-party: "true"
       containers:
       - name: jaeger-jaeger-query
-        image: jaegertracing/jaeger-query:1.4.1
+        image: {{ .Values.global.registry }}jaegertracing/jaeger-query:1.4.1
         imagePullPolicy: IfNotPresent
         env:
           - name: QUERY_BASE_PATH

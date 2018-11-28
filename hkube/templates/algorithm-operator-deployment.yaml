@@ -27,7 +27,7 @@ spec:
       {{- end }}
       containers:
         - name: algorithm-operator
-          image: "{{ index .Values "algorithm-operator" "image" "repository" }}:{{ index .Values "algorithm-operator" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "algorithm-operator" "image" "repository" }}:{{ index .Values "algorithm-operator" "image" "tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http

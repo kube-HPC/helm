@@ -38,7 +38,7 @@ spec:
               value: "9411"
             - name: QUERY_BASE_PATH
               value: "/jaeger"
-            image: jaegertracing/all-in-one
+            image: {{ .Values.global.registry }}jaegertracing/all-in-one
             name: jaeger
             ports:
               - containerPort: 5775

@@ -22,7 +22,7 @@ nodeSelector: {}
 tolerations: []
 
 ## Redis image version
-redis_image: quay.io/smile/redis:4.0.6r2
+redis_image: {{ .Values.global.registry }}quay.io/smile/redis:4.0.6r2
 ## replicas number for each component
 replicas:
   servers: 3

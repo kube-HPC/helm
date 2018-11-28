@@ -20,7 +20,7 @@ spec:
       containers:
       - name: minio
         # Pulls the default Minio image from Docker Hub
-        image: minio/minio
+        image: {{ .Values.global.registry }}minio/minio
         args:
         - server
         - /storage

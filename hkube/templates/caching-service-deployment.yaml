@@ -27,7 +27,7 @@ spec:
       {{- end }}
       containers:
         - name: caching-service
-          image: "{{ index .Values "caching-service" "image" "repository" }}:{{ index .Values "caching-service" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "caching-service" "image" "repository" }}:{{ index .Values "caching-service" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
           ports:
             - containerPort: {{ index .Values "caching-service" "env" "metric_port" }}

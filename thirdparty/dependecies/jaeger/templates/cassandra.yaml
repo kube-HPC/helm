@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: jaeger-cassandra
-        image: "cassandra:3.11"
+        image: "{{ .Values.global.registry }}cassandra:3.11"
         imagePullPolicy: "IfNotPresent"
         resources:
           limits:

@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: quay.io/coreos/prometheus:latest
+        image: {{ .Values.global.registry }}quay.io/coreos/prometheus:latest
         args:
           - '-storage.local.retention=$(STORAGE_RETENTION)'
           - '-storage.local.memory-chunks=$(STORAGE_MEMORY_CHUNKS)'

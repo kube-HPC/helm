@@ -27,7 +27,7 @@ spec:
         third-party: "true"
       containers:
       - name: jaeger-jaeger-agent
-        image: jaegertracing/jaeger-agent:1.2.0
+        image: {{ .Values.global.registry }}jaegertracing/jaeger-agent:1.2.0
         imagePullPolicy: IfNotPresent
         env:
         - name: COLLECTOR_HOST_PORT

@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: pipeline-driver-queue
-          image: "{{ index .Values "pipeline-driver-queue" "image" "repository" }}:{{ index .Values "pipeline-driver-queue" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "pipeline-driver-queue" "image" "repository" }}:{{ index .Values "pipeline-driver-queue" "image" "tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http

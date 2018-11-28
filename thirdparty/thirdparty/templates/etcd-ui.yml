@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: etcd-ui
-          image: "{{ index .Values "etcd-ui" "image" "repository" }}:{{ index .Values "etcd-ui" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "etcd-ui" "image" "repository" }}:{{ index .Values "etcd-ui" "image" "tag" }}"
           env: 
             - name: HOST
               value: "0.0.0.0"

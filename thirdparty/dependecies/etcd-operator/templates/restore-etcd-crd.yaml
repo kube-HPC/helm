@@ -13,7 +13,7 @@ metadata:
 spec:
   clusterSpec:
     size: {{ .Values.etcdCluster.size }}
-    baseImage: "{{ .Values.etcdCluster.image.repository }}"
+    baseImage: "{{ .Values.global.registry }}{{ .Values.etcdCluster.image.repository }}"
     version: {{ .Values.etcdCluster.image.tag }}
     pod:
 {{ toYaml .Values.etcdCluster.pod | indent 6 }}

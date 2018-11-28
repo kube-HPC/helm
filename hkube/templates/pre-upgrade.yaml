@@ -24,7 +24,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: post-del-dep-and-jobs
-        image: "{{ index .Values "delete-deployment-and-jobs" "image" "repository" }}:{{ index .Values "delete-deployment-and-jobs" "image" "tag" }}"
+        image: "{{ .Values.global.registry }}{{ index .Values "delete-deployment-and-jobs" "image" "repository" }}:{{ index .Values "delete-deployment-and-jobs" "image" "tag" }}"
         command:
           - /bin/sh
           - -c

@@ -25,7 +25,7 @@ spec:
       {{- end }}
       containers:
       - name: sentinel
-        image: {{ .Values.redis_image }}
+        image: {{ .Values.global.registry }}{{ .Values.redis_image }}
         resources:
 {{ toYaml .Values.resources.sentinel | indent 10 }}
         env:

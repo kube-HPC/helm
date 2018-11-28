@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: etcd
-          image: 'quay.io/coreos/etcd:latest'
+          image: '{{ .Values.global.registry }}quay.io/coreos/etcd:latest'
           command: 
             - /usr/local/bin/etcd
             - --name 

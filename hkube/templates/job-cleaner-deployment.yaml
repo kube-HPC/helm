@@ -28,7 +28,7 @@ spec:
       serviceAccountName: clean-old-jobs
       containers:
         - name: clean-old-jobs
-          image: "{{ index  .Values "clean-old-jobs" "image" "repository" }}:{{ index .Values "clean-old-jobs" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index  .Values "clean-old-jobs" "image" "repository" }}:{{ index .Values "clean-old-jobs" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
           env:
             - name: NODE_ENV

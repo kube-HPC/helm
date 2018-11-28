@@ -11,7 +11,7 @@ spec:
   version: "3.3.1"
   repository: "gcr.io/etcd-development/etcd"
   pod:
-    busyboxImage: "busybox:1.28.0-glibc"
+    busyboxImage: "{{ .Values.global.registry }}busybox:1.28.0-glibc"
     nodeSelector:
       third-party: "true"
     etcdEnv:

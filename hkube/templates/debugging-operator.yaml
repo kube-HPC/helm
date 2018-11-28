@@ -75,7 +75,7 @@ spec:
       serviceAccountName: debugging-operator-serviceaccount
       containers:
         - name: debugging-operator
-          image: "{{ index .Values "debugging-operator" "image" "repository" }}:{{ index .Values "debugging-operator" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "debugging-operator" "image" "repository" }}:{{ index .Values "debugging-operator" "image" "tag" }}"
           ports:
             - containerPort: 3000
           env:

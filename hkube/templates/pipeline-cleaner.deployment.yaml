@@ -14,6 +14,6 @@ spec:
         spec:
           containers:
           - name: pipeline-cleaner
-            image: "{{ index  .Values "pipeline-cleaner" "image" "repository" }}:{{ index .Values "pipeline-cleaner" "image" "tag" }}"
+            image: "{{ .Values.global.registry }}{{ index  .Values "pipeline-cleaner" "image" "repository" }}:{{ index .Values "pipeline-cleaner" "image" "tag" }}"
           restartPolicy: Never
           

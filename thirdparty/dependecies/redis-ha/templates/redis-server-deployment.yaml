@@ -29,7 +29,7 @@ spec:
       {{- end }}
       containers:
       - name: redis
-        image: {{ .Values.redis_image }}
+        image: {{ .Values.global.registry }}{{ .Values.redis_image }}
         resources:
 {{ toYaml .Values.resources.server | indent 10 }}
         env:

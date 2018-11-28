@@ -23,7 +23,7 @@ spec:
       {{- end }}
       containers:
         - name: monitor-server
-          image: "{{ index  .Values "monitor-server" "image" "repository" }}:{{ index .Values "monitor-server" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index  .Values "monitor-server" "image" "repository" }}:{{ index .Values "monitor-server" "image" "tag" }}"
           ports:
             - containerPort: 30010
           volumeMounts:

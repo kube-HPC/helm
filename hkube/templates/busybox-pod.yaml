@@ -8,7 +8,7 @@ metadata:
     thirdparty: "true"
 spec:
   containers:
-  - image: "{{ index .Values "busybox" "image" "repository" }}:{{ index .Values "busybox" "image" "tag" }}"
+  - image: "{{ .Values.global.registry }}{{ index .Values "busybox" "image" "repository" }}:{{ index .Values "busybox" "image" "tag" }}"
     command:
       - sleep
       - "3600"

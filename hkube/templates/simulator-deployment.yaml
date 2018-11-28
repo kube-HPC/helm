@@ -23,7 +23,7 @@ spec:
       {{- end }}
       containers:
         - name: simulator
-          image: "{{ index .Values "simulator" "image" "repository" }}:{{ index .Values "simulator" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "simulator" "image" "repository" }}:{{ index .Values "simulator" "image" "tag" }}"
           ports:
             - containerPort: {{ index .Values "simulator" "env" "metric_port" }}
           env:

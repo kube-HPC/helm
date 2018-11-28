@@ -27,7 +27,7 @@ spec:
       {{- end }}
       containers:
         - name: api-server
-          image: "{{ index .Values "api-server" "image" "repository" }}:{{ index .Values "api-server" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "api-server" "image" "repository" }}:{{ index .Values "api-server" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
           ports:
             - containerPort: {{ index .Values "api-server" "env" "metric_port" }}

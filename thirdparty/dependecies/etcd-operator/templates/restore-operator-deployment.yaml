@@ -21,7 +21,7 @@ spec:
       serviceAccountName: {{ template "etcd-restore-operator.serviceAccountName" . }}
       containers:
       - name: {{ .Values.restoreOperator.name }}
-        image: "{{ .Values.restoreOperator.image.repository }}:{{ .Values.restoreOperator.image.tag }}"
+        image: "{{ .Values.global.registry }}{{ .Values.restoreOperator.image.repository }}:{{ .Values.restoreOperator.image.tag }}"
         imagePullPolicy: {{ .Values.restoreOperator.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.restoreOperator.port }}

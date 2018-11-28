@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
           - name: results-cleaner
-            image: "{{ index  .Values "storage-cleaner" "image" "repository" }}:{{ index .Values "storage-cleaner" "image" "tag" }}"
+            image: "{{ .Values.global.registry }}{{ index  .Values "storage-cleaner" "image" "repository" }}:{{ index .Values "storage-cleaner" "image" "tag" }}"
             env:
             - name: "OBJECT_EXPIRATION_DAYS"
               valueFrom:
