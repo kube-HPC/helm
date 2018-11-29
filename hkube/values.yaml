@@ -7,7 +7,7 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
-systemversion: 1.1.564
+systemversion: 1.1.565
 algorithm-example:
   image:
     repository: hkube/algorithm-example
