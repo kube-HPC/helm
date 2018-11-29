@@ -7,7 +7,7 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
-systemversion: 1.1.563
+systemversion: 1.1.564
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -161,7 +161,7 @@ results-cleaner:
     object_expiration_days: '90'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.1.16
+    tag: v1.1.17
 simulator:
   env:
     hkube_log_level: '0'
@@ -184,7 +184,7 @@ storage-cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.1.16
+    tag: v1.1.17
 task-executor:
   env:
     metric_port: '3000'
