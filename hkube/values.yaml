@@ -7,7 +7,7 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
-systemversion: 1.1.557
+systemversion: 1.1.558
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -225,7 +225,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.73
+    tag: v1.1.74
   metrics:
     port: 3001
   service:
