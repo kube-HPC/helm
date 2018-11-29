@@ -7,7 +7,7 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
-systemversion: 1.1.558
+systemversion: 1.1.559
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -151,7 +151,7 @@ resource-manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.1.40
+    tag: v1.1.41
   service:
     type: ClusterIP
 resources: {}
