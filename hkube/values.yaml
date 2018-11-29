@@ -7,7 +7,7 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
-systemversion: 1.1.556
+systemversion: 1.1.557
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -43,7 +43,7 @@ api-server:
     port: '3000'
   image:
     repository: hkube/api-server
-    tag: v1.1.106
+    tag: v1.1.107
   ingress:
     enabled: true
     path: /hkube/api-server
