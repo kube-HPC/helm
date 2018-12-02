@@ -3,23 +3,20 @@ global:
   registry: ''
   storage:
     fs:
-      pvc: 
-         name: 'hkube-storage'
-         capacity: '10Gi'
-         nfs_server: 'nfs-server'
-         nfs_root: '/srv/vol_nfs'
-      base_directory: '/hkubedata'
-
+      pvc:
+        name: hkube-storage
+        capacity: 10Gi
+        nfs_server: nfs-server
+        nfs_root: /srv/vol_nfs
+      base_directory: /hkubedata
     minio:
       access_key: hkubeminiokey
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
-
 env:
   default_storage: s3
   node_env: production
-
 systemversion: 1.1.565
 algorithm-example:
   image:
