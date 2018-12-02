@@ -7,6 +7,12 @@ metadata:
     core: "true"
     app: storage-cleaner
 spec:
+{{- if eq .Values.env.default_storage "fs" }}
+  volumes:
+    - name: storage-volume
+      persistentVolumeClaim:
+        claimName: hkube-storage-pvc
+{{- end }}  
   schedule: "0 0 * * *"
   jobTemplate:
     spec:
@@ -15,12 +21,24 @@ spec:
           containers:
           - name: storage-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "storage-cleaner" "image" "repository" }}:{{ index .Values "storage-cleaner" "image" "tag" }}"
+{{- if eq .Values.env.default_storage "fs" }}
+            volumeMounts:
+              - name: storage-volume
+                mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
+{{- end }} 
             env:
             - name: "OBJECT_EXPIRATION_DAYS"
               valueFrom:
                 configMapKeyRef:
                   name: storage-cleaner-configmap
                   key: OBJECT_EXPIRATION_DAYS
+{{- if eq .Values.env.default_storage "fs" }}
+            - name: BASE_FS_ADAPTER_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: BASE_FS_ADAPTER_DIRECTORY
+{{- else if eq .Values.env.default_storage "s3" }}
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -32,10 +50,11 @@ spec:
                   name: s3-secret
                   key: awsSecret
             - name: S3_ENDPOINT_URL
-              valueFrom: 
+              valueFrom:
                 secretKeyRef:
                   name: s3-secret
                   key: awsEndpointUrl
+{{- end }}  
             - name: DEFAULT_STORAGE
               valueFrom:
                 configMapKeyRef:

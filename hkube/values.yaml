@@ -162,13 +162,6 @@ resource-manager:
   service:
     type: ClusterIP
 resources: {}
-results-cleaner:
-  env:
-    delete_destination: results
-    object_expiration_days: '90'
-  image:
-    repository: hkube/storage-cleaner
-    tag: v1.1.17
 simulator:
   env:
     hkube_log_level: '0'
