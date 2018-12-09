@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.582
+systemversion: 1.1.583
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -82,7 +82,7 @@ debugging-operator:
     metric_port: '3000'
   image:
     repository: hkube/debugging-operator
-    tag: v1.1.7
+    tag: v1.1.8
 delete-deployment-and-jobs:
   image:
     repository: hkube/del-dep-and-jobs
