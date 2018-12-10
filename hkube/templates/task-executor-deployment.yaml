@@ -48,3 +48,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+            - name: DEFAULT_STORAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: DEFAULT_STORAGE
