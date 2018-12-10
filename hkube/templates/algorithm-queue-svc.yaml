@@ -18,5 +18,4 @@ spec:
       targetPort: {{ index .Values "algorithm-queue-svc" "env" "metric_port" }}
       protocol: TCP
   selector:
-    app: algorithm-queue-svc
-    release: {{ .Release.Name }}
+    metrics-group: 'algorithm-queue'
