@@ -11,11 +11,11 @@ metadata:
     role: hkube-storage
 spec:
   capacity:
-    storage: {{ .Values.global.storage.capacity }}
+    storage: {{ .Values.global.storage.fs.pvc.capacity }}
   accessModes:
     - ReadWriteMany
   nfs:
-    server: {{ .Values.global.storage.nfs_server }}
+    server: {{ .Values.global.storage.fs.pvc.nfs_server }}
     path: "{{ .Values.global.storage.fs.pvc.nfs_root }}/{{ .Values.global.clusterName }}/hkube-storage"
 
 ---
@@ -35,7 +35,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: {{ .Values.global.storage.capacity }}
+      storage: {{ .Values.global.storage.fs.pvc.capacity }}
   selector:
     matchLabels:
       group: {{ .Values.lables.group.value }}

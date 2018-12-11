@@ -7,17 +7,18 @@ metadata:
     core: "true"
     app: storage-cleaner
 spec:
-{{- if eq .Values.env.default_storage "fs" }}
-  volumes:
-    - name: storage-volume
-      persistentVolumeClaim:
-        claimName: hkube-storage-pvc
-{{- end }}  
+
   schedule: "0 0 * * *"
   jobTemplate:
     spec:
       template:
         spec:
+{{- if eq .Values.env.default_storage "fs" }}
+          volumes:
+            - name: storage-volume
+              persistentVolumeClaim:
+                claimName: hkube-storage-pvc
+{{- end }}          
           containers:
           - name: storage-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "storage-cleaner" "image" "repository" }}:{{ index .Values "storage-cleaner" "image" "tag" }}"

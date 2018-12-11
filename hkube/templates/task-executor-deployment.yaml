@@ -53,3 +53,8 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: DEFAULT_STORAGE
+            - name: BASE_FS_ADAPTER_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: BASE_FS_ADAPTER_DIRECTORY
