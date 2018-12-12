@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.591
+systemversion: 1.1.592
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -170,7 +170,7 @@ simulator:
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
   image:
     repository: hkube/simulator
-    tag: v1.1.28
+    tag: v1.1.29
   ingress:
     enabled: true
     path: /hkube/simulator
