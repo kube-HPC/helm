@@ -87,10 +87,6 @@ delete-deployment-and-jobs:
   image:
     repository: hkube/del-dep-and-jobs
     tag: v1.0.8
-deployment:
-  image:
-    repository: hkube/deployment
-    tag: v1.1.54
 etcd-cleaner:
   env:
     object_expiration_days: '5'
@@ -204,21 +200,6 @@ trigger-service:
     repository: hkube/trigger-service
     tag: v1.1.24
   service:
-    type: ClusterIP
-webhook-stub-ui:
-  env:
-    metric_port: 3002
-    public_url: /hkube/webhook-stub-ui
-  image:
-    repository: hkube/webhook-stub-ui
-    tag: v1.1.2
-  ingress:
-    enabled: true
-    path: /hkube/webhook-stub-ui
-  metrics:
-    port: 3002
-  service:
-    port: 3002
     type: ClusterIP
 worker:
   env:
