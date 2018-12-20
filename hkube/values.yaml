@@ -30,7 +30,7 @@ algorithm-operator:
     tag: v1.1.15
   ingress:
     enabled: false
-    path: /hkube/trigger-service
+    path: /hkube/algorithm-operator
   service:
     type: ClusterIP
 algorithm-queue:
