@@ -55,3 +55,8 @@ global.clusterName | the name of the kubernetes cluster | cluster-local
 ```console
 $ helm install hkube/hkube --set global.production=true --set global.clusterName=dev --set global.storage.minio.url=http://192.168.10.10:9000 --set global.storage.minio.access_key=accesskey --set global.storage.minio.secret_key=secretkey --name my-release 
 ```
+
+or use a values file
+```console
+$ helm install --name my-release -f some-config.file.yaml hkube/hkube
+```
