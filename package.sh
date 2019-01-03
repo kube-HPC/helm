@@ -18,5 +18,6 @@ git checkout master
 git stash apply
 git add hkube/values.yaml
 git commit -m "update version to ${APP_VERSION} [skip ci]"
-git pull
+git pull --no-commit
+git commit -m "merge from master [skip ci]"
 git push
