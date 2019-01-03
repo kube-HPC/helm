@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.644
+systemversion: 1.1.645
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -119,7 +119,7 @@ nodeSelector: {}
 pipeline-cleaner:
   image:
     repository: hkube/pipeline-cleaner
-    tag: v1.1.7
+    tag: v1.1.8
 pipeline-driver:
   env:
     metric_port: '3001'
