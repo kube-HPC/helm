@@ -21,6 +21,7 @@ spec:
       nodeSelector:
         core: "true"
       {{- end }}
+      serviceAccountName: monitor-server-serviceaccount
       containers:
         - name: monitor-server
           image: "{{ .Values.global.registry }}{{ index  .Values "monitor-server" "image" "repository" }}:{{ index .Values "monitor-server" "image" "tag" }}"
