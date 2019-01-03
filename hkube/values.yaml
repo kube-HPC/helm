@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.643
+systemversion: 1.1.644
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -92,7 +92,7 @@ etcd-cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.1.5
+    tag: v1.1.6
 image:
   pullPolicy: IfNotPresent
 lables:
