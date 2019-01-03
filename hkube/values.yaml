@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.650
+systemversion: 1.1.651
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -187,7 +187,7 @@ task-executor:
     pipeline_drivers_amount: 30
   image:
     repository: hkube/task-executor
-    tag: v1.1.63
+    tag: v1.1.64
   service:
     type: ClusterIP
 thirdparty:
