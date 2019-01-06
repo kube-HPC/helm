@@ -25,6 +25,9 @@ spec:
       containers:
         - name: monitor-server
           image: "{{ .Values.global.registry }}{{ index  .Values "monitor-server" "image" "repository" }}:{{ index .Values "monitor-server" "image" "tag" }}"
+          env:
+            - name: NODE_ENV
+              value: {{.Values.env.node_env}}
           ports:
             - containerPort: 30010
           volumeMounts:
