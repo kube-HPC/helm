@@ -5,5 +5,8 @@ metadata:
   name: caching-service-configmap
 data:
   NODE_ENV: {{ .Values.env.node_env }}
-  METRICS_PORT: "{{index .Values "caching-service" "env" "metric_port"}}"
-  DEFAULT_STORAGE: "s3"
+  DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
+{{- if eq .Values.env.default_storage "fs" }}
+  BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
+{{- end }}  
+  PORT: {{index .Values "caching-service" "env" "port" | quote}}

@@ -13,12 +13,12 @@ spec:
   selector:
     matchLabels:
       app: caching-service
-      release: caching-service
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
         app: caching-service
-        release: caching-service
+        release: {{ .Release.Name }}
         group: {{ .Values.lables.group.value }}
     spec:
       {{- if .Values.global.production }}
@@ -30,7 +30,7 @@ spec:
           image: "{{ .Values.global.registry }}{{ index .Values "caching-service" "image" "repository" }}:{{ index .Values "caching-service" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
           ports:
-            - containerPort: {{ index .Values "caching-service" "env" "metric_port" }}
+            - containerPort: {{ index .Values "caching-service" "env" "port" }}
               protocol: TCP
           env:
             - name: NODE_ENV
@@ -58,7 +58,4 @@ spec:
                 configMapKeyRef:
                   name: caching-service-configmap
                   key: DEFAULT_STORAGE
-            - name: JAEGER_AGENT_SERVICE_HOST
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.hostIP
+            

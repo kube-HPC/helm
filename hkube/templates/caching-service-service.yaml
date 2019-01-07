@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: caching-service
+  labels:
+    app: caching-service
+    group: {{ .Values.lables.group.value }}
+    core: "true"
+spec:
+  selector:
+    app: caching-service
+  ports:
+    - name: http
+      port: {{ index .Values "caching-service" "env" "port" }}
+      targetPort: {{ index .Values "caching-service" "env" "port" }}
