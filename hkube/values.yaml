@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.669
+systemversion: 1.1.670
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -53,7 +53,7 @@ api-server:
     port: '3000'
   image:
     repository: hkube/api-server
-    tag: v1.1.122
+    tag: v1.1.123
   ingress:
     enabled: true
     path: /hkube/api-server
