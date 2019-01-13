@@ -13,7 +13,7 @@ install:
   - git remote -v
   - git checkout -f -b version-branch
   - npm version patch -m "bump version [skip ci]"
-  - git push origin version-branch:master
+  - git push origin version-branch:master --follow-tags
 script:
   - git config  remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
   - git fetch origin
