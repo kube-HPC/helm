@@ -220,3 +220,7 @@ caching-service:
     tag: v1.1.6
   service:
     type: ClusterIP
+algorithm-builder:
+  image:
+    repository: hkube/algorithm-builder
+    tag: v1.1.0

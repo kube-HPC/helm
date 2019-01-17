@@ -73,20 +73,24 @@ data:
                         "tag": "{{ index .Values "storage-cleaner" "image" "tag" }}"
                   },
                   {
-                  "project": "pipeline-cleaner",
-                  "tag": "{{ index .Values "pipeline-cleaner" "image" "tag" }}"
+                        "project": "pipeline-cleaner",
+                        "tag": "{{ index .Values "pipeline-cleaner" "image" "tag" }}"
                   },
                   {
-                  "project": "debugging-operator",
-                  "tag": "{{ index .Values "debugging-operator" "image" "tag" }}"
+                        "project": "debugging-operator",
+                        "tag": "{{ index .Values "debugging-operator" "image" "tag" }}"
                   },
                   {
-                  "project": "etcd-cleaner",
-                  "tag": "{{ index .Values "etcd-cleaner" "image" "tag" }}"
+                        "project": "etcd-cleaner",
+                        "tag": "{{ index .Values "etcd-cleaner" "image" "tag" }}"
                   },
                   {
-                  "project": "caching-service",
-                  "tag": "{{ index .Values "caching-service" "image" "tag" }}"
+                        "project": "caching-service",
+                        "tag": "{{ index .Values "caching-service" "image" "tag" }}"
+                  },
+                  {
+                        "project": "algorithm-builder",
+                        "tag": "{{ index .Values "algorithm-builder" "image" "tag" }}"
                   }
             ]
             }
