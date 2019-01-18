@@ -177,7 +177,8 @@ simulator:
     type: ClusterIP
 storage-cleaner:
   env:
-    object_expiration_days: '5'
+    temp_object_expiration_days: '5'
+    result_object_expiration_days: '20'
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.22
