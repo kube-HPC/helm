@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.751
+systemversion: 1.1.752
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -207,7 +207,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.86
+    tag: v1.1.87
   metrics:
     port: 3001
   service:
