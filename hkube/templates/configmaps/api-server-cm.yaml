@@ -12,3 +12,6 @@ data:
 {{- end }}  
   METRICS_PORT: {{index .Values "api-server" "env" "metric_port" | quote}}
   PORT: {{index .Values "api-server" "env" "port" | quote}}
+  PIPELINE_DRIVER_CPU: {{index .Values "api-server" "env" "cpu" | quote}}
+  PIPELINE_DRIVER_MEM: {{index .Values "api-server" "env" "mem" | quote}}
+

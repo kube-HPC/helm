@@ -94,6 +94,16 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: DEFAULT_STORAGE
+            - name: PIPELINE_DRIVER_CPU
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: PIPELINE_DRIVER_CPU
+            - name: PIPELINE_DRIVER_MEM
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: PIPELINE_DRIVER_MEM
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:

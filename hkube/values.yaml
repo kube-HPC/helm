@@ -15,7 +15,7 @@ global:
       url: 'http://minio-service:9000'
   production: false
 env:
-  default_storage: s3
+  default_storage: redis
   node_env: production
 systemversion: 1.1.755
 algorithm-example:
@@ -51,6 +51,8 @@ api-server:
     base_url_path: /hkube/api-server
     metric_port: '3001'
     port: '3000'
+    cpu: '0.2'
+    mem: '2048'
   image:
     repository: hkube/api-server
     tag: v1.1.127
