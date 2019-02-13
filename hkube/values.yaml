@@ -188,7 +188,7 @@ task-executor:
   env:
     metric_port: '3000'
     pipeline_drivers_amount: 30
-    worker_socket_max_payload_bytes: 1e9
+    worker_socket_max_payload_bytes: 1000000000
   image:
     repository: hkube/task-executor
     tag: v1.1.86
