@@ -58,3 +58,10 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: BASE_FS_ADAPTER_DIRECTORY
+            - name: WORKER_SOCKET_MAX_PAYLOAD_BYTES
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: WORKER_SOCKET_MAX_PAYLOAD_BYTES
+
+                  
