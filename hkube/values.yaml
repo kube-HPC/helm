@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.775
+systemversion: 1.1.776
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -78,7 +78,7 @@ clean-old-jobs:
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
-    tag: v1.1.4
+    tag: v1.1.5
 debugging-operator:
   env:
     metric_port: '3000'
