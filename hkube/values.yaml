@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.802
+systemversion: 1.1.803
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -74,7 +74,7 @@ clean-old-jobs:
     clean_cron: '*/1 * * * *'
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.1.13
+    tag: v1.1.14
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
