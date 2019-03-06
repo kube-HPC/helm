@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.808
+systemversion: 1.1.809
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -183,7 +183,7 @@ storage-cleaner:
     result_object_expiration_days: '20'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.1.24
+    tag: v1.1.25
 task-executor:
   env:
     metric_port: '3000'
