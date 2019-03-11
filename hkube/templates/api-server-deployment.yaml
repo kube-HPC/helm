@@ -94,6 +94,11 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: DEFAULT_STORAGE
+            - name: CLUSTER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: CLUSTER_NAME
             - name: PIPELINE_DRIVER_CPU
               valueFrom:
                 configMapKeyRef:
