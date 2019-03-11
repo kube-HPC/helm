@@ -38,6 +38,11 @@ spec:
                 configMapKeyRef:
                   name: caching-service-configmap
                   key: NODE_ENV
+            - name: CLUSTER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: caching-service-configmap
+                  key: CLUSTER_NAME
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:

@@ -38,6 +38,11 @@ spec:
                 configMapKeyRef:
                   name: storage-cleaner-configmap
                   key: RESULT_OBJECT_EXPIRATION_DAYS
+            - name: CLUSTER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: storage-cleaner-configmap
+                  key: CLUSTER_NAME
 {{- if eq .Values.env.default_storage "fs" }}
             - name: BASE_FS_ADAPTER_DIRECTORY
               valueFrom:
