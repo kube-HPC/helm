@@ -14,4 +14,5 @@ data:
   PORT: {{index .Values "api-server" "env" "port" | quote}}
   PIPELINE_DRIVER_CPU: {{index .Values "api-server" "env" "pipeline_driver_cpu" | quote}}
   PIPELINE_DRIVER_MEM: {{index .Values "api-server" "env" "pipeline_driver_mem" | quote}}
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
 
