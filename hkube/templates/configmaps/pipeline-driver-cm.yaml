@@ -10,3 +10,4 @@ data:
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}   
   METRICS_PORT: "{{index .Values "pipeline-driver" "env" "metric_port"}}"
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}

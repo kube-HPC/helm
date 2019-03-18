@@ -10,3 +10,4 @@ data:
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}  
   PORT: {{index .Values "caching-service" "env" "port" | quote}}
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}

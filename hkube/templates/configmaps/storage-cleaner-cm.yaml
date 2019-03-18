@@ -7,3 +7,4 @@ data:
   TEMP_OBJECT_EXPIRATION_DAYS: "{{index .Values "storage-cleaner" "env" "temp_object_expiration_days"}}"
   RESULT_OBJECT_EXPIRATION_DAYS: "{{index .Values "storage-cleaner" "env" "result_object_expiration_days"}}"
   DEFAULT_STORAGE: {{index .Values "env" "default_storage"}}
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}

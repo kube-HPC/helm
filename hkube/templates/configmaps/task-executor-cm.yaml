@@ -14,3 +14,4 @@ data:
   {{- else }}
   PIPELINE_DRIVERS_AMOUNT: "1"
   {{- end }}
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
