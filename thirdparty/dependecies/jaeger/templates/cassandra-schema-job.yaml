@@ -15,7 +15,6 @@ metadata:
     group: hkube
     thirdparty: "true"
 spec:
-  activeDeadlineSeconds: 120
   template:
     metadata:
       name: jaeger-jaeger-cassandra-schema
