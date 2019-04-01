@@ -63,5 +63,9 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: WORKER_SOCKET_MAX_PAYLOAD_BYTES
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
 
                   

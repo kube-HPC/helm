@@ -36,6 +36,10 @@ spec:
                 configMapKeyRef:
                   name: monitor-server-configmap
                   key: CLUSTER_NAME
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
 {{- if eq .Values.env.default_storage "fs" }}
             - name: BASE_FS_ADAPTER_DIRECTORY
               valueFrom:

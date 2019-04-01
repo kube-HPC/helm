@@ -51,4 +51,8 @@ spec:
                 configMapKeyRef:
                   name: clean-old-jobs-configmap
                   key: MAX_PENDING_JOB_AGE_HOURS
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
 

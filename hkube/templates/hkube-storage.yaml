@@ -24,7 +24,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: hkube-storage-pvc
-  namespace: default 
+  namespace: {{ .Release.Namespace }} 
   labels:
     group: {{ .Values.lables.group.value }}
     release: {{ .Release.Name }}
