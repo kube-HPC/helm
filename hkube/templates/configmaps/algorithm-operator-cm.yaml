@@ -8,3 +8,4 @@ data:
   DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
   METRICS_PORT: {{ index .Values "algorithm-operator" "env" "metric_port" | quote }}
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
