@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.889
+systemversion: 1.1.890
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -226,4 +226,4 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.35
+    tag: v1.1.36
