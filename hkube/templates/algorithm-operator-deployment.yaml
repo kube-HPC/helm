@@ -52,6 +52,11 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+            - name: DEFAULT_STORAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: DEFAULT_STORAGE
             - name: CLUSTER_NAME
               valueFrom:
                 configMapKeyRef:
