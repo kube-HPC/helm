@@ -43,6 +43,13 @@ spec:
                 configMapKeyRef:
                   name: caching-service-configmap
                   key: CLUSTER_NAME
+{{- if eq .Values.env.default_storage "fs" }}
+            - name: BASE_FS_ADAPTER_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: caching-service-configmap
+                  key: BASE_FS_ADAPTER_DIRECTORY
+{{- else if eq .Values.env.default_storage "s3" }}
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -58,6 +65,7 @@ spec:
                 secretKeyRef:
                   name: s3-secret
                   key: awsEndpointUrl
+{{- end }}                         
             - name: DEFAULT_STORAGE
               valueFrom:
                 configMapKeyRef:
@@ -67,4 +75,3 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-            
