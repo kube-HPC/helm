@@ -25,10 +25,21 @@ spec:
       nodeSelector:
         core: "true"
       {{- end }}
+{{- if eq .Values.env.default_storage "fs" }}
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: hkube-storage-pvc
+{{- end }}        
       containers:
         - name: caching-service
           image: "{{ .Values.global.registry }}{{ index .Values "caching-service" "image" "repository" }}:{{ index .Values "caching-service" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
+{{- if eq .Values.env.default_storage "fs" }}
+          volumeMounts:
+            - name: storage-volume
+              mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
+{{- end }}                
           ports:
             - containerPort: {{ index .Values "caching-service" "env" "port" }}
               protocol: TCP
