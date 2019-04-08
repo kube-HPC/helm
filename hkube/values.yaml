@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.905
+systemversion: 1.1.906
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -220,7 +220,7 @@ caching-service:
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v1.1.10
+    tag: v1.1.11
   service:
     type: ClusterIP
 algorithm-builder:
