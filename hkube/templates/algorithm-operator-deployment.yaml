@@ -4,7 +4,7 @@ metadata:
   name: algorithm-operator
   labels:
     app: algorithm-operator
-    release: algorithm-operator
+    release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.lables.group.value }}
     core: "true"
@@ -17,7 +17,7 @@ spec:
     metadata:
       labels:
         app: algorithm-operator
-        release: algorithm-operator
+        release: {{ .Release.Name }}
         group: {{ .Values.lables.group.value }}
     spec:
       serviceAccountName: algorithm-operator-serviceaccount
