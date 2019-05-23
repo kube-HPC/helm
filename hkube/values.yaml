@@ -79,12 +79,6 @@ cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
     tag: v1.1.6
-debugging-operator:
-  env:
-    metric_port: '3000'
-  image:
-    repository: hkube/debugging-operator
-    tag: v1.1.13
 delete-deployment-and-jobs:
   image:
     repository: hkube/del-dep-and-jobs

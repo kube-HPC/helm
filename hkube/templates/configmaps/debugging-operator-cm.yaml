@@ -1,8 +1,0 @@
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: debugging-operator-configmap
-data: 
-  NODE_ENV: {{ .Values.env.node_env }}
-  METRICS_PORT: {{ index .Values "debugging-operator" "env" "metric_port" | quote }}

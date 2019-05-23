@@ -77,10 +77,6 @@ data:
                         "tag": "{{ index .Values "pipeline-cleaner" "image" "tag" }}"
                   },
                   {
-                        "project": "debugging-operator",
-                        "tag": "{{ index .Values "debugging-operator" "image" "tag" }}"
-                  },
-                  {
                         "project": "etcd-cleaner",
                         "tag": "{{ index .Values "etcd-cleaner" "image" "tag" }}"
                   },
