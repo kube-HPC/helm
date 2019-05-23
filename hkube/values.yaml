@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.947
+systemversion: 1.1.948
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -27,7 +27,7 @@ algorithm-operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.20
+    tag: v1.1.21
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -36,7 +36,7 @@ algorithm-operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.38
+    tag: v1.1.39
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -55,7 +55,7 @@ api-server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.1.145
+    tag: v1.1.146
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -94,7 +94,7 @@ etcd-cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.1.6
+    tag: v1.1.7
 image:
   pullPolicy: IfNotPresent
 lables:
@@ -111,7 +111,7 @@ monitor-server:
     metric_port: 30010
   image:
     repository: hkube/monitor-server
-    tag: v1.1.79
+    tag: v1.1.80
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -121,7 +121,7 @@ nodeSelector: {}
 pipeline-cleaner:
   image:
     repository: hkube/pipeline-cleaner
-    tag: v1.1.8
+    tag: v1.1.9
 pipeline-driver:
   env:
     metric_port: '3001'
@@ -156,7 +156,7 @@ resource-manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.1.42
+    tag: v1.1.43
   service:
     type: ClusterIP
 resources: {}
@@ -191,7 +191,7 @@ task-executor:
     worker_socket_max_payload_bytes: 1000000000
   image:
     repository: hkube/task-executor
-    tag: v1.1.91
+    tag: v1.1.92
   service:
     type: ClusterIP
 thirdparty:
@@ -202,7 +202,7 @@ trigger-service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.1.26
+    tag: v1.1.27
   service:
     type: ClusterIP
 worker:
@@ -226,4 +226,4 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.40
+    tag: v1.1.41
