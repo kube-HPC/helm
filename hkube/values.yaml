@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: 1.1.980
+systemversion: 1.1.981
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -45,7 +45,7 @@ algorithm-queue-svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.1.25
+    tag: v1.1.26
 api-server:
   env:
     base_url_path: /hkube/api-server
