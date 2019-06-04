@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.5
+systemversion: v1.1.1000
 algorithm-example:
   image:
     repository: hkube/algorithm-example
