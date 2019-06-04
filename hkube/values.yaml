@@ -17,7 +17,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.4
+systemversion: v1.1.5
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -121,7 +121,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.77
+    tag: v1.1.78
   service:
     type: ClusterIP
 pipeline-driver-queue:
@@ -220,4 +220,4 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.60
+    tag: v1.1.61
