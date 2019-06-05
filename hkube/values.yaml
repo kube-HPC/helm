@@ -162,7 +162,7 @@ simulator:
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
   image:
     repository: hkube/simulator
-    tag: v1.1.135
+    tag: v1.1.136
   ingress:
     enabled: true
     path: /hkube/simulator
