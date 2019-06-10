@@ -36,14 +36,21 @@ spec:
             - http://0.0.0.0:4001
             - --initial-cluster-state
             - new
+            - --data-dir
+            - /var/etcd/data
           # args: ["--data-dir=data.etcd --name "my-etcd" --cors='*' --initial-advertise-peer-urls http://0.0.0.0:2380 --listen-peer-urls http://0.0.0.0:2380 --advertise-client-urls http://0.0.0.0:4001 --listen-client-urls http://0.0.0.0:4001  --initial-cluster-state new" ]
           # args: ["--data-dir=data.etcd --name my-etcd --cors='*' --initial-advertise-peer-urls http://0.0.0.0:2380 --listen-peer-urls http://0.0.0.0:2380 --advertise-client-urls http://0.0.0.0:4001 --listen-client-urls http://0.0.0.0:4001  --initial-cluster-state new"]
+          volumeMounts:
+            - mountPath: /var/etcd
+              name: etcd-data
           ports:
-            - containerPort: 2380
-              name: peer
-            - containerPort: 4001
-              name: client
-
+          - containerPort: 2380
+            name: peer
+          - containerPort: 4001
+            name: client
+      volumes:
+      - emptyDir: {}
+        name: etcd-data
 ---
 kind: Service
 apiVersion: v1

@@ -71,6 +71,8 @@ spec:
           ports:
             - containerPort: 30010
           volumeMounts:
+            - name: uploads
+              mountPath: /hkube/monitor-server/uploads
             - name: versions-config
               mountPath: /versions
 {{- if eq .Values.env.default_storage "fs" }}
@@ -81,6 +83,8 @@ spec:
         - name: versions-config
           configMap:
             name: hkube-versions
+        - emptyDir: {}
+          name: uploads
 {{- if eq .Values.env.default_storage "fs" }}
         - name: storage-volume
           persistentVolumeClaim:

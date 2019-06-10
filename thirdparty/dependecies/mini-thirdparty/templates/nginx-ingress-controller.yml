@@ -1,4 +1,4 @@
-{{- if not .Values.global.production }}
+{{- if or (not .Values.global.production) (eq .Values.global.k8senv "openshift") }}
 # apiVersion: v1
 # kind: Namespace
 # metadata:
@@ -136,7 +136,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: nginx-ingress-serviceaccount
-    namespace: default
+    namespace: {{ .Release.Namespace }}
 
 ---
 
@@ -152,12 +152,21 @@ metadata:
     app: nginx-ingress-svc
 spec:
   ports:
+{{- if not (eq .Values.global.k8senv "openshift") }}
   - port: 80
     name: http
     targetPort: 80
   - port: 443
     name: https
     targetPort: 443
+{{- else }}        
+  - port: 8080
+    name: http
+    targetPort: 8080
+  - port: 9443
+    name: https
+    targetPort: 9443
+{{- end }}  
   # externalIPs:
   # - 10.32.10.6
   selector:
@@ -166,14 +175,20 @@ spec:
 
 ---
 apiVersion: extensions/v1beta1
+{{- if eq .Values.global.k8senv "openshift" }}
+kind: Deployment
+{{- else }}
 kind: DaemonSet
+{{- end }}                                    
 metadata:
   name: nginx-ingress-controller
   # namespace: ingress-nginx
   labels:
     k8s-app: nginx-ingress-controller
 spec:
-  # replicas: 1
+{{- if eq .Values.global.k8senv "openshift" }}
+  replicas: 1
+{{- end }}                                    
   template:
     metadata:
       labels:
@@ -186,6 +201,29 @@ spec:
       # hostNetwork: true
       terminationGracePeriodSeconds: 60
       serviceAccountName: nginx-ingress-serviceaccount
+      volumes:
+        - name: configs
+          emptyDir: {}
+        - name: data
+          emptyDir: {}
+      initContainers:
+      - name: init-myservice
+        image: {{ .Values.global.registry }}busybox:1.28.0-glibc
+        command: ['sh']
+        args:
+          - -c
+          - |
+            mkdir -p /etc/ingress-controller/auth
+            mkdir -p /etc/ingress-controller/ssl
+            mkdir -p /ingress-controller/ssl
+            chmod -R 777 /etc/ingress-controller/auth
+            chmod -R 777 /etc/ingress-controller/ssl
+            chmod -R 777 /ingress-controller/ssl
+        volumeMounts:
+          - name: configs
+            mountPath: /etc/ingress-controller
+          - name: data
+            mountPath: /ingress-controller
       containers:
       - image: {{ .Values.global.registry }}quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.9.0
         name: nginx-ingress-controller
@@ -201,12 +239,25 @@ spec:
             scheme: HTTP
           initialDelaySeconds: 10
           timeoutSeconds: 1
+        volumeMounts:
+          - name: configs
+            mountPath: /etc/ingress-controller
+          - name: data
+            mountPath: /ingress-controller
         ports:
         - containerPort: 10254
+{{- if not (eq .Values.global.k8senv "openshift") }}
         - containerPort: 80
           hostPort: 80
+{{- else }}        
+        - containerPort: 8080
+{{- end }}
+{{- if not (eq .Values.global.k8senv "openshift") }}
         - containerPort: 443
           hostPort: 443
+{{- else }}        
+        - containerPort: 9443
+{{- end }}
         env:
           - name: POD_NAME
             valueFrom:
@@ -216,9 +267,14 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
+        # command: ['sh', '-c', 'sleep 4000']
         args:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
+{{- if eq .Values.global.k8senv "openshift" }}
+        - --http-port=8080
+        - --https-port=9443
+{{- end }}        
         # - --publish-service=$(POD_NAMESPACE)/nginx-ingress-svc
 ---
 apiVersion: extensions/v1beta1

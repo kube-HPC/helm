@@ -14,6 +14,7 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
+  k8senv: k8s
 env:
   default_storage: s3
   node_env: production
