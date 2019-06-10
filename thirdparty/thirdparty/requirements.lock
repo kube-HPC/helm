@@ -10,6 +10,6 @@ dependencies:
   version: 2.1.3
 - name: mini-thirdparty
   repository: file://../dependecies/mini-thirdparty
-  version: 0.2.0
-digest: sha256:2bcdcca687549431c6fd5a7657b4c31a6fb8922e49ed6af591d70031ffe84a10
-generated: 2018-11-22T10:38:30.184024727+02:00
+  version: 0.3.0
+digest: sha256:826f8656452c46f29411509b2229fc08ee226ade876c157db0964d98b5ec691a
+generated: 2019-06-10T10:00:48.858425477+03:00
