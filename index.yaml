@@ -2,6 +2,28 @@ apiVersion: v1
 entries:
   hkube:
   - apiVersion: v1
+    appVersion: v1.1.1000
+    created: "2019-06-06T14:07:46.013157521Z"
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 9a720d170cc9b5c7d4b70481a680d0365f682e3a1b011224ad4e8f8db8ca594a
+    engine: gotpl
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.1.1000.tgz
+    version: v1.1.1000
+  - apiVersion: v1
     appVersion: 1.1.984
     created: 2019-06-04T08:36:54.5346335Z
     description: Open source project for HPC over kubernetes Hkube is a cloud native
@@ -7879,12 +7901,16 @@ entries:
     version: 1.1.616
   - apiVersion: v1
     appVersion: v1.1.5
+<<<<<<< HEAD
     created: 2019-06-04T13:11:47.625449384Z
+=======
+    created: "2019-06-04T13:47:13.599274938Z"
+>>>>>>> ae5ff3f8e20455ad9829a77d308905128cff0724
     description: Open source project for HPC over kubernetes Hkube is a cloud native
       open source framework to run distributed pipeline of algorithms built on Kubernetes.
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
       utilizing the available resources, based on user priorities and AI heuristics.
-    digest: 01136c575bd8b479dcd57901e25578c5b46edc8030d2e1959ad6fd9f57d46744
+    digest: cf3e546859069523bc80ba5a75cf117063baa6fda2f5ad4087ec5c979f2e14ce
     engine: gotpl
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -8035,4 +8061,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: 2019-06-10T09:20:34.496503886+03:00
+generated: "2019-06-06T14:07:46.008735449Z"
