@@ -46,7 +46,7 @@ algorithm-queue-svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.1.27
+    tag: v1.1.28
 api-server:
   env:
     base_url_path: /hkube/api-server
