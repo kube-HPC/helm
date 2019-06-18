@@ -22,6 +22,10 @@ spec:
         - name: pipeline-driver-queue
           image: "{{ .Values.global.registry }}{{ index .Values "pipeline-driver-queue" "image" "repository" }}:{{ index .Values "pipeline-driver-queue" "image" "tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            limits:
+              cpu: 200m
+              memory: 512Mi
           ports:
             - name: http
               containerPort: {{ index .Values "pipeline-driver-queue" "env" "metric_port" }}
@@ -50,18 +54,3 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          resources:
-{{ toYaml .Values.resources | indent 12 }}
-    {{- with .Values.nodeSelector }}
-      nodeSelector:
-      core: "true"
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}

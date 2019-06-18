@@ -13,10 +13,10 @@ serviceAccount:
     create: true
     name:
   backupOperatorServiceAccount:
-    create: true
+    create: false
     name:
   restoreOperatorServiceAccount:
-    create: true
+    create: false
     name:
 
 # Select what to deploy
@@ -24,10 +24,10 @@ deployments:
   etcdOperator: true
   # one time deployment, delete once completed,
   # Ref: https://github.com/coreos/etcd-operator/blob/master/doc/user/walkthrough/backup-operator.md
-  backupOperator: true
+  backupOperator: false
   # one time deployment, delete once completed
   # Ref: https://github.com/coreos/etcd-operator/blob/master/doc/user/walkthrough/restore-operator.md
-  restoreOperator: true
+  restoreOperator: false
 
 # creates custom resources, not all required,
 # you could use `helm template --values <values.yaml> --name release_name ... `

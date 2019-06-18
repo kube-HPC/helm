@@ -26,6 +26,10 @@ spec:
       containers:
         - name: task-executor
           image: "{{ .Values.global.registry }}{{ index .Values "task-executor" "image" "repository" }}:{{ index .Values "task-executor" "image" "tag" }}"
+          resources:
+            limits:
+              cpu: 250m
+              memory: 512Mi
           ports:
             - containerPort: {{ index .Values "task-executor" "env" "metric_port" }}
           env:
@@ -34,6 +38,16 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: NODE_ENV
+            - name: NO_PRIVILEGED
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: NO_PRIVILEGED
+            - name: IS_NAMESPACED
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: IS_NAMESPACED
             - name: PIPELINE_DRIVERS_AMOUNT
               valueFrom:
                 configMapKeyRef:

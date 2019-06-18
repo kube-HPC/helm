@@ -26,6 +26,10 @@ spec:
       containers:
         - name: trigger-service
           image: "{{ .Values.global.registry }}{{ index .Values "trigger-service" "image" "repository" }}:{{ index .Values "trigger-service" "image" "tag" }}"
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
           ports:
             - containerPort: {{ index .Values "trigger-service" "env" "metric_port" }}
           env:

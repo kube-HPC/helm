@@ -24,8 +24,12 @@ spec:
       containers:
         - name: simulator
           image: "{{ .Values.global.registry }}{{ index .Values "simulator" "image" "repository" }}:{{ index .Values "simulator" "image" "tag" }}"
+          resources:
+            limits:
+              cpu: 100m
+              memory: 256Mi
           ports:
-            - containerPort: {{ index .Values "simulator" "env" "metric_port" }}
+            - containerPort: {{ .Values.simulator.env.metric_port }}
           env:
             - name: MONITOR_BACKEND_PATH
               valueFrom:
@@ -37,6 +41,26 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: MONITOR_BACKEND_PATH_SOCKETIO
+            - name: MONITOR_BACKEND_USE_LOCATION
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: MONITOR_BACKEND_USE_LOCATION
+            - name: MONITOR_BACKEND_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: MONITOR_BACKEND_HOST
+            - name: MONITOR_BACKEND_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: MONITOR_BACKEND_PORT
+            - name: isSecure
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: MONITOR_BACKEND_IS_SECURE
             - name: NAMESPACE
               valueFrom:
                 fieldRef:

@@ -63,4 +63,6 @@ spec:
                   name: algorithm-operator-configmap
                   key: CLUSTER_NAME
           resources:
-
+            limits:
+              cpu: 250m
+              memory: 512Mi

@@ -21,6 +21,11 @@ spec:
       - name: minio
         # Pulls the default Minio image from Docker Hub
         image: {{ .Values.global.registry }}minio/minio
+        resources:
+          limits:
+            cpu: 200m
+            memory: 512Mi
+        command: ['minio']
         args:
         - server
         - /storage

@@ -25,6 +25,10 @@ spec:
       containers:
         - name: monitor-server
           image: "{{ .Values.global.registry }}{{ index  .Values "monitor-server" "image" "repository" }}:{{ index .Values "monitor-server" "image" "tag" }}"
+          resources:
+            limits:
+              cpu: 250m
+              memory: 512Mi
           env:
             - name: NODE_ENV
               valueFrom:

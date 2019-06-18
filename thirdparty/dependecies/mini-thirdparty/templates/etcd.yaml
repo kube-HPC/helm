@@ -20,6 +20,10 @@ spec:
       containers:
         - name: etcd
           image: '{{ .Values.global.registry }}quay.io/coreos/etcd:latest'
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
           command: 
             - /usr/local/bin/etcd
             - --name 

@@ -21,6 +21,7 @@ rules:
   resources: ["pods"]
   verbs: ["get", "list", "watch"]
 ---
+{{- if not .Values.global.namespaced }}
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -54,6 +55,7 @@ roleRef:
   name: resource-manager-clusterrole
   apiGroup: rbac.authorization.k8s.io
 ---
+{{- end }}
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:

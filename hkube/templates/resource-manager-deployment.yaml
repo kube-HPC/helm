@@ -26,6 +26,10 @@ spec:
       containers:
         - name: resource-manager
           image: "{{ .Values.global.registry }}{{ index .Values "resource-manager" "image" "repository" }}:{{ index .Values "resource-manager" "image" "tag" }}"
+          resources:
+            limits:
+              cpu: 250m
+              memory: 512Mi
           ports:
             - containerPort: {{ index .Values "resource-manager" "env" "metric_port" }}
           env:

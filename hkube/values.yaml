@@ -15,10 +15,15 @@ global:
       url: 'http://minio-service:9000'
   production: false
   k8senv: k8s
+  namespaced: false
+  noPrivileged: false
 env:
   default_storage: s3
   node_env: production
 systemversion: v1.1.1000
+docker_credentials_secret:
+  user: ''
+  password: ''
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -161,6 +166,10 @@ simulator:
     metric_port: 9050
     monitor_backend_path: /hkube/monitor-server/
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
+    monitor_backend_use_location: "false"
+    monitor_backend_host: ""
+    monitor_backend_port: ""
+    is_secure: ""
   image:
     repository: hkube/simulator
     tag: v1.1.142

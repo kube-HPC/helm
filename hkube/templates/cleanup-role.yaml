@@ -20,7 +20,7 @@ rules:
 - apiGroups: [""]
   resources: ["pods", "secrets", "services"]
   verbs: ["get", "list", "delete"]
-- apiGroups: ["batch", "extensions"]
+- apiGroups: ["batch"]
   resources: ["jobs"]
   verbs: ["get", "list", "delete"]
 - apiGroups: ["extensions", "apps"]
@@ -44,6 +44,7 @@ roleRef:
   name: cleanup
   apiGroup: rbac.authorization.k8s.io
 ---
+{{- if not .Values.global.namespaced }}
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -84,3 +85,4 @@ roleRef:
   kind: ClusterRole
   name: cleanup-clusterrole
   apiGroup: rbac.authorization.k8s.io
+{{- end }}

@@ -18,12 +18,12 @@ metadata:
     core: "true"
 rules:
 - apiGroups: [""]
-  resources: ["pods"]
+  resources: ["pods", "resourcequotas"]
   verbs: ["get", "list", "watch"]
 - apiGroups: [""]
   resources: ["configmaps"]
   verbs: ["get"]
-- apiGroups: ["batch", "extensions"]
+- apiGroups: ["batch"]
   resources: ["jobs"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ---
@@ -44,6 +44,7 @@ roleRef:
   name: task-executor
   apiGroup: rbac.authorization.k8s.io
 ---
+{{- if not .Values.global.namespaced }}
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -77,6 +78,7 @@ roleRef:
   name: task-executor-clusterrole
   apiGroup: rbac.authorization.k8s.io
 ---
+{{- end }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -99,12 +101,12 @@ rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["get"]
-- apiGroups: ["batch", "extensions"]
+- apiGroups: ["batch"]
   resources: ["jobs"]
   verbs: ["delete"]
-- apiGroups: ["apiextensions.k8s.io"]
-  resources: ["customresourcedefinitions"]
-  verbs: ["get"]
+# - apiGroups: ["apiextensions.k8s.io"]
+#   resources: ["customresourcedefinitions"]
+#   verbs: ["get"]
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -123,6 +125,7 @@ roleRef:
   name: worker-role
   apiGroup: rbac.authorization.k8s.io
 ---
+{{- if not .Values.global.namespaced }}
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -152,3 +155,4 @@ roleRef:
   kind: ClusterRole
   name: worker-clusterrole
   apiGroup: rbac.authorization.k8s.io
+{{- end }}  
