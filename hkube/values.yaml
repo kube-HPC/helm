@@ -166,10 +166,10 @@ simulator:
     metric_port: 9050
     monitor_backend_path: /hkube/monitor-server/
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
-    monitor_backend_use_location: "false"
-    monitor_backend_host: ""
-    monitor_backend_port: ""
-    is_secure: ""
+    monitor_backend_use_location: 'false'
+    monitor_backend_host: ''
+    monitor_backend_port: ''
+    is_secure: ''
   image:
     repository: hkube/simulator
     tag: v1.1.143
