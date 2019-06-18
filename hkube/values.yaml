@@ -21,9 +21,17 @@ env:
   default_storage: s3
   node_env: production
 systemversion: v1.1.1001
-docker_credentials_secret:
-  user: ''
-  password: ''
+build_secret:
+  pull:
+    registry: ''
+    namespace: ''
+    username: ''
+    password: ''
+  push:
+    registry: ''
+    namespace: ''
+    username: ''
+    password: ''
 algorithm-example:
   image:
     repository: hkube/algorithm-example
