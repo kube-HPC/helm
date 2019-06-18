@@ -18,7 +18,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1000
+systemversion: v1.1.1001
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -28,7 +28,7 @@ algorithm-operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.27
+    tag: v1.1.28
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -56,7 +56,7 @@ api-server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.1.153
+    tag: v1.1.154
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -221,4 +221,4 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.61
+    tag: v1.1.62
