@@ -13,4 +13,4 @@ maintainers:
 name: etcd-operator
 sources:
 - https://github.com/coreos/etcd-operator
-version: 0.9.3
+version: 0.9.4

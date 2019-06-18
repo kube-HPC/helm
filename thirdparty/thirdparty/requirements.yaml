@@ -1,6 +1,6 @@
 dependencies:
   - name: etcd-operator
-    version: "0.9.3"
+    version: "0.9.4"
     repository: "file://../dependecies/etcd-operator"
     condition: global.production
   - name: jaeger

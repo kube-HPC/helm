@@ -1,7 +1,7 @@
 dependencies:
 - name: etcd-operator
   repository: file://../dependecies/etcd-operator
-  version: 0.9.3
+  version: 0.9.4
 - name: jaeger
   repository: file://../dependecies/jaeger
   version: 0.1.3
@@ -11,5 +11,5 @@ dependencies:
 - name: mini-thirdparty
   repository: file://../dependecies/mini-thirdparty
   version: 0.3.1
-digest: sha256:b9928086d278f09453b2ebd693ef88075007994e706e3d4f0d8c719f9dd9bea1
-generated: 2019-06-18T16:10:00.466268571+03:00
+digest: sha256:c9ada0467a94b328424032c022332b4648b5b14ca89cbcf804cbffd20b8a0d56
+generated: 2019-06-18T16:55:49.06983451+03:00
