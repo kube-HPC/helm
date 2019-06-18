@@ -14,6 +14,25 @@ spec:
     busyboxImage: "{{ .Values.global.registry }}busybox:1.28.0-glibc"
     nodeSelector:
       third-party: "true"
+    # resources:
+    #   limits:
+    #     cpu: 300m
+    #     memory: 200Mi
+    #   requests:
+    #     cpu: 200m
+    #     memory: 100Mi
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: etcd_cluster
+                operator: In
+                values:
+                - etcd
+            topologyKey: kubernetes.io/hostname
     etcdEnv:
     - name: ETCD_HEARTBEAT_INTERVAL
       value: "1000"
