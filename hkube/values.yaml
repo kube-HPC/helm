@@ -20,7 +20,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1000
+systemversion: v1.1.1001
 docker_credentials_secret:
   user: ''
   password: ''
@@ -33,7 +33,7 @@ algorithm-operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.27
+    tag: v1.1.28
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -51,7 +51,7 @@ algorithm-queue-svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.1.27
+    tag: v1.1.28
 api-server:
   env:
     base_url_path: /hkube/api-server
@@ -61,7 +61,7 @@ api-server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.1.153
+    tag: v1.1.154
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -111,7 +111,7 @@ monitor-server:
     metric_port: 30010
   image:
     repository: hkube/monitor-server
-    tag: v1.1.80
+    tag: v1.1.83
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -172,7 +172,7 @@ simulator:
     is_secure: ""
   image:
     repository: hkube/simulator
-    tag: v1.1.142
+    tag: v1.1.143
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -230,4 +230,4 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.61
+    tag: v1.1.62
