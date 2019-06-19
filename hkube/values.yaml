@@ -181,7 +181,7 @@ simulator:
   image:
     repository: hkube/simulator
     tag: v1.1.144
-  ingress:noPrivileged
+  ingress:
     enabled: true
     path: /hkube/simulator
   metrics:
