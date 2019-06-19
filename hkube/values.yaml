@@ -20,7 +20,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1002
+systemversion: v1.1.1003
 build_secret:
   pull:
     registry: ''
@@ -41,7 +41,7 @@ algorithm-operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.29
+    tag: v1.1.30
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -164,7 +164,7 @@ resource-manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.1.46
+    tag: v1.1.47
   service:
     type: ClusterIP
 resources: {}
@@ -222,7 +222,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.121
+    tag: v1.1.122
   metrics:
     port: 3001
   service:
