@@ -38,11 +38,11 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: NODE_ENV
-            - name: NO_PRIVILEGED
+            - name: IS_PRIVILEGED
               valueFrom:
                 configMapKeyRef:
                   name: task-executor-configmap
-                  key: NO_PRIVILEGED
+                  key: IS_PRIVILEGED
             - name: IS_NAMESPACED
               valueFrom:
                 configMapKeyRef:

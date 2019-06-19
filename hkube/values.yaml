@@ -16,7 +16,7 @@ global:
   production: false
   k8senv: k8s
   namespaced: false
-  noPrivileged: false
+  isPrivileged: true
 env:
   default_storage: s3
   node_env: production
@@ -41,7 +41,7 @@ algorithm-operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.28
+    tag: v1.1.28-1
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -203,7 +203,7 @@ task-executor:
     worker_socket_max_payload_bytes: 1000000000
   image:
     repository: hkube/task-executor
-    tag: v1.1.97
+    tag: v1.1.97-6
   service:
     type: ClusterIP
 thirdparty:
