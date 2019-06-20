@@ -16,9 +16,9 @@ spec:
           - name: etcd-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "etcd-cleaner" "image" "repository" }}:{{ index .Values "etcd-cleaner" "image" "tag" }}"
             resources:
-            limits:
-              cpu: 100m
-              memory: 256Mi
+              limits:
+                cpu: 100m
+                memory: 256Mi
             env:
             - name: "OBJECT_EXPIRATION_DAYS"
               valueFrom:

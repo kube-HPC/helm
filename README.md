@@ -49,8 +49,14 @@ global.storage.minio.secret_key | secret key for s3 | hkubeminiosecret
 global.storage.minio.url | access url for s3 | http://minio-service:9000
 global.production | flag to switch to production install | false
 global.clusterName | the name of the kubernetes cluster | cluster-local
-
-
+build_secret.pull.registry | docker registry for pulling base images in builds | docker hub
+build_secret.pull.namespace | docker image namespace for pulling base images in builds |
+build_secret.pull.username | docker login username for pulling base images in builds |
+build_secret.pull.password | docker login password for pulling base images in builds |
+build_secret.push.registry | docker registry for pushing algorithm images after build | docker hub
+build_secret.push.namespace | docker image namespace for pushing algorithm images after build |
+build_secret.push.username | docker login username for pushing algorithm images after build |
+build_secret.push.password | docker login password for pushing algorithm images after build |
 
 ```console
 $ helm install hkube/hkube --set global.production=true --set global.clusterName=dev --set global.storage.minio.url=http://192.168.10.10:9000 --set global.storage.minio.access_key=accesskey --set global.storage.minio.secret_key=secretkey --name my-release 
