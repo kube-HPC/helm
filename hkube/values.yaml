@@ -20,7 +20,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1004
+systemversion: v1.1.1005
 build_secret:
   pull:
     registry: ''
@@ -238,4 +238,4 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.63
+    tag: v1.1.64
