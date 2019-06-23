@@ -1,7 +1,7 @@
 global:
   clusterName: cluster-local
   registry: ''
-  registry_namespace: 'hkube'
+  registry_namespace: hkube
   registry_username: ''
   registry_password: ''
   storage:
