@@ -1,6 +1,8 @@
 global:
   clusterName: cluster-local
   registry: ''
+  registry_username: ''
+  registry_password: ''
   storage:
     fs:
       pvc:
@@ -22,16 +24,10 @@ env:
   node_env: production
 systemversion: v1.1.1006
 build_secret:
-  pull:
-    registry: ''
-    namespace: ''
-    username: ''
-    password: ''
-  push:
-    registry: ''
-    namespace: ''
-    username: ''
-    password: ''
+  registry: ''
+  namespace: ''
+  username: ''
+  password: ''
 algorithm-example:
   image:
     repository: hkube/algorithm-example
