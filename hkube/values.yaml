@@ -1,6 +1,7 @@
 global:
   clusterName: cluster-local
   registry: ''
+  registry_namespace: ''
   registry_username: ''
   registry_password: ''
   storage:
