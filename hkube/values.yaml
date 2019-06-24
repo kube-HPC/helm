@@ -23,7 +23,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1007
+systemversion: v1.1.1008
 build_secret:
   registry: ''
   namespace: ''
@@ -200,7 +200,7 @@ task-executor:
     worker_socket_max_payload_bytes: 1000000000
   image:
     repository: hkube/task-executor
-    tag: v1.1.99
+    tag: v1.1.100
   service:
     type: ClusterIP
 thirdparty:
@@ -235,4 +235,4 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.65
+    tag: v1.1.66
