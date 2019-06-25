@@ -62,6 +62,11 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: CLUSTER_NAME
+            - name: BUILD_MODE
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: BUILD_MODE
           resources:
             limits:
               cpu: 250m
