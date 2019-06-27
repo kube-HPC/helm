@@ -23,7 +23,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1011
+systemversion: v1.1.1012
 build_secret:
   registry: ''
   namespace: ''
@@ -47,7 +47,7 @@ algorithm-operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.42
+    tag: v1.1.43
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -132,7 +132,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.78
+    tag: v1.1.79
   service:
     type: ClusterIP
 pipeline-driver-queue:
@@ -177,7 +177,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.148
+    tag: v1.1.149
   ingress:
     enabled: true
     path: /hkube/simulator
