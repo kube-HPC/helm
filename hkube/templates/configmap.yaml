@@ -87,6 +87,10 @@ data:
                   {
                         "project": "algorithm-builder",
                         "tag": "{{ index .Values "algorithm-builder" "image" "tag" }}"
+                  },
+                  {
+                        "project": "kaniko",
+                        "tag": "{{ .Values.kaniko.image.tag }}"
                   }
             ]
             }

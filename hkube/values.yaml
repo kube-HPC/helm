@@ -1,7 +1,7 @@
 global:
   clusterName: cluster-local
   registry: ''
-  registry_namespace: hkube
+  registry_namespace: 'hkube'
   registry_username: ''
   registry_password: ''
   storage:
@@ -177,7 +177,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.147
+    tag: v1.1.148
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -235,4 +235,8 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.67
+    tag: v1.1.67-a
+kaniko:
+  image:
+    repository: hkube/kaniko
+    tag: v1.1.2
