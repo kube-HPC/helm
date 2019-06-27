@@ -1,7 +1,7 @@
 global:
   clusterName: cluster-local
   registry: ''
-  registry_namespace: 'hkube'
+  registry_namespace: hkube
   registry_username: ''
   registry_password: ''
   storage:
@@ -235,8 +235,8 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.67-a
+    tag: v1.1.67
 kaniko:
   image:
     repository: hkube/kaniko
-    tag: v1.1.2
+    tag: v1.1.1
