@@ -23,7 +23,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1012
+systemversion: v1.1.1013
 build_secret:
   registry: ''
   namespace: ''
@@ -48,7 +48,7 @@ algorithm-operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.43
+    tag: v1.1.44
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -67,7 +67,7 @@ api-server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.1.155
+    tag: v1.1.156
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -133,7 +133,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.79
+    tag: v1.1.80
   service:
     type: ClusterIP
 pipeline-driver-queue:
@@ -220,7 +220,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.122
+    tag: v1.1.123
   metrics:
     port: 3001
   service:
@@ -236,7 +236,7 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.67
+    tag: v1.1.69
 kaniko:
   image:
     repository: hkube/kaniko
