@@ -44,7 +44,7 @@ algorithm-operator:
     path: /hkube/algorithm-operator
   service:
     type: ClusterIP
-  build_mode: kaniko    
+  build_mode: kaniko
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
