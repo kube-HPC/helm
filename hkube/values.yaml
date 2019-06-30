@@ -23,7 +23,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1016
+systemversion: v1.1.1017
 build_secret:
   registry: ''
   namespace: ''
@@ -236,8 +236,8 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.71
+    tag: v1.1.72
 kaniko:
   image:
     repository: hkube/kaniko
-    tag: v1.1.1
+    tag: v1.1.2
