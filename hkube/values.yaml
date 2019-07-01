@@ -178,7 +178,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.150
+    tag: v1.1.151
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -240,4 +240,4 @@ algorithm-builder:
 kaniko:
   image:
     repository: hkube/kaniko
-    tag: v1.1.2
+    tag: v1.1.3
