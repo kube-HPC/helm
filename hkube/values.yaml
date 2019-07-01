@@ -23,7 +23,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1019
+systemversion: v1.1.1020
 build_secret:
   registry: ''
   namespace: ''
@@ -133,7 +133,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.80
+    tag: v1.1.81
   service:
     type: ClusterIP
 pipeline-driver-queue:
