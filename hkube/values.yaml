@@ -240,4 +240,4 @@ algorithm-builder:
 kaniko:
   image:
     repository: hkube/kaniko
-    tag: v1.1.3
+    tag: v1.1.4
