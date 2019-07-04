@@ -25,10 +25,14 @@ env:
   node_env: production
 systemversion: v1.1.1020
 build_secret:
-  registry: ''
-  namespace: ''
-  username: ''
-  password: ''
+  docker_registry: ''
+  docker_namespace: ''
+  docker_username: ''
+  docker_password: ''
+  npm_registry: ''
+  npm_token: ''
+  pip_registry: ''
+  pip_token: ''
 algorithm-example:
   image:
     repository: hkube/algorithm-example
