@@ -17,12 +17,11 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
+  ingress_controller_enable: true
   k8senv: k8s
   namespaced: false
   isPrivileged: true
 ingress:
-  controller:
-    enable: true
   hostname: ''
 env:
   default_storage: s3
