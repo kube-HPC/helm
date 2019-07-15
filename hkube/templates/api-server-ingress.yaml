@@ -15,6 +15,11 @@ metadata:
     group: {{ .Values.lables.group.value }}
     core: "true"
 spec:
+{{- if .Values.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.ingress.hostname }}
+{{- end }}
   rules:
     - http:
         paths:
@@ -22,4 +27,7 @@ spec:
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}
+{{- if .Values.ingress.hostname }}
+      host: {{ .Values.ingress.hostname }}
+{{- end }}
 {{- end }}

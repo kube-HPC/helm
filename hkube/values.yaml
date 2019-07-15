@@ -20,6 +20,10 @@ global:
   k8senv: k8s
   namespaced: false
   isPrivileged: true
+ingress:
+  controller:
+    enable: true
+  hostname: ''
 env:
   default_storage: s3
   node_env: production
