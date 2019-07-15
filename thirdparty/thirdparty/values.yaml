@@ -6,6 +6,9 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
+  k8senv: k8s
+  namespaced: false
+  isPrivileged: true
 
 etcd-ui:
   service:
@@ -17,3 +20,6 @@ etcd-ui:
   ingress:
     enabled: true
     path: /hkube/etcd-ui
+redis-ha:
+  persistentVolume:
+    enabled: false

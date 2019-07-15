@@ -1,0 +1,1741 @@
+[debug] Created tunnel using local port: '34075'
+
+[debug] SERVER: "127.0.0.1:34075"
+
+[debug] Original chart version: ""
+[debug] CHART PATH: /home/yehil/dev/hkube/helm/thirdparty/thirdparty
+
+NAME:   stam
+REVISION: 1
+RELEASED: Mon Jul 15 09:02:32 2019
+CHART: thirdparty-0.4.3
+USER-SUPPLIED VALUES:
+global:
+  production: true
+
+COMPUTED VALUES:
+etcd-operator:
+  backupOperator:
+    commandArgs: {}
+    image:
+      pullPolicy: Always
+      repository: quay.io/coreos/etcd-operator
+      tag: v0.9.2
+    name: etcd-backup-operator
+    nodeSelector: {}
+    replicaCount: 1
+    resources:
+      cpu: 100m
+      memory: 128Mi
+    spec:
+      s3:
+        awsSecret: null
+        s3Bucket: null
+      storageType: S3
+  customResources:
+    createBackupCRD: false
+    createEtcdClusterCRD: false
+    createRestoreCRD: false
+  deployments:
+    backupOperator: false
+    etcdOperator: true
+    restoreOperator: false
+  etcdCluster:
+    enableTLS: false
+    image:
+      pullPolicy: Always
+      repository: quay.io/coreos/etcd
+      tag: v3.3.1
+    name: etcd-cluster
+    pod:
+      antiAffinity: false
+      nodeSelector: {}
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+    size: 3
+    tls:
+      static:
+        member:
+          peerSecret: etcd-peer-tls
+          serverSecret: etcd-server-tls
+        operatorSecret: etcd-client-tls
+    version: 3.3.1
+  etcdOperator:
+    commandArgs: {}
+    image:
+      pullPolicy: Always
+      repository: quay.io/coreos/etcd-operator
+      tag: v0.9.2
+    livenessProbe:
+      enabled: false
+      failureThreshold: 3
+      initialDelaySeconds: 0
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: etcd-operator
+    nodeSelector: {}
+    readinessProbe:
+      enabled: false
+      failureThreshold: 3
+      initialDelaySeconds: 0
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    replicaCount: 1
+    resources:
+      cpu: 100m
+      memory: 128Mi
+  global:
+    clusterName: test
+    isPrivileged: true
+    k8senv: k8s
+    namespaced: false
+    production: true
+    storage:
+      minio:
+        access_key: hkubeminiokey
+        secret_key: hkubeminiosecret
+        url: http://minio-service:9000
+  image:
+    pullPolicy: IfNotPresent
+    repository: gcr.io/etcd-development/etcd
+    tag: 3.3.1
+  lables:
+    group:
+      value: hkube
+    thirdparty:
+      value: "true"
+  metadata:
+    namespace: default
+  rbac:
+    apiVersion: v1beta1
+    create: true
+  replicaCount: 1
+  restoreOperator:
+    commandArgs: {}
+    image:
+      pullPolicy: Always
+      repository: quay.io/coreos/etcd-operator
+      tag: v0.9.2
+    name: etcd-restore-operator
+    nodeSelector: {}
+    port: 19999
+    replicaCount: 1
+    resources:
+      cpu: 100m
+      memory: 128Mi
+    spec:
+      s3:
+        awsSecret: null
+        path: null
+  serviceAccount:
+    backupOperatorServiceAccount:
+      create: false
+      name: null
+    etcdOperatorServiceAccount:
+      create: true
+      name: null
+    restoreOperatorServiceAccount:
+      create: false
+      name: null
+etcd-ui:
+  image:
+    repository: hkube/etcd-ui
+    tag: v1.0.3
+  ingress:
+    enabled: true
+    path: /hkube/etcd-ui
+  service:
+    port: "8080"
+    type: ClusterIP
+global:
+  clusterName: test
+  isPrivileged: true
+  k8senv: k8s
+  namespaced: false
+  production: true
+  storage:
+    minio:
+      access_key: hkubeminiokey
+      secret_key: hkubeminiosecret
+      url: http://minio-service:9000
+jaeger:
+  affinity: {}
+  casandra:
+    image: cassandra
+    tag: "3.11"
+  global:
+    clusterName: test
+    isPrivileged: true
+    k8senv: k8s
+    namespaced: false
+    production: true
+    storage:
+      minio:
+        access_key: hkubeminiokey
+        secret_key: hkubeminiosecret
+        url: http://minio-service:9000
+  image:
+    pullPolicy: IfNotPresent
+    repository: nginx
+    tag: stable
+  ingress:
+    annotations: {}
+    enabled: "true"
+    path: /jaeger
+    tls: []
+  lables:
+    group:
+      value: hkube
+    thirdparty:
+      value: "true"
+  nodeSelector: {}
+  replicaCount: 1
+  resources: {}
+  service:
+    port: 80
+    type: ClusterIP
+  tolerations: []
+mini-thirdparty:
+  global:
+    clusterName: test
+    isPrivileged: true
+    k8senv: k8s
+    namespaced: false
+    production: true
+    storage:
+      minio:
+        access_key: hkubeminiokey
+        secret_key: hkubeminiosecret
+        url: http://minio-service:9000
+redis-ha:
+  additionalAffinities: {}
+  affinity: ""
+  auth: false
+  authKey: auth
+  exporter:
+    enabled: false
+    extraArgs: {}
+    image: oliver006/redis_exporter
+    port: 9121
+    pullPolicy: IfNotPresent
+    resources: {}
+    scrapePath: /metrics
+    tag: v0.31.0
+  global:
+    clusterName: test
+    isPrivileged: true
+    k8senv: k8s
+    namespaced: false
+    production: true
+    storage:
+      minio:
+        access_key: hkubeminiokey
+        secret_key: hkubeminiosecret
+        url: http://minio-service:9000
+  hardAntiAffinity: true
+  hostPath:
+    chown: true
+  image:
+    pullPolicy: IfNotPresent
+    repository: redis
+    tag: 5.0.5-alpine
+  init:
+    resources: {}
+  labels: {}
+  persistentVolume:
+    accessModes:
+    - ReadWriteOnce
+    annotations: {}
+    enabled: false
+    size: 10Gi
+  podDisruptionBudget: {}
+  rbac:
+    create: true
+  redis:
+    config:
+      maxmemory: "0"
+      maxmemory-policy: volatile-lru
+      min-slaves-max-lag: 5
+      min-slaves-to-write: 1
+      rdbchecksum: "yes"
+      rdbcompression: "yes"
+      repl-diskless-sync: "yes"
+      save: 900 1
+    masterGroupName: mymaster
+    port: 6379
+    resources: {}
+  replicas: 3
+  securityContext:
+    fsGroup: 1000
+    runAsNonRoot: true
+    runAsUser: 1000
+  sentinel:
+    config:
+      down-after-milliseconds: 10000
+      failover-timeout: 180000
+      parallel-syncs: 5
+    port: 26379
+    quorum: 2
+    resources: {}
+  serviceAccount:
+    create: true
+  sysctlImage:
+    command: []
+    enabled: false
+    mountHostSys: false
+    pullPolicy: Always
+    registry: docker.io
+    repository: bitnami/minideb
+    tag: latest
+
+HOOKS:
+---
+# stam-redis-ha-service-test
+apiVersion: v1
+kind: Pod
+metadata:
+  name: stam-redis-ha-service-test
+  labels:
+    app: redis-ha
+    heritage: "Tiller"
+    release: "stam"
+    chart: redis-ha-3.6.1
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+  - name: "stam-service-test"
+    image: redis:5.0.5-alpine
+    command:
+      - sh
+      - -c
+      - redis-cli -h stam-redis-ha -p 6379 info server
+  restartPolicy: Never
+---
+# stam-redis-ha-configmap-test
+apiVersion: v1
+kind: Pod
+metadata:
+  name: stam-redis-ha-configmap-test
+  labels:
+    app: redis-ha
+    heritage: "Tiller"
+    release: "stam"
+    chart: redis-ha-3.6.1
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+  - name: check-init
+    image: koalaman/shellcheck:v0.5.0
+    args:
+    - --shell=sh
+    - /readonly-config/init.sh
+    volumeMounts:
+    - name: config
+      mountPath: /readonly-config
+      readOnly: true
+  - name: check-probes
+    image: koalaman/shellcheck:v0.5.0
+    args:
+    - --shell=sh
+    - /probes/check-quorum.sh
+    volumeMounts:
+    - name: probes
+      mountPath: /probes
+      readOnly: true
+  volumes:
+  - name: config
+    configMap:
+      name: stam-redis-ha-configmap
+  - name: probes
+    configMap:
+      name: stam-redis-ha-probes
+  restartPolicy: Never
+---
+# etcdclusters.etcd.database.coreos.com
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: etcdclusters.etcd.database.coreos.com
+  annotations:
+    "helm.sh/hook": crd-install
+spec:
+  group: etcd.database.coreos.com
+  names:
+    kind: EtcdCluster
+    listKind: EtcdClusterList
+    plural: etcdclusters
+    shortNames:
+    - etcd
+    singular: etcdcluster
+  scope: Namespaced
+  version: v1beta2
+MANIFEST:
+
+---
+# Source: thirdparty/charts/jaeger/templates/config-map.yaml
+# Source: jaeger/templates/common-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jaeger-jaeger
+  labels:
+    app: jaeger
+    jaeger-infra: common-configmap
+    chart: jaeger-0.3.5
+    heritage: Tiller
+    release: jaeger
+    group: hkube
+    thirdparty: "true"
+data:
+  cassandra.contact-points: jaeger-cassandra:9042
+  cassandra.datacenter.name: "dc1"
+  cassandra.keyspace: "jaeger_v1_dc1"
+  cassandra.port: "9042"
+  cassandra.schema.mode: "prod"
+  cassandra.servers: jaeger-cassandra
+  collector.host-port: jaeger-jaeger-collector:14267
+  collector.http-port: "14268"
+  collector.port: "14267"
+  collector.zipkin.http-port: "9411"
+  es.password: changeme
+  es.server-urls: http://elasticsearch:9200
+  es.username: elastic
+  hotrod.agent-host: jaeger-jaeger-agent
+  hotrod.agent-port: "6831"
+  span-storage.type: "cassandra"
+  query.health-check-http-port: "16687"
+  query.port: "16686"
+  # Not implemented
+  # cassandra.archive.connections-per-host:
+  # cassandra.archive.keyspace:
+  # cassandra.archive.max-retry-attempts:
+  # cassandra.archive.password:
+  # cassandra.archive.port:
+  # cassandra.archive.proto-version:
+  # cassandra.archive.servers:
+  # cassandra.archive.socket-keep-alive:
+  # cassandra.archive.timeout:
+  # cassandra.archive.username:
+  # cassandra.connections-per-host:
+  # cassandra.max-retry-attempts:
+  # cassandra.password:
+  # cassandra.proto-version:
+  # cassandra.socket-keep-alive:
+  # cassandra.timeout:
+  # cassandra.username:
+  # collector.health-check-http-port:
+  # collector.num-workers:
+  # collector.queue-size:
+  # collector.write-cache-ttl:
+  # dependency-storage.data-frequency:
+  # discovery.min-peers:
+  # es.archive.max-span-age:
+  # es.archive.num-replicas:
+  # es.archive.num-shards:
+  # es.archive.password:
+  # es.archive.server-urls:
+  # es.archive.sniffer:
+  # es.archive.username:
+  # es.max-span-age:
+  # es.num-replicas:
+  # es.num-shards:
+  # es.sniffer:
+  # http-server.host-port:
+  # log-level:
+  # metrics-backend:
+  # metrics-http-route:
+  # processor.jaeger-binary.server-host-port:
+  # processor.jaeger-binary.server-max-packet-size:
+  # processor.jaeger-binary.server-queue-size:
+  # processor.jaeger-binary.workers:
+  # processor.jaeger-compact.server-host-port:
+  # processor.jaeger-compact.server-max-packet-size:
+  # processor.jaeger-compact.server-queue-size:
+  # processor.jaeger-compact.workers:
+  # processor.zipkin-compact.server-host-port:
+  # processor.zipkin-compact.server-max-packet-size:
+  # processor.zipkin-compact.server-queue-size:
+  # processor.zipkin-compact.workers:
+  # query.prefix:
+  # query.static-files:
+  # query.ui-config:
+  query.base-path: "/jaeger"
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stam-redis-ha-configmap
+  labels:
+    heritage: Tiller
+    release: stam
+    chart: redis-ha-3.6.1
+    app: stam-redis-ha
+data:
+  redis.conf: |
+    dir "/data"
+    maxmemory 0
+    maxmemory-policy volatile-lru
+    min-slaves-max-lag 5
+    min-slaves-to-write 1
+    rdbchecksum yes
+    rdbcompression yes
+    repl-diskless-sync yes
+    save 900 1
+
+  sentinel.conf: |
+    dir "/data"
+    sentinel down-after-milliseconds mymaster 10000
+    sentinel failover-timeout mymaster 180000
+    sentinel parallel-syncs mymaster 5
+
+  init.sh: |
+    HOSTNAME="$(hostname)"
+    INDEX="${HOSTNAME##*-}"
+    MASTER="$(redis-cli -h stam-redis-ha -p 26379 sentinel get-master-addr-by-name mymaster | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
+    MASTER_GROUP="mymaster"
+    QUORUM="2"
+    REDIS_CONF=/data/conf/redis.conf
+    REDIS_PORT=6379
+    SENTINEL_CONF=/data/conf/sentinel.conf
+    SENTINEL_PORT=26379
+    SERVICE=stam-redis-ha
+    set -eu
+
+    sentinel_update() {
+        echo "Updating sentinel config"
+        eval MY_SENTINEL_ID="\${SENTINEL_ID_$INDEX}"
+        sed -i "1s/^/sentinel myid $MY_SENTINEL_ID\\n/" "$SENTINEL_CONF"
+        sed -i "2s/^/sentinel monitor $MASTER_GROUP $1 $REDIS_PORT $QUORUM \\n/" "$SENTINEL_CONF"
+        echo "sentinel announce-ip $ANNOUNCE_IP" >> $SENTINEL_CONF
+        echo "sentinel announce-port $SENTINEL_PORT" >> $SENTINEL_CONF
+    }
+
+    redis_update() {
+        echo "Updating redis config"
+        echo "slaveof $1 $REDIS_PORT" >> "$REDIS_CONF"
+        echo "slave-announce-ip $ANNOUNCE_IP" >> $REDIS_CONF
+        echo "slave-announce-port $REDIS_PORT" >> $REDIS_CONF
+    }
+
+    copy_config() {
+        cp /readonly-config/redis.conf "$REDIS_CONF"
+        cp /readonly-config/sentinel.conf "$SENTINEL_CONF"
+    }
+
+    setup_defaults() {
+        echo "Setting up defaults"
+        if [ "$INDEX" = "0" ]; then
+            echo "Setting this pod as the default master"
+            redis_update "$ANNOUNCE_IP"
+            sentinel_update "$ANNOUNCE_IP"
+            sed -i "s/^.*slaveof.*//" "$REDIS_CONF"
+        else
+            DEFAULT_MASTER="$(getent hosts "$SERVICE-announce-0" | awk '{ print $1 }')"
+            if [ -z "$DEFAULT_MASTER" ]; then
+                echo "Unable to resolve host"
+                exit 1
+            fi
+            echo "Setting default slave config.."
+            redis_update "$DEFAULT_MASTER"
+            sentinel_update "$DEFAULT_MASTER"
+        fi
+    }
+
+    find_master() {
+        echo "Attempting to find master"
+        if [ "$(redis-cli -h "$MASTER" ping)" != "PONG" ]; then
+           echo "Can't ping master, attempting to force failover"
+           if redis-cli -h "$SERVICE" -p "$SENTINEL_PORT" sentinel failover "$MASTER_GROUP" | grep -q 'NOGOODSLAVE' ; then 
+               setup_defaults
+               return 0
+           fi
+           sleep 10
+           MASTER="$(redis-cli -h $SERVICE -p $SENTINEL_PORT sentinel get-master-addr-by-name $MASTER_GROUP | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
+           if [ "$MASTER" ]; then
+               sentinel_update "$MASTER"
+               redis_update "$MASTER"
+           else
+              echo "Could not failover, exiting..."
+              exit 1
+           fi
+        else
+            echo "Found reachable master, updating config"
+            sentinel_update "$MASTER"
+            redis_update "$MASTER"
+        fi
+    }
+
+    mkdir -p /data/conf/
+
+    echo "Initializing config.."
+    copy_config
+
+    ANNOUNCE_IP=$(getent hosts "$SERVICE-announce-$INDEX" | awk '{ print $1 }')
+    if [ -z "$ANNOUNCE_IP" ]; then
+        "Could not resolve the announce ip for this pod"
+        exit 1
+    elif [ "$MASTER" ]; then
+        find_master
+    else
+        setup_defaults
+    fi
+
+    if [ "${AUTH:-}" ]; then
+        echo "Setting auth values"
+        ESCAPED_AUTH=$(echo "$AUTH" | sed -e 's/[\/&]/\\&/g');
+        sed -i "s/replace-default-auth/${ESCAPED_AUTH}/" "$REDIS_CONF" "$SENTINEL_CONF"
+    fi
+
+    echo "Ready..."
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-healthchecks.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stam-redis-ha-probes
+  labels:
+    heritage: Tiller
+    release: stam
+    chart: redis-ha-3.6.1
+    app: stam-redis-ha
+data:
+  check-quorum.sh: |
+    #!/bin/sh
+    set -eu
+    MASTER_GROUP="mymaster"
+    SENTINEL_PORT=26379
+    REDIS_PORT=6379
+    NUM_SLAVES=$(redis-cli -p "$SENTINEL_PORT" sentinel master mymaster | awk '/num-slaves/{getline; print}')
+    MIN_SLAVES=1
+
+    if [ "$1" = "$SENTINEL_PORT" ]; then
+        if redis-cli -p "$SENTINEL_PORT" sentinel ckquorum "$MASTER_GROUP" | grep -q NOQUORUM ; then
+            echo "ERROR: NOQUORUM. Sentinel quorum check failed, not enough sentinels found"
+            exit 1
+        fi
+    elif [ "$1" = "$REDIS_PORT" ]; then
+        if [ "$MIN_SLAVES" -gt "$NUM_SLAVES" ]; then
+            echo "Could not find enough replicating slaves. Needed $MIN_SLAVES but found $NUM_SLAVES"
+            exit 1
+        fi
+    fi
+    sh /probes/readiness.sh "$1"
+
+  readiness.sh: |
+    #!/bin/sh
+    set -eu
+    CHECK_SERVER="$(redis-cli -p "$1" ping)"
+
+    if [ "$CHECK_SERVER" != "PONG" ]; then
+        echo "Server check failed with: $CHECK_SERVER"
+        exit 1
+    fi
+
+  liveness.sh: |
+    #!/bin/sh
+    set -eu
+    CHECK_SERVER="$(redis-cli -p "$1" ping)"
+
+    if [ "$CHECK_SERVER" != "PONG" ] && [ "$CHECK_SERVER" != "LOADING Redis is loading the dataset in memory" ]; then
+        echo "Server check failed with: $CHECK_SERVER"
+        exit 1
+    fi
+---
+# Source: thirdparty/charts/etcd-operator/templates/operator-service-account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: stam-etcd-operator-etcd-operator
+  labels:
+    chart: "etcd-operator-0.9.4"
+    app: etcd-operator
+    heritage: Tiller
+    release: stam
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: stam-redis-ha
+  labels:
+    heritage: Tiller
+    release: stam
+    chart: redis-ha-3.6.1
+    app: stam-redis-ha
+---
+# Source: thirdparty/charts/etcd-operator/templates/operator-cluster-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: stam-etcd-operator-etcd-operator
+  labels:
+    chart: "etcd-operator-0.9.4"
+    app: etcd-operator
+    heritage: Tiller
+    release: stam
+rules:
+- apiGroups:
+  - etcd.database.coreos.com
+  resources:
+  - etcdclusters
+  - etcdbackups
+  - etcdrestores
+  verbs:
+  - "*"
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - "*"
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  - endpoints
+  - persistentvolumeclaims
+  - events
+  verbs:
+  - "*"
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - "*"
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+---
+# Source: thirdparty/charts/etcd-operator/templates/operator-clusterrole-binding.yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: stam-etcd-operator-etcd-operator
+  labels:
+    chart: "etcd-operator-0.9.4"
+    app: etcd-operator
+    heritage: Tiller
+    release: stam
+subjects:
+- kind: ServiceAccount
+  name: stam-etcd-operator-etcd-operator
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: stam-etcd-operator-etcd-operator
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: stam-redis-ha
+  labels:
+    heritage: Tiller
+    release: stam
+    chart: redis-ha-3.6.1
+    app: stam-redis-ha
+rules:
+- apiGroups:
+    - ""
+  resources:
+    - endpoints
+  verbs:
+    - get
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-rolebinding.yaml
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: stam-redis-ha
+  labels:
+    heritage: Tiller
+    release: stam
+    chart: redis-ha-3.6.1
+    app: stam-redis-ha
+subjects:
+- kind: ServiceAccount
+  name: stam-redis-ha
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: stam-redis-ha
+---
+# Source: thirdparty/charts/jaeger/templates/service.yaml
+# Source: jaeger/templates/query-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger-jaeger-query
+  labels:
+    app: jaeger
+    jaeger-infra: query-service
+    chart: jaeger-0.3.5
+    component: query
+    heritage: Tiller
+    release: jaeger
+    group: hkube
+    thirdparty: "true"
+spec:
+  ports:
+  - name: jaeger-query
+    port: 80
+    protocol: TCP
+    targetPort: 16686
+    nodePort: 30086
+  selector:
+    app: jaeger
+    component: query
+    release: jaeger
+    jaeger-infra: query-pod
+  type: NodePort
+---
+# Source: thirdparty/charts/jaeger/templates/service.yaml
+# Source: jaeger/templates/collector-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger-jaeger-collector
+  labels:
+    app: jaeger
+    jaeger-infra: collector-service
+    chart: jaeger-0.3.5
+    component: collector
+    heritage: Tiller
+    release: jaeger
+    group: hkube
+    thirdparty: "true"
+spec:
+  ports:
+  - name: jaeger-collector-tchannel
+    port: 14267
+    protocol: TCP
+    targetPort: tchannel
+  - name: jaeger-collector-http
+    port: 14268
+    protocol: TCP
+    targetPort: http
+  - name: jaeger-collector-zipkin
+    port: 9411
+    protocol: TCP
+    targetPort: zipkin
+  selector:
+    app: jaeger
+    component: collector
+    release: jaeger
+    jaeger-infra: collector-pod
+  type: ClusterIP
+---
+# Source: thirdparty/charts/jaeger/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger-jaeger-agent
+  labels:
+    app: jaeger
+    jaeger-infra: agent-service
+    chart: jaeger-0.3.5
+    component: agent
+    heritage: Tiller
+    release: jaeger
+    group: hkube
+    thirdparty: "true"
+spec:
+  ports:
+  - name: agent-zipkin-thrift
+    port: 5775
+    protocol: UDP
+    targetPort: 5775
+  - name: agent-compact
+    port: 6831
+    protocol: UDP
+    targetPort: 6831
+  - name: agent-binary
+    port: 6832
+    protocol: UDP
+    targetPort: 6832
+  - name: agent-sampling
+    port: 5778
+    protocol: TCP
+    targetPort: 5778
+  type: ClusterIP
+  selector:
+    app: jaeger
+    component: agent
+    release: jaeger
+    jaeger-infra: agent-instance
+---
+# Source: thirdparty/charts/jaeger/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger-cassandra
+  labels:
+    app: jaeger-cassandra
+    chart: "cassandra-0.2.4"
+    release: "jaeger"
+    heritage: "Tiller"
+    group: hkube
+    thirdparty: "true"
+spec:
+  clusterIP: None
+  type: ClusterIP
+  ports:
+  - name: intra
+    port: 7000
+    targetPort: 7000
+  - name: tls
+    port: 7001
+    targetPort: 7001
+  - name: jmx
+    port: 7199
+    targetPort: 7199
+  - name: cql
+    port: 9042
+    targetPort: 9042
+  - name: thrift
+    port: 9160
+    targetPort: 9160
+  selector:
+    app: jaeger-cassandra
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-announce-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: stam-redis-ha-announce-0
+  labels:
+    app: redis-ha
+    heritage: "Tiller"
+    release: "stam"
+    chart: redis-ha-3.6.1
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+spec:
+  publishNotReadyAddresses: true
+  type: ClusterIP
+  ports:
+  - name: server
+    port: 6379
+    protocol: TCP
+    targetPort: redis
+  - name: sentinel
+    port: 26379
+    protocol: TCP
+    targetPort: sentinel
+  selector:
+    release: stam
+    app: redis-ha
+    "statefulset.kubernetes.io/pod-name": stam-redis-ha-server-0
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-announce-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: stam-redis-ha-announce-1
+  labels:
+    app: redis-ha
+    heritage: "Tiller"
+    release: "stam"
+    chart: redis-ha-3.6.1
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+spec:
+  publishNotReadyAddresses: true
+  type: ClusterIP
+  ports:
+  - name: server
+    port: 6379
+    protocol: TCP
+    targetPort: redis
+  - name: sentinel
+    port: 26379
+    protocol: TCP
+    targetPort: sentinel
+  selector:
+    release: stam
+    app: redis-ha
+    "statefulset.kubernetes.io/pod-name": stam-redis-ha-server-1
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-announce-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: stam-redis-ha-announce-2
+  labels:
+    app: redis-ha
+    heritage: "Tiller"
+    release: "stam"
+    chart: redis-ha-3.6.1
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+spec:
+  publishNotReadyAddresses: true
+  type: ClusterIP
+  ports:
+  - name: server
+    port: 6379
+    protocol: TCP
+    targetPort: redis
+  - name: sentinel
+    port: 26379
+    protocol: TCP
+    targetPort: sentinel
+  selector:
+    release: stam
+    app: redis-ha
+    "statefulset.kubernetes.io/pod-name": stam-redis-ha-server-2
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: stam-redis-ha
+  labels:
+    app: redis-ha
+    heritage: "Tiller"
+    release: "stam"
+    chart: redis-ha-3.6.1
+  annotations:
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - name: server
+    port: 6379
+    protocol: TCP
+    targetPort: redis
+  - name: sentinel
+    port: 26379
+    protocol: TCP
+    targetPort: sentinel
+  selector:
+    release: stam
+    app: redis-ha
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-sentinel-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-sentinel
+  labels:
+    name: redis-ha-sentinel-svc
+    role: service
+    app: redis-ha
+    heritage: "Tiller"
+    release: "stam"
+    chart: redis-ha-3.6.1
+spec:
+  ports:
+    - port: 26379
+      targetPort: 26379
+  selector:
+    app: redis-ha
+    release: "stam"
+---
+# Source: thirdparty/templates/etcd-ui.yml
+kind: Service
+apiVersion: v1
+metadata:
+  name: etcd-ui
+  labels:
+    app: etcd-ui
+    release: stam
+    heritage: Tiller
+    third-party: "true"
+spec:
+  selector:
+    app: etcd-ui
+  ports:
+    - name: server
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+# Source: thirdparty/charts/jaeger/templates/daemonset.yaml
+# Source: jaeger/templates/agent-ds.yaml
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: jaeger-jaeger-agent
+  labels:
+    app: jaeger
+    jaeger-infra: agent-daemonset
+    chart: jaeger-0.3.5
+    component: agent
+    heritage: Tiller
+    release: jaeger
+    group: hkube
+    thirdparty: "true"
+spec:
+  template:
+    metadata:
+      labels:
+        app: jaeger
+        component: agent
+        release: jaeger
+        jaeger-infra: agent-instance
+        group: hkube
+        thirdparty: "true"
+    spec:
+      nodeSelector:
+        third-party: "true"
+      containers:
+      - name: jaeger-jaeger-agent
+        image: "jaegertracing/jaeger-agent:1.2.0"
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: COLLECTOR_HOST_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: jaeger-jaeger
+              key: collector.host-port
+        ports:
+        - containerPort: 5775
+          hostPort: 5775
+          protocol: UDP
+        - containerPort: 6831
+          hostPort: 6831
+          protocol: UDP
+        - containerPort: 6832
+          hostPort: 6832
+          protocol: UDP
+        - containerPort: 5778
+          hostPort: 5778
+          protocol: TCP
+        resources:
+          {}
+---
+# Source: thirdparty/charts/etcd-operator/templates/operator-deployment.yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: stam-etcd-operator-etcd-operator
+  labels:
+    chart: "etcd-operator-0.9.4"
+    app: etcd-operator
+    heritage: Tiller
+    release: stam
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: stam-etcd-operator-etcd-operator
+      labels:
+        app: stam-etcd-operator-etcd-operator
+        release: stam
+    spec:
+      serviceAccountName: stam-etcd-operator-etcd-operator
+      containers:
+      - name: stam-etcd-operator-etcd-operator
+        image: "quay.io/coreos/etcd-operator:v0.9.2"
+        imagePullPolicy: Always
+        command:
+        - etcd-operator
+        env:
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+---
+# Source: thirdparty/charts/jaeger/templates/collector-deploy.yaml
+# Source: jaeger/templates/collector-deploy.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jaeger-jaeger-collector
+  labels:
+    app: jaeger
+    jaeger-infra: collector-deployment
+    chart: jaeger-0.3.5
+    component: collector
+    heritage: Tiller
+    release: jaeger
+    group: hkube
+    thirdparty: "true"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jaeger
+        component: collector
+        release: jaeger
+        jaeger-infra: collector-pod
+        group: hkube
+        thirdparty: "true"
+    spec:
+      nodeSelector:
+        third-party: "true"
+      containers:
+      - name: jaeger-jaeger-collector
+        image: jaegertracing/jaeger-collector:1.2.0
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: SPAN_STORAGE_TYPE
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: span-storage.type
+          - name: CASSANDRA_SERVERS
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: cassandra.servers
+          - name: CASSANDRA_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: cassandra.port
+          - name: CASSANDRA_KEYSPACE
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: cassandra.keyspace
+          - name: COLLECTOR_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: collector.port
+          - name: COLLECTOR_HTTP_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: collector.http-port
+          - name: COLLECTOR_ZIPKIN_HTTP_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: collector.zipkin.http-port
+        ports:
+        - containerPort: 14267
+          name: tchannel
+          protocol: TCP
+        - containerPort: 14268
+          name: http
+          protocol: TCP
+        - containerPort: 9411
+          name: zipkin
+          protocol: TCP
+        resources:
+          {}
+          
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+---
+# Source: thirdparty/charts/jaeger/templates/query-deploy.yaml
+# Source: jaeger/templates/query-deploy.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jaeger-jaeger-query
+  labels:
+    app: jaeger
+    jaeger-infra: query-deployment
+    chart: jaeger-0.3.5
+    component: query
+    heritage: Tiller
+    release: jaeger
+    group: hkube
+    thirdparty: "true"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jaeger
+        component: query
+        release: jaeger
+        jaeger-infra: query-pod
+        group: hkube
+        thirdparty: "true"
+    spec:
+      nodeSelector:
+        third-party: "true"
+      containers:
+      - name: jaeger-jaeger-query
+        image: jaegertracing/jaeger-query:1.4.1
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: QUERY_BASE_PATH
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: query.base-path
+          - name: SPAN_STORAGE_TYPE
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: span-storage.type
+          - name: CASSANDRA_SERVERS
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: cassandra.servers
+          - name: CASSANDRA_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: cassandra.port
+          - name: CASSANDRA_KEYSPACE
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: cassandra.keyspace
+          - name: QUERY_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: query.port
+          - name: QUERY_HEALTH_CHECK_HTTP_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: jaeger-jaeger
+                key: query.health-check-http-port
+        ports:
+        - containerPort: 16686
+          protocol: TCP
+        resources:
+          {}
+          
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 16687
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+---
+# Source: thirdparty/templates/etcd-ui.yml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: etcd-ui
+  labels:
+    app: etcd-ui
+    group: hkube
+    third-party: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etcd-ui
+  template:
+    metadata:
+      labels:
+        app: etcd-ui
+        group: hkube
+    spec:
+      containers:
+        - name: etcd-ui
+          image: "hkube/etcd-ui:v1.0.3"
+          env: 
+            - name: HOST
+              value: "0.0.0.0"
+          ports:
+            - containerPort: 8080
+---
+# Source: thirdparty/charts/jaeger/templates/cassandra.yaml
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: jaeger-cassandra
+  labels:
+    app: jaeger-cassandra
+    chart: "cassandra-0.2.4"
+    release: "jaeger"
+    heritage: "Tiller"
+    group: hkube
+    thirdparty: "true"
+spec:
+  serviceName: jaeger-cassandra
+  replicas: 3
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: OnDelete
+  template:
+    metadata:
+      labels:
+        app: jaeger-cassandra
+        group: hkube
+        thirdparty: "true"
+    spec:
+      containers:
+      - name: jaeger-cassandra
+        image: "cassandra:3.11"
+        imagePullPolicy: "IfNotPresent"
+        resources:
+          limits:
+            cpu: 2
+            memory: 4Gi
+          requests:
+            cpu: 2
+            memory: 4Gi
+          
+        env:
+        - name: CASSANDRA_SEEDS
+          value: "jaeger-cassandra-0.jaeger-cassandra.default.svc.test "
+        - name: MAX_HEAP_SIZE
+          value: "2048M"
+        - name: HEAP_NEWSIZE
+          value: "512M"
+        - name: CASSANDRA_ENDPOINT_SNITCH
+          value: "GossipingPropertyFileSnitch"
+        - name: CASSANDRA_CLUSTER_NAME
+          value: "jaeger"
+        - name: CASSANDRA_DC
+          value: "dc1"
+        - name: CASSANDRA_RACK
+          value: "rack1"
+        - name: CASSANDRA_START_RPC
+          value: "false"
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        livenessProbe:
+          exec:
+            command: [ "/bin/sh", "-c", "nodetool status" ]
+          initialDelaySeconds: 90
+          periodSeconds: 30
+        readinessProbe:
+          exec:
+            command: [ "/bin/sh", "-c", "nodetool status | grep -E \"^UN\\s+${POD_IP}\"" ]
+          initialDelaySeconds: 90
+          periodSeconds: 30
+        ports:
+        - name: intra
+          containerPort: 7000
+        - name: tls
+          containerPort: 7001
+        - name: jmx
+          containerPort: 7199
+        - name: cql
+          containerPort: 9042
+        - name: thrift
+          containerPort: 9160
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/cassandra
+      volumes:
+      - name: data
+        emptyDir: {}
+---
+# Source: thirdparty/charts/redis-ha/templates/redis-ha-statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: stam-redis-ha-server
+  labels:
+    app: redis-ha
+    heritage: "Tiller"
+    release: "stam"
+    chart: redis-ha-3.6.1
+spec:
+  selector:
+    matchLabels:
+      release: stam
+      app: redis-ha
+  serviceName: stam-redis-ha
+  replicas: 3
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        checksum/init-config: 8993482045d016d68a7a0119350489b23c7690545a6c1723f5a4c09eda51e3b4
+        checksum/probe-config: ff2753c0cca2a302bb3582d115a7cc1a394500b644c2641283d972fdeb34c8d2
+      labels:
+        release: stam
+        app: redis-ha
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: redis-ha
+                  release: stam
+              topologyKey: kubernetes.io/hostname
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app:  redis-ha
+                    release: stam
+                topologyKey: failure-domain.beta.kubernetes.io/zone
+      securityContext:
+        fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+        
+      serviceAccountName: stam-redis-ha
+      initContainers:
+      - name: config-init
+        image: redis:5.0.5-alpine
+        imagePullPolicy: IfNotPresent
+        resources:
+          {}
+          
+        command:
+        - sh
+        args:
+        - /readonly-config/init.sh
+        env:
+        - name: SENTINEL_ID_0
+          value: ce55d35ec2fc97ea745e991153f420b3751f3f9a
+
+        - name: SENTINEL_ID_1
+          value: 12d075f73c47c1ccbe97f21b5c5346b77e3d86f5
+
+        - name: SENTINEL_ID_2
+          value: 3d347c85b0ea6886c1ba7f90e9fc5d6bb82f9bff
+
+        volumeMounts:
+        - name: config
+          mountPath: /readonly-config
+          readOnly: true
+        - name: data
+          mountPath: /data
+      containers:
+      - name: redis
+        image: redis:5.0.5-alpine
+        imagePullPolicy: IfNotPresent
+        command:
+        - redis-server
+        args:
+        - /data/conf/redis.conf
+        livenessProbe:
+          exec:
+            command: [ "sh", "/probes/liveness.sh", "6379"]
+          initialDelaySeconds: 15
+          periodSeconds: 5
+        readinessProbe:
+          exec:
+            command: ["sh", "/probes/readiness.sh", "6379"]
+          initialDelaySeconds: 15
+          periodSeconds: 5
+        resources:
+          {}
+          
+        ports:
+        - name: redis
+          containerPort: 6379
+        volumeMounts:
+        - mountPath: /data
+          name: data
+        - mountPath: /probes
+          name: probes
+      - name: sentinel
+        image: redis:5.0.5-alpine
+        imagePullPolicy: IfNotPresent
+        command:
+          - redis-sentinel
+        args:
+          - /data/conf/sentinel.conf
+        livenessProbe:
+          exec:
+            command: [ "sh", "/probes/readiness.sh", "26379"]
+          initialDelaySeconds: 15
+          periodSeconds: 5
+        readinessProbe:
+          exec:
+            command: ["sh", "/probes/readiness.sh", "26379"]
+          initialDelaySeconds: 15
+          periodSeconds: 5
+        resources:
+          {}
+          
+        ports:
+          - name: sentinel
+            containerPort: 26379
+        volumeMounts:
+        - mountPath: /data
+          name: data
+        - mountPath: /probes
+          name: probes
+      volumes:
+      - name: config
+        configMap:
+          name: stam-redis-ha-configmap
+      - name: probes
+        configMap:
+          name: stam-redis-ha-probes
+      - name: data
+        emptyDir: {}
+---
+# Source: thirdparty/charts/jaeger/templates/cassandra-schema-job.yaml
+# Source: jaeger/templates/cassandra-schema-job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jaeger-jaeger-cassandra-schema
+  labels:
+    app: jaeger
+    jaeger-infra: cassandra-schema-job
+    chart: jaeger-0.3.5
+    component: cassandra-schema
+    heritage: Tiller
+    release: jaeger
+    group: hkube
+    thirdparty: "true"
+spec:
+  template:
+    metadata:
+      name: jaeger-jaeger-cassandra-schema
+    spec:
+      containers:
+      - name: jaeger-jaeger-cassandra-schema
+        image: jaegertracing/jaeger-cassandra-schema:1.2.0
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: CQLSH_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: jaeger-jaeger
+              key: cassandra.servers
+        - name: MODE
+          valueFrom:
+            configMapKeyRef:
+              name: jaeger-jaeger
+              key: cassandra.schema.mode
+        - name: DATACENTER
+          valueFrom:
+            configMapKeyRef:
+              name: jaeger-jaeger
+              key: cassandra.datacenter.name
+        - name: CASSANDRA_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: jaeger-jaeger
+              key: cassandra.port
+        resources:
+          {}
+          
+      restartPolicy: OnFailure
+---
+# Source: thirdparty/charts/jaeger/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jaeger
+  labels:
+    app: jaeger
+    chart: jaeger-0.1.3
+    release: stam
+    heritage: Tiller
+    group: hkube
+    thirdparty: "true"
+spec:
+  rules:
+    - http:
+         paths:
+         - path: /jaeger
+           backend:
+             serviceName: jaeger-jaeger-query
+             servicePort: 80
+---
+# Source: thirdparty/templates/etcd-ui.yml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: etcd-ui
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: etcd-ui
+    release: stam
+    heritage: Tiller
+    core: "true"
+spec:
+  rules:
+    - http:
+        paths:
+        - path: /hkube/etcd-ui
+          backend:
+            serviceName: etcd-ui
+            servicePort: 8080
+---
+# Source: thirdparty/charts/etcd-operator/templates/etcd-cluster.yaml
+apiVersion: "etcd.database.coreos.com/v1beta2"
+kind: "EtcdCluster"
+metadata:
+  name: "etcd"
+  labels:
+    group: hkube
+    app: etcd
+    thirdparty: "true"
+spec:
+  size: 3
+  version: "3.3.1"
+  repository: "gcr.io/etcd-development/etcd"
+  pod:
+    busyboxImage: "busybox:1.28.0-glibc"
+    nodeSelector:
+      third-party: "true"
+    # resources:
+    #   limits:
+    #     cpu: 300m
+    #     memory: 200Mi
+    #   requests:
+    #     cpu: 200m
+    #     memory: 100Mi
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: etcd_cluster
+                operator: In
+                values:
+                - etcd
+            topologyKey: kubernetes.io/hostname
+    etcdEnv:
+    - name: ETCD_HEARTBEAT_INTERVAL
+      value: "1000"
+    - name: ETCD_ELECTION_TIMEOUT
+      value: "5000"
+    - name: ETCD_AUTO_COMPACTION_RETENTION
+      value: "5m"
+    - name: ETCD_AUTO_COMPACTION_MODE
+      value: "periodic"
+    - name: ETCD_QUOTA_BACKEND_BYTES
+    # 8GB
+      value: "8589934592"
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "2379"
+WARNING: Validation skipped because CRDs are not installed

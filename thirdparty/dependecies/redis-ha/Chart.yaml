@@ -1,5 +1,6 @@
-appVersion: 4.0.8-r0
-description: Highly available Redis cluster with multiple sentinels and standbys.
+apiVersion: v1
+appVersion: 5.0.5
+description: Highly available Kubernetes implementation of Redis
 engine: gotpl
 home: http://redis.io/
 icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
@@ -8,12 +9,11 @@ keywords:
 - keyvalue
 - database
 maintainers:
-- email: ikaboubi@gmail.com
-  name: smileisak
-- email: ianmaddox@google.com
-  name: ianmaddox
+- email: salimsalaues@gmail.com
+  name: ssalaues
 name: redis-ha
 sources:
-- https://github.com/smileisak/docker-images/tree/master/redis
-- https://github.com/diegocn/docker-images/tree/master/redis
-version: 2.1.4
+- https://redis.io/download
+- https://github.com/scality/Zenko/tree/development/1.0/kubernetes/zenko/charts/redis-ha
+- https://github.com/oliver006/redis_exporter
+version: 3.6.1

@@ -13,4 +13,3 @@ spec:
   selector:
     app: {{ template "redis-ha.name" . }}
     release: "{{ .Release.Name }}"
-    redis-role: "sentinel"
