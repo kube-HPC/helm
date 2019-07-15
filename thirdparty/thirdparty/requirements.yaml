@@ -12,5 +12,5 @@ dependencies:
     repository: "file://../dependecies/redis-ha"
     condition: global.production
   - name: mini-thirdparty
-    version: "0.3.1"
+    version: "0.3.2"
     repository: "file://../dependecies/mini-thirdparty"
