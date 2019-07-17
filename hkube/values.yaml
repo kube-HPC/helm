@@ -23,7 +23,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1021
+systemversion: v1.1.1022
 build_secret:
   registry: ''
   namespace: ''
@@ -38,7 +38,7 @@ algorithm-operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.33
+    tag: v1.1.34
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -201,7 +201,7 @@ task-executor:
     worker_socket_max_payload_bytes: 1000000000
   image:
     repository: hkube/task-executor
-    tag: v1.1.100
+    tag: v1.1.101
   service:
     type: ClusterIP
 thirdparty:
