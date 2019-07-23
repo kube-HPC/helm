@@ -23,7 +23,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1026
+systemversion: v1.1.1027
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -42,7 +42,7 @@ algorithm-operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.35
+    tag: v1.1.36
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
