@@ -23,7 +23,7 @@ global:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1027
+systemversion: v1.1.1028
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -224,7 +224,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.123
+    tag: v1.1.124
   metrics:
     port: 3001
   service:
