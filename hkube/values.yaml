@@ -4,6 +4,8 @@ global:
   registry_namespace: hkube
   registry_username: ''
   registry_password: ''
+  registry_insecure: false
+  registry_skip_tls_verify: false
   storage:
     fs:
       pvc:
@@ -32,6 +34,8 @@ build_secret:
   docker_namespace: ''
   docker_username: ''
   docker_password: ''
+  docker_registry_insecure: false
+  docker_registry_skip_tls_verify: false
   npm_registry: ''
   npm_token: ''
   pip_registry: ''
