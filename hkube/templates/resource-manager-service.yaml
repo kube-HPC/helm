@@ -14,5 +14,5 @@ spec:
   clusterIP: None
   ports:
     - name: metrics
-      port: {{ index .Values "resource-manager" "env" "metric_port" }}
-      targetPort: {{ index .Values "resource-manager" "env" "metric_port" }}
+      port: {{ index .Values "resource_manager" "env" "metric_port" }}
+      targetPort: {{ index .Values "resource_manager" "env" "metric_port" }}

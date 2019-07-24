@@ -44,7 +44,7 @@ algorithm-example:
   image:
     repository: hkube/algorithm-example
     tag: v1.1.10
-algorithm-operator:
+algorithm_operator:
   env:
     metric_port: '3000'
   image:
@@ -56,6 +56,14 @@ algorithm-operator:
   service:
     type: ClusterIP
   build_mode: kaniko
+  healthcheck: 
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 60
+    timeoutSeconds: 1
+    failureThreshold: 3
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
@@ -123,7 +131,15 @@ metadata:
   namespace: default
 minikube:
   enabled: false
-monitor-server:
+monitor_server:
+  healthcheck: 
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 20
+    timeoutSeconds: 1
+    failureThreshold: 3
   env:
     metric_port: 30010
   image:
@@ -161,7 +177,15 @@ pipeline-driver-queue:
   service:
     type: ClusterIP
 private_registry: docker.io
-resource-manager:
+resource_manager:
+  healthcheck: 
+    enabled: false
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 20
+    timeoutSeconds: 1
+    failureThreshold: 3
   env:
     algorithms_threshold_cpu: '0.9'
     algorithms_threshold_mem: '0.9'
@@ -205,7 +229,15 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.30
-task-executor:
+task_executor:
+  healthcheck: 
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 20
+    timeoutSeconds: 1
+    failureThreshold: 3
   env:
     metric_port: '3000'
     pipeline_drivers_amount: 30

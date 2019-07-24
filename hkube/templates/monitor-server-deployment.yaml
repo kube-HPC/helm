@@ -24,7 +24,17 @@ spec:
       serviceAccountName: monitor-server-serviceaccount
       containers:
         - name: monitor-server
-          image: "{{ .Values.global.registry }}{{ index  .Values "monitor-server" "image" "repository" }}:{{ index .Values "monitor-server" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index  .Values "monitor_server" "image" "repository" }}:{{ index .Values "monitor_server" "image" "tag" }}"
+{{- if .Values.monitor_server.healthcheck.enabled }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.monitor_server.healthcheck.path }}
+              port: {{ .Values.monitor_server.healthcheck.port }}
+            initialDelaySeconds: {{ .Values.monitor_server.healthcheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.monitor_server.healthcheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.monitor_server.healthcheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.monitor_server.healthcheck.failureThreshold }}
+{{- end }}          
           resources:
             limits:
               cpu: 250m

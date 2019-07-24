@@ -25,13 +25,23 @@ spec:
       serviceAccountName: resource-manager-serviceaccount
       containers:
         - name: resource-manager
-          image: "{{ .Values.global.registry }}{{ index .Values "resource-manager" "image" "repository" }}:{{ index .Values "resource-manager" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "resource_manager" "image" "repository" }}:{{ index .Values "resource_manager" "image" "tag" }}"
+{{- if .Values.resource_manager.healthcheck.enabled }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.resource_manager.healthcheck.path }}
+              port: {{ .Values.resource_manager.healthcheck.port }}
+            initialDelaySeconds: {{ .Values.resource_manager.healthcheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.resource_manager.healthcheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.resource_manager.healthcheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.resource_manager.healthcheck.failureThreshold }}
+{{- end }}          
           resources:
             limits:
               cpu: 250m
               memory: 512Mi
           ports:
-            - containerPort: {{ index .Values "resource-manager" "env" "metric_port" }}
+            - containerPort: {{ index .Values "resource_manager" "env" "metric_port" }}
           env:
             - name: NODE_ENV
               valueFrom:

@@ -27,11 +27,21 @@ spec:
       {{- end }}
       containers:
         - name: algorithm-operator
-          image: "{{ .Values.global.registry }}{{ index .Values "algorithm-operator" "image" "repository" }}:{{ index .Values "algorithm-operator" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "algorithm_operator" "image" "repository" }}:{{ index .Values "algorithm_operator" "image" "tag" }}"
+{{- if .Values.algorithm_operator.healthcheck.enabled }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.algorithm_operator.healthcheck.path }}
+              port: {{ .Values.algorithm_operator.healthcheck.port }}
+            initialDelaySeconds: {{ .Values.algorithm_operator.healthcheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.algorithm_operator.healthcheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.algorithm_operator.healthcheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.algorithm_operator.healthcheck.failureThreshold }}
+{{- end }}          
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ index .Values "algorithm-operator" "env" "metric_port" }}
+              containerPort: {{ index .Values "algorithm_operator" "env" "metric_port" }}
               protocol: TCP
           env:
             - name: NODE_ENV

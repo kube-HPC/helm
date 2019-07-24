@@ -34,7 +34,7 @@ data:
                   },
                   {
                         "project": "monitor-server",
-                        "tag": "{{ index .Values "monitor-server" "image" "tag" }}"
+                        "tag": "{{ index .Values "monitor_server" "image" "tag" }}"
                   },
                   {
                         "project": "algorithm-queue",
@@ -42,11 +42,11 @@ data:
                   },
                   {
                         "project": "resource-manager",
-                        "tag": "{{ index .Values "resource-manager" "image" "tag" }}"
+                        "tag": "{{ index .Values "resource_manager" "image" "tag" }}"
                   },
                   {
                         "project": "task-executor",
-                        "tag": "{{ index .Values "task-executor" "image" "tag" }}"
+                        "tag": "{{ .Values.task_executor.image.tag }}"
                   },
                   {
                         "project": "trigger-service",
@@ -54,7 +54,7 @@ data:
                   },
                   {
                         "project": "algorithm-operator",
-                        "tag": "{{ index .Values "algorithm-operator" "image" "tag" }}"
+                        "tag": "{{ index .Values "algorithm_operator" "image" "tag" }}"
                   },
                   {
                         "project": "pipeline-driver-queue",

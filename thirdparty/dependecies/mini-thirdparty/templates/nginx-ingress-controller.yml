@@ -184,7 +184,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nginx-ingress-svc
-  # namespace: ingress-nginxalgorithm-operator-8994b568c-qz4gt
+  # namespace: ingress-nginx
   annotations:
     service.beta.kubernetes.io/external-traffic: OnlyLocal
   labels:
