@@ -56,7 +56,7 @@ algorithm_operator:
   service:
     type: ClusterIP
   build_mode: kaniko
-  healthcheck: 
+  healthcheck:
     enabled: true
     port: 5000
     path: /healthz
@@ -132,7 +132,7 @@ metadata:
 minikube:
   enabled: false
 monitor_server:
-  healthcheck: 
+  healthcheck:
     enabled: true
     port: 5000
     path: /healthz
@@ -178,7 +178,7 @@ pipeline-driver-queue:
     type: ClusterIP
 private_registry: docker.io
 resource_manager:
-  healthcheck: 
+  healthcheck:
     enabled: false
     port: 5000
     path: /healthz
@@ -230,7 +230,7 @@ storage-cleaner:
     repository: hkube/storage-cleaner
     tag: v1.1.30
 task_executor:
-  healthcheck: 
+  healthcheck:
     enabled: true
     port: 5000
     path: /healthz
