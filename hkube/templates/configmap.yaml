@@ -3,7 +3,11 @@ data:
   registry.json: |
         {"registry":{{ .Values.global.registry | trimSuffix "/" | quote }} }
   clusterOptions.json: |
-        {"useNodeSelector":{{ .Values.global.production | default false }}}
+        {
+              "useNodeSelector":{{ .Values.global.production | default false }}, 
+              "ingressHost":{{ .Values.ingress.hostname }}
+              "ingressPrefix": {{ .Values.ingress.prefix }}
+        }
   versions.json: |
         {
             "systemVersion": "{{ .Values.systemversion }}",

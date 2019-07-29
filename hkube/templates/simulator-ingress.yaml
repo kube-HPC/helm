@@ -1,7 +1,6 @@
 {{- if index .Values "simulator" "ingress" "enabled" -}}
 {{- $fullName := "simulator" -}}
 {{- $servicePort := index .Values "simulator" "env" "metric_port" -}}
-{{- $ingressPath := index .Values "simulator" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -23,7 +22,7 @@ spec:
   rules:
     - http:
         paths:
-        - path: {{ $ingressPath }}
+        - path: {{ .Values.ingress.prefix }}{{ .Values.simulator.ingress.path }}
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}

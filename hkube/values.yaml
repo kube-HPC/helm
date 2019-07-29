@@ -25,6 +25,7 @@ global:
   isPrivileged: true
 ingress:
   hostname: ''
+  prefix: ''
 env:
   default_storage: s3
   node_env: production
