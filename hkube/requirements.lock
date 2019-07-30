@@ -1,6 +1,6 @@
 dependencies:
 - name: thirdparty
   repository: http://hkube.io/helm/
-  version: 0.4.3
-digest: sha256:7f821609c5967bf431b83e588dee876125d23170fedae480dfe11971636e4845
-generated: 2019-06-18T16:57:37.708706097+03:00
+  version: 0.5.1
+digest: sha256:5534b33868102fc2f87fd05dccd63a597885fcef4af3e20d5536f4c4f1d503d1
+generated: 2019-07-30T08:55:06.005696518+03:00
