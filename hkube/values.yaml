@@ -29,7 +29,7 @@ ingress:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1033
+systemversion: v1.1.1034
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -50,7 +50,7 @@ algorithm_operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.37
+    tag: v1.1.38
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
