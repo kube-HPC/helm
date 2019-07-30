@@ -7,6 +7,7 @@ metadata:
   name: simulator
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.ingress.requireTls | quote }}
   labels:
     app: simulator
     release: {{ .Release.Name }}

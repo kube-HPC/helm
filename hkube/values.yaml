@@ -26,6 +26,7 @@ global:
 ingress:
   hostname: ''
   prefix: ''
+  requireTls: true
 env:
   default_storage: s3
   node_env: production

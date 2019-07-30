@@ -8,6 +8,7 @@ metadata:
   name: monitor-server
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.ingress.requireTls | quote }}
   labels:
     app: monitor-server
     release: {{ .Release.Name }}

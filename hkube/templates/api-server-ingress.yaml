@@ -8,6 +8,7 @@ metadata:
   name: api-server
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.ingress.requireTls | quote }}
   labels:
     app: api-server
     release: {{ .Release.Name }}
