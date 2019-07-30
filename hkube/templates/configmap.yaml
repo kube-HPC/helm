@@ -5,7 +5,7 @@ data:
   clusterOptions.json: |
         {
               "useNodeSelector":{{ .Values.global.production | default false }}, 
-              "ingressHost":{{ .Values.ingress.hostname | quote }}
+              "ingressHost":{{ .Values.ingress.hostname | quote }},
               "ingressPrefix": {{ .Values.ingress.prefix | quote }}
         }
   versions.json: |
