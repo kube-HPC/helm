@@ -12,7 +12,7 @@ data:
   IS_NAMESPACED: {{ .Values.global.namespaced | quote}}
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   {{- if .Values.global.production }}
-  PIPELINE_DRIVERS_AMOUNT: "{{index .Values "task_executor" "env" "pipeline_drivers_amount"}}"
+  PIPELINE_DRIVERS_AMOUNT: {{ .Values.task_executor.env.pipeline_drivers_amount }}
   {{- else }}
   PIPELINE_DRIVERS_AMOUNT: "1"
   {{- end }}
