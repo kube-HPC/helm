@@ -77,6 +77,16 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: BUILD_MODE
+            - name: ALGORITHM_BUILDER_BUILDER_CPU
+              value: {{ .Values.algorithm_operator.env.algorithm_builder_builder_cpu | quote}}
+            - name: ALGORITHM_BUILDER_BUILDER_MEMORY
+              value: {{ .Values.algorithm_operator.env.algorithm_builder_builder_memory | quote}}
+            - name: ALGORITHM_BUILDER_MAIN_CPU
+              value: {{ .Values.algorithm_operator.env.algorithm_builder_main_cpu | quote}}
+            - name: ALGORITHM_BUILDER_MAIN_MEMORY
+              value: {{ .Values.algorithm_operator.env.algorithm_builder_main_memory | quote}}
+            - name: RESOURCES_ENABLE
+              value: {{ .Values.algorithm_operator.env.resources_enable | quote}}
           resources:
             limits:
               cpu: 250m

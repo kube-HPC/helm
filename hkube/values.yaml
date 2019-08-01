@@ -49,6 +49,11 @@ algorithm-example:
 algorithm_operator:
   env:
     metric_port: '3000'
+    builder_cpu: 2
+    algorithm_builder_builder_memory: 1024
+    algorithm_builder_main_cpu: 0.5
+    algorithm_builder_main_memory: 512
+    resources_enable: false
   image:
     repository: hkube/algorithm-operator
     tag: v1.1.42
