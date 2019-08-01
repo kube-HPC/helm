@@ -30,7 +30,7 @@ ingress:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1042
+systemversion: v1.1.1043
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -88,7 +88,7 @@ api-server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.1.166
+    tag: v1.1.167
   ingress:
     enabled: true
     path: /hkube/api-server
