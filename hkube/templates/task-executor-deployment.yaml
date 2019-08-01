@@ -25,7 +25,7 @@ spec:
       serviceAccountName: task-executor-serviceaccount
       containers:
         - name: task-executor
-          image: "{{ .Values.global.registry }}{{ index .Values "task_executor" "image" "repository" }}:{{ index .Values "task_executor" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ .Values.task_executor.image.repository }}:{{ .Values.task_executor.image.tag }}"
 {{- if .Values.task_executor.healthcheck.enabled }}
           livenessProbe:
             httpGet:
@@ -41,7 +41,7 @@ spec:
               cpu: 250m
               memory: 512Mi
           ports:
-            - containerPort: {{ index .Values "task_executor" "env" "metric_port" }}
+            - containerPort: {{ .Values.task_executor.env.metric_port }}
           env:
             - name: NODE_ENV
               valueFrom:
@@ -91,5 +91,10 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-
+            - name: WORKER_MEMORY
+              value: {{ .Values.task_executor.env.worker_memory | quote}}
+            - name: WORKER_CPU
+              value: {{ .Values.task_executor.env.worker_cpu | quote}}
+            - name: RESOURCES_ENABLE
+              value: {{ .Values.task_executor.env.resources_enable | quote}}              
                   
