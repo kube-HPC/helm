@@ -30,7 +30,7 @@ ingress:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1037
+systemversion: v1.1.1043
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -51,7 +51,7 @@ algorithm_operator:
     metric_port: '3000'
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.39
+    tag: v1.1.42
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -69,7 +69,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.45
+    tag: v1.1.48
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -88,7 +88,7 @@ api-server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.1.162
+    tag: v1.1.167
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -146,7 +146,7 @@ monitor_server:
     metric_port: 30010
   image:
     repository: hkube/monitor-server
-    tag: v1.1.86
+    tag: v1.1.88
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -162,7 +162,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.83
+    tag: v1.1.86
   service:
     type: ClusterIP
 pipeline-driver-queue:
@@ -171,7 +171,7 @@ pipeline-driver-queue:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.1.20
+    tag: v1.1.23
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -199,7 +199,7 @@ resource_manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.1.48
+    tag: v1.1.51
   service:
     type: ClusterIP
 resources: {}
@@ -215,7 +215,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.158
+    tag: v1.1.160
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -246,7 +246,7 @@ task_executor:
     worker_socket_max_payload_bytes: 1000000000
   image:
     repository: hkube/task-executor
-    tag: v1.1.105
+    tag: v1.1.108
   service:
     type: ClusterIP
 thirdparty:
@@ -257,7 +257,7 @@ trigger-service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.1.32
+    tag: v1.1.35
   service:
     type: ClusterIP
 worker:
@@ -265,7 +265,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.125
+    tag: v1.1.129
   metrics:
     port: 3001
   service:
@@ -281,7 +281,7 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.81
+    tag: v1.1.84
 kaniko:
   image:
     repository: hkube/kaniko
