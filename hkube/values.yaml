@@ -30,7 +30,7 @@ ingress:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1046
+systemversion: v1.1.1047
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -289,7 +289,7 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.84
+    tag: v1.1.85
 kaniko:
   image:
     repository: hkube/kaniko
