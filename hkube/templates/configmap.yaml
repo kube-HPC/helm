@@ -95,7 +95,12 @@ data:
                   {
                         "project": "kaniko",
                         "tag": "{{ .Values.kaniko.image.tag }}"
+                  },
+                  {
+                        "project": "algorithm-example-python",
+                        "tag": "{{ .Values.algorithm_example_python.image.tag }}"
                   }
+
             ]
             }
 kind: ConfigMap

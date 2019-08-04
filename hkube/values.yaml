@@ -294,3 +294,6 @@ kaniko:
   image:
     repository: hkube/kaniko
     tag: v1.1.4
+algorithm_example_python:
+  image:
+    tag: v1.1.0
