@@ -296,4 +296,5 @@ kaniko:
     tag: v1.1.4
 algorithm_example_python:
   image:
+    repository: hkube/algorithm-example-python
     tag: v1.1.0
