@@ -98,5 +98,5 @@ spec:
             - name: RESOURCES_ENABLE
               value: {{ .Values.task_executor.env.resources_enable | quote}}        
             - name: INTERVAL_MS
-              value: {{ .Values.task_executor.env.interval }}
+              value: {{ .Values.task_executor.env.interval | quote}}
                   

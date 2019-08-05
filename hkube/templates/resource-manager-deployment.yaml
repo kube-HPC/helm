@@ -54,7 +54,7 @@ spec:
                   name: resource-manager-configmap
                   key: HKUBE_LOG_LEVEL
             - name: INTERVAL
-              value: {{ .Values.resource_manager.env.interval }}
+              value: {{ .Values.resource_manager.env.interval | quote}}
             - name: ALGORITHMS_THRESHOLD_CPU
               valueFrom:
                 configMapKeyRef:
