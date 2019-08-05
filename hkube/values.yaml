@@ -54,6 +54,7 @@ algorithm_operator:
     algorithm_builder_main_cpu: 0.5
     algorithm_builder_main_memory: 512
     resources_enable: false
+    algorithm_queue_interval: 200
   image:
     repository: hkube/algorithm-operator
     tag: v1.1.45
