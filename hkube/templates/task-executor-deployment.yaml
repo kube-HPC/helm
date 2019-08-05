@@ -96,5 +96,7 @@ spec:
             - name: WORKER_CPU
               value: {{ .Values.task_executor.env.worker_cpu | quote}}
             - name: RESOURCES_ENABLE
-              value: {{ .Values.task_executor.env.resources_enable | quote}}              
+              value: {{ .Values.task_executor.env.resources_enable | quote}}        
+            - name: INTERVAL_MS
+              value: {{ .Values.task_executor.env.interval }}
                   

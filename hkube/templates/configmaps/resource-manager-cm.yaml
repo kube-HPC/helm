@@ -6,7 +6,6 @@ metadata:
 data:
   NODE_ENV: {{.Values.env.node_env}}
   HKUBE_LOG_LEVEL: "{{index .Values "resource_manager" "env" "hkube_log_level"}}"
-  INTERVAL: "{{index .Values "resource_manager" "env" "interval"}}"
   ALGORITHMS_THRESHOLD_CPU: "{{ index .Values "resource_manager" "env" "algorithms_threshold_cpu"}}"
   ALGORITHMS_THRESHOLD_MEM: "{{index .Values "resource_manager" "env" "algorithms_threshold_mem"}}"
   DRIVERS_THRESHOLD_CPU: "{{index .Values "resource_manager" "env" "driver_threshold_cpu"}}"
