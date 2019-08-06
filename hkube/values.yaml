@@ -30,7 +30,7 @@ ingress:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1053
+systemversion: v1.1.1054
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -256,7 +256,7 @@ task_executor:
     interval: '200'
   image:
     repository: hkube/task-executor
-    tag: v1.1.110
+    tag: v1.1.111
   service:
     type: ClusterIP
 thirdparty:
