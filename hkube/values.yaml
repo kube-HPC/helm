@@ -221,7 +221,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.161
+    tag: v1.1.162
   ingress:
     enabled: true
     path: /hkube/simulator
