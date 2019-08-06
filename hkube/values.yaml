@@ -295,7 +295,7 @@ algorithm-builder:
 kaniko:
   image:
     repository: hkube/kaniko
-    tag: v1.1.4
+    tag: v1.1.5
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
