@@ -30,7 +30,7 @@ ingress:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1054
+systemversion: v1.1.1063
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -57,7 +57,7 @@ algorithm_operator:
     algorithm_queue_interval: 200
   image:
     repository: hkube/algorithm-operator
-    tag: v1.1.46
+    tag: v1.1.48
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -75,7 +75,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.51
+    tag: v1.1.56
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -94,7 +94,7 @@ api-server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.1.170
+    tag: v1.1.171
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -168,7 +168,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.89
+    tag: v1.1.92
   service:
     type: ClusterIP
 pipeline-driver-queue:
@@ -177,7 +177,7 @@ pipeline-driver-queue:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.1.23
+    tag: v1.1.25
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -205,7 +205,7 @@ resource_manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.1.52
+    tag: v1.1.53
   service:
     type: ClusterIP
 resources: {}
@@ -221,7 +221,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.162
+    tag: v1.1.164
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -256,7 +256,7 @@ task_executor:
     interval: '200'
   image:
     repository: hkube/task-executor
-    tag: v1.1.111
+    tag: v1.1.112
   service:
     type: ClusterIP
 thirdparty:
@@ -267,7 +267,7 @@ trigger-service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.1.35
+    tag: v1.1.36
   service:
     type: ClusterIP
 worker:
@@ -275,7 +275,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.131
+    tag: v1.1.136
   metrics:
     port: 3001
   service:
@@ -291,7 +291,7 @@ caching-service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.85
+    tag: v1.1.86
 kaniko:
   image:
     repository: hkube/kaniko
