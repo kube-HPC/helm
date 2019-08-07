@@ -127,7 +127,7 @@ etcd-cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.1.7
+    tag: v1.1.8
 image:
   pullPolicy: IfNotPresent
 lables:
