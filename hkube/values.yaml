@@ -300,3 +300,10 @@ algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
     tag: v1.1.1
+etcd_defrag:
+  enable: true
+  pattern: '*/10 * * * *'
+  image:
+    repository: hkube/etcd-defrag-cron
+    tag: v1.0.0
+        
