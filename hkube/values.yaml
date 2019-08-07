@@ -306,4 +306,3 @@ etcd_defrag:
   image:
     repository: hkube/etcd-defrag-cron
     tag: v1.0.0
-        
