@@ -30,7 +30,7 @@ ingress:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1059
+systemversion: v1.1.1060
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -275,7 +275,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.133
+    tag: v1.1.134
   metrics:
     port: 3001
   service:
