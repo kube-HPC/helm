@@ -30,7 +30,7 @@ ingress:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1062
+systemversion: v1.1.1063
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -75,7 +75,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.55
+    tag: v1.1.56
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -177,7 +177,7 @@ pipeline-driver-queue:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.1.24
+    tag: v1.1.25
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
