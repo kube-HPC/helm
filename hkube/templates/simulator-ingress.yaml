@@ -8,6 +8,9 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.ingress.requireTls | quote }}
+{{- if .Values.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}
   labels:
     app: simulator
     release: {{ .Release.Name }}
@@ -29,5 +32,6 @@ spec:
             servicePort: {{ $servicePort }}
 {{- if .Values.ingress.hostname }}
       host: {{ .Values.ingress.hostname }}
+      secretName: {{ $fullName }}-tls-secret
 {{- end }}            
 {{- end }}
