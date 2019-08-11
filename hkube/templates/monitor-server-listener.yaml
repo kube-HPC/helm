@@ -18,5 +18,8 @@ spec:
           containers:
           - name: etcd-defrag-cron
             image: {{ .Values.global.registry }}{{ .Values.monitor_server_listener.image.repository }}:{{ .Values.monitor_server_listener.image.tag }}
+            env:
+            - name: TIMEOUT_INTERVAL
+              value: {{ .Values.monitor_server_listener.timeout | quote }}
           restartPolicy: Never
 {{- end }}        
