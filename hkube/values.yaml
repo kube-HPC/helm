@@ -184,6 +184,13 @@ pipeline-driver-queue:
   replicaCount: 1
   service:
     type: ClusterIP
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+    requests:
+      cpu: 200m
+      memory: 512Mi
 private_registry: docker.io
 resource_manager:
   healthcheck:

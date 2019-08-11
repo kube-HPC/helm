@@ -24,8 +24,11 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             limits:
-              cpu: 200m
-              memory: 512Mi
+              cpu: {{ index .Values "pipeline-driver-queue" "resources" "limits" "cpu" }}
+              memory: {{ index .Values "pipeline-driver-queue" "resources" "limits" "memory" }}
+            requests:
+              cpu: {{ index .Values "pipeline-driver-queue" "resources" "requests" "cpu" }}
+              memory: {{ index .Values "pipeline-driver-queue" "resources" "requests" "memory" }}
           ports:
             - name: http
               containerPort: {{ index .Values "pipeline-driver-queue" "env" "metric_port" }}
