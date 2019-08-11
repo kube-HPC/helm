@@ -164,7 +164,7 @@ monitor_server_listener:
   pattern: '*/10 * * * *'
   image:
     repository: hkube/monitor-server-listener
-    tag: v1.1.1
+    tag: v1.1.2
 pipeline-cleaner:
   image:
     repository: hkube/pipeline-cleaner
