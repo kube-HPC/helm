@@ -152,7 +152,7 @@ monitor_server:
     metric_port: 30010
   image:
     repository: hkube/monitor-server
-    tag: v1.1.95
+    tag: v1.1.96
   ingress:
     enabled: true
     path: /hkube/monitor-server
