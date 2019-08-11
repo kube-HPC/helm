@@ -159,6 +159,12 @@ monitor_server:
   service:
     type: ClusterIP
 nodeSelector: {}
+monitor_server_listener:
+  enable: true
+  pattern: '*/10 * * * *'
+  image:
+    repository: hkube/monitor-server-listener
+    tag: v1.1.1
 pipeline-cleaner:
   image:
     repository: hkube/pipeline-cleaner
