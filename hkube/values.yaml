@@ -160,7 +160,7 @@ monitor_server:
     type: ClusterIP
 nodeSelector: {}
 monitor_server_listener:
-  enable: true
+  enable: false
   pattern: '*/10 * * * *'
   timeout: 60000
   image:
