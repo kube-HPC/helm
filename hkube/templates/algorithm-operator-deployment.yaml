@@ -87,7 +87,7 @@ spec:
               value: {{ .Values.algorithm_operator.env.algorithm_builder_main_memory | quote}}
             - name: RESOURCES_ENABLE
               value: {{ .Values.algorithm_operator.env.resources_enable | quote}}
-          resources:
-            limits:
-              cpu: 250m
-              memory: 512Mi
+          # resources:
+          #   limits:
+          #     cpu: 250m
+          #     memory: 512Mi

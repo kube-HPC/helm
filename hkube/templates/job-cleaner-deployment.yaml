@@ -30,10 +30,10 @@ spec:
         - name: clean-old-jobs
           image: "{{ .Values.global.registry }}{{ index  .Values "clean-old-jobs" "image" "repository" }}:{{ index .Values "clean-old-jobs" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-          resources:
-            limits:
-              cpu: 100m
-              memory: 512Mi
+          # resources:
+          #   limits:
+          #     cpu: 100m
+          #     memory: 512Mi
           env:
             - name: NODE_ENV
               valueFrom:

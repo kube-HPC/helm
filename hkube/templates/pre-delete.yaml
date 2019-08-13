@@ -25,10 +25,10 @@ spec:
       containers:
       - name: post-del-dep-and-jobs
         image: "{{ .Values.global.registry }}{{ index .Values "delete-deployment-and-jobs" "image" "repository" }}:{{ index .Values "delete-deployment-and-jobs" "image" "tag" }}"
-        resources:
-          limits:
-            cpu: 200m
-            memory: 256Mi
+        # resources:
+        #   limits:
+        #     cpu: 200m
+        #     memory: 256Mi
         command:
           - /bin/sh
           - -c

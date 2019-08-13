@@ -18,10 +18,10 @@ spec:
           containers:
           - name: pipeline-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "pipeline-cleaner" "image" "repository" }}:{{ index .Values "pipeline-cleaner" "image" "tag" }}"
-            resources:
-              limits:
-                cpu: 250m
-                memory: 512Mi
+            # resources:
+            #   limits:
+            #     cpu: 250m
+            #     memory: 512Mi
             env:
               - name: NAMESPACE
                 valueFrom:

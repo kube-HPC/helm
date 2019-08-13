@@ -35,10 +35,10 @@ spec:
         - name: caching-service
           image: "{{ .Values.global.registry }}{{ index .Values "caching-service" "image" "repository" }}:{{ index .Values "caching-service" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-          resources:
-            limits:
-              cpu: 250m
-              memory: 512Mi
+          # resources:
+          #   limits:
+          #     cpu: 250m
+          #     memory: 512Mi
 {{- if eq .Values.env.default_storage "fs" }}
           volumeMounts:
             - name: storage-volume
