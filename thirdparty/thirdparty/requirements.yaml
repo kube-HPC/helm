@@ -8,7 +8,7 @@ dependencies:
     repository: "file://../dependecies/jaeger"
     condition: global.production
   - name: redis-ha
-    version: "3.6.1"
+    version: "3.6.2"
     repository: "file://../dependecies/redis-ha"
     condition: global.production
   - name: mini-thirdparty
