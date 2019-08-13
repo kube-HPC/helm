@@ -149,7 +149,8 @@ monitor_server:
     timeoutSeconds: 1
     failureThreshold: 3
   env:
-    metric_port: 30010
+    metric_port: 30010,
+    log_external_requests: false
   image:
     repository: hkube/monitor-server
     tag: v1.1.96
@@ -267,7 +268,8 @@ task_executor:
     worker_memory: 512
     worker_cpu: 0.5
     resources_enable: false
-    interval: '1000'
+    interval: '1000',
+    log_external_requests: false
   image:
     repository: hkube/task-executor
     tag: v1.1.112

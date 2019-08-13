@@ -78,6 +78,8 @@ spec:
                 configMapKeyRef:
                   name: monitor-server-configmap
                   key: DEFAULT_STORAGE
+            - name: LOG_EXTERNAL_REQUESTS
+              value: {{ .Values.monitor_server.env.log_external_requests | quote}}
           ports:
             - containerPort: 30010
           volumeMounts:
