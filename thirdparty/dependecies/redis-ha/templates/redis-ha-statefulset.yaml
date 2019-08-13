@@ -85,7 +85,7 @@ spec:
       initContainers:
       {{- if .Values.sysctlImage.enabled }}
       - name: init-sysctl
-        image: {{ template "redis.sysctl.image" . }}
+        image: {{ .Values.global.registry }}{{ template "redis.sysctl.image" . }}
         {{- if .Values.sysctlImage.mountHostSys }}
         volumeMounts:
         - name: host-sys
@@ -100,7 +100,7 @@ spec:
       {{- end }}
 {{- if and .Values.hostPath.path .Values.hostPath.chown }}
       - name: hostpath-chown
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: {{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.tag }}
         securityContext:
           runAsNonRoot: false
           runAsUser: 0
@@ -113,7 +113,7 @@ spec:
           mountPath: /data
 {{- end }}
       - name: config-init
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: {{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
 {{ toYaml .Values.init.resources | indent 10 }}
@@ -146,7 +146,7 @@ spec:
           mountPath: /data
       containers:
       - name: redis
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: {{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command:
         - redis-server
@@ -185,7 +185,7 @@ spec:
         - mountPath: /probes
           name: probes
       - name: sentinel
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: {{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command:
           - redis-sentinel
@@ -225,7 +225,7 @@ spec:
           name: probes
 {{- if .Values.exporter.enabled }}
       - name: redis-exporter
-        image: "{{ .Values.exporter.image }}:{{ .Values.exporter.tag }}"
+        image: "{{ .Values.global.registry }}{{ .Values.exporter.image }}:{{ .Values.exporter.tag }}"
         imagePullPolicy: {{ .Values.exporter.pullPolicy }}
         args:
         {{- range $key, $value := .Values.extraArgs }}
