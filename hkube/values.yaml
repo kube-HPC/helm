@@ -106,7 +106,7 @@ busybox:
     tag: latest
 clean-old-jobs:
   env:
-    hkube_log_level: '0'
+    hkube_log_level: '2'
     max_completed_job_age_hours: '0.0166'
     max_failed_job_age_hours: '0.0166'
     max_pending_job_age_hours: '0.0166'
@@ -181,7 +181,7 @@ pipeline-driver:
     type: ClusterIP
 pipeline-driver-queue:
   env:
-    hkube_log_level: '0'
+    hkube_log_level: '2'
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver-queue
@@ -214,7 +214,7 @@ resource_manager:
     algorithms_threshold_mem: '0.9'
     driver_threshold_cpu: '0.1'
     driver_threshold_mem: '1'
-    hkube_log_level: '0'
+    hkube_log_level: '2'
     interval: '1000'
     metric_port: '3000'
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
@@ -226,7 +226,7 @@ resource_manager:
 resources: {}
 simulator:
   env:
-    hkube_log_level: '0'
+    hkube_log_level: '2'
     metric_port: 9050
     monitor_backend_path: /hkube/monitor-server/
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
