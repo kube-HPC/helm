@@ -30,7 +30,7 @@ ingress:
 env:
   default_storage: s3
   node_env: production
-systemversion: v1.1.1070
+systemversion: v1.1.1071
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -75,7 +75,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.60
+    tag: v1.1.61
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -94,7 +94,7 @@ api-server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.1.172
+    tag: v1.1.173
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -220,7 +220,7 @@ resource_manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.1.53
+    tag: v1.1.54
   service:
     type: ClusterIP
 resources: {}
@@ -236,7 +236,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.164
+    tag: v1.1.165
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -272,7 +272,7 @@ task_executor:
     log_external_requests: false
   image:
     repository: hkube/task-executor
-    tag: v1.1.112
+    tag: v1.1.113
   service:
     type: ClusterIP
 thirdparty:
@@ -283,7 +283,7 @@ trigger-service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.1.36
+    tag: v1.1.37
   service:
     type: ClusterIP
 worker:
