@@ -14,7 +14,7 @@ data:
             "versions": [
                   {
                         "project": "api-server",
-                        "tag": "{{ index .Values "api-server" "image" "tag" }}"
+                        "tag": "{{ index .Values "api_server" "image" "tag" }}"
                   },
                   {
                         "project": "worker",
@@ -62,11 +62,11 @@ data:
                   },
                   {
                         "project": "pipeline-driver-queue",
-                        "tag": "{{ index .Values "pipeline-driver-queue" "image" "tag" }}"
+                        "tag": "{{ .Values.pipeline_driver_queue.image.tag }}"
                   },
                   {
                         "project": "clean-old-jobs",
-                        "tag": "{{ index .Values "clean-old-jobs" "image" "tag" }}"
+                        "tag": "{{ index .Values "clean_old_jobs" "image" "tag" }}"
                   },
                   {
                         "project": "cpu-load-algorithm",
@@ -74,19 +74,19 @@ data:
                   },
                   {
                         "project": "storage-cleaner",
-                        "tag": "{{ index .Values "storage-cleaner" "image" "tag" }}"
+                        "tag": "{{ index .Values "storage_cleaner" "image" "tag" }}"
                   },
                   {
                         "project": "pipeline-cleaner",
-                        "tag": "{{ index .Values "pipeline-cleaner" "image" "tag" }}"
+                        "tag": "{{ index .Values "pipeline_cleaner" "image" "tag" }}"
                   },
                   {
                         "project": "etcd-cleaner",
-                        "tag": "{{ index .Values "etcd-cleaner" "image" "tag" }}"
+                        "tag": "{{ index .Values "etcd_cleaner" "image" "tag" }}"
                   },
                   {
                         "project": "caching-service",
-                        "tag": "{{ index .Values "caching-service" "image" "tag" }}"
+                        "tag": "{{ index .Values "caching_service" "image" "tag" }}"
                   },
                   {
                         "project": "algorithm-builder",

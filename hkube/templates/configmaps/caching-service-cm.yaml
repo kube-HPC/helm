@@ -9,5 +9,5 @@ data:
 {{- if eq .Values.env.default_storage "fs" }}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}  
-  PORT: {{index .Values "caching-service" "env" "port" | quote}}
+  PORT: {{index .Values "caching_service" "env" "port" | quote}}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}

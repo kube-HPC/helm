@@ -21,11 +21,9 @@ spec:
 {{- end }}          
           containers:
           - name: storage-cleaner
-            image: "{{ .Values.global.registry }}{{ index  .Values "storage-cleaner" "image" "repository" }}:{{ index .Values "storage-cleaner" "image" "tag" }}"
-            # resources:
-            #   limits:
-            #     cpu: 100m
-            #     memory: 256Mi
+            image: "{{ .Values.global.registry }}{{ index  .Values "storage_cleaner" "image" "repository" }}:{{ index .Values "storage_cleaner" "image" "tag" }}"
+            resources:
+{{ toYaml .Values.storage_cleaner.resources | indent 14 }} 
 {{- if eq .Values.env.default_storage "fs" }}
             volumeMounts:
               - name: storage-volume

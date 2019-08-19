@@ -11,14 +11,14 @@ metadata:
     group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
-  type: {{ index .Values "api-server" "service" "type" }}
+  type: {{ index .Values "api_server" "service" "type" }}
   ports:
-    - port: {{ index .Values "api-server" "env" "port" }}
-      targetPort: {{ index .Values "api-server" "env" "port" }}
+    - port: {{ index .Values "api_server" "env" "port" }}
+      targetPort: {{ index .Values "api_server" "env" "port" }}
       protocol: TCP
       name: rest
-    - port: {{ index .Values "api-server" "env" "metric_port" }}
-      targetPort: {{ index .Values "api-server" "env" "metric_port" }}
+    - port: {{ index .Values "api_server" "env" "metric_port" }}
+      targetPort: {{ index .Values "api_server" "env" "metric_port" }}
       protocol: TCP
       name: metric
     

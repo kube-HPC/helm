@@ -24,11 +24,9 @@ spec:
       restartPolicy: Never
       containers:
       - name: post-del-dep-and-jobs
-        image: "{{ .Values.global.registry }}{{ index .Values "delete-deployment-and-jobs" "image" "repository" }}:{{ index .Values "delete-deployment-and-jobs" "image" "tag" }}"
-        # resources:
-        #   limits:
-        #     cpu: 200m
-        #     memory: 256Mi
+        image: "{{ .Values.global.registry }}{{ index .Values "delete_deployment_and_jobs" "image" "repository" }}:{{ index .Values "delete_deployment_and_jobs" "image" "tag" }}"
+        resources:
+{{ toYaml .Values.delete_deployment_and_jobs.resources | indent 10 }} 
         command:
           - /bin/sh
           - -c

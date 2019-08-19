@@ -14,5 +14,5 @@ spec:
   clusterIP: None
   ports:
     - name: metrics
-      port: {{ index .Values "pipeline-driver-queue" "env" "metric_port" }}
-      targetPort: {{ index .Values "pipeline-driver-queue" "env" "metric_port" }}
+      port: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
+      targetPort: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}

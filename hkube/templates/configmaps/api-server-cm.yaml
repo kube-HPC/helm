@@ -5,14 +5,14 @@ metadata:
   name: api-server-configmap
 data:
   NODE_ENV: {{.Values.env.node_env}}
-  BASE_URL_PATH: {{index .Values "api-server" "env" "base_url_path" | quote}}
+  BASE_URL_PATH: {{index .Values "api_server" "env" "base_url_path" | quote}}
   DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
 {{- if eq .Values.env.default_storage "fs" }}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}  
-  METRICS_PORT: {{index .Values "api-server" "env" "metric_port" | quote}}
-  PORT: {{index .Values "api-server" "env" "port" | quote}}
-  PIPELINE_DRIVER_CPU: {{index .Values "api-server" "env" "pipeline_driver_cpu" | quote}}
-  PIPELINE_DRIVER_MEM: {{index .Values "api-server" "env" "pipeline_driver_mem" | quote}}
+  METRICS_PORT: {{index .Values "api_server" "env" "metric_port" | quote}}
+  PORT: {{index .Values "api_server" "env" "port" | quote}}
+  PIPELINE_DRIVER_CPU: {{index .Values "api_server" "env" "pipeline_driver_cpu" | quote}}
+  PIPELINE_DRIVER_MEM: {{index .Values "api_server" "env" "pipeline_driver_mem" | quote}}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
 

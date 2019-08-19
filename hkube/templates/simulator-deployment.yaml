@@ -24,10 +24,8 @@ spec:
       containers:
         - name: simulator
           image: "{{ .Values.global.registry }}{{ index .Values "simulator" "image" "repository" }}:{{ index .Values "simulator" "image" "tag" }}"
-          # resources:
-          #   limits:
-          #     cpu: 100m
-          #     memory: 256Mi
+          resources:
+{{ toYaml .Values.simulator.resources | indent 12 }} 
           ports:
             - containerPort: {{ .Values.simulator.env.metric_port }}
           env:

@@ -14,11 +14,9 @@ spec:
         spec:
           containers:
           - name: etcd-cleaner
-            image: "{{ .Values.global.registry }}{{ index  .Values "etcd-cleaner" "image" "repository" }}:{{ index .Values "etcd-cleaner" "image" "tag" }}"
-            # resources:
-            #   limits:
-            #     cpu: 100m
-            #     memory: 256Mi
+            image: "{{ .Values.global.registry }}{{ index  .Values "etcd_cleaner" "image" "repository" }}:{{ index .Values "etcd_cleaner" "image" "tag" }}"
+            resources:
+{{ toYaml .Values.etcd_cleaner.resources | indent 14 }} 
             env:
             - name: "OBJECT_EXPIRATION_DAYS"
               valueFrom:

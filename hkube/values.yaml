@@ -96,7 +96,7 @@ algorunner:
   image:
     repository: hkube/algorunner
     tag: v1.1.29
-api-server:
+api_server:
   env:
     base_url_path: /hkube/api-server
     metric_port: '3001'
@@ -119,7 +119,7 @@ busybox:
   image:
     repository: busybox
     tag: latest
-clean-old-jobs:
+clean_old_jobs:
   env:
     hkube_log_level: '2'
     max_completed_job_age_hours: '0.0166'
@@ -137,7 +137,7 @@ cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
     tag: v1.1.6
-delete-deployment-and-jobs:
+delete_deployment_and_jobs:
   image:
     repository: hkube/del-dep-and-jobs
     tag: v1.0.8
@@ -145,7 +145,7 @@ delete-deployment-and-jobs:
     requests:
       cpu: 500m
       memory: 512Mi
-etcd-cleaner:
+etcd_cleaner:
   env:
     object_expiration_days: '5'
   image:
@@ -191,7 +191,7 @@ monitor_server_listener:
     requests:
       cpu: 500m
       memory: 512Mi
-pipeline-cleaner:
+pipeline_cleaner:
   image:
     repository: hkube/pipeline-cleaner
     tag: v1.1.9
@@ -207,7 +207,7 @@ pipeline-driver:
     tag: v1.1.96
   service:
     type: ClusterIP
-pipeline-driver-queue:
+pipeline_driver_queue:
   env:
     hkube_log_level: '2'
     metric_port: '3000'
@@ -277,7 +277,7 @@ simulator:
     requests:
       cpu: 500m
       memory: 512Mi
-storage-cleaner:
+storage_cleaner:
   env:
     temp_object_expiration_days: '5'
     result_object_expiration_days: '20'
@@ -340,7 +340,7 @@ worker:
     port: 3001
   service:
     type: ClusterIP
-caching-service:
+caching_service:
   env:
     port: '9005'
   image:

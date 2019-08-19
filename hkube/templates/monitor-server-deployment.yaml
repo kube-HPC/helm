@@ -35,6 +35,8 @@ spec:
             timeoutSeconds: {{ .Values.monitor_server.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.monitor_server.healthcheck.failureThreshold }}
 {{- end }}          
+          resources:
+{{ toYaml .Values.trigger_service.resources | indent 12 }} 
           env:
             - name: NODE_ENV
               valueFrom:

@@ -36,10 +36,8 @@ spec:
             timeoutSeconds: {{ .Values.resource_manager.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.resource_manager.healthcheck.failureThreshold }}
 {{- end }}          
-          # resources:
-          #   limits:
-          #     cpu: 250m
-          #     memory: 512Mi
+          resources:
+{{ toYaml .Values.resource_manager.resources | indent 12 }} 
           ports:
             - containerPort: {{ index .Values "resource_manager" "env" "metric_port" }}
           env:

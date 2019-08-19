@@ -36,10 +36,8 @@ spec:
             timeoutSeconds: {{ .Values.task_executor.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.task_executor.healthcheck.failureThreshold }}
 {{- end }}
-          # resources:
-          #   limits:
-          #     cpu: 250m
-          #     memory: 512Mi
+          resources:
+{{ toYaml .Values.task_executor.resources | indent 12 }} 
           ports:
             - containerPort: {{ .Values.task_executor.env.metric_port }}
           env:

@@ -20,18 +20,13 @@ spec:
     spec:
       containers:
         - name: pipeline-driver-queue
-          image: "{{ .Values.global.registry }}{{ index .Values "pipeline-driver-queue" "image" "repository" }}:{{ index .Values "pipeline-driver-queue" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "pipeline_driver_queue" "image" "repository" }}:{{ index .Values "pipeline_driver_queue" "image" "tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
-            limits:
-              cpu: {{ index .Values "pipeline-driver-queue" "resources" "limits" "cpu" }}
-              memory: {{ index .Values "pipeline-driver-queue" "resources" "limits" "memory" }}
-            requests:
-              cpu: {{ index .Values "pipeline-driver-queue" "resources" "requests" "cpu" }}
-              memory: {{ index .Values "pipeline-driver-queue" "resources" "requests" "memory" }}
+{{ toYaml .Values.pipeline_driver_queue.resources | indent 12 }} 
           ports:
             - name: http
-              containerPort: {{ index .Values "pipeline-driver-queue" "env" "metric_port" }}
+              containerPort: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
               protocol: TCP
           env:
             - name: NODE_ENV

@@ -33,19 +33,17 @@ spec:
 {{- end }}        
       containers:
         - name: caching-service
-          image: "{{ .Values.global.registry }}{{ index .Values "caching-service" "image" "repository" }}:{{ index .Values "caching-service" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "caching_service" "image" "repository" }}:{{ index .Values "caching_service" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-          # resources:
-          #   limits:
-          #     cpu: 250m
-          #     memory: 512Mi
+          resources:
+{{ toYaml .Values.caching_service.resources | indent 12 }} 
 {{- if eq .Values.env.default_storage "fs" }}
           volumeMounts:
             - name: storage-volume
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}                
           ports:
-            - containerPort: {{ index .Values "caching-service" "env" "port" }}
+            - containerPort: {{ index .Values "caching_service" "env" "port" }}
               protocol: TCP
           env:
             - name: NODE_ENV

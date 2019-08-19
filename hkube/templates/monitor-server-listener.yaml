@@ -21,5 +21,7 @@ spec:
             env:
             - name: TIMEOUT_INTERVAL
               value: {{ .Values.monitor_server_listener.timeout | quote }}
+            resources:
+{{ toYaml .Values.monitor_server_listener.resources | indent 14 }} 
           restartPolicy: Never
 {{- end }}        

@@ -28,12 +28,10 @@ spec:
       serviceAccountName: clean-old-jobs
       containers:
         - name: clean-old-jobs
-          image: "{{ .Values.global.registry }}{{ index  .Values "clean-old-jobs" "image" "repository" }}:{{ index .Values "clean-old-jobs" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index  .Values "clean_old_jobs" "image" "repository" }}:{{ index .Values "clean_old_jobs" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-          # resources:
-          #   limits:
-          #     cpu: 100m
-          #     memory: 512Mi
+          resources:
+{{ toYaml .Values.clean_old_jobs.resources | indent 12 }} 
           env:
             - name: NODE_ENV
               valueFrom:

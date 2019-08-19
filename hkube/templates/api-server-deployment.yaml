@@ -35,12 +35,10 @@ spec:
 {{- end }}                                    
       containers:
         - name: api-server
-          image: "{{ .Values.global.registry }}{{ index .Values "api-server" "image" "repository" }}:{{ index .Values "api-server" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ index .Values "api_server" "image" "repository" }}:{{ index .Values "api_server" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
           resources:
-            limits:
-              cpu: 250m
-              memory: 512Mi
+{{ toYaml .Values.api_server.resources | indent 12 }} 
           volumeMounts:
             - name: uploads
               mountPath: /hkube/api-server/uploads
@@ -49,9 +47,9 @@ spec:
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}                                    
           ports:
-            - containerPort: {{ index .Values "api-server" "env" "metric_port" }}
+            - containerPort: {{ index .Values "api_server" "env" "metric_port" }}
               protocol: TCP
-            - containerPort: {{ index .Values "api-server" "env" "port" }}
+            - containerPort: {{ index .Values "api_server" "env" "port" }}
               protocol: TCP
           env:
             - name: METRICS_PORT
