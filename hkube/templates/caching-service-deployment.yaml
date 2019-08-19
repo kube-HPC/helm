@@ -21,7 +21,7 @@ spec:
         release: {{ .Release.Name }}
         group: {{ .Values.labels.group.value }}
     spec:
-      {{- if .Values.global.production }}
+      {{- if and .Values.global.production (not .Values.global.namespaced)}}
       nodeSelector:
         core: "true"
       {{- end }}

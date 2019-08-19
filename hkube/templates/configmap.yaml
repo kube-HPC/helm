@@ -4,7 +4,7 @@ data:
         {"registry":{{ .Values.global.registry | trimSuffix "/" | quote }} }
   clusterOptions.json: |
         {
-              "useNodeSelector":{{ .Values.global.production | default false }}, 
+              "useNodeSelector":{{ and .Values.global.production (not .Values.global.namespaced) | default false}}, 
               "ingressHost":{{ .Values.ingress.hostname | quote }},
               "ingressPrefix": {{ .Values.ingress.prefix | quote }}
         }

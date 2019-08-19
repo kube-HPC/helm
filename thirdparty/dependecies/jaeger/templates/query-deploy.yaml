@@ -26,8 +26,10 @@ spec:
         group: hkube
         thirdparty: "true"
     spec:
+{{- if and .Values.global.production (not .Values.global.namespaced)}}    
       nodeSelector:
         third-party: "true"
+{{- end }}        
       containers:
       - name: jaeger-jaeger-query
         image: {{ .Values.global.registry }}jaegertracing/jaeger-query:1.4.1
