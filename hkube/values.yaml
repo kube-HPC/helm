@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.1.1076
+systemversion: v1.1.1077
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -86,7 +86,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.1.63
+    tag: v1.1.64
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -105,7 +105,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.1.177
+    tag: v1.1.178
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -204,7 +204,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.97
+    tag: v1.1.98
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -213,7 +213,7 @@ pipeline_driver_queue:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.1.28
+    tag: v1.1.29
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -245,7 +245,7 @@ resource_manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.1.55
+    tag: v1.1.56
   service:
     type: ClusterIP
   resources:
@@ -308,7 +308,7 @@ task_executor:
     log_external_requests: false
   image:
     repository: hkube/task-executor
-    tag: v1.1.114
+    tag: v1.1.115
   service:
     type: ClusterIP
   resources:
@@ -335,7 +335,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.1.139
+    tag: v1.1.140
   metrics:
     port: 3001
   service:
