@@ -153,7 +153,7 @@ monitor_server:
     log_external_requests: false
   image:
     repository: hkube/monitor-server
-    tag: v1.1.99
+    tag: v1.1.100
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -236,7 +236,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.165
+    tag: v1.1.166
   ingress:
     enabled: true
     path: /hkube/simulator
