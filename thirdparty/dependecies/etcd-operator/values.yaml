@@ -169,3 +169,6 @@ labels:
      value: "true"
 
 
+# global values for debug
+global:
+  registry: ''

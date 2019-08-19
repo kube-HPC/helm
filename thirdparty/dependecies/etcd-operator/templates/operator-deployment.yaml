@@ -28,6 +28,9 @@ spec:
 {{- range $key, $value := .Values.etcdOperator.commandArgs }}
         - "--{{ $key }}={{ $value }}"
 {{- end }}
+{{- if .Values.global.namespaced }}
+        - "--create-crd=false"
+{{- end }}
         env:
         - name: MY_POD_NAMESPACE
           valueFrom:
