@@ -153,7 +153,7 @@ monitor_server:
     log_external_requests: false
   image:
     repository: hkube/monitor-server
-    tag: v1.1.97
+    tag: v1.1.99
   ingress:
     enabled: true
     path: /hkube/monitor-server
