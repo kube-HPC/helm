@@ -306,6 +306,9 @@ task_executor:
     resources_enable: false
     interval: '1000'
     log_external_requests: false
+    default_quota_cpu: 30
+    default_quota_mem: 20Gi
+
   image:
     repository: hkube/task-executor
     tag: v1.1.115

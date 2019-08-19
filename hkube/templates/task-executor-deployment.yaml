@@ -99,4 +99,8 @@ spec:
               value: {{ .Values.task_executor.env.interval | quote}}
             - name: LOG_EXTERNAL_REQUESTS
               value: {{ .Values.task_executor.env.log_external_requests | quote}}
+            - name: DEFAULT_QUOTA_CPU
+              value: {{ .Values.task_executor.env.default_quota_cpu | quote}}
+            - name: DEFAULT_QUOTA_MEM
+              value: {{ .Values.task_executor.env.default_quota_mem | quote}}
                   
