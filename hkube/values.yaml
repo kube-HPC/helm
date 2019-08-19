@@ -30,6 +30,13 @@ ingress:
 env:
   default_storage: s3
   node_env: production
+image:
+  pullPolicy: IfNotPresent
+labels:
+  core:
+    value: 'true'
+  group:
+    value: hkube
 systemversion: v1.1.1074
 build_secret:
   docker_registry: ''
@@ -72,6 +79,10 @@ algorithm_operator:
     periodSeconds: 60
     timeoutSeconds: 1
     failureThreshold: 3
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
@@ -100,6 +111,10 @@ api-server:
     path: /hkube/api-server
   service:
     type: ClusterIP
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 busybox:
   image:
     repository: busybox
@@ -114,6 +129,10 @@ clean-old-jobs:
   image:
     repository: hkube/clean-old-jobs
     tag: v1.1.14
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
@@ -122,23 +141,20 @@ delete-deployment-and-jobs:
   image:
     repository: hkube/del-dep-and-jobs
     tag: v1.0.8
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 etcd-cleaner:
   env:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
     tag: v1.1.9
-image:
-  pullPolicy: IfNotPresent
-lables:
-  core:
-    value: 'true'
-  group:
-    value: hkube
-metadata:
-  namespace: default
-minikube:
-  enabled: false
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 monitor_server:
   healthcheck:
     enabled: true
@@ -159,6 +175,10 @@ monitor_server:
     path: /hkube/monitor-server
   service:
     type: ClusterIP
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 nodeSelector: {}
 monitor_server_listener:
   enable: false
@@ -167,10 +187,18 @@ monitor_server_listener:
   image:
     repository: hkube/monitor-server-listener
     tag: v1.1.2
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 pipeline-cleaner:
   image:
     repository: hkube/pipeline-cleaner
     tag: v1.1.9
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 pipeline-driver:
   env:
     metric_port: '3001'
@@ -193,11 +221,8 @@ pipeline-driver-queue:
   service:
     type: ClusterIP
   resources:
-    limits:
-      cpu: 500m
-      memory: 1024Mi
     requests:
-      cpu: 200m
+      cpu: 500m
       memory: 512Mi
 private_registry: docker.io
 resource_manager:
@@ -223,7 +248,10 @@ resource_manager:
     tag: v1.1.55
   service:
     type: ClusterIP
-resources: {}
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 simulator:
   env:
     hkube_log_level: '2'
@@ -245,6 +273,10 @@ simulator:
   service:
     port: 9050
     type: ClusterIP
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 storage-cleaner:
   env:
     temp_object_expiration_days: '5'
@@ -252,6 +284,10 @@ storage-cleaner:
   image:
     repository: hkube/storage-cleaner
     tag: v1.1.30
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 task_executor:
   healthcheck:
     enabled: true
@@ -275,10 +311,14 @@ task_executor:
     tag: v1.1.114
   service:
     type: ClusterIP
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 thirdparty:
   enabled: true
 tolerations: []
-trigger-service:
+trigger_service:
   env:
     metric_port: '3000'
   image:
@@ -286,6 +326,10 @@ trigger-service:
     tag: v1.1.38
   service:
     type: ClusterIP
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
 worker:
   env:
     metric_port: '3000'
@@ -304,14 +348,26 @@ caching-service:
     tag: v1.1.15
   service:
     type: ClusterIP
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
     tag: v1.1.87
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
 kaniko:
   image:
     repository: hkube/kaniko
     tag: v1.1.5
+  resources:
+    requests:
+      cpu: 1500m
+      memory: 1Gi
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
@@ -322,3 +378,7 @@ etcd_defrag:
   image:
     repository: hkube/etcd-defrag-cron
     tag: v1.0.0
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi

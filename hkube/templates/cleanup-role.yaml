@@ -3,7 +3,7 @@ kind: ServiceAccount
 metadata:
   name: cleanup-serviceaccount
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     app: cleanup
     core: "true"
 ---
@@ -13,7 +13,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
   name: cleanup
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     app: cleanup
     core: "true"
 rules:
@@ -36,7 +36,7 @@ metadata:
   name: cleanup
   namespace: {{ .Release.Namespace }}
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     app: cleanup
     core: "true"
 subjects:
@@ -53,7 +53,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: cleanup-clusterrole
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     app: cleanup
     core: "true"
 rules:
@@ -77,7 +77,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: cleanup-clusterrolebinding
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     app: cleanup
     core: "true"
 subjects:

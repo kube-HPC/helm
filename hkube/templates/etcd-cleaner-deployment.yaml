@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: etcd-cleaner
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
     app: "etcd-cleaner"
 spec:

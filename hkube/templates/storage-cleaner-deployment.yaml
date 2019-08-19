@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: storage-cleaner
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
     app: storage-cleaner
 spec:

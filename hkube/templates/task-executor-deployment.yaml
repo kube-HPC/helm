@@ -5,7 +5,7 @@ metadata:
   labels:
     app: task-executor
     scale-group: task-executor
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
   replicas: 1
@@ -16,7 +16,7 @@ spec:
     metadata:
       labels:
         app: task-executor
-        group: {{ .Values.lables.group.value }}
+        group: {{ .Values.labels.group.value }}
     spec:
       {{- if .Values.global.production }}
       nodeSelector:

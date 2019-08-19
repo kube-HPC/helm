@@ -7,7 +7,7 @@ metadata:
     chart: "cassandra-0.2.4"
     release: "jaeger"
     heritage: "Tiller"
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     thirdparty: "true"
 spec:
   clusterIP: None
@@ -43,7 +43,7 @@ metadata:
     component: agent
     heritage: Tiller
     release: jaeger
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     thirdparty: "true"
 spec:
   ports:
@@ -82,7 +82,7 @@ metadata:
     component: collector
     heritage: Tiller
     release: jaeger
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     thirdparty: "true"
 spec:
   ports:
@@ -117,7 +117,7 @@ metadata:
     component: query
     heritage: Tiller
     release: jaeger
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     thirdparty: "true"
 spec:
   ports:

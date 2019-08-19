@@ -15,7 +15,7 @@ metadata:
     app: simulator
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
 {{- if .Values.ingress.hostname }}

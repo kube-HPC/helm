@@ -6,7 +6,7 @@ metadata:
     prometheus.io/scrape: "true"
   labels:
     app: pipeline-driver
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
   selector:

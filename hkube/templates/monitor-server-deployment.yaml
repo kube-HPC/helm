@@ -4,7 +4,7 @@ metadata:
   name: monitor-server
   labels:
     app: monitor-server
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
   replicas: 1
@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         app: monitor-server
-        group: {{ .Values.lables.group.value }}
+        group: {{ .Values.labels.group.value }}
     spec:
       {{- if .Values.global.production }}
       nodeSelector:

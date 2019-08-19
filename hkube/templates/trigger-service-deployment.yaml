@@ -5,7 +5,7 @@ metadata:
   labels:
     app: trigger-service
     scale-group: trigger-service
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
     metrics-group: trigger-service
 spec:
@@ -17,7 +17,7 @@ spec:
     metadata:
       labels:
         app: trigger-service
-        group: {{ .Values.lables.group.value }}
+        group: {{ .Values.labels.group.value }}
     spec:
       {{- if .Values.global.production }}
       nodeSelector:
@@ -25,13 +25,11 @@ spec:
       {{- end }}
       containers:
         - name: trigger-service
-          image: "{{ .Values.global.registry }}{{ index .Values "trigger-service" "image" "repository" }}:{{ index .Values "trigger-service" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ .Values.trigger_service.image.repository }}:{{ .Values.trigger_service.image.tag }}"
           resources:
-            limits:
-              cpu: 200m
-              memory: 256Mi
+{{ toYaml .Values.trigger_service.resources | indent 12 }}          
           ports:
-            - containerPort: {{ index .Values "trigger-service" "env" "metric_port" }}
+            - containerPort: {{ .Values.trigger_service.env.metric_port }}
           env:
             - name: NODE_ENV
               valueFrom:

@@ -28,7 +28,7 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-lables:
+labels:
    group:
      value: hkube
    thirdparty:

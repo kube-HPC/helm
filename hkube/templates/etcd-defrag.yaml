@@ -6,7 +6,7 @@ metadata:
   labels:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
   schedule: {{ .Values.etcd_defrag.pattern | quote }} 

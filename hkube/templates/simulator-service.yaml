@@ -4,7 +4,7 @@ metadata:
   name: simulator
   labels:
     app: simulator
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
   selector:

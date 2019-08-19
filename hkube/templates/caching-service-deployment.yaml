@@ -6,7 +6,7 @@ metadata:
     app: caching-service
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
   replicas: 1
@@ -19,7 +19,7 @@ spec:
       labels:
         app: caching-service
         release: {{ .Release.Name }}
-        group: {{ .Values.lables.group.value }}
+        group: {{ .Values.labels.group.value }}
     spec:
       {{- if .Values.global.production }}
       nodeSelector:

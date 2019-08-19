@@ -9,7 +9,7 @@ metadata:
     chart: algorithm-queue-svc
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
   type: {{ index .Values "algorithm-queue-svc" "service" "type" }}

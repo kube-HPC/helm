@@ -6,7 +6,7 @@ metadata:
     prometheus.io/scrape: "true"
   labels:
     app: trigger-service
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
   selector:
@@ -14,5 +14,5 @@ spec:
   clusterIP: None
   ports:
     - name: metrics
-      port: {{ index .Values "trigger-service" "env" "metric_port" }}
-      targetPort: {{ index .Values "trigger-service" "env" "metric_port" }}
+      port: {{ index .Values "trigger_service" "env" "metric_port" }}
+      targetPort: {{ index .Values "trigger_service" "env" "metric_port" }}

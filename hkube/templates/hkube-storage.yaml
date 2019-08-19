@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   name: hkube-storage-pv
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }} 
     type: nfs
@@ -26,7 +26,7 @@ metadata:
   name: hkube-storage-pvc
   namespace: {{ .Release.Namespace }} 
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }} 
     type: nfs
@@ -38,7 +38,7 @@ spec:
       storage: {{ .Values.global.storage.fs.pvc.capacity }}
   selector:
     matchLabels:
-      group: {{ .Values.lables.group.value }}
+      group: {{ .Values.labels.group.value }}
       type: nfs
       role: hkube-storage
 {{- end }} 

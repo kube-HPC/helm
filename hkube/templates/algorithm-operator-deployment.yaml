@@ -6,7 +6,7 @@ metadata:
     app: algorithm-operator
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
       labels:
         app: algorithm-operator
         release: {{ .Release.Name }}
-        group: {{ .Values.lables.group.value }}
+        group: {{ .Values.labels.group.value }}
     spec:
       serviceAccountName: algorithm-operator-serviceaccount
       {{- if .Values.global.production }}

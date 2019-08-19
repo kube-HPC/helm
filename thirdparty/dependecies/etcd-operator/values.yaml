@@ -162,7 +162,7 @@ image:
  tag: 3.3.1
  pullPolicy: IfNotPresent
 
-lables:
+labels:
    group:
      value: hkube
    thirdparty:

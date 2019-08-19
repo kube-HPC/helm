@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: pipeline-cleaner
   labels:
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     core: "true"
     app: "pipeline-cleaner"
 spec:

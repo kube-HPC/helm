@@ -10,7 +10,7 @@ metadata:
     component: agent
     heritage: Tiller
     release: jaeger
-    group: {{ .Values.lables.group.value }}
+    group: {{ .Values.labels.group.value }}
     thirdparty: "true"
 spec:
   template:
@@ -20,7 +20,7 @@ spec:
         component: agent
         release: jaeger
         jaeger-infra: agent-instance
-        group: {{ .Values.lables.group.value }}
+        group: {{ .Values.labels.group.value }}
         thirdparty: "true"
     spec:
       nodeSelector:
