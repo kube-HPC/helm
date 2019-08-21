@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.1.1078
+systemversion: v1.1.1080
 build_secret:
   docker_registry: ''
   docker_namespace: ''
