@@ -170,7 +170,7 @@ monitor_server:
     elasticsearch_service_url: ''
   image:
     repository: hkube/monitor-server
-    tag: v1.1.103
+    tag: v1.1.104
   ingress:
     enabled: true
     path: /hkube/monitor-server
