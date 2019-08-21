@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.1.1079
+systemversion: v1.1.1078
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -169,7 +169,7 @@ monitor_server:
     log_external_requests: false
   image:
     repository: hkube/monitor-server
-    tag: v1.1.102
+    tag: v1.1.103
   ingress:
     enabled: true
     path: /hkube/monitor-server
