@@ -171,7 +171,7 @@ monitor_server:
     logs_view_source: k8s
   image:
     repository: hkube/monitor-server
-    tag: v1.1.108
+    tag: v1.1.109
   ingress:
     enabled: true
     path: /hkube/monitor-server
