@@ -168,6 +168,8 @@ monitor_server:
     metric_port: 30010
     log_external_requests: false
     elasticsearch_service_url: ''
+    # k8s - kubernetes, es - elasticsearch
+    logs_view_source: 'k8s'
   image:
     repository: hkube/monitor-server
     tag: v1.1.105

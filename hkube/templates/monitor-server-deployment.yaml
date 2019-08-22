@@ -84,6 +84,8 @@ spec:
               value: {{ .Values.monitor_server.env.log_external_requests | quote}}
             - name: ELASTICSEARCH_SERVICE_URL
               value: {{ .Values.monitor_server.env.elasticsearch_service_url | quote}}
+            - name: LOGS_VIEW_SOURCE
+              value: {{ .Values.monitor_server.env.logs_view_source | quote}}
           ports:
             - containerPort: 30010
           volumeMounts:
