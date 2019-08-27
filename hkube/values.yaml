@@ -38,6 +38,7 @@ labels:
   group:
     value: hkube
 systemversion: v1.1.1081
+fullSystemVersion: v1.1.1081-1566914177200
 build_secret:
   docker_registry: ''
   docker_namespace: ''

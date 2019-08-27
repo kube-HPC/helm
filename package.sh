@@ -3,7 +3,7 @@ set -o xtrace
 
 CHART_VERSION=$(git describe --abbrev=0)
 VALUES_YAML_PATH=hkube/values.yaml NEW_VALUES_YAML_PATH=hkube/values.yaml ./version-updater
-APP_VERSION=$(grep systemversion hkube/values.yaml | awk -F': ' '{print $2}')
+APP_VERSION=$(grep fullSystemVersion hkube/values.yaml | awk -F': ' '{print $2}')
 mkdir -p /tmp/helm-charts
 helm package --app-version=${APP_VERSION} --version=${APP_VERSION} -d /tmp/helm-charts hkube
 git stash
