@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.1.1083
+systemversion: v1.1.1084
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -206,7 +206,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.1.100
+    tag: v1.1.101
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -386,4 +386,4 @@ etcd_defrag:
     requests:
       cpu: 500m
       memory: 512Mi
-fullSystemVersion: v1.1.1083-1566984933695
+fullSystemVersion: v1.1.1084-1566993282933
