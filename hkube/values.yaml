@@ -266,7 +266,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.169
+    tag: v1.1.170
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -386,4 +386,4 @@ etcd_defrag:
     requests:
       cpu: 500m
       memory: 512Mi
-fullSystemVersion: v1.1.1083-1566982447409
+fullSystemVersion: v1.1.1083-1566984933695
