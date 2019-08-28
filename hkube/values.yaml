@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.1.1082
+systemversion: v1.1.1083
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -359,7 +359,7 @@ caching_service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.1.88
+    tag: v1.1.89
   resources:
     requests:
       cpu: 500m
@@ -386,4 +386,4 @@ etcd_defrag:
     requests:
       cpu: 500m
       memory: 512Mi
-fullSystemVersion: v1.1.1082-1566917427603
+fullSystemVersion: v1.1.1083-1566982447409
