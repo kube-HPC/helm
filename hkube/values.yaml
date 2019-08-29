@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.1.1084
+systemversion: v1.1.1085
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -312,7 +312,7 @@ task_executor:
     default_quota_mem: 20Gi
   image:
     repository: hkube/task-executor
-    tag: v1.1.116
+    tag: v1.1.117
   service:
     type: ClusterIP
   resources:
@@ -386,4 +386,4 @@ etcd_defrag:
     requests:
       cpu: 500m
       memory: 512Mi
-fullSystemVersion: v1.1.1084-1566995585287
+fullSystemVersion: v1.1.1085-1567082260923
