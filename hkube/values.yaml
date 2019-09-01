@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.1.1085
+systemversion: v1.2.0
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -386,4 +386,4 @@ etcd_defrag:
     requests:
       cpu: 500m
       memory: 512Mi
-fullSystemVersion: v1.1.1085-1567082260923
+fullSystemVersion: v1.2.0-1567326880076
