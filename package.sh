@@ -8,9 +8,9 @@ mkdir -p /tmp/helm-charts
 helm package --app-version=${APP_VERSION} --version=${APP_VERSION} -d /tmp/helm-charts hkube
 git stash
 git checkout --track origin/gh-pages
-cp /tmp/helm-charts/hkube-${APP_VERSION}.tgz .
-helm repo index --merge ./index.yaml /tmp/helm-charts/
-cp /tmp/helm-charts/index.yaml .
+cp /tmp/helm-charts/hkube-${APP_VERSION}.tgz ./dev
+helm repo index --merge ./dev/index.yaml /tmp/helm-charts/
+cp /tmp/helm-charts/index.yaml ./dev
 git add .
 git commit -m "update charts"
 git push
