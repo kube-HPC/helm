@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.1
+systemversion: v1.2.2
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -339,7 +339,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.1
+    tag: v1.2.2
   metrics:
     port: 3001
   service:
@@ -386,4 +386,4 @@ etcd_defrag:
     requests:
       cpu: 500m
       memory: 512Mi
-fullSystemVersion: v1.2.1-1567604425720
+fullSystemVersion: v1.2.2-1567604899863
