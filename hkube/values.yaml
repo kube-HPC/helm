@@ -386,4 +386,4 @@ etcd_defrag:
     requests:
       cpu: 500m
       memory: 512Mi
-fullSystemVersion: v1.2.1-1567336150463
+fullSystemVersion: v1.2.1-1567604425720
