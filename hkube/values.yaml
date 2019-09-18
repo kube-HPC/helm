@@ -52,7 +52,7 @@ build_secret:
 algorithm-example:
   image:
     repository: hkube/algorithm-example
-    tag: v1.1.10
+    tag: v1.2.1
 algorithm_operator:
   env:
     metric_port: '3000'
@@ -95,7 +95,7 @@ algorithm-queue-svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.1.29
+    tag: v1.2.2
 api_server:
   env:
     base_url_path: /hkube/api-server
@@ -128,7 +128,7 @@ clean_old_jobs:
     clean_cron: '*/1 * * * *'
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.1.14
+    tag: v1.2.1
   resources:
     requests:
       cpu: 500m
@@ -136,7 +136,7 @@ clean_old_jobs:
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
-    tag: v1.1.6
+    tag: v1.2.1
 delete_deployment_and_jobs:
   image:
     repository: hkube/del-dep-and-jobs
@@ -150,7 +150,7 @@ etcd_cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.1.9
+    tag: v1.2.1
   resources:
     requests:
       cpu: 500m
@@ -171,7 +171,7 @@ monitor_server:
     logs_view_source: k8s
   image:
     repository: hkube/monitor-server
-    tag: v1.1.109
+    tag: v1.2.1
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -188,7 +188,7 @@ monitor_server_listener:
   timeout: 60000
   image:
     repository: hkube/monitor-server-listener
-    tag: v1.1.2
+    tag: v1.2.0
   resources:
     requests:
       cpu: 500m
@@ -196,7 +196,7 @@ monitor_server_listener:
 pipeline_cleaner:
   image:
     repository: hkube/pipeline-cleaner
-    tag: v1.1.9
+    tag: v1.2.1
   resources:
     requests:
       cpu: 500m
@@ -266,7 +266,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.1.171
+    tag: v1.2.1
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -367,7 +367,7 @@ algorithm-builder:
 kaniko:
   image:
     repository: hkube/kaniko
-    tag: v1.1.5
+    tag: v1.2.0
   resources:
     requests:
       cpu: 1500m
@@ -375,7 +375,7 @@ kaniko:
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.1.1
+    tag: v1.2.1
 etcd_defrag:
   enable: true
   pattern: '*/10 * * * *'
@@ -393,5 +393,5 @@ nodejs_env:
 python_env:
   image:
     repository: hkube/python-env
-    tag: v1.2.1
-fullSystemVersion: v1.2.4-1567608615507
+    tag: v1.2.2
+fullSystemVersion: v1.2.4-1568792038052
