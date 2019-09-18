@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.4
+systemversion: v1.2.5
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -359,7 +359,7 @@ caching_service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.2.2
+    tag: v1.2.3
   resources:
     requests:
       cpu: 500m
@@ -375,7 +375,7 @@ kaniko:
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.2.1
+    tag: v1.2.2
 etcd_defrag:
   enable: true
   pattern: '*/10 * * * *'
@@ -394,4 +394,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.2
-fullSystemVersion: v1.2.4-1568792038052
+fullSystemVersion: v1.2.5-1568816348658
