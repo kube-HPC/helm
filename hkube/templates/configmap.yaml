@@ -99,6 +99,14 @@ data:
                   {
                         "project": "algorithm-example-python",
                         "tag": "{{ .Values.algorithm_example_python.image.tag }}"
+                  },
+                  {
+                        "project": "nodejs-env",
+                        "tag": "{{ .Values.nodejs_env.image.tag }}"
+                  },
+                  {
+                        "project": "python-env",
+                        "tag": "{{ .Values.python_env.image.tag }}"
                   }
 
             ]

@@ -386,4 +386,12 @@ etcd_defrag:
     requests:
       cpu: 500m
       memory: 512Mi
+nodejs_env:
+  image:
+    repository: hkube/nodejs-env
+    tag: v1.2.1
+python_env:
+  image:
+    repository: hkube/python-env
+    tag: v1.2.1
 fullSystemVersion: v1.2.4-1567608615507
