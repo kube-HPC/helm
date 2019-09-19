@@ -128,7 +128,7 @@ clean_old_jobs:
     clean_cron: '*/1 * * * *'
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.2.1
+    tag: v1.2.2
   resources:
     requests:
       cpu: 500m
@@ -150,7 +150,7 @@ etcd_cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.2.1
+    tag: v1.2.2
   resources:
     requests:
       cpu: 500m
@@ -394,4 +394,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.2
-fullSystemVersion: v1.2.8-1568898681427
+fullSystemVersion: v1.2.8-1568902030284
