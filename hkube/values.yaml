@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.5
+systemversion: v1.2.6
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -359,7 +359,7 @@ caching_service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.2.3
+    tag: v1.2.4
   resources:
     requests:
       cpu: 500m
@@ -394,4 +394,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.2
-fullSystemVersion: v1.2.5-1568816348658
+fullSystemVersion: v1.2.6-1568882151857
