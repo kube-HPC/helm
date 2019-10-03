@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.10
+systemversion: v1.2.11
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -86,7 +86,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.2.1
+    tag: v1.2.2
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -105,7 +105,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.2.3
+    tag: v1.2.4
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -247,7 +247,7 @@ resource_manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.2.1
+    tag: v1.2.2
   service:
     type: ClusterIP
   resources:
@@ -312,7 +312,7 @@ task_executor:
     default_quota_mem: 20Gi
   image:
     repository: hkube/task-executor
-    tag: v1.2.1
+    tag: v1.2.2
   service:
     type: ClusterIP
   resources:
@@ -394,4 +394,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.2
-fullSystemVersion: v1.2.10-1569508861432
+fullSystemVersion: v1.2.11-1570105426365
