@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.17
+systemversion: v1.2.18
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -339,7 +339,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.7
+    tag: v1.2.8
   metrics:
     port: 3001
   service:
@@ -394,4 +394,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.2
-fullSystemVersion: v1.2.17-1570435809025
+fullSystemVersion: v1.2.18-1570437497735
