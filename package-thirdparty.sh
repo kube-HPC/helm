@@ -4,9 +4,9 @@ rm /tmp/helm-charts/*
 helm package -d /tmp/helm-charts thirdparty/thirdparty
 git stash
 git checkout gh-pages
-cp /tmp/helm-charts/thirdparty-*.tgz ./dev
-helm repo index --merge ./dev/index.yaml /tmp/helm-charts/
-cp /tmp/helm-charts/index.yaml ./dev
+cp /tmp/helm-charts/thirdparty-*.tgz ./
+helm repo index --merge ./index.yaml /tmp/helm-charts/
+cp /tmp/helm-charts/index.yaml ./
 git add .
 git commit -m "update thirdparty charts"
 git push
