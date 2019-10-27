@@ -1,5 +1,5 @@
 global:
-  clusterName: cluster-local
+  clusterName: cluster.local
   registry: ''
   registry_namespace: hkube
   registry_username: ''

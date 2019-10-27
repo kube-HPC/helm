@@ -13,7 +13,7 @@
 # the License.
 #
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jaeger-deployment
@@ -22,6 +22,11 @@ metadata:
     jaeger-infra: jaeger-deployment
     group: hkube
 spec:
+  selector:
+    matchLabels:
+      app: jaeger
+      jaeger-infra: jaeger-deployment
+      group: hkube
   replicas: 1
   strategy:
     type: Recreate
@@ -29,7 +34,7 @@ spec:
     metadata:
       labels:
         app: jaeger
-        jaeger-infra: jaeger-pod
+        jaeger-infra: jaeger-deployment
         group: hkube
     spec:
         containers:

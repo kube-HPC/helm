@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: jaeger-cassandra
@@ -10,6 +10,11 @@ metadata:
     group: hkube
     thirdparty: "true"
 spec:
+  selector:
+    matchLabels:
+      app: jaeger-cassandra
+      group: hkube
+      thirdparty: "true"
   serviceName: jaeger-cassandra
   replicas: 3
   podManagementPolicy: OrderedReady
@@ -24,16 +29,10 @@ spec:
     spec:
       containers:
       - name: jaeger-cassandra
-        image: "{{ .Values.global.registry }}cassandra:3.11"
+        image: "{{ .Values.global.registry }}{{ .Values.cassandra.image.repository }}:{{ .Values.cassandra.image.tag }}"
         imagePullPolicy: "IfNotPresent"
         resources:
-          limits:
-            cpu: 2
-            memory: 4Gi
-          requests:
-            cpu: 2
-            memory: 4Gi
-          
+{{ toYaml .Values.cassandra.resources | default "{}" | indent 10 }}
         env:
         - name: CASSANDRA_SEEDS
           value: "jaeger-cassandra-0.jaeger-cassandra.{{ .Release.Namespace }}.svc.{{ .Values.global.clusterName }} "

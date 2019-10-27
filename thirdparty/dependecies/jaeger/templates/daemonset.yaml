@@ -1,5 +1,5 @@
 # Source: jaeger/templates/agent-ds.yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: jaeger-jaeger-agent
@@ -10,9 +10,17 @@ metadata:
     component: agent
     heritage: Tiller
     release: jaeger
-    group: {{ .Values.labels.group.value }}
+    group: {{ .Values.labels.group }}
     thirdparty: "true"
 spec:
+  selector:
+    matchLabels:
+      app: jaeger
+      component: agent
+      release: jaeger
+      jaeger-infra: agent-instance
+      group: {{ .Values.labels.group }}
+      thirdparty: "true"
   template:
     metadata:
       labels:
@@ -20,7 +28,7 @@ spec:
         component: agent
         release: jaeger
         jaeger-infra: agent-instance
-        group: {{ .Values.labels.group.value }}
+        group: {{ .Values.labels.group }}
         thirdparty: "true"
     spec:
 {{- if and .Values.global.production (not .Values.global.namespaced)}}

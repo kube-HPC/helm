@@ -1,10 +1,16 @@
 {{- if not .Values.global.production }}
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   # This name uniquely identifies the Deployment
   name: minio-deployment
+  labels:
+    # Label is used as selector in the service.
+    app: minio
 spec:
+  selector:
+    matchLabels:
+      app: minio
   strategy:
     type: Recreate
   template:

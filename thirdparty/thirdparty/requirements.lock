@@ -1,15 +1,15 @@
 dependencies:
 - name: etcd-operator
   repository: file://../dependecies/etcd-operator
-  version: 0.9.5
+  version: 0.9.6
 - name: jaeger
   repository: file://../dependecies/jaeger
-  version: 0.1.3
+  version: 0.1.4
 - name: redis-ha
   repository: file://../dependecies/redis-ha
   version: 3.6.2
 - name: mini-thirdparty
   repository: file://../dependecies/mini-thirdparty
-  version: 0.3.2
-digest: sha256:e32cf4e872cf66d47b4df04247a4e078b78ea28673ed945b00a2d5bb59b19045
-generated: "2019-08-19T11:27:35.918105689+03:00"
+  version: 0.3.3
+digest: sha256:94bafc2940d0d320742f162bb707fc4f36f37fc85c658b46e836fb89b1ae1478
+generated: "2019-10-23T10:23:04.597219012+03:00"

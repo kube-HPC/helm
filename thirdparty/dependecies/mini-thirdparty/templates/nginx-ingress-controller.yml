@@ -213,7 +213,7 @@ spec:
     k8s-app: nginx-ingress-controller
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 {{- if eq .Values.global.k8senv "openshift" }}
 kind: Deployment
 {{- else }}
@@ -227,7 +227,10 @@ metadata:
 spec:
 {{- if eq .Values.global.k8senv "openshift" }}
   replicas: 1
-{{- end }}                                    
+{{- end }}
+  selector:
+    matchLabels:
+      k8s-app: nginx-ingress-controller                                   
   template:
     metadata:
       labels:
@@ -327,7 +330,7 @@ spec:
         - --force-namespace-isolation=true
 {{- end }}        
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: default-http-backend
@@ -336,6 +339,9 @@ metadata:
     app: default-http-backend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: default-http-backend
   template:
     metadata:
       labels:

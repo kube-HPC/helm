@@ -1,10 +1,17 @@
 {{- if not .Values.global.production }}
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis
+  labels:
+    app: redis
+    group: hkube
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+      group: hkube
   template:
     metadata:
       labels:
