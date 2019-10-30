@@ -14,99 +14,123 @@ data:
             "versions": [
                   {
                         "project": "api-server",
-                        "tag": "{{ index .Values "api_server" "image" "tag" }}"
+                        "tag": "{{ index .Values "api_server" "image" "tag" }}",
+                        "image": "{{ .Values.api_server.image.repository }}"
                   },
                   {
                         "project": "worker",
-                        "tag": "{{ index .Values "worker" "image" "tag" }}"
+                        "tag": "{{ index .Values "worker" "image" "tag" }}",
+                        "image": "{{ .Values.worker.image.repository }}"
                   },
                   {
                         "project": "pipeline-driver",
-                        "tag": "{{ index .Values "pipeline-driver" "image" "tag" }}"
+                        "tag": "{{ index .Values "pipeline-driver" "image" "tag" }}",
+                        "image": "{{ index .Values "pipeline-driver" "image" "repository" }}"
                   },
                   {
                         "project": "algorunner",
-                        "tag": "{{ index .Values "algorunner" "image" "tag" }}"
+                        "tag": "{{ index .Values "algorunner" "image" "tag" }}",
+                        "image": "{{ .Values.algorunner.image.repository }}"
                   },
                   {
                         "project": "simulator",
-                        "tag": "{{ index .Values "simulator" "image" "tag" }}"
+                        "tag": "{{ index .Values "simulator" "image" "tag" }}",
+                        "image": "{{ .Values.simulator.image.repository }}"
                   },
                   {
                         "project": "algorithm-example",
-                        "tag": "{{ index .Values "algorithm-example" "image" "tag" }}"
+                        "tag": "{{ index .Values "algorithm-example" "image" "tag" }}",
+                        "image": "{{ index .Values "algorithm-example" "image" "repository" }}"
                   },
                   {
                         "project": "monitor-server",
-                        "tag": "{{ index .Values "monitor_server" "image" "tag" }}"
+                        "tag": "{{ index .Values "monitor_server" "image" "tag" }}",
+                        "image": "{{ .Values.monitor_server.image.repository }}"
                   },
                   {
                         "project": "algorithm-queue",
-                        "tag": "{{ index .Values "algorithm-queue" "image" "tag" }}"
+                        "tag": "{{ index .Values "algorithm-queue" "image" "tag" }}",
+                        "image": "{{ index .Values "algorithm-queue" "image" "repository" }}"
                   },
                   {
                         "project": "resource-manager",
-                        "tag": "{{ index .Values "resource_manager" "image" "tag" }}"
+                        "tag": "{{ index .Values "resource_manager" "image" "tag" }}",
+                        "image": "{{ .Values.resource_manager.image.repository }}"
                   },
                   {
                         "project": "task-executor",
-                        "tag": "{{ .Values.task_executor.image.tag }}"
+                        "tag": "{{ .Values.task_executor.image.tag }}",
+                        "image": "{{ .Values.task_executor.image.repository }}"
                   },
                   {
                         "project": "trigger-service",
-                        "tag": "{{ index .Values "trigger_service" "image" "tag" }}"
+                        "tag": "{{ index .Values "trigger_service" "image" "tag" }}",
+                        "image": "{{ .Values.trigger_service.image.repository }}"
                   },
                   {
                         "project": "algorithm-operator",
-                        "tag": "{{ index .Values "algorithm_operator" "image" "tag" }}"
+                        "tag": "{{ index .Values "algorithm_operator" "image" "tag" }}",
+                        "image": "{{ .Values.algorithm_operator.image.repository }}"
                   },
                   {
                         "project": "pipeline-driver-queue",
-                        "tag": "{{ .Values.pipeline_driver_queue.image.tag }}"
+                        "tag": "{{ .Values.pipeline_driver_queue.image.tag }}",
+                        "image": "{{ .Values.pipeline_driver_queue.image.repository }}"
                   },
                   {
                         "project": "clean-old-jobs",
-                        "tag": "{{ index .Values "clean_old_jobs" "image" "tag" }}"
+                        "tag": "{{ index .Values "clean_old_jobs" "image" "tag" }}",
+                        "image": "{{ .Values.clean_old_jobs.image.repository }}"
                   },
                   {
                         "project": "cpu-load-algorithm",
-                        "tag": "{{ index .Values "cpu-load-algorithm" "image" "tag" }}"
+                        "tag": "{{ index .Values "cpu-load-algorithm" "image" "tag" }}",
+                        "image": "{{ index .Values "cpu-load-algorithm" "image" "repository" }}"
                   },
                   {
                         "project": "storage-cleaner",
-                        "tag": "{{ index .Values "storage_cleaner" "image" "tag" }}"
+                        "tag": "{{ index .Values "storage_cleaner" "image" "tag" }}",
+                        "image": "{{ .Values.storage_cleaner.image.repository }}"
                   },
                   {
                         "project": "pipeline-cleaner",
-                        "tag": "{{ index .Values "pipeline_cleaner" "image" "tag" }}"
+                        "tag": "{{ index .Values "pipeline_cleaner" "image" "tag" }}",
+                        "image": "{{ .Values.pipeline_cleaner.image.repository }}"
                   },
                   {
                         "project": "etcd-cleaner",
-                        "tag": "{{ index .Values "etcd_cleaner" "image" "tag" }}"
+                        "tag": "{{ index .Values "etcd_cleaner" "image" "tag" }}",
+                        "image": "{{ .Values.etcd_cleaner.image.repository }}"
                   },
                   {
                         "project": "caching-service",
-                        "tag": "{{ index .Values "caching_service" "image" "tag" }}"
+                        "tag": "{{ index .Values "caching_service" "image" "tag" }}",
+                        "image": "{{ .Values.caching_service.image.repository }}"
                   },
                   {
                         "project": "algorithm-builder",
-                        "tag": "{{ index .Values "algorithm-builder" "image" "tag" }}"
+                        "tag": "{{ index .Values "algorithm-builder" "image" "tag" }}",
+                        "image": "{{ index .Values "algorithm-builder" "image" "repository" }}"
                   },
                   {
                         "project": "kaniko",
-                        "tag": "{{ .Values.kaniko.image.tag }}"
+                        "tag": "{{ .Values.kaniko.image.tag }}",
+                        "image": "{{ .Values.kaniko.image.repository }}"
                   },
                   {
                         "project": "algorithm-example-python",
-                        "tag": "{{ .Values.algorithm_example_python.image.tag }}"
+                        "tag": "{{ .Values.algorithm_example_python.image.tag }}",
+                        "image": "{{ .Values.algorithm_example_python.image.repository }}"
                   },
                   {
                         "project": "nodejs-env",
-                        "tag": "{{ .Values.nodejs_env.image.tag }}"
+                        "tag": "{{ .Values.nodejs_env.image.tag }}",
+                        "image": "{{ .Values.nodejs_env.image.repository }}"
                   },
                   {
                         "project": "python-env",
-                        "tag": "{{ .Values.python_env.image.tag }}"
+                        "tag": "{{ .Values.python_env.image.tag }}",
+                        "image": "{{ .Values.python_env.image.repository }}"
                   }
 
             ]
