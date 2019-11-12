@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.46
+systemversion: v1.2.47
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -105,7 +105,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.2.24
+    tag: v1.2.25
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -375,7 +375,7 @@ kaniko:
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.2.2
+    tag: v1.2.3
 etcd_defrag:
   enable: true
   pattern: '*/10 * * * *'
@@ -394,4 +394,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.46-1573403523681
+fullSystemVersion: v1.2.47-1573562860650
