@@ -37,7 +37,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.52
+systemversion: v1.2.53
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -339,7 +339,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.22
+    tag: v1.2.23
   metrics:
     port: 3001
   service:
@@ -375,7 +375,7 @@ kaniko:
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.2.3
+    tag: v1.2.4
 etcd_defrag:
   enable: true
   pattern: '*/10 * * * *'
@@ -394,4 +394,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.52-1574143576716
+fullSystemVersion: v1.2.53-1574155561135
