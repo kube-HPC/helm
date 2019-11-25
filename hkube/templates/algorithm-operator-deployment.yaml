@@ -87,5 +87,29 @@ spec:
               value: {{ .Values.algorithm_operator.env.algorithm_builder_main_memory | quote}}
             - name: RESOURCES_ENABLE
               value: {{ .Values.algorithm_operator.env.resources_enable | quote}}
+{{- if eq .Values.env.default_storage "fs" }}
+            - name: BASE_FS_ADAPTER_DIRECTORY
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: BASE_FS_ADAPTER_DIRECTORY
+{{- else if eq .Values.env.default_storage "s3" }}
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsKey
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsSecret
+            - name: S3_ENDPOINT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsEndpointUrl
+{{- end }}              
+            
           resources:
 {{ toYaml .Values.algorithm_operator.resources | indent 12 }} 
