@@ -171,7 +171,7 @@ monitor_server:
     logs_view_source: k8s
   image:
     repository: hkube/monitor-server
-    tag: v1.2.4
+    tag: v1.2.5
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -394,4 +394,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.55-1574857238027
+fullSystemVersion: v1.2.55-1574858998322
