@@ -27,6 +27,7 @@ ingress:
   hostname: ''
   prefix: ''
   requireTls: true
+  maxBodySize: 500m
 env:
   default_storage: s3
   node_env: production
