@@ -38,7 +38,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.65
+systemversion: v1.2.66
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -65,7 +65,7 @@ algorithm_operator:
     algorithm_queue_interval: 200
   image:
     repository: hkube/algorithm-operator
-    tag: v1.2.12
+    tag: v1.2.13
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -106,7 +106,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.2.35
+    tag: v1.2.36
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -129,7 +129,7 @@ clean_old_jobs:
     clean_cron: '*/1 * * * *'
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.2.3
+    tag: v1.2.4
   resources:
     requests:
       cpu: 500m
@@ -313,7 +313,7 @@ task_executor:
     default_quota_mem: 20Gi
   image:
     repository: hkube/task-executor
-    tag: v1.2.19
+    tag: v1.2.20
   service:
     type: ClusterIP
   resources:
@@ -395,4 +395,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.65-1576412933577
+fullSystemVersion: v1.2.66-1576501364042
