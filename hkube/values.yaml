@@ -38,7 +38,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.70
+systemversion: v1.2.71
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -106,7 +106,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.2.38
+    tag: v1.2.39
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -395,4 +395,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.70-1576571405107
+fullSystemVersion: v1.2.71-1576573620799
