@@ -96,7 +96,7 @@ algorithm-queue-svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.2.3
+    tag: v1.2.4
 api_server:
   env:
     base_url_path: /hkube/api-server
@@ -395,4 +395,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.75-1576658754129
+fullSystemVersion: v1.2.75-1576670138808
