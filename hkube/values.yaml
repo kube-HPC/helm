@@ -267,7 +267,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.2.18
+    tag: v1.2.19
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -395,4 +395,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.75-1576670138808
+fullSystemVersion: v1.2.75-1577097569852
