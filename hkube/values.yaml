@@ -129,7 +129,7 @@ clean_old_jobs:
     clean_cron: '*/1 * * * *'
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.2.5
+    tag: v1.2.6
   resources:
     requests:
       cpu: 500m
@@ -395,4 +395,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.80-1577270104619
+fullSystemVersion: v1.2.80-1577352841772
