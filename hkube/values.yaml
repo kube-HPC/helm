@@ -151,7 +151,7 @@ etcd_cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.2.2
+    tag: v1.2.3
   resources:
     requests:
       cpu: 500m
@@ -395,4 +395,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.81-1577365761216
+fullSystemVersion: v1.2.81-1577607422870
