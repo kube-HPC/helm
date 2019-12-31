@@ -132,7 +132,7 @@ data:
                         "tag": "{{ .Values.python_env.image.tag }}",
                         "image": "{{ .Values.python_env.image.repository }}"
                   },
-                                    {
+                  {
                         "project": "tensorboard",
                         "tag": "{{ .Values.tensorboard.image.tag }}",
                         "image": "{{ .Values.tensorboard.image.repository }}"
