@@ -138,6 +138,10 @@ cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
     tag: v1.2.1
+tenosrboard:
+  image:
+    repository: hkube/tensorboard
+    tag: v1.2.0
 delete_deployment_and_jobs:
   image:
     repository: hkube/del-dep-and-jobs
