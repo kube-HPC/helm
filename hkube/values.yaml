@@ -38,7 +38,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.90
+systemversion: v1.2.91
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -399,4 +399,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.90-1577890251461
+fullSystemVersion: v1.2.91-1577894380659
