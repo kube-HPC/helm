@@ -38,7 +38,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.92
+systemversion: v1.2.93
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -65,7 +65,7 @@ algorithm_operator:
     algorithm_queue_interval: 200
   image:
     repository: hkube/algorithm-operator
-    tag: v1.2.17
+    tag: v1.2.18
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -87,7 +87,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.2.18
+    tag: v1.2.19
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -106,7 +106,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.2.52
+    tag: v1.2.53
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -211,7 +211,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.2.24
+    tag: v1.2.25
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -220,7 +220,7 @@ pipeline_driver_queue:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.2.12
+    tag: v1.2.13
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -332,7 +332,7 @@ trigger_service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.2.7
+    tag: v1.2.8
   service:
     type: ClusterIP
   resources:
@@ -344,7 +344,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.33
+    tag: v1.2.34
   metrics:
     port: 3001
   service:
@@ -354,7 +354,7 @@ caching_service:
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v1.2.4
+    tag: v1.2.5
   service:
     type: ClusterIP
   resources:
@@ -364,7 +364,7 @@ caching_service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.2.21
+    tag: v1.2.22
   resources:
     requests:
       cpu: 500m
@@ -399,4 +399,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.92-1577954532810
+fullSystemVersion: v1.2.93-1577983003613
