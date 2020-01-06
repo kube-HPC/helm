@@ -38,7 +38,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.96
+systemversion: v1.2.97
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -87,7 +87,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.2.19
+    tag: v1.2.20
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -106,7 +106,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.2.54
+    tag: v1.2.55
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -211,7 +211,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.2.26
+    tag: v1.2.27
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -220,7 +220,7 @@ pipeline_driver_queue:
     metric_port: '3000'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.2.13
+    tag: v1.2.14
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -344,7 +344,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.35
+    tag: v1.2.36
   metrics:
     port: 3001
   service:
@@ -364,7 +364,7 @@ caching_service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.2.24
+    tag: v1.2.25
   resources:
     requests:
       cpu: 500m
@@ -399,4 +399,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.96-1578237462381
+fullSystemVersion: v1.2.97-1578295526237
