@@ -6,6 +6,7 @@ metadata:
 data: 
   NODE_ENV: {{ .Values.env.node_env }}
   DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
+  STORAGE_BINARY: {{index .Values.global.storage.binary | quote}}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
   METRICS_PORT: {{ index .Values "algorithm_operator" "env" "metric_port" | quote }}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
