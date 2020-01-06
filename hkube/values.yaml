@@ -39,7 +39,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.97
+systemversion: v1.2.98
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -66,7 +66,7 @@ algorithm_operator:
     algorithm_queue_interval: 200
   image:
     repository: hkube/algorithm-operator
-    tag: v1.2.18
+    tag: v1.2.19
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -318,7 +318,7 @@ task_executor:
     default_quota_mem: 20Gi
   image:
     repository: hkube/task-executor
-    tag: v1.2.24
+    tag: v1.2.25
   service:
     type: ClusterIP
   resources:
@@ -400,4 +400,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.97-1578295526237
+fullSystemVersion: v1.2.98-1578318371302
