@@ -69,6 +69,11 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: DEFAULT_STORAGE
+            - name: STORAGE_BINARY
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: STORAGE_BINARY                  
             - name: CLUSTER_NAME
               valueFrom:
                 configMapKeyRef:

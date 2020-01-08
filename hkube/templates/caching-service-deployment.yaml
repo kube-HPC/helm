@@ -86,6 +86,11 @@ spec:
                 configMapKeyRef:
                   name: caching-service-configmap
                   key: DEFAULT_STORAGE
+            - name: STORAGE_BINARY
+              valueFrom:
+                configMapKeyRef:
+                  name: caching-service-configmap
+                  key: STORAGE_BINARY                  
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
