@@ -16,6 +16,8 @@ spec:
       release: api-server
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/api-server-cm.yaml") . | sha256sum }}
       labels:
         app: api-server
         release: api-server

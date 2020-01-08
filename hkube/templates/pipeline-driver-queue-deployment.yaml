@@ -14,6 +14,8 @@ spec:
       app: pipeline-driver-queue
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/pipeline-driver-queue-cm.yaml") . | sha256sum }}
       labels:
         app: pipeline-driver-queue
         group: {{ .Values.labels.group.value }}

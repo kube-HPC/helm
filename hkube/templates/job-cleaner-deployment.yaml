@@ -16,6 +16,8 @@ spec:
       release: clean-old-jobs
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/clean-old-jobs-cm.yaml") . | sha256sum }}
       labels:
         app: clean-old-jobs
         release: clean-old-jobs

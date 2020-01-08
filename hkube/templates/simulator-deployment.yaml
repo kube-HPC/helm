@@ -13,6 +13,8 @@ spec:
       app: simulator
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/simulator-cm.yaml") . | sha256sum }}
       labels:
         app: simulator
         group: {{ .Values.labels.group.value }}

@@ -13,6 +13,8 @@ spec:
       app: monitor-server
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/monitor-server-cm.yaml") . | sha256sum }}
       labels:
         app: monitor-server
         group: {{ .Values.labels.group.value }}
