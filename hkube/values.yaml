@@ -39,7 +39,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.99
+systemversion: v1.2.100
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -66,7 +66,7 @@ algorithm_operator:
     algorithm_queue_interval: 200
   image:
     repository: hkube/algorithm-operator
-    tag: v1.2.20
+    tag: v1.2.21
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -381,7 +381,7 @@ kaniko:
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.2.4
+    tag: v1.2.5
 etcd_defrag:
   enable: true
   pattern: '*/10 * * * *'
@@ -400,4 +400,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.99-1578554181297
+fullSystemVersion: v1.2.100-1578574912615
