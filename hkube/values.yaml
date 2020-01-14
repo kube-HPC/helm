@@ -39,7 +39,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.106
+systemversion: v1.2.107
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -212,7 +212,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.2.29
+    tag: v1.2.30
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -272,7 +272,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.2.25
+    tag: v1.2.26
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -400,4 +400,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.106-1578987375803
+fullSystemVersion: v1.2.107-1578992593521
