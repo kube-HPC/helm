@@ -39,7 +39,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.107
+systemversion: v1.2.108
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -88,7 +88,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.2.20
+    tag: v1.2.21
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -212,7 +212,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.2.30
+    tag: v1.2.31
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -400,4 +400,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.107-1579010520271
+fullSystemVersion: v1.2.108-1579069848122
