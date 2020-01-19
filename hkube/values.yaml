@@ -291,7 +291,7 @@ storage_cleaner:
     result_object_expiration_days: '20'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.1.30
+    tag: v1.2.1
   resources:
     requests:
       cpu: 500m
@@ -400,4 +400,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.114-1579447704100
+fullSystemVersion: v1.2.114-1579450641767
