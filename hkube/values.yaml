@@ -177,7 +177,7 @@ monitor_server:
     logs_view_source: k8s
   image:
     repository: hkube/monitor-server
-    tag: v1.2.16
+    tag: v1.2.17
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -272,7 +272,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.2.32
+    tag: v1.2.33
   ingress:
     enabled: true
     path: /hkube/simulator
@@ -400,4 +400,4 @@ python_env:
   image:
     repository: hkube/python-env
     tag: v1.2.3
-fullSystemVersion: v1.2.122-1579682778220
+fullSystemVersion: v1.2.122-1579683719103
