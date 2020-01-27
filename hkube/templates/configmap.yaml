@@ -136,6 +136,11 @@ data:
                         "project": "tensorboard",
                         "tag": "{{ .Values.tensorboard.image.tag }}",
                         "image": "{{ .Values.tensorboard.image.repository }}"
+                  },
+                  {
+                        "project": "storage-migration",
+                        "tag": "{{ .Values.storage_migration.image.tag }}",
+                        "image": "{{ .Values.storage_migration.image.repository }}"
                   }
 
             ]
