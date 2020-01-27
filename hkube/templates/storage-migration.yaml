@@ -1,0 +1,57 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "storage-migration"
+  labels:
+    chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "resource-policy": delete-on-completion
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  template:
+    metadata:
+      name: "storage-migration"
+      labels:
+        heritage: {{.Release.Service | quote }}
+        release: {{.Release.Name | quote }}
+        chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+    spec:
+      restartPolicy: Never
+{{- if eq .Values.env.default_storage "fs" }}
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: hkube-storage-pvc
+{{- end }}
+      containers:
+      - name: storage-migration
+        image: {{ .Values.global.registry }}{{ .Values.storage_migration.image.repository }}:{{ .Values.storage_migration.image.tag }}
+        resources:
+{{ toYaml .Values.storage_migration.resources | indent 10 }} 
+{{- if eq .Values.env.default_storage "fs" }}
+        volumeMounts:
+          - name: storage-volume
+            mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
+{{- end }}
+        env:
+{{- if eq .Values.env.default_storage "fs" }}
+        - name: BASE_FS_ADAPTER_DIRECTORY
+          value: {{ .Values.global.storage.fs.base_directory | quote}}
+{{- else if eq .Values.env.default_storage "s3" }}
+        - name: AWS_ACCESS_KEY_ID
+          value: {{ default "" .Values.global.storage.minio.access_key | b64enc | quote }}
+        - name: AWS_SECRET_ACCESS_KEY
+          value: {{ default "" .Values.global.storage.minio.secret_key | b64enc | quote }}
+        - name: S3_ENDPOINT_URL
+          value: {{ default "" .Values.global.storage.minio.url | b64enc | quote }}
+{{- end }}                                    
+        - name: DEFAULT_STORAGE
+          value: {{ .Values.env.default_storage | quote }}
+        - name: STORAGE_BINARY
+          value: {{index .Values.global.storage.binary | quote}}    
+        - name: CLUSTER_NAME
+          value: {{ .Values.global.clusterName | quote}}
