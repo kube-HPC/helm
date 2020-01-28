@@ -220,6 +220,7 @@ pipeline_driver_queue:
   env:
     hkube_log_level: '2'
     metric_port: '3000'
+    check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
     tag: v1.2.15
