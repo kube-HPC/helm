@@ -64,6 +64,7 @@ algorithm_operator:
     algorithm_builder_main_memory: 512
     resources_enable: false
     algorithm_queue_interval: 200
+    boards_timeout: 10800000
   image:
     repository: hkube/algorithm-operator
     tag: v1.2.23

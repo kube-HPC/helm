@@ -74,6 +74,11 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: STORAGE_BINARY                  
+            - name: BOARDS_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: CLUSTER_NAME
             - name: CLUSTER_NAME
               valueFrom:
                 configMapKeyRef:
