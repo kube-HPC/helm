@@ -13,3 +13,5 @@ data:
   BUILD_MODE: {{ index .Values "algorithm_operator" "build_mode" | quote }}
   ALGORITHM_QUEUE_INTERVAL: {{ .Values.algorithm_operator.env.algorithm_queue_interval | quote }}
   BOARDS_TIMEOUT: {{ .Values.algorithm_operator.env.boards_timeout | quote }}
+  ALGORITHM_QUEUE_PRODUCER_UPDATE_INTERVAL : {{ .Values.algorithm_operator.env.producer_update_interval | quote }}
+
