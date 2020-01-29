@@ -39,7 +39,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.134
+systemversion: v1.2.135
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -68,7 +68,7 @@ algorithm_operator:
     producer_update_interval: 1000
   image:
     repository: hkube/algorithm-operator
-    tag: v1.2.29
+    tag: v1.2.30
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -109,7 +109,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.2.74
+    tag: v1.2.75
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -348,7 +348,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.45
+    tag: v1.2.46
   metrics:
     port: 3001
   service:
@@ -407,4 +407,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.2
-fullSystemVersion: v1.2.134-1580312136939
+fullSystemVersion: v1.2.135-1580315739313
