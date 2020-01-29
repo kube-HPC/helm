@@ -78,7 +78,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
-                  key: CLUSTER_NAME
+                  key: BOARDS_TIMEOUT
             - name: CLUSTER_NAME
               valueFrom:
                 configMapKeyRef:
