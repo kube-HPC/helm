@@ -272,6 +272,10 @@ simulator:
     monitor_backend_use_location: 'true'
     monitor_backend_host: ''
     monitor_backend_port: ''
+    board_host: ''
+    board_port: ''
+    board_path: '/hkube/board'
+    board_use_location: 'true'
     is_secure: ''
   image:
     repository: hkube/simulator

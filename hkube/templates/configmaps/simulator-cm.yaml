@@ -10,3 +10,8 @@ data:
   MONITOR_BACKEND_HOST: {{ .Values.simulator.env.monitor_backend_host | quote }}
   MONITOR_BACKEND_PORT: {{ .Values.simulator.env.monitor_backend_port | quote }}
   MONITOR_BACKEND_IS_SECURE: {{ .Values.simulator.env.is_secure | quote }}
+  
+  BOARD_PATH: {{ .Values.simulator.env.board_path | quote }}
+  BOARD_USE_LOCATION: {{ .Values.simulator.env.board_use_location | quote }}
+  BOARD_HOST: {{ .Values.simulator.env.board_host | quote }}
+  BOARD_PORT: {{ .Values.simulator.env.board_port | quote }}
