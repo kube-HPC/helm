@@ -39,7 +39,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.141
+systemversion: v1.2.142
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -109,7 +109,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.2.77
+    tag: v1.2.78
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -325,7 +325,7 @@ task_executor:
     default_quota_mem: 20Gi
   image:
     repository: hkube/task-executor
-    tag: v1.2.25
+    tag: v1.2.26
   service:
     type: ClusterIP
   resources:
@@ -411,4 +411,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.2
-fullSystemVersion: v1.2.141-1580979850298
+fullSystemVersion: v1.2.142-1580999854760
