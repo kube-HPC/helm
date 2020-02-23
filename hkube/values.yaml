@@ -21,6 +21,7 @@ global:
       url: 'http://minio-service:9000'
   production: false
   ingress_controller_enable: true
+  install_ingress_controller: false
   k8senv: k8s
   namespaced: false
   isPrivileged: true

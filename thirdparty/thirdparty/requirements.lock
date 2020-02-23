@@ -11,5 +11,8 @@ dependencies:
 - name: mini-thirdparty
   repository: file://../dependecies/mini-thirdparty
   version: 0.3.4
-digest: sha256:7ad9e18cb232984b193db579def6744976145b1bba078e2af25452e7f21b7ae6
-generated: "2020-02-23T10:48:17.462774418+02:00"
+- name: nginx-ingress
+  repository: file://../dependecies/nginx-ingress
+  version: 1.31.0
+digest: sha256:4eb80849a8060471e6bb04dfa0c92f363ab088f9e56edf34fd47dae7183502f5
+generated: "2020-02-23T17:10:23.608287797+02:00"
