@@ -45,6 +45,30 @@ entries:
     urls:
     - hkube-v1.1.1085.tgz
     version: v1.1.1085
+  nginx-ingress:
+  - apiVersion: v1
+    appVersion: 0.29.0
+    created: "2020-02-23T11:05:33.078437736+02:00"
+    description: An nginx Ingress controller that uses ConfigMap to store the nginx
+      configuration.
+    digest: 4a74622eefceda632daf824fd87f2c67a68ee6b14d9be833f38d88f10a8500fe
+    engine: gotpl
+    home: https://github.com/kubernetes/ingress-nginx
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
+    keywords:
+    - ingress
+    - nginx
+    kubeVersion: '>=1.10.0-0'
+    maintainers:
+    - name: ChiefAlexander
+    - email: Trevor.G.Wood@gmail.com
+      name: taharah
+    name: nginx-ingress
+    sources:
+    - https://github.com/kubernetes/ingress-nginx
+    urls:
+    - nginx-ingress-1.31.0.tgz
+    version: 1.31.0
   thirdparty:
   - apiVersion: v1
     appVersion: "1"
@@ -73,4 +97,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-02-23T10:53:53.173145643+02:00"
+generated: "2020-02-23T11:05:33.077226055+02:00"
