@@ -7,7 +7,7 @@ data:
               "useNodeSelector":{{ and .Values.global.production (not .Values.global.namespaced) | default false}}, 
               "ingressHost":{{ .Values.global.ingress.hostname | quote }},
               "ingressPrefix": {{ .Values.global.ingress.prefix | quote }},
-              "ingressUseRegex": {{ .Values.global.ingress | quote }}
+              "ingressUseRegex": {{ .Values.global.ingress.use_regex | quote }}
         }
   versions.json: |
         {
