@@ -410,6 +410,7 @@ python_env:
     repository: hkube/python-env
     tag: v1.2.3
 storage_migration:
+  enable: false
   image:
     repository: hkube/storage-migration
     tag: v1.2.2
