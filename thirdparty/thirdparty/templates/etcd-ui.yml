@@ -54,7 +54,11 @@ kind: Ingress
 metadata:
   name: etcd-ui
   annotations:
+{{- if .Values.global.ingress.use_regex }}
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+{{- else }}
     nginx.ingress.kubernetes.io/rewrite-target: /
+{{- end }}
   labels:
     app: etcd-ui
     release: {{ .Release.Name }}
@@ -64,10 +68,17 @@ spec:
   rules:
     - http:
         paths:
-        - path: {{ $ingressPath }}
+{{- if .Values.global.ingress.use_regex }}
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
+{{- else }}        
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
+{{- end }}
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}      
 {{- end }}
 
 

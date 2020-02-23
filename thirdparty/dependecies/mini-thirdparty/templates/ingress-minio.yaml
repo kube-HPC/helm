@@ -4,7 +4,11 @@ kind: Ingress
 metadata:
   name: minio-jaeger
   annotations:
+{{- if .Values.global.ingress.use_regex }}
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+{{- else }}
     nginx.ingress.kubernetes.io/rewrite-target: /
+{{- end }}  
 spec:
   # tls:
   # # This assumes tls-secret exists.
@@ -12,7 +16,11 @@ spec:
   rules:
   - http:
       paths:
-        - path: /system/minio
+{{- if .Values.global.ingress.use_regex }}
+        - path: {{ .Values.global.ingress.prefix }}/system/minio(/|$)(.*)
+{{- else }}
+        - path: {{ .Values.global.ingress.prefix }}/system/minio
+{{- end }}              
           backend:
             serviceName: minio-service
             servicePort: 9000
