@@ -3,16 +3,21 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress-jaeger
-#   annotations:
-#     nginx.ingress.kubernetes.io/rewrite-target: /
+  annotations:
+{{- if .Values.global.ingress.use_regex }}
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+{{- else }}
+    nginx.ingress.kubernetes.io/rewrite-target: /
+{{- end }}  
 spec:
-  # tls:
-  # # This assumes tls-secret exists.
-  # - secretName: tls-secret
   rules:
   - http:
       paths:
-        - path: /jaeger
+{{- if .Values.global.ingress.use_regex }}
+        - path: {{ .Values.global.ingress.prefix }}/jaeger(/|$)(.*)
+{{- else }}
+        - path: {{ .Values.global.ingress.prefix }}/jaeger
+{{- end }}      
           backend:
             serviceName: jaeger-query
             servicePort: 16686

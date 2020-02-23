@@ -79,8 +79,10 @@ spec:
                     release: {{ .Release.Name }}
                 topologyKey: failure-domain.beta.kubernetes.io/zone
     {{- end }}
+{{- if not (eq .Values.global.k8senv "openshift") }}
       securityContext:
 {{ toYaml .Values.securityContext | indent 8 }}
+{{- end }}
       serviceAccountName: {{ template "redis-ha.serviceAccountName" . }}
       initContainers:
       {{- if .Values.sysctlImage.enabled }}

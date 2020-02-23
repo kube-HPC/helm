@@ -7,10 +7,14 @@ kind: Ingress
 metadata:
   name: monitor-server
   annotations:
+{{- if .Values.global.ingress.use_regex }}
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+{{- else }}
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.ingress.requireTls | quote }}
-    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.ingress.maxBodySize | quote }}
-{{- if .Values.ingress.hostname }}
+{{- end }}
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+{{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }}    
   labels:
@@ -20,21 +24,25 @@ metadata:
     group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
-{{- if .Values.ingress.hostname }}
+{{- if .Values.global.ingress.hostname }}
   tls:
   - hosts:
-    - {{ .Values.ingress.hostname }}
+    - {{ .Values.global.ingress.hostname }}
     secretName: {{ $fullName }}-tls-secret
 {{- end }}
   rules:
     - http:
         paths:
-        - path: {{ .Values.ingress.prefix }}{{ $ingressPath }}
+{{- if .Values.global.ingress.use_regex }}
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
+{{- else }}
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
+{{- end }}        
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}
-{{- if .Values.ingress.hostname }}
-      host: {{ .Values.ingress.hostname }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
 {{- end }}            
 {{- end }}
 

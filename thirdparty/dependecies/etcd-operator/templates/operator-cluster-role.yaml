@@ -14,10 +14,7 @@ rules:
   - etcd.database.coreos.com
   resources:
   - etcdclusters
-  - etcdbackups
-  - etcdrestores
-  verbs:
-  - "*"
+  verbs: [create, delete, deletecollection, get, list, patch, update, watch]
 - apiGroups:
   - ""
   resources:
@@ -26,14 +23,12 @@ rules:
   - endpoints
   - persistentvolumeclaims
   - events
-  verbs:
-  - "*"
+  verbs: [create, delete, deletecollection, get, list, patch, update, watch]
 - apiGroups:
   - apps
   resources:
   - deployments
-  verbs:
-  - "*"
+  verbs: [create, delete, deletecollection, get, list, patch, update, watch]
 # The following permissions can be removed if not using S3 backup and TLS
 - apiGroups:
   - ""

@@ -21,14 +21,16 @@ global:
       url: 'http://minio-service:9000'
   production: false
   ingress_controller_enable: true
+  install_ingress_controller: false
   k8senv: k8s
   namespaced: false
   isPrivileged: true
-ingress:
-  hostname: ''
-  prefix: ''
-  requireTls: true
-  maxBodySize: 500m
+  ingress:
+    hostname: ''
+    prefix: ''
+    use_regex: false
+    requireTls: true
+    maxBodySize: 500m
 env:
   default_storage: s3
   node_env: production
@@ -58,7 +60,7 @@ algorithm-example:
 algorithm_operator:
   env:
     metric_port: '3000'
-    builder_cpu: 2
+    builder_cpu: 0.1
     algorithm_builder_builder_memory: 1024
     algorithm_builder_main_cpu: 0.5
     algorithm_builder_main_memory: 512
@@ -85,7 +87,7 @@ algorithm_operator:
     failureThreshold: 3
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 algorithm-queue:
   image:
@@ -117,7 +119,7 @@ api_server:
     type: ClusterIP
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 busybox:
   image:
@@ -135,7 +137,7 @@ clean_old_jobs:
     tag: v1.2.6
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 cpu-load-algorithm:
   image:
@@ -151,7 +153,7 @@ delete_deployment_and_jobs:
     tag: v1.0.8
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 etcd_cleaner:
   env:
@@ -161,7 +163,7 @@ etcd_cleaner:
     tag: v1.2.3
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 monitor_server:
   healthcheck:
@@ -187,7 +189,7 @@ monitor_server:
     type: ClusterIP
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 nodeSelector: {}
 monitor_server_listener:
@@ -199,7 +201,7 @@ monitor_server_listener:
     tag: v1.2.0
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 pipeline_cleaner:
   image:
@@ -207,7 +209,7 @@ pipeline_cleaner:
     tag: v1.2.1
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 pipeline-driver:
   env:
@@ -233,7 +235,7 @@ pipeline_driver_queue:
     type: ClusterIP
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 private_registry: docker.io
 resource_manager:
@@ -261,7 +263,7 @@ resource_manager:
     type: ClusterIP
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 simulator:
   env:
@@ -290,7 +292,7 @@ simulator:
     type: ClusterIP
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 storage_cleaner:
   env:
@@ -301,7 +303,7 @@ storage_cleaner:
     tag: v1.2.2
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 task_executor:
   healthcheck:
@@ -317,7 +319,7 @@ task_executor:
     pipeline_drivers_amount: 30
     worker_socket_max_payload_bytes: 1000000000
     worker_memory: 512
-    worker_cpu: 0.5
+    worker_cpu: 0.1
     resources_enable: false
     interval: '1000'
     log_external_requests: false
@@ -330,7 +332,7 @@ task_executor:
     type: ClusterIP
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 thirdparty:
   enabled: true
@@ -345,7 +347,7 @@ trigger_service:
     type: ClusterIP
   resources:
     requests:
-      cpu: 200m
+      cpu: 100m
       memory: 256Mi
 worker:
   env:
@@ -367,7 +369,7 @@ caching_service:
     type: ClusterIP
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 algorithm-builder:
   image:
@@ -375,7 +377,7 @@ algorithm-builder:
     tag: v1.2.37
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 kaniko:
   image:
@@ -383,7 +385,7 @@ kaniko:
     tag: v1.2.1
   resources:
     requests:
-      cpu: 1500m
+      cpu: 100m
       memory: 1Gi
 algorithm_example_python:
   image:
@@ -397,7 +399,7 @@ etcd_defrag:
     tag: v1.0.0
   resources:
     requests:
-      cpu: 500m
+      cpu: 100m
       memory: 512Mi
 nodejs_env:
   image:

@@ -1,15 +1,18 @@
 dependencies:
 - name: etcd-operator
   repository: file://../dependecies/etcd-operator
-  version: 0.9.6
+  version: 0.9.7
 - name: jaeger
   repository: file://../dependecies/jaeger
-  version: 0.1.4
+  version: 0.1.5
 - name: redis-ha
   repository: file://../dependecies/redis-ha
-  version: 3.6.2
+  version: 3.6.3
 - name: mini-thirdparty
   repository: file://../dependecies/mini-thirdparty
-  version: 0.3.3
-digest: sha256:94bafc2940d0d320742f162bb707fc4f36f37fc85c658b46e836fb89b1ae1478
-generated: "2019-10-23T10:23:04.597219012+03:00"
+  version: 0.3.4
+- name: nginx-ingress
+  repository: file://../dependecies/nginx-ingress
+  version: 1.31.0
+digest: sha256:4eb80849a8060471e6bb04dfa0c92f363ab088f9e56edf34fd47dae7183502f5
+generated: "2020-02-23T17:10:23.608287797+02:00"
