@@ -41,7 +41,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.162
+systemversion: v1.2.164
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -342,7 +342,7 @@ trigger_service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.2.12
+    tag: v1.2.13
   service:
     type: ClusterIP
   resources:
@@ -414,4 +414,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.2
-fullSystemVersion: v1.2.162-1582541175593
+fullSystemVersion: v1.2.164-1582547341843
