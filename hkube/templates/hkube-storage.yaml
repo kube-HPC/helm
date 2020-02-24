@@ -37,11 +37,11 @@ spec:
   resources:
     requests:
       storage: {{ .Values.global.storage.fs.pvc.capacity }}
-{{- if .Values.storage.fs.pvc.pv_name }}  
-  volumeName: {{ .Values.storage.fs.pvc.pv_name }}
+{{- if .Values.global.storage.fs.pvc.pv_name }}  
+  volumeName: {{ .Values.global.storage.fs.pvc.pv_name }}
 {{- else }}
-{{- if .Values.storage.fs.pvc.storage_class }}  
-  storageClassName: .Values.storage.fs.pvc.storage_class
+{{- if .Values.global.storage.fs.pvc.storage_class }}  
+  storageClassName: {{ .Values.global.storage.fs.pvc.storage_class }}
 {{- end }}
   selector:
     matchLabels:
