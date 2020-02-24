@@ -14,8 +14,6 @@ global:
         capacity: 10Gi
         nfs_server: nfs-server
         nfs_root: /srv/vol_nfs
-        # pv_name: 
-        # storage_class: 
       base_directory: /hkubedata
     minio:
       access_key: hkubeminiokey
