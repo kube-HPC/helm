@@ -43,7 +43,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.165
+systemversion: v1.2.166
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -356,7 +356,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.54
+    tag: v1.2.55
   metrics:
     port: 3001
   service:
@@ -416,4 +416,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.2
-fullSystemVersion: v1.2.165-1582553416206
+fullSystemVersion: v1.2.166-1582615987127
