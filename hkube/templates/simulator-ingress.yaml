@@ -4,8 +4,14 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: simulator
+  name: dashboard
   annotations:
+{{- if .Values.simulator.ingress.alt_path }}
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ( $request_filename ~ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }} ){
+        rewrite ^ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}/ permanent;
+      }
+{{- end }}      
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 {{- else }}
@@ -39,7 +45,7 @@ spec:
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}
-{{- if .Values.simulator.ingress.alt_path }}            
+{{- if .Values.simulator.ingress.alt_path }}
 {{- if .Values.global.ingress.use_regex }}
         - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}(/|$)(.*)
 {{- else }}
@@ -47,9 +53,13 @@ spec:
 {{- end }}
           backend:
             serviceName: {{ $fullName }}
-            servicePort: {{ $servicePort }}     
+            servicePort: {{ $servicePort }}
 {{- end }}
+
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}            
 {{- end }}
+
+---
+
