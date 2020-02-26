@@ -39,6 +39,16 @@ spec:
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}
+{{- if .Values.simulator.ingress.alt_path }}            
+{{- if .Values.global.ingress.use_regex }}
+        - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}(/|$)(.*)
+{{- else }}
+        - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}
+{{- end }}
+          backend:
+            serviceName: {{ $fullName }}
+            servicePort: {{ $servicePort }}     
+{{- end }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}            

@@ -286,7 +286,8 @@ simulator:
     tag: v1.2.40
   ingress:
     enabled: true
-    path: /hkube/simulator
+    path: /hkube/dashboard
+    alt_path: /hkube/simulator
   metrics:
     port: 9050
   service:
