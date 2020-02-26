@@ -183,7 +183,7 @@ monitor_server:
     logs_view_source: k8s
   image:
     repository: hkube/monitor-server
-    tag: v1.2.24
+    tag: v1.2.25
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -416,4 +416,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.2
-fullSystemVersion: v1.2.166-1582615987127
+fullSystemVersion: v1.2.166-1582703445430
