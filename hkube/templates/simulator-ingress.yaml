@@ -9,7 +9,7 @@ metadata:
 {{- if .Values.simulator.ingress.alt_path }}
     nginx.ingress.kubernetes.io/configuration-snippet: |
       if ( $request_filename ~ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }} ){
-        rewrite ^ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}/ permanent;
+        rewrite ^ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}/ permanent;
       }
 {{- end }}      
 {{- if .Values.global.ingress.use_regex }}
