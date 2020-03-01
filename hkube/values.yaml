@@ -43,7 +43,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.168
+systemversion: v1.2.169
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -228,7 +228,7 @@ pipeline_driver_queue:
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.2.17
+    tag: v1.2.18
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -417,4 +417,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.2
-fullSystemVersion: v1.2.168-1582811903071
+fullSystemVersion: v1.2.169-1583053622860
