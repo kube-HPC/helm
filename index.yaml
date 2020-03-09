@@ -48,6 +48,29 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
+    created: "2020-03-09T14:05:17.900977484+02:00"
+    description: An nginx Ingress controller that uses ConfigMap to store the nginx
+      configuration.
+    digest: 5b619945135f06715b985f8bc34459f64a321e7c10da0986b71d67f99c15e137
+    engine: gotpl
+    home: https://github.com/kubernetes/ingress-nginx
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
+    keywords:
+    - ingress
+    - nginx
+    kubeVersion: '>=1.10.0-0'
+    maintainers:
+    - name: ChiefAlexander
+    - email: Trevor.G.Wood@gmail.com
+      name: taharah
+    name: nginx-ingress
+    sources:
+    - https://github.com/kubernetes/ingress-nginx
+    urls:
+    - nginx-ingress-1.31.1.tgz
+    version: 1.31.1
+  - apiVersion: v1
+    appVersion: 0.29.0
     created: "2020-02-23T17:59:38.991842475+02:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
@@ -106,4 +129,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-03-09T14:02:31.177777759+02:00"
+generated: "2020-03-09T14:05:17.899736354+02:00"
