@@ -43,7 +43,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.172
+systemversion: v1.2.173
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -72,7 +72,7 @@ algorithm_operator:
     producer_update_interval: 1000
   image:
     repository: hkube/algorithm-operator
-    tag: v1.2.34
+    tag: v1.2.35
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -425,4 +425,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.172-1583751808127
+fullSystemVersion: v1.2.173-1583763945585
