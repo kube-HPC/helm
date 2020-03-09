@@ -397,7 +397,7 @@ oc_builder:
   resources:
     requests:
       cpu: 100m
-      memory: 1Gi      
+      memory: 1Gi
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
@@ -425,4 +425,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.172-1583750632399
+fullSystemVersion: v1.2.172-1583751808127
