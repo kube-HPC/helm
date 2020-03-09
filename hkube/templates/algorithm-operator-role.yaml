@@ -31,7 +31,7 @@ rules:
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 - apiGroups: ["extensions"]
   resources: ["ingresses"]
-  verbs: ["get", "list", "watch", "create", "delete"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 - apiGroups:
   - ""
   resources:
