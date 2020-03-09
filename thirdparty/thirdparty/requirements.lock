@@ -13,6 +13,6 @@ dependencies:
   version: 0.3.4
 - name: nginx-ingress
   repository: file://../dependecies/nginx-ingress
-  version: 1.31.0
-digest: sha256:4eb80849a8060471e6bb04dfa0c92f363ab088f9e56edf34fd47dae7183502f5
-generated: "2020-02-23T17:10:23.608287797+02:00"
+  version: 1.31.1
+digest: sha256:0250e5449bf40f43d35a1e7ea2228c11761d33176d66c4be22b5d9c436c73bd3
+generated: "2020-03-09T13:59:37.478399558+02:00"

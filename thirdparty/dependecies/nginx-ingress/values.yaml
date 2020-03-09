@@ -1,3 +1,5 @@
+global:
+  registry: ''
 ## nginx configuration
 ## Ref: https://github.com/kubernetes/ingress/blob/master/controllers/nginx/configuration.md
 ##

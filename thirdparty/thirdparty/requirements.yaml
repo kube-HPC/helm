@@ -15,6 +15,6 @@ dependencies:
     version: "0.3.4"
     repository: "file://../dependecies/mini-thirdparty"
   - name: nginx-ingress
-    version: "1.31.0"
+    version: "1.31.1"
     repository: "file://../dependecies/nginx-ingress"
     condition: global.install_ingress_controller
