@@ -390,6 +390,14 @@ kaniko:
     requests:
       cpu: 100m
       memory: 1Gi
+oc_builder:
+  image:
+    repository: hkube/oc-builder
+    tag: v1.2.1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 1Gi      
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python

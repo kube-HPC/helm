@@ -119,6 +119,11 @@ data:
                         "image": "{{ .Values.kaniko.image.repository }}"
                   },
                   {
+                        "project": "oc-builder",
+                        "tag": "{{ .Values.oc_builder.image.tag }}",
+                        "image": "{{ .Values.oc_builder.image.repository }}"
+                  },
+                  {
                         "project": "algorithm-example-python",
                         "tag": "{{ .Values.algorithm_example_python.image.tag }}",
                         "image": "{{ .Values.algorithm_example_python.image.repository }}"
