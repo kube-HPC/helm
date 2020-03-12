@@ -95,6 +95,15 @@ entries:
   thirdparty:
   - apiVersion: v1
     appVersion: "1"
+    created: "2020-03-12T17:50:23.54538322+02:00"
+    description: A Helm chart for Kubernetes
+    digest: cb6d25eaccfde42ddd935bab6a95f6f1d86640acc37878ad28503f90e9ce5895
+    name: thirdparty
+    urls:
+    - thirdparty-0.5.9.tgz
+    version: 0.5.9
+  - apiVersion: v1
+    appVersion: "1"
     created: "2020-03-12T17:49:40.865315542+02:00"
     description: A Helm chart for Kubernetes
     digest: 3c54a7611791eab455a630f9126ab4f4892b621c2a00672275328f50fe8e5034
@@ -138,4 +147,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-03-12T17:49:40.86189161+02:00"
+generated: "2020-03-12T17:50:23.540788926+02:00"
