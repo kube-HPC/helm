@@ -4,7 +4,7 @@ dependencies:
     repository: "file://../dependecies/etcd-operator"
     condition: global.production
   - name: jaeger
-    version: "0.1.5"
+    version: "0.1.6"
     repository: "file://../dependecies/jaeger"
     condition: global.production
   - name: redis-ha

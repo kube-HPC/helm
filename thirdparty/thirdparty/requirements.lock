@@ -4,7 +4,7 @@ dependencies:
   version: 0.9.7
 - name: jaeger
   repository: file://../dependecies/jaeger
-  version: 0.1.5
+  version: 0.1.6
 - name: redis-ha
   repository: file://../dependecies/redis-ha
   version: 3.6.3
@@ -14,5 +14,5 @@ dependencies:
 - name: nginx-ingress
   repository: file://../dependecies/nginx-ingress
   version: 1.31.1
-digest: sha256:0250e5449bf40f43d35a1e7ea2228c11761d33176d66c4be22b5d9c436c73bd3
-generated: "2020-03-09T13:59:37.478399558+02:00"
+digest: sha256:597f4c956a7d4b3431ec91dbdc8be04cbafab58d06d79fdea2a0902d49a95743
+generated: "2020-03-12T17:48:47.028500259+02:00"
