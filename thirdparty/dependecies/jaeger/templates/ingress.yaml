@@ -30,5 +30,5 @@ spec:
 {{- end }}
            backend:
              serviceName: jaeger-jaeger-query
-             servicePort: $servicePort
+             servicePort: {{ $servicePort }}
 {{- end }}
