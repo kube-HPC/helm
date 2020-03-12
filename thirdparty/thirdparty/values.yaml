@@ -10,7 +10,8 @@ global:
   k8senv: k8s
   namespaced: false
   isPrivileged: true
-
+  ingress:
+    enabled: true
 etcd-ui:
   service:
     type: ClusterIP
