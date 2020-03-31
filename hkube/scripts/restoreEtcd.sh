@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 function wait-etcd-down()
 {
@@ -34,6 +33,16 @@ function wait-etcd-up()
 
 }
 
+command -v jq >/dev/null 2>&1
+HAS_JQ=$?
+set -e
+if [[ ${HAS_JQ} != 0 ]]
+then
+    echo This script need 'jq' to run.
+    echo Install using: 
+    echo "    sudo apt install jq"
+    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
+fi
 TMP_FILE=$(mktemp).json
 echo write current cluster to ${TMP_FILE}
 kubectl get EtcdCluster etcd -o json |\
