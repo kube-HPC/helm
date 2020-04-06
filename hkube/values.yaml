@@ -43,7 +43,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.180
+systemversion: v1.2.181
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -330,7 +330,7 @@ task_executor:
     default_quota_mem: 20Gi
   image:
     repository: hkube/task-executor
-    tag: v1.2.30
+    tag: v1.2.31
   service:
     type: ClusterIP
   resources:
@@ -357,7 +357,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.55
+    tag: v1.2.56
   metrics:
     port: 3001
   service:
@@ -425,4 +425,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.180-1586165134693
+fullSystemVersion: v1.2.181-1586185762871
