@@ -52,8 +52,8 @@ spec:
 {{- end }}                                    
         - name: DEFAULT_STORAGE
           value: {{ .Values.env.default_storage | quote }}
-        - name: STORAGE_BINARY
-          value: {{index .Values.global.storage.binary | quote}}    
+        - name: STORAGE_ENCODING
+          value: {{index .Values.global.storage.encoding | quote}}    
         - name: CLUSTER_NAME
           value: {{ .Values.global.clusterName | quote}}
         - name: NODE_ENV

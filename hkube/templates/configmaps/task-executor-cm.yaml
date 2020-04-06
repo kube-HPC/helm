@@ -6,8 +6,9 @@ metadata:
 data:
   NODE_ENV: {{.Values.env.node_env}}
   DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
+  STORAGE_ENCODING: {{index .Values.global.storage.encoding | quote}}
+  DISCOVERY_ENCODING: {{index .Values.global.discovery.encoding | quote}}
   WORKER_SOCKET_MAX_PAYLOAD_BYTES: "{{index .Values "task_executor" "env" "worker_socket_max_payload_bytes"}}"
-  STORAGE_BINARY: {{index .Values.global.storage.binary | quote}}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
   METRICS_PORT: "{{index .Values "task_executor" "env" "metric_port"}}"
   IS_NAMESPACED: {{ .Values.global.namespaced | quote}}
