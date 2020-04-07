@@ -328,6 +328,7 @@ task_executor:
     log_external_requests: false
     default_quota_cpu: 30
     default_quota_mem: 20Gi
+    has_node_list: false
   image:
     repository: hkube/task-executor
     tag: v1.2.31
