@@ -8,6 +8,7 @@ metadata:
     app: "pipeline-cleaner"
 spec:
   schedule: "*/5 * * * *"
+  startingDeadlineSeconds: 200
   jobTemplate:
     spec:
       template:

@@ -9,6 +9,7 @@ metadata:
 spec:
 
   schedule: "0 0 * * *"
+  startingDeadlineSeconds: 200
   jobTemplate:
     spec:
       template:
