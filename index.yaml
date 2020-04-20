@@ -3,9 +3,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-04-20T15:10:49.14634427+03:00"
+    created: "2020-04-20T15:58:47.008771966+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: dc37e1c748df12a8b321ba0ec824b3b39efd89f479001df81841e2ade6abd8be
+    digest: d24902c69ae8124aa4227a79ba1017975715dfe38e7a665e5bece772f66a4404
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -69,9 +69,9 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-04-20T15:10:49.146636493+03:00"
+    created: "2020-04-20T15:58:47.009059856+03:00"
     description: A Helm chart for Kubernetes
-    digest: 93e2913a55f5888e594869ee33fb0bbbf695cd12e8fc2369be44d887b4b27b4c
+    digest: eaeff1340aab7621c5a7c936e08f15352d84fddd67f158eeed3a5fd4bb78f415
     name: jaeger
     urls:
     - jaeger-0.1.6.tgz
@@ -79,9 +79,9 @@ entries:
   mini-thirdparty:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-04-20T15:10:49.147011079+03:00"
+    created: "2020-04-20T15:58:47.009428889+03:00"
     description: A Helm chart for Kubernetes
-    digest: 622d86e08f88547802605dcb9fd3f6cfc0f67f897e00b9082c90f15c309b3b4f
+    digest: 3105adaac5fe3948a68cc4984e1aa1406d153f5ce610565514684438c0f88ebb
     name: mini-thirdparty
     urls:
     - mini-thirdparty-0.3.4.tgz
@@ -89,10 +89,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2020-04-20T15:10:49.148107929+03:00"
+    created: "2020-04-20T15:58:47.010833488+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 7a1c69a792dcdeaa101921e0c2899b6cf9e86e4be3e8c5aaf714da2124b14664
+    digest: 827c8168248045abed31ef6f4cc98195283d771e7ff9cc1041a2f2df3892c257
     engine: gotpl
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -136,9 +136,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2020-04-20T15:10:49.148783641+03:00"
+    created: "2020-04-20T15:58:47.011590081+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: 66f263f20cbc270c60c8a34bafb8adb2854f5367acac86c88fc4e142482d083f
+    digest: ae0b22474f8715fbce3889a5abd12cf0695803fda648098e0d864340c73903e3
     engine: gotpl
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
@@ -212,4 +212,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-04-20T15:10:49.145677487+03:00"
+generated: "2020-04-20T15:58:47.007775079+03:00"
