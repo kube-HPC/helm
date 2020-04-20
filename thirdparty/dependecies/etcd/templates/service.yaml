@@ -41,7 +41,6 @@ spec:
     name: etcd-server
   - port: {{ .Values.clientPort }}
     name: etcd-client
-  clusterIP: None
   selector:
     app: {{ template "etcd.name" . }}
     release: {{ .Release.Name | quote }}
