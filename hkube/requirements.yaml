@@ -1,4 +1,20 @@
 dependencies:
-- name: thirdparty
-  version: "^0.5.0"
-  repository: "http://hkube.io/helm/"
+  - name: etcd-operator
+    version: "0.9.7"
+    repository: "http://hkube.io/helm/"
+    condition: global.production
+  - name: jaeger
+    version: "0.1.6"
+    repository: "http://hkube.io/helm/"
+    condition: global.production
+  - name: redis-ha
+    version: "3.6.3"
+    repository: "http://hkube.io/helm/"
+    condition: global.production
+  - name: mini-thirdparty
+    version: "0.3.4"
+    repository: "http://hkube.io/helm/"
+  - name: nginx-ingress
+    version: "1.31.1"
+    repository: "http://hkube.io/helm/"
+    condition: global.install_ingress_controller
