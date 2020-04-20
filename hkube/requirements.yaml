@@ -1,6 +1,6 @@
 dependencies:
-  - name: etcd-operator
-    version: "0.9.7"
+  - name: etcd
+    version: "0.7.4"
     repository: "http://hkube.io/helm/"
     condition: global.production
   - name: jaeger
