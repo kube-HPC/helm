@@ -21,3 +21,8 @@ ingress:
   enabled: "true"
   path: /jaeger
   
+# global values for debug
+global:
+  registry: ''
+  ingress:
+    use_regex: true

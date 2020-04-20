@@ -172,6 +172,8 @@ labels:
 # global values for debug
 global:
   registry: ''
+  ingress:
+    use_regex: true
 
 etcd-ui:
   service:
