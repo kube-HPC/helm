@@ -1,5 +1,26 @@
 apiVersion: v1
 entries:
+  etcd-operator:
+  - apiVersion: v1
+    appVersion: 0.7.0
+    created: "2020-04-20T15:10:49.14634427+03:00"
+    description: CoreOS etcd-operator Helm chart for Kubernetes
+    digest: dc37e1c748df12a8b321ba0ec824b3b39efd89f479001df81841e2ade6abd8be
+    home: https://github.com/coreos/etcd-operator
+    icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
+    maintainers:
+    - email: chance.zibolski@coreos.com
+      name: chancez
+    - email: lachlan@deis.com
+      name: lachie83
+    - email: jaescobar.cell@gmail.com
+      name: alejandroEsc
+    name: etcd-operator
+    sources:
+    - https://github.com/coreos/etcd-operator
+    urls:
+    - etcd-operator-0.9.7.tgz
+    version: 0.9.7
   hkube:
   - apiVersion: v1
     appVersion: v1.1.1086
@@ -45,13 +66,33 @@ entries:
     urls:
     - hkube-v1.1.1085.tgz
     version: v1.1.1085
+  jaeger:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-04-20T15:10:49.146636493+03:00"
+    description: A Helm chart for Kubernetes
+    digest: 93e2913a55f5888e594869ee33fb0bbbf695cd12e8fc2369be44d887b4b27b4c
+    name: jaeger
+    urls:
+    - jaeger-0.1.6.tgz
+    version: 0.1.6
+  mini-thirdparty:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-04-20T15:10:49.147011079+03:00"
+    description: A Helm chart for Kubernetes
+    digest: 622d86e08f88547802605dcb9fd3f6cfc0f67f897e00b9082c90f15c309b3b4f
+    name: mini-thirdparty
+    urls:
+    - mini-thirdparty-0.3.4.tgz
+    version: 0.3.4
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2020-03-09T14:20:46.80792219+02:00"
+    created: "2020-04-20T15:10:49.148107929+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 1b312837aec06382afeff770993b447096cd4038bbbb6f8aa05616bba898337d
+    digest: 7a1c69a792dcdeaa101921e0c2899b6cf9e86e4be3e8c5aaf714da2124b14664
     engine: gotpl
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -92,6 +133,30 @@ entries:
     urls:
     - nginx-ingress-1.31.0.tgz
     version: 1.31.0
+  redis-ha:
+  - apiVersion: v1
+    appVersion: 5.0.5
+    created: "2020-04-20T15:10:49.148783641+03:00"
+    description: Highly available Kubernetes implementation of Redis
+    digest: 66f263f20cbc270c60c8a34bafb8adb2854f5367acac86c88fc4e142482d083f
+    engine: gotpl
+    home: http://redis.io/
+    icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: salimsalaues@gmail.com
+      name: ssalaues
+    name: redis-ha
+    sources:
+    - https://redis.io/download
+    - https://github.com/scality/Zenko/tree/development/1.0/kubernetes/zenko/charts/redis-ha
+    - https://github.com/oliver006/redis_exporter
+    urls:
+    - redis-ha-3.6.3.tgz
+    version: 3.6.3
   thirdparty:
   - apiVersion: v1
     appVersion: "1"
@@ -147,4 +212,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-03-12T17:50:23.540788926+02:00"
+generated: "2020-04-20T15:10:49.145677487+03:00"
