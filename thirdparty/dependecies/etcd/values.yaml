@@ -27,7 +27,7 @@ clientPort: 2379
 component: "etcd"
 replicas: 3
 image:
-  repository: "k8s.gcr.io/etcd-amd64"
+  repository: "hkube/etcd"
   tag: "3.2.26"
   pullPolicy: "IfNotPresent"
 resources: {}
@@ -83,5 +83,17 @@ memoryMode: false
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
 nodeSelector: {}
 tolerations: []
+# affinity:
+#   podAntiAffinity:
+#     preferredDuringSchedulingIgnoredDuringExecution:
+#     - weight: 100
+#       podAffinityTerm:
+#         labelSelector:
+#           matchExpressions:
+#           - key: affinity
+#             operator: In
+#             values:
+#             - etcd
+#         topologyKey: kubernetes.io/hostname
 affinity: {}
 extraEnv: []
