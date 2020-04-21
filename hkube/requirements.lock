@@ -1,7 +1,7 @@
 dependencies:
 - name: etcd
   repository: http://hkube.io/helm/
-  version: 0.7.4
+  version: 0.7.5
 - name: jaeger
   repository: http://hkube.io/helm/
   version: 0.1.6
@@ -14,5 +14,5 @@ dependencies:
 - name: nginx-ingress
   repository: http://hkube.io/helm/
   version: 1.31.1
-digest: sha256:cd503d166dff906f52801346f8db4fcf97d41f0eaf1004e9f9b34da9687abfdd
-generated: "2020-04-20T16:34:40.763965353+03:00"
+digest: sha256:68fdc0aea69f96f14e100dada8664d4fc3c73fb160c794185fa38fec5313d17c
+generated: "2020-04-21T18:15:52.235041284+03:00"
