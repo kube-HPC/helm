@@ -17,7 +17,7 @@ spec:
     matchLabels:
       app: {{ template "etcd.name" . }}
       #app.kubernetes.io/instance: {{ .Release.Name }}
-  serviceName: {{ template "etcd.name" . }}
+  serviceName: {{ template "etcd.fullname" . }}
   replicas: {{ .Values.replicas }}
   template:
     metadata:

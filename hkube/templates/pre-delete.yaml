@@ -33,13 +33,13 @@ spec:
           - |
             /usr/local/bin/kubectl cluster-info
             /usr/local/bin/kubectl delete deploy task-executor
+            /usr/local/bin/kubectl delete deploy algorithm-operator
             /usr/local/bin/kubectl delete deploy -l type=algorithm-queue
             /usr/local/bin/kubectl delete job -l type=worker
             /usr/local/bin/kubectl delete job -l type=pipeline-driver
             /usr/local/bin/kubectl delete deploy -l type=worker-debug
             /usr/local/bin/kubectl delete svc -l type=worker-debug
             /usr/local/bin/kubectl delete secret s3-secret
-            /usr/local/bin/kubectl delete crd etcdclusters.etcd.database.coreos.com etcdbackups.etcd.database.coreos.com etcdrestores.etcd.database.coreos.com 
             echo Done
 
             
