@@ -3,10 +3,10 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.2.26
-    created: "2020-04-20T17:15:12.7963644+03:00"
+    created: "2020-04-21T15:02:51.701541371+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
-    digest: 7539eb2f8e601c403ed381a1917f5d6c88a0a95fda3d716a028f6b26036ffad3
+    digest: ce4833c099ac6d0596df9b54bfaefcfc470c2e92d3ea9fcd00f7556e60b5f5ce
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -21,9 +21,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-04-20T17:15:12.797031341+03:00"
+    created: "2020-04-21T15:02:51.702076648+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: 258c9621cb9ede54821485d830ca567a6fec1f3e4cb15252673030704a826131
+    digest: a6f118a385a7e59bb084235620d8b416b236e0d3832ea9cf96f9cd7b4555ac73
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -87,9 +87,9 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-04-20T17:15:12.797340717+03:00"
+    created: "2020-04-21T15:02:51.702356623+03:00"
     description: A Helm chart for Kubernetes
-    digest: 657693f19dcd050d4b4d5b3ff967b9c7361983500414ca0e2b039f17ff5425c9
+    digest: 2508566fe4ed41774d4380f65ba7a81b54b06dce8c47032194f6dbbad1a3a603
     name: jaeger
     urls:
     - jaeger-0.1.6.tgz
@@ -97,9 +97,9 @@ entries:
   mini-thirdparty:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-04-20T17:15:12.797698598+03:00"
+    created: "2020-04-21T15:02:51.702699425+03:00"
     description: A Helm chart for Kubernetes
-    digest: d17d9511be3d28d30e82f3e8e08dda730cdb18e82a180ec70894b31166f408f3
+    digest: 8d3ab14a54dd2aba13d5b74bfa617db559bd0a7727b2d630b7a9b0468a7be7b8
     name: mini-thirdparty
     urls:
     - mini-thirdparty-0.3.4.tgz
@@ -107,10 +107,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2020-04-20T17:15:12.798778417+03:00"
+    created: "2020-04-21T15:02:51.703754754+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 84ebf6630010e163edca6234c11cb8a628f2e4ed816cf66d721fa66cad31475d
+    digest: 001cdcfb68f9cffaee5f16b0c946fea5840ba68330e43c1ebb9a77db87f0791c
     engine: gotpl
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -154,9 +154,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2020-04-20T17:15:12.799462934+03:00"
+    created: "2020-04-21T15:02:51.704372952+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: 0b59c5bede0452381ccc0db1aa8579c56f4ded1e597a08993ee1eadce3e40470
+    digest: b772c9c7a11c27e5999cf13b9f3c7405e696e212653d6e069bfe502ec04a5bd2
     engine: gotpl
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
@@ -230,4 +230,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-04-20T17:15:12.795807801+03:00"
+generated: "2020-04-21T15:02:51.700990477+03:00"
