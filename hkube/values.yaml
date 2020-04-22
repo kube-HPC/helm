@@ -15,7 +15,7 @@ global:
         nfs_server: nfs-server
         nfs_root: /srv/vol_nfs
         pv_name: ''
-        storage_class: ''
+        storage_class: '-'
       base_directory: /hkubedata
     minio:
       access_key: hkubeminiokey
