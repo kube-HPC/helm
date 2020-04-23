@@ -7,12 +7,12 @@ dependencies:
   version: 0.9.7
 - name: jaeger
   repository: http://hkube.io/helm/
-  version: 0.27.2001
+  version: 0.27.2002
 - name: redis-ha
   repository: http://hkube.io/helm/
   version: 3.6.3
 - name: nginx-ingress
   repository: http://hkube.io/helm/
   version: 1.31.1
-digest: sha256:3faf735c1c6f576b9ea4ed7fef058540e1d2bba0a258369a6e158dc538f4942f
-generated: "2020-04-23T17:44:48.925681564+03:00"
+digest: sha256:65d7273136408c4729a34b67ddbaef58fdc28044f23f5d6d01638cda03a53ed2
+generated: "2020-04-23T17:48:07.234869197+03:00"
