@@ -42,6 +42,8 @@ labels:
   group:
     value: hkube
 
+etcd-operator:
+  enable: false
 etcd:
   enable: true
   # set number of replicas. defualt 3

@@ -3,6 +3,10 @@ dependencies:
     version: "0.7.5"
     repository: "http://hkube.io/helm/"
     condition: etcd.enable
+  - name: hkube/etcd-operator
+    version: "0.9.7"
+    repository: "http://hkube.io/helm/"
+    condition: etcd-operator.enable
   - name: jaeger
     version: "0.27.2001"
     repository: "http://hkube.io/helm/"
