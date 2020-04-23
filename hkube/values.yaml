@@ -22,15 +22,13 @@ global:
       secret_key: hkubeminiosecret
       url: 'http://minio-service:9000'
   production: false
-  ingress_controller_enable: true
-  install_ingress_controller: false
   k8senv: k8s
   namespaced: false
   isPrivileged: true
   ingress:
     hostname: ''
     prefix: ''
-    use_regex: false
+    use_regex: true
     requireTls: true
     maxBodySize: 500m
 env:
@@ -43,6 +41,24 @@ labels:
     value: 'true'
   group:
     value: hkube
+
+etcd:
+  enable: true
+  # set number of replicas. defualt 3
+  # replicas: 3
+
+redis-ha:
+  enable: true
+  # set number of replicas. defualt 3
+  # replicas: 3
+  # set to true for single node
+  # hardAntiAffinity: false
+jaeger:
+  enable: true
+
+nginx-ingress:
+  enable: false
+
 systemversion: v1.2.183
 build_secret:
   docker_registry: ''
