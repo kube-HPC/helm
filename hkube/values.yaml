@@ -197,6 +197,8 @@ monitor_server:
     log_external_requests: false
     elasticsearch_service_url: ''
     logs_view_source: k8s
+    jaeger_query_service_host: ''
+    jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
     tag: v1.2.28
