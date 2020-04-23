@@ -58,8 +58,12 @@ jaeger:
   fullnameOverride: jaeger
   nameOverride: jaeger
   query:
+    basePath: '/jaeger'
     ingress:
       enabled: true
+  agent:
+    daemonset:
+      useHostPort: true
 
 
 nginx-ingress:

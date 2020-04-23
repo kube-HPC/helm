@@ -9,11 +9,6 @@ metadata:
     {{- include "jaeger.labels" . | nindent 4 }}
     app.kubernetes.io/component: query
   annotations:
-  {{- if .Values.global.ingress.use_regex }}
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-  {{- else }}
-    nginx.ingress.kubernetes.io/rewrite-target: /
-  {{- end }} 
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
   {{- if .Values.query.ingress.annotations }}
