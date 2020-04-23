@@ -3,10 +3,10 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.2.26
-    created: "2020-04-23T13:29:09.098697471+03:00"
+    created: "2020-04-23T13:50:07.105251992+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
-    digest: c90e9a8bd54ec1fa4adfbe89fb6156f379c9b8766090fbbc694cd4213f6f4bd1
+    digest: 0856508e484706a3d84dfa4a9b9a65b484f03f81e0c3ae1381101a7187425211
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -21,9 +21,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-04-23T13:29:09.099721188+03:00"
+    created: "2020-04-23T13:50:07.105810633+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: ae9558aad13bf5386a31149582cf50469dd94778c1a78ed2b5722f1f00db7709
+    digest: 908a5864254fc838f8d747aa96a49ad80a76b43ea220ebf1cf5a9703b5b3a302
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -87,9 +87,9 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
-    created: "2020-04-23T13:29:09.102286974+03:00"
+    created: "2020-04-23T13:50:07.108312038+03:00"
     description: A Jaeger Helm chart for Kubernetes
-    digest: 3ac9e5c00b2b1b06d822b789e13bf40af2be89e620bd845800c9769f5e8c5964
+    digest: 93f733c098edf6ecc5c1796651fd905f903b822bdad7857899919d2262c9fd88
     home: https://jaegertracing.io
     icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
     keywords:
@@ -257,4 +257,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-04-23T13:29:09.097620679+03:00"
+generated: "2020-04-23T13:50:07.104683746+03:00"
