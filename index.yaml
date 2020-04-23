@@ -3,10 +3,10 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.2.26
-    created: "2020-04-23T15:24:29.916733529+03:00"
+    created: "2020-04-23T17:45:40.6037763+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
-    digest: afaacce8cec7d427469e9a66de6dbdb3857f7307f68221a8baf87c050a79c7d7
+    digest: 0e0a33c2e98b88ecdc0a73940ca4b172c0fe8c88c29c17e6cb49ff5b8e34b9e1
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -21,9 +21,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-04-23T15:24:29.917308821+03:00"
+    created: "2020-04-23T17:45:40.604370883+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: d3c1bc762ccd81bd4bbd5c4f27548a57c4e83109d5ef3a365cd3e5caf6f72d4c
+    digest: 61d1da7c73e88f58f067d4011b6b780f3b8a5b1bcc5bdd14b705640201f2fd09
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -85,6 +85,33 @@ entries:
     - hkube-v1.1.1085.tgz
     version: v1.1.1085
   jaeger:
+  - apiVersion: v1
+    appVersion: 1.17.1
+    created: "2020-04-23T17:45:40.606809826+03:00"
+    description: A Jaeger Helm chart for Kubernetes
+    digest: b029cf2727e81925c446449314982b0734f3b30efba3fcea4b91c72c9f3c47ac
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    maintainers:
+    - email: david.vonthenen@dell.com
+      name: dvonthenen
+    - email: michael.lorant@fairfaxmedia.com.au
+      name: mikelorant
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: pavel.nikolov@fairfaxmedia.com.au
+      name: pavelnikolov
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    urls:
+    - jaeger-0.27.2002.tgz
+    version: 0.27.2002
   - apiVersion: v1
     appVersion: 1.17.1
     created: "2020-04-23T15:24:29.919763703+03:00"
@@ -151,9 +178,9 @@ entries:
   mini-thirdparty:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-04-21T18:04:54.725485727+03:00"
+    created: "2020-04-23T17:45:40.607200125+03:00"
     description: A Helm chart for Kubernetes
-    digest: e9c2b0127e047982338af49dde0b5a025ac7e0830980c7119e2ed33a34b5d01f
+    digest: 53abe00356aa9481e66840f544363b75491d8c9123c358ecad1b94996dc3d3cd
     name: mini-thirdparty
     urls:
     - mini-thirdparty-0.3.4.tgz
@@ -161,10 +188,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2020-04-21T18:04:54.726759951+03:00"
+    created: "2020-04-23T17:45:40.608919019+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: b468ad730bac6fa740ea85f080432e8fabf267f3f53cfa07727eba982c5b394d
+    digest: 9abea6d099f8d4300154876ae879450b3b55170c27436fad6fbcc4fcbea696b6
     engine: gotpl
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -208,9 +235,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2020-04-21T18:04:54.727551545+03:00"
+    created: "2020-04-23T17:45:40.609503874+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: eb5ccf7702652bfa5466fe91f284adf8da1442feefff2eb868c2fe569ddc8504
+    digest: 57c66bba3a9a7a6503f9b5ee8734f036b0a6e40ad6035edb9b83e748adfc9123
     engine: gotpl
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
@@ -284,4 +311,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-04-23T15:24:29.916136127+03:00"
+generated: "2020-04-23T17:45:40.603249457+03:00"
