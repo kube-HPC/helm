@@ -43,9 +43,9 @@ labels:
     value: hkube
 
 etcd-operator:
-  enable: false
-etcd:
   enable: true
+etcd:
+  enable: false
   # set number of replicas. defualt 3
   # replicas: 3
 
