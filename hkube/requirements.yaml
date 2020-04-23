@@ -3,7 +3,7 @@ dependencies:
     version: "0.7.5"
     repository: "http://hkube.io/helm/"
     condition: etcd.enable
-  - name: hkube/etcd-operator
+  - name: etcd-operator
     version: "0.9.7"
     repository: "http://hkube.io/helm/"
     condition: etcd-operator.enable
