@@ -3,10 +3,10 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.2.26
-    created: "2020-04-23T15:21:53.727209861+03:00"
+    created: "2020-04-23T15:24:29.916733529+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
-    digest: f0718cae3cf27736dd1f1ccc4d2d332d17866a85088fbb2d504ec87e6d0bbdac
+    digest: afaacce8cec7d427469e9a66de6dbdb3857f7307f68221a8baf87c050a79c7d7
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -21,9 +21,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-04-23T15:21:53.727735879+03:00"
+    created: "2020-04-23T15:24:29.917308821+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: c4c76af57c798b91feda382522b6a857b9db807b9effa99b8be2068d44489118
+    digest: d3c1bc762ccd81bd4bbd5c4f27548a57c4e83109d5ef3a365cd3e5caf6f72d4c
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -85,6 +85,33 @@ entries:
     - hkube-v1.1.1085.tgz
     version: v1.1.1085
   jaeger:
+  - apiVersion: v1
+    appVersion: 1.17.1
+    created: "2020-04-23T15:24:29.919763703+03:00"
+    description: A Jaeger Helm chart for Kubernetes
+    digest: 7157fddb991529cbe305639cbd503d7106f75ffe8fc4bd95793292359395878e
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    maintainers:
+    - email: david.vonthenen@dell.com
+      name: dvonthenen
+    - email: michael.lorant@fairfaxmedia.com.au
+      name: mikelorant
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: pavel.nikolov@fairfaxmedia.com.au
+      name: pavelnikolov
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    urls:
+    - jaeger-0.27.2001.tgz
+    version: 0.27.2001
   - apiVersion: v1
     appVersion: 1.17.1
     created: "2020-04-23T15:21:53.730308718+03:00"
@@ -257,4 +284,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-04-23T15:21:53.726652521+03:00"
+generated: "2020-04-23T15:24:29.916136127+03:00"
