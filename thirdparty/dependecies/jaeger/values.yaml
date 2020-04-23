@@ -504,3 +504,9 @@ hotrod:
   tracing:
     host: null
     port: 6831
+
+# global values for debug
+global:
+  registry: ''
+  ingress:
+    use_regex: true
