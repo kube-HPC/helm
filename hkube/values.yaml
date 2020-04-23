@@ -55,6 +55,12 @@ redis-ha:
   # hardAntiAffinity: false
 jaeger:
   enable: true
+  fullnameOverride: jaeger
+  nameOverride: jaeger
+  query:
+    ingress:
+      enabled: true
+
 
 nginx-ingress:
   enable: false
