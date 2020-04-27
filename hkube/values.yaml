@@ -12,10 +12,11 @@ global:
       pvc:
         name: hkube-storage
         capacity: 10Gi
-        nfs_server: nfs-server
-        nfs_root: /srv/vol_nfs
-        pv_name: ''
-        storage_class: '-'
+        # nfs_server: nfs-server
+        # nfs_root: /srv/vol_nfs
+        # pv_name: ''
+        # storage_class: '-'
+        storage_class: ''
       base_directory: /hkubedata
     minio:
       access_key: hkubeminiokey
@@ -43,16 +44,19 @@ labels:
     value: hkube
 
 etcd-operator:
-  enable: true
-etcd:
   enable: false
+etcd:
+  enable: true
   # set number of replicas. defualt 3
-  # replicas: 3
+  replicas: 1
 
 redis-ha:
   enable: true
   # set number of replicas. defualt 3
-  # replicas: 3
+  replicas: 1
+  redis:
+    config:
+      min-slaves-to-write: 0
   # set to true for single node
   # hardAntiAffinity: false
 jaeger:
@@ -66,10 +70,17 @@ jaeger:
   agent:
     daemonset:
       useHostPort: true
+  cassandra:
+    config:
+      cluster_size: 1
 
 
 nginx-ingress:
   enable: false
+
+minio:
+  enabled: false
+  
 
 systemversion: v1.2.185
 build_secret:
