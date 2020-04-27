@@ -43,7 +43,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.184
+systemversion: v1.2.185
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -368,7 +368,7 @@ caching_service:
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v1.2.13
+    tag: v1.2.14
   service:
     type: ClusterIP
   resources:
@@ -426,4 +426,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.184-1587907848382
+fullSystemVersion: v1.2.185-1587988859526
