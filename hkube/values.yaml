@@ -43,7 +43,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.183
+systemversion: v1.2.185
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -331,7 +331,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.2.32
+    tag: v1.2.33
   service:
     type: ClusterIP
   resources:
@@ -358,7 +358,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.56
+    tag: v1.2.57
   metrics:
     port: 3001
   service:
@@ -368,7 +368,7 @@ caching_service:
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v1.2.13
+    tag: v1.2.14
   service:
     type: ClusterIP
   resources:
@@ -378,7 +378,7 @@ caching_service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.2.42
+    tag: v1.2.43
   resources:
     requests:
       cpu: 100m
@@ -426,4 +426,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.183-1587030019150
+fullSystemVersion: v1.2.185-1587988859526
