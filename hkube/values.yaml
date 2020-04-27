@@ -49,6 +49,9 @@ etcd:
   enable: true
   # set number of replicas. defualt 3
   replicas: 1
+  persistentVolume:
+    enabled: false
+    storage: "1Gi"
 
 redis-ha:
   enable: true
