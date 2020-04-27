@@ -19,9 +19,9 @@ global:
         storage_class: ''
       base_directory: /hkubedata
     minio:
-      access_key: hkubeminiokey
-      secret_key: hkubeminiosecret
-      url: 'http://minio-service:9000'
+      access_key: &minio_access_key hkubeminiokey
+      secret_key: &minio_secret_key hkubeminiosecret
+      url: 'http://hkube-minio:9000'
   production: false
   k8senv: k8s
   namespaced: false
@@ -57,8 +57,8 @@ redis-ha:
   redis:
     config:
       min-slaves-to-write: 0
-  # set to true for single node
-  # hardAntiAffinity: false
+  # set to true for multiple nodes
+  hardAntiAffinity: false
 jaeger:
   enable: true
   fullnameOverride: jaeger
@@ -80,6 +80,11 @@ nginx-ingress:
 
 minio:
   enabled: false
+  accessKey: *minio_access_key
+  secretKey: *minio_secret_key
+  persistence:
+    enabled: true
+    storageClass: ""
   
 
 systemversion: v1.2.185

@@ -19,3 +19,7 @@ dependencies:
     version: "1.31.1"
     repository: "http://hkube.io/helm/"
     condition: nginx-ingress.enable
+  - name: minio
+    version: "5.0.23"
+    repository: "http://hkube.io/helm/"
+    condition: minio.enable
