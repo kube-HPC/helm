@@ -43,7 +43,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.185
+systemversion: v1.2.186
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -331,7 +331,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.2.33
+    tag: v1.2.34
   service:
     type: ClusterIP
   resources:
@@ -426,4 +426,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.185-1587988859526
+fullSystemVersion: v1.2.186-1588251362004
