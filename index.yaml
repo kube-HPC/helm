@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   etcd:
   - apiVersion: v1
+    appVersion: 3.3.1
+    created: "2020-04-30T12:55:50.033692873+03:00"
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
+    digest: b2b3bc9d024ee280a764ae79ab6068affc5c07a4f7968e4bc73afc8dd00714f9
+    home: https://github.com/coreos/etcd
+    icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
+    maintainers:
+    - email: lachlan@deis.com
+      name: lachie83
+    name: etcd
+    sources:
+    - https://github.com/coreos/etcd
+    urls:
+    - etcd-0.7.2005.tgz
+    version: 0.7.2005
+  - apiVersion: v1
     appVersion: 3.2.26
     created: "2020-04-27T17:54:51.804237525+03:00"
     description: Distributed reliable key-value store for the most critical data of
@@ -21,9 +38,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-04-27T17:54:51.80527162+03:00"
+    created: "2020-04-30T12:55:50.034166214+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: 9fe225650ab1e3da0e86d90f9c77c74b9d876735295ac37d566d773497fbb082
+    digest: f5fe5a9a7e01ae31776b3d0c1091056922ec7f95441f101bca9714f40e07c5dd
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -87,9 +104,9 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
-    created: "2020-04-27T17:54:51.810250824+03:00"
+    created: "2020-04-30T12:55:50.03629268+03:00"
     description: A Jaeger Helm chart for Kubernetes
-    digest: 32bbb9af1c7d656e7a2d5b84d906d4d24d3d017bf444489deaaf4814a4226661
+    digest: 6e50bd8e2d1a1806f44fa509045d48fc25a47293736d6d3b098a9df94a5a4863
     home: https://jaegertracing.io
     icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
     keywords:
@@ -188,10 +205,10 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: master
-    created: "2020-04-27T17:54:51.812551323+03:00"
+    created: "2020-04-30T12:55:50.037049459+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
-    digest: 111008ede960466091bd2e771267461577cef60dfc7b0e34a1f11397450931d3
+    digest: c7a87610533494218ba175aedb14fdc9092600a4daa394ceba29630b82192bd5
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
     keywords:
@@ -212,10 +229,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2020-04-27T17:54:51.813842511+03:00"
+    created: "2020-04-30T12:55:50.038376375+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 1064e5f548f4418103d9121f77cb19647b7e768d4d1f33be07732f1447798953
+    digest: 4b2275b83e313a42a6e9bd9831c36ef1b39ee34dc940b3230e0bba6394251345
     engine: gotpl
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -259,9 +276,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2020-04-27T17:54:51.814553041+03:00"
+    created: "2020-04-30T12:55:50.039017441+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: 2f180d636efbdfc140bf598dcfeef46554daac2af6f7ce1a912aafa20bb09357
+    digest: 2430b7fad07242da12effaf71007c05f055572671deb929a29868490c584288f
     engine: gotpl
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
@@ -344,4 +361,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-04-27T17:54:51.803231879+03:00"
+generated: "2020-04-30T12:55:50.033223636+03:00"
