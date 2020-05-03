@@ -1,0 +1,18 @@
+project:
+  name: Hkube
+  shortName: Hkube
+  url: https://github.com/kube-HPC/hkube
+  description: cloud-native open source framework to run distributed pipeline of algorithms
+repository:
+  url: https://hkube.io/helm/dev
+  name: hkube
+chart:
+  name: hkube
+  version: v1.2.186
+  values: "-- generate from values file --"
+  valuesExample: "-- generate from values file --"
+prerequisites:
+- "Kubernetes v1.14+"
+- "`--allow-privileged` flag must be set to true for both the API server and the kubelet"
+- "(If you use Docker) The Docker daemon of the cluster nodes must allow shared mounts"
+- "Pre-installed HashiCorp Vault server."
