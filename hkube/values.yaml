@@ -134,6 +134,14 @@ clean_old_jobs:
     max_failed_job_age_hours: '0.0166'
     max_pending_job_age_hours: '0.0166'
     clean_cron: '*/1 * * * *'
+  healthcheck:
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 60
+    timeoutSeconds: 1
+    failureThreshold: 3
   image:
     repository: hkube/clean-old-jobs
     tag: v1.2.7
