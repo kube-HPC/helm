@@ -45,7 +45,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.186
+systemversion: v1.2.187
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -146,7 +146,7 @@ clean_old_jobs:
     failureThreshold: 3
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.2.7
+    tag: v1.2.8
   resources:
     requests:
       cpu: 100m
@@ -436,4 +436,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.186-1588251362004
+fullSystemVersion: v1.2.187-1588531158070
