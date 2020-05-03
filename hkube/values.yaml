@@ -1,7 +1,5 @@
 global:
-  # kubernetes cluster domain name
   clusterName: cluster.local
-  # private registry to use
   registry: ''
   registry_namespace: hkube
   registry_username: ''
