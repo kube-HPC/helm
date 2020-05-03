@@ -43,7 +43,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.186
+systemversion: v1.2.187
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -434,4 +434,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.186-1588524970188
+fullSystemVersion: v1.2.187-1588531158070
