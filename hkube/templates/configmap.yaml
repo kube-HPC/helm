@@ -12,6 +12,7 @@ data:
   versions.json: |
         {
             "systemVersion": "{{ .Values.systemversion }}",
+            "fullSystemVersion": "{{ .Values.fullSystemVersion }}",
             "versions": [
                   {
                         "project": "api-server",

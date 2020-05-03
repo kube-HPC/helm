@@ -1,5 +1,7 @@
 global:
+  # kubernetes cluster domain name
   clusterName: cluster.local
+  # private registry to use
   registry: ''
   registry_namespace: hkube
   registry_username: ''
@@ -90,7 +92,7 @@ minio:
     storageClass: ""
   
 
-systemversion: v1.2.185
+systemversion: v1.2.187
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -181,9 +183,17 @@ clean_old_jobs:
     max_failed_job_age_hours: '0.0166'
     max_pending_job_age_hours: '0.0166'
     clean_cron: '*/1 * * * *'
+  healthcheck:
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 60
+    timeoutSeconds: 1
+    failureThreshold: 3
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.2.7
+    tag: v1.2.8
   resources:
     requests:
       cpu: 100m
@@ -380,7 +390,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.2.33
+    tag: v1.2.34
   service:
     type: ClusterIP
   resources:
@@ -475,4 +485,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.185-1587988859526
+fullSystemVersion: v1.2.187-1588531158070
