@@ -58,7 +58,7 @@ build_secret:
 algorithm-example:
   image:
     repository: hkube/algorithm-example
-    tag: v1.2.1
+    tag: v1.3.1
 algorithm_operator:
   env:
     metric_port: '3000'
@@ -103,7 +103,7 @@ algorithm-queue-svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.2.8
+    tag: v1.3.1
 api_server:
   env:
     base_url_path: /hkube/api-server
@@ -144,7 +144,7 @@ clean_old_jobs:
     failureThreshold: 3
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.2.8
+    tag: v1.3.1
   resources:
     requests:
       cpu: 100m
@@ -152,11 +152,11 @@ clean_old_jobs:
 cpu-load-algorithm:
   image:
     repository: hkube/cpu-load-algorithm
-    tag: v1.2.1
+    tag: v1.3.1
 tensorboard:
   image:
     repository: hkube/tensorboard
-    tag: v1.2.1
+    tag: v1.3.0
 delete_deployment_and_jobs:
   image:
     repository: hkube/del-dep-and-jobs
@@ -170,7 +170,7 @@ etcd_cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.2.3
+    tag: v1.3.2
   resources:
     requests:
       cpu: 100m
@@ -191,7 +191,7 @@ monitor_server:
     logs_view_source: k8s
   image:
     repository: hkube/monitor-server
-    tag: v1.2.28
+    tag: v1.3.1
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -208,7 +208,7 @@ monitor_server_listener:
   timeout: 60000
   image:
     repository: hkube/monitor-server-listener
-    tag: v1.2.0
+    tag: v1.3.0
   resources:
     requests:
       cpu: 100m
@@ -216,7 +216,7 @@ monitor_server_listener:
 pipeline_cleaner:
   image:
     repository: hkube/pipeline-cleaner
-    tag: v1.2.1
+    tag: v1.3.1
   resources:
     requests:
       cpu: 100m
@@ -291,7 +291,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.2.51
+    tag: v1.3.1
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -394,7 +394,7 @@ algorithm-builder:
 kaniko:
   image:
     repository: hkube/kaniko
-    tag: v1.2.1
+    tag: v1.3.0
   resources:
     requests:
       cpu: 100m
@@ -410,7 +410,7 @@ oc_builder:
 algorithm_example_python:
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.2.5
+    tag: v1.3.1
 etcd_defrag:
   enable: true
   pattern: '*/10 * * * *'
@@ -424,14 +424,14 @@ etcd_defrag:
 nodejs_env:
   image:
     repository: hkube/nodejs-env
-    tag: v1.2.1
+    tag: v1.3.1
 python_env:
   image:
     repository: hkube/python-env
-    tag: v1.2.3
+    tag: v1.3.1
 storage_migration:
   enable: false
   image:
     repository: hkube/storage-migration
-    tag: v1.2.4
-fullSystemVersion: v1.3.1-1588608918708
+    tag: v1.3.1
+fullSystemVersion: v1.3.1-1588609495211
