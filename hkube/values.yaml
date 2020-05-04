@@ -311,7 +311,7 @@ storage_cleaner:
     result_object_expiration_days: '20'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.2.2
+    tag: v1.3.1
   resources:
     requests:
       cpu: 100m
@@ -402,7 +402,7 @@ kaniko:
 oc_builder:
   image:
     repository: hkube/oc-builder
-    tag: v1.2.1
+    tag: v1.3.0
   resources:
     requests:
       cpu: 100m
@@ -434,4 +434,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.1
-fullSystemVersion: v1.3.1-1588609495211
+fullSystemVersion: v1.3.1-1588611891405
