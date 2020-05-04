@@ -43,7 +43,7 @@ labels:
     value: 'true'
   group:
     value: hkube
-systemversion: v1.2.187
+systemversion: v1.3.1
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -72,7 +72,7 @@ algorithm_operator:
     producer_update_interval: 1000
   image:
     repository: hkube/algorithm-operator
-    tag: v1.2.36
+    tag: v1.3.1
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -94,7 +94,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.2.26
+    tag: v1.3.1
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -113,7 +113,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.2.96
+    tag: v1.3.1
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -226,7 +226,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.2.51
+    tag: v1.3.1
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -236,7 +236,7 @@ pipeline_driver_queue:
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.2.18
+    tag: v1.3.1
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -268,7 +268,7 @@ resource_manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.2.12
+    tag: v1.3.1
   service:
     type: ClusterIP
   resources:
@@ -339,7 +339,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.2.34
+    tag: v1.3.1
   service:
     type: ClusterIP
   resources:
@@ -354,7 +354,7 @@ trigger_service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.2.14
+    tag: v1.3.1
   service:
     type: ClusterIP
   resources:
@@ -366,7 +366,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.2.57
+    tag: v1.3.1
   metrics:
     port: 3001
   service:
@@ -376,7 +376,7 @@ caching_service:
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v1.2.14
+    tag: v1.3.1
   service:
     type: ClusterIP
   resources:
@@ -386,7 +386,7 @@ caching_service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.2.43
+    tag: v1.3.1
   resources:
     requests:
       cpu: 100m
@@ -434,4 +434,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.2.4
-fullSystemVersion: v1.2.187-1588531158070
+fullSystemVersion: v1.3.1-1588608918708
