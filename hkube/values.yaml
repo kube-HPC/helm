@@ -156,7 +156,7 @@ cpu-load-algorithm:
 tensorboard:
   image:
     repository: hkube/tensorboard
-    tag: v1.3.0
+    tag: v1.3.1
 delete_deployment_and_jobs:
   image:
     repository: hkube/del-dep-and-jobs
@@ -434,4 +434,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.1
-fullSystemVersion: v1.3.1-1588611891405
+fullSystemVersion: v1.3.1-1588752651942
