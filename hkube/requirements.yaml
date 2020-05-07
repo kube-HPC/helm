@@ -1,6 +1,6 @@
 dependencies:
   - name: etcd
-    version: "0.7.2005"
+    version: "0.7.2006"
     repository: "http://hkube.io/helm/"
     condition: etcd.enable
   - name: etcd-operator
@@ -8,7 +8,7 @@ dependencies:
     repository: "http://hkube.io/helm/"
     condition: etcd-operator.enable
   - name: jaeger
-    version: "0.27.2002"
+    version: "0.27.2003"
     repository: "http://hkube.io/helm/"
     condition: jaeger.enable
   - name: redis-ha
