@@ -234,8 +234,8 @@ spec:
                 --initial-cluster ${PEERS} \
                 --initial-cluster-state new \
                 --data-dir /var/run/etcd/default.etcd
-      volumes:
       {{- if or .Values.auth.client.enableAuthentication (and .Values.auth.client.secureTransport ) }}
+      volumes:
       - name: etcd-client-certs
         secret:
           secretName: {{ required "A secret containinig the client certificates is required" .Values.auth.client.existingSecret }}
@@ -246,12 +246,6 @@ spec:
   - metadata:
       name: datadir
     spec:
-      accessModes:
-        - "ReadWriteOnce"
-      resources:
-        requests:
-          # upstream recommended max is 700M
-          storage: "{{ .Values.persistentVolume.storage }}"
     {{- if .Values.persistentVolume.storageClass }}
     {{- if (eq "-" .Values.persistentVolume.storageClass) }}
       storageClassName: ""
@@ -259,6 +253,12 @@ spec:
       storageClassName: "{{ .Values.persistentVolume.storageClass }}"
     {{- end }}
     {{- end }}
+      accessModes:
+        - "ReadWriteOnce"
+      resources:
+        requests:
+          # upstream recommended max is 700M
+          storage: "{{ .Values.persistentVolume.storage }}"
   {{- else }}
       - name: datadir
       {{- if .Values.memoryMode }}
