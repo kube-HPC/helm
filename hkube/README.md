@@ -44,14 +44,14 @@ There are two modes to install hkube
 ### configuration
 Parameter | Description | Default
 --- | --- | ---
-global.storage.minio.access_key | access key for s3 | hkubeminiokey
-global.storage.minio.secret_key | secret key for s3 | hkubeminiosecret
-global.storage.minio.url | access url for s3 | http://minio-service:9000
+global.storage.s3.access_key | access key for s3 | hkubeminiokey
+global.storage.s3.secret_key | secret key for s3 | hkubeminiosecret
+global.storage.s3.url | access url for s3 | http://minio-service:9000
 global.production | flag to switch to production install | false
 global.clusterName | the name of the kubernetes cluster | cluster-local
 
 
 
 ```console
-$ helm install hkube/hkube --set global.production=true --set global.clusterName=dev --set global.storage.minio.url=http://192.168.10.10:9000 --set global.storage.minio.access_key=accesskey --set global.storage.minio.secret_key=secretkey --name my-release 
+$ helm install hkube/hkube --set global.production=true --set global.clusterName=dev --set global.storage.s3.url=http://192.168.10.10:9000 --set global.storage.s3.access_key=accesskey --set global.storage.s3.secret_key=secretkey --name my-release 
 ```

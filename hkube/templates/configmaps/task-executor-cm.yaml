@@ -13,9 +13,5 @@ data:
   IS_NAMESPACED: {{ .Values.global.namespaced | quote}}
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   HAS_NODE_LIST: {{ .Values.task_executor.env.has_node_list | quote }}
-  {{- if .Values.global.production }}
   PIPELINE_DRIVERS_AMOUNT: {{ .Values.task_executor.env.pipeline_drivers_amount | quote}}
-  {{- else }}
-  PIPELINE_DRIVERS_AMOUNT: "1"
-  {{- end }}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}

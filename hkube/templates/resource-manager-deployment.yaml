@@ -20,9 +20,9 @@ spec:
         app: resource-manager
         group: {{ .Values.labels.group.value }}
     spec:
-      {{- if and .Values.global.production (not .Values.global.namespaced)}}
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        core: "true"
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: resource-manager-serviceaccount
       containers:

@@ -3,10 +3,15 @@ global:
   clusterName: cluster.local
   # private registry to use
   registry: ''
+  # private registry namespace for pulling base image in builds
   registry_namespace: hkube
+  # private registry username for pulling base image in builds
   registry_username: ''
+  # private registry password for pulling base image in builds
   registry_password: ''
+  # private registry insecure (http) for pulling base image in builds
   registry_insecure: false
+  # private registry with self signed certificate for pulling base image in builds
   registry_skip_tls_verify: false
   storage:
     binary: false
@@ -20,13 +25,15 @@ global:
         # storage_class: '-'
         storage_class: ''
       base_directory: /hkubedata
-    minio:
+    s3:
       access_key: &minio_access_key hkubeminiokey
       secret_key: &minio_secret_key hkubeminiosecret
       url: 'http://hkube-minio:9000'
-  production: false
+  # kubernetes environment. Possible values are k8s, openshift
   k8senv: k8s
+  # use only namespace. Set to true in restricted environments such as openshift
   namespaced: false
+  # run worker pods as privileged containers. Makes log aggregation easier
   isPrivileged: true
   ingress:
     hostname: ''
@@ -35,6 +42,7 @@ global:
     requireTls: true
     maxBodySize: 500m
 env:
+  # storage mode. can be s3 or fs. Set global.storage.fs or global.storage.s3 accordingly
   default_storage: s3
   node_env: production
 image:
@@ -50,20 +58,21 @@ etcd-operator:
 etcd:
   enable: true
   # set number of replicas. defualt 3
-  replicas: 1
+  replicas: 3
   persistentVolume:
     enabled: false
     storage: "1Gi"
 
 redis-ha:
   enable: true
-  # set number of replicas. defualt 3
+  # set number of replicas. defualt 1. also set min-slaves-to-write to replicas -1
   replicas: 1
   redis:
     config:
       min-slaves-to-write: 0
   # set to true for multiple nodes
   hardAntiAffinity: false
+
 jaeger:
   enable: true
   fullnameOverride: jaeger
@@ -79,7 +88,6 @@ jaeger:
     config:
       cluster_size: 1
 
-
 nginx-ingress:
   enable: false
 
@@ -90,20 +98,31 @@ minio:
   persistence:
     enabled: true
     storageClass: ""
-  
 
 systemversion: v1.3.1
 build_secret:
+# docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
+# docker registry namespace for algorithm builds. defaults to username
   docker_namespace: ''
+# docker registry username for algorithm builds.
   docker_username: ''
+# docker registry password for algorithm builds.
   docker_password: ''
+# docker registry is insecure for algorithm builds.
   docker_registry_insecure: false
+# docker registry has self signed certificate for algorithm builds.
   docker_registry_skip_tls_verify: false
+# npm registry for algorithm builds. Defaults to npmjs.com
   npm_registry: ''
+# npm registry token for algorithm builds.
   npm_token: ''
+# pip registry for algorithm builds. Defaults to pypi.org
   pip_registry: ''
+# pip registry token for algorithm builds. Defaults to pypi.org
   pip_token: ''
+# node selector for hkube containers.
+nodeSelector: {}
 algorithm-example:
   image:
     repository: hkube/algorithm-example
@@ -252,7 +271,6 @@ monitor_server:
     requests:
       cpu: 100m
       memory: 512Mi
-nodeSelector: {}
 monitor_server_listener:
   enable: false
   pattern: '*/10 * * * *'
