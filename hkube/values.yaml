@@ -55,6 +55,7 @@ labels:
 
 etcd-operator:
   enable: false
+  
 etcd:
   enable: true
   # set number of replicas. defualt 3
@@ -65,11 +66,11 @@ etcd:
 
 redis-ha:
   enable: true
-  # set number of replicas. defualt 1. also set min-slaves-to-write to replicas -1
-  replicas: 1
+  # set number of replicas. defualt 3. If set to 1 also set min-slaves-to-write to 0
+  replicas: 3
   redis:
     config:
-      min-slaves-to-write: 0
+      min-slaves-to-write: 1
   # set to true for multiple nodes
   hardAntiAffinity: false
 
