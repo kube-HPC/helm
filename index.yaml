@@ -3,6 +3,23 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.3.1
+    created: "2020-05-07T16:22:53.815007618+03:00"
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
+    digest: a9eafddc9f36f7578e7531f55061f612ab918f9a56b22a63c3a173088ea5b011
+    home: https://github.com/coreos/etcd
+    icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
+    maintainers:
+    - email: lachlan@deis.com
+      name: lachie83
+    name: etcd
+    sources:
+    - https://github.com/coreos/etcd
+    urls:
+    - etcd-0.7.2006.tgz
+    version: 0.7.2006
+  - apiVersion: v1
+    appVersion: 3.3.1
     created: "2020-04-30T12:56:59.075952781+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
@@ -38,9 +55,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-04-30T12:56:59.076448865+03:00"
+    created: "2020-05-07T16:22:53.815574804+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: 3a348756c77b56d6cb9475c964b115800721e3507df48635f251122f7d5d0c75
+    digest: 9ef586706210e99747d79cbcf0d4b96eaae1982c011388e4c9e8d4ed4e615160
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -124,6 +141,33 @@ entries:
     - hkube-v1.1.1085.tgz
     version: v1.1.1085
   jaeger:
+  - apiVersion: v1
+    appVersion: 1.17.1
+    created: "2020-05-07T16:22:53.818152173+03:00"
+    description: A Jaeger Helm chart for Kubernetes
+    digest: be34f5591a07349269c1c324a5159e0ad9ff67d704c0de8ecb6ba847189f2e63
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    maintainers:
+    - email: david.vonthenen@dell.com
+      name: dvonthenen
+    - email: michael.lorant@fairfaxmedia.com.au
+      name: mikelorant
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: pavel.nikolov@fairfaxmedia.com.au
+      name: pavelnikolov
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    urls:
+    - jaeger-0.27.2003.tgz
+    version: 0.27.2003
   - apiVersion: v1
     appVersion: 1.17.1
     created: "2020-04-30T12:56:59.078615908+03:00"
@@ -227,10 +271,10 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: master
-    created: "2020-04-30T12:56:59.079819396+03:00"
+    created: "2020-05-07T16:22:53.819027153+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
-    digest: 60da641b5edce8fcf29c606b87327e5fbf0cece89750c2d0ed6a8638804939c4
+    digest: 03d624410e7f169079fdc7af20c7329dd822f70f19edb52d1eefc47c5087dcda
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
     keywords:
@@ -251,10 +295,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2020-04-30T12:56:59.080676735+03:00"
+    created: "2020-05-07T16:22:53.820898186+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 92ea587ce5ff5d01e0fece00805574288d12127d690ac4bdb49b7708900b15cf
+    digest: f8b35c0196e5e2b075f18b18d516fbe556d44a20f2e1b3075280ab8befacc212
     engine: gotpl
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -298,9 +342,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2020-04-30T12:56:59.081173417+03:00"
+    created: "2020-05-07T16:22:53.821907827+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: d830c9bdc08b35fd55c190b6d4604e079b68d5e3dd531ce5e7261287ca5c80e2
+    digest: 00414e25c1476048b0e3e4bbc780e0f888f40c6bbe514394f79ee15d7f4241bf
     engine: gotpl
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
@@ -383,4 +427,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-05-04T18:38:12.756563302+03:00"
+generated: "2020-05-07T16:22:53.814201908+03:00"
