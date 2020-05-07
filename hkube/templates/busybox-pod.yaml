@@ -14,9 +14,9 @@ spec:
       - "3600"
     imagePullPolicy: IfNotPresent
     name: busybox
-    terminationGracePeriodSeconds: 5
     resources:
       limits:
         cpu: 50m
         memory: 250Mi
+  terminationGracePeriodSeconds: 5  
   restartPolicy: Always
