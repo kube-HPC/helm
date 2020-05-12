@@ -20,9 +20,9 @@ spec:
         app: task-executor
         group: {{ .Values.labels.group.value }}
     spec:
-      {{- if and .Values.global.production (not .Values.global.namespaced)}}
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        core: "true"
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: task-executor-serviceaccount
       containers:
@@ -92,6 +92,11 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: WORKER_SOCKET_MAX_PAYLOAD_BYTES
+            - name: HAS_NODE_LIST
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: HAS_NODE_LIST
             - name: NAMESPACE
               valueFrom:
                 fieldRef:

@@ -10,6 +10,7 @@ metadata:
     core: "true"
 spec:
   schedule: {{ .Values.etcd_defrag.pattern | quote }} 
+  startingDeadlineSeconds: 200
   jobTemplate:
     spec:
       template:

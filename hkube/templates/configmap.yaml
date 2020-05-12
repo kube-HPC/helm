@@ -4,14 +4,15 @@ data:
         {"registry":{{ .Values.global.registry | trimSuffix "/" | quote }} }
   clusterOptions.json: |
         {
-              "useNodeSelector":{{ and .Values.global.production (not .Values.global.namespaced) | default false}}, 
-              "ingressHost":{{ .Values.global.ingress.hostname | quote }},
+              "useNodeSelector": {{ .Values.nodeSelector | default false}}, 
+              "ingressHost": {{ .Values.global.ingress.hostname | quote }},
               "ingressPrefix": {{ .Values.global.ingress.prefix | quote }},
               "ingressUseRegex": {{ .Values.global.ingress.use_regex }}
         }
   versions.json: |
         {
             "systemVersion": "{{ .Values.systemversion }}",
+            "fullSystemVersion": "{{ .Values.fullSystemVersion }}",
             "versions": [
                   {
                         "project": "api-server",

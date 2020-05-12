@@ -23,9 +23,9 @@ spec:
         group: {{ .Values.labels.group.value }}
     spec:
       serviceAccountName: algorithm-operator-serviceaccount
-      {{- if and .Values.global.production (not .Values.global.namespaced)}}
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        core: "true"
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
         - name: algorithm-operator

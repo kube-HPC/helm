@@ -64,7 +64,7 @@ wait-etcd-down
 kubectl apply -f ${TMP_FILE}
 wait-etcd-up
 echo deleting the following hkube pods for quicker recovery
-kubectl get po -l group=hkube -o custom-columns=NAME:.metadata.name,STATUS:.status.phase --no-headers
+kubectl get po -l group=hkube,thirdparty!=true -o custom-columns=NAME:.metadata.name,STATUS:.status.phase --no-headers
 read -p "Are you sure? [y/n]" -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -72,4 +72,5 @@ then
     echo Canceled. No harm done
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
 fi
-kubectl delete po -l group=hkube
+kubectl delete job -l group=hkube,thirdparty!=true
+kubectl delete po -l group=hkube,thirdparty!=true

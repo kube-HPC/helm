@@ -8,6 +8,7 @@ metadata:
     app: "etcd-cleaner"
 spec:
   schedule: "0 0 * * *"
+  startingDeadlineSeconds: 200
   jobTemplate:
     spec:
       template:
