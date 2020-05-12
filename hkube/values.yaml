@@ -1,17 +1,10 @@
 global:
-  # kubernetes cluster domain name
   clusterName: cluster.local
-  # private registry to use
   registry: ''
-  # private registry namespace for pulling base image in builds
   registry_namespace: hkube
-  # private registry username for pulling base image in builds
   registry_username: ''
-  # private registry password for pulling base image in builds
   registry_password: ''
-  # private registry insecure (http) for pulling base image in builds
   registry_insecure: false
-  # private registry with self signed certificate for pulling base image in builds
   registry_skip_tls_verify: false
   storage:
     binary: false
@@ -19,21 +12,14 @@ global:
       pvc:
         name: hkube-storage
         capacity: 10Gi
-        # nfs_server: nfs-server
-        # nfs_root: /srv/vol_nfs
-        # pv_name: ''
-        # storage_class: '-'
         storage_class: ''
       base_directory: /hkubedata
     s3:
       access_key: hkubeminiokey
       secret_key: hkubeminiosecret
       url: 'http://hkube-minio:9000'
-  # kubernetes environment. Possible values are k8s, openshift
   k8senv: k8s
-  # use only namespace. Set to true in restricted environments such as openshift
   namespaced: false
-  # run worker pods as privileged containers. Makes log aggregation easier
   isPrivileged: true
   ingress:
     hostname: ''
@@ -42,7 +28,6 @@ global:
     requireTls: true
     maxBodySize: 500m
 env:
-  # storage mode. can be s3 or fs. Set global.storage.fs or global.storage.s3 accordingly
   default_storage: s3
   node_env: production
 image:
@@ -52,34 +37,27 @@ labels:
     value: 'true'
   group:
     value: hkube
-
 etcd-operator:
   enable: false
-  
 etcd:
   enable: true
-  # set number of replicas. defualt 3
   replicas: 3
   persistentVolume:
     enabled: false
-    storage: "1Gi"
-
+    storage: 1Gi
 redis-ha:
   enable: true
-  # set number of replicas. defualt 3. If set to 1 also set min-slaves-to-write to 0
   replicas: 3
   redis:
     config:
       min-slaves-to-write: 1
-  # set to true for multiple nodes
   hardAntiAffinity: false
-
 jaeger:
   enable: true
   fullnameOverride: jaeger
   nameOverride: jaeger
   query:
-    basePath: '/jaeger'
+    basePath: /jaeger
     ingress:
       enabled: true
   agent:
@@ -89,41 +67,27 @@ jaeger:
     config:
       cluster_size: 1
       cluster_domain: cluster.local
-
 nginx-ingress:
   enable: false
-
 minio:
   enable: false
   accessKey: hkubeminiokey
   secretKey: hkubeminiosecret
   persistence:
     enabled: true
-    storageClass: ""
-
+    storageClass: ''
 systemversion: v1.3.2
 build_secret:
-# docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
-# docker registry namespace for algorithm builds. defaults to username
   docker_namespace: ''
-# docker registry username for algorithm builds.
   docker_username: ''
-# docker registry password for algorithm builds.
   docker_password: ''
-# docker registry is insecure for algorithm builds.
   docker_registry_insecure: false
-# docker registry has self signed certificate for algorithm builds.
   docker_registry_skip_tls_verify: false
-# npm registry for algorithm builds. Defaults to npmjs.com
   npm_registry: ''
-# npm registry token for algorithm builds.
   npm_token: ''
-# pip registry for algorithm builds. Defaults to pypi.org
   pip_registry: ''
-# pip registry token for algorithm builds. Defaults to pypi.org
   pip_token: ''
-# node selector for hkube containers.
 nodeSelector: {}
 algorithm-example:
   image:
