@@ -1,5 +1,5 @@
 {{- if eq .Values.env.default_storage "fs" }}
-{{- if not (eq .Values.global.k8senv "openshift") }}
+{{- if eq .Values.global.storage.fs.pvc.storage_class "-" }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:

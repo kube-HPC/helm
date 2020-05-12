@@ -1,6 +1,21 @@
 dependencies:
-- name: thirdparty
+- name: etcd
   repository: http://hkube.io/helm/
-  version: 0.5.9
-digest: sha256:5534b33868102fc2f87fd05dccd63a597885fcef4af3e20d5536f4c4f1d503d1
-generated: "2020-03-17T12:01:36.164852192+02:00"
+  version: 0.7.2006
+- name: etcd-operator
+  repository: http://hkube.io/helm/
+  version: 0.9.7
+- name: jaeger
+  repository: http://hkube.io/helm/
+  version: 0.27.2003
+- name: redis-ha
+  repository: http://hkube.io/helm/
+  version: 3.6.3
+- name: nginx-ingress
+  repository: http://hkube.io/helm/
+  version: 1.31.1
+- name: minio
+  repository: http://hkube.io/helm/
+  version: 5.0.23
+digest: sha256:283b31f41dee341fdf8c8e2a908f3158b1f46ce30b9417f28758683057c5cc3c
+generated: "2020-05-07T16:26:19.233610723+03:00"

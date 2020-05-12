@@ -64,9 +64,9 @@ The following table lists the configurable parameters of the `hkube` chart and t
 | global.storage.fs.pvc.pv_name                           |                                | `''`                                                           |
 | global.storage.fs.pvc.storage_class                     |                                | `'-'`                                                          |
 | global.storage.fs.base_directory                        |                                | `/hkubedata`                                                   |
-| global.storage.minio.access_key                         |                                | `hkubeminiokey`                                                |
-| global.storage.minio.secret_key                         |                                | `hkubeminiosecret`                                             |
-| global.storage.minio.url                                |                                | `'http://minio-service:9000'`                                  |
+| global.storage.s3.access_key                         |                                | `hkubeminiokey`                                                |
+| global.storage.s3.secret_key                         |                                | `hkubeminiosecret`                                             |
+| global.storage.s3.url                                |                                | `'http://minio-service:9000'`                                  |
 | global.production                                       |                                | `false`                                                        |
 | global.ingress_controller_enable                        |                                | `true`                                                         |
 | global.install_ingress_controller                       |                                | `false`                                                        |

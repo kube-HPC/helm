@@ -172,3 +172,16 @@ labels:
 # global values for debug
 global:
   registry: ''
+  ingress:
+    use_regex: true
+
+etcd-ui:
+  service:
+    type: ClusterIP
+    port: "8080"
+  image:
+    repository: hkube/etcd-ui
+    tag: v1.0.3
+  ingress:
+    enabled: true
+    path: /hkube/etcd-ui

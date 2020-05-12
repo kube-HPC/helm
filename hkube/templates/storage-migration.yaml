@@ -44,11 +44,11 @@ spec:
           value: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- else if eq .Values.env.default_storage "s3" }}
         - name: AWS_ACCESS_KEY_ID
-          value: {{ default "" .Values.global.storage.minio.access_key | b64enc | quote }}
+          value: {{ default "" .Values.global.storage.s3.access_key | b64enc | quote }}
         - name: AWS_SECRET_ACCESS_KEY
-          value: {{ default "" .Values.global.storage.minio.secret_key | b64enc | quote }}
+          value: {{ default "" .Values.global.storage.s3.secret_key | b64enc | quote }}
         - name: S3_ENDPOINT_URL
-          value: {{ default "" .Values.global.storage.minio.url | b64enc | quote }}
+          value: {{ default "" .Values.global.storage.s3.url | b64enc | quote }}
 {{- end }}                                    
         - name: DEFAULT_STORAGE
           value: {{ .Values.env.default_storage | quote }}
