@@ -40,6 +40,7 @@ spec:
             /usr/local/bin/kubectl delete deploy -l type=worker-debug
             /usr/local/bin/kubectl delete svc -l type=worker-debug
             /usr/local/bin/kubectl delete secret s3-secret
+            /usr/local/bin/kubectl delete crd etcdclusters.etcd.database.coreos.com
             echo Done
 
             
