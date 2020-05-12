@@ -101,7 +101,7 @@ minio:
     enabled: true
     storageClass: ""
 
-systemversion: v1.3.1
+systemversion: v1.3.2
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -240,7 +240,7 @@ etcd_cleaner:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.3.2
+    tag: v1.3.3
   resources:
     requests:
       cpu: 100m
@@ -263,7 +263,7 @@ monitor_server:
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v1.3.1
+    tag: v1.3.2
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -410,7 +410,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.3.1
+    tag: v1.3.2
   service:
     type: ClusterIP
   resources:
@@ -505,4 +505,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.1
-fullSystemVersion: v1.3.1-1588764963661
+fullSystemVersion: v1.3.2-1589208362075
