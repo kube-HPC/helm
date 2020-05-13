@@ -8,6 +8,7 @@ global:
   registry_skip_tls_verify: false
   storage:
     encoding: msgpack
+    storageResultsThreshold: 100Ki
     fs:
       pvc:
         name: hkube-storage
@@ -370,6 +371,8 @@ task_executor:
     pipeline_drivers_amount: 30
     worker_socket_max_payload_bytes: 1000000000
     worker_algorithm_encoding: 'bson'
+    default_storage_protocol: v1
+    default_worker_algorithm_encoding: json
     worker_memory: 512
     worker_cpu: 0.1
     resources_enable: false
