@@ -26,8 +26,8 @@ data:
                   },
                   {
                         "project": "pipeline-driver",
-                        "tag": "{{ index .Values "pipeline-driver" "image" "tag" }}",
-                        "image": "{{ index .Values "pipeline-driver" "image" "repository" }}"
+                        "tag": "{{ .Values.pipeline_driver.image.tag }}",
+                        "image": "{{ .Values.pipeline_driver.image.repository }}"
                   },
                   {
                         "project": "algorunner",

@@ -6,6 +6,7 @@ metadata:
 data:
   NODE_ENV: {{.Values.env.node_env}}
   DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
+  STORAGE_BINARY: "false"
   STORAGE_ENCODING: {{index .Values.global.storage.encoding | quote}}
   DISCOVERY_ENCODING: {{index .Values.global.discovery.encoding | quote}}
   DISCOVERY_PORT: {{index .Values.global.discovery.port | quote}}

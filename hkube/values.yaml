@@ -262,7 +262,7 @@ pipeline_cleaner:
     requests:
       cpu: 100m
       memory: 512Mi
-pipeline-driver:
+pipeline_driver:
   env:
     metric_port: '3001'
   image:
