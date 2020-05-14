@@ -43,13 +43,14 @@ spec:
 
 {{- if eq .Values.global.storage.fs.pvc.storage_class "-" }}
   storageClassName: ""
-{{- else if .Values.global.storage.fs.pvc.storage_class }}
-  storageClassName: {{ .Values.global.storage.fs.pvc.storage_class }}
-{{- end }}
   selector:
     matchLabels:
       group: {{ .Values.labels.group.value }}
       type: nfs
       role: hkube-storage
+{{- else if .Values.global.storage.fs.pvc.storage_class }}
+  storageClassName: {{ .Values.global.storage.fs.pvc.storage_class }}
+{{- end }}
+  
 {{- end }} 
 {{- end }} 
