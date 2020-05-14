@@ -49,6 +49,7 @@ build_secret:
   docker_registry_skip_tls_verify: false
   npm_registry: ''
   npm_token: ''
+  maven_registry: ''
   pip_registry: ''
   pip_token: ''
 algorithm-example:
