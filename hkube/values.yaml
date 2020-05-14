@@ -131,11 +131,11 @@ algorithm_operator:
     requests:
       cpu: 100m
       memory: 512Mi
-algorithm-queue:
+algorithm_queue:
   image:
     repository: hkube/algorithm-queue
     tag: v1.3.1
-algorithm-queue-svc:
+algorithm_queue_svc:
   env:
     metric_port: '3000'
   service:
@@ -427,7 +427,7 @@ caching_service:
     requests:
       cpu: 100m
       memory: 512Mi
-algorithm-builder:
+algorithm_builder:
   image:
     repository: hkube/algorithm-builder
     tag: v1.3.1

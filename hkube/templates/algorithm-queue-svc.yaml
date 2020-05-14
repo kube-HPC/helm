@@ -12,10 +12,10 @@ metadata:
     group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
-  type: {{ index .Values "algorithm-queue-svc" "service" "type" }}
+  type: {{ index .Values "algorithm_queue_svc" "service" "type" }}
   ports:
-    - port: {{ index .Values "algorithm-queue-svc" "env" "metric_port" }}
-      targetPort: {{ index .Values "algorithm-queue-svc" "env" "metric_port" }}
+    - port: {{ index .Values "algorithm_queue_svc" "env" "metric_port" }}
+      targetPort: {{ index .Values "algorithm_queue_svc" "env" "metric_port" }}
       protocol: TCP
   selector:
     metrics-group: 'algorithm-queue'
