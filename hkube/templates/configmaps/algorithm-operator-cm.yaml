@@ -5,6 +5,7 @@ metadata:
   name: algorithm-operator-configmap
 data: 
   NODE_ENV: {{ .Values.env.node_env }}
+  STORAGE_BINARY: "false"
   DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
   STORAGE_ENCODING: {{index .Values.global.storage.encoding | quote}}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
