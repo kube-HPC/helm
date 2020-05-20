@@ -50,6 +50,8 @@ build_secret:
   npm_registry: ''
   npm_token: ''
   maven_registry: ''
+  maven_token: ''
+  maven_user: ''
   pip_registry: ''
   pip_token: ''
 algorithm-example:
