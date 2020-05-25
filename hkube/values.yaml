@@ -76,7 +76,7 @@ minio:
   persistence:
     enabled: true
     storageClass: ''
-systemversion: v1.3.2
+systemversion: v1.2.187
 build_secret:
   docker_registry: ''
   docker_namespace: ''
