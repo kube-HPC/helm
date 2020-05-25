@@ -267,7 +267,7 @@ pipeline_driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.1-Algorithms_Storage_V2-13
+    tag: v1.3.1-Algorithms_Storage_V2-17
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -430,7 +430,7 @@ caching_service:
 algorithm_builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.1-Algorithms_Storage_V2-13
+    tag: v1.3.1-Algorithms_Storage_V2-19
   resources:
     requests:
       cpu: 100m
@@ -475,6 +475,8 @@ python_env:
     tag: v1.3.1
 storage_migration:
   enable: false
+  env:
+    source_storage_encoding: bson
   image:
     repository: hkube/storage-migration
     tag: v1.3.1

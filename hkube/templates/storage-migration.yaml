@@ -53,7 +53,9 @@ spec:
         - name: DEFAULT_STORAGE
           value: {{ .Values.env.default_storage | quote }}
         - name: STORAGE_ENCODING
-          value: {{index .Values.global.storage.encoding | quote}}    
+          value: {{index .Values.global.storage.encoding | quote}}  
+        - name: SOURCE_STORAGE_ENCODING
+          value: "{{index .Values "storage_migration" "env" "source_storage_encoding"}}"  
         - name: CLUSTER_NAME
           value: {{ .Values.global.clusterName | quote}}
         - name: NODE_ENV
