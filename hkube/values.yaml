@@ -200,7 +200,7 @@ delete_deployment_and_jobs:
       cpu: 100m
       memory: 512Mi
 etcd_cleaner:
-  pattern: "0 0 * * *"
+  pattern: 0 0 * * *
   env:
     object_expiration_days: '5'
   image:
@@ -250,7 +250,7 @@ monitor_server_listener:
       cpu: 100m
       memory: 512Mi
 pipeline_cleaner:
-  pattern: "*/5 * * * *"
+  pattern: '*/5 * * * *'
   image:
     repository: hkube/pipeline-cleaner
     tag: v1.3.1
@@ -343,7 +343,7 @@ simulator:
       cpu: 100m
       memory: 512Mi
 storage_cleaner:
-  pattern: "0 0 * * *"
+  pattern: 0 0 * * *
   env:
     temp_object_expiration_days: '5'
     result_object_expiration_days: '20'
