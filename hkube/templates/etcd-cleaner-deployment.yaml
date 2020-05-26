@@ -7,7 +7,7 @@ metadata:
     core: "true"
     app: "etcd-cleaner"
 spec:
-  schedule: "0 0 * * *"
+  schedule: {{ .Values.etcd_cleaner.pattern | quote }} 
   startingDeadlineSeconds: 200
   jobTemplate:
     spec:
