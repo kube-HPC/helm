@@ -383,7 +383,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.3.1-Algorithms_Storage_V2-13
+    tag: v1.3.1-Algorithms_Storage_V2-20
   service:
     type: ClusterIP
   resources:
@@ -430,7 +430,7 @@ caching_service:
 algorithm_builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.1-Algorithms_Storage_V2-19
+    tag: v1.3.1-Algorithms_Storage_V2-20
   resources:
     requests:
       cpu: 100m
