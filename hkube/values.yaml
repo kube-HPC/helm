@@ -43,7 +43,7 @@ etcd:
   enable: true
   replicas: 3
   persistentVolume:
-    enabled: false
+    enabled: true
     storage: 1Gi
 redis-ha:
   enable: true
@@ -70,7 +70,7 @@ jaeger:
 nginx-ingress:
   enable: false
 minio:
-  enable: false
+  enable: true
   accessKey: hkubeminiokey
   secretKey: hkubeminiosecret
   persistence:
