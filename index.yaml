@@ -3,6 +3,23 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.3.1
+    created: "2020-05-31T11:26:03.182678949+03:00"
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
+    digest: 36df0186110e6e4e22bce52baedca359922f3a54382b892cf23d2b2222aa3340
+    home: https://github.com/coreos/etcd
+    icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
+    maintainers:
+    - email: lachlan@deis.com
+      name: lachie83
+    name: etcd
+    sources:
+    - https://github.com/coreos/etcd
+    urls:
+    - etcd-0.7.2007.tgz
+    version: 0.7.2007
+  - apiVersion: v1
+    appVersion: 3.3.1
     created: "2020-05-07T16:22:53.815007618+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
@@ -82,7 +99,6 @@ entries:
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
       utilizing the available resources, based on user priorities and AI heuristics.
     digest: 6a1f38a16de04a32baf2c4d73d7b1fcee40f081b7d4f18d4169a58866182af4d
-    engine: gotpl
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
     maintainers:
@@ -104,7 +120,6 @@ entries:
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
       utilizing the available resources, based on user priorities and AI heuristics.
     digest: 62cff5611651ca5a204a89939abd77c13aebe36a45d9602ada584c7e5a7eb484
-    engine: gotpl
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
     maintainers:
@@ -126,7 +141,6 @@ entries:
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
       utilizing the available resources, based on user priorities and AI heuristics.
     digest: f0ccdbf5151b286baa3c629771ba6ea3cc0519b8b0dcc3778ae00f9b36c04b10
-    engine: gotpl
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
     maintainers:
@@ -148,7 +162,6 @@ entries:
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
       utilizing the available resources, based on user priorities and AI heuristics.
     digest: 015264e8fd43e27112e52a178cb855e0a41248eb76e36d0c9e9da3fbaad154da
-    engine: gotpl
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
     maintainers:
@@ -321,7 +334,6 @@ entries:
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
     digest: f8b35c0196e5e2b075f18b18d516fbe556d44a20f2e1b3075280ab8befacc212
-    engine: gotpl
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -344,7 +356,6 @@ entries:
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
     digest: 531e4b93abee204870e031d9c3dd9ec4336a36384bee8d1876c89a6ec67d23ab
-    engine: gotpl
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -367,7 +378,6 @@ entries:
     created: "2020-05-07T16:22:53.821907827+03:00"
     description: Highly available Kubernetes implementation of Redis
     digest: 00414e25c1476048b0e3e4bbc780e0f888f40c6bbe514394f79ee15d7f4241bf
-    engine: gotpl
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -449,4 +459,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-05-25T10:59:13.245774019+03:00"
+generated: "2020-05-31T11:26:03.181903259+03:00"
