@@ -93,6 +93,52 @@ entries:
   hkube:
   - apiVersion: v1
     appVersion: v1.2.187
+    created: "2020-05-31T12:43:16.16935366+03:00"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2007
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2003
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.3
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.23
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: f7cc3d9e4a632d4c3ef83721221224b6c10c106f7f2f82568cc6a882b049c1d9
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.2.189.tgz
+    version: v1.2.189
+  - apiVersion: v1
+    appVersion: v1.2.187
     created: "2020-05-25T10:59:13.258229827+03:00"
     description: Open source project for HPC over kubernetes Hkube is a cloud native
       open source framework to run distributed pipeline of algorithms built on Kubernetes.
@@ -459,4 +505,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-05-31T11:26:03.181903259+03:00"
+generated: "2020-05-31T12:43:16.153547075+03:00"
