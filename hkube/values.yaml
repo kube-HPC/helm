@@ -412,7 +412,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.3.1-Algorithms_Storage_V2-21
+    tag: v1.3.1-Algorithms_Storage_V2-24
   metrics:
     port: 3001
   service:
