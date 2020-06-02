@@ -110,9 +110,11 @@ algorithm_operator:
     algorithm_queue_interval: 200
     boards_timeout: 10800
     producer_update_interval: 1000
+    python_wrapper_version: ''
+    node_wrapper_version: ''
   image:
     repository: hkube/algorithm-operator
-    tag: v1.3.1-Algorithms_Storage_V2-13
+    tag: v1.3.1-Algorithms_Storage_V2-23
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
