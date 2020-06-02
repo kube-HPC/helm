@@ -76,7 +76,7 @@ minio:
   persistence:
     enabled: true
     storageClass: ''
-systemversion: v1.3.5
+systemversion: v1.3.6
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -147,7 +147,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.3.3
+    tag: v1.3.4
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -472,4 +472,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.1
-fullSystemVersion: v1.3.5-1591079498467
+fullSystemVersion: v1.3.6-1591090320666
