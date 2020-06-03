@@ -76,7 +76,7 @@ minio:
   persistence:
     enabled: true
     storageClass: ''
-systemversion: v1.3.6
+systemversion: v1.3.7
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -263,7 +263,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.1
+    tag: v1.3.2
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -472,4 +472,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.1
-fullSystemVersion: v1.3.6-1591090320666
+fullSystemVersion: v1.3.7-1591193380508
