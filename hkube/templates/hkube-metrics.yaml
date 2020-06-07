@@ -4,6 +4,9 @@ kind: ServiceMonitor
 metadata:
   labels:
     app: hkube
+{{- if .Values.metrics.serviceMonitorSelector }}
+{{ toYaml .Values.metrics.serviceMonitorSelector | indent 4 }}
+{{- end }}
   name: hkube-metrics
 spec:
   endpoints:
@@ -15,5 +18,5 @@ spec:
   selector:
     matchLabels:
       group: {{ .Values.labels.group.value }}
-      metrics: true
+      metrics: "true"
 {{- end }}
