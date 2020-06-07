@@ -44,6 +44,7 @@ etcd:
   replicas: 3
   persistentVolume:
     enabled: true
+    storageClass: ''
     storage: 1Gi
 redis-ha:
   enable: true
