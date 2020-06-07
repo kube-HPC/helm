@@ -229,7 +229,7 @@ monitor_server:
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v1.3.2
+    tag: v1.3.3
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -329,7 +329,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.3.2
+    tag: v1.3.3
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -350,7 +350,7 @@ storage_cleaner:
     result_object_expiration_days: '20'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.3.1
+    tag: v1.3.2
   resources:
     requests:
       cpu: 100m
@@ -473,4 +473,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.1
-fullSystemVersion: v1.3.7-1591527602688
+fullSystemVersion: v1.3.7-1591537680069
