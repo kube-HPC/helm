@@ -77,7 +77,7 @@ minio:
   persistence:
     enabled: true
     storageClass: ''
-systemversion: v1.3.3
+systemversion: v1.3.7
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -148,7 +148,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.3.1
+    tag: v1.3.4
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -264,7 +264,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.1
+    tag: v1.3.2
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -329,7 +329,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.3.1
+    tag: v1.3.2
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -473,4 +473,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.1
-fullSystemVersion: v1.3.3-1590560485340
+fullSystemVersion: v1.3.7-1591193380508
