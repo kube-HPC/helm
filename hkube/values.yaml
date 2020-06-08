@@ -80,8 +80,8 @@ minio:
 metrics:
   serviceMonitorSelector:
     release: metrics
-  grafanaDashboardLabel: 
-    grafana_dashboard: "1"
+  grafanaDashboardLabel:
+    grafana_dashboard: '1'
 systemversion: v1.3.7
 build_secret:
   docker_registry: ''
