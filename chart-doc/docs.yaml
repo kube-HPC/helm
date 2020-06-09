@@ -14,4 +14,5 @@ release:
   name: hkube
 prerequisites:
 - "Kubernetes v1.14+"
-- "`--allow-privileged` flag must be set to true for both the API server and the kubelet (or set global.isPrivileged=false)"
+- "Dynamic storage provisioning (optional)"
+- "Ingress controller (optional)"

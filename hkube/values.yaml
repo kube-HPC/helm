@@ -25,7 +25,7 @@ global:
     hostname: ''
     prefix: ''
     use_regex: true
-    requireTls: true
+    requireTls: false
     maxBodySize: 500m
 env:
   default_storage: s3
@@ -54,7 +54,7 @@ redis-ha:
       min-slaves-to-write: 1
   hardAntiAffinity: false
 jaeger:
-  enable: true
+  enable: false
   fullnameOverride: jaeger
   nameOverride: jaeger
   query:
@@ -290,7 +290,6 @@ pipeline_driver_queue:
     requests:
       cpu: 100m
       memory: 512Mi
-private_registry: docker.io
 resource_manager:
   healthcheck:
     enabled: false
@@ -371,7 +370,7 @@ task_executor:
     failureThreshold: 3
   env:
     metric_port: '3000'
-    pipeline_drivers_amount: 30
+    pipeline_drivers_amount: 1
     worker_socket_max_payload_bytes: 1000000000
     worker_memory: 512
     worker_cpu: 0.1
