@@ -77,11 +77,11 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: DEFAULT_STORAGE
-            - name: STORAGE_BINARY
+            - name: STORAGE_ENCODING
               valueFrom:
                 configMapKeyRef:
                   name: task-executor-configmap
-                  key: STORAGE_BINARY                  
+                  key: STORAGE_ENCODING                  
             - name: BASE_FS_ADAPTER_DIRECTORY
               valueFrom:
                 configMapKeyRef:
