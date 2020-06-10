@@ -489,5 +489,5 @@ storage_migration:
     source_storage_encoding: bson
   image:
     repository: hkube/storage-migration
-    tag: v1.3.1
-fullSystemVersion: v1.3.8-1591795560712
+    tag: v1.3.2
+fullSystemVersion: v1.3.8-1591798391500
