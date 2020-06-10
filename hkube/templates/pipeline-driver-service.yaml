@@ -16,5 +16,5 @@ spec:
   clusterIP: None
   ports:
     - name: metrics
-      port: {{ index .Values "pipeline-driver" "env" "metric_port" }}
-      targetPort: {{ index .Values "pipeline-driver" "env" "metric_port" }}
+      port: {{ .Values.pipeline_driver.env.metric_port }}
+      targetPort: {{ .Values.pipeline_driver.env.metric_port }}

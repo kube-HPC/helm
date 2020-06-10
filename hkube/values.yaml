@@ -7,7 +7,8 @@ global:
   registry_insecure: false
   registry_skip_tls_verify: false
   storage:
-    binary: false
+    encoding: msgpack
+    storageResultsThreshold: 100Ki
     fs:
       pvc:
         name: hkube-storage
@@ -18,6 +19,11 @@ global:
       access_key: hkubeminiokey
       secret_key: hkubeminiosecret
       url: 'http://hkube-minio:9000'
+  discovery:
+    encoding: msgpack
+    port: 9020
+    timeout: 30000
+    maxCacheSize: 500
   k8senv: k8s
   namespaced: false
   isPrivileged: true
@@ -110,6 +116,8 @@ algorithm_operator:
     algorithm_queue_interval: 200
     boards_timeout: 10800
     producer_update_interval: 1000
+    python_wrapper_version: ''
+    node_wrapper_version: ''
   image:
     repository: hkube/algorithm-operator
     tag: v1.3.2
@@ -131,11 +139,11 @@ algorithm_operator:
     requests:
       cpu: 100m
       memory: 512Mi
-algorithm-queue:
+algorithm_queue:
   image:
     repository: hkube/algorithm-queue
     tag: v1.3.2
-algorithm-queue-svc:
+algorithm_queue_svc:
   env:
     metric_port: '3000'
   service:
@@ -264,7 +272,7 @@ pipeline_cleaner:
     requests:
       cpu: 100m
       memory: 512Mi
-pipeline-driver:
+pipeline_driver:
   env:
     metric_port: '3001'
   image:
@@ -372,6 +380,9 @@ task_executor:
     metric_port: '3000'
     pipeline_drivers_amount: 1
     worker_socket_max_payload_bytes: 1000000000
+    worker_algorithm_encoding: 'bson'
+    default_storage_protocol: v1
+    default_worker_algorithm_encoding: json
     worker_memory: 512
     worker_cpu: 0.1
     resources_enable: false
@@ -426,7 +437,7 @@ caching_service:
     requests:
       cpu: 100m
       memory: 512Mi
-algorithm-builder:
+algorithm_builder:
   image:
     repository: hkube/algorithm-builder
     tag: v1.3.2
@@ -474,6 +485,8 @@ python_env:
     tag: v1.3.1
 storage_migration:
   enable: false
+  env:
+    source_storage_encoding: bson
   image:
     repository: hkube/storage-migration
     tag: v1.3.1

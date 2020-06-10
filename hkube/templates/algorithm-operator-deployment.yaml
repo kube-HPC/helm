@@ -69,11 +69,11 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: DEFAULT_STORAGE
-            - name: STORAGE_BINARY
+            - name: STORAGE_ENCODING
               valueFrom:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
-                  key: STORAGE_BINARY                  
+                  key: STORAGE_ENCODING                  
             - name: BOARDS_TIMEOUT
               valueFrom:
                 configMapKeyRef:

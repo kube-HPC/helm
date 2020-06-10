@@ -26,8 +26,8 @@ data:
                   },
                   {
                         "project": "pipeline-driver",
-                        "tag": "{{ index .Values "pipeline-driver" "image" "tag" }}",
-                        "image": "{{ index .Values "pipeline-driver" "image" "repository" }}"
+                        "tag": "{{ .Values.pipeline_driver.image.tag }}",
+                        "image": "{{ .Values.pipeline_driver.image.repository }}"
                   },
                   {
                         "project": "algorunner",
@@ -51,8 +51,8 @@ data:
                   },
                   {
                         "project": "algorithm-queue",
-                        "tag": "{{ index .Values "algorithm-queue" "image" "tag" }}",
-                        "image": "{{ index .Values "algorithm-queue" "image" "repository" }}"
+                        "tag": "{{ index .Values "algorithm_queue" "image" "tag" }}",
+                        "image": "{{ index .Values "algorithm_queue" "image" "repository" }}"
                   },
                   {
                         "project": "resource-manager",
@@ -111,8 +111,8 @@ data:
                   },
                   {
                         "project": "algorithm-builder",
-                        "tag": "{{ index .Values "algorithm-builder" "image" "tag" }}",
-                        "image": "{{ index .Values "algorithm-builder" "image" "repository" }}"
+                        "tag": "{{ index .Values "algorithm_builder" "image" "tag" }}",
+                        "image": "{{ index .Values "algorithm_builder" "image" "repository" }}"
                   },
                   {
                         "project": "kaniko",
