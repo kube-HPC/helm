@@ -1,0 +1,22 @@
+{{- if .Capabilities.APIVersions.Has "monitoring.coreos.com/v1" }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: hkube
+{{- if .Values.metrics.serviceMonitorSelector }}
+{{ toYaml .Values.metrics.serviceMonitorSelector | indent 4 }}
+{{- end }}
+  name: hkube-metrics
+spec:
+  endpoints:
+  - path: /metrics
+    port: metrics
+  namespaceSelector:
+    matchNames:
+    - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      group: {{ .Values.labels.group.value }}
+      metrics: "true"
+{{- end }}

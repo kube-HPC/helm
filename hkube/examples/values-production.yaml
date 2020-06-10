@@ -1,0 +1,36 @@
+global:
+  clusterName: cluster.local
+  storage:
+    binary: false
+    fs:
+      pvc:
+        name: hkube-storage
+        capacity: 10Gi
+        storage_class: ''
+      base_directory: /hkubedata
+  ingress:
+    requireTls: true
+env:
+  default_storage: fs
+jaeger:
+  enable: true
+  cassandra:
+    config:
+      cluster_size: 3
+      cluster_domain: cluster.local
+minio:
+  enable: false
+build_secret:
+  docker_registry: ''
+  docker_namespace: ''
+  docker_username: ''
+  docker_password: ''
+  docker_registry_insecure: false
+  docker_registry_skip_tls_verify: false
+  npm_registry: ''
+  npm_token: ''
+  pip_registry: ''
+  pip_token: ''
+task_executor:
+  env:
+    pipeline_drivers_amount: 30

@@ -8,7 +8,7 @@ metadata:
     app: storage-cleaner
 spec:
 
-  schedule: "0 0 * * *"
+  schedule: {{ .Values.storage_cleaner.pattern | quote }} 
   startingDeadlineSeconds: 200
   jobTemplate:
     spec:

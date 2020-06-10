@@ -8,6 +8,7 @@ metadata:
     app: pipeline-driver
     group: {{ .Values.labels.group.value }}
     core: "true"
+    metrics: "true"
 spec:
   selector:
     group: hkube

@@ -31,7 +31,7 @@ global:
     hostname: ''
     prefix: ''
     use_regex: true
-    requireTls: true
+    requireTls: false
     maxBodySize: 500m
 env:
   default_storage: s3
@@ -49,7 +49,8 @@ etcd:
   enable: true
   replicas: 3
   persistentVolume:
-    enabled: false
+    enabled: true
+    storageClass: ''
     storage: 1Gi
 redis-ha:
   enable: true
@@ -59,7 +60,7 @@ redis-ha:
       min-slaves-to-write: 1
   hardAntiAffinity: false
 jaeger:
-  enable: true
+  enable: false
   fullnameOverride: jaeger
   nameOverride: jaeger
   query:
@@ -76,13 +77,18 @@ jaeger:
 nginx-ingress:
   enable: false
 minio:
-  enable: false
+  enable: true
   accessKey: hkubeminiokey
   secretKey: hkubeminiosecret
   persistence:
     enabled: true
     storageClass: ''
-systemversion: v1.3.2
+metrics:
+  serviceMonitorSelector:
+    release: metrics
+  grafanaDashboardLabel:
+    grafana_dashboard: '1'
+systemversion: v1.3.7
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -145,7 +151,7 @@ algorithm_queue_svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.3.1
+    tag: v1.3.3
 api_server:
   env:
     base_url_path: /hkube/api-server
@@ -155,7 +161,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.3.1-Algorithms_Storage_V2-13
+    tag: v1.3.4
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -208,11 +214,12 @@ delete_deployment_and_jobs:
       cpu: 100m
       memory: 512Mi
 etcd_cleaner:
+  pattern: 0 0 * * *
   env:
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.3.3
+    tag: v1.3.4
   resources:
     requests:
       cpu: 100m
@@ -235,7 +242,7 @@ monitor_server:
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v1.3.2-Hkube_V2-5
+    tag: v1.3.3
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -257,6 +264,7 @@ monitor_server_listener:
       cpu: 100m
       memory: 512Mi
 pipeline_cleaner:
+  pattern: '*/5 * * * *'
   image:
     repository: hkube/pipeline-cleaner
     tag: v1.3.1
@@ -269,7 +277,7 @@ pipeline_driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.1-Algorithms_Storage_V2-17
+    tag: v1.3.2
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -290,7 +298,6 @@ pipeline_driver_queue:
     requests:
       cpu: 100m
       memory: 512Mi
-private_registry: docker.io
 resource_manager:
   healthcheck:
     enabled: false
@@ -334,7 +341,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.3.1-Hkube_V2-4
+    tag: v1.3.3
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -349,12 +356,13 @@ simulator:
       cpu: 100m
       memory: 512Mi
 storage_cleaner:
+  pattern: 0 0 * * *
   env:
     temp_object_expiration_days: '5'
     result_object_expiration_days: '20'
   image:
     repository: hkube/storage-cleaner
-    tag: v1.3.1
+    tag: v1.3.2
   resources:
     requests:
       cpu: 100m
@@ -370,7 +378,7 @@ task_executor:
     failureThreshold: 3
   env:
     metric_port: '3000'
-    pipeline_drivers_amount: 30
+    pipeline_drivers_amount: 1
     worker_socket_max_payload_bytes: 1000000000
     worker_algorithm_encoding: 'bson'
     default_storage_protocol: v1
@@ -385,7 +393,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.3.1-Algorithms_Storage_V2-20
+    tag: v1.3.3
   service:
     type: ClusterIP
   resources:
@@ -482,4 +490,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.1
-fullSystemVersion: v1.3.2-1589208362075
+fullSystemVersion: v1.3.7-1591775143792
