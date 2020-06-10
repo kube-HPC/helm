@@ -380,7 +380,7 @@ task_executor:
     metric_port: '3000'
     pipeline_drivers_amount: 1
     worker_socket_max_payload_bytes: 1000000000
-    worker_algorithm_encoding: 'bson'
+    worker_algorithm_encoding: bson
     default_storage_protocol: v1
     default_worker_algorithm_encoding: json
     worker_memory: 512
