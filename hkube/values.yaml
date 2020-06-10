@@ -82,7 +82,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.7
+systemversion: v1.3.8
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -112,7 +112,7 @@ algorithm_operator:
     producer_update_interval: 1000
   image:
     repository: hkube/algorithm-operator
-    tag: v1.3.1
+    tag: v1.3.2
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -134,7 +134,7 @@ algorithm_operator:
 algorithm-queue:
   image:
     repository: hkube/algorithm-queue
-    tag: v1.3.1
+    tag: v1.3.2
 algorithm-queue-svc:
   env:
     metric_port: '3000'
@@ -153,7 +153,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.3.4
+    tag: v1.3.5
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -269,7 +269,7 @@ pipeline-driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.2
+    tag: v1.3.3
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -310,7 +310,7 @@ resource_manager:
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v1.3.1
+    tag: v1.3.2
   service:
     type: ClusterIP
   resources:
@@ -382,7 +382,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.3.3
+    tag: v1.3.4
   service:
     type: ClusterIP
   resources:
@@ -397,7 +397,7 @@ trigger_service:
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v1.3.1
+    tag: v1.3.2
   service:
     type: ClusterIP
   resources:
@@ -409,7 +409,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.3.1
+    tag: v1.3.2
   metrics:
     port: 3001
   service:
@@ -419,7 +419,7 @@ caching_service:
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v1.3.1
+    tag: v1.3.2
   service:
     type: ClusterIP
   resources:
@@ -429,7 +429,7 @@ caching_service:
 algorithm-builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.1
+    tag: v1.3.2
   resources:
     requests:
       cpu: 100m
@@ -477,4 +477,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.1
-fullSystemVersion: v1.3.7-1591775143792
+fullSystemVersion: v1.3.8-1591795560712
