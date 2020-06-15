@@ -88,7 +88,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.19
+systemversion: v1.3.20
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -161,7 +161,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.3.12
+    tag: v1.3.13
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -341,7 +341,7 @@ simulator:
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.3.5
+    tag: v1.3.6
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -440,7 +440,7 @@ caching_service:
 algorithm_builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.2
+    tag: v1.3.3
   resources:
     requests:
       cpu: 100m
@@ -490,4 +490,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.19-1592205504905
+fullSystemVersion: v1.3.20-1592206446243
