@@ -88,7 +88,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.18
+systemversion: v1.3.19
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -161,7 +161,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.3.11
+    tag: v1.3.12
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -490,4 +490,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.18-1592152745977
+fullSystemVersion: v1.3.19-1592205504905
