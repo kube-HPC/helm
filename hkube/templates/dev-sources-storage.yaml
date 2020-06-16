@@ -1,0 +1,55 @@
+{{- if .Values.global.storage.fs.dev_pvc.enabled }}
+{{- if eq .Values.global.storage.fs.dev_pvc.storage_class "-" }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: hkube-dev-sources-pv
+  labels:
+    group: {{ .Values.labels.group.value }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }} 
+    type: nfs
+    role: hkube-dev-sources
+spec:
+  capacity:
+    storage: {{ .Values.global.storage.fs.dev_pvc.capacity }}
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: {{ .Values.global.storage.fs.dev_pvc.nfs_server }}
+    path: "{{ .Values.global.storage.fs.dev_pvc.nfs_root }}/{{ .Values.global.clusterName }}/hkube-dev-sources"
+{{- end }}
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hkube-dev-sources-pvc
+  namespace: {{ .Release.Namespace }} 
+  labels:
+    group: {{ .Values.labels.group.value }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }} 
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.global.storage.fs.dev_pvc.capacity }}
+{{- if .Values.global.storage.fs.dev_pvc.pv_name }}  
+  volumeName: {{ .Values.global.storage.fs.dev_pvc.pv_name }}
+{{- else }}
+
+{{- if eq .Values.global.storage.fs.dev_pvc.storage_class "-" }}
+  storageClassName: ""
+  selector:
+    matchLabels:
+      group: {{ .Values.labels.group.value }}
+      type: nfs
+      role: hkube-dev-sources
+{{- else if .Values.global.storage.fs.dev_pvc.storage_class }}
+  storageClassName: {{ .Values.global.storage.fs.dev_pvc.storage_class }}
+{{- end }}
+  
+{{- end }} 
+{{- end }} 
