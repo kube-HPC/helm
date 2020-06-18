@@ -18,7 +18,6 @@ global:
         name: hkube-dev-sources
         capacity: 10Gi
         storage_class: '-'
-        enabled: false
       base_directory: /hkubedata
     s3:
       access_key: hkubeminiokey
