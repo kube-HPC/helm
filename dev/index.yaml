@@ -3,12 +3,12 @@ entries:
   hkube:
   - apiVersion: v1
     appVersion: v1.3.26
-    created: "2020-06-16T13:54:48.309120226Z"
+    created: "2020-06-18T10:42:37.453842102Z"
     description: Open source project for HPC over kubernetes Hkube is a cloud native
       open source framework to run distributed pipeline of algorithms built on Kubernetes.
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
       utilizing the available resources, based on user priorities and AI heuristics.
-    digest: 7152961d0f309c844cd2c987b412d1dc14df816423d7997d4d18ce3763bd5575
+    digest: 1312927037fc3f8a18dce8e15b91afe37bf2ec1c5a9f253420a4be25438c9364
     engine: gotpl
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -4759,4 +4759,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: "2020-06-16T13:54:48.299358109Z"
+generated: "2020-06-18T10:42:37.444173079Z"
