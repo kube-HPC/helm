@@ -1,4 +1,4 @@
-{{- if .Values.global.storage.fs.dev_pvc.enabled }}
+{{- if .Values.sync_server.enabled }}
 {{- if eq .Values.global.storage.fs.dev_pvc.storage_class "-" }}
 apiVersion: v1
 kind: PersistentVolume

@@ -8,7 +8,7 @@ data:
               "ingressHost": {{ .Values.global.ingress.hostname | quote }},
               "ingressPrefix": {{ .Values.global.ingress.prefix | quote }},
               "ingressUseRegex": {{ .Values.global.ingress.use_regex }},
-              "devModeEnabled": {{ .Values.global.storage.fs.dev_pvc.enabled }}
+              "devModeEnabled": {{ .Values.sync_server.enabled }}
         }
   versions.json: |
         {

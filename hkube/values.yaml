@@ -14,7 +14,7 @@ global:
         name: hkube-storage
         capacity: 10Gi
         storage_class: '-'
-      dev_pvc: 
+      dev_pvc:
         name: hkube-dev-sources
         capacity: 10Gi
         storage_class: '-'
@@ -480,6 +480,11 @@ etcd_defrag:
     requests:
       cpu: 100m
       memory: 512Mi
+sync_server:
+  enabled: true
+  image:
+    repository: hkube/sync-server
+    tag: v1.3.1
 nodejs_env:
   image:
     repository: hkube/nodejs-env
