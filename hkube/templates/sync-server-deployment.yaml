@@ -1,0 +1,124 @@
+{{- if .Values.sync_server.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sync-server
+  labels:
+    app: sync-server
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sync-server
+  template:
+    metadata:
+      labels:
+        app: sync-server
+        release: {{ .Release.Name }}
+        group: {{ .Values.labels.group.value }}
+    spec:
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: sync-server-syncthing
+          image: "{{ .Values.global.registry }}{{ .Values.sync_server.image.repository }}:{{ .Values.sync_server.image.tag }}"
+          command:
+            - /syncthing/syncthing
+            - -home
+            - /var/syncthing/config
+            - -gui-apikey
+            - hkubectl         
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: ui
+              containerPort: 8384
+              protocol: TCP
+          resources:
+{{ toYaml .Values.sync_server.resources | indent 12 }} 
+      containers:
+        - name: sync-server-tunnel
+          image: "{{ .Values.global.registry }}{{ .Values.sync_server.image.repository }}:{{ .Values.sync_server.image.tag }}"
+          command:
+            - tcp-over-websockets-server     
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+          - containerPort: 8080
+            name: tunnel
+          resources:
+{{ toYaml .Values.sync_server.resources | indent 12 }}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  sync-server
+spec:
+  selector:
+    app:  sync-server
+  type:  ClusterIP
+  ports:
+  - name:  rest
+    port:  8384
+    targetPort:  8384
+  - name:  sync
+    port:  8080
+    targetPort:  8080
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 500m
+{{- if .Values.global.ingress.use_regex }}
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+{{- else }}
+    nginx.ingress.kubernetes.io/rewrite-target: /
+{{- end }}
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }} 
+  labels:
+    app: sync-server
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+  name: sync-server
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: sync-server-tls-secret
+{{- end }}
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: sync-server
+          servicePort: 8384
+{{- if .Values.global.ingress.use_regex }}
+        path: {{ .Values.global.ingress.prefix }}/sync/ui(/|$)(.*)
+{{- else }}
+        path: {{ .Values.global.ingress.prefix }}/sync/ui
+{{- end }}
+      - backend:
+          serviceName: sync-server
+          servicePort: 8080
+{{- if .Values.global.ingress.use_regex }}
+        path: {{ .Values.global.ingress.prefix }}/sync/sync(/|$)(.*)
+{{- else }}
+        path: {{ .Values.global.ingress.prefix }}/sync/sync
+{{- end }}
+{{- end }}
