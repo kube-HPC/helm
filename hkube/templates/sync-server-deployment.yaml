@@ -71,6 +71,7 @@ spec:
     targetPort:  8080
 
 ---
+{{- $ingressPath := .Values.sync_server.ingress.path -}}
 
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -108,16 +109,16 @@ spec:
           serviceName: sync-server
           servicePort: 8384
 {{- if .Values.global.ingress.use_regex }}
-        path: {{ .Values.global.ingress.prefix }}/sync/ui(/|$)(.*)
+        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/ui(/|$)(.*)
 {{- else }}
-        path: {{ .Values.global.ingress.prefix }}/sync/ui
+        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/ui
 {{- end }}
       - backend:
           serviceName: sync-server
           servicePort: 8080
 {{- if .Values.global.ingress.use_regex }}
-        path: {{ .Values.global.ingress.prefix }}/sync/sync(/|$)(.*)
+        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync(/|$)(.*)
 {{- else }}
-        path: {{ .Values.global.ingress.prefix }}/sync/sync
+        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync
 {{- end }}
 {{- end }}

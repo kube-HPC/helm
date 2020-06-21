@@ -484,6 +484,9 @@ sync_server:
   image:
     repository: hkube/sync-server
     tag: v1.3.1
+  ingress:
+    enabled: true
+    path: /hkube/sync
 nodejs_env:
   image:
     repository: hkube/nodejs-env
