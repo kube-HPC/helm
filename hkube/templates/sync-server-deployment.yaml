@@ -25,6 +25,10 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: hkube-dev-sources
+          persistentVolumeClaim:
+            claimName: hkube-dev-sources-pvc
       containers:
         - name: sync-server-syncthing
           image: "{{ .Values.global.registry }}{{ .Values.sync_server.image.repository }}:{{ .Values.sync_server.image.tag }}"
@@ -41,6 +45,9 @@ spec:
               protocol: TCP
           resources:
 {{ toYaml .Values.sync_server.resources | indent 12 }} 
+          volumeMounts:
+          - name: hkube-dev-sources
+            mountPath: /sources
         - name: sync-server-tunnel
           image: "{{ .Values.global.registry }}{{ .Values.sync_server.image.repository }}:{{ .Values.sync_server.image.tag }}"
           command:
