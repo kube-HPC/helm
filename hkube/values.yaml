@@ -92,7 +92,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.28
+systemversion: v1.3.29
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -281,7 +281,7 @@ pipeline_driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.8
+    tag: v1.3.9
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -397,7 +397,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.3.5
+    tag: v1.3.6
   service:
     type: ClusterIP
   resources:
@@ -502,4 +502,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.28-1592748611807
+fullSystemVersion: v1.3.29-1592749648159
