@@ -17,7 +17,7 @@ global:
       dev_pvc:
         name: hkube-dev-sources
         capacity: 10Gi
-        storage_class: '-'
+        storage_class: ''
       base_directory: /hkubedata
     s3:
       access_key: hkubeminiokey
