@@ -92,7 +92,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.49
+systemversion: v1.3.50
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -434,7 +434,7 @@ caching_service:
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v1.3.3
+    tag: v1.3.4
   service:
     type: ClusterIP
   resources:
@@ -502,4 +502,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.49-1593085364092
+fullSystemVersion: v1.3.50-1593094648714
