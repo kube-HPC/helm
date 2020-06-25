@@ -92,7 +92,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.46
+systemversion: v1.3.47
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -397,7 +397,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.3.7
+    tag: v1.3.8
   service:
     type: ClusterIP
   resources:
@@ -502,4 +502,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.46-1593064528107
+fullSystemVersion: v1.3.47-1593071246958
