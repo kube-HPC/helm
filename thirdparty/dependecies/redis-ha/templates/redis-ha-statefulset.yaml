@@ -70,14 +70,6 @@ spec:
                   release: {{ .Release.Name }}
               topologyKey: kubernetes.io/hostname
     {{- end }}
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              podAffinityTerm:
-                labelSelector:
-                  matchLabels:
-                    app:  {{ template "redis-ha.name" . }}
-                    release: {{ .Release.Name }}
-                topologyKey: failure-domain.beta.kubernetes.io/zone
     {{- end }}
 {{- if not (eq .Values.global.k8senv "openshift") }}
       securityContext:
