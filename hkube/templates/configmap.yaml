@@ -41,11 +41,6 @@ data:
                         "image": "{{ .Values.simulator.image.repository }}"
                   },
                   {
-                        "project": "algorithm-example",
-                        "tag": "{{ index .Values "algorithm-example" "image" "tag" }}",
-                        "image": "{{ index .Values "algorithm-example" "image" "repository" }}"
-                  },
-                  {
                         "project": "monitor-server",
                         "tag": "{{ index .Values "monitor_server" "image" "tag" }}",
                         "image": "{{ .Values.monitor_server.image.repository }}"
@@ -129,16 +124,6 @@ data:
                         "project": "algorithm-example-python",
                         "tag": "{{ .Values.algorithm_example_python.image.tag }}",
                         "image": "{{ .Values.algorithm_example_python.image.repository }}"
-                  },
-                  {
-                        "project": "nodejs-env",
-                        "tag": "{{ .Values.nodejs_env.image.tag }}",
-                        "image": "{{ .Values.nodejs_env.image.repository }}"
-                  },
-                  {
-                        "project": "python-env",
-                        "tag": "{{ .Values.python_env.image.tag }}",
-                        "image": "{{ .Values.python_env.image.repository }}"
                   },
                   {
                         "project": "tensorboard",
