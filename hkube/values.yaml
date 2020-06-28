@@ -92,7 +92,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.55
+systemversion: v1.3.56
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -124,7 +124,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image:
     repository: hkube/algorithm-operator
-    tag: v1.3.4
+    tag: v1.3.5
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -502,4 +502,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.55-1593333122397
+fullSystemVersion: v1.3.56-1593340289749
