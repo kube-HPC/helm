@@ -92,7 +92,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.36
+systemversion: v1.3.56
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -124,7 +124,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image:
     repository: hkube/algorithm-operator
-    tag: v1.3.4
+    tag: v1.3.5
   ingress:
     enabled: false
     path: /hkube/algorithm-operator
@@ -165,7 +165,7 @@ api_server:
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.3.20
+    tag: v1.3.22
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -281,7 +281,7 @@ pipeline_driver:
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.12
+    tag: v1.3.18
   service:
     type: ClusterIP
 pipeline_driver_queue:
@@ -397,7 +397,7 @@ task_executor:
     has_node_list: false
   image:
     repository: hkube/task-executor
-    tag: v1.3.6
+    tag: v1.3.10
   service:
     type: ClusterIP
   resources:
@@ -424,7 +424,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.3.5
+    tag: v1.3.7
   metrics:
     port: 3001
   service:
@@ -434,7 +434,7 @@ caching_service:
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v1.3.3
+    tag: v1.3.4
   service:
     type: ClusterIP
   resources:
@@ -444,7 +444,7 @@ caching_service:
 algorithm_builder:
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.8
+    tag: v1.3.16
   resources:
     requests:
       cpu: 100m
@@ -502,4 +502,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.36-1592826366249
+fullSystemVersion: v1.3.56-1593340289749
