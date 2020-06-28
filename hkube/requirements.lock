@@ -1,7 +1,7 @@
 dependencies:
 - name: etcd
   repository: http://hkube.io/helm/
-  version: 0.7.2007
+  version: 0.7.2008
 - name: etcd-operator
   repository: http://hkube.io/helm/
   version: 0.9.7
@@ -17,5 +17,5 @@ dependencies:
 - name: minio
   repository: http://hkube.io/helm/
   version: 5.0.23
-digest: sha256:9888baff150f4a473740424fc121b4ecb72496af0a36cd805d0fa1c853edd187
-generated: "2020-06-28T16:45:14.92334441+03:00"
+digest: sha256:fa3ed685daa8dcf71e21cbabcc1e0f9017beb24e649b9817b2b48adffd47a4ab
+generated: "2020-06-28T17:14:21.804491041+03:00"
