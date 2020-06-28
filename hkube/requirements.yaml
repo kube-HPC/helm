@@ -12,7 +12,7 @@ dependencies:
     repository: "http://hkube.io/helm/"
     condition: jaeger.enable
   - name: redis-ha
-    version: "3.6.3"
+    version: "3.6.1003"
     repository: "http://hkube.io/helm/"
     condition: redis-ha.enable
   - name: nginx-ingress
