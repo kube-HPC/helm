@@ -64,11 +64,13 @@ spec:
               topologyKey: kubernetes.io/hostname
     {{- else }}
           preferredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchLabels:
-                  app: {{ template "redis-ha.name" . }}
-                  release: {{ .Release.Name }}
-              topologyKey: kubernetes.io/hostname
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: {{ template "redis-ha.name" . }}
+                    release: {{ .Release.Name }}
+                topologyKey: kubernetes.io/hostname
+              weight: 100
     {{- end }}
     {{- end }}
 {{- if not (eq .Values.global.k8senv "openshift") }}
