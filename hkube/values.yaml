@@ -92,7 +92,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.57
+systemversion: v1.3.58
 build_secret:
   docker_registry: ''
   docker_namespace: ''
@@ -420,7 +420,7 @@ worker:
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.3.7
+    tag: v1.3.8
   metrics:
     port: 3001
   service:
@@ -490,4 +490,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.57-1593432567337
+fullSystemVersion: v1.3.58-1593434450223
