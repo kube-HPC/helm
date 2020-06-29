@@ -3,10 +3,10 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.3.1
-    created: "2020-06-28T17:13:53.366777701+03:00"
+    created: "2020-06-29T16:18:50.014458942+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
-    digest: 111291d160e9c1aefa4c6fdd22659d12c9413827590bf82a9063f309eef91d8a
+    digest: a9658e78e7cdcb190ad344fd423d5d4b51c9fa1e98ad6905a68216d7759a1aa4
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -89,9 +89,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-06-28T17:13:53.368113401+03:00"
+    created: "2020-06-29T16:18:50.016381283+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: 6e905ed8116d6dd9fe262f64631e5663b5c2af4b1cebe18653000219c82b4766
+    digest: 7facd1fb588f484c6863b84db9db86a94805e1fd4b193a621f3fcab29e59a02f
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -241,7 +241,7 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
-    created: "2020-06-28T17:13:53.375078951+03:00"
+    created: "2020-06-29T16:18:50.022569401+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
       name: cassandra
@@ -252,7 +252,7 @@ entries:
       repository: https://helm.elastic.co
       version: ^7.5.1
     description: A Jaeger Helm chart for Kubernetes
-    digest: 37c10adf2d339bf2a42c7252bd659749c6a151940b1702118ede4b1b799ead02
+    digest: 66886181e552a6fb14729a4ff374e433f99b0c59deab65343f084203435a9730
     home: https://jaegertracing.io
     icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
     keywords:
@@ -405,10 +405,10 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: master
-    created: "2020-06-28T17:13:53.376617179+03:00"
+    created: "2020-06-29T16:18:50.024656892+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
-    digest: 002d347e8966e97dbab581ffb390ef3634fb3de4bcd0a584eded85bbeaf34fe7
+    digest: d9c47006e6be36b6a074956068e26261e376d06c30bf298779222f30d466ddc8
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
     keywords:
@@ -429,10 +429,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2020-06-28T17:13:53.378712294+03:00"
+    created: "2020-06-29T16:18:50.02828453+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 80fce64707d75daf921cbfdaec6f573a8783dd1934756179910c3684d51dd8e7
+    digest: 2bd5ea0a6562308870f797d370ea99562b11bec7b24cb960195f44531e4681d6
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -494,6 +494,28 @@ entries:
     - nginx-ingress-1.31.0.tgz
     version: 1.31.0
   redis-ha:
+  - apiVersion: v1
+    appVersion: 5.0.5
+    created: "2020-06-29T16:18:50.029895033+03:00"
+    description: Highly available Kubernetes implementation of Redis
+    digest: af8beb857ec8ba08842f60251435a5852055e3f464dbc8f4a368b4c9820971eb
+    home: http://redis.io/
+    icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: salimsalaues@gmail.com
+      name: ssalaues
+    name: redis-ha
+    sources:
+    - https://redis.io/download
+    - https://github.com/scality/Zenko/tree/development/1.0/kubernetes/zenko/charts/redis-ha
+    - https://github.com/oliver006/redis_exporter
+    urls:
+    - redis-ha-3.6.1004.tgz
+    version: 3.6.1004
   - apiVersion: v1
     appVersion: 5.0.5
     created: "2020-06-28T17:13:53.379795551+03:00"
@@ -602,4 +624,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-06-28T17:13:53.3658331+03:00"
+generated: "2020-06-29T16:18:50.013051314+03:00"
