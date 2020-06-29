@@ -10,12 +10,12 @@ dependencies:
   version: 0.27.2004
 - name: redis-ha
   repository: http://hkube.io/helm/
-  version: 3.6.1003
+  version: 3.6.1004
 - name: nginx-ingress
   repository: http://hkube.io/helm/
   version: 1.31.1001
 - name: minio
   repository: http://hkube.io/helm/
   version: 5.0.23
-digest: sha256:fa3ed685daa8dcf71e21cbabcc1e0f9017beb24e649b9817b2b48adffd47a4ab
-generated: "2020-06-28T17:14:21.804491041+03:00"
+digest: sha256:d0d3ab4a4ba3f45daf441f49aec01dc24cb73d7d7e3636823bd0f0fc65bb560b
+generated: "2020-06-29T16:19:29.195870649+03:00"
