@@ -87,6 +87,8 @@ minio:
   persistence:
     enabled: true
     storageClass: ''
+  serviceAccount:
+    create: false
 metrics:
   serviceMonitorSelector:
     release: metrics
