@@ -114,7 +114,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.80 # +doc-gen:ignore
+systemversion: v1.3.80
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
