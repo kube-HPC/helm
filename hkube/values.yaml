@@ -153,7 +153,7 @@ algorithm_queue_svc:
 algorunner:
   image:
     repository: hkube/algorunner
-    tag: v1.3.4
+    tag: v1.3.5
 api_server:
   env:
     base_url_path: /hkube/api-server
@@ -492,4 +492,4 @@ storage_migration:
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.78-1594199938104
+fullSystemVersion: v1.3.78-1594201597805
