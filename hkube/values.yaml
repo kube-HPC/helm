@@ -1,12 +1,20 @@
 global:
+  # kubernetes cluster domain name
   clusterName: cluster.local
+  # private registry to use
   registry: ''
+  # private registry namespace for pulling base image in builds
   registry_namespace: hkube
+  # private registry username for pulling base image in builds
   registry_username: ''
+  # private registry password for pulling base image in builds
   registry_password: ''
+  # private registry insecure (http) for pulling base image in builds
   registry_insecure: false
+  # private registry with self signed certificate for pulling base image in builds
   registry_skip_tls_verify: false
   storage:
+  # encoding for storage. can be msgpack, bson, json
     encoding: msgpack
     storageResultsThreshold: 100Ki
     fs:
@@ -20,6 +28,7 @@ global:
         storage_class: ''
       base_directory: /hkubedata
     s3:
+      # s3 access and secret key. If using internal minio, must match minio.accessKey and secretKey
       access_key: hkubeminiokey
       secret_key: hkubeminiosecret
       url: 'http://hkube-minio:9000'
@@ -28,16 +37,21 @@ global:
     port: 9020
     timeout: 30000
     maxCacheSize: 500
+  # kubernetes environment. Possible values are k8s, openshift
   k8senv: k8s
+  # use only namespace. Set to true in restricted environments such as openshift
   namespaced: false
+  # run worker pods as privileged containers. Makes log aggregation easier
   isPrivileged: true
   ingress:
     hostname: ''
     prefix: ''
+    # set to false if using nginx-ingress-controller prior to 0.21
     use_regex: true
     requireTls: false
     maxBodySize: 500m
 env:
+  # storage mode. can be s3 or fs. Set global.storage.fs or global.storage.s3 accordingly
   default_storage: s3
   node_env: production
 image:
@@ -51,6 +65,7 @@ etcd-operator:
   enable: false
 etcd:
   enable: true
+  # set number of replicas. defualt 3
   replicas: 3
   persistentVolume:
     enabled: true
@@ -58,10 +73,12 @@ etcd:
     storage: 1Gi
 redis-ha:
   enable: true
+  # set number of replicas. defualt 3. If set to 1 also set min-slaves-to-write to 0
   replicas: 3
   redis:
     config:
       min-slaves-to-write: 1
+  # set to true for multiple nodes
   hardAntiAffinity: false
 jaeger:
   enable: false
@@ -96,16 +113,27 @@ metrics:
     grafana_dashboard: '1'
 systemversion: v1.3.78
 build_secret:
+# docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
+# docker registry namespace for algorithm builds. defaults to username
   docker_namespace: ''
+# docker registry username for algorithm builds.
   docker_username: ''
+# docker registry password for algorithm builds.
   docker_password: ''
+# docker registry is insecure for algorithm builds.
   docker_registry_insecure: false
+# docker registry has self signed certificate for algorithm builds.
   docker_registry_skip_tls_verify: false
+# npm registry for algorithm builds. Defaults to npmjs.com
   npm_registry: ''
+# npm registry token for algorithm builds.
   npm_token: ''
+# pip registry for algorithm builds. Defaults to pypi.org
   pip_registry: ''
+# pip registry token for algorithm builds. Defaults to pypi.org
   pip_token: ''
+# node selector for hkube containers.
 nodeSelector: {}
 algorithm_operator:
   env:
@@ -128,6 +156,7 @@ algorithm_operator:
     path: /hkube/algorithm-operator
   service:
     type: ClusterIP
+  # build mode for automatic builds. set to openshift if running on openshift
   build_mode: kaniko
   healthcheck:
     enabled: true
@@ -254,17 +283,6 @@ monitor_server:
     requests:
       cpu: 100m
       memory: 512Mi
-monitor_server_listener:
-  enable: false
-  pattern: '*/10 * * * *'
-  timeout: 60000
-  image:
-    repository: hkube/monitor-server-listener
-    tag: v1.3.0
-  resources:
-    requests:
-      cpu: 100m
-      memory: 512Mi
 pipeline_cleaner:
   pattern: '*/5 * * * *'
   image:
@@ -360,7 +378,9 @@ simulator:
 storage_cleaner:
   pattern: 0 0 * * *
   env:
+    # number of days to save intermediate results in storage
     temp_object_expiration_days: '5'
+    # number of days to save final pipeline results in storage
     result_object_expiration_days: '20'
   image:
     repository: hkube/storage-cleaner
@@ -380,6 +400,7 @@ task_executor:
     failureThreshold: 3
   env:
     metric_port: '3000'
+    # the number of pipeline drivers to run. 
     pipeline_drivers_amount: 1
     worker_socket_max_payload_bytes: 1000000000
     worker_algorithm_encoding: bson
@@ -390,8 +411,13 @@ task_executor:
     resources_enable: false
     interval: '1000'
     log_external_requests: false
+    # set to the number of CPUs in the cluster (or quota) when running on openshift
     default_quota_cpu: 30
+    # set to the total amount of memory in the cluster (or quota) when running on openshift
     default_quota_mem: 20Gi
+    # set to the total number of GPUs in the cluster (or quota) when running on openshift
+    default_quota_gpu: 0
+    # if running on openshift on labeled nodes, set to true and create a config-map named `hkube-nodes` with key `hkube-nodes` and value of the output of `kubectl get nodes -o json`
     has_node_list: false
   image:
     repository: hkube/task-executor

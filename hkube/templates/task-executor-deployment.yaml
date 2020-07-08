@@ -115,4 +115,5 @@ spec:
               value: {{ .Values.task_executor.env.default_quota_cpu | quote}}
             - name: DEFAULT_QUOTA_MEM
               value: {{ .Values.task_executor.env.default_quota_mem | quote}}
-                  
+            - name: DEFAULT_QUOTA_GPU
+              value: {{ .Values.task_executor.env.default_quota_gpu | quote}}             
