@@ -31,6 +31,8 @@ spec:
           ports:
             - containerPort: {{ .Values.simulator.env.metric_port }}
           env:
+            - name: HKUBE_SYSTEM_VERSION
+              value: {{ .Values.systemversion | quote}}
             - name: MONITOR_BACKEND_PATH
               valueFrom:
                 configMapKeyRef:

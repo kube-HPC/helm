@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -o xtrace
-
+helm lint hkube/
 CHART_VERSION=$(git describe --abbrev=0)
 VALUES_YAML_PATH=hkube/values.yaml NEW_VALUES_YAML_PATH=hkube/values.yaml ./version-updater
 APP_VERSION=$(grep systemversion hkube/values.yaml | awk -F': ' '{print $2}')
