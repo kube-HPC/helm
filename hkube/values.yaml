@@ -54,7 +54,7 @@ env:
   # storage mode. can be s3 or fs. Set global.storage.fs or global.storage.s3 accordingly
   default_storage: s3
   node_env: production
-image: 
+image:
   # pull policy for images
   pullPolicy: IfNotPresent
 labels: # +doc-gen:ignore
@@ -109,12 +109,12 @@ minio:
     storageClass: ''
   serviceAccount: # +doc-gen:ignore
     create: false
-metrics: 
+metrics:
   serviceMonitorSelector:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.80
+systemversion: v1.3.81
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -295,7 +295,7 @@ pipeline_cleaner: # +doc-gen:ignore
   resources:
     requests:
       cpu: 100m
-      memory: 512Mi 
+      memory: 512Mi
 pipeline_driver: # +doc-gen:ignore
   env:
     metric_port: '3001'
@@ -404,7 +404,7 @@ task_executor:
     failureThreshold: 3
   env:
     metric_port: '3000' # +doc-gen:ignore
-    # the number of pipeline drivers to run. 
+    # the number of pipeline drivers to run.
     pipeline_drivers_amount: 1
     worker_socket_max_payload_bytes: 1000000000
     worker_algorithm_encoding: bson # +doc-gen:ignore
@@ -415,9 +415,9 @@ task_executor:
     # worker container cpu request. Only set if resources_enable=true
     worker_cpu: 0.1
     # if true, sets resource requests on worker container
-    resources_enable: false 
+    resources_enable: false
     # task executor internal processing interval in MS
-    interval: '1000' 
+    interval: '1000'
     log_external_requests: false # +doc-gen:ignore
     # set to the number of CPUs in the cluster (or quota) when running on openshift
     default_quota_cpu: 30
@@ -476,7 +476,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.31
+    tag: v1.3.32
   resources:
     requests:
       cpu: 100m
@@ -500,7 +500,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.3.1
+    tag: v1.3.2
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '*/10 * * * *'
@@ -526,4 +526,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.80-1594210556852
+fullSystemVersion: v1.3.81-1594297733792
