@@ -92,7 +92,8 @@ jaeger:
       enabled: true
   agent:
     daemonset:
-      useHostPort: true
+      # set to false to allow running in non privileged environment (e.g. openshift)
+      useHostPort: true 
   cassandra:
     config:
       cluster_size: 1
