@@ -97,6 +97,8 @@ jaeger:
     config:
       cluster_size: 1
       cluster_domain: cluster.local
+  # optional external jaeger agent address. leave blank for defaults
+  external_agent_address: ''
 nginx-ingress:
   # install nginx-ingress-controller with hkube
   enable: false

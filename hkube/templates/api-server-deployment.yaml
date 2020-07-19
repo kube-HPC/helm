@@ -122,10 +122,15 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: PIPELINE_DRIVER_MEM
+{{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+{{- else if .Values.jaeger.external_agent_address }}
+            - name: JAEGER_AGENT_SERVICE_HOST
+              value: .Values.jaeger.external_agent_address
+{{- end }}    
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
