@@ -18,4 +18,5 @@ data:
   ALGORITHM_QUEUE_PRODUCER_UPDATE_INTERVAL : {{ .Values.algorithm_operator.env.producer_update_interval | quote }}
   PYTHON_WRAPPER_VERSION : {{ .Values.algorithm_operator.env.python_wrapper_version | quote }}
   NODE_WRAPPER_VERSION : {{ .Values.algorithm_operator.env.node_wrapper_version | quote }}
+  IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
 

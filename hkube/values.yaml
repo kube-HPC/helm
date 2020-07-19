@@ -92,11 +92,14 @@ jaeger:
       enabled: true
   agent:
     daemonset:
-      useHostPort: true
+      # set to false to allow running in non privileged environment (e.g. openshift)
+      useHostPort: true 
   cassandra:
     config:
       cluster_size: 1
       cluster_domain: cluster.local
+  # optional external jaeger agent address. leave blank for defaults
+  external_agent_address: ''
 nginx-ingress:
   # install nginx-ingress-controller with hkube
   enable: false
