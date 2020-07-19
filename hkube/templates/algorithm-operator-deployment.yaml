@@ -56,10 +56,15 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: METRICS_PORT
+{{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+{{- else if .Values.jaeger.external_agent_address }}
+            - name: JAEGER_AGENT_SERVICE_HOST
+              value: .Values.jaeger.external_agent_address
+{{- end }}    
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
@@ -84,6 +89,11 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: CLUSTER_NAME
+            - name: IS_PRIVILEGED
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: IS_PRIVILEGED
             - name: BUILD_MODE
               valueFrom:
                 configMapKeyRef:
