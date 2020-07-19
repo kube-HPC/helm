@@ -29,6 +29,8 @@ spec:
         - name: hkube-dev-sources
           persistentVolumeClaim:
             claimName: hkube-dev-sources-pvc
+        - name: sync-config
+          emptyDir: {}
       containers:
         - name: sync-server-syncthing
           image: "{{ .Values.global.registry }}{{ .Values.sync_server.image.repository }}:{{ .Values.sync_server.image.tag }}"
@@ -48,6 +50,8 @@ spec:
           volumeMounts:
           - name: hkube-dev-sources
             mountPath: /sources
+          - name: sync-config
+            mountPath: /var/syncthing/config
         - name: sync-server-tunnel
           image: "{{ .Values.global.registry }}{{ .Values.sync_server.image.repository }}:{{ .Values.sync_server.image.tag }}"
           command:
