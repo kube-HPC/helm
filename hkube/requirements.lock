@@ -16,6 +16,6 @@ dependencies:
   version: 1.31.1001
 - name: minio
   repository: http://hkube.io/helm/
-  version: 5.0.23
-digest: sha256:d0d3ab4a4ba3f45daf441f49aec01dc24cb73d7d7e3636823bd0f0fc65bb560b
-generated: "2020-06-29T16:19:29.195870649+03:00"
+  version: 5.0.1023
+digest: sha256:bd7b6951fcf0ada38f0928bbb0210512c5fd01d838366f67c77bc654845825b9
+generated: "2020-07-23T08:47:16.704068795+03:00"
