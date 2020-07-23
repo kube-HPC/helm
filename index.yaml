@@ -3,10 +3,10 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.3.1
-    created: "2020-06-29T16:18:50.014458942+03:00"
+    created: "2020-07-23T08:46:03.101731375+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
-    digest: a9658e78e7cdcb190ad344fd423d5d4b51c9fa1e98ad6905a68216d7759a1aa4
+    digest: 0ec8edc701e41bfc8f332707f1a208b5c82b7fbdcb8b987f5c41e40e280c70d7
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -89,9 +89,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-06-29T16:18:50.016381283+03:00"
+    created: "2020-07-23T08:46:03.103058604+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: 7facd1fb588f484c6863b84db9db86a94805e1fd4b193a621f3fcab29e59a02f
+    digest: 9d227f99af55a991594a8fd168df86243f8f05e4f7eaf7948eb9f1d11a352b19
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -287,7 +287,7 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
-    created: "2020-06-29T16:18:50.022569401+03:00"
+    created: "2020-07-23T08:46:03.108441527+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
       name: cassandra
@@ -298,7 +298,7 @@ entries:
       repository: https://helm.elastic.co
       version: ^7.5.1
     description: A Jaeger Helm chart for Kubernetes
-    digest: 66886181e552a6fb14729a4ff374e433f99b0c59deab65343f084203435a9730
+    digest: 727404eebb0136df166ba6eea69849662e795cb2b0880f70be34f9dee1d609c2
     home: https://jaegertracing.io
     icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
     keywords:
@@ -451,6 +451,29 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: master
+    created: "2020-07-23T08:46:03.109953449+03:00"
+    description: MinIO is a high performance data infrastructure for machine learning,
+      analytics and application data workloads.
+    digest: f5b0985fe13c798a808a504be3e8bc17175346e6a6f40ed2853ca3bf103cb12a
+    home: https://min.io
+    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+    keywords:
+    - storage
+    - object-storage
+    - S3
+    maintainers:
+    - email: dev@minio.io
+      name: Minio
+    - email: hello@acale.ph
+      name: Acaleph
+    name: minio
+    sources:
+    - https://github.com/minio/minio
+    urls:
+    - minio-5.0.1023.tgz
+    version: 5.0.1023
+  - apiVersion: v1
+    appVersion: master
     created: "2020-06-29T16:18:50.024656892+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
@@ -475,10 +498,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2020-06-29T16:18:50.02828453+03:00"
+    created: "2020-07-23T08:46:03.111876161+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 2bd5ea0a6562308870f797d370ea99562b11bec7b24cb960195f44531e4681d6
+    digest: 40a0c826796f42b35c425a5c8c211fce4fb53355d8313a713fe214c30c95afab
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -542,9 +565,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2020-06-29T16:18:50.029895033+03:00"
+    created: "2020-07-23T08:46:03.11291974+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: af8beb857ec8ba08842f60251435a5852055e3f464dbc8f4a368b4c9820971eb
+    digest: 5a2f625f333594f4ba65503ae242d22074d74664008e8e7065eb2163b3a2faed
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -670,4 +693,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-07-08T17:03:21.963653838+03:00"
+generated: "2020-07-23T08:46:03.100906529+03:00"
