@@ -257,7 +257,7 @@ etcd_cleaner: # +doc-gen:ignore
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.3.6
+    tag: v1.3.7
   resources:
     requests:
       cpu: 100m
@@ -529,4 +529,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.95-1596447322331
+fullSystemVersion: v1.3.95-1596527989772
