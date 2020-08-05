@@ -35,11 +35,7 @@ spec:
         - name: sync-server-syncthing
           image: "{{ .Values.global.registry }}{{ .Values.sync_server.image.repository }}:{{ .Values.sync_server.image.tag }}"
           command:
-            - /syncthing/syncthing
-            - -home
-            - /var/syncthing/config
-            - -gui-apikey
-            - hkubectl         
+            - /syncthing/startSyncthing.sh       
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: ui
