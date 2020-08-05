@@ -518,7 +518,7 @@ sync_server: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/sync-server
-    tag: v1.3.1
+    tag: v1.3.2
   ingress:
     enabled: true
     path: /hkube/sync
@@ -529,4 +529,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.95-1596529618663
+fullSystemVersion: v1.3.95-1596611750982
