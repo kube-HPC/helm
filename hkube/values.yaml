@@ -189,7 +189,7 @@ algorithm_queue_svc: # +doc-gen:ignore
 algorunner: # +doc-gen:ignore
   image:
     repository: hkube/algorunner
-    tag: v1.3.6
+    tag: v1.3.7
 api_server: # +doc-gen:ignore
   env:
     base_url_path: /hkube/api-server
@@ -529,4 +529,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.98-1596639225705
+fullSystemVersion: v1.3.98-1596956269796
