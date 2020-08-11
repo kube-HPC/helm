@@ -117,7 +117,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.100
+systemversion: v1.3.101
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -479,7 +479,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.40
+    tag: v1.3.41
   resources:
     requests:
       cpu: 100m
@@ -503,7 +503,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.3.2
+    tag: v1.3.3
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '*/10 * * * *'
@@ -529,4 +529,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.100-1597072163010
+fullSystemVersion: v1.3.101-1597129514190
