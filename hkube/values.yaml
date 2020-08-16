@@ -117,7 +117,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.102
+systemversion: v1.3.103
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -479,7 +479,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.42
+    tag: v1.3.43
   resources:
     requests:
       cpu: 100m
@@ -529,4 +529,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.102-1597328165393
+fullSystemVersion: v1.3.103-1597574918948
