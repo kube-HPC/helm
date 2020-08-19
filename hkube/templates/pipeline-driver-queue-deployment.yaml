@@ -40,7 +40,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: pipeline-driver-queue-configmap
-                  key: KUBE_LOG_LEVEL
+                  key: HKUBE_LOG_LEVEL
             - name: METRICS_PORT
               valueFrom:
                 configMapKeyRef:
