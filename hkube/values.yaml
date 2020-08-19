@@ -149,9 +149,9 @@ algorithm_operator:
     algorithm_builder_main_cpu: 0.5
     algorithm_builder_main_memory: 512
     resources_enable: false
-    algorithm_queue_interval: 200
+    algorithm_queue_interval: 1000
     boards_timeout: 10800
-    producer_update_interval: 1000
+    producer_update_interval: 200
     python_wrapper_version: ''
     node_wrapper_version: ''
   image: # +doc-gen:ignore

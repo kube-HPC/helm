@@ -19,4 +19,27 @@ spec:
     matchLabels:
       group: {{ .Values.labels.group.value }}
       metrics: "true"
+
+---
+
+kind: ServiceMonitor
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  labels:
+    app: hkube-etcd
+    release: metrics
+  name: hkube-etcd
+  namespace: default
+spec:
+  endpoints:
+    - path: /metrics
+      port: etcd-client
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      app: etcd
+      metrics: 'true'
+
 {{- end }}
