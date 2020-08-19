@@ -1,6 +1,6 @@
 dependencies:
   - name: etcd
-    version: "0.7.2008"
+    version: "0.7.2009"
     repository: "http://hkube.io/helm/"
     condition: etcd.enable
   - name: etcd-operator
