@@ -33,7 +33,7 @@ metadata:
     release: {{ .Release.Name | quote }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     app: {{ template "etcd.name" . }}
-    metrics: true
+    metrics: "true"
 spec:
   ports:
   - port: {{ .Values.peerPort }}
