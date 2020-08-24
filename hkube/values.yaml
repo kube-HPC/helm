@@ -79,6 +79,7 @@ redis-ha:
   redis:
     config:
       min-slaves-to-write: 1
+      client-output-buffer-limit: "replica 1024mb 512mb 60"
   # set to true for multiple nodes
   hardAntiAffinity: false
 jaeger:
