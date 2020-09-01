@@ -37,6 +37,7 @@ global:
     port: 9020
     timeout: 1000
     maxCacheSize: 500
+    servingReportInterval: 5000
   # kubernetes environment. Possible values are k8s, openshift
   k8senv: k8s
   # use only namespace. Set to true in restricted environments such as openshift

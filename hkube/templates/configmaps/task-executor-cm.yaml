@@ -12,6 +12,7 @@ data:
   DISCOVERY_PORT: {{index .Values.global.discovery.port | quote}}
   DISCOVERY_TIMEOUT: {{index .Values.global.discovery.timeout | quote}}
   DISCOVERY_MAX_CACHE_SIZE: {{index .Values.global.discovery.maxCacheSize | quote}}
+  DISCOVERY_SERVING_REPORT_INTERVAL: {{index .Values.global.discovery.servingReportInterval | quote}}
   WORKER_ALGORITHM_ENCODING: "{{index .Values "task_executor" "env" "worker_algorithm_encoding"}}"
   DEFAULT_WORKER_ALGORITHM_ENCODING: "{{index .Values "task_executor" "env" "default_worker_algorithm_encoding"}}"
   DEFAULT_STORAGE_PROTOCOL: "{{index .Values "task_executor" "env" "default_storage_protocol"}}"
