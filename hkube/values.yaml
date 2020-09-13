@@ -37,6 +37,7 @@ global:
     port: 9020
     timeout: 1000
     maxCacheSize: 500
+    servingReportInterval: 5000
   # kubernetes environment. Possible values are k8s, openshift
   k8senv: k8s
   # use only namespace. Set to true in restricted environments such as openshift
@@ -128,7 +129,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.107
+systemversion: v1.3.109
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -443,7 +444,7 @@ task_executor:
     has_node_list: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v1.3.16
+    tag: v1.3.17
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -470,7 +471,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.3.19
+    tag: v1.3.20
   metrics:
     port: 3001
   service:
@@ -490,7 +491,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.46
+    tag: v1.3.47
   resources:
     requests:
       cpu: 100m
@@ -540,4 +541,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.107-1598349651396
+fullSystemVersion: v1.3.109-1599382055600
