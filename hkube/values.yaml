@@ -292,7 +292,7 @@ monitor_server: # +doc-gen:ignore
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v1.3.4
+    tag: v1.3.5
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -541,4 +541,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.113-1600007714873
+fullSystemVersion: v1.3.113-1600067476901
