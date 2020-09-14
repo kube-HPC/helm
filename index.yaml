@@ -3,6 +3,23 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.3.1
+    created: "2020-09-14T15:06:41.92478388+03:00"
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
+    digest: dd485226e826dc05faff6228494fddc4abd611e0c6d0b5a23e100cfebc99e16a
+    home: https://github.com/coreos/etcd
+    icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
+    maintainers:
+    - email: lachlan@deis.com
+      name: lachie83
+    name: etcd
+    sources:
+    - https://github.com/coreos/etcd
+    urls:
+    - etcd-0.7.2011.tgz
+    version: 0.7.2011
+  - apiVersion: v1
+    appVersion: 3.3.1
     created: "2020-08-23T10:35:31.307542438+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
@@ -123,9 +140,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-08-23T10:35:31.309237458+03:00"
+    created: "2020-09-14T15:06:41.926456903+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: 9aa0d0987dd1001057457e4c9508ce30995e2048f4fce1113107e21792a49266
+    digest: 482d1c37d47b65eea613357111b818a07b922c65fd48bda74eacf864baa2e5c1
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -321,7 +338,7 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
-    created: "2020-08-23T10:35:31.315224188+03:00"
+    created: "2020-09-14T15:06:41.934060621+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
       name: cassandra
@@ -332,7 +349,7 @@ entries:
       repository: https://helm.elastic.co
       version: ^7.5.1
     description: A Jaeger Helm chart for Kubernetes
-    digest: 680e3aeff5eeba22c0d62c6a68c01ac9aac963939258f0cde83dd03122e96089
+    digest: 617a6999fe02a22e18184854532c59c915a4d7a79ea07f9818f18ee03e4670ad
     home: https://jaegertracing.io
     icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
     keywords:
@@ -485,10 +502,10 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: master
-    created: "2020-08-23T10:35:31.316694091+03:00"
+    created: "2020-09-14T15:06:41.936508241+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
-    digest: 526043e83013fc4095235daf61f3a24ffc6a492cefb6a1a3a3e284ef5f720435
+    digest: a6997aae40914385f946083e327c11be051b52e27bdee8a54cb94ef9329e0c8c
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
     keywords:
@@ -532,10 +549,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2020-08-23T10:35:31.318852458+03:00"
+    created: "2020-09-14T15:06:41.939265928+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: c9822ead0cc9636bde494439859d33fa2d7d22953ade05934d606347ac3328cb
+    digest: 85a93114ad2caef8bd734adc8c4fb041d42daf5f37e7ad776072932dfa940177
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -599,9 +616,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2020-08-23T10:35:31.319849328+03:00"
+    created: "2020-09-14T15:06:41.940793299+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: 7847652124bb437a800b9a8c7950c60affb5b3404fb9762c96f93fd4d3e17939
+    digest: 8f9caa0fe16e98265c580777c7115aa54ee0be73a15f342feb181ab57904889d
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -727,4 +744,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-08-23T10:35:31.306741618+03:00"
+generated: "2020-09-14T15:06:41.923952952+03:00"
