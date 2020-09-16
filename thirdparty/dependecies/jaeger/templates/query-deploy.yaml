@@ -31,6 +31,10 @@ spec:
         {{- toYaml .Values.query.podLabels | nindent 8 }}
 {{- end }}
     spec:
+{{- if .Values.global.registry_password }}
+      imagePullSecrets:
+        - name: image-pull-secret
+{{- end }}     
       securityContext:
         {{- toYaml .Values.query.podSecurityContext | nindent 8 }}
       serviceAccountName: {{ template "jaeger.query.serviceAccountName" . }}

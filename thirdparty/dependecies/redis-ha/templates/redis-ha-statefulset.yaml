@@ -34,6 +34,15 @@ spec:
         {{ $key }}: {{ $value }}
         {{- end }}
     spec:
+{{- if or .Values.imagePullSecrets .Values.global.registry_password }}
+      imagePullSecrets:
+{{- if or .Values.imagePullSecrets }}      
+{{ toYaml .Values.imagePullSecrets | indent 8 }}
+{{- end }}
+{{- if .Values.global.registry_password }}
+        - name: image-pull-secret
+{{- end }}     
+{{- end }}    
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}

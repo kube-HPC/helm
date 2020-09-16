@@ -44,10 +44,15 @@ spec:
 {{ toYaml .Values.controller.dnsConfig | indent 8 }}
 {{- end }}
       dnsPolicy: {{ .Values.controller.dnsPolicy }}
-      {{- if .Values.imagePullSecrets }}
+{{- if or .Values.imagePullSecrets .Values.global.registry_password }}
       imagePullSecrets:
+{{- if or .Values.imagePullSecrets }}      
 {{ toYaml .Values.imagePullSecrets | indent 8 }}
-      {{- end }}
+{{- end }}
+{{- if .Values.global.registry_password }}
+        - name: image-pull-secret
+{{- end }}     
+{{- end }}
 {{- if .Values.controller.priorityClassName }}
       priorityClassName: "{{ .Values.controller.priorityClassName }}"
 {{- end }}

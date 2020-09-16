@@ -23,6 +23,10 @@ spec:
         group: {{ .Values.labels.group.value }}
     spec:
       serviceAccountName: algorithm-operator-serviceaccount
+{{- if .Values.global.registry_password }}
+      imagePullSecrets:
+        - name: image-pull-secret
+{{- end }}  
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

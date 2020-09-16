@@ -55,6 +55,10 @@ spec:
 {{ toYaml .Values.podAnnotations | trimSuffix "\n" | indent 8 }}
 {{- end }}
     spec:
+{{- if .Values.global.registry_password }}
+      imagePullSecrets:
+        - name: image-pull-secret
+{{- end }}     
   {{- if .Values.priorityClassName }}
       priorityClassName: "{{ .Values.priorityClassName }}"
   {{- end }}

@@ -21,6 +21,10 @@ spec:
         release: {{.Release.Name | quote }}
         chart: "{{.Chart.Name}}-{{.Chart.Version}}"
     spec:
+{{- if .Values.global.registry_password }}
+      imagePullSecrets:
+        - name: image-pull-secret
+{{- end }}        
       restartPolicy: Never
 {{- if eq .Values.env.default_storage "fs" }}
       volumes:

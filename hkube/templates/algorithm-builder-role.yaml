@@ -6,6 +6,10 @@ metadata:
     group: {{ .Values.labels.group.value }}
     app: algorithm-builder
     core: "true"
+{{- if .Values.global.registry_password }}
+imagePullSecrets:
+  - name: image-pull-secret
+{{- end }}
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1

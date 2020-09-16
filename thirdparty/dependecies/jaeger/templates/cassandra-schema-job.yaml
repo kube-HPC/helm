@@ -25,6 +25,10 @@ spec:
         {{- toYaml .Values.schema.podLabels | nindent 8 }}
 {{- end }}
     spec:
+{{- if .Values.global.registry_password }}
+      imagePullSecrets:
+        - name: image-pull-secret
+{{- end }}     
       serviceAccountName: {{ template "jaeger.cassandraSchema.serviceAccountName" . }}
       containers:
       - name: {{ include "jaeger.fullname" . }}-cassandra-schema

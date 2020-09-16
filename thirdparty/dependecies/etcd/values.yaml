@@ -5,7 +5,7 @@ global:
   ingress:
     use_regex: true
 
-etcd-ui:
+etcd_ui:
   service:
     type: ClusterIP
     port: "8080"
@@ -15,6 +15,7 @@ etcd-ui:
   ingress:
     enabled: true
     path: /hkube/etcd-ui
+  nodeSelector: {}
 
     
 # Default values for etcd.

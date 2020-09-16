@@ -13,6 +13,10 @@ spec:
     spec:
       template:
         spec:
+{{- if .Values.global.registry_password }}
+          imagePullSecrets:
+            - name: image-pull-secret
+{{- end }}          
           containers:
           - name: etcd-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "etcd_cleaner" "image" "repository" }}:{{ index .Values "etcd_cleaner" "image" "tag" }}"

@@ -17,14 +17,22 @@ spec:
         app: etcd-ui
         group: hkube
     spec:
+{{- if .Values.global.registry_password }}
+      imagePullSecrets:
+        - name: image-pull-secret
+{{- end }} 
+{{- if .Values.etcd_ui.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.etcd_ui.nodeSelector | indent 8 }}
+{{- end }}    
       containers:
         - name: etcd-ui
-          image: "{{ .Values.global.registry }}{{ index .Values "etcd-ui" "image" "repository" }}:{{ index .Values "etcd-ui" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ .Values.etcd_ui.image.repository }}:{{ .Values.etcd_ui.image.tag }}"
           env: 
             - name: HOST
               value: "0.0.0.0"
           ports:
-            - containerPort: {{ index .Values "etcd-ui" "service" "port" }}
+            - containerPort: {{ .Values.etcd_ui.service.port }}
 ---
 kind: Service
 apiVersion: v1
@@ -41,14 +49,14 @@ spec:
   ports:
     - name: server
       protocol: TCP
-      port: {{ index .Values "etcd-ui" "service" "port" }}
-      targetPort: {{ index .Values "etcd-ui" "service" "port" }}
+      port: {{ .Values.etcd_ui.service.port }}
+      targetPort: {{ .Values.etcd_ui.service.port }}
 
 ---
-{{- if index .Values "etcd-ui" "ingress" "enabled" -}}
+{{- if .Values.etcd_ui_ingress_enabled -}}
 {{- $fullName := "etcd-ui" -}}
-{{- $servicePort := index .Values "etcd-ui" "service" "port" -}}
-{{- $ingressPath := index .Values "etcd-ui" "ingress" "path" -}}
+{{- $servicePort := .Values.etcd_ui.service.port -}}
+{{- $ingressPath := .Values.etcd_ui.ingress.path -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
