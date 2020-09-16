@@ -3,6 +3,23 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.3.1
+    created: "2020-09-16T13:50:09.76458719+03:00"
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
+    digest: b118e8c2d7a6af7a964a00b8ab5888cd309fe9871ed08f012af04ce429993afb
+    home: https://github.com/coreos/etcd
+    icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
+    maintainers:
+    - email: lachlan@deis.com
+      name: lachie83
+    name: etcd
+    sources:
+    - https://github.com/coreos/etcd
+    urls:
+    - etcd-0.7.2012.tgz
+    version: 0.7.2012
+  - apiVersion: v1
+    appVersion: 3.3.1
     created: "2020-09-16T13:48:47.510581818+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
@@ -140,9 +157,9 @@ entries:
   etcd-operator:
   - apiVersion: v1
     appVersion: 0.7.0
-    created: "2020-09-16T13:48:47.512800996+03:00"
+    created: "2020-09-16T13:50:09.766173941+03:00"
     description: CoreOS etcd-operator Helm chart for Kubernetes
-    digest: 5540edaedc08cdc085e95e1f7657557603fa4ab9ca22f5ccb90795beaea06989
+    digest: 17c2474c71d9f617b1f3de4ea68c5f0502fe1fb24d54462800ab8d291c7a2c29
     home: https://github.com/coreos/etcd-operator
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -338,6 +355,42 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
+    created: "2020-09-16T13:50:09.772155666+03:00"
+    dependencies:
+    - condition: provisionDataStore.cassandra
+      name: cassandra
+      repository: https://kubernetes-charts-incubator.storage.googleapis.com/
+      version: ^0.15.0
+    - condition: provisionDataStore.elasticsearch
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: ^7.5.1
+    description: A Jaeger Helm chart for Kubernetes
+    digest: 5d5507978cc5260ce3943f4321fa855afd982dca539f7c16f670aa5d63cac263
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    maintainers:
+    - email: david.vonthenen@dell.com
+      name: dvonthenen
+    - email: michael.lorant@fairfaxmedia.com.au
+      name: mikelorant
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: pavel.nikolov@fairfaxmedia.com.au
+      name: pavelnikolov
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    urls:
+    - jaeger-0.27.2005.tgz
+    version: 0.27.2005
+  - apiVersion: v1
+    appVersion: 1.17.1
     created: "2020-09-16T13:48:47.517594589+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
@@ -502,6 +555,29 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: master
+    created: "2020-09-16T13:50:09.773499186+03:00"
+    description: MinIO is a high performance data infrastructure for machine learning,
+      analytics and application data workloads.
+    digest: 7a049ca1160806fd1304decedae5ccfc64a8375a36beac26fd56c6a3ef8e403c
+    home: https://min.io
+    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+    keywords:
+    - storage
+    - object-storage
+    - S3
+    maintainers:
+    - email: dev@minio.io
+      name: Minio
+    - email: hello@acale.ph
+      name: Acaleph
+    name: minio
+    sources:
+    - https://github.com/minio/minio
+    urls:
+    - minio-5.0.1024.tgz
+    version: 5.0.1024
+  - apiVersion: v1
+    appVersion: master
     created: "2020-09-16T13:48:47.519078972+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
@@ -547,6 +623,28 @@ entries:
     - minio-5.0.23.tgz
     version: 5.0.23
   nginx-ingress:
+  - apiVersion: v1
+    appVersion: 0.29.0
+    created: "2020-09-16T13:50:09.775477499+03:00"
+    description: An nginx Ingress controller that uses ConfigMap to store the nginx
+      configuration.
+    digest: 0eef2e1f5067d0791cf1721735e94daf961794fd8e3c0c8c0140c7b4e977c12d
+    home: https://github.com/kubernetes/ingress-nginx
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
+    keywords:
+    - ingress
+    - nginx
+    kubeVersion: '>=1.10.0-0'
+    maintainers:
+    - name: ChiefAlexander
+    - email: Trevor.G.Wood@gmail.com
+      name: taharah
+    name: nginx-ingress
+    sources:
+    - https://github.com/kubernetes/ingress-nginx
+    urls:
+    - nginx-ingress-1.31.1002.tgz
+    version: 1.31.1002
   - apiVersion: v1
     appVersion: 0.29.0
     created: "2020-09-16T13:48:47.521327707+03:00"
@@ -614,6 +712,28 @@ entries:
     - nginx-ingress-1.31.0.tgz
     version: 1.31.0
   redis-ha:
+  - apiVersion: v1
+    appVersion: 5.0.5
+    created: "2020-09-16T13:50:09.776484736+03:00"
+    description: Highly available Kubernetes implementation of Redis
+    digest: 02332d97cadc073db5ef58709a5a275df23c2ee4fe9a8075a84302ce73dd24ea
+    home: http://redis.io/
+    icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: salimsalaues@gmail.com
+      name: ssalaues
+    name: redis-ha
+    sources:
+    - https://redis.io/download
+    - https://github.com/scality/Zenko/tree/development/1.0/kubernetes/zenko/charts/redis-ha
+    - https://github.com/oliver006/redis_exporter
+    urls:
+    - redis-ha-3.6.1005.tgz
+    version: 3.6.1005
   - apiVersion: v1
     appVersion: 5.0.5
     created: "2020-09-16T13:48:47.523384989+03:00"
@@ -744,4 +864,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-09-16T13:48:47.509735045+03:00"
+generated: "2020-09-16T13:50:09.763405589+03:00"
