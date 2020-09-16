@@ -229,3 +229,7 @@ exporter:
     # requests:
     #   cpu: 1
     #   memory: 1Gi
+# global values for debug
+global:
+  registry: ''
+  image_pull_secret: {}

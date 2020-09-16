@@ -20,10 +20,10 @@ spec:
         app: pipeline-driver-queue
         group: {{ .Values.labels.group.value }}
     spec:
-{{- if .Values.global.registry_password }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
-        - name: image-pull-secret
-{{- end }}      
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
       containers:
         - name: pipeline-driver-queue
           image: "{{ .Values.global.registry }}{{ index .Values "pipeline_driver_queue" "image" "repository" }}:{{ index .Values "pipeline_driver_queue" "image" "tag" }}"

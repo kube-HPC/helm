@@ -218,3 +218,4 @@ hostPath:
 global:
   registry: ''
   k8senv: k8s
+  image_pull_secret: {}

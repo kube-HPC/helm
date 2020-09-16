@@ -17,10 +17,10 @@ spec:
         app: etcd-ui
         group: hkube
     spec:
-{{- if .Values.global.registry_password }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
-        - name: image-pull-secret
-{{- end }} 
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}
 {{- if .Values.etcd_ui.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.etcd_ui.nodeSelector | indent 8 }}

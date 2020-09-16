@@ -4,6 +4,7 @@ global:
   registry: ''
   ingress:
     use_regex: true
+  image_pull_secret: {}
 
 etcd_ui:
   service:

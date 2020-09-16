@@ -3,16 +3,21 @@ global:
   clusterName: cluster.local
   # private registry to use
   registry: ''
-  # private registry namespace for pulling base image in builds
+  # private registry namespace for pulling images in builds
   registry_namespace: hkube
-  # private registry username for pulling base image in builds
+  # private registry username for pulling images
   registry_username: ''
-  # private registry password for pulling base image in builds
+  # private registry password for pulling images 
   registry_password: ''
   # private registry insecure (http) for pulling base image in builds
   registry_insecure: false
   # private registry with self signed certificate for pulling base image in builds
   registry_skip_tls_verify: false
+  image_pull_secret:
+    # name of imagepullsecret. If global.registry_password is not empty, it will be created
+    name: hkube-imagepullsecret
+    # use an existing imagepullsecret (doesn't create the secret)
+    use_existing: false
   storage:
   # encoding for storage. can be msgpack, bson, json
     encoding: msgpack

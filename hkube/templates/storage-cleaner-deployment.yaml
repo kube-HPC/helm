@@ -14,10 +14,10 @@ spec:
     spec:
       template:
         spec:
-{{- if .Values.global.registry_password }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
           imagePullSecrets:
-            - name: image-pull-secret
-{{- end }}          
+            - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}        
 {{- if eq .Values.env.default_storage "fs" }}
           volumes:
             - name: storage-volume

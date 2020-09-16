@@ -41,10 +41,10 @@ spec:
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
 {{- end }}
-{{- if .Values.global.registry_password }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
-        - name: image-pull-secret
-{{- end }} 
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}
       containers:
       - name: {{ template "etcd.fullname" . }}
         image: "{{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.tag }}"
