@@ -1,5 +1,7 @@
 global:
   registry: ''
+  image_pull_secret: {}
+
 ## nginx configuration
 ## Ref: https://github.com/kubernetes/ingress/blob/master/controllers/nginx/configuration.md
 ##

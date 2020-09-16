@@ -32,6 +32,15 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
 {{- end }}
     spec:
+{{- if or .Values.imagePullSecrets .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+{{- if or .Values.imagePullSecrets }}      
+{{ toYaml .Values.imagePullSecrets | indent 8 }}
+{{- end }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_external }}
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+{{- end }}     
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}

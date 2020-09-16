@@ -16,6 +16,10 @@ spec:
           labels:
             app: "pipeline-cleaner"
         spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+          imagePullSecrets:
+            - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}        
           containers:
           - name: pipeline-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "pipeline_cleaner" "image" "repository" }}:{{ index .Values "pipeline_cleaner" "image" "tag" }}"

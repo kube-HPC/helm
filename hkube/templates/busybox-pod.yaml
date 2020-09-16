@@ -7,6 +7,10 @@ metadata:
     group: {{ .Values.labels.group.value }}
     thirdparty: "true"
 spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+  imagePullSecrets:
+    - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}  
   containers:
   - image: "{{ .Values.global.registry }}{{ index .Values "busybox" "image" "repository" }}:{{ index .Values "busybox" "image" "tag" }}"
     command:

@@ -28,6 +28,10 @@ spec:
         {{- toYaml .Values.agent.podLabels | nindent 8 }}
 {{- end }}
     spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}    
       securityContext:
         {{- toYaml .Values.agent.podSecurityContext | nindent 8 }}
       {{- if .Values.agent.useHostNetwork }}

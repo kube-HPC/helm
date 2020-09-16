@@ -43,10 +43,15 @@ spec:
 {{ toYaml .Values.controller.dnsConfig | indent 8 }}
 {{- end }}
       dnsPolicy: {{ .Values.controller.dnsPolicy }}
-      {{- if .Values.imagePullSecrets }}
+{{- if or .Values.imagePullSecrets .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
+{{- if or .Values.imagePullSecrets }}      
 {{ toYaml .Values.imagePullSecrets | indent 8 }}
-      {{- end }}
+{{- end }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+{{- end }}
 {{- if .Values.controller.priorityClassName }}
       priorityClassName: "{{ .Values.controller.priorityClassName }}"
 {{- end }}

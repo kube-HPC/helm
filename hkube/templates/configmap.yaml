@@ -4,6 +4,9 @@ data:
         {"registry":{{ .Values.global.registry | trimSuffix "/" | quote }} }
   clusterOptions.json: |
         {
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+              "imagePullSecretName": {{ .Values.global.image_pull_secret.name | quote }},
+{{- end }}              
               "useNodeSelector": {{ .Values.nodeSelector | default false}}, 
               "ingressHost": {{ .Values.global.ingress.hostname | quote }},
               "ingressPrefix": {{ .Values.global.ingress.prefix | quote }},

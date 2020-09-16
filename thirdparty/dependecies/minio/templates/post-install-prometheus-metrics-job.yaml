@@ -24,6 +24,10 @@ spec:
 {{ toYaml .Values.podLabels | indent 8 }}
 {{- end }}
     spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}    
 {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ $fullName }}-update-prometheus-secret
 {{- end }}

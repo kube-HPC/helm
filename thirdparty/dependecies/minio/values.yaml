@@ -321,3 +321,4 @@ metrics:
 # global values for debug
 global:
   registry: ''
+  image_pull_secret: {}
