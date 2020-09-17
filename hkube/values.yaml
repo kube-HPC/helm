@@ -40,7 +40,8 @@ global:
   discovery: # +doc-gen:ignore
     encoding: msgpack
     port: 9020
-    timeout: 1000
+    timeout: 20000
+    pingTimeout: 500
     maxCacheSize: 500
     servingReportInterval: 5000
   # kubernetes environment. Possible values are k8s, openshift

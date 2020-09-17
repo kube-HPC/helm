@@ -11,6 +11,7 @@ data:
   DISCOVERY_ENCODING: {{index .Values.global.discovery.encoding | quote}}
   DISCOVERY_PORT: {{index .Values.global.discovery.port | quote}}
   DISCOVERY_TIMEOUT: {{index .Values.global.discovery.timeout | quote}}
+  DISCOVERY_NETWORK_TIMEOUT: {{index .Values.global.discovery.pingTimeout | quote}}
   DISCOVERY_MAX_CACHE_SIZE: {{index .Values.global.discovery.maxCacheSize | quote}}
   DISCOVERY_SERVING_REPORT_INTERVAL: {{index .Values.global.discovery.servingReportInterval | quote}}
   WORKER_ALGORITHM_ENCODING: "{{index .Values "task_executor" "env" "worker_algorithm_encoding"}}"
