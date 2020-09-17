@@ -525,7 +525,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.3.3
+    tag: v1.3.4
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '*/10 * * * *'
@@ -551,4 +551,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.119-1600328427558
+fullSystemVersion: v1.3.119-1600344955070
