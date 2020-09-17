@@ -7,7 +7,7 @@ global:
   registry_namespace: hkube
   # private registry username for pulling images
   registry_username: ''
-  # private registry password for pulling images 
+  # private registry password for pulling images
   registry_password: ''
   # private registry insecure (http) for pulling base image in builds
   registry_insecure: false
@@ -134,7 +134,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.116
+systemversion: v1.3.117
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -216,7 +216,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.3.32
+    tag: v1.3.33
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -546,4 +546,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.116-1600158005866
+fullSystemVersion: v1.3.117-1600322284867
