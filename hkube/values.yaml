@@ -151,8 +151,12 @@ build_secret:
   docker_registry_skip_tls_verify: false
 # npm registry for algorithm builds. Defaults to npmjs.com
   npm_registry: ''
-# npm registry token for algorithm builds.
+# npm registry token for algorithm builds. Mutually exclusive with npm_user and npm_password
   npm_token: ''
+# npm registry user for algorithm builds. Mutually exclusive with npm_token
+  npm_user: ''
+# npm registry password for algorithm builds. Mutually exclusive with npm_token
+  npm_password: ''
 # pip registry for algorithm builds. Defaults to pypi.org
   pip_registry: ''
 # pip registry token for algorithm builds. Defaults to pypi.org
