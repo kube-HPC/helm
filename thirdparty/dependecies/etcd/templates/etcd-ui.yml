@@ -53,7 +53,7 @@ spec:
       targetPort: {{ .Values.etcd_ui.service.port }}
 
 ---
-{{- if .Values.etcd_ui.ingress_enabled -}}
+{{- if .Values.etcd_ui.ingress.enabled -}}
 {{- $fullName := "etcd-ui" -}}
 {{- $servicePort := .Values.etcd_ui.service.port -}}
 {{- $ingressPath := .Values.etcd_ui.ingress.path -}}
