@@ -78,7 +78,7 @@ etcd:
   persistentVolume:
     enabled: true
     storageClass: ''
-    storage: 1Gi
+    storage: 10Gi
 redis-ha:
   enable: true
   # set number of replicas. defualt 3. If set to 1 also set min-slaves-to-write to 0
