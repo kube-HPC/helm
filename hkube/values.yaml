@@ -161,6 +161,9 @@ build_secret:
   pip_registry: ''
 # pip registry token for algorithm builds. Defaults to pypi.org
   pip_token: ''
+  maven_registry: ''
+  maven_token: ''
+  maven_user: ''
 # node selector for hkube containers.
 nodeSelector: {}
 algorithm_operator:
