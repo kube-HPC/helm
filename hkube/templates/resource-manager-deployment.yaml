@@ -20,9 +20,13 @@ spec:
         app: resource-manager
         group: {{ .Values.labels.group.value }}
     spec:
-      {{- if and .Values.global.production (not .Values.global.namespaced)}}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        core: "true"
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: resource-manager-serviceaccount
       containers:
@@ -85,10 +89,15 @@ spec:
                 configMapKeyRef:
                   name: resource-manager-configmap
                   key: PROMETHEUS_ENDPOINT
+{{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+{{- else if .Values.jaeger.external_agent_address }}
+            - name: JAEGER_AGENT_SERVICE_HOST
+              value: .Values.jaeger.external_agent_address
+{{- end }}    
             - name: NAMESPACE
               valueFrom:
                 fieldRef:

@@ -1,0 +1,18 @@
+project:
+  name: Hkube
+  shortName: Hkube
+  url: https://github.com/kube-HPC/hkube
+  description: cloud-native open source framework to run distributed pipeline of algorithms
+repository:
+  url: https://hkube.io/helm/dev
+  name: hkube
+chart:
+  name: hkube
+  values: "-- generate from values file --"
+  valuesExample: "-- generate from values file --"
+release:
+  name: hkube
+prerequisites:
+- "Kubernetes v1.14+"
+- "Dynamic storage provisioning (optional)"
+- "Ingress controller (optional)"

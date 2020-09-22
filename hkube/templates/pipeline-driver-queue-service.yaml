@@ -8,6 +8,7 @@ metadata:
     app: pipeline-driver-queue
     group: {{ .Values.labels.group.value }}
     core: "true"
+    metrics: "true"
 spec:
   selector:
     app: pipeline-driver-queue

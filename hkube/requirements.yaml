@@ -1,4 +1,25 @@
 dependencies:
-- name: thirdparty
-  version: "^0.5.0"
-  repository: "http://hkube.io/helm/"
+  - name: etcd
+    version: "0.7.2014"
+    repository: "http://hkube.io/helm/"
+    condition: etcd.enable
+  - name: etcd-operator
+    version: "0.9.7"
+    repository: "http://hkube.io/helm/"
+    condition: etcd-operator.enable
+  - name: jaeger
+    version: "0.27.2005"
+    repository: "http://hkube.io/helm/"
+    condition: jaeger.enable
+  - name: redis-ha
+    version: "3.6.1005"
+    repository: "http://hkube.io/helm/"
+    condition: redis-ha.enable
+  - name: nginx-ingress
+    version: "1.31.1002"
+    repository: "http://hkube.io/helm/"
+    condition: nginx-ingress.enable
+  - name: minio
+    version: "5.0.1024"
+    repository: "http://hkube.io/helm/"
+    condition: minio.enable

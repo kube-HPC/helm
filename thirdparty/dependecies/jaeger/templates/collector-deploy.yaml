@@ -1,95 +1,177 @@
-# Source: jaeger/templates/collector-deploy.yaml
+{{- if .Values.collector.enabled -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jaeger-jaeger-collector
+  name: {{ template "jaeger.collector.name" . }}
   labels:
-    app: jaeger
-    jaeger-infra: collector-deployment
-    chart: jaeger-0.3.5
-    component: collector
-    heritage: Tiller
-    release: jaeger
-    group: hkube
-    thirdparty: "true"
+    {{- include "jaeger.labels" . | nindent 4 }}
+    app.kubernetes.io/component: collector
+{{- if .Values.collector.annotations }}
+  annotations:
+    {{- toYaml .Values.collector.annotations | nindent 4 }}
+{{- end }}
 spec:
+{{- if not .Values.collector.autoscaling.enabled }}
+  replicas: {{ .Values.collector.replicaCount }}
+{{- end }}
   selector:
     matchLabels:
-      app: jaeger
-      component: collector
-      release: jaeger
-      jaeger-infra: collector-pod
-      group: hkube
-      thirdparty: "true"
-  replicas: 1
+      {{- include "jaeger.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: collector
   strategy:
     type: Recreate
   template:
     metadata:
+      annotations:
+        checksum/config-env: {{ include (print $.Template.BasePath "/collector-configmap.yaml") . | sha256sum }}
+{{- if .Values.collector.podAnnotations }}
+        {{- toYaml .Values.collector.podAnnotations | nindent 8 }}
+{{- end }}
       labels:
-        app: jaeger
-        component: collector
-        release: jaeger
-        jaeger-infra: collector-pod
-        group: hkube
-        thirdparty: "true"
+        {{- include "jaeger.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: collector
+{{- if .Values.collector.podLabels }}
+        {{- toYaml .Values.collector.podLabels | nindent 8 }}
+{{- end }}
     spec:
-{{- if and .Values.global.production (not .Values.global.namespaced)}}      
-      nodeSelector:
-        third-party: "true"
-{{- end }}        
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}    
+      securityContext:
+        {{- toYaml .Values.collector.podSecurityContext | nindent 8 }}
+      serviceAccountName: {{ template "jaeger.collector.serviceAccountName" . }}
       containers:
-      - name: jaeger-jaeger-collector
-        image: {{ .Values.global.registry }}jaegertracing/jaeger-collector:1.2.0
-        imagePullPolicy: IfNotPresent
+      - name: {{ template "jaeger.collector.name" . }}
+        securityContext:
+          {{- toYaml .Values.collector.securityContext | nindent 10 }}
+        image: {{ .Values.global.registry }}{{ .Values.collector.image }}:{{ .Values.tag }}
+        imagePullPolicy: {{ .Values.collector.pullPolicy }}
+        args:
+          {{- range $key, $value := .Values.collector.cmdlineParams -}}
+          {{- if $value }}
+          - --{{ $key }}={{ $value }}
+          {{- else }}
+          - --{{ $key }}
+          {{- end }}
+          {{- end -}}
+          {{- if not .Values.ingester.enabled -}}
+          {{- include "storage.cmdArgs" . | nindent 10 }}
+          {{- end }}
         env:
-          - name: SPAN_STORAGE_TYPE
-            valueFrom:
-              configMapKeyRef:
-                name: jaeger-jaeger
-                key: span-storage.type
-          - name: CASSANDRA_SERVERS
-            valueFrom:
-              configMapKeyRef:
-                name: jaeger-jaeger
-                key: cassandra.servers
-          - name: CASSANDRA_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: jaeger-jaeger
-                key: cassandra.port
-          - name: CASSANDRA_KEYSPACE
-            valueFrom:
-              configMapKeyRef:
-                name: jaeger-jaeger
-                key: cassandra.keyspace
-          - name: COLLECTOR_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: jaeger-jaeger
-                key: collector.port
-          - name: COLLECTOR_HTTP_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: jaeger-jaeger
-                key: collector.http-port
+          {{- if .Values.collector.service.zipkin }}
           - name: COLLECTOR_ZIPKIN_HTTP_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: jaeger-jaeger
-                key: collector.zipkin.http-port
+            value: {{ .Values.collector.service.zipkin.port | quote }}
+          {{- end }}
+          {{- if .Values.ingester.enabled }}
+          - name: SPAN_STORAGE_TYPE
+            value: kafka
+          {{- range $key, $value := .Values.storage.kafka.env }}
+          - name: {{ $key | quote }}
+            value: {{ $value | quote }}
+          {{- end }}
+          - name: KAFKA_PRODUCER_BROKERS
+            value: {{ include "helm-toolkit.utils.joinListWithComma" .Values.storage.kafka.brokers }}
+          - name: KAFKA_PRODUCER_TOPIC
+            value: {{ .Values.storage.kafka.topic }}
+          - name: KAFKA_PRODUCER_AUTHENTICATION
+            value: {{ .Values.storage.kafka.authentication }}
+          {{ else }}
+          - name: SPAN_STORAGE_TYPE
+            value: {{ .Values.storage.type }}
+          {{- include "storage.env" . | nindent 10 }}
+          {{- end }}
+          {{- if .Values.collector.samplingConfig}}
+          - name: SAMPLING_STRATEGIES_FILE
+            value: /etc/conf/strategies.json
+          {{- end }}
         ports:
-        - containerPort: 14267
+        - containerPort: {{ .Values.collector.service.grpc.port }}
+          name: grpc
+          protocol: TCP
+        - containerPort: {{ .Values.collector.service.tchannel.port }}
           name: tchannel
           protocol: TCP
-        - containerPort: 14268
+        - containerPort: {{ .Values.collector.service.http.port }}
           name: http
           protocol: TCP
-        - containerPort: 9411
+        - containerPort: 14269
+          name: admin
+          protocol: TCP
+        {{- if .Values.collector.service.zipkin }}
+        - containerPort: {{ .Values.collector.service.zipkin.port }}
           name: zipkin
           protocol: TCP
+        {{- end }}
+        readinessProbe:
+          httpGet:
+            path: /
+            port: admin
+        livenessProbe:
+          httpGet:
+            path: /
+            port: admin
         resources:
-          {}
-          
-      dnsPolicy: ClusterFirst
+          {{- toYaml .Values.collector.resources | nindent 10 }}
+        volumeMounts:
+        {{- range .Values.collector.extraConfigmapMounts }}
+          - name: {{ .name }}
+            mountPath: {{ .mountPath }}
+            subPath: {{ .subPath }}
+            readOnly: {{ .readOnly }}
+        {{- end }}
+        {{- range .Values.collector.extraSecretMounts }}
+          - name: {{ .name }}
+            mountPath: {{ .mountPath }}
+            subPath: {{ .subPath }}
+            readOnly: {{ .readOnly }}
+        {{- end }}
+        {{- if .Values.storage.cassandra.tls.enabled }}
+          - name: {{ .Values.storage.cassandra.tls.secretName }}
+            mountPath: "/cassandra-tls/ca-cert.pem"
+            subPath: "ca-cert.pem"
+            readOnly: true
+          - name: {{ .Values.storage.cassandra.tls.secretName }}
+            mountPath: "/cassandra-tls/client-cert.pem"
+            subPath: "client-cert.pem"
+            readOnly: true
+          - name: {{ .Values.storage.cassandra.tls.secretName }}
+            mountPath: "/cassandra-tls/client-key.pem"
+            subPath: "client-key.pem"
+            readOnly: true
+        {{- end }}
+        {{- if .Values.collector.samplingConfig}}
+          - name: strategies
+            mountPath: /etc/conf/
+        {{- end }}
+      dnsPolicy: {{ .Values.collector.dnsPolicy }}
       restartPolicy: Always
+      volumes:
+      {{- range .Values.collector.extraConfigmapMounts }}
+        - name: {{ .name }}
+          configMap:
+            name: {{ .configMap }}
+      {{- end }}
+      {{- range .Values.collector.extraSecretMounts }}
+        - name: {{ .name }}
+          secret:
+            secretName: {{ .secretName }}
+      {{- end }}
+      {{- if .Values.collector.samplingConfig}}
+        - name: strategies
+          configMap:
+            name: {{ include "jaeger.fullname" . }}-sampling-strategies
+      {{- end }}
+    {{- with .Values.collector.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.collector.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.collector.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+{{- end -}}

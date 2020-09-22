@@ -19,9 +19,13 @@ spec:
         app: monitor-server
         group: {{ .Values.labels.group.value }}
     spec:
-      {{- if and .Values.global.production (not .Values.global.namespaced)}}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        core: "true"
+        {{- toYaml . | nindent 8 }}
       {{- end }} 
       serviceAccountName: monitor-server-serviceaccount
       containers:
@@ -82,11 +86,11 @@ spec:
                 configMapKeyRef:
                   name: monitor-server-configmap
                   key: DEFAULT_STORAGE
-            - name: STORAGE_BINARY
+            - name: STORAGE_ENCODING
               valueFrom:
                 configMapKeyRef:
                   name: monitor-server-configmap
-                  key: STORAGE_BINARY                  
+                  key: STORAGE_ENCODING                  
             - name: LOG_EXTERNAL_REQUESTS
               value: {{ .Values.monitor_server.env.log_external_requests | quote}}
             - name: ELASTICSEARCH_SERVICE_URL

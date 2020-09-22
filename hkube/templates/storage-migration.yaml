@@ -1,3 +1,4 @@
+{{- if .Values.storage_migration.enable }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -20,6 +21,10 @@ spec:
         release: {{.Release.Name | quote }}
         chart: "{{.Chart.Name}}-{{.Chart.Version}}"
     spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}       
       restartPolicy: Never
 {{- if eq .Values.env.default_storage "fs" }}
       volumes:
@@ -43,17 +48,20 @@ spec:
           value: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- else if eq .Values.env.default_storage "s3" }}
         - name: AWS_ACCESS_KEY_ID
-          value: {{ default "" .Values.global.storage.minio.access_key | b64enc | quote }}
+          value: {{ default "" .Values.global.storage.s3.access_key | b64enc | quote }}
         - name: AWS_SECRET_ACCESS_KEY
-          value: {{ default "" .Values.global.storage.minio.secret_key | b64enc | quote }}
+          value: {{ default "" .Values.global.storage.s3.secret_key | b64enc | quote }}
         - name: S3_ENDPOINT_URL
-          value: {{ default "" .Values.global.storage.minio.url | b64enc | quote }}
+          value: {{ default "" .Values.global.storage.s3.url | b64enc | quote }}
 {{- end }}                                    
         - name: DEFAULT_STORAGE
           value: {{ .Values.env.default_storage | quote }}
-        - name: STORAGE_BINARY
-          value: {{index .Values.global.storage.binary | quote}}    
+        - name: STORAGE_ENCODING
+          value: {{index .Values.global.storage.encoding | quote}}  
+        - name: SOURCE_STORAGE_ENCODING
+          value: "{{index .Values "storage_migration" "env" "source_storage_encoding"}}"  
         - name: CLUSTER_NAME
           value: {{ .Values.global.clusterName | quote}}
         - name: NODE_ENV
           value: {{ .Values.env.node_env | quote }}
+{{- end }}

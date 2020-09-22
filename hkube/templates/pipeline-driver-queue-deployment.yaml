@@ -20,6 +20,10 @@ spec:
         app: pipeline-driver-queue
         group: {{ .Values.labels.group.value }}
     spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
       containers:
         - name: pipeline-driver-queue
           image: "{{ .Values.global.registry }}{{ index .Values "pipeline_driver_queue" "image" "repository" }}:{{ index .Values "pipeline_driver_queue" "image" "tag" }}"
@@ -40,7 +44,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: pipeline-driver-queue-configmap
-                  key: KUBE_LOG_LEVEL
+                  key: HKUBE_LOG_LEVEL
             - name: METRICS_PORT
               valueFrom:
                 configMapKeyRef:
@@ -51,10 +55,15 @@ spec:
                 configMapKeyRef:
                   name: pipeline-driver-queue-configmap
                   key: CHECK_QUEUE_INTERVAL
+{{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+{{- else if .Values.jaeger.external_agent_address }}
+            - name: JAEGER_AGENT_SERVICE_HOST
+              value: .Values.jaeger.external_agent_address
+{{- end }}    
             - name: NAMESPACE
               valueFrom:
                 fieldRef:

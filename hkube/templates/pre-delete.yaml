@@ -20,6 +20,10 @@ spec:
         release: {{.Release.Name | quote }}
         chart: "{{.Chart.Name}}-{{.Chart.Version}}"
     spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}   
       serviceAccountName: cleanup-serviceaccount
       restartPolicy: Never
       containers:
@@ -33,13 +37,14 @@ spec:
           - |
             /usr/local/bin/kubectl cluster-info
             /usr/local/bin/kubectl delete deploy task-executor
+            /usr/local/bin/kubectl delete deploy algorithm-operator
             /usr/local/bin/kubectl delete deploy -l type=algorithm-queue
             /usr/local/bin/kubectl delete job -l type=worker
             /usr/local/bin/kubectl delete job -l type=pipeline-driver
             /usr/local/bin/kubectl delete deploy -l type=worker-debug
             /usr/local/bin/kubectl delete svc -l type=worker-debug
             /usr/local/bin/kubectl delete secret s3-secret
-            /usr/local/bin/kubectl delete crd etcdclusters.etcd.database.coreos.com etcdbackups.etcd.database.coreos.com etcdrestores.etcd.database.coreos.com 
+            /usr/local/bin/kubectl delete crd etcdclusters.etcd.database.coreos.com
             echo Done
 
             

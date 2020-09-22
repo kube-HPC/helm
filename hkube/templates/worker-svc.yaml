@@ -8,6 +8,7 @@ metadata:
     app: worker
     group: {{ .Values.labels.group.value }}
     core: "true"
+    metrics: "true"
 spec:
   selector:
     metrics-group: workers

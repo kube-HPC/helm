@@ -34,6 +34,15 @@ spec:
         {{ $key }}: {{ $value }}
         {{- end }}
     spec:
+{{- if or .Values.imagePullSecrets .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+{{- if or .Values.imagePullSecrets }}      
+{{ toYaml .Values.imagePullSecrets | indent 8 }}
+{{- end }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_external }}
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+{{- end }} 
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}
@@ -64,23 +73,19 @@ spec:
               topologyKey: kubernetes.io/hostname
     {{- else }}
           preferredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchLabels:
-                  app: {{ template "redis-ha.name" . }}
-                  release: {{ .Release.Name }}
-              topologyKey: kubernetes.io/hostname
-    {{- end }}
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              podAffinityTerm:
+            - podAffinityTerm:
                 labelSelector:
                   matchLabels:
-                    app:  {{ template "redis-ha.name" . }}
+                    app: {{ template "redis-ha.name" . }}
                     release: {{ .Release.Name }}
-                topologyKey: failure-domain.beta.kubernetes.io/zone
+                topologyKey: kubernetes.io/hostname
+              weight: 100
     {{- end }}
+    {{- end }}
+{{- if not (eq .Values.global.k8senv "openshift") }}
       securityContext:
 {{ toYaml .Values.securityContext | indent 8 }}
+{{- end }}
       serviceAccountName: {{ template "redis-ha.serviceAccountName" . }}
       initContainers:
       {{- if .Values.sysctlImage.enabled }}

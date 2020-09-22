@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 mkdir -p /tmp/helm-charts
 rm /tmp/helm-charts/*
-helm package -d /tmp/helm-charts thirdparty/thirdparty
+CHARTS=$(find thirdparty/dependecies/* -maxdepth 0 -type d \( ! -name . \))
+echo ${CHARTS}| xargs helm package -d /tmp/helm-charts
 git stash
 git checkout gh-pages
-cp /tmp/helm-charts/thirdparty-*.tgz ./
+cp /tmp/helm-charts/*.tgz ./
 helm repo index --merge ./index.yaml /tmp/helm-charts/
 cp /tmp/helm-charts/index.yaml ./
 git add .

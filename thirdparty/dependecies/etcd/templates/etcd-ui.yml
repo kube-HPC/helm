@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etcd-ui
+  labels:
+    app: etcd-ui
+    group: hkube
+    third-party: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etcd-ui
+  template:
+    metadata:
+      labels:
+        app: etcd-ui
+        group: hkube
+    spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}
+{{- if .Values.etcd_ui.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.etcd_ui.nodeSelector | indent 8 }}
+{{- end }}    
+      containers:
+        - name: etcd-ui
+          image: "{{ .Values.global.registry }}{{ .Values.etcd_ui.image.repository }}:{{ .Values.etcd_ui.image.tag }}"
+          env: 
+            - name: HOST
+              value: "0.0.0.0"
+          ports:
+            - containerPort: {{ .Values.etcd_ui.service.port }}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: etcd-ui
+  labels:
+    app: etcd-ui
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    third-party: "true"
+spec:
+  selector:
+    app: etcd-ui
+  ports:
+    - name: server
+      protocol: TCP
+      port: {{ .Values.etcd_ui.service.port }}
+      targetPort: {{ .Values.etcd_ui.service.port }}
+
+---
+{{- if .Values.etcd_ui.ingress.enabled -}}
+{{- $fullName := "etcd-ui" -}}
+{{- $servicePort := .Values.etcd_ui.service.port -}}
+{{- $ingressPath := .Values.etcd_ui.ingress.path -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: etcd-ui
+  annotations:
+{{- if .Values.global.ingress.use_regex }}
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+{{- else }}
+    nginx.ingress.kubernetes.io/rewrite-target: /
+{{- end }}
+  labels:
+    app: etcd-ui
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    core: "true"
+spec:
+  rules:
+    - http:
+        paths:
+{{- if .Values.global.ingress.use_regex }}
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
+{{- else }}        
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
+{{- end }}
+          backend:
+            serviceName: {{ $fullName }}
+            servicePort: {{ $servicePort }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}      
+{{- end }}
+
+
+

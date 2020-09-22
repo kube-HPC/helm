@@ -23,9 +23,13 @@ spec:
         release: api-server
         group: {{ .Values.labels.group.value }}
     spec:
-      {{- if and .Values.global.production (not .Values.global.namespaced)}}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        core: "true"
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
         - name: uploads
@@ -102,11 +106,11 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: DEFAULT_STORAGE
-            - name: STORAGE_BINARY
+            - name: STORAGE_ENCODING
               valueFrom:
                 configMapKeyRef:
                   name: api-server-configmap
-                  key: STORAGE_BINARY                  
+                  key: STORAGE_ENCODING                  
             - name: CLUSTER_NAME
               valueFrom:
                 configMapKeyRef:
@@ -122,10 +126,15 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: PIPELINE_DRIVER_MEM
+{{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+{{- else if .Values.jaeger.external_agent_address }}
+            - name: JAEGER_AGENT_SERVICE_HOST
+              value: .Values.jaeger.external_agent_address
+{{- end }}    
             - name: NAMESPACE
               valueFrom:
                 fieldRef:

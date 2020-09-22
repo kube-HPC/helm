@@ -7,11 +7,16 @@ metadata:
     core: "true"
     app: "etcd-cleaner"
 spec:
-  schedule: "0 0 * * *"
+  schedule: {{ .Values.etcd_cleaner.pattern | quote }} 
+  startingDeadlineSeconds: 200
   jobTemplate:
     spec:
       template:
         spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+          imagePullSecrets:
+            - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}        
           containers:
           - name: etcd-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "etcd_cleaner" "image" "repository" }}:{{ index .Values "etcd_cleaner" "image" "tag" }}"

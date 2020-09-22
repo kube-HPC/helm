@@ -86,7 +86,11 @@ metadata:
   labels:
     group: {{ .Values.labels.group.value }}
     app: task-executor
-    core: "true"    
+    core: "true"
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+imagePullSecrets:
+  - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}   
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1

@@ -6,8 +6,9 @@ metadata:
 data:
   NODE_ENV: {{.Values.env.node_env}}
   DEFAULT_STORAGE: {{index .Values "env" "default_storage"}}
+  STORAGE_RESULTS_THRESHOLD: {{index .Values.global.storage.storageResultsThreshold | quote}}
 {{- if eq .Values.env.default_storage "fs" }}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}   
-  METRICS_PORT: "{{index .Values "pipeline-driver" "env" "metric_port"}}"
+  METRICS_PORT: "{{ .Values.pipeline_driver.env.metric_port}}"
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}

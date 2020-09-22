@@ -23,15 +23,29 @@ spec:
         release: clean-old-jobs
         group: {{ .Values.labels.group.value }}
     spec:
-      {{- if and .Values.global.production (not .Values.global.namespaced)}}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        core: "true"
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: clean-old-jobs
       containers:
         - name: clean-old-jobs
           image: "{{ .Values.global.registry }}{{ index  .Values "clean_old_jobs" "image" "repository" }}:{{ index .Values "clean_old_jobs" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
+{{- if .Values.clean_old_jobs.healthcheck.enabled }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.clean_old_jobs.healthcheck.path }}
+              port: {{ .Values.clean_old_jobs.healthcheck.port }}
+            initialDelaySeconds: {{ .Values.clean_old_jobs.healthcheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.clean_old_jobs.healthcheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.clean_old_jobs.healthcheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.clean_old_jobs.healthcheck.failureThreshold }}
+{{- end }}          
           resources:
 {{ toYaml .Values.clean_old_jobs.resources | indent 12 }} 
           env:

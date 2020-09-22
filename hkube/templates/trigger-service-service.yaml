@@ -2,8 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: trigger-service
-  annotations:
-    prometheus.io/scrape: "true"
   labels:
     app: trigger-service
     group: {{ .Values.labels.group.value }}

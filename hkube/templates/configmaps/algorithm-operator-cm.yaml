@@ -5,8 +5,10 @@ metadata:
   name: algorithm-operator-configmap
 data: 
   NODE_ENV: {{ .Values.env.node_env }}
+  STORAGE_BINARY: "false"
   DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
-  STORAGE_BINARY: {{index .Values.global.storage.binary | quote}}
+  STORAGE_ENCODING: {{index .Values.global.storage.encoding | quote}}
+  DISCOVERY_ENCODING:  {{index .Values.global.discovery.encoding | quote}}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
   METRICS_PORT: {{ index .Values "algorithm_operator" "env" "metric_port" | quote }}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
@@ -14,4 +16,7 @@ data:
   ALGORITHM_QUEUE_INTERVAL: {{ .Values.algorithm_operator.env.algorithm_queue_interval | quote }}
   BOARDS_TIMEOUT: {{ .Values.algorithm_operator.env.boards_timeout | quote }}
   ALGORITHM_QUEUE_PRODUCER_UPDATE_INTERVAL : {{ .Values.algorithm_operator.env.producer_update_interval | quote }}
+  PYTHON_WRAPPER_VERSION : {{ .Values.algorithm_operator.env.python_wrapper_version | quote }}
+  NODE_WRAPPER_VERSION : {{ .Values.algorithm_operator.env.node_wrapper_version | quote }}
+  IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
 

@@ -4,13 +4,19 @@ data:
         {"registry":{{ .Values.global.registry | trimSuffix "/" | quote }} }
   clusterOptions.json: |
         {
-              "useNodeSelector":{{ and .Values.global.production (not .Values.global.namespaced) | default false}}, 
-              "ingressHost":{{ .Values.ingress.hostname | quote }},
-              "ingressPrefix": {{ .Values.ingress.prefix | quote }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+              "imagePullSecretName": {{ .Values.global.image_pull_secret.name | quote }},
+{{- end }}              
+              "useNodeSelector": {{ .Values.nodeSelector | default false}}, 
+              "ingressHost": {{ .Values.global.ingress.hostname | quote }},
+              "ingressPrefix": {{ .Values.global.ingress.prefix | quote }},
+              "ingressUseRegex": {{ .Values.global.ingress.use_regex }},
+              "devModeEnabled": {{ .Values.sync_server.enabled }}
         }
   versions.json: |
         {
             "systemVersion": "{{ .Values.systemversion }}",
+            "fullSystemVersion": "{{ .Values.fullSystemVersion }}",
             "versions": [
                   {
                         "project": "api-server",
@@ -24,8 +30,8 @@ data:
                   },
                   {
                         "project": "pipeline-driver",
-                        "tag": "{{ index .Values "pipeline-driver" "image" "tag" }}",
-                        "image": "{{ index .Values "pipeline-driver" "image" "repository" }}"
+                        "tag": "{{ .Values.pipeline_driver.image.tag }}",
+                        "image": "{{ .Values.pipeline_driver.image.repository }}"
                   },
                   {
                         "project": "algorunner",
@@ -38,19 +44,14 @@ data:
                         "image": "{{ .Values.simulator.image.repository }}"
                   },
                   {
-                        "project": "algorithm-example",
-                        "tag": "{{ index .Values "algorithm-example" "image" "tag" }}",
-                        "image": "{{ index .Values "algorithm-example" "image" "repository" }}"
-                  },
-                  {
                         "project": "monitor-server",
                         "tag": "{{ index .Values "monitor_server" "image" "tag" }}",
                         "image": "{{ .Values.monitor_server.image.repository }}"
                   },
                   {
                         "project": "algorithm-queue",
-                        "tag": "{{ index .Values "algorithm-queue" "image" "tag" }}",
-                        "image": "{{ index .Values "algorithm-queue" "image" "repository" }}"
+                        "tag": "{{ index .Values "algorithm_queue" "image" "tag" }}",
+                        "image": "{{ index .Values "algorithm_queue" "image" "repository" }}"
                   },
                   {
                         "project": "resource-manager",
@@ -109,8 +110,8 @@ data:
                   },
                   {
                         "project": "algorithm-builder",
-                        "tag": "{{ index .Values "algorithm-builder" "image" "tag" }}",
-                        "image": "{{ index .Values "algorithm-builder" "image" "repository" }}"
+                        "tag": "{{ index .Values "algorithm_builder" "image" "tag" }}",
+                        "image": "{{ index .Values "algorithm_builder" "image" "repository" }}"
                   },
                   {
                         "project": "kaniko",
@@ -118,19 +119,14 @@ data:
                         "image": "{{ .Values.kaniko.image.repository }}"
                   },
                   {
+                        "project": "oc-builder",
+                        "tag": "{{ .Values.oc_builder.image.tag }}",
+                        "image": "{{ .Values.oc_builder.image.repository }}"
+                  },
+                  {
                         "project": "algorithm-example-python",
                         "tag": "{{ .Values.algorithm_example_python.image.tag }}",
                         "image": "{{ .Values.algorithm_example_python.image.repository }}"
-                  },
-                  {
-                        "project": "nodejs-env",
-                        "tag": "{{ .Values.nodejs_env.image.tag }}",
-                        "image": "{{ .Values.nodejs_env.image.repository }}"
-                  },
-                  {
-                        "project": "python-env",
-                        "tag": "{{ .Values.python_env.image.tag }}",
-                        "image": "{{ .Values.python_env.image.repository }}"
                   },
                   {
                         "project": "tensorboard",

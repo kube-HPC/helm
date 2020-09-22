@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 set -o xtrace
-
+helm lint hkube/
 CHART_VERSION=$(git describe --abbrev=0)
 VALUES_YAML_PATH=hkube/values.yaml NEW_VALUES_YAML_PATH=hkube/values.yaml ./version-updater
 APP_VERSION=$(grep systemversion hkube/values.yaml | awk -F': ' '{print $2}')
 mkdir -p /tmp/helm-charts
+helm dependency update hkube
 helm package --app-version=${APP_VERSION} --version=${APP_VERSION} -d /tmp/helm-charts hkube
 git stash
 git checkout --track origin/gh-pages

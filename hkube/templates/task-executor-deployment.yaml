@@ -20,9 +20,13 @@ spec:
         app: task-executor
         group: {{ .Values.labels.group.value }}
     spec:
-      {{- if and .Values.global.production (not .Values.global.namespaced)}}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-        core: "true"
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: task-executor-serviceaccount
       containers:
@@ -68,20 +72,25 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: METRICS_PORT
+{{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+{{- else if .Values.jaeger.external_agent_address }}
+            - name: JAEGER_AGENT_SERVICE_HOST
+              value: .Values.jaeger.external_agent_address
+{{- end }}                  
             - name: DEFAULT_STORAGE
               valueFrom:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: DEFAULT_STORAGE
-            - name: STORAGE_BINARY
+            - name: STORAGE_ENCODING
               valueFrom:
                 configMapKeyRef:
                   name: task-executor-configmap
-                  key: STORAGE_BINARY                  
+                  key: STORAGE_ENCODING                  
             - name: BASE_FS_ADAPTER_DIRECTORY
               valueFrom:
                 configMapKeyRef:
@@ -92,6 +101,11 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: WORKER_SOCKET_MAX_PAYLOAD_BYTES
+            - name: HAS_NODE_LIST
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: HAS_NODE_LIST
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
@@ -110,4 +124,5 @@ spec:
               value: {{ .Values.task_executor.env.default_quota_cpu | quote}}
             - name: DEFAULT_QUOTA_MEM
               value: {{ .Values.task_executor.env.default_quota_mem | quote}}
-                  
+            - name: DEFAULT_QUOTA_GPU
+              value: {{ .Values.task_executor.env.default_quota_gpu | quote}}             

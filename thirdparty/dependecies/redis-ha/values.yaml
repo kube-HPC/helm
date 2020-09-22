@@ -186,7 +186,7 @@ auth: false
 authKey: auth
 
 persistentVolume:
-  enabled: true
+  enabled: false
   ## redis-ha data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -213,3 +213,9 @@ hostPath:
   # change the owner of the hostPath folder to the user defined in the
   # security context
   chown: true
+
+# global values for debug
+global:
+  registry: ''
+  k8senv: k8s
+  image_pull_secret: {}
