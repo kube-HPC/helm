@@ -413,7 +413,7 @@ storage_cleaner:
     result_object_expiration_days: '20'
   image: # +doc-gen:ignore
     repository: hkube/storage-cleaner
-    tag: v1.3.3
+    tag: v1.3.4
   resources: # +doc-gen:ignore
     requests:
       cpu: 100m
@@ -551,4 +551,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.120-1600757825404
+fullSystemVersion: v1.3.120-1600760135366
