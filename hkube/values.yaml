@@ -435,6 +435,7 @@ task_executor:
     # the number of pipeline drivers to run.
     pipeline_drivers_amount: 1
     worker_socket_max_payload_bytes: 1000000000
+    worker_algorithm_start_timeout_ms: 300000
     worker_algorithm_encoding: bson # +doc-gen:ignore
     default_storage_protocol: v1 # +doc-gen:ignore
     default_worker_algorithm_encoding: json # +doc-gen:ignore

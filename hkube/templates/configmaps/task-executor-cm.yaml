@@ -18,6 +18,7 @@ data:
   DEFAULT_WORKER_ALGORITHM_ENCODING: "{{index .Values "task_executor" "env" "default_worker_algorithm_encoding"}}"
   DEFAULT_STORAGE_PROTOCOL: "{{index .Values "task_executor" "env" "default_storage_protocol"}}"
   WORKER_SOCKET_MAX_PAYLOAD_BYTES: "{{index .Values "task_executor" "env" "worker_socket_max_payload_bytes"}}"
+  ALGORITHM_DISCONNECTED_TIMEOUT_MS: {{ .Values.task_executor.env.worker_algorithm_start_timeout_ms | quote }}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
   METRICS_PORT: "{{index .Values "task_executor" "env" "metric_port"}}"
   IS_NAMESPACED: {{ .Values.global.namespaced | quote}}
