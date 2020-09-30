@@ -11,10 +11,10 @@ metadata:
     app: {{ template "etcd.name" . }}
 spec:
   ports:
-  - port: {{ .Values.peerPort }}
-    name: etcd-server
   - port: {{ .Values.clientPort }}
     name: etcd-client
+  - port: {{ .Values.peerPort }}
+    name: etcd-server
   clusterIP: None
   selector:
     app: {{ template "etcd.name" . }}
@@ -34,10 +34,10 @@ metadata:
     metrics: "true"
 spec:
   ports:
-  - port: {{ .Values.peerPort }}
-    name: etcd-server
   - port: {{ .Values.clientPort }}
     name: etcd-client
+  - port: {{ .Values.peerPort }}
+    name: etcd-server
   selector:
     app: {{ template "etcd.name" . }}
     release: {{ .Release.Name | quote }}
