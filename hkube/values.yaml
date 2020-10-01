@@ -40,7 +40,7 @@ global:
   discovery: # +doc-gen:ignore
     encoding: msgpack
     port: 9020
-    timeout: 20000
+    timeout: 60000
     pingTimeout: 500
     maxCacheSize: 500
     servingReportInterval: 5000
