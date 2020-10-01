@@ -5,22 +5,23 @@ metadata:
   name: task-executor-configmap
 data:
   NODE_ENV: {{.Values.env.node_env}}
-  DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
+  DEFAULT_STORAGE: {{ .Values.env.default_storage | quote}}
   STORAGE_BINARY: "false"
-  STORAGE_ENCODING: {{index .Values.global.storage.encoding | quote}}
-  DISCOVERY_ENCODING: {{index .Values.global.discovery.encoding | quote}}
-  DISCOVERY_PORT: {{index .Values.global.discovery.port | quote}}
-  DISCOVERY_TIMEOUT: {{index .Values.global.discovery.timeout | quote}}
-  DISCOVERY_NETWORK_TIMEOUT: {{index .Values.global.discovery.pingTimeout | quote}}
-  DISCOVERY_MAX_CACHE_SIZE: {{index .Values.global.discovery.maxCacheSize | quote}}
-  DISCOVERY_SERVING_REPORT_INTERVAL: {{index .Values.global.discovery.servingReportInterval | quote}}
-  WORKER_ALGORITHM_ENCODING: "{{index .Values "task_executor" "env" "worker_algorithm_encoding"}}"
-  DEFAULT_WORKER_ALGORITHM_ENCODING: "{{index .Values "task_executor" "env" "default_worker_algorithm_encoding"}}"
-  DEFAULT_STORAGE_PROTOCOL: "{{index .Values "task_executor" "env" "default_storage_protocol"}}"
-  WORKER_SOCKET_MAX_PAYLOAD_BYTES: "{{index .Values "task_executor" "env" "worker_socket_max_payload_bytes"}}"
+  STORAGE_ENCODING: {{ .Values.global.storage.encoding | quote}}
+  STORAGE_MAX_CACHE_SIZE: {{ .Values.global.storage.maxCacheSize | quote}}
+  DISCOVERY_ENCODING: {{ .Values.global.discovery.encoding | quote}}
+  DISCOVERY_PORT: {{ .Values.global.discovery.port | quote}}
+  DISCOVERY_TIMEOUT: {{ .Values.global.discovery.timeout | quote}}
+  DISCOVERY_NETWORK_TIMEOUT: {{ .Values.global.discovery.pingTimeout | quote}}
+  DISCOVERY_MAX_CACHE_SIZE: {{ .Values.global.discovery.maxCacheSize | quote}}
+  DISCOVERY_SERVING_REPORT_INTERVAL: {{ .Values.global.discovery.servingReportInterval | quote}}
+  WORKER_ALGORITHM_ENCODING: {{ .Values.task_executor.env.worker_algorithm_encoding | quote}}
+  DEFAULT_WORKER_ALGORITHM_ENCODING: {{ .Values.task_executor.env.default_worker_algorithm_encoding | quote}}
+  DEFAULT_STORAGE_PROTOCOL: {{ .Values.task_executor.env.default_storage_protocol | quote}}
+  WORKER_SOCKET_MAX_PAYLOAD_BYTES: {{ .Values.task_executor.env.worker_socket_max_payload_bytes | quote }}
   ALGORITHM_DISCONNECTED_TIMEOUT_MS: {{ .Values.task_executor.env.worker_algorithm_start_timeout_ms | quote }}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
-  METRICS_PORT: "{{index .Values "task_executor" "env" "metric_port"}}"
+  METRICS_PORT: {{ .Values.task_executor.env.metric_port | quote }}
   IS_NAMESPACED: {{ .Values.global.namespaced | quote}}
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   HAS_NODE_LIST: {{ .Values.task_executor.env.has_node_list | quote }}

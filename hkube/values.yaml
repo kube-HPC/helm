@@ -21,6 +21,7 @@ global:
   storage:
   # encoding for storage. can be msgpack, bson, json
     encoding: msgpack
+    maxCacheSize: 500
     storageResultsThreshold: 100Ki # +doc-gen:ignore
     fs: # +doc-gen:ignore
       pvc:
