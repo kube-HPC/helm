@@ -136,7 +136,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.130
+systemversion: v1.3.131
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -225,7 +225,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '2048'
   image:
     repository: hkube/api-server
-    tag: v1.3.35
+    tag: v1.3.36
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -330,7 +330,7 @@ pipeline_driver: # +doc-gen:ignore
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.31
+    tag: v1.3.32
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -459,7 +459,7 @@ task_executor:
     has_node_list: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v1.3.20
+    tag: v1.3.21
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -486,7 +486,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v1.3.22
+    tag: v1.3.23
   metrics:
     port: 3001
   service:
@@ -506,7 +506,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.62
+    tag: v1.3.63
   resources:
     requests:
       cpu: 100m
@@ -556,4 +556,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.130-1601470196131
+fullSystemVersion: v1.3.131-1601817518589
