@@ -306,7 +306,7 @@ monitor_server: # +doc-gen:ignore
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v1.3.5
+    tag: v1.3.6
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -530,7 +530,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.3.4
+    tag: v1.3.5
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '*/10 * * * *'
@@ -556,4 +556,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.133-1601904627769
+fullSystemVersion: v1.3.133-1601988970270
