@@ -20,8 +20,12 @@ spec:
           containers:
           - name: etcd-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "etcd_cleaner" "image" "repository" }}:{{ index .Values "etcd_cleaner" "image" "tag" }}"
+{{- if .Values.global.resources_enable }}          
             resources:
-{{ toYaml .Values.etcd_cleaner.resources | indent 14 }} 
+{{ toYaml .Values.etcd_cleaner.resources | indent 14 }}
+{{- else }}
+            resources: {}
+{{- end }}   
             env:
             - name: "OBJECT_EXPIRATION_DAYS"
               valueFrom:

@@ -23,7 +23,11 @@ spec:
           containers:
           - name: etcd-defrag-cron
             image: {{ .Values.global.registry }}{{ .Values.etcd_defrag.image.repository }}:{{ .Values.etcd_defrag.image.tag }}
+{{- if .Values.global.resources_enable }}          
             resources:
-{{ toYaml .Values.etcd_defrag.resources | indent 14 }} 
+{{ toYaml .Values.etcd_defrag.resources | indent 14 }}
+{{- else }}
+            resources: {}
+{{- end }}               
           restartPolicy: Never
 {{- end }}        

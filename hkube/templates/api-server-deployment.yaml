@@ -43,8 +43,12 @@ spec:
         - name: api-server
           image: "{{ .Values.global.registry }}{{ index .Values "api_server" "image" "repository" }}:{{ index .Values "api_server" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
+{{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.api_server.resources | indent 12 }} 
+{{ toYaml .Values.api_server.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}
           volumeMounts:
             - name: uploads
               mountPath: /hkube/api-server/uploads

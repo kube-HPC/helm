@@ -42,8 +42,12 @@ spec:
             timeoutSeconds: {{ .Values.task_executor.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.task_executor.healthcheck.failureThreshold }}
 {{- end }}
+{{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.task_executor.resources | indent 12 }} 
+{{ toYaml .Values.task_executor.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}
           ports:
             - containerPort: {{ .Values.task_executor.env.metric_port }}
           env:

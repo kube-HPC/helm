@@ -23,8 +23,12 @@ spec:
           containers:
           - name: pipeline-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "pipeline_cleaner" "image" "repository" }}:{{ index .Values "pipeline_cleaner" "image" "tag" }}"
+{{- if .Values.global.resources_enable }}          
             resources:
-{{ toYaml .Values.pipeline_cleaner.resources | indent 14 }} 
+{{ toYaml .Values.pipeline_cleaner.resources | indent 14 }}
+{{- else }}
+            resources: {}
+{{- end }}            
             env:
               - name: NAMESPACE
                 valueFrom:

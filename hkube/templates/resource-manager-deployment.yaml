@@ -41,9 +41,13 @@ spec:
             periodSeconds: {{ .Values.resource_manager.healthcheck.periodSeconds }}
             timeoutSeconds: {{ .Values.resource_manager.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.resource_manager.healthcheck.failureThreshold }}
-{{- end }}          
+{{- end }}      
+{{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.resource_manager.resources | indent 12 }} 
+{{ toYaml .Values.resource_manager.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}       
           ports:
             - containerPort: {{ index .Values "resource_manager" "env" "metric_port" }}
           env:

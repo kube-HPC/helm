@@ -30,8 +30,12 @@ spec:
       containers:
         - name: simulator
           image: "{{ .Values.global.registry }}{{ .Values.simulator.image.repository }}:{{ .Values.simulator.image.tag }}"
+{{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.simulator.resources | indent 12 }} 
+{{ toYaml .Values.simulator.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}
           ports:
             - containerPort: {{ .Values.simulator.env.metric_port }}
           env:

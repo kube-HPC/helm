@@ -34,6 +34,12 @@ spec:
       containers:
         - name: algorithm-operator
           image: "{{ .Values.global.registry }}{{ index .Values "algorithm_operator" "image" "repository" }}:{{ index .Values "algorithm_operator" "image" "tag" }}"
+{{- if .Values.global.resources_enable }}          
+          resources:
+{{ toYaml .Values.algorithm_operator.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}
 {{- if .Values.algorithm_operator.healthcheck.enabled }}
           livenessProbe:
             httpGet:
@@ -136,6 +142,4 @@ spec:
                   name: s3-secret
                   key: awsEndpointUrl
 {{- end }}              
-            
-          resources:
-{{ toYaml .Values.algorithm_operator.resources | indent 12 }} 
+

@@ -18,9 +18,13 @@ spec:
       - "3600"
     imagePullPolicy: IfNotPresent
     name: busybox
+{{- if .Values.global.resources_enable }}          
     resources:
       limits:
         cpu: 50m
         memory: 250Mi
+{{- else }}
+    resources: {}
+{{- end }}
   terminationGracePeriodSeconds: 5  
   restartPolicy: Always

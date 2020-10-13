@@ -45,9 +45,13 @@ spec:
             periodSeconds: {{ .Values.clean_old_jobs.healthcheck.periodSeconds }}
             timeoutSeconds: {{ .Values.clean_old_jobs.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.clean_old_jobs.healthcheck.failureThreshold }}
-{{- end }}          
+{{- end }}
+{{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.clean_old_jobs.resources | indent 12 }} 
+{{ toYaml .Values.clean_old_jobs.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}     
           env:
             - name: NODE_ENV
               valueFrom:

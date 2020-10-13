@@ -40,9 +40,13 @@ spec:
             periodSeconds: {{ .Values.monitor_server.healthcheck.periodSeconds }}
             timeoutSeconds: {{ .Values.monitor_server.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.monitor_server.healthcheck.failureThreshold }}
-{{- end }}          
+{{- end }}
+{{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.trigger_service.resources | indent 12 }} 
+{{ toYaml .Values.trigger_service.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}
           env:
             - name: NODE_ENV
               valueFrom:

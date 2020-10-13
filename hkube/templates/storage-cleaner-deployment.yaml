@@ -27,8 +27,12 @@ spec:
           containers:
           - name: storage-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "storage_cleaner" "image" "repository" }}:{{ index .Values "storage_cleaner" "image" "tag" }}"
+{{- if .Values.global.resources_enable }}          
             resources:
-{{ toYaml .Values.storage_cleaner.resources | indent 14 }} 
+{{ toYaml .Values.storage_cleaner.resources | indent 14 }}
+{{- else }}
+            resources: {}
+{{- end }}
 {{- if eq .Values.env.default_storage "fs" }}
             volumeMounts:
               - name: storage-volume

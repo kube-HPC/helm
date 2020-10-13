@@ -45,8 +45,12 @@ spec:
             - name: ui
               containerPort: 8384
               protocol: TCP
+{{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.sync_server.resources | indent 12 }} 
+{{ toYaml .Values.sync_server.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}
           volumeMounts:
           - name: hkube-dev-sources
             mountPath: /sources
@@ -60,8 +64,12 @@ spec:
           ports:
           - containerPort: 8080
             name: tunnel
+{{- if .Values.global.resources_enable }}          
           resources:
 {{ toYaml .Values.sync_server.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}
 
 ---
 

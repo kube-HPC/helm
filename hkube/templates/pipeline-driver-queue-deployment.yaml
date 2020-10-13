@@ -28,8 +28,12 @@ spec:
         - name: pipeline-driver-queue
           image: "{{ .Values.global.registry }}{{ index .Values "pipeline_driver_queue" "image" "repository" }}:{{ index .Values "pipeline_driver_queue" "image" "tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+{{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.pipeline_driver_queue.resources | indent 12 }} 
+{{ toYaml .Values.pipeline_driver_queue.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}             
           ports:
             - name: http
               containerPort: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
