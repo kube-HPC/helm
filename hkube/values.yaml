@@ -266,7 +266,7 @@ clean_old_jobs: # +doc-gen:ignore
 cpu-load-algorithm: # +doc-gen:ignore
   image:
     repository: hkube/cpu-load-algorithm
-    tag: v2.0.1
+    tag: v2.0.2
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
@@ -562,4 +562,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.1
-fullSystemVersion: v2.0.2-1603260277096
+fullSystemVersion: v2.0.2-1603262718815
