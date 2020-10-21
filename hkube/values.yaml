@@ -217,7 +217,7 @@ algorithm_queue_svc: # +doc-gen:ignore
 algorunner: # +doc-gen:ignore
   image:
     repository: hkube/algorunner
-    tag: v1.3.7
+    tag: v2.0.1
 api_server: # +doc-gen:ignore
   env:
     base_url_path: /hkube/api-server
@@ -258,7 +258,7 @@ clean_old_jobs: # +doc-gen:ignore
     failureThreshold: 3
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.3.1
+    tag: v2.0.1
   resources:
     requests:
       cpu: 100m
@@ -266,11 +266,11 @@ clean_old_jobs: # +doc-gen:ignore
 cpu-load-algorithm: # +doc-gen:ignore
   image:
     repository: hkube/cpu-load-algorithm
-    tag: v1.3.1
+    tag: v2.0.1
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
-    tag: v1.3.1
+    tag: v2.0.1
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
@@ -285,7 +285,7 @@ etcd_cleaner: # +doc-gen:ignore
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.3.8
+    tag: v2.0.1
   resources:
     requests:
       cpu: 100m
@@ -308,7 +308,7 @@ monitor_server: # +doc-gen:ignore
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v1.3.6
+    tag: v2.0.1
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -322,7 +322,7 @@ pipeline_cleaner: # +doc-gen:ignore
   pattern: '*/5 * * * *'
   image:
     repository: hkube/pipeline-cleaner
-    tag: v1.3.1
+    tag: v2.0.1
   resources:
     requests:
       cpu: 100m
@@ -396,7 +396,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.3.13
+    tag: v2.0.1
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -419,7 +419,7 @@ storage_cleaner:
     result_object_expiration_days: '20'
   image: # +doc-gen:ignore
     repository: hkube/storage-cleaner
-    tag: v1.3.4
+    tag: v2.0.1
   resources: # +doc-gen:ignore
     requests:
       cpu: 100m
@@ -516,7 +516,7 @@ algorithm_builder: # +doc-gen:ignore
 kaniko: # +doc-gen:ignore
   image:
     repository: hkube/kaniko
-    tag: v1.3.1
+    tag: v2.0.1
   resources:
     requests:
       cpu: 100m
@@ -524,7 +524,7 @@ kaniko: # +doc-gen:ignore
 oc_builder: # +doc-gen:ignore
   image:
     repository: hkube/oc-builder
-    tag: v1.3.0
+    tag: v2.0.0
   resources:
     requests:
       cpu: 100m
@@ -532,7 +532,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v1.3.5
+    tag: v2.0.1
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '*/10 * * * *'
@@ -547,7 +547,7 @@ sync_server: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/sync-server
-    tag: v1.3.2
+    tag: v2.0.1
   ingress:
     enabled: true
     path: /hkube/sync
@@ -561,5 +561,5 @@ storage_migration: # +doc-gen:ignore
     source_storage_encoding: bson
   image:
     repository: hkube/storage-migration
-    tag: v1.3.2
-fullSystemVersion: v2.0.1-1603210590172
+    tag: v2.0.1
+fullSystemVersion: v2.0.1-1603257564717
