@@ -4,6 +4,7 @@ helm lint hkube/
 CHART_VERSION=$(git describe --abbrev=0)
 APP_VERSION=$(grep systemversion hkube/values.yaml | awk -F': ' '{print $2}')
 mkdir -p /tmp/helm-charts
+rm -rf /tmp/helm-charts/*
 helm dependency update hkube
 helm package --app-version=${APP_VERSION} --version=${APP_VERSION} -d /tmp/helm-charts hkube
 git stash
