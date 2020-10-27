@@ -5,7 +5,7 @@
 ## TL;DR;
 
 ```console
-$ helm repo add hkube https://hkube.io/helm/dev
+$ helm repo add hkube https://hkube.io/helm
 $ helm repo update
 $ helm install hkube hkube/hkube 
 ```
