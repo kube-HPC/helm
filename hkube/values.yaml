@@ -562,4 +562,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.1
-fullSystemVersion: v2.0.5-1603887913857
+fullSystemVersion: v2.0.5-1603888200834
