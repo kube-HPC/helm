@@ -258,7 +258,7 @@ clean_old_jobs: # +doc-gen:ignore
     failureThreshold: 3
   image:
     repository: hkube/clean-old-jobs
-    tag: v2.0.1
+    tag: v2.0.2
   resources:
     requests:
       cpu: 100m
@@ -270,7 +270,7 @@ cpu-load-algorithm: # +doc-gen:ignore
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
-    tag: v2.0.1
+    tag: v2.0.2
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
@@ -285,7 +285,7 @@ etcd_cleaner: # +doc-gen:ignore
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v2.0.1
+    tag: v2.0.2
   resources:
     requests:
       cpu: 100m
@@ -547,7 +547,7 @@ sync_server: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/sync-server
-    tag: v2.0.1
+    tag: v2.0.2
   ingress:
     enabled: true
     path: /hkube/sync
@@ -561,5 +561,5 @@ storage_migration: # +doc-gen:ignore
     source_storage_encoding: bson
   image:
     repository: hkube/storage-migration
-    tag: v2.0.1
-fullSystemVersion: v2.0.5-1603888692982
+    tag: v2.0.2
+fullSystemVersion: v2.0.5-1603889885881
