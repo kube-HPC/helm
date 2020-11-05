@@ -138,7 +138,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.0.12
+systemversion: v2.0.13
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -227,7 +227,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v2.0.6
+    tag: v2.0.7
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -332,7 +332,7 @@ pipeline_driver: # +doc-gen:ignore
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.0.2
+    tag: v2.0.3
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -396,7 +396,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v2.0.3
+    tag: v2.0.4
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -488,7 +488,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.0.2
+    tag: v2.0.3
   metrics:
     port: 3001
   service:
@@ -562,4 +562,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.12-1604504540446
+fullSystemVersion: v2.0.13-1604574832877
