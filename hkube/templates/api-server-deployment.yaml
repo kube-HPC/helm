@@ -62,6 +62,10 @@ spec:
             - containerPort: {{ index .Values "api_server" "env" "port" }}
               protocol: TCP
           env:
+            - name: HKUBE_BASE_URL # How can I get the full path?
+              value: {{ .Values.global.ingress.prefix }}{{ .Values.api_server.ingress.path }}
+            - name: HKUBE_SYSTEM_VERSION
+              value: {{ .Values.systemversion | quote}}
             - name: METRICS_PORT
               valueFrom:
                 configMapKeyRef:
