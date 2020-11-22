@@ -303,6 +303,8 @@ monitor_server: # +doc-gen:ignore
     metric_port: 30010
     log_external_requests: false
     elasticsearch_service_url: ''
+    elasticsearch_logs_index: 'logstash-*'
+    elasticsearch_logs_doc_type: '_doc'
     logs_view_source: k8s
     jaeger_query_service_host: ''
     jaeger_query_service_port: ''
