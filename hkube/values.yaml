@@ -138,7 +138,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 1.3.151
+systemversion: 1.3.152
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -303,6 +303,8 @@ monitor_server: # +doc-gen:ignore
     metric_port: 30010
     log_external_requests: false
     elasticsearch_service_url: ''
+    elasticsearch_logs_index: 'logstash-*'
+    elasticsearch_logs_doc_type: '_doc'
     logs_view_source: k8s
     jaeger_query_service_host: ''
     jaeger_query_service_port: ''
@@ -508,7 +510,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.77
+    tag: v1.3.78
   resources:
     requests:
       cpu: 100m
@@ -562,4 +564,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.151-1606037662780
+fullSystemVersion: v1.3.152-1606140114745
