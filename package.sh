@@ -8,8 +8,9 @@ mkdir -p /tmp/helm-charts
 helm dependency update hkube
 helm package --app-version=${APP_VERSION} --version=${APP_VERSION} -d /tmp/helm-charts hkube
 git stash
-git checkout gh-pages
-git status
+git remote -v
+git fetch
+git checkout -b gh-pages origin/gh-pages
 # cp /tmp/helm-charts/hkube-${APP_VERSION}.tgz ./dev
 # helm repo index --merge ./dev/index.yaml /tmp/helm-charts/
 # cp /tmp/helm-charts/index.yaml ./dev
