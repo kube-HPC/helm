@@ -26,9 +26,9 @@ jobs:
       - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-      # - run: |
-      #     npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
-      #     echo TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
-      # - run: git push --follow-tags
+      - run: |
+          npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
+          echo TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
+      - run: git push --follow-tags
       - name: chart
         run: ./package.sh 
