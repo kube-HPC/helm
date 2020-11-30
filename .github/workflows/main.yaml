@@ -23,12 +23,20 @@ jobs:
           node-version: 14.x
       # disable lint for now because of https://github.com/helm/helm/issues/8615
       # - run: helm lint hkube/
-      - run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-      - run: |
-          npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
-          echo TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
-      - run: git push --follow-tags
-      - name: chart
-        run: ./package.sh 
+      # - run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      # - run: |
+      #     npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
+      #     echo TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
+      # - run: git push --follow-tags
+      # - name: chart
+      #   run: ./package.sh
+      - name: trigger
+        id: trigger
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/kube-HPC/cd-manager/dispatches
+          event_type: trigger
+        env:
+          GITHUB_TOKEN: '${{ secrets.GH_TOKEN }}'
