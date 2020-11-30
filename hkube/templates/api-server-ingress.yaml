@@ -2,7 +2,11 @@
 {{- $fullName := "api-server" -}}
 {{- $servicePort := index .Values "api_server" "env" "port" -}}
 {{- $ingressPath := index .Values "api_server" "ingress" "path" -}}
+{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
+apiVersion: networking.k8s.io/v1beta1
+{{- else }}
 apiVersion: extensions/v1beta1
+{{- end }}
 kind: Ingress
 metadata:
   name: api-server
