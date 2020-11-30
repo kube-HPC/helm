@@ -19,7 +19,9 @@ git commit -m "update charts"
 git push
 git checkout master
 git stash apply
+echo git add hkube/values.yaml
 git add hkube/values.yaml
+echo git commit -m "update version to ${APP_VERSION} [skip ci]"
 git commit -m "update version to ${APP_VERSION} [skip ci]"
 git pull --no-commit
 git commit -m "merge from master [skip ci]"
