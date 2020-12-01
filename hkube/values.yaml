@@ -237,6 +237,22 @@ api_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
+mvn_registry: # +doc-gen:ignore
+  env:
+    base_url_path: /hkube/mvn_registry
+    port: '8080'
+  image:
+    repository: hkube/maven-registry
+    tag: v2.0.0
+  ingress:
+    enabled: true
+    path: /hkube/mvn_registry
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
 busybox: # +doc-gen:ignore
   image:
     repository: busybox

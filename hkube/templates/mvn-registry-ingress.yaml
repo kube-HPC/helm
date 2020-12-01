@@ -1,0 +1,47 @@
+{{- if index .Values "mvn_registry" "ingress" "enabled" -}}
+{{- $fullName := "mvn-registry" -}}
+{{- $servicePort := index .Values "mvn_registry" "env" "port" -}}
+{{- $ingressPath := index .Values "mvn_registry" "ingress" "path" -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mvn-registry
+  annotations:
+{{- if .Values.global.ingress.use_regex }}
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+{{- else }}
+    nginx.ingress.kubernetes.io/rewrite-target: /
+{{- end }}
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}    
+  labels:
+    app: mvn-registry
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: {{ $fullName }}-tls-secret
+{{- end }}
+  rules:
+    - http:
+        paths:
+{{- if .Values.global.ingress.use_regex }}
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
+{{- else }}
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
+{{- end }}
+          backend:
+            serviceName: {{ $fullName }}
+            servicePort: {{ $servicePort }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}
+{{- end }}

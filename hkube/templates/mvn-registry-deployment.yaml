@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvn-registry
+  labels:
+    app: mvn-registry
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mvn-registry
+      release: mvn-registry
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/mvn-registry-cm.yaml") . | sha256sum }}
+      labels:
+        app: mvn-registry
+        release: mvn-registry
+        group: {{ .Values.labels.group.value }}
+    spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+       containers:
+        - name: mvn-registry
+          image: "{{ .Values.global.registry }}{{ index .Values "mvn_registry" "image" "repository" }}:{{ index .Values "mvn_registry" "image" "tag" }}"
+          imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
+{{- if .Values.global.resources_enable }}          
+          resources:
+{{ toYaml .Values.mvn_registry.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}
+          ports:
+            - containerPort: {{ index .Values "mvn_registry" "env" "port" }}
+              protocol: TCP
+          env:
+            - name: PROXY_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mvn-registry-configmap
+                  key: BASE_URL_PATH
