@@ -227,7 +227,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v2.0.12
+    tag: v2.0.13
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -334,7 +334,7 @@ pipeline_driver: # +doc-gen:ignore
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.0.8
+    tag: v2.0.9
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -564,4 +564,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.23-1606735301472
+fullSystemVersion: v2.0.23-1606814670663
