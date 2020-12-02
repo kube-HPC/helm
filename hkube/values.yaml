@@ -270,7 +270,7 @@ cpu-load-algorithm: # +doc-gen:ignore
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
-    tag: v2.0.2
+    tag: v2.0.3
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
@@ -534,7 +534,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v2.0.1
+    tag: v2.0.2
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '*/10 * * * *'
@@ -564,4 +564,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.26-1606908627426
+fullSystemVersion: v2.0.26-1606920142385
