@@ -1,9 +1,0 @@
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: api-server-configmap
-data:
-  BASE_URL_PATH: {{index .Values "api_server" "env" "base_url_path" | quote}}
-  PORT: {{index .Values "api_server" "env" "port" | quote}}
-

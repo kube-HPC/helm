@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mvn-registry
+  name: artifacts-registry
   labels:
-    app: mvn-registry
+    app: artifacts-registry
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
@@ -12,15 +12,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mvn-registry
-      release: mvn-registry
+      app: artifacts-registry
+      release: artifacts-registry
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/configmaps/mvn-registry-cm.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/artifacts-registry-cm.yaml") . | sha256sum }}
       labels:
-        app: mvn-registry
-        release: mvn-registry
+        app: artifacts-registry
+        release: artifacts-registry
         group: {{ .Values.labels.group.value }}
     spec:
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
@@ -32,21 +32,21 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
        containers:
-        - name: mvn-registry
-          image: "{{ .Values.global.registry }}{{ index .Values "mvn_registry" "image" "repository" }}:{{ index .Values "mvn_registry" "image" "tag" }}"
+        - name: artifacts-registry
+          image: "{{ .Values.global.registry }}{{ index .Values "artifacts_registry" "image" "repository" }}:{{ index .Values "artifacts_registry" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
 {{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.mvn_registry.resources | indent 12 }}
+{{ toYaml .Values.artifacts_registry.resources | indent 12 }}
 {{- else }}
           resources: {}
 {{- end }}
           ports:
-            - containerPort: {{ index .Values "mvn_registry" "env" "port" }}
+            - containerPort: {{ index .Values "artifacts_registry" "env" "port" }}
               protocol: TCP
           env:
-            - name: PROXY_BASE_URL
+            - name: NEXUS_CONTEXT
               valueFrom:
                 configMapKeyRef:
-                  name: mvn-registry-configmap
-                  key: BASE_URL_PATH
+                  name: artifacts-registry-configmap
+                  key: NEXUS_CONTEXT

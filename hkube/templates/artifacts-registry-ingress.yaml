@@ -1,11 +1,11 @@
-{{- if index .Values "mvn_registry" "ingress" "enabled" -}}
-{{- $fullName := "mvn-registry" -}}
-{{- $servicePort := index .Values "mvn_registry" "env" "port" -}}
-{{- $ingressPath := index .Values "mvn_registry" "ingress" "path" -}}
+{{- if index .Values "artifacts_registry" "ingress" "enabled" -}}
+{{- $fullName := "artifacts-registry" -}}
+{{- $servicePort := index .Values "artifacts_registry" "env" "port" -}}
+{{- $ingressPath := index .Values "artifacts_registry" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: mvn-registry
+  name: artifacts-registry
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
@@ -13,7 +13,7 @@ metadata:
     kubernetes.io/tls-acme: "true"
 {{- end }}    
   labels:
-    app: mvn-registry
+    app: artifacts-registry
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}

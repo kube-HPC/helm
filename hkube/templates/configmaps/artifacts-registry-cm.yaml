@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: artifacts-registry-configmap
+data:
+  NEXUS_CONTEXT: {{index .Values "artifacts-registry" "ingress" "path" | quote}}
+  PORT: {{index .Values "api_server" "env" "port" | quote}}
+

@@ -24,9 +24,9 @@ data:
                         "image": "{{ .Values.api_server.image.repository }}"
                   },
                   {
-                        "project": "mvn-registry",
-                        "tag": "{{ index .Values "mvn_registry" "image" "tag" }}",
-                        "image": "{{ .Values.mvn_registry.image.repository }}"
+                        "project": "artifacts-registry",
+                        "tag": "{{ index .Values "artifacts_registry" "image" "tag" }}",
+                        "image": "{{ .Values.artifacts_registry.image.repository }}"
                   },                  
                   {
                         "project": "worker",
