@@ -138,7 +138,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.0.23-internal-artifactory.405243345
+systemversion: 2.0.27-internal-artifactory.405360123
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -510,7 +510,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.0.11-internal-artifactory-405243345
+    tag: v2.0.13-internal-artifactory-405360123
   resources:
     requests:
       cpu: 100m
