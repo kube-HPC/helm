@@ -4,6 +4,6 @@ kind: ConfigMap
 metadata:
   name: artifacts-registry-configmap
 data:
-  NEXUS_CONTEXT: {{index .Values "artifacts-registry" "env" "context" | quote}}
-  PORT: {{index .Values "api_server" "env" "port" | quote}}
+  NEXUS_CONTEXT:  {{ .Values.global.ingress.prefix }}{{index .Values "artifacts_registry" "env" "context" |trimPrefix "/" | quote}}
+  PORT: {{index .Values "artifacts_registry" "env" "port" | quote}}
 

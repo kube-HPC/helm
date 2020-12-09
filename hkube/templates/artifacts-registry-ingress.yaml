@@ -28,11 +28,7 @@ spec:
   rules:
     - http:
         paths:
-{{- if .Values.global.ingress.use_regex }}
-        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
-{{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
-{{- end }}
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}

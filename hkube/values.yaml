@@ -239,8 +239,7 @@ api_server: # +doc-gen:ignore
       memory: 512Mi
 artifacts_registry: # +doc-gen:ignore
   env:
-    port: '8081',
-    context: hkube/artifacts-registry
+    port: '8081'
   image:
     repository: hkube/artifacts-registry
     tag: v2.0.0
