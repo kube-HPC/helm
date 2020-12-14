@@ -1,0 +1,38 @@
+{{- if index .Values "artifacts_registry" "ingress" "enabled" -}}
+{{- $fullName := "artifacts-registry" -}}
+{{- $servicePort := index .Values "artifacts_registry" "env" "port" -}}
+{{- $ingressPath := index .Values "artifacts_registry" "ingress" "path" -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: artifacts-registry
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}    
+  labels:
+    app: artifacts-registry
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: {{ $fullName }}-tls-secret
+{{- end }}
+  rules:
+    - http:
+        paths:
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
+          backend:
+            serviceName: {{ $fullName }}
+            servicePort: {{ $servicePort }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}
+{{- end }}

@@ -237,6 +237,21 @@ api_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
+artifacts_registry: # +doc-gen:ignore
+  env:
+    port: '8081'
+  image:
+    repository: hkube/artifacts-registry
+    tag: v2.0.0
+  ingress:
+    enabled: true
+    path: /hkube/artifacts-registry
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
 busybox: # +doc-gen:ignore
   image:
     repository: busybox
