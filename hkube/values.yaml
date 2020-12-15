@@ -138,7 +138,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.0.34-fix-sync-nodemon-files.422779031
+systemversion: 2.0.34-fix-sync-nodemon-files.423506331
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -525,7 +525,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.0.18-fix-sync-nodemon-files-422779031
+    tag: v2.0.18-fix-sync-nodemon-files-423506331
   resources:
     requests:
       cpu: 100m
