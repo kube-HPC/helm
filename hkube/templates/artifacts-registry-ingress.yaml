@@ -2,7 +2,11 @@
 {{- $fullName := "artifacts-registry" -}}
 {{- $servicePort := index .Values "artifacts_registry" "env" "port" -}}
 {{- $ingressPath := index .Values "artifacts_registry" "ingress" "path" -}}
+{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
+apiVersion: networking.k8s.io/v1beta1
+{{- else }}
 apiVersion: extensions/v1beta1
+{{- end }}
 kind: Ingress
 metadata:
   name: artifacts-registry
