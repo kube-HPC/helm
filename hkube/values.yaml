@@ -124,6 +124,8 @@ jaeger:
 nginx-ingress:
   # install nginx-ingress-controller with hkube
   enable: false
+mongodb:
+  enable: true
 minio:
   enable: true
   accessKey: hkubeminiokey
