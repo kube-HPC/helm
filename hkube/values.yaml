@@ -126,6 +126,8 @@ nginx-ingress:
   enable: false
 mongodb:
   enable: true
+  auth:
+    rootPassword: ehtyTJj4mR
 minio:
   enable: true
   accessKey: hkubeminiokey
