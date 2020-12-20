@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: artifacts-registry
+  labels:
+    app: artifacts-registry
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: artifacts-registry
+      release: artifacts-registry
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/artifacts-registry-cm.yaml") . | sha256sum }}
+      labels:
+        app: artifacts-registry
+        release: artifacts-registry
+        group: {{ .Values.labels.group.value }}
+    spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}     
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+       containers:
+        - name: artifacts-registry
+          image: "{{ .Values.global.registry }}{{ index .Values "artifacts_registry" "image" "repository" }}:{{ index .Values "artifacts_registry" "image" "tag" }}"
+          imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
+{{- if .Values.global.resources_enable }}          
+          resources:
+{{ toYaml .Values.artifacts_registry.resources | indent 12 }}
+{{- else }}
+          resources: {}
+{{- end }}
+          ports:
+            - containerPort: {{ index .Values "artifacts_registry" "env" "port" }}
+              protocol: TCP
+          env:
+            - name: NEXUS_CONTEXT
+              valueFrom:
+                configMapKeyRef:
+                  name: artifacts-registry-configmap
+                  key: NEXUS_CONTEXT

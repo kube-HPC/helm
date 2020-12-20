@@ -99,6 +99,10 @@ spec:
               value: {{ .Values.monitor_server.env.log_external_requests | quote}}
             - name: ELASTICSEARCH_SERVICE_URL
               value: {{ .Values.monitor_server.env.elasticsearch_service_url | quote}}
+            - name: ELASTICSEARCH_LOGS_INDEX
+              value: {{ .Values.monitor_server.env.elasticsearch_logs_index | quote}}
+            - name: ELASTICSEARCH_LOGS_DOC_TYPE
+              value: {{ .Values.monitor_server.env.elasticsearch_logs_doc_type | quote}}
             - name: LOGS_VIEW_SOURCE
               value: {{ .Values.monitor_server.env.logs_view_source | quote}}
           ports:

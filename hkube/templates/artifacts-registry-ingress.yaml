@@ -1,28 +1,19 @@
-{{- if index .Values "api_server" "ingress" "enabled" -}}
-{{- $fullName := "api-server" -}}
-{{- $servicePort := index .Values "api_server" "env" "port" -}}
-{{- $ingressPath := index .Values "api_server" "ingress" "path" -}}
-{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else }}
+{{- if index .Values "artifacts_registry" "ingress" "enabled" -}}
+{{- $fullName := "artifacts-registry" -}}
+{{- $servicePort := index .Values "artifacts_registry" "env" "port" -}}
+{{- $ingressPath := index .Values "artifacts_registry" "ingress" "path" -}}
 apiVersion: extensions/v1beta1
-{{- end }}
 kind: Ingress
 metadata:
-  name: api-server
+  name: artifacts-registry
   annotations:
-{{- if .Values.global.ingress.use_regex }}
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-{{- else }}
-    nginx.ingress.kubernetes.io/rewrite-target: /
-{{- end }}
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }}    
   labels:
-    app: api-server
+    app: artifacts-registry
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
@@ -37,11 +28,7 @@ spec:
   rules:
     - http:
         paths:
-{{- if .Values.global.ingress.use_regex }}
-        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
-{{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
-{{- end }}
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}

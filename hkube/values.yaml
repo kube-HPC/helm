@@ -138,7 +138,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.0.19
+systemversion: v2.0.35
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -184,7 +184,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.0.1
+    tag: v2.0.2
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -208,7 +208,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.0.1
+    tag: v2.0.2
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -217,7 +217,7 @@ algorithm_queue_svc: # +doc-gen:ignore
 algorunner: # +doc-gen:ignore
   image:
     repository: hkube/algorunner
-    tag: v2.0.2
+    tag: v2.0.4
 api_server: # +doc-gen:ignore
   env:
     base_url_path: /hkube/api-server
@@ -227,7 +227,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v2.0.10
+    tag: v2.0.15
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -237,6 +237,21 @@ api_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
+artifacts_registry: # +doc-gen:ignore
+  env:
+    port: '8081'
+  image:
+    repository: hkube/artifacts-registry
+    tag: v2.0.0
+  ingress:
+    enabled: true
+    path: /hkube/artifacts-registry
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
 busybox: # +doc-gen:ignore
   image:
     repository: busybox
@@ -258,7 +273,7 @@ clean_old_jobs: # +doc-gen:ignore
     failureThreshold: 3
   image:
     repository: hkube/clean-old-jobs
-    tag: v2.0.2
+    tag: v2.0.4
   resources:
     requests:
       cpu: 100m
@@ -270,7 +285,7 @@ cpu-load-algorithm: # +doc-gen:ignore
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
-    tag: v2.0.2
+    tag: v2.0.3
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
@@ -285,7 +300,7 @@ etcd_cleaner: # +doc-gen:ignore
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v2.0.2
+    tag: v2.0.3
   resources:
     requests:
       cpu: 100m
@@ -303,12 +318,14 @@ monitor_server: # +doc-gen:ignore
     metric_port: 30010
     log_external_requests: false
     elasticsearch_service_url: ''
+    elasticsearch_logs_index: 'logstash-*'
+    elasticsearch_logs_doc_type: '_doc'
     logs_view_source: k8s
     jaeger_query_service_host: ''
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v2.0.2
+    tag: v2.0.3
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -322,7 +339,7 @@ pipeline_cleaner: # +doc-gen:ignore
   pattern: '*/5 * * * *'
   image:
     repository: hkube/pipeline-cleaner
-    tag: v2.0.2
+    tag: v2.0.4
   resources:
     requests:
       cpu: 100m
@@ -332,7 +349,7 @@ pipeline_driver: # +doc-gen:ignore
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.0.5
+    tag: v2.0.11
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -342,7 +359,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.0.1
+    tag: v2.0.2
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -373,7 +390,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.0.1
+    tag: v2.0.2
   service:
     type: ClusterIP
   resources:
@@ -396,7 +413,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v2.0.6
+    tag: v2.0.9
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -419,7 +436,7 @@ storage_cleaner:
     result_object_expiration_days: '20'
   image: # +doc-gen:ignore
     repository: hkube/storage-cleaner
-    tag: v2.0.2
+    tag: v2.0.3
   resources: # +doc-gen:ignore
     requests:
       cpu: 100m
@@ -461,7 +478,7 @@ task_executor:
     has_node_list: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.0.3
+    tag: v2.0.4
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -476,7 +493,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v2.0.1
+    tag: v2.0.2
   service:
     type: ClusterIP
   resources:
@@ -488,7 +505,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.0.4
+    tag: v2.0.9
   metrics:
     port: 3001
   service:
@@ -498,7 +515,7 @@ caching_service: # +doc-gen:ignore
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v2.0.1
+    tag: v2.0.2
   service:
     type: ClusterIP
   resources:
@@ -508,7 +525,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.0.9
+    tag: v2.0.19
   resources:
     requests:
       cpu: 100m
@@ -516,7 +533,7 @@ algorithm_builder: # +doc-gen:ignore
 kaniko: # +doc-gen:ignore
   image:
     repository: hkube/kaniko
-    tag: v2.0.2
+    tag: v2.0.3
   resources:
     requests:
       cpu: 100m
@@ -532,7 +549,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v2.0.1
+    tag: v2.0.2
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '*/10 * * * *'
@@ -547,7 +564,7 @@ sync_server: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/sync-server
-    tag: v2.0.2
+    tag: v2.0.3
   ingress:
     enabled: true
     path: /hkube/sync
@@ -562,4 +579,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.19-1605534264220
+fullSystemVersion: v2.0.35-1608218842951
