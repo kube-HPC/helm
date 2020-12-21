@@ -126,8 +126,12 @@ nginx-ingress:
   enable: false
 mongodb:
   enable: true
+  useStatefulSet: true
   auth:
     rootPassword: ehtyTJj4mR
+    username: hkube
+    password: y6ypm4sPeq
+    database: hkube
 minio:
   enable: true
   accessKey: hkubeminiokey

@@ -2,7 +2,7 @@
 {{- $portNumber := int .Values.service.port }}
 {{- $fullname := include "mongodb.fullname" . }}
 {{- $releaseNamespace := include "mongodb.namespace" . }}
-{{- $clusterDomain := .Values.clusterDomain }}
+{{- $clusterDomain := .Values.global.clusterName }}
 {{- $loadBalancerIPListLength := len .Values.externalAccess.service.loadBalancerIPs }}
 
 {{- if and (eq .Values.architecture "replicaset") .Values.externalAccess.enabled (not .Values.externalAccess.autoDiscovery.enabled) (not (eq $replicaCount $loadBalancerIPListLength )) (eq .Values.externalAccess.service.type "LoadBalancer") }}
@@ -62,7 +62,7 @@ MongoDB can be accessed via port {{ .Values.service.port }} on the following DNS
 
 {{- else }}
 
-    {{ $fullname }}.{{ $releaseNamespace }}.svc.{{ .Values.clusterDomain }}
+    {{ $fullname }}.{{ $releaseNamespace }}.svc.{{ .Values.global.clusterName }}
 
 {{- end }}
 

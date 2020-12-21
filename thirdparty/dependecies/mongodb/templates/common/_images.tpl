@@ -8,8 +8,8 @@ Return the proper image name
 {{- $repositoryName := .imageRoot.repository -}}
 {{- $tag := .imageRoot.tag | toString -}}
 {{- if .global }}
-    {{- if .global.imageRegistry }}
-     {{- $registryName = .global.imageRegistry -}}
+    {{- if .global.registry }}
+     {{- $registryName = .global.registry | trimSuffix "/" -}}
     {{- end -}}
 {{- end -}}
 {{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
