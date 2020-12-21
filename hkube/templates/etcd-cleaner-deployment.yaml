@@ -27,11 +27,16 @@ spec:
             resources: {}
 {{- end }}   
             env:
-            - name: "OBJECT_EXPIRATION_DAYS"
+            - name: "ETCD_EXPIRATION_DAYS"
               valueFrom:
                 configMapKeyRef:
                   name: etcd-cleaner-configmap
-                  key: OBJECT_EXPIRATION_DAYS
+                  key: ETCD_EXPIRATION_DAYS
+            - name: "REDIS_EXPIRATION_DAYS"
+              valueFrom:
+                configMapKeyRef:
+                  name: etcd-cleaner-configmap
+                  key: REDIS_EXPIRATION_DAYS
             - name: NAMESPACE
               valueFrom:
                 fieldRef:

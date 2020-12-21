@@ -4,4 +4,5 @@ kind: ConfigMap
 metadata:
   name: etcd-cleaner-configmap
 data:
-  OBJECT_EXPIRATION_DAYS: "{{index .Values "etcd_cleaner" "env" "object_expiration_days"}}"
+  ETCD_EXPIRATION_DAYS: "{{index .Values "etcd_cleaner" "env" "etcd_expiration_days"}}"
+  REDIS_EXPIRATION_DAYS: "{{index .Values "etcd_cleaner" "env" "redis_expiration_days"}}"
