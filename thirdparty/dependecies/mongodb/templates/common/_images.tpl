@@ -26,6 +26,9 @@ Return the proper Docker Image Registry Secret Names
     {{- range .global.imagePullSecrets -}}
       {{- $pullSecrets = append $pullSecrets . -}}
     {{- end -}}
+    {{- if or .global.registry_password .global.image_pull_secret.use_existing -}}
+      {{- $pullSecrets = append $pullSecrets .global.image_pull_secret.name -}}
+    {{- end -}}
   {{- end -}}
 
   {{- range .images -}}

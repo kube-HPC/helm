@@ -31,7 +31,7 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-       containers:
+      containers:
         - name: artifacts-registry
           image: "{{ .Values.global.registry }}{{ index .Values "artifacts_registry" "image" "repository" }}:{{ index .Values "artifacts_registry" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}

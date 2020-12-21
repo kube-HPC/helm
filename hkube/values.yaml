@@ -131,7 +131,7 @@ mongodb:
     rootPassword: ehtyTJj4mR
     username: hkube
     password: y6ypm4sPeq
-    database: hkube
+    database: admin
 minio:
   enable: true
   accessKey: hkubeminiokey
