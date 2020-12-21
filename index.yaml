@@ -949,6 +949,35 @@ entries:
     urls:
     - minio-5.0.23.tgz
     version: 5.0.23
+  mongodb:
+  - annotations:
+      category: Database
+    apiVersion: v2
+    appVersion: 4.4.1
+    created: "2020-12-21T10:23:54.363045216+02:00"
+    description: NoSQL document-oriented database that stores JSON-like documents
+      with dynamic schemas, simplifying the integration of data in content-driven
+      applications.
+    digest: bde505b1940327e5aa17396c7c9624296adb8c886b930d3f674abc2bd9ee3b70
+    home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
+    icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
+    keywords:
+    - mongodb
+    - database
+    - nosql
+    - cluster
+    - replicaset
+    - replication
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    name: mongodb
+    sources:
+    - https://github.com/bitnami/bitnami-docker-mongodb
+    - https://mongodb.org
+    urls:
+    - mongodb-10.0.1000.tgz
+    version: 10.0.1000
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
@@ -1191,4 +1220,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2020-11-23T16:29:38.766478437+02:00"
+generated: "2020-12-21T10:23:54.359847036+02:00"
