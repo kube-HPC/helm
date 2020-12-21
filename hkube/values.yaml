@@ -129,9 +129,8 @@ mongodb:
   useStatefulSet: true
   auth:
     rootPassword: ehtyTJj4mR
-    username: hkube
-    password: y6ypm4sPeq
-    database: admin
+    user_name: root
+    databaseName: hkube
 minio:
   enable: true
   accessKey: hkubeminiokey
@@ -334,7 +333,7 @@ monitor_server: # +doc-gen:ignore
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v2.0.3
+    tag: v2.0.3-a
   ingress:
     enabled: true
     path: /hkube/monitor-server
