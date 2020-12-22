@@ -3,7 +3,7 @@ entries:
   hkube:
   - apiVersion: v1
     appVersion: v2.0.35
-    created: "2020-12-20T12:49:30.460498418Z"
+    created: "2020-12-22T10:10:13.9858712Z"
     dependencies:
     - condition: etcd.enable
       name: etcd
@@ -29,11 +29,15 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
+    - condition: gitea.enable
+      name: gitea
+      repository: http://hkube.io/helm/
+      version: 2.1.3000
     description: Open source project for HPC over kubernetes Hkube is a cloud native
       open source framework to run distributed pipeline of algorithms built on Kubernetes.
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
       utilizing the available resources, based on user priorities and AI heuristics.
-    digest: 4b4613da2fe2ae8bae7c7ad051629b52ad6ba9a1c45f46502ffd648737ef9548
+    digest: c28e09371d2c509451fd932aa4ca31203e1ff905885bb3faffd93a6dfea227ef
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
     maintainers:
@@ -8103,4 +8107,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: "2020-12-20T12:49:30.433356213Z"
+generated: "2020-12-22T10:10:13.957718342Z"
