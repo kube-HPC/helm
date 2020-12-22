@@ -22,7 +22,10 @@ spec:
         {{- end }}
       {{- end }}
     spec:
-{{- include "memcached.imagePullSecrets" . | indent 6 }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}
       {{- if .Values.affinity }}
       affinity: {{- include "memcached.tplValue" (dict "value" .Values.affinity "context" $) | nindent 8 }}
       {{- end }}

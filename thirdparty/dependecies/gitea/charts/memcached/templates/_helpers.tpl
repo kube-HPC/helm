@@ -84,8 +84,9 @@ but Helm 2.9 and 2.10 doesn't support it, so we need to implement this if-else l
 Also, we can't use a single if because lazy evaluation is not an option
 */}}
 {{- if .Values.global }}
-    {{- if .Values.global.registry }}
-        {{- printf "%s/%s:%s" .Values.global.registry $repositoryName $tag -}}
+    {{- if .Values.global.imageRegistry }}
+        {{- $trimmed := .Values.global.registry | trimSuffix "/" -}}
+        {{- printf "%s/%s:%s" $trimmed $repositoryName $tag -}}
     {{- else -}}
         {{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
     {{- end -}}

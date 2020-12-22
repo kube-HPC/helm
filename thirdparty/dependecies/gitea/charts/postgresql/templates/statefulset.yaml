@@ -42,7 +42,10 @@ spec:
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}
-{{- include "postgresql.imagePullSecrets" . | indent 6 }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      imagePullSecrets:
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}
       {{- if .Values.master.nodeSelector }}
       nodeSelector: {{- toYaml .Values.master.nodeSelector | nindent 8 }}
       {{- end }}

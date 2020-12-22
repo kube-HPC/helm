@@ -20,10 +20,10 @@ spec:
       labels:
         {{- include "gitea.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}  
       securityContext:
         fsGroup: 1000
       initContainers:

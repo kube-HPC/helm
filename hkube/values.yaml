@@ -135,13 +135,14 @@ minio:
     create: false
 gitea:
   enable: true
-  config:
-    repository:
-      ENABLE_PUSH_CREATE_USER: true
-  admin:
-    username: hkube
-    password: 123456
-    email: "hkube@hkube.io"
+  gitea:
+    config:
+      repository:
+        ENABLE_PUSH_CREATE_USER: true
+    admin:
+      username: hkube
+      password: 123456
+      email: "hkube@hkube.io"
 
 metrics:
   serviceMonitorSelector:

@@ -68,7 +68,8 @@ Also, we can't use a single if because lazy evaluation is not an option
 */}}
 {{- if .Values.global }}
     {{- if .Values.global.registry }}
-        {{- printf "%s/%s:%s" .Values.global.registry $repositoryName $tag -}}
+        {{- $trimmed := .Values.global.registry | trimSuffix "/" -}}
+        {{- printf "%s/%s:%s" $trimmed $repositoryName $tag -}}
     {{- else -}}
         {{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
     {{- end -}}
