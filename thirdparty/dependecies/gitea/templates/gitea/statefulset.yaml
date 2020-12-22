@@ -28,7 +28,7 @@ spec:
         fsGroup: 1000
       initContainers:
         - name: init
-          image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
+          image: "{{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.version }}"
           command: ["/usr/sbin/init_gitea.sh"]
           volumeMounts:
             - name: init
@@ -40,7 +40,7 @@ spec:
       terminationGracePeriodSeconds: {{ .Values.statefulset.terminationGracePeriodSeconds }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
+          image: "{{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.version }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             # SSH Port values have to be set here as well for openssh configuration

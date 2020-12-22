@@ -9,7 +9,7 @@ metadata:
 spec:
   containers:
     - name: wget
-      image: busybox
+      image: {{ .Values.global.registry }}busybox
       command: ['wget']
       args:  ['{{ include "gitea.fullname" . }}-http:{{ .Values.service.http.port }}']
   restartPolicy: Never
