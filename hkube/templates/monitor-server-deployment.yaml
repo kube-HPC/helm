@@ -105,6 +105,23 @@ spec:
               value: {{ .Values.monitor_server.env.elasticsearch_logs_doc_type | quote}}
             - name: LOGS_VIEW_SOURCE
               value: {{ .Values.monitor_server.env.logs_view_source | quote}}
+{{- if .Values.mongodb.enable }}
+            - name: MONGODB_SERVICE_USER_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: mongodb-username
+            - name: MONGODB_SERVICE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: mongodb-password
+            - name: MONGODB_DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: mongodb-database
+{{- end }}              
           ports:
             - containerPort: 30010
           volumeMounts:

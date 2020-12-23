@@ -124,6 +124,13 @@ jaeger:
 nginx-ingress:
   # install nginx-ingress-controller with hkube
   enable: false
+mongodb:
+  enable: true
+  useStatefulSet: true
+  auth:
+    rootPassword: ehtyTJj4mR
+    user_name: root
+    databaseName: hkube
 minio:
   enable: true
   accessKey: hkubeminiokey
@@ -308,7 +315,8 @@ delete_deployment_and_jobs: # +doc-gen:ignore
 etcd_cleaner: # +doc-gen:ignore
   pattern: 0 0 * * *
   env:
-    object_expiration_days: '5'
+    etcd_expiration_days: "1"
+    redis_expiration_days: "5"
   image:
     repository: hkube/etcd-cleaner
     tag: v2.0.3
