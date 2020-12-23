@@ -140,6 +140,17 @@ minio:
     storageClass: ''
   serviceAccount: # +doc-gen:ignore
     create: false
+gitea:
+  enable: true
+  gitea:
+    config:
+      repository:
+        ENABLE_PUSH_CREATE_USER: true
+    admin:
+      username: hkube
+      password: 123456
+      email: "hkube@hkube.io"
+
 metrics:
   serviceMonitorSelector:
     release: metrics
