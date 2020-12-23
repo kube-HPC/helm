@@ -145,7 +145,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.0.35-db-migration.435578891
+systemversion: v2.0.35
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -191,7 +191,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.0.2-db_migration-435578891
+    tag: v2.0.2
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -215,7 +215,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.0.2-db_migration-435578891
+    tag: v2.0.2
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -234,7 +234,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v2.0.15-db_migration-435578891
+    tag: v2.0.15
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -333,7 +333,7 @@ monitor_server: # +doc-gen:ignore
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v2.0.3-a
+    tag: v2.0.3
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -357,7 +357,7 @@ pipeline_driver: # +doc-gen:ignore
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.0.11-db_migration-435578891
+    tag: v2.0.11
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -367,7 +367,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.0.2-db_migration-435578891
+    tag: v2.0.2
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -398,7 +398,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.0.2-db_migration-435578891
+    tag: v2.0.2
   service:
     type: ClusterIP
   resources:
@@ -486,7 +486,7 @@ task_executor:
     has_node_list: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.0.4-db_migration-435578891
+    tag: v2.0.4
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -501,7 +501,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v2.0.2-db_migration-435578891
+    tag: v2.0.2
   service:
     type: ClusterIP
   resources:
@@ -513,7 +513,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.0.9-db_migration-435578891
+    tag: v2.0.9
   metrics:
     port: 3001
   service:
@@ -523,7 +523,7 @@ caching_service: # +doc-gen:ignore
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v2.0.2-db_migration-435578891
+    tag: v2.0.2
   service:
     type: ClusterIP
   resources:
@@ -533,7 +533,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.0.19-db_migration-435578891
+    tag: v2.0.19
   resources:
     requests:
       cpu: 100m
