@@ -2,6 +2,60 @@ apiVersion: v1
 entries:
   hkube:
   - apiVersion: v1
+    appVersion: v2.0.39
+    created: "2020-12-27T12:19:01.087998304Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: http://hkube.io/helm/
+      version: 10.0.1000
+    - condition: gitea.enable
+      name: gitea
+      repository: http://hkube.io/helm/
+      version: 2.1.3000
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: fda57387eb3777234344cce254b7272f39a79e596cf5e127484d1cd114796569
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.0.39.tgz
+    version: v2.0.39
+  - apiVersion: v1
     appVersion: v2.0.38
     created: "2020-12-24T11:04:46.255280074Z"
     dependencies:
@@ -8273,4 +8327,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: "2020-12-24T11:04:46.216696576Z"
+generated: "2020-12-27T12:19:01.057163525Z"
