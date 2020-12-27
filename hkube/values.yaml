@@ -156,7 +156,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.0.38
+systemversion: 2.0.37-fix-debug-worker.446887038
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -497,7 +497,7 @@ task_executor:
     has_node_list: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.0.5
+    tag: v2.0.5-fix-debug-worker-446887038
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
