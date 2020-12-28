@@ -34,6 +34,10 @@ global:
         name: hkube-dev-sources
         capacity: 10Gi
         storage_class: ''
+      datasource_pvc:
+        name: hkube-datasource
+        capacity: 10Gi
+        storage_class: ''
       base_directory: /hkubedata
     s3:
       # s3 access and secret key. If using internal minio, must match minio.accessKey and secretKey
@@ -579,6 +583,15 @@ etcd_defrag: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
+datasources_service:
+  enabled: false
+  image:
+    repository: hkube/datasources-service
+    tag: v2.0.0
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
 sync_server: # +doc-gen:ignore
   enabled: true
   image:
