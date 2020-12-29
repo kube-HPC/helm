@@ -150,6 +150,11 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: INGRESS_PREFIX
+            - name: STORAGE_RESULTS_THRESHOLD
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: STORAGE_RESULTS_THRESHOLD
 {{- if .Values.mongodb.enable }}
             - name: MONGODB_SERVICE_USER_NAME
               valueFrom:
