@@ -973,7 +973,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(\nmax(kube_pod_labels{label_algorithm_name!~\"\"}) by (label_algorithm_name, pod)\n                   * on(pod)\n                   group_right(label_algorithm_name)\n                   label_replace(\n                       sum by(pod_name) (\n                           rate(container_cpu_usage_seconds_total{container_name=\"algorunner\"}[5m])\n                       ), \"pod\", \"$1\", \"pod_name\", \"(.+)\")\n                   ) by (label_algorithm_name)",
+          "expr": "sum(\nmax(kube_pod_labels{label_algorithm_name!~\"\"}) by (label_algorithm_name, pod)\n                   * on(pod)\n                   group_right(label_algorithm_name)\n                       sum by(pod) (\n                           rate(container_cpu_usage_seconds_total{container=\"algorunner\"}[5m])\n                       )\n                   ) by (label_algorithm_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1059,7 +1059,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(\nmax(kube_pod_labels{label_algorithm_name!~\"\"}) by (label_algorithm_name, pod)\n                   * on(pod)\n                   group_right(label_algorithm_name)\n                   label_replace(\n                       sum by(pod_name) (\n                           container_memory_working_set_bytes\n                       ), \"pod\", \"$1\", \"pod_name\", \"(.+)\")\n                   ) by (label_algorithm_name) / 1000",
+          "expr": "sum(\nmax(kube_pod_labels{label_algorithm_name!~\"\"}) by (label_algorithm_name, pod)\n                   * on(pod)\n                   group_right(label_algorithm_name)\n                       sum by(pod) (\n                           container_memory_working_set_bytes\n                       )\n                   ) by (label_algorithm_name) / 1000",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
