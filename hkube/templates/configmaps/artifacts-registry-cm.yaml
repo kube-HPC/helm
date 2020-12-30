@@ -1,0 +1,11 @@
+---
+{{- $path := .Values.artifacts_registry.ingress.path |trimAll "/"}}
+{{- $prefix := .Values.global.ingress.prefix |trimAll "/" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: artifacts-registry-configmap
+data:
+  NEXUS_CONTEXT: {{ printf "%s/%s" $prefix $path | trimPrefix "/" | quote}}
+  PORT: {{ .Values.artifacts_registry.env.port | quote}}
+
