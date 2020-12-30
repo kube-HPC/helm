@@ -525,7 +525,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v1.3.78
+    tag: v1.3.79
   resources:
     requests:
       cpu: 100m
