@@ -8,7 +8,7 @@ clusterDomain: cluster.local
 
 image:
   repository: gitea/gitea
-  version: 1.13.0
+  version: latest-rootless
   pullPolicy: Always
 
 imagePullSecrets: []
@@ -62,7 +62,9 @@ tolerations: []
 affinity: {}
 
 statefulset:
-  env: []
+  env: 
+    - name: GITEA_APP_INI
+      value: /var/lib/gitea/custom/conf/app.ini
     # - name: VARIABLE
     #   value: my-value
   terminationGracePeriodSeconds: 60
@@ -94,7 +96,9 @@ gitea:
     bindPassword: ""
     usernameAttribute: ""
 
-  config: {}
+  config: 
+    server:
+      APP_DATA_PATH: var/lib/gitea
   #  APP_NAME: "Gitea: Git with a cup of tea"
   #  RUN_MODE: dev   
   #   
