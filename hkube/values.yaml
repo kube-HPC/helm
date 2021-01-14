@@ -534,7 +534,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.0.16
+    tag: v2.0.17
   metrics:
     port: 3001
   service:
@@ -554,7 +554,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.0.28
+    tag: v2.0.29
   resources:
     requests:
       cpu: 100m
@@ -608,4 +608,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.57-1610535559909
+fullSystemVersion: v2.0.57-1610610524441
