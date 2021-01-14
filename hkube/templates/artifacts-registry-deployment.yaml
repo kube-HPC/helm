@@ -45,7 +45,7 @@ spec:
           resources: {}
 {{- end }}
           volumeMounts:
-            - name: uploads
+            - name: data-rw
               mountPath: /nexus-data
           ports:
             - containerPort: {{ index .Values "artifacts_registry" "env" "port" }}
