@@ -242,7 +242,7 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v1.3.5
+    tag: v1.3.6
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
