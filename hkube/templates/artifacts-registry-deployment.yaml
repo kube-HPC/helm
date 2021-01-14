@@ -31,6 +31,9 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: data-rw
+          emptyDir: {}
       containers:
         - name: artifacts-registry
           image: "{{ .Values.global.registry }}{{ index .Values "artifacts_registry" "image" "repository" }}:{{ index .Values "artifacts_registry" "image" "tag" }}"
@@ -41,6 +44,9 @@ spec:
 {{- else }}
           resources: {}
 {{- end }}
+          volumeMounts:
+            - name: uploads
+              mountPath: /nexus-data
           ports:
             - containerPort: {{ index .Values "artifacts_registry" "env" "port" }}
               protocol: TCP
