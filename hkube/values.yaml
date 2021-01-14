@@ -159,7 +159,9 @@ gitea:
       enabled: false
     containerSecurityContext:
       enabled: false
-
+  memcached:
+    securityContext:
+      enabled: false
 
 metrics:
   serviceMonitorSelector:

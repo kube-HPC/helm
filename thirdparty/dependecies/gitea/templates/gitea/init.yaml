@@ -12,15 +12,17 @@ stringData:
     mkdir -p /var/lib/gitea/git/.ssh
     chmod -R 700 /var/lib/gitea/git/.ssh
     mkdir -p /var/lib/gitea/gitea/conf
-    cp /etc/gitea/conf/app.ini /var/lib/gitea/gitea/conf/app.ini
-    chmod a+rwx /var/lib/gitea/gitea/conf/app.ini
+    # cp /etc/gitea/conf/app.ini /var/lib/gitea/gitea/conf/app.ini
+    cp /etc/gitea/conf/app.ini /var/lib/gitea/custom/conf/app.ini
+    # chmod a+rwx /var/lib/gitea/gitea/conf/app.ini
+    chmod a+rwx /var/lib/gitea/custom/conf/app.ini
     nc -v -w2 -z {{ include "db.servicename" . }} {{ include "db.port" . }} && \
-    echo {{ include "db.servicename" . }} {{ include "db.port" . }} && \
     gitea migrate; \
     {{- if and .Values.gitea.admin.username .Values.gitea.admin.password }}
-    gitea admin create-user --username  {{ .Values.gitea.admin.username }} --password '{{ .Values.gitea.admin.password }}' --email {{ .Values.gitea.admin.email }} --admin --must-change-password=false \
+    # gitea admin create-user --username  {{ .Values.gitea.admin.username }} --password '{{ .Values.gitea.admin.password }}' --email {{ .Values.gitea.admin.email }} --admin --must-change-password=false \
+    gitea admin user create --username  {{ .Values.gitea.admin.username }} --password '{{ .Values.gitea.admin.password }}' --email {{ .Values.gitea.admin.email }} --admin --must-change-password=false \
     || \
-    gitea admin change-password --username {{ .Values.gitea.admin.username }} --password '{{ .Values.gitea.admin.password }}'; \
+    gitea admin user change-password --username {{ .Values.gitea.admin.username }} --password '{{ .Values.gitea.admin.password }}'; \
     {{- end }}
     {{- if .Values.gitea.ldap.enabled }}
     gitea admin auth add-ldap \
