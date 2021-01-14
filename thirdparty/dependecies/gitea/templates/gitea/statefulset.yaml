@@ -24,8 +24,10 @@ spec:
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}
 {{- end }}  
+{{- if not (eq .Values.global.k8senv "openshift") }}
       securityContext:
         fsGroup: 1000
+{{- end }}
       initContainers:
         - name: init
           image: "{{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.version }}"
@@ -36,7 +38,7 @@ spec:
             - name: config
               mountPath: /etc/gitea/conf
             - name: data
-              mountPath: /data
+              mountPath: /var/lib/gitea
       terminationGracePeriodSeconds: {{ .Values.statefulset.terminationGracePeriodSeconds }}
       containers:
         - name: {{ .Chart.Name }}
@@ -76,7 +78,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: data
-              mountPath: /data
+              mountPath: /var/lib/gitea
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -90,6 +92,8 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       volumes:
+        - name: ssh
+          emptyDir: {}
         - name: init
           secret:
             secretName: {{ include "gitea.fullname" . }}-init

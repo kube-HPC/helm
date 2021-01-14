@@ -131,6 +131,10 @@ mongodb:
     rootPassword: ehtyTJj4mR
     user_name: root
     databaseName: hkube
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
 minio:
   enable: true
   accessKey: hkubeminiokey
@@ -150,6 +154,12 @@ gitea:
       username: hkube
       password: 123456
       email: "hkube@hkube.io"
+  postgresql:
+    securityContext:
+      enabled: false
+    containerSecurityContext:
+      enabled: false
+
 
 metrics:
   serviceMonitorSelector:
@@ -260,7 +270,7 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v2.0.0
+    tag: v2.0.1
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
