@@ -1,10 +1,7 @@
-{{- if .Values.monitor_server.ingress.enabled -}}
-{{- $fullName := "monitor-server" -}}
-{{- $servicePort := .Values.monitor_server.env.port -}}
-{{- $ingressPath := .Values.monitor_server.ingress.path -}}
-{{- $datasource_proxy_service_port := .Values.datasource_service.env.port -}}
-{{- $datasource_proxy_service_name := "datasource-service" -}}
-{{- $datasource_proxy_path := .Values.monitor_server.ingress.datasource_proxy_path -}}
+{{- if .Values.datasource_service.ingress.enabled -}}
+{{- $fullName := "datasource-service" -}}
+{{- $servicePort := .Values.datasource_service.env.port -}}
+{{- $ingressPath := .Values.datasource_service.ingress.path -}}
 {{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
 apiVersion: networking.k8s.io/v1beta1
 {{- else }}
@@ -12,7 +9,7 @@ apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: monitor-server
+  name: datasource-service
   annotations:
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -25,7 +22,7 @@ metadata:
     kubernetes.io/tls-acme: "true"
 {{- end }}    
   labels:
-    app: monitor-server
+    app: datasource-service
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
@@ -44,23 +41,11 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
 {{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
-{{- end }}        
+{{- end }}
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}
-
-{{- if .Values.global.ingress.use_regex }}
-        - path: {{ .Values.global.ingress.prefix }}{{ $datasource_proxy_path }}(/|$)(.*)
-{{- else }}
-        - path: {{ .Values.global.ingress.prefix }}{{ $datasource_proxy_path }}
-{{- end }}        
-          backend:
-            serviceName: {{ $datasource_proxy_service_name }}
-            servicePort: {{ $datasource_proxy_service_port }}
-
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
-{{- end }}            
 {{- end }}
-
-
+{{- end }}

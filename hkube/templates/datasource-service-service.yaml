@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: datasource-service
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app: datasource-service
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+  type: {{ index .Values "api_server" "service" "type" }}
+  ports:
+    - port: {{ index .Values "api_server" "env" "port" }}
+      targetPort: {{ index .Values "api_server" "env" "port" }}
+      protocol: TCP
+      name: rest
+    - port: {{ index .Values "api_server" "env" "metric_port" }}
+      targetPort: {{ index .Values "api_server" "env" "metric_port" }}
+      protocol: TCP
+      name: metric
+    
+  selector:
+    app: datasource-service
+    release: datasource-service
