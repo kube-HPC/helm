@@ -3,7 +3,7 @@
 {{- $servicePort := .Values.monitor_server.env.port -}}
 {{- $ingressPath := .Values.monitor_server.ingress.path -}}
 {{- $datasource_proxy_service_port := .Values.datasources_service.env.port -}}
-{{- $datasource_proxy_service_name := "datasource-service" -}}
+{{- $datasource_proxy_service_name := "datasources-service" -}}
 {{- $datasource_proxy_path := .Values.monitor_server.ingress.datasource_proxy_path -}}
 {{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
 apiVersion: networking.k8s.io/v1beta1
