@@ -13,12 +13,12 @@ metadata:
 spec:
   type: {{ index .Values "api_server" "service" "type" }}
   ports:
-    - port: {{ index .Values "api_server" "env" "port" }}
-      targetPort: {{ index .Values "api_server" "env" "port" }}
+    - port: {{ .Values.datasources_service.env.port }}
+      targetPort: {{ .Values.datasources_service.env.port }}
       protocol: TCP
       name: rest
-    - port: {{ index .Values "api_server" "env" "metric_port" }}
-      targetPort: {{ index .Values "api_server" "env" "metric_port" }}
+    - port: {{ .Values.datasources_service.env.metric_port }}
+      targetPort: {{ .Values.datasources_service.env.metric_port }}
       protocol: TCP
       name: metric
     

@@ -146,6 +146,9 @@ minio:
     create: false
 gitea:
   enable: true
+  service:
+    http:
+      port: 3000
   gitea:
     config:
       repository:
