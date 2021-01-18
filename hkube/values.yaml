@@ -267,7 +267,7 @@ api_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
-datasource_service: # +doc-gen:ignore
+datasources_service: # +doc-gen:ignore
   env:
     base_url_path: /hkube/datasource-service
     metric_port: '3001'

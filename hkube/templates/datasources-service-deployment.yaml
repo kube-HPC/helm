@@ -41,11 +41,11 @@ spec:
 {{- end }}                                    
       containers:
         - name: datasource-service
-          image: "{{ .Values.global.registry }}{{ .Values.datasource_service.image.repository }}:{{ .Values.datasource_service.image.tag }}"
+          image: "{{ .Values.global.registry }}{{ .Values.datasources_service.image.repository }}:{{ .Values.datasources_service.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
 {{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.datasource_service.resources | indent 12 }}
+{{ toYaml .Values.datasources_service.resources | indent 12 }}
 {{- else }}
           resources: {}
 {{- end }}
@@ -59,9 +59,9 @@ spec:
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}                                    
           ports:
-            - containerPort: {{ .Values.datasource_service.env.metric_port }}
+            - containerPort: {{ .Values.datasources_service.env.metric_port }}
               protocol: TCP
-            - containerPort: {{ .Values.datasource_service.env.port }}
+            - containerPort: {{ .Values.datasources_service.env.port }}
               protocol: TCP
           env:
             - name: METRICS_PORT

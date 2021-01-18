@@ -1,7 +1,7 @@
-{{- if .Values.datasource_service.ingress.enabled -}}
+{{- if .Values.datasources_service.ingress.enabled -}}
 {{- $fullName := "datasource-service" -}}
-{{- $servicePort := .Values.datasource_service.env.port -}}
-{{- $ingressPath := .Values.datasource_service.ingress.path -}}
+{{- $servicePort := .Values.datasources_service.env.port -}}
+{{- $ingressPath := .Values.datasources_service.ingress.path -}}
 {{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
 apiVersion: networking.k8s.io/v1beta1
 {{- else }}
