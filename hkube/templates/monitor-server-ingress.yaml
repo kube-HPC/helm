@@ -48,7 +48,47 @@ spec:
           backend:
             serviceName: {{ $fullName }}
             servicePort: {{ $servicePort }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}
 
+---
+
+{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
+apiVersion: networking.k8s.io/v1beta1
+{{- else }}
+apiVersion: extensions/v1beta1
+{{- end }}
+kind: Ingress
+metadata:
+  name: monitor-server-datasource-proxy
+  annotations:
+{{- if .Values.global.ingress.use_regex }}
+    nginx.ingress.kubernetes.io/rewrite-target: /api/v1/datasource/$2
+{{- else }}
+    nginx.ingress.kubernetes.io/rewrite-target: /api/v1/datasource/
+{{- end }}
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}    
+  labels:
+    app: monitor-server
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: {{ $fullName }}-tls-secret
+{{- end }}
+  rules:
+    - http:
+        paths:
 {{- if .Values.global.ingress.use_regex }}
         - path: {{ .Values.global.ingress.prefix }}{{ $datasource_proxy_path }}(/|$)(.*)
 {{- else }}
@@ -57,7 +97,6 @@ spec:
           backend:
             serviceName: {{ $datasource_proxy_service_name }}
             servicePort: {{ $datasource_proxy_service_port }}
-
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}            

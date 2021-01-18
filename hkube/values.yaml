@@ -465,7 +465,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v2.0.11
+    tag: v2.0.11-a
   ingress:
     enabled: true
     path: /hkube/dashboard
