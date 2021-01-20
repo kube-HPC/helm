@@ -168,7 +168,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.0.63
+systemversion: 2.0.63-discovery-stop_state.498648929
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -536,7 +536,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.0.19
+    tag: v2.0.19-discovery_stop_state-498648929
   metrics:
     port: 3001
   service:
