@@ -40,7 +40,10 @@ spec:
         - name: storage-volume
           persistentVolumeClaim:
             claimName: hkube-storage-pvc
-{{- end }}                                    
+{{- end }}
+        - name: datasources-storage
+          persistentVolumeClaim:
+            claimName: hkube-datasources                      
       containers:
         - name: datasources-service
           image: "{{ .Values.global.registry }}{{ .Values.datasources_service.image.repository }}:{{ .Values.datasources_service.image.tag }}"
@@ -54,6 +57,8 @@ spec:
           volumeMounts:
             - name: uploads
               mountPath: /hkube/datasources-service/uploads
+            - name: datasources-storage
+              mountPath: /hkube/datasources-storage
             - name: temp
               mountPath: /hkube/datasources-service/temp
 {{- if eq .Values.env.default_storage "fs" }}
@@ -86,6 +91,8 @@ spec:
                 configMapKeyRef:
                   name: datasources-service-configmap
                   key: BASE_URL_PATH
+            - name: BASE_DATASOURCES_DIRECTORY
+              value: "/hkube/datasources-storage"
 {{- if eq .Values.env.default_storage "fs" }}
             - name: BASE_FS_ADAPTER_DIRECTORY
               valueFrom:

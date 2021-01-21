@@ -271,6 +271,10 @@ api_server: # +doc-gen:ignore
       cpu: 100m
       memory: 512Mi
 datasources_service: # +doc-gen:ignore
+  storage:
+    pvc:
+      capacity: 50Gi
+      storage_class: ''
   env:
     base_url_path: /hkube/datasources-service
     metric_port: '3001'
