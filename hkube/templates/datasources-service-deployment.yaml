@@ -99,7 +99,7 @@ spec:
                 configMapKeyRef:
                   name: datasources-service-configmap
                   key: BASE_FS_ADAPTER_DIRECTORY
-{{- else if eq .Values.env.default_storage "s3" }}
+{{- end }}
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -115,7 +115,6 @@ spec:
                 secretKeyRef:
                   name: s3-secret
                   key: awsEndpointUrl
-{{- end }}                                    
             - name: DEFAULT_STORAGE
               valueFrom:
                 configMapKeyRef:
