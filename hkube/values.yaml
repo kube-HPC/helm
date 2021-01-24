@@ -281,7 +281,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.0.0-datasource-501592771
+    tag: v2.0.0
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -469,7 +469,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v2.0.11
+    tag: v2.0.12
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -635,4 +635,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.64-1611155803522
+fullSystemVersion: v2.0.64-1611474887945
