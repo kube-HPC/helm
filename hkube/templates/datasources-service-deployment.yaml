@@ -76,6 +76,10 @@ spec:
                 configMapKeyRef:
                   name: datasources-service-configmap
                   key: METRICS_PORT
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: 'metadata.name' 
             - name: DATASET_SERVICE_REST_PORT
               valueFrom:
                 configMapKeyRef:
