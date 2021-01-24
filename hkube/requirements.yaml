@@ -28,6 +28,6 @@ dependencies:
     repository: "http://hkube.io/helm/"
     condition: mongodb.enable
   - name: gitea
-    version: "2.1.3001"
+    version: "2.1.3002"
     repository: "http://hkube.io/helm/"
     condition: gitea.enable    

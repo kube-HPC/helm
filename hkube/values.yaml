@@ -146,6 +146,9 @@ minio:
     create: false
 gitea:
   enable: true
+  service:
+    http:
+      port: 3000
   gitea:
     config:
       repository:
@@ -214,7 +217,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.0.4
+    tag: v2.0.4-datasource-501592771
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -238,7 +241,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.0.3
+    tag: v2.0.3-datasource-501592771
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -261,6 +264,27 @@ api_server: # +doc-gen:ignore
   ingress:
     enabled: true
     path: /hkube/api-server
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+datasources_service: # +doc-gen:ignore
+  storage:
+    pvc:
+      capacity: 50Gi
+      storage_class: ''
+  env:
+    base_url_path: /hkube/datasources-service
+    metric_port: '3001'
+    port: '3005'
+  image:
+    repository: hkube/datasources-service
+    tag: v2.0.0-datasource-501592771
+  ingress:
+    enabled: true
+    path: /hkube/datasources-service
   service:
     type: ClusterIP
   resources:
@@ -346,7 +370,7 @@ monitor_server: # +doc-gen:ignore
     timeoutSeconds: 1
     failureThreshold: 3
   env:
-    metric_port: 30010
+    port: 30010
     log_external_requests: false
     elasticsearch_service_url: ''
     elasticsearch_logs_index: 'logstash-*'
@@ -360,6 +384,7 @@ monitor_server: # +doc-gen:ignore
   ingress:
     enabled: true
     path: /hkube/monitor-server
+    datasource_proxy_path: /hkube/monitor-server/datasource
   service:
     type: ClusterIP
   resources:
@@ -390,7 +415,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.0.3
+    tag: v2.0.3-datasource-501592771
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -421,7 +446,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.0.3
+    tag: v2.0.3-datasource-501592771
   service:
     type: ClusterIP
   resources:
@@ -444,7 +469,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v2.0.11
+    tag: v2.0.11-a
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -509,7 +534,7 @@ task_executor:
     has_node_list: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.0.7
+    tag: v2.0.7-datasource-501592771
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -524,7 +549,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v2.0.3
+    tag: v2.0.3-datasource-501592771
   service:
     type: ClusterIP
   resources:
@@ -546,7 +571,7 @@ caching_service: # +doc-gen:ignore
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v2.0.4
+    tag: v2.0.4-datasource-501592771
   service:
     type: ClusterIP
   resources:
