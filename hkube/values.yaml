@@ -171,7 +171,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.0.64
+systemversion: v2.0.65
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -217,7 +217,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.0.4
+    tag: v2.0.5
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -241,7 +241,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.0.3
+    tag: v2.0.4
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -260,7 +260,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v2.0.22
+    tag: v2.0.23
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -281,7 +281,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.0.0
+    tag: v2.0.1
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -405,7 +405,7 @@ pipeline_driver: # +doc-gen:ignore
     metric_port: '3001'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.0.16
+    tag: v2.0.17
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -415,7 +415,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.0.3
+    tag: v2.0.4
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -446,7 +446,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.0.3
+    tag: v2.0.4
   service:
     type: ClusterIP
   resources:
@@ -534,7 +534,7 @@ task_executor:
     has_node_list: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.0.7
+    tag: v2.0.8
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -549,7 +549,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v2.0.3
+    tag: v2.0.4
   service:
     type: ClusterIP
   resources:
@@ -561,7 +561,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.0.20
+    tag: v2.0.21
   metrics:
     port: 3001
   service:
@@ -571,7 +571,7 @@ caching_service: # +doc-gen:ignore
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v2.0.4
+    tag: v2.0.5
   service:
     type: ClusterIP
   resources:
@@ -581,7 +581,7 @@ caching_service: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.0.32
+    tag: v2.0.33
   resources:
     requests:
       cpu: 100m
@@ -635,4 +635,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.64-1611474887945
+fullSystemVersion: v2.0.65-1611476234037
