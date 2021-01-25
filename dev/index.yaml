@@ -3,7 +3,7 @@ entries:
   hkube:
   - apiVersion: v1
     appVersion: v2.0.66
-    created: "2021-01-24T12:40:23.488088313Z"
+    created: "2021-01-25T09:38:52.700918081Z"
     dependencies:
     - condition: etcd.enable
       name: etcd
@@ -41,7 +41,7 @@ entries:
       open source framework to run distributed pipeline of algorithms built on Kubernetes.
       Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
       utilizing the available resources, based on user priorities and AI heuristics.
-    digest: 7cf8fe298d4cc599c545c8b4791de0d56759581c56b0ea1180fcd086abe3745d
+    digest: bbf7ccc9deed1cb4a456aefc6d9486f9b27c9c9a9492681a84deafc0ac8f5718
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
     maintainers:
@@ -9823,4 +9823,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: "2021-01-24T12:40:23.456199706Z"
+generated: "2021-01-25T09:38:52.66597109Z"
