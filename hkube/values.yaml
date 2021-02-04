@@ -327,7 +327,7 @@ clean_old_jobs: # +doc-gen:ignore
     failureThreshold: 3
   image:
     repository: hkube/clean-old-jobs
-    tag: v2.0.4
+    tag: v2.0.5
   resources:
     requests:
       cpu: 100m
@@ -635,4 +635,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.72-1612441663283
+fullSystemVersion: v2.0.72-1612444892966
