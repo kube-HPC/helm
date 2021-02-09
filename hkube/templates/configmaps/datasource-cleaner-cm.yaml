@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datasource-cleaner-configmap
+data:
+  DEFAULT_STORAGE: {{ .Values.env.default_storage | quote}}
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}

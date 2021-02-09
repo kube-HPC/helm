@@ -497,6 +497,15 @@ storage_cleaner:
     requests:
       cpu: 100m
       memory: 512Mi
+datasource_cleaner: # +doc-gen:ignore
+  pattern: 0 0 * * *
+  image:
+    repository: hkube/datasource-cleaner
+    tag: v2.0.1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
 task_executor:
   healthcheck: # +doc-gen:ignore
     enabled: true
