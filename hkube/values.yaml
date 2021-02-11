@@ -355,7 +355,7 @@ etcd_cleaner: # +doc-gen:ignore
     redis_expiration_days: "5"
   image:
     repository: hkube/etcd-cleaner
-    tag: v2.0.4
+    tag: v2.0.5
   resources:
     requests:
       cpu: 100m
@@ -635,4 +635,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.79-1612970111367
+fullSystemVersion: v2.0.79-1613036684265
