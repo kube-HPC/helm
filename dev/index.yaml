@@ -3,7 +3,7 @@ entries:
   hkube:
   - apiVersion: v1
     appVersion: v2.0.83
-    created: "2021-02-14T10:34:30.582130365Z"
+    created: "2021-02-14T10:59:14.389549027Z"
     dependencies:
     - condition: etcd.enable
       name: etcd
@@ -38,7 +38,7 @@ entries:
       repository: http://hkube.io/helm/
       version: 2.1.3002
     description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
-    digest: 81e2ec1945f9b5783d69cceb4c81a9cd339c27f1ec15a3c34289966e29ce65d0
+    digest: c4c48fc450da22aabbca5c4d38e051f2e12066b60e6174548bd1243856a72ab5
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
     maintainers:
@@ -9550,4 +9550,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: "2021-02-14T10:34:30.547539724Z"
+generated: "2021-02-14T10:59:14.34292579Z"
