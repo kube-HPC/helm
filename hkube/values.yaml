@@ -499,6 +499,8 @@ storage_cleaner:
       memory: 512Mi
 datasource_cleaner: # +doc-gen:ignore
   pattern: 0 0 * * *
+  env:
+    keep_datasource_hot_duration: '48'
   image:
     repository: hkube/datasource-cleaner
     tag: v2.0.1

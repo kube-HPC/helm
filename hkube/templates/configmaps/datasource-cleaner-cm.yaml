@@ -4,5 +4,5 @@ kind: ConfigMap
 metadata:
   name: datasource-cleaner-configmap
 data:
-  DEFAULT_STORAGE: {{ .Values.env.default_storage | quote}}
+  KEEP_DATASOURCE_HOT_DURATION: {{ .Values.datasource_cleaner.env.keep_datasource_hot_duration | quote}}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
