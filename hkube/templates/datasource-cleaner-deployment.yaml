@@ -1,0 +1,54 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: datasource-cleaner
+  labels:
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+    app: datasource-cleaner
+spec:
+
+  schedule: {{ .Values.datasource_cleaner.pattern | quote }} 
+  startingDeadlineSeconds: 200
+  jobTemplate:
+    spec:
+      template:
+        spec:
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+          imagePullSecrets:
+            - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}        
+{{- if eq .Values.env.default_storage "fs" }}
+          volumes:
+            - name: storage-volume
+              persistentVolumeClaim:
+                claimName: hkube-storage-pvc
+{{- end }}          
+          containers:
+          - name: datasource-cleaner
+            image: "{{ .Values.global.registry }}{{ .Values.datasource_cleaner.image.repository }}:{{ .Values.datasource_cleaner.image.tag }}"
+{{- if .Values.global.resources_enable }}          
+            resources:
+{{ toYaml .Values.datasource_cleaner.resources | indent 14 }}
+{{- else }}
+            resources: {}
+{{- end }}
+{{- if eq .Values.env.default_storage "fs" }}
+            volumeMounts:
+              - name: storage-volume
+                mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
+{{- end }} 
+            env:
+            - name: "KEEP_DATASOURCE_HOT_DURATION"
+              valueFrom:
+                configMapKeyRef:
+                  name: datasource-cleaner-configmap
+                  key: KEEP_DATASOURCE_HOT_DURATION
+            - name: CLUSTER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: datasource-cleaner-configmap
+                  key: CLUSTER_NAME
+            - name: BASE_DATASOURCES_DIRECTORY
+              value: "/hkube/datasources-storage"
+          restartPolicy: Never
