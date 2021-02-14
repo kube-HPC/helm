@@ -168,6 +168,19 @@ spec:
                 secretKeyRef:
                   name: mongodb-secret
                   key: mongodb-database
-            - name: GIT_ENDPOINT_URL
-              value: gitea-http:{{ .Values.gitea.service.http.port }}
 {{- end }}
+            - name: GIT_ENDPOINT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-secret
+                  key: endpointUrl
+            - name: GIT_USER_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-secret
+                  key: username
+            - name: GIT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-secret
+                  key: password 
