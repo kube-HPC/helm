@@ -149,11 +149,13 @@ gitea:
   service:
     http:
       port: '3000'
-      clusterIP: ''
   gitea:
     config:
       repository:
         ENABLE_PUSH_CREATE_USER: true
+      server:
+        DOMAIN: gitea-http
+        ROOT_URL: http://gitea-http:3000
     admin:
       username: hkube
       password: '123456'
