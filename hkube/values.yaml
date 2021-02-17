@@ -149,6 +149,7 @@ gitea:
   service:
     http:
       port: '3000'
+      clusterIP:
   gitea:
     config:
       repository:
