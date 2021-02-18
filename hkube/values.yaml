@@ -174,7 +174,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.0.84-support-internal-kind.574539007
+systemversion: 2.0.84-support-internal-kind.577248050
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -284,7 +284,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.0.8-support-internal-kind-574539007
+    tag: v2.0.8-support-internal-kind-577248050
   ingress:
     enabled: true
     path: /hkube/datasources-service
