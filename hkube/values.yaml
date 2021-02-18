@@ -138,7 +138,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.157
+systemversion: v1.3.158
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -184,7 +184,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v1.3.17
+    tag: v1.3.18
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -476,9 +476,11 @@ task_executor:
     default_quota_gpu: 0
     # if running on openshift on labeled nodes, set to true and create a config-map named `hkube-nodes` with key `hkube-nodes` and value of the output of `kubectl get nodes -o json`
     has_node_list: false
+    # set to true to set algorithm resource limit to equal resource request
+    use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v1.3.25
+    tag: v1.3.26
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -579,4 +581,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.157-1610894886523
+fullSystemVersion: v1.3.158-1613647858237

@@ -61,6 +61,11 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: IS_PRIVILEGED
+            - name: USE_RESOURCE_LIMITS
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: USE_RESOURCE_LIMITS
             - name: IS_NAMESPACED
               valueFrom:
                 configMapKeyRef:
