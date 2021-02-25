@@ -347,6 +347,7 @@ pipeline_cleaner: # +doc-gen:ignore
 pipeline_driver: # +doc-gen:ignore
   env:
     metric_port: '3001'
+    storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
     tag: v1.3.33

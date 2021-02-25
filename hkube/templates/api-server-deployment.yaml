@@ -125,6 +125,11 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: PIPELINE_DRIVER_CPU
+            - name: STORAGE_RESULTS_THRESHOLD
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: STORAGE_RESULTS_THRESHOLD
             - name: PIPELINE_DRIVER_MEM
               valueFrom:
                 configMapKeyRef:
