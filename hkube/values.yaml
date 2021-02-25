@@ -138,7 +138,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.158
+systemversion: v1.3.159
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -227,7 +227,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v1.3.42
+    tag: v1.3.43
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -325,7 +325,7 @@ monitor_server: # +doc-gen:ignore
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v1.3.6
+    tag: v1.3.7
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -414,7 +414,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v1.3.13
+    tag: v1.3.14
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -481,7 +481,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v1.3.26
+    tag: v1.3.27
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -582,4 +582,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.158-1613647858237
+fullSystemVersion: v1.3.159-1614257146088
