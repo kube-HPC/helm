@@ -403,6 +403,7 @@ pipeline_cleaner: # +doc-gen:ignore
 pipeline_driver: # +doc-gen:ignore
   env:
     metric_port: '3001'
+    storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
     tag: v2.0.20
@@ -543,6 +544,8 @@ task_executor:
     default_quota_gpu: 0
     # if running on openshift on labeled nodes, set to true and create a config-map named `hkube-nodes` with key `hkube-nodes` and value of the output of `kubectl get nodes -o json`
     has_node_list: false
+    # set to true to set algorithm resource limit to equal resource request
+    use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
     tag: v2.0.10
