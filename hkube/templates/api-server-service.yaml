@@ -10,6 +10,7 @@ metadata:
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
     core: "true"
+    metrics: "true"
 spec:
   type: {{ index .Values "api_server" "service" "type" }}
   ports:
@@ -20,8 +21,7 @@ spec:
     - port: {{ index .Values "api_server" "env" "metric_port" }}
       targetPort: {{ index .Values "api_server" "env" "metric_port" }}
       protocol: TCP
-      name: metric
-    
+      name: metrics
   selector:
     app: api-server
     release: api-server

@@ -212,8 +212,6 @@ algorithm_queue: # +doc-gen:ignore
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
-  service:
-    type: ClusterIP
 algorunner: # +doc-gen:ignore
   image:
     repository: hkube/algorunner
