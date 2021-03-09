@@ -11,11 +11,13 @@ metadata:
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
     core: "true"
+    metrics: "true"
 spec:
   type: {{ index .Values "algorithm_queue_svc" "service" "type" }}
   ports:
     - port: {{ index .Values "algorithm_queue_svc" "env" "metric_port" }}
       targetPort: {{ index .Values "algorithm_queue_svc" "env" "metric_port" }}
       protocol: TCP
+      name: metrics
   selector:
     metrics-group: 'algorithm-queue'

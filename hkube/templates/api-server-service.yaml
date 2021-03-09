@@ -10,6 +10,7 @@ metadata:
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
     core: "true"
+    metrics: "true"
 spec:
   type: {{ index .Values "api_server" "service" "type" }}
   ports:
