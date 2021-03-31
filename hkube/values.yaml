@@ -171,7 +171,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.0.117
+systemversion: v2.0.118
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -548,7 +548,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.0.12
+    tag: v2.0.13
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -649,4 +649,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.0.2
-fullSystemVersion: v2.0.117-1617184176902
+fullSystemVersion: v2.0.118-1617189785108
