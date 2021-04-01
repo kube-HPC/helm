@@ -1,7 +1,7 @@
 {
   "name": "helm",
   "version": "2.0.219",
-  "description": "Installing and Deleteting hkube with helm charts",
+  "description": "Installing and Deleting hkube with helm charts",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

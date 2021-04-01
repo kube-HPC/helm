@@ -40,5 +40,7 @@ jobs:
         with:
           route: POST /repos/kube-HPC/cd-manager/dispatches
           event_type: trigger
+          client_payload: "{\"version\": \"${{env.TAG}}\" }"
         env:
           GITHUB_TOKEN: '${{ secrets.GH_TOKEN }}'
+  
