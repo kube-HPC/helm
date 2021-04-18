@@ -32,8 +32,6 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        - name: uploads
-          emptyDir: {}
         - name: temp
           emptyDir: {}
 {{- if eq .Values.env.default_storage "fs" }}
@@ -55,12 +53,10 @@ spec:
           resources: {}
 {{- end }}
           volumeMounts:
-            - name: uploads
-              mountPath: /hkube/datasources-service/uploads
             - name: datasources-storage
               mountPath: /hkube/datasources-storage
             - name: temp
-              mountPath: /hkube/datasources-service/temp
+              mountPath: /TEMP_DIRECTORY
 {{- if eq .Values.env.default_storage "fs" }}
             - name: storage-volume
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
@@ -184,3 +180,5 @@ spec:
                 secretKeyRef:
                   name: gitea-secret
                   key: password 
+            - name: TEMP_DIRECTORY
+              value: "/TEMP_DIRECTORY"
