@@ -31,7 +31,7 @@ spec:
       initContainers:
         - name: init
           image: "{{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.version }}"
-          command: ["/usr/sbin/init_gitea.sh"]
+          command: ["sh", "-c","/usr/sbin/init_gitea.sh"]
           volumeMounts:
             - name: init
               mountPath: /usr/sbin

@@ -12,6 +12,7 @@ stringData:
     mkdir -p /var/lib/gitea/git/.ssh
     chmod -R 700 /var/lib/gitea/git/.ssh
     mkdir -p /var/lib/gitea/gitea/conf
+    mkdir -p /var/lib/gitea/custom/conf
     # cp /etc/gitea/conf/app.ini /var/lib/gitea/gitea/conf/app.ini
     cp /etc/gitea/conf/app.ini /var/lib/gitea/custom/conf/app.ini
     # chmod a+rwx /var/lib/gitea/gitea/conf/app.ini
