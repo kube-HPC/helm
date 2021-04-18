@@ -105,6 +105,10 @@ spec:
               value: {{ .Values.monitor_server.env.elasticsearch_logs_doc_type | quote}}
             - name: LOGS_VIEW_SOURCE
               value: {{ .Values.monitor_server.env.logs_view_source | quote}}
+            - name: ENABLE_STREAMING_METRICS
+              value: {{ .Values.monitor_server.env.show_streaming_metrics | quote }}
+            - name: MAX_BATCH_SIZE
+              value: {{ .Values.monitor_server.env.max_display_batch_size | quote }}
 {{- if .Values.mongodb.enable }}
             - name: MONGODB_SERVICE_USER_NAME
               valueFrom:

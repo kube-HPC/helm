@@ -378,6 +378,8 @@ monitor_server: # +doc-gen:ignore
     logs_view_source: k8s
     jaeger_query_service_host: ''
     jaeger_query_service_port: ''
+    show_streaming_metrics: false
+    max_display_batch_size: 10
   image:
     repository: hkube/monitor-server
     tag: v2.0.16
