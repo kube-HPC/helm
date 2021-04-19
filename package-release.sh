@@ -5,6 +5,7 @@ mkdir -p /tmp/helm-charts
 rm /tmp/helm-charts/*
 helm package --app-version=${APP_VERSION} --version=${APP_VERSION} -d /tmp/helm-charts hkube
 git checkout gh-pages
+git pull
 cp /tmp/helm-charts/hkube-${APP_VERSION}.tgz .
 helm repo index --merge ./index.yaml /tmp/helm-charts/
 cp /tmp/helm-charts/index.yaml .
