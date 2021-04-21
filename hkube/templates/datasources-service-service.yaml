@@ -20,7 +20,7 @@ spec:
     - port: {{ .Values.datasources_service.env.metric_port }}
       targetPort: {{ .Values.datasources_service.env.metric_port }}
       protocol: TCP
-      name: metric
+      name: metrics
     
   selector:
     app: datasources-service

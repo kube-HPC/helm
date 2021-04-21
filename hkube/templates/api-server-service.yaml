@@ -21,7 +21,7 @@ spec:
     - port: {{ index .Values "api_server" "env" "metric_port" }}
       targetPort: {{ index .Values "api_server" "env" "metric_port" }}
       protocol: TCP
-      name: metric
+      name: metrics
     
   selector:
     app: api-server
