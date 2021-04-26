@@ -171,7 +171,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.0.142-streaming-gateway.785298056
+systemversion: 2.0.142-streaming-gateway.785531234
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -217,7 +217,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.0.11-streaming_gateway-785298056
+    tag: v2.0.11-streaming_gateway-785531234
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -260,7 +260,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v2.0.35-streaming_gateway-785298056
+    tag: v2.0.35-streaming_gateway-785531234
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -587,7 +587,7 @@ algorithm_gateway: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/algrorithm-gateway
-    tag: v2.0.0-streaming_gateway-785298056
+    tag: v2.0.0-streaming_gateway-785531234
   metrics:
     port: 3001
   service:
