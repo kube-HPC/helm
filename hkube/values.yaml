@@ -582,6 +582,16 @@ worker: # +doc-gen:ignore
     port: 3001
   service:
     type: ClusterIP
+algorithm-gateway: # +doc-gen:ignore
+  env:
+    metric_port: '3000'
+  image:
+    repository: hkube/algrorithm-gateway
+    tag: v2.0.00
+  metrics:
+    port: 3001
+  service:
+    type: ClusterIP
 caching_service: # +doc-gen:ignore
   env:
     port: '9005'

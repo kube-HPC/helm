@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: algorithm-gateway
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app: algorithm-gateway
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+    metrics: "true"
+spec:
+  selector:
+    metrics-group: workers
+    group: {{ .Values.labels.group.value }}
+  clusterIP: None
+  ports:
+    - name: metrics
+      port: {{ index .Values.algorithm_gateway.metrics.port }}
+      targetPort: {{ index .Values.algorithm_gateway.metrics.port }}
