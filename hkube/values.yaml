@@ -586,7 +586,7 @@ algorithm_gateway: # +doc-gen:ignore
   env:
     metric_port: '3000'
   image:
-    repository: hkube/algrorithm-gateway
+    repository: hkube/algorithm-gateway
     tag: v2.0.0-streaming_gateway-785531234
   metrics:
     port: 3001
