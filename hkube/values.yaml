@@ -171,7 +171,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.0.142
+systemversion: 2.0.142-streaming-gateway.784754288
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -217,7 +217,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.0.11
+    tag: v2.0.11-streaming_gateway-784754288
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -241,7 +241,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.0.9
+    tag: v2.0.9-streaming_gateway-784754288
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -260,7 +260,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v2.0.35
+    tag: v2.0.35-streaming_gateway-784754288
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -408,7 +408,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.0.26
+    tag: v2.0.26-streaming_gateway-784754288
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -418,7 +418,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.0.7
+    tag: v2.0.7-streaming_gateway-784754288
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -550,7 +550,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.0.15
+    tag: v2.0.15-streaming_gateway-784754288
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -587,7 +587,7 @@ algorithm_gateway: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/algrorithm-gateway
-    tag: v2.0.00
+    tag: v2.0.0-streaming_gateway-784754288
   metrics:
     port: 3001
   service:
@@ -597,7 +597,7 @@ caching_service: # +doc-gen:ignore
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v2.0.8
+    tag: v2.0.8-streaming_gateway-784754288
   service:
     type: ClusterIP
   resources:
