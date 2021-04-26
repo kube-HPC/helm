@@ -70,8 +70,8 @@ data:
                   },
                                     {
                         "project": "algorithm-gateway",
-                        "tag": "{{ .Values.algorithm-gateway.image.tag }}",
-                        "image": "{{ .Values.algorithm-gateway.image.repository }}"
+                        "tag": "{{ .Values.algorithm_gateway.image.tag }}",
+                        "image": "{{ .Values.algorithm_gateway.image.repository }}"
                   },
                   {
                         "project": "trigger-service",

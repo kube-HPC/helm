@@ -11,10 +11,10 @@ metadata:
     metrics: "true"
 spec:
   selector:
-    metrics-group: workers
+    metrics-group: algorithm-gateway
     group: {{ .Values.labels.group.value }}
   clusterIP: None
   ports:
     - name: metrics
-      port: {{ index .Values.algorithm_gateway.metrics.port }}
-      targetPort: {{ index .Values.algorithm_gateway.metrics.port }}
+      port: {{ .Values.algorithm_gateway.metrics.port }}
+      targetPort: {{ .Values.algorithm_gateway.metrics.port }}

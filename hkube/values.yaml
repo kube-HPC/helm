@@ -582,7 +582,7 @@ worker: # +doc-gen:ignore
     port: 3001
   service:
     type: ClusterIP
-algorithm-gateway: # +doc-gen:ignore
+algorithm_gateway: # +doc-gen:ignore
   env:
     metric_port: '3000'
   image:
