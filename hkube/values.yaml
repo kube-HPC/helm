@@ -584,12 +584,11 @@ worker: # +doc-gen:ignore
     type: ClusterIP
 algorithm_gateway: # +doc-gen:ignore
   env:
-    metric_port: '3000'
+    base_url_path: /hkube/api-server
+    port: 3005
   image:
     repository: hkube/algorithm-gateway
     tag: v2.0.0-streaming_gateway-788976879
-  metrics:
-    port: 3001
   service:
     type: ClusterIP
 caching_service: # +doc-gen:ignore
