@@ -171,7 +171,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.0.142-streaming-gateway.792616901
+systemversion: 2.0.142-streaming-gateway.792679370
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -217,7 +217,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.0.11-streaming_gateway-792616901
+    tag: v2.0.11-streaming_gateway-792679370
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -260,7 +260,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v2.0.35-streaming_gateway-792616901
+    tag: v2.0.35-streaming_gateway-792679370
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -550,7 +550,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.0.15-streaming_gateway-792616901
+    tag: v2.0.15-streaming_gateway-792679370
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -577,7 +577,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.0.40-streaming_gateway-792616901
+    tag: v2.0.40-streaming_gateway-792679370
   metrics:
     port: 3001
   service:
@@ -588,7 +588,7 @@ algorithm_gateway: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-gateway
-    tag: v2.0.0-streaming_gateway-792616901
+    tag: v2.0.0-streaming_gateway-792679370
   service:
     type: ClusterIP
 caching_service: # +doc-gen:ignore
