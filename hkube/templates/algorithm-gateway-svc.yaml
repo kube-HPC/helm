@@ -14,7 +14,3 @@ spec:
     metrics-group: algorithm-gateway
     group: {{ .Values.labels.group.value }}
   clusterIP: None
-  ports:
-    - name: metrics
-      port: {{ .Values.algorithm_gateway.metrics.port }}
-      targetPort: {{ .Values.algorithm_gateway.metrics.port }}
