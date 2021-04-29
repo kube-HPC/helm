@@ -584,7 +584,7 @@ worker: # +doc-gen:ignore
     type: ClusterIP
 algorithm_gateway: # +doc-gen:ignore
   env:
-    base_url_path: /hkube/api-server
+    base_url_path: /hkube/gateway
     port: 3005
   image:
     repository: hkube/algorithm-gateway
