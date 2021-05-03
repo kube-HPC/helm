@@ -397,7 +397,7 @@ pipeline_cleaner: # +doc-gen:ignore
   pattern: '*/5 * * * *'
   image:
     repository: hkube/pipeline-cleaner
-    tag: v2.1.1
+    tag: v2.1.2
   resources:
     requests:
       cpu: 100m
@@ -651,4 +651,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.4-1619968028331
+fullSystemVersion: v2.1.4-1620037052342
