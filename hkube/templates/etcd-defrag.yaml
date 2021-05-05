@@ -10,9 +10,11 @@ metadata:
     core: "true"
 spec:
   schedule: {{ .Values.etcd_defrag.pattern | quote }} 
-  startingDeadlineSeconds: 200
+  concurrencyPolicy: Forbid
   jobTemplate:
     spec:
+      backoffLimit: 0
+      activeDeadlineSeconds: 700
       template:
         spec:
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
@@ -23,6 +25,19 @@ spec:
           containers:
           - name: etcd-defrag-cron
             image: {{ .Values.global.registry }}{{ .Values.etcd_defrag.image.repository }}:{{ .Values.etcd_defrag.image.tag }}
+            env:
+            - name: ETCD_COUNT
+              value: {{ .Values.etcd.replicas | quote }}
+            - name: ETCD_NAME
+              value: {{ .Values.etcd_defrag.env.etcd_name | quote }}
+            - name: ETCD_PROTOCOL
+              value: {{ .Values.etcd_defrag.env.etcd_protocol | quote }}
+            - name: ETCD_PORT
+              value: {{ .Values.etcd_defrag.env.etcd_port | quote }}
+            - name: SLEEP
+              value: {{ .Values.etcd_defrag.env.sleep | quote }}
+            - name: RELEASE_NAME
+              value: {{ .Release.Name }}
 {{- if .Values.global.resources_enable }}          
             resources:
 {{ toYaml .Values.etcd_defrag.resources | indent 14 }}

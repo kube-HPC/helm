@@ -624,10 +624,15 @@ algorithm_example_python: # +doc-gen:ignore
     tag: v2.1.1
 etcd_defrag: # +doc-gen:ignore
   enable: true
-  pattern: '*/10 * * * *'
+  pattern: '0 0 * * *'
+  env:
+    etcd_name: etcd
+    etcd_protocol: http
+    etcd_port: 2379
+    sleep: 60
   image:
     repository: hkube/etcd-defrag-cron
-    tag: v1.0.0
+    tag: v1.0.3
   resources:
     requests:
       cpu: 100m
