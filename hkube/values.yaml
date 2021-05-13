@@ -211,6 +211,7 @@ algorithm_operator:
     algorithm_builder_main_memory: 512
     resources_enable: false
     algorithm_queue_interval: 1000
+    algorithm_queue_concurrency_limit: 5
     boards_timeout: 10800
     producer_update_interval: 200
     python_wrapper_version: ''
@@ -524,6 +525,7 @@ task_executor:
     metric_port: '3000' # +doc-gen:ignore
     # the number of pipeline drivers to run.
     pipeline_drivers_amount: 1
+    pipeline_drivers_concurrency_limit: 5
     worker_socket_max_payload_bytes: 1000000000
     worker_algorithm_start_timeout_ms: 300000
     worker_algorithm_encoding: bson # +doc-gen:ignore
@@ -580,6 +582,15 @@ worker: # +doc-gen:ignore
     tag: v2.1.2
   metrics:
     port: 3001
+  service:
+    type: ClusterIP
+algorithm_gateway: # +doc-gen:ignore
+  env:
+    base_url_path: /hkube/gateway
+    port: 3005
+  image:
+    repository: hkube/algorithm-gateway
+    tag: v2.1.1
   service:
     type: ClusterIP
 caching_service: # +doc-gen:ignore

@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: algorithm-gateway
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app: algorithm-gateway
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+    metrics: "true"
+spec:
+  selector:
+    metrics-group: algorithm-gateway
+    group: {{ .Values.labels.group.value }}
+  clusterIP: None
