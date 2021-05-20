@@ -590,7 +590,7 @@ algorithm_gateway: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-gateway
-    tag: v2.1.1
+    tag: v2.0.1
   service:
     type: ClusterIP
 caching_service: # +doc-gen:ignore
