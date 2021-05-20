@@ -14,6 +14,7 @@ data:
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
   BUILD_MODE: {{ index .Values "algorithm_operator" "build_mode" | quote }}
   ALGORITHM_QUEUE_INTERVAL: {{ .Values.algorithm_operator.env.algorithm_queue_interval | quote }}
+  ALGORITHM_QUEUE_CONCURRENCY_LIMIT: {{ .Values.algorithm_operator.env.algorithm_queue_concurrency_limit | quote }}
   BOARDS_TIMEOUT: {{ .Values.algorithm_operator.env.boards_timeout | quote }}
   ALGORITHM_QUEUE_PRODUCER_UPDATE_INTERVAL : {{ .Values.algorithm_operator.env.producer_update_interval | quote }}
   PYTHON_WRAPPER_VERSION : {{ .Values.algorithm_operator.env.python_wrapper_version | quote }}
