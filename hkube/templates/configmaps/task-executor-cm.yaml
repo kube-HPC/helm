@@ -25,7 +25,5 @@ data:
   IS_NAMESPACED: {{ .Values.global.namespaced | quote}}
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   HAS_NODE_LIST: {{ .Values.task_executor.env.has_node_list | quote }}
-  PIPELINE_DRIVERS_AMOUNT: {{ .Values.task_executor.env.pipeline_drivers_amount | quote}}
-  PIPELINE_DRIVERS_CONCURRENCY_LIMIT: {{ .Values.task_executor.env.pipeline_drivers_concurrency_limit | quote}}
   USE_RESOURCE_LIMITS: {{ .Values.task_executor.env.use_resource_limits | quote}}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}

@@ -212,6 +212,8 @@ algorithm_operator:
     resources_enable: false
     algorithm_queue_interval: 1000
     algorithm_queue_concurrency_limit: 5
+    pipeline_drivers_amount: 1
+    pipeline_drivers_concurrency_limit: 5
     boards_timeout: 10800
     producer_update_interval: 200
     python_wrapper_version: ''
@@ -523,9 +525,6 @@ task_executor:
     failureThreshold: 3
   env:
     metric_port: '3000' # +doc-gen:ignore
-    # the number of pipeline drivers to run.
-    pipeline_drivers_amount: 1
-    pipeline_drivers_concurrency_limit: 5
     worker_socket_max_payload_bytes: 1000000000
     worker_algorithm_start_timeout_ms: 300000
     worker_algorithm_encoding: bson # +doc-gen:ignore

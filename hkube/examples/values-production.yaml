@@ -31,6 +31,6 @@ build_secret:
   npm_token: ''
   pip_registry: ''
   pip_token: ''
-task_executor:
+algorithm_operator:
   env:
     pipeline_drivers_amount: 30

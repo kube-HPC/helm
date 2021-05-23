@@ -71,11 +71,6 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: IS_NAMESPACED
-            - name: PIPELINE_DRIVERS_AMOUNT
-              valueFrom:
-                configMapKeyRef:
-                  name: task-executor-configmap
-                  key: PIPELINE_DRIVERS_AMOUNT
             - name: METRICS_PORT
               valueFrom:
                 configMapKeyRef:
@@ -95,11 +90,6 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: DEFAULT_STORAGE
-            - name: PIPELINE_DRIVERS_CONCURRENCY_LIMIT
-              valueFrom:
-                configMapKeyRef:
-                  name: task-executor-configmap
-                  key: PIPELINE_DRIVERS_CONCURRENCY_LIMIT
             - name: STORAGE_ENCODING
               valueFrom:
                 configMapKeyRef:
