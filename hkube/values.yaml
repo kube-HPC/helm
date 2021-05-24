@@ -211,6 +211,9 @@ algorithm_operator:
     algorithm_builder_main_memory: 512
     resources_enable: false
     algorithm_queue_interval: 1000
+    algorithm_queue_concurrency_limit: 5
+    pipeline_drivers_amount: 1
+    pipeline_drivers_concurrency_limit: 5
     boards_timeout: 10800
     producer_update_interval: 200
     python_wrapper_version: ''
@@ -241,7 +244,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.1.1
+    tag: v2.1.6
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -260,7 +263,7 @@ api_server: # +doc-gen:ignore
     pipeline_driver_mem: '512'
   image:
     repository: hkube/api-server
-    tag: v2.1.3
+    tag: v2.1.7
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -449,7 +452,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.1.1
+    tag: v2.1.2
   service:
     type: ClusterIP
   resources:
@@ -522,8 +525,6 @@ task_executor:
     failureThreshold: 3
   env:
     metric_port: '3000' # +doc-gen:ignore
-    # the number of pipeline drivers to run.
-    pipeline_drivers_amount: 1
     worker_socket_max_payload_bytes: 1000000000
     worker_algorithm_start_timeout_ms: 300000
     worker_algorithm_encoding: bson # +doc-gen:ignore
@@ -577,9 +578,18 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.1.1
+    tag: v2.1.2
   metrics:
     port: 3001
+  service:
+    type: ClusterIP
+algorithm_gateway: # +doc-gen:ignore
+  env:
+    base_url_path: /hkube/gateway
+    port: 3005
+  image:
+    repository: hkube/algorithm-gateway
+    tag: v2.0.1
   service:
     type: ClusterIP
 caching_service: # +doc-gen:ignore
@@ -587,7 +597,7 @@ caching_service: # +doc-gen:ignore
     port: '9005'
   image:
     repository: hkube/caching-service
-    tag: v2.1.1
+    tag: v2.1.2
   service:
     type: ClusterIP
   resources:
@@ -656,4 +666,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.6-1620630792030
+fullSystemVersion: v2.1.18-1621768583580

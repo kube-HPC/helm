@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: algorithm-gateway-configmap
+data:
+  NODE_ENV: {{ .Values.env.node_env }}
+  BASE_URL_PATH: {{ .Values.algorithm_gateway.env.base_url_path | quote}}
+  REST_PORT: {{ .Values.algorithm_gateway.env.port | quote}}
+  INGRESS_PREFIX: {{ .Values.global.ingress.prefix | quote}}
