@@ -593,6 +593,15 @@ algorithm_gateway: # +doc-gen:ignore
     tag: v2.1.1
   service:
     type: ClusterIP
+algorithm_debug: # +doc-gen:ignore
+  env:
+    base_url_path: /hkube/debug
+    port: 3005
+  image:
+    repository: hkube/algorithm-debug
+    tag: v2.0.2
+  service:
+    type: ClusterIP
 caching_service: # +doc-gen:ignore
   env:
     port: '9005'

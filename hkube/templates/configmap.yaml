@@ -73,6 +73,11 @@ data:
                         "tag": "{{ .Values.algorithm_gateway.image.tag }}",
                         "image": "{{ .Values.algorithm_gateway.image.repository }}"
                   },
+                                    {
+                        "project": "algorithm-debug",
+                        "tag": "{{ .Values.algorithm_debug.image.tag }}",
+                        "image": "{{ .Values.algorithm_debug.image.repository }}"
+                  },
                   {
                         "project": "trigger-service",
                         "tag": "{{ index .Values "trigger_service" "image" "tag" }}",
