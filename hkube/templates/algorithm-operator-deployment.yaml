@@ -84,6 +84,16 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: ALGORITHM_QUEUE_CONCURRENCY_LIMIT
+            - name: PIPELINE_DRIVERS_AMOUNT
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: PIPELINE_DRIVERS_AMOUNT
+            - name: PIPELINE_DRIVERS_CONCURRENCY_LIMIT
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: PIPELINE_DRIVERS_CONCURRENCY_LIMIT
             - name: DEFAULT_STORAGE
               valueFrom:
                 configMapKeyRef:
