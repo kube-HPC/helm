@@ -22,6 +22,6 @@ dependencies:
   version: 10.0.1000
 - name: gitea
   repository: https://hkube.io/helm/
-  version: 2.1.3004
-digest: sha256:1cfdbb8807144819348e6dd6c42f582aa365b9f5992f190ab5d18f7ec32f05a6
-generated: "2021-04-19T11:35:52.988621+03:00"
+  version: 2.1.3005
+digest: sha256:bc7cb83fd780f252bff8ef163a02660e1f0b1e1b95e87e385c4601879a47257d
+generated: "2021-05-30T17:34:11.310753+03:00"
