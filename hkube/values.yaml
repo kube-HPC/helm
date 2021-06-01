@@ -475,7 +475,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v2.1.2
+    tag: v2.1.3
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -674,4 +674,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.24-1622548981932
+fullSystemVersion: v2.1.24-1622554194223
