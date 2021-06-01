@@ -1,6 +1,6 @@
 annotations:
   category: Database
-apiVersion: v2
+apiVersion: v1
 appVersion: 4.4.1
 description: NoSQL document-oriented database that stores JSON-like documents with
   dynamic schemas, simplifying the integration of data in content-driven applications.
@@ -20,4 +20,4 @@ name: mongodb
 sources:
 - https://github.com/bitnami/bitnami-docker-mongodb
 - https://mongodb.org
-version: 10.0.1000
+version: 10.0.1001
