@@ -19,9 +19,9 @@ dependencies:
   version: 5.0.1024
 - name: mongodb
   repository: https://hkube.io/helm/
-  version: 10.0.1000
+  version: 10.0.1001
 - name: gitea
   repository: https://hkube.io/helm/
-  version: 2.1.3005
-digest: sha256:bc7cb83fd780f252bff8ef163a02660e1f0b1e1b95e87e385c4601879a47257d
-generated: "2021-05-30T17:34:11.310753+03:00"
+  version: 2.1.3006
+digest: sha256:5f7656a25edd83820f6e1fe08b3a6608368d5592dc190f653f7594a775355059
+generated: "2021-06-01T17:54:21.424569+03:00"
