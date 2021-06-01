@@ -1,0 +1,13 @@
+dependencies:
+- condition: gitea.cache.builtIn.enabled
+  name: memcached
+  version: 4.2.20
+- condition: gitea.database.builtIn.mysql.enabled
+  name: mysql
+  version: 6.14.10
+- condition: gitea.database.builtIn.postgresql.enabled
+  name: postgresql
+  version: 9.7.2
+- condition: gitea.database.builtIn.mariadb.enabled
+  name: mariadb
+  version: 8.0.0

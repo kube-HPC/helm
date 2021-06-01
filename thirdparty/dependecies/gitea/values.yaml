@@ -8,7 +8,7 @@ clusterDomain: cluster.local
 
 image:
   repository: gitea/gitea
-  version: latest-rootless
+  version: 1.14.2-rootless
   pullPolicy: Always
 
 imagePullSecrets: []
@@ -160,3 +160,8 @@ mariadb:
       port: 3306
     persistence:
       size: 10Gi
+
+global:
+  k8senv: kubernetes
+  image_pull_secret:
+    use_existing: false
