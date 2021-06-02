@@ -119,11 +119,6 @@ data:
                         "image": "{{ .Values.etcd_cleaner.image.repository }}"
                   },
                   {
-                        "project": "caching-service",
-                        "tag": "{{ index .Values "caching_service" "image" "tag" }}",
-                        "image": "{{ .Values.caching_service.image.repository }}"
-                  },
-                  {
                         "project": "algorithm-builder",
                         "tag": "{{ index .Values "algorithm_builder" "image" "tag" }}",
                         "image": "{{ index .Values "algorithm_builder" "image" "repository" }}"

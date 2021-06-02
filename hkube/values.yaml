@@ -600,18 +600,6 @@ algorithm_debug: # +doc-gen:ignore
     tag: v2.1.0
   service:
     type: ClusterIP
-caching_service: # +doc-gen:ignore
-  env:
-    port: '9005'
-  image:
-    repository: hkube/caching-service
-    tag: v2.1.2
-  service:
-    type: ClusterIP
-  resources:
-    requests:
-      cpu: 100m
-      memory: 512Mi
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
