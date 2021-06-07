@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: clean-old-jobs
+  name: hkube-gc
   labels:
-    app: clean-old-jobs
+    app: hkube-gc
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
@@ -12,15 +12,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: clean-old-jobs
-      release: clean-old-jobs
+      app: hkube-gc
+      release: hkube-gc
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/configmaps/clean-old-jobs-cm.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/hkube-gc-cm.yaml") . | sha256sum }}
       labels:
-        app: clean-old-jobs
-        release: clean-old-jobs
+        app: hkube-gc
+        release: hkube-gc
         group: {{ .Values.labels.group.value }}
     spec:
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
@@ -31,24 +31,24 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: clean-old-jobs
+      serviceAccountName: hkube-gc
       containers:
-        - name: clean-old-jobs
-          image: "{{ .Values.global.registry }}{{ index  .Values "clean_old_jobs" "image" "repository" }}:{{ index .Values "clean_old_jobs" "image" "tag" }}"
+        - name: hkube-gc
+          image: "{{ .Values.global.registry }}{{ index  .Values "hkube_gc" "image" "repository" }}:{{ index .Values "hkube_gc" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-{{- if .Values.clean_old_jobs.healthcheck.enabled }}
+{{- if .Values.hkube_gc.healthcheck.enabled }}
           livenessProbe:
             httpGet:
-              path: {{ .Values.clean_old_jobs.healthcheck.path }}
-              port: {{ .Values.clean_old_jobs.healthcheck.port }}
-            initialDelaySeconds: {{ .Values.clean_old_jobs.healthcheck.initialDelaySeconds }}
-            periodSeconds: {{ .Values.clean_old_jobs.healthcheck.periodSeconds }}
-            timeoutSeconds: {{ .Values.clean_old_jobs.healthcheck.timeoutSeconds }}
-            failureThreshold: {{ .Values.clean_old_jobs.healthcheck.failureThreshold }}
+              path: {{ .Values.hkube_gc.healthcheck.path }}
+              port: {{ .Values.hkube_gc.healthcheck.port }}
+            initialDelaySeconds: {{ .Values.hkube_gc.healthcheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.hkube_gc.healthcheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.hkube_gc.healthcheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.hkube_gc.healthcheck.failureThreshold }}
 {{- end }}
 {{- if .Values.global.resources_enable }}          
           resources:
-{{ toYaml .Values.clean_old_jobs.resources | indent 12 }}
+{{ toYaml .Values.hkube_gc.resources | indent 12 }}
 {{- else }}
           resources: {}
 {{- end }}     
@@ -56,22 +56,22 @@ spec:
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:
-                  name: clean-old-jobs-configmap
+                  name: hkube-gc-configmap
                   key: NODE_ENV
             - name: "MAX_COMPLETED_JOB_AGE_HOURS"
               valueFrom:
                 configMapKeyRef:
-                  name: clean-old-jobs-configmap
+                  name: hkube-gc-configmap
                   key: MAX_COMPLETED_JOB_AGE_HOURS
             - name: "MAX_FAILED_JOB_AGE_HOURS"
               valueFrom:
                 configMapKeyRef:
-                  name: clean-old-jobs-configmap
+                  name: hkube-gc-configmap
                   key: MAX_FAILED_JOB_AGE_HOURS
             - name: "MAX_PENDING_JOB_AGE_HOURS"
               valueFrom:
                 configMapKeyRef:
-                  name: clean-old-jobs-configmap
+                  name: hkube-gc-configmap
                   key: MAX_PENDING_JOB_AGE_HOURS
             - name: NAMESPACE
               valueFrom:

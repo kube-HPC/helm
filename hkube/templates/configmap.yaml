@@ -94,9 +94,9 @@ data:
                         "image": "{{ .Values.pipeline_driver_queue.image.repository }}"
                   },
                   {
-                        "project": "clean-old-jobs",
-                        "tag": "{{ index .Values "clean_old_jobs" "image" "tag" }}",
-                        "image": "{{ .Values.clean_old_jobs.image.repository }}"
+                        "project": "hkube-gc",
+                        "tag": "{{ index .Values "hkube_gc" "image" "tag" }}",
+                        "image": "{{ .Values.hkube_gc.image.repository }}"
                   },
                   {
                         "project": "cpu-load-algorithm",

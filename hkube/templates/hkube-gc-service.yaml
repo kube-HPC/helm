@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hkube-gc
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app: hkube-gc
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+    metrics: "true"
+spec:
+  type: {{ index .Values "hkube_gc" "service" "type" }}
+  ports:
+    - port: {{ index .Values "hkube_gc" "env" "port" }}
+      targetPort: {{ index .Values "hkube_gc" "env" "port" }}
+      protocol: TCP
+      name: rest
+    - port: {{ index .Values "hkube_gc" "env" "metric_port" }}
+      targetPort: {{ index .Values "hkube_gc" "env" "metric_port" }}
+      protocol: TCP
+      name: metrics
+    
+  selector:
+    app: hkube-gc
+    release: hkube-gc

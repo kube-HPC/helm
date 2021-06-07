@@ -3,16 +3,16 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   namespace: {{ .Release.Namespace }}
-  name: clean-old-jobs
+  name: hkube-gc
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: {{ .Release.Namespace }}
-  name: clean-old-jobs
+  name: hkube-gc
   labels:
     group: {{ .Values.labels.group.value }}
-    app: clean-old-jobs
+    app: hkube-gc
     core: "true"
 rules:
 - apiGroups: [""]
@@ -26,16 +26,16 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: clean-old-jobs
+  name: hkube-gc
   namespace: {{ .Release.Namespace }}
   labels:
     group: {{ .Values.labels.group.value }}
-    app: clean-old-jobs
+    app: hkube-gc
     core: "true"
 subjects:
 - kind: ServiceAccount
-  name: clean-old-jobs
+  name: hkube-gc
 roleRef:
   kind: Role
-  name: clean-old-jobs
+  name: hkube-gc
   apiGroup: rbac.authorization.k8s.io
