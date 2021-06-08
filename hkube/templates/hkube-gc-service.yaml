@@ -12,17 +12,16 @@ metadata:
     core: "true"
     metrics: "true"
 spec:
-  type: {{ index .Values "hkube_gc" "service" "type" }}
+  type: {{ .Values.hkube_gc.service.type }}
   ports:
-    - port: {{ index .Values "hkube_gc" "env" "port" }}
-      targetPort: {{ index .Values "hkube_gc" "env" "port" }}
+    - port: {{ .Values.hkube_gc.env.rest_port }}
+      targetPort: {{ .Values.hkube_gc.env.rest_port }}
       protocol: TCP
       name: rest
-    - port: {{ index .Values "hkube_gc" "env" "metric_port" }}
-      targetPort: {{ index .Values "hkube_gc" "env" "metric_port" }}
+    - port: {{ .Values.hkube_gc.env.metric_port }}
+      targetPort: {{ .Values.hkube_gc.env.metric_port }}
       protocol: TCP
       name: metrics
-    
   selector:
     app: hkube-gc
     release: hkube-gc
