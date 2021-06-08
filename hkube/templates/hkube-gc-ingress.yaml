@@ -1,4 +1,4 @@
-{{- if index .Values "hkube_gc" "ingress" "enabled" -}}
+{{- if .Values.hkube_gc.ingress.enabled -}}
 {{- $fullName := "hkube-gc" -}}
 {{- $servicePort := .Values.hkube_gc.env.rest_port -}}
 {{- $ingressPath := .Values.hkube_gc.ingress.path -}}
