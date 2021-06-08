@@ -21,7 +21,7 @@ spec:
           imagePullSecrets:
             - name: {{ .Values.global.image_pull_secret.name }}
 {{- end }}
-          serviceAccountName: clean-old-jobs
+          serviceAccountName: hkube-gc
           containers:
           - name: etcd-defrag-cron
             image: {{ .Values.global.registry }}{{ .Values.etcd_defrag.image.repository }}:{{ .Values.etcd_defrag.image.tag }}

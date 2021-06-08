@@ -4,9 +4,59 @@ kind: ConfigMap
 metadata:
   name: hkube-gc-configmap
 data:
-  NODE_ENV: {{.Values.env.node_env}}
-  MAX_COMPLETED_JOB_AGE_HOURS: {{ .Values.hkube_gc.env.max_completed_job_age_hours | quote }}
-  MAX_FAILED_JOB_AGE_HOURS: {{ .Values.hkube_gc.env.max_failed_job_age_hours | quote }}
-  MAX_PENDING_JOB_AGE_HOURS: {{ .Values.hkube_gc.env.max_pending_job_age_hours | quote }}
-  CLEAN_CRON: {{ .Values.hkube_gc.env.clean_cron | quote }}
+  NODE_ENV: {{ .Values.env.node_env}}
   HKUBE_LOG_LEVEL: {{ .Values.hkube_gc.env.hkube_log_level | quote }}
+  METRICS_PORT: {{ .Values.api_server.env.metric_port | quote}}
+  REST_PORT: {{ .Values.api_server.env.port | quote}}
+  BASE_URL_PATH: {{ .Values.api_server.env.base_url_path | quote}}
+  INGRESS_PREFIX: {{ .Values.global.ingress.prefix | quote}}
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
+  DEFAULT_STORAGE: {{ .Values.env.default_storage | quote}}
+  STORAGE_ENCODING: {{ .Values.global.storage.encoding | quote}}
+{{- if eq .Values.env.default_storage "fs" }}
+  BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
+{{- end }}
+
+  # datasource
+  DATASOURCE_CRON: {{ .Values.hkube_gc.env.datasource_cron | quote }}
+  DATASOURCE_ENABLED: {{ .Values.hkube_gc.env.datasource_enabled | quote }}
+  DATASOURCE_MAX_AGE: {{ .Values.hkube_gc.env.datasource_max_age | quote }}
+  DATASOURCE_BASE_DIRECTORY: {{ .Values.hkube_gc.env.datasource_base_dir | quote }}
+  DATASOURCE_FOLDER_IN_USE: {{ .Values.hkube_gc.env.datasource_folder_in_use | quote }}
+
+  # debug
+  DEBUG_CRON: {{ .Values.hkube_gc.env.debug_cron | quote }}
+  DEBUG_ENABLED: {{ .Values.hkube_gc.env.debug_enabled | quote }}
+  DEBUG_MAX_AGE: {{ .Values.hkube_gc.env.debug_max_age | quote }}
+
+  # etcd
+  ETCD_CRON: {{ .Values.hkube_gc.env.etcd_cron | quote }}
+  ETCD_ENABLED: {{ .Values.hkube_gc.env.etcd_enabled | quote }}
+  ETCD_MAX_AGE: {{ .Values.hkube_gc.env.etcd_max_age | quote }}
+
+  # gateway
+  GATEWAY_CRON: {{ .Values.hkube_gc.env.gateway_cron | quote }}
+  GATEWAY_ENABLED: {{ .Values.hkube_gc.env.gateway_enabled | quote }}
+  GATEWAY_MAX_AGE: {{ .Values.hkube_gc.env.gateway_max_age | quote }}
+
+  # jobs
+  JOBS_CRON: {{ .Values.hkube_gc.env.jobs_cron | quote }}
+  JOBS_ENABLED: {{ .Values.hkube_gc.env.jobs_enabled | quote }}
+  JOBS_COMPLETED_MAX_AGE: {{ .Values.hkube_gc.env.jobs_completed_max_age | quote }}
+  JOBS_FAILED_MAX_AGE: {{ .Values.hkube_gc.env.jobs_failed_max_age | quote }}
+  JOBS_PENDING_MAX_AGE: {{ .Values.hkube_gc.env.jobs_pending_max_age | quote }}
+
+  # pipelines
+  PIPELINES_CRON:  {{ .Values.hkube_gc.env.pipelines_cron | quote }}
+  PIPELINES_ENABLED:  {{ .Values.hkube_gc.env.pipelines_enabled | quote }}
+
+  # redis
+  REDIS_CRON: {{ .Values.hkube_gc.env.redis_cron | quote }}
+  REDIS_ENABLED: {{ .Values.hkube_gc.env.redis_enabled | quote }}
+  REDIS_MAX_AGE: {{ .Values.hkube_gc.env.redis_max_age | quote }}
+
+  # storage
+  STORAGE_CRON: {{ .Values.hkube_gc.env.storage_cron | quote }}
+  STORAGE_ENABLED: {{ .Values.hkube_gc.env.storage_enabled | quote }}
+  STORAGE_RESULT_MAX_AGE: {{ .Values.hkube_gc.env.storage_results_max_age | quote }}
+  STORAGE_TEMP_MAX_AGE: {{ .Values.hkube_gc.env.storage_temp_max_age | quote }}

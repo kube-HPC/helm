@@ -317,15 +317,16 @@ hkube_gc: # +doc-gen:ignore
   # all maxAge are in minutes
   env:
     hkube_log_level: '2'
+    metric_port: 3001
+    rest_port: 7000
     base_url_path: /hkube/hkube-gc
-    metric_port: '3001'
-    port: '7000'
 
     # datasource
     datasource_cron: '0 0 * * *'
     datasource_enabled: true
     datasource_max_age: 2880
     datasource_base_dir: "/hkube/datasources-storage"
+    datasource_folder_in_use: 'dataSources-in-use'
     
     # debug
     debug_cron: '*/2 * * * *'
@@ -383,7 +384,6 @@ hkube_gc: # +doc-gen:ignore
     periodSeconds: 60
     timeoutSeconds: 1
     failureThreshold: 3
-  
 cpu-load-algorithm: # +doc-gen:ignore
   image:
     repository: hkube/cpu-load-algorithm
