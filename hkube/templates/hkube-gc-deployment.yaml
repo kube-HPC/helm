@@ -89,7 +89,6 @@ spec:
                 configMapKeyRef:
                   name: hkube-gc-configmap
                   key: BASE_URL_PATH
-
             - name: DATASOURCE_CRON
               valueFrom:
                 configMapKeyRef:
@@ -104,22 +103,22 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: DATASOURCE_MAX_AGE 
+                  key: DATASOURCE_MAX_AGE
             - name: DATASOURCE_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: DATASOURCE_BASE_DIRECTORY 
+                  key: DATASOURCE_BASE_DIRECTORY
             - name: DATASOURCE_FOLDER_IN_USE
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: DATASOURCE_FOLDER_IN_USE 
+                  key: DATASOURCE_FOLDER_IN_USE
             - name: DEBUG_CRON
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: DEBUG_CRON 
+                  key: DEBUG_CRON
             - name: DEBUG_ENABLED
               valueFrom:
                 configMapKeyRef:
@@ -129,17 +128,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: DEBUG_MAX_AGE 
+                  key: DEBUG_MAX_AGE
             - name: ETCD_CRON
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: ETCD_CRON 
+                  key: ETCD_CRON
             - name: ETCD_ENABLED
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: ETCD_ENABLED 
+                  key: ETCD_ENABLED
             - name: ETCD_MAX_AGE
               valueFrom:
                 configMapKeyRef:
@@ -149,17 +148,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: GATEWAY_CRON 
+                  key: GATEWAY_CRON
             - name: GATEWAY_ENABLED
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: GATEWAY_ENABLED 
+                  key: GATEWAY_ENABLED
             - name: GATEWAY_MAX_AGE
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: GATEWAY_MAX_AGE 
+                  key: GATEWAY_MAX_AGE
             - name: JOBS_CRON
               valueFrom:
                 configMapKeyRef:
@@ -179,17 +178,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: JOBS_FAILED_MAX_AGE 
+                  key: JOBS_FAILED_MAX_AGE
             - name: JOBS_PENDING_MAX_AGE
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
                   key: JOBS_PENDING_MAX_AGE
-                        - name: DEBUG_CRON
+            - name: DEBUG_CRON
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: DEBUG_CRON 
+                  key: DEBUG_CRON
             - name: PIPELINES_CRON
               valueFrom:
                 configMapKeyRef:
@@ -204,7 +203,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: REDIS_CRON 
+                  key: REDIS_CRON
             - name: REDIS_ENABLED
               valueFrom:
                 configMapKeyRef:
@@ -219,7 +218,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: hkube-gc-configmap
-                  key: STORAGE_CRON 
+                  key: STORAGE_CRON
             - name: STORAGE_ENABLED
               valueFrom:
                 configMapKeyRef:
