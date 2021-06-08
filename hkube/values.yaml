@@ -377,7 +377,7 @@ hkube_gc: # +doc-gen:ignore
   service:
     type: ClusterIP
   healthcheck:
-    enabled: true
+    enabled: false
     port: 5000
     path: /healthz
     initialDelaySeconds: 100
