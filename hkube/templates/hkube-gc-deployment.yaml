@@ -63,6 +63,11 @@ spec:
             - name: storage-volume
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }} 
+          ports:
+            - containerPort: {{ .Values.hkube_gc.env.metric_port }}
+              protocol: TCP
+            - containerPort: {{ .Values.hkube_gc.env.rest_port }}
+              protocol: TCP
           env:
             - name: NODE_ENV
               valueFrom:
