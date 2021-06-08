@@ -365,7 +365,7 @@ hkube_gc: # +doc-gen:ignore
     storage_results_max_age: 14400
     storage_temp_max_age: 7200
   image:
-    repository: hkube/hkube_gc
+    repository: hkube/hkube-gc
     tag: v2.1.1-hkube_gc-917720808
   resources:
     requests:
