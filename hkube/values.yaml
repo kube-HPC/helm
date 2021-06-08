@@ -171,7 +171,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.26
+systemversion: 2.1.26-hkube-gc.917542332
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -327,7 +327,7 @@ hkube_gc: # +doc-gen:ignore
     datasource_max_age: 2880
     datasource_base_dir: "/hkube/datasources-storage"
     datasource_folder_in_use: 'dataSources-in-use'
-    
+
     # debug
     debug_cron: '*/2 * * * *'
     debug_enabled: true
@@ -349,7 +349,7 @@ hkube_gc: # +doc-gen:ignore
     jobs_completed_max_age: 1
     jobs_failed_max_age: 1
     jobs_pending_max_age: 1
-  
+
     # pipelines
     pipelines_cron: '*/5 * * * *'
     pipelines_enabled: true
@@ -366,7 +366,7 @@ hkube_gc: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/hkube_gc
-    tag: v2.1.1
+    tag: v2.1.1-hkube_gc-917542332
   resources:
     requests:
       cpu: 100m
