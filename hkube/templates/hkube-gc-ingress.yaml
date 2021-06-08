@@ -1,7 +1,7 @@
 {{- if index .Values "hkube_gc" "ingress" "enabled" -}}
 {{- $fullName := "hkube-gc" -}}
-{{- $servicePort := index .Values "hkube_gc" "env" "port" -}}
-{{- $ingressPath := index .Values "hkube_gc" "ingress" "path" -}}
+{{- $servicePort := .Values.hkube_gc.env.rest_port -}}
+{{- $ingressPath := .Values.hkube_gc.ingress.path -}}
 {{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
 apiVersion: networking.k8s.io/v1beta1
 {{- else }}
