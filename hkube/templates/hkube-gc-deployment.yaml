@@ -41,7 +41,7 @@ spec:
       containers:
         - name: hkube-gc
           image: "{{ .Values.global.registry }}{{ .Values.hkube_gc.image.repository }}:{{ .Values.hkube_gc.image.tag }}"
-          imagePullPolicy: {{ index .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
 {{- if .Values.hkube_gc.healthcheck.enabled }}
           livenessProbe:
             httpGet:
