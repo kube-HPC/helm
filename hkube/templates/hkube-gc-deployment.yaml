@@ -52,7 +52,7 @@ spec:
             timeoutSeconds: {{ .Values.hkube_gc.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.hkube_gc.healthcheck.failureThreshold }}
 {{- end }}
-{{- if .Values.global.resources_enable }}  
+{{- if .Values.global.resources_enable }}
           resources:
 {{ toYaml .Values.hkube_gc.resources | indent 12 }}
 {{- else }}
@@ -261,7 +261,7 @@ spec:
                 secretKeyRef:
                   name: s3-secret
                   key: awsEndpointUrl
-{{- end }}                                    
+{{- end }}
             - name: DEFAULT_STORAGE
               valueFrom:
                 configMapKeyRef:
