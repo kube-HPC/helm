@@ -64,8 +64,6 @@ spec:
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}
           ports:
-            - containerPort: {{ .Values.gc_service.env.metric_port }}
-              protocol: TCP
             - containerPort: {{ .Values.gc_service.env.rest_port }}
               protocol: TCP
           env:
