@@ -95,7 +95,7 @@ data:
                   },
                   {
                         "project": "hkube-gc",
-                        "tag": "{{ index .Values "hkube_gc" "image" "tag" }}",
+                        "tag": "{{ .Values.hkube_gc.image.tag }}",
                         "image": "{{ .Values.hkube_gc.image.repository }}"
                   },
                   {

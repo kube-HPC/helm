@@ -6,7 +6,6 @@ metadata:
 data:
   NODE_ENV: {{ .Values.env.node_env}}
   HKUBE_LOG_LEVEL: {{ .Values.hkube_gc.env.hkube_log_level | quote }}
-  METRICS_PORT: {{ .Values.hkube_gc.env.metric_port | quote}}
   REST_PORT: {{ .Values.hkube_gc.env.rest_port | quote}}
   BASE_URL_PATH: {{ .Values.hkube_gc.env.base_url_path | quote}}
   INGRESS_PREFIX: {{ .Values.global.ingress.prefix | quote}}

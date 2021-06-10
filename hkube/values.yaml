@@ -317,7 +317,6 @@ hkube_gc: # +doc-gen:ignore
   # all maxAge are in minutes
   env:
     hkube_log_level: '2'
-    metric_port: 3001
     rest_port: 7000
     base_url_path: /hkube/hkube-gc
 
@@ -377,7 +376,7 @@ hkube_gc: # +doc-gen:ignore
   service:
     type: ClusterIP
   healthcheck:
-    enabled: false
+    enabled: true
     port: 5000
     path: /healthz
     initialDelaySeconds: 100

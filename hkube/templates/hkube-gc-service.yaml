@@ -10,7 +10,6 @@ metadata:
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
     core: "true"
-    metrics: "true"
 spec:
   type: {{ .Values.hkube_gc.service.type }}
   ports:
@@ -18,10 +17,6 @@ spec:
       targetPort: {{ .Values.hkube_gc.env.rest_port }}
       protocol: TCP
       name: rest
-    - port: {{ .Values.hkube_gc.env.metric_port }}
-      targetPort: {{ .Values.hkube_gc.env.metric_port }}
-      protocol: TCP
-      name: metrics
   selector:
     app: hkube-gc
     release: hkube-gc
