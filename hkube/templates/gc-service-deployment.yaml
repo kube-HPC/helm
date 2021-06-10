@@ -77,11 +77,6 @@ spec:
                 configMapKeyRef:
                   name: gc-service-configmap
                   key: HKUBE_LOG_LEVEL
-            - name: METRICS_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: gc-service-configmap
-                  key: METRICS_PORT
             - name: REST_PORT
               valueFrom:
                 configMapKeyRef:
