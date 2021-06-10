@@ -171,7 +171,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.1.27-hkube-gc.925377592
+systemversion: 2.1.27-hkube-gc.925466477
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -365,7 +365,7 @@ gc_service: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/gc-service
-    tag: v2.1.1-hkube_gc-925377592
+    tag: v2.1.1-hkube_gc-925466477
   resources:
     requests:
       cpu: 100m
