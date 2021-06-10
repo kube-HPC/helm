@@ -19,5 +19,3 @@ data:
   INGRESS_PREFIX: {{ .Values.global.ingress.prefix | quote}}
   BODY_SIZE_LIMIT: {{ .Values.global.ingress.maxBodySize | quote}}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
-  
-
