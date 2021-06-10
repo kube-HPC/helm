@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hkube-gc
+  name: gc-service
   labels:
-    app: hkube-gc
+    app: gc-service
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
@@ -12,15 +12,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hkube-gc
-      release: hkube-gc
+      app: gc-service
+      release: gc-service
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/configmaps/hkube-gc-cm.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/configmaps/gc-service-cm.yaml") . | sha256sum }}
       labels:
-        app: hkube-gc
-        release: hkube-gc
+        app: gc-service
+        release: gc-service
         group: {{ .Values.labels.group.value }}
     spec:
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
@@ -37,24 +37,24 @@ spec:
           persistentVolumeClaim:
             claimName: hkube-storage-pvc
 {{- end }}
-      serviceAccountName: hkube-gc
+      serviceAccountName: gc-service
       containers:
-        - name: hkube-gc
-          image: "{{ .Values.global.registry }}{{ .Values.hkube_gc.image.repository }}:{{ .Values.hkube_gc.image.tag }}"
+        - name: gc-service
+          image: "{{ .Values.global.registry }}{{ .Values.gc_service.image.repository }}:{{ .Values.gc_service.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-{{- if .Values.hkube_gc.healthcheck.enabled }}
+{{- if .Values.gc_service.healthcheck.enabled }}
           livenessProbe:
             httpGet:
-              path: {{ .Values.hkube_gc.healthcheck.path }}
-              port: {{ .Values.hkube_gc.healthcheck.port }}
-            initialDelaySeconds: {{ .Values.hkube_gc.healthcheck.initialDelaySeconds }}
-            periodSeconds: {{ .Values.hkube_gc.healthcheck.periodSeconds }}
-            timeoutSeconds: {{ .Values.hkube_gc.healthcheck.timeoutSeconds }}
-            failureThreshold: {{ .Values.hkube_gc.healthcheck.failureThreshold }}
+              path: {{ .Values.gc_service.healthcheck.path }}
+              port: {{ .Values.gc_service.healthcheck.port }}
+            initialDelaySeconds: {{ .Values.gc_service.healthcheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.gc_service.healthcheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.gc_service.healthcheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.gc_service.healthcheck.failureThreshold }}
 {{- end }}
 {{- if .Values.global.resources_enable }}
           resources:
-{{ toYaml .Values.hkube_gc.resources | indent 12 }}
+{{ toYaml .Values.gc_service.resources | indent 12 }}
 {{- else }}
           resources: {}
 {{- end }}
@@ -64,186 +64,186 @@ spec:
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}
           ports:
-            - containerPort: {{ .Values.hkube_gc.env.metric_port }}
+            - containerPort: {{ .Values.gc_service.env.metric_port }}
               protocol: TCP
-            - containerPort: {{ .Values.hkube_gc.env.rest_port }}
+            - containerPort: {{ .Values.gc_service.env.rest_port }}
               protocol: TCP
           env:
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: NODE_ENV
             - name: HKUBE_LOG_LEVEL
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: HKUBE_LOG_LEVEL
             - name: METRICS_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: METRICS_PORT
             - name: REST_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: REST_PORT
             - name: BASE_URL_PATH
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: BASE_URL_PATH
             - name: DATASOURCE_CRON
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DATASOURCE_CRON
             - name: DATASOURCE_ENABLED
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DATASOURCE_ENABLED
             - name: DATASOURCE_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DATASOURCE_MAX_AGE
             - name: DATASOURCE_BASE_DIRECTORY
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DATASOURCE_BASE_DIRECTORY
             - name: DATASOURCE_FOLDER_IN_USE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DATASOURCE_FOLDER_IN_USE
             - name: DEBUG_CRON
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DEBUG_CRON
             - name: DEBUG_ENABLED
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DEBUG_ENABLED
             - name: DEBUG_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DEBUG_MAX_AGE
             - name: ETCD_CRON
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: ETCD_CRON
             - name: ETCD_ENABLED
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: ETCD_ENABLED
             - name: ETCD_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: ETCD_MAX_AGE
             - name: GATEWAY_CRON
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: GATEWAY_CRON
             - name: GATEWAY_ENABLED
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: GATEWAY_ENABLED
             - name: GATEWAY_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: GATEWAY_MAX_AGE
             - name: JOBS_CRON
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: JOBS_CRON
             - name: JOBS_ENABLED
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: JOBS_ENABLED 
             - name: JOBS_COMPLETED_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: JOBS_COMPLETED_MAX_AGE 
             - name: JOBS_FAILED_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: JOBS_FAILED_MAX_AGE
             - name: JOBS_PENDING_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: JOBS_PENDING_MAX_AGE
             - name: DEBUG_CRON
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DEBUG_CRON
             - name: PIPELINES_CRON
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: PIPELINES_CRON
             - name: PIPELINES_ENABLED
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: PIPELINES_ENABLED
             - name: REDIS_CRON
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: REDIS_CRON
             - name: REDIS_ENABLED
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: REDIS_ENABLED
             - name: REDIS_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: REDIS_MAX_AGE
             - name: STORAGE_CRON
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: STORAGE_CRON
             - name: STORAGE_ENABLED
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: STORAGE_ENABLED
             - name: STORAGE_RESULT_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: STORAGE_RESULT_MAX_AGE
             - name: STORAGE_TEMP_MAX_AGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: STORAGE_TEMP_MAX_AGE
 {{- if eq .Values.env.default_storage "fs" }}
             - name: BASE_FS_ADAPTER_DIRECTORY
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: BASE_FS_ADAPTER_DIRECTORY
 {{- else if eq .Values.env.default_storage "s3" }}
             - name: AWS_ACCESS_KEY_ID
@@ -265,17 +265,17 @@ spec:
             - name: DEFAULT_STORAGE
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: DEFAULT_STORAGE
             - name: STORAGE_ENCODING
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: STORAGE_ENCODING                  
             - name: CLUSTER_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: CLUSTER_NAME  
             - name: NAMESPACE
               valueFrom:
@@ -284,7 +284,7 @@ spec:
             - name: INGRESS_PREFIX
               valueFrom:
                 configMapKeyRef:
-                  name: hkube-gc-configmap
+                  name: gc-service-configmap
                   key: INGRESS_PREFIX
 {{- if .Values.mongodb.enable }}
             - name: MONGODB_SERVICE_USER_NAME

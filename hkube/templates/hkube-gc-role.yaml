@@ -3,16 +3,16 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   namespace: {{ .Release.Namespace }}
-  name: hkube-gc
+  name: gc-service
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: {{ .Release.Namespace }}
-  name: hkube-gc
+  name: gc-service
   labels:
     group: {{ .Values.labels.group.value }}
-    app: hkube-gc
+    app: gc-service
     core: "true"
 rules:
 - apiGroups: [""]
@@ -26,16 +26,16 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: hkube-gc
+  name: gc-service
   namespace: {{ .Release.Namespace }}
   labels:
     group: {{ .Values.labels.group.value }}
-    app: hkube-gc
+    app: gc-service
     core: "true"
 subjects:
 - kind: ServiceAccount
-  name: hkube-gc
+  name: gc-service
 roleRef:
   kind: Role
-  name: hkube-gc
+  name: gc-service
   apiGroup: rbac.authorization.k8s.io

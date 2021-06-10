@@ -313,12 +313,12 @@ busybox: # +doc-gen:ignore
   image:
     repository: busybox
     tag: latest
-hkube_gc: # +doc-gen:ignore
+gc_service: # +doc-gen:ignore
   # all maxAge are in minutes
   env:
     hkube_log_level: '2'
     rest_port: 7000
-    base_url_path: /hkube/hkube-gc
+    base_url_path: /hkube/gc-service
 
     # datasource
     datasource_cron: '0 0 * * *'
@@ -364,15 +364,15 @@ hkube_gc: # +doc-gen:ignore
     storage_results_max_age: 14400
     storage_temp_max_age: 7200
   image:
-    repository: hkube/hkube-gc
-    tag: v2.1.1-hkube_gc-918329445
+    repository: hkube/gc-service
+    tag: v2.1.1
   resources:
     requests:
       cpu: 100m
       memory: 512Mi
   ingress:
     enabled: true
-    path: /hkube/hkube-gc
+    path: /hkube/gc-service
   service:
     type: ClusterIP
   healthcheck:

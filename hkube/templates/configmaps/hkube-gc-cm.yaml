@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: hkube-gc-configmap
+  name: gc-service-configmap
 data:
   NODE_ENV: {{ .Values.env.node_env}}
-  HKUBE_LOG_LEVEL: {{ .Values.hkube_gc.env.hkube_log_level | quote }}
-  REST_PORT: {{ .Values.hkube_gc.env.rest_port | quote}}
-  BASE_URL_PATH: {{ .Values.hkube_gc.env.base_url_path | quote}}
+  HKUBE_LOG_LEVEL: {{ .Values.gc_service.env.hkube_log_level | quote }}
+  REST_PORT: {{ .Values.gc_service.env.rest_port | quote}}
+  BASE_URL_PATH: {{ .Values.gc_service.env.base_url_path | quote}}
   INGRESS_PREFIX: {{ .Values.global.ingress.prefix | quote}}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
   DEFAULT_STORAGE: {{ .Values.env.default_storage | quote}}
@@ -17,45 +17,45 @@ data:
 {{- end }}
 
   # datasource
-  DATASOURCE_CRON: {{ .Values.hkube_gc.env.datasource_cron | quote }}
-  DATASOURCE_ENABLED: {{ .Values.hkube_gc.env.datasource_enabled | quote }}
-  DATASOURCE_MAX_AGE: {{ .Values.hkube_gc.env.datasource_max_age | quote }}
-  DATASOURCE_BASE_DIRECTORY: {{ .Values.hkube_gc.env.datasource_base_dir | quote }}
-  DATASOURCE_FOLDER_IN_USE: {{ .Values.hkube_gc.env.datasource_folder_in_use | quote }}
+  DATASOURCE_CRON: {{ .Values.gc_service.env.datasource_cron | quote }}
+  DATASOURCE_ENABLED: {{ .Values.gc_service.env.datasource_enabled | quote }}
+  DATASOURCE_MAX_AGE: {{ .Values.gc_service.env.datasource_max_age | quote }}
+  DATASOURCE_BASE_DIRECTORY: {{ .Values.gc_service.env.datasource_base_dir | quote }}
+  DATASOURCE_FOLDER_IN_USE: {{ .Values.gc_service.env.datasource_folder_in_use | quote }}
 
   # debug
-  DEBUG_CRON: {{ .Values.hkube_gc.env.debug_cron | quote }}
-  DEBUG_ENABLED: {{ .Values.hkube_gc.env.debug_enabled | quote }}
-  DEBUG_MAX_AGE: {{ .Values.hkube_gc.env.debug_max_age | quote }}
+  DEBUG_CRON: {{ .Values.gc_service.env.debug_cron | quote }}
+  DEBUG_ENABLED: {{ .Values.gc_service.env.debug_enabled | quote }}
+  DEBUG_MAX_AGE: {{ .Values.gc_service.env.debug_max_age | quote }}
 
   # etcd
-  ETCD_CRON: {{ .Values.hkube_gc.env.etcd_cron | quote }}
-  ETCD_ENABLED: {{ .Values.hkube_gc.env.etcd_enabled | quote }}
-  ETCD_MAX_AGE: {{ .Values.hkube_gc.env.etcd_max_age | quote }}
+  ETCD_CRON: {{ .Values.gc_service.env.etcd_cron | quote }}
+  ETCD_ENABLED: {{ .Values.gc_service.env.etcd_enabled | quote }}
+  ETCD_MAX_AGE: {{ .Values.gc_service.env.etcd_max_age | quote }}
 
   # gateway
-  GATEWAY_CRON: {{ .Values.hkube_gc.env.gateway_cron | quote }}
-  GATEWAY_ENABLED: {{ .Values.hkube_gc.env.gateway_enabled | quote }}
-  GATEWAY_MAX_AGE: {{ .Values.hkube_gc.env.gateway_max_age | quote }}
+  GATEWAY_CRON: {{ .Values.gc_service.env.gateway_cron | quote }}
+  GATEWAY_ENABLED: {{ .Values.gc_service.env.gateway_enabled | quote }}
+  GATEWAY_MAX_AGE: {{ .Values.gc_service.env.gateway_max_age | quote }}
 
   # jobs
-  JOBS_CRON: {{ .Values.hkube_gc.env.jobs_cron | quote }}
-  JOBS_ENABLED: {{ .Values.hkube_gc.env.jobs_enabled | quote }}
-  JOBS_COMPLETED_MAX_AGE: {{ .Values.hkube_gc.env.jobs_completed_max_age | quote }}
-  JOBS_FAILED_MAX_AGE: {{ .Values.hkube_gc.env.jobs_failed_max_age | quote }}
-  JOBS_PENDING_MAX_AGE: {{ .Values.hkube_gc.env.jobs_pending_max_age | quote }}
+  JOBS_CRON: {{ .Values.gc_service.env.jobs_cron | quote }}
+  JOBS_ENABLED: {{ .Values.gc_service.env.jobs_enabled | quote }}
+  JOBS_COMPLETED_MAX_AGE: {{ .Values.gc_service.env.jobs_completed_max_age | quote }}
+  JOBS_FAILED_MAX_AGE: {{ .Values.gc_service.env.jobs_failed_max_age | quote }}
+  JOBS_PENDING_MAX_AGE: {{ .Values.gc_service.env.jobs_pending_max_age | quote }}
 
   # pipelines
-  PIPELINES_CRON:  {{ .Values.hkube_gc.env.pipelines_cron | quote }}
-  PIPELINES_ENABLED:  {{ .Values.hkube_gc.env.pipelines_enabled | quote }}
+  PIPELINES_CRON:  {{ .Values.gc_service.env.pipelines_cron | quote }}
+  PIPELINES_ENABLED:  {{ .Values.gc_service.env.pipelines_enabled | quote }}
 
   # redis
-  REDIS_CRON: {{ .Values.hkube_gc.env.redis_cron | quote }}
-  REDIS_ENABLED: {{ .Values.hkube_gc.env.redis_enabled | quote }}
-  REDIS_MAX_AGE: {{ .Values.hkube_gc.env.redis_max_age | quote }}
+  REDIS_CRON: {{ .Values.gc_service.env.redis_cron | quote }}
+  REDIS_ENABLED: {{ .Values.gc_service.env.redis_enabled | quote }}
+  REDIS_MAX_AGE: {{ .Values.gc_service.env.redis_max_age | quote }}
 
   # storage
-  STORAGE_CRON: {{ .Values.hkube_gc.env.storage_cron | quote }}
-  STORAGE_ENABLED: {{ .Values.hkube_gc.env.storage_enabled | quote }}
-  STORAGE_RESULT_MAX_AGE: {{ .Values.hkube_gc.env.storage_results_max_age | quote }}
-  STORAGE_TEMP_MAX_AGE: {{ .Values.hkube_gc.env.storage_temp_max_age | quote }}
+  STORAGE_CRON: {{ .Values.gc_service.env.storage_cron | quote }}
+  STORAGE_ENABLED: {{ .Values.gc_service.env.storage_enabled | quote }}
+  STORAGE_RESULT_MAX_AGE: {{ .Values.gc_service.env.storage_results_max_age | quote }}
+  STORAGE_TEMP_MAX_AGE: {{ .Values.gc_service.env.storage_temp_max_age | quote }}
