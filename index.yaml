@@ -3,9 +3,9 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.3.1
-    created: "2021-06-13T17:19:15.880115+03:00"
+    created: "2021-06-13T17:50:34.499914+03:00"
     description: Distributed reliable key-value store for the most critical data of a distributed system.
-    digest: 75a695da513b59bf409dfbbd1d3cf2d885104151f70c77e860cffbf34029f21f
+    digest: b5e2394cffea54c3418da098c15db211d3877aa19e971980172ddfe01565bd61
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -2132,4 +2132,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2021-06-13T17:19:15.878554+03:00"
+generated: "2021-06-13T17:50:34.49879+03:00"
