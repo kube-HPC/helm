@@ -171,7 +171,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.1.28-debug-algorithm.933202173
+systemversion: 2.1.28-debug-algorithm.933290694
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -220,7 +220,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.1.6-debug-algorithm-933202173
+    tag: v2.1.6-debug-algorithm-933290694
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -264,7 +264,7 @@ api_server: # +doc-gen:ignore
     maxBodySize: 500mb
   image:
     repository: hkube/api-server
-    tag: v2.1.11-debug-algorithm-933202173
+    tag: v2.1.11-debug-algorithm-933290694
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -453,7 +453,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.1.2-debug-algorithm-933202173
+    tag: v2.1.2-debug-algorithm-933290694
   service:
     type: ClusterIP
   resources:
@@ -552,7 +552,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.1.7-debug-algorithm-933202173
+    tag: v2.1.7-debug-algorithm-933290694
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -579,7 +579,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.1.5-debug-algorithm-933202173
+    tag: v2.1.5-debug-algorithm-933290694
   metrics:
     port: 3001
   service:
@@ -598,7 +598,7 @@ algorithm_debug: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-debug
-    tag: v2.1.1-debug-algorithm-933202173
+    tag: v2.1.1-debug-algorithm-933290694
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore
