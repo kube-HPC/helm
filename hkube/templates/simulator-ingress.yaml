@@ -1,11 +1,7 @@
 {{- if index .Values "simulator" "ingress" "enabled" -}}
 {{- $fullName := "simulator" -}}
-{{- $servicePort := index .Values "simulator" "env" "metric_port" -}}
-{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else }}
-apiVersion: extensions/v1beta1
-{{- end }}
+{{- $servicePort := .Values.simulator.env.port | int -}}
+apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: dashboard
@@ -54,18 +50,14 @@ spec:
 {{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}
 {{- end }}
-          backend:
-            serviceName: {{ $fullName }}
-            servicePort: {{ $servicePort }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
 {{- if .Values.simulator.ingress.alt_path }}
 {{- if .Values.global.ingress.use_regex }}
         - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}(/|$)(.*)
 {{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}
 {{- end }}
-          backend:
-            serviceName: {{ $fullName }}
-            servicePort: {{ $servicePort }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
 {{- end }}
 
 {{- if .Values.global.ingress.hostname }}

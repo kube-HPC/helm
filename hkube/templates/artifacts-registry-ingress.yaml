@@ -1,12 +1,8 @@
 {{- if index .Values "artifacts_registry" "ingress" "enabled" -}}
 {{- $fullName := "artifacts-registry" -}}
-{{- $servicePort := index .Values "artifacts_registry" "env" "port" -}}
-{{- $ingressPath := index .Values "artifacts_registry" "ingress" "path" -}}
-{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else }}
-apiVersion: extensions/v1beta1
-{{- end }}
+{{- $servicePort := .Values.artifacts_registry.env.port | int -}}
+{{- $ingressPath := .Values.artifacts_registry.ingress.path -}}
+apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: artifacts-registry
@@ -33,9 +29,7 @@ spec:
     - http:
         paths:
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
-          backend:
-            serviceName: {{ $fullName }}
-            servicePort: {{ $servicePort }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}

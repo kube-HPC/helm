@@ -1,12 +1,8 @@
 {{- if index .Values "api_server" "ingress" "enabled" -}}
+{{- $ingressPath := .Values.api_server.ingress.path -}}
 {{- $fullName := "api-server" -}}
-{{- $servicePort := index .Values "api_server" "env" "port" -}}
-{{- $ingressPath := index .Values "api_server" "ingress" "path" -}}
-{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else }}
-apiVersion: extensions/v1beta1
-{{- end }}
+{{- $servicePort := .Values.api_server.env.port | int -}}
+apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: api-server
@@ -42,9 +38,7 @@ spec:
 {{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
 {{- end }}
-          backend:
-            serviceName: {{ $fullName }}
-            servicePort: {{ $servicePort }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}
