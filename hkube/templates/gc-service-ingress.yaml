@@ -39,6 +39,7 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
 {{- end }}
           backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
+          pathType: ImplementationSpecific
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}
