@@ -94,29 +94,14 @@ data:
                         "image": "{{ .Values.pipeline_driver_queue.image.repository }}"
                   },
                   {
-                        "project": "clean-old-jobs",
-                        "tag": "{{ index .Values "clean_old_jobs" "image" "tag" }}",
-                        "image": "{{ .Values.clean_old_jobs.image.repository }}"
+                        "project": "gc-service",
+                        "tag": "{{ .Values.gc_service.image.tag }}",
+                        "image": "{{ .Values.gc_service.image.repository }}"
                   },
                   {
                         "project": "cpu-load-algorithm",
                         "tag": "{{ index .Values "cpu-load-algorithm" "image" "tag" }}",
                         "image": "{{ index .Values "cpu-load-algorithm" "image" "repository" }}"
-                  },
-                  {
-                        "project": "storage-cleaner",
-                        "tag": "{{ index .Values "storage_cleaner" "image" "tag" }}",
-                        "image": "{{ .Values.storage_cleaner.image.repository }}"
-                  },
-                  {
-                        "project": "pipeline-cleaner",
-                        "tag": "{{ index .Values "pipeline_cleaner" "image" "tag" }}",
-                        "image": "{{ .Values.pipeline_cleaner.image.repository }}"
-                  },
-                  {
-                        "project": "etcd-cleaner",
-                        "tag": "{{ index .Values "etcd_cleaner" "image" "tag" }}",
-                        "image": "{{ .Values.etcd_cleaner.image.repository }}"
                   },
                   {
                         "project": "algorithm-builder",

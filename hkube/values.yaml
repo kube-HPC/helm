@@ -169,7 +169,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.27
+systemversion: v2.1.28
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -312,13 +312,68 @@ busybox: # +doc-gen:ignore
   image:
     repository: busybox
     tag: latest
-clean_old_jobs: # +doc-gen:ignore
+gc_service: # +doc-gen:ignore
+  # all maxAge are in minutes
   env:
     hkube_log_level: '2'
-    max_completed_job_age_hours: '0.0166'
-    max_failed_job_age_hours: '0.0166'
-    max_pending_job_age_hours: '0.0166'
-    clean_cron: '*/1 * * * *'
+    rest_port: 7000
+    base_url_path: /hkube/gc-service
+
+    # datasource
+    datasource_cron: '0 0 * * *'
+    datasource_enabled: true
+    datasource_max_age: 2880
+    datasource_base_dir: "/hkube/datasources-storage"
+    datasource_folder_in_use: 'dataSources-in-use'
+
+    # debug
+    debug_cron: '*/2 * * * *'
+    debug_enabled: true
+    debug_max_age: 0.166
+
+    # etcd
+    etcd_cron: '0 1 * * *'
+    etcd_enabled: true
+    etcd_max_age: 1440
+
+    # gateway
+    gateway_cron: '*/2 * * * *'
+    gateway_enabled: true
+    gateway_max_age: 0.166
+
+    # jobs
+    jobs_cron: '*/1 * * * *'
+    jobs_enabled: true
+    jobs_completed_max_age: 1
+    jobs_failed_max_age: 1
+    jobs_pending_max_age: 1
+
+    # pipelines
+    pipelines_cron: '*/5 * * * *'
+    pipelines_enabled: true
+
+    # redis
+    redis_cron: '20 1 * * *'
+    redis_enabled: true
+    redis_max_age: 7200
+
+    # storage
+    storage_cron: 0 2 * * *
+    storage_enabled: true
+    storage_results_max_age: 14400
+    storage_temp_max_age: 7200
+  image:
+    repository: hkube/gc-service
+    tag: v2.1.2
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+  ingress:
+    enabled: true
+    path: /hkube/gc-service
+  service:
+    type: ClusterIP
   healthcheck:
     enabled: true
     port: 5000
@@ -327,13 +382,6 @@ clean_old_jobs: # +doc-gen:ignore
     periodSeconds: 60
     timeoutSeconds: 1
     failureThreshold: 3
-  image:
-    repository: hkube/clean-old-jobs
-    tag: v2.1.1
-  resources:
-    requests:
-      cpu: 100m
-      memory: 512Mi
 cpu-load-algorithm: # +doc-gen:ignore
   image:
     repository: hkube/cpu-load-algorithm
@@ -346,18 +394,6 @@ delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
     tag: v1.0.8
-  resources:
-    requests:
-      cpu: 100m
-      memory: 512Mi
-etcd_cleaner: # +doc-gen:ignore
-  pattern: 0 0 * * *
-  env:
-    etcd_expiration_days: "1"
-    redis_expiration_days: "5"
-  image:
-    repository: hkube/etcd-cleaner
-    tag: v2.1.2
   resources:
     requests:
       cpu: 100m
@@ -391,15 +427,6 @@ monitor_server: # +doc-gen:ignore
     datasource_proxy_path: /hkube/monitor-server/datasource
   service:
     type: ClusterIP
-  resources:
-    requests:
-      cpu: 100m
-      memory: 512Mi
-pipeline_cleaner: # +doc-gen:ignore
-  pattern: '*/5 * * * *'
-  image:
-    repository: hkube/pipeline-cleaner
-    tag: v2.1.2
   resources:
     requests:
       cpu: 100m
@@ -484,31 +511,6 @@ simulator: # +doc-gen:ignore
   service:
     port: 9050
     type: ClusterIP
-  resources:
-    requests:
-      cpu: 100m
-      memory: 512Mi
-storage_cleaner:
-  pattern: 0 0 * * *
-  env:
-    # number of days to save intermediate results in storage
-    temp_object_expiration_days: '5'
-    # number of days to save final pipeline results in storage
-    result_object_expiration_days: '20'
-  image: # +doc-gen:ignore
-    repository: hkube/storage-cleaner
-    tag: v2.1.1
-  resources: # +doc-gen:ignore
-    requests:
-      cpu: 100m
-      memory: 512Mi
-datasource_cleaner: # +doc-gen:ignore
-  pattern: 0 0 * * *
-  env:
-    keep_datasource_hot_duration: '48'
-  image:
-    repository: hkube/datasource-cleaner
-    tag: v2.1.1
   resources:
     requests:
       cpu: 100m
@@ -661,4 +663,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.27-1623311079496
+fullSystemVersion: v2.1.28-1623577426554
