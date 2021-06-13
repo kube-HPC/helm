@@ -1,12 +1,8 @@
 {{- if .Values.gc_service.ingress.enabled -}}
 {{- $fullName := "gc-service" -}}
-{{- $servicePort := .Values.gc_service.env.rest_port -}}
+{{- $servicePort := .Values.gc_service.env.rest_port | int -}}
 {{- $ingressPath := .Values.gc_service.ingress.path -}}
-{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else }}
-apiVersion: extensions/v1beta1
-{{- end }}
+apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: gc-service
@@ -42,9 +38,7 @@ spec:
 {{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
 {{- end }}
-          backend:
-            serviceName: {{ $fullName }}
-            servicePort: {{ $servicePort }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}
