@@ -1,8 +1,0 @@
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: etcd-cleaner-configmap
-data:
-  ETCD_EXPIRATION_DAYS: "{{index .Values "etcd_cleaner" "env" "etcd_expiration_days"}}"
-  REDIS_EXPIRATION_DAYS: "{{index .Values "etcd_cleaner" "env" "redis_expiration_days"}}"
