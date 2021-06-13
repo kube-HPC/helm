@@ -11,5 +11,5 @@ spec:
     app: simulator
   ports:
     - protocol: TCP
-      port: {{ index .Values "simulator" "env" "metric_port" }}
-      targetPort: {{ index .Values "simulator" "env" "metric_port" }}
+      port: {{ .Values.simulator.env.port }}
+      targetPort: {{ .Values.simulator.env.port }}

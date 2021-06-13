@@ -1,15 +1,12 @@
 {{- if .Values.monitor_server.ingress.enabled -}}
 {{- $fullName := "monitor-server" -}}
-{{- $servicePort := .Values.monitor_server.env.port -}}
-{{- $ingressPath := .Values.monitor_server.ingress.path -}}
-{{- $datasource_proxy_service_port := .Values.datasources_service.env.port -}}
+
+{{- $datasource_proxy_service_port := .Values.datasources_service.env.port | int -}}
 {{- $datasource_proxy_service_name := "datasources-service" -}}
 {{- $datasource_proxy_path := .Values.monitor_server.ingress.datasource_proxy_path -}}
-{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else }}
-apiVersion: extensions/v1beta1
-{{- end }}
+{{- $servicePort := .Values.monitor_server.env.port | int -}}
+{{- $ingressPath := .Values.monitor_server.ingress.path -}}
+apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: monitor-server
@@ -44,21 +41,15 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
 {{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
-{{- end }}        
-          backend:
-            serviceName: {{ $fullName }}
-            servicePort: {{ $servicePort }}
+{{- end }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}
 
 ---
 
-{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else }}
-apiVersion: extensions/v1beta1
-{{- end }}
+apiVersion: {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: monitor-server-datasource-proxy
@@ -93,10 +84,8 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ $datasource_proxy_path }}(/|$)(.*)
 {{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ $datasource_proxy_path }}
-{{- end }}        
-          backend:
-            serviceName: {{ $datasource_proxy_service_name }}
-            servicePort: {{ $datasource_proxy_service_port }}
+{{- end }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $datasource_proxy_service_name "servicePort" $datasource_proxy_service_port "context" $) | nindent 12 }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}            

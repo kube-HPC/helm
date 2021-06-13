@@ -67,3 +67,69 @@ Create chart name and version as used by the chart label.
 {{- define "etcd.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{/*
+Return the target Kubernetes version
+*/}}
+{{- define "common.capabilities.kubeVersion" -}}
+{{- if .Values.global }}
+    {{- if .Values.global.kubeVersion }}
+    {{- .Values.global.kubeVersion -}}
+    {{- else }}
+    {{- default .Capabilities.KubeVersion.Version .Values.kubeVersion -}}
+    {{- end -}}
+{{- else }}
+{{- default .Capabilities.KubeVersion.Version .Values.kubeVersion -}}
+{{- end -}}
+{{- end -}}
+
+
+{{/*
+Return the appropriate apiVersion for ingress.
+*/}}
+{{- define "ingress.apiVersion" -}}
+{{- if .Values.ingress -}}
+{{- if .Values.ingress.apiVersion -}}
+{{- .Values.ingress.apiVersion -}}
+{{- else if semverCompare "<1.14-0" (include "common.capabilities.kubeVersion" .) -}}
+{{- print "extensions/v1beta1" -}}
+{{- else if semverCompare "<1.19-0" (include "common.capabilities.kubeVersion" .) -}}
+{{- print "networking.k8s.io/v1beta1" -}}
+{{- else -}}
+{{- print "networking.k8s.io/v1" -}}
+{{- end }}
+{{- else if semverCompare "<1.14-0" (include "common.capabilities.kubeVersion" .) -}}
+{{- print "extensions/v1beta1" -}}
+{{- else if semverCompare "<1.19-0" (include "common.capabilities.kubeVersion" .) -}}
+{{- print "networking.k8s.io/v1beta1" -}}
+{{- else -}}
+{{- print "networking.k8s.io/v1" -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Generate backend entry that is compatible with all Kubernetes API versions.
+Usage:
+{{ include "common.ingress.backend" (dict "serviceName" "backendName" "servicePort" "backendPort" "context" $) }}
+
+Params:
+  - serviceName - String. Name of an existing service backend
+  - servicePort - String/Int. Port name (or number) of the service. It will be translated to different yaml depending if it is a string or an integer.
+  - context - Dict - Required. The context for the template evaluation.
+*/}}
+{{- define "ingress.backend" -}}
+{{- $apiVersion := (include "ingress.apiVersion" .context) -}}
+{{- if or (eq $apiVersion "extensions/v1beta1") (eq $apiVersion "networking.k8s.io/v1beta1") -}}
+serviceName: {{ .serviceName }}
+servicePort: {{ .servicePort }}
+{{- else -}}
+service:
+  name: {{ .serviceName }}
+  port:
+    {{- if typeIs "string" .servicePort }}
+    name: {{ .servicePort }}
+    {{- else if or (typeIs "int" .servicePort) (typeIs "float64" .servicePort) }}
+    number: {{ .servicePort | int }}
+    {{- end }}
+{{- end -}}
+{{- end -}}
