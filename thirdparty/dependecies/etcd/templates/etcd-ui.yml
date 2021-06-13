@@ -55,9 +55,9 @@ spec:
 ---
 {{- if .Values.etcd_ui.ingress.enabled -}}
 {{- $fullName := "etcd-ui" -}}
-{{- $servicePort := .Values.etcd_ui.service.port -}}
+{{- $servicePort := .Values.etcd_ui.service.port | int -}}
 {{- $ingressPath := .Values.etcd_ui.ingress.path -}}
-apiVersion: extensions/v1beta1
+apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: etcd-ui
@@ -81,9 +81,7 @@ spec:
 {{- else }}        
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
 {{- end }}
-          backend:
-            serviceName: {{ $fullName }}
-            servicePort: {{ $servicePort }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}      

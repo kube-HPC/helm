@@ -72,8 +72,6 @@ labels: # +doc-gen:ignore
     value: 'true'
   group:
     value: hkube
-etcd-operator: # +doc-gen:ignore
-  enable: false
 etcd:
   enable: true
   # set number of replicas. defualt 3
