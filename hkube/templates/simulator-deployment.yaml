@@ -37,7 +37,7 @@ spec:
           resources: {}
 {{- end }}
           ports:
-            - containerPort: {{ .Values.simulator.env.metric_port }}
+            - containerPort: {{ .Values.simulator.env.port }}
           env:
             - name: HKUBE_BASE_URL
               value: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}
