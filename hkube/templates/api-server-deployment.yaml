@@ -150,6 +150,11 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: INGRESS_PREFIX
+            - name: BODY_SIZE_LIMIT
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: BODY_SIZE_LIMIT
             - name: STORAGE_RESULTS_THRESHOLD
               valueFrom:
                 configMapKeyRef:
