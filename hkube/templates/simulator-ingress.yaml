@@ -51,7 +51,9 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}
 {{- end }}
           backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
           pathType: ImplementationSpecific
+          {{- end }}
 {{- if .Values.simulator.ingress.alt_path }}
 {{- if .Values.global.ingress.use_regex }}
         - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}(/|$)(.*)
@@ -59,7 +61,9 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}
 {{- end }}
           backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
           pathType: ImplementationSpecific
+          {{- end }}
 {{- end }}
 
 {{- if .Values.global.ingress.hostname }}

@@ -43,7 +43,9 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
 {{- end }}
           backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
           pathType: ImplementationSpecific
+          {{- end }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}
@@ -87,7 +89,9 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ $datasource_proxy_path }}
 {{- end }}
           backend: {{- include "ingress.backend" (dict "serviceName" $datasource_proxy_service_name "servicePort" $datasource_proxy_service_port "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
           pathType: ImplementationSpecific
+          {{- end }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}            

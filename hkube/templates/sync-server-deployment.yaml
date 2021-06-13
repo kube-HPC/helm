@@ -123,14 +123,18 @@ spec:
   - http:
       paths:
       - backend: {{- include "ingress.backend" (dict "serviceName" "sync-server" "servicePort" 8384 "context" $) | nindent 10 }}
+        {{- if eq "true" (include "ingress.supportsPathType" .) }}
         pathType: ImplementationSpecific
+        {{- end }}
 {{- if .Values.global.ingress.use_regex }}
         path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/ui(/|$)(.*)
 {{- else }}
         path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/ui
 {{- end }}
       - backend: {{- include "ingress.backend" (dict "serviceName" "sync-server" "servicePort" 8080 "context" $) | nindent 10 }}
+        {{- if eq "true" (include "ingress.supportsPathType" .) }}
         pathType: ImplementationSpecific
+        {{- end }}
 {{- if .Values.global.ingress.use_regex }}
         path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync(/|$)(.*)
 {{- else }}
