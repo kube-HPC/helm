@@ -57,40 +57,17 @@ spec:
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}                                    
           ports:
-            - containerPort: {{ index .Values "api_server" "env" "metric_port" }}
+            - containerPort: {{ .Values.api_server.env.metric_port }}
               protocol: TCP
-            - containerPort: {{ index .Values "api_server" "env" "port" }}
+            - containerPort: {{ .Values.api_server.env.port }}
               protocol: TCP
+          envFrom:
+            - configMapRef:
+              name: api-server-configmap
           env:
             - name: HKUBE_SYSTEM_VERSION
               value: {{ .Values.systemversion | quote}}
-            - name: METRICS_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: METRICS_PORT
-            - name: API_SERVER_REST_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: PORT
-            - name: NODE_ENV
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: NODE_ENV
-            - name: BASE_URL_PATH
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: BASE_URL_PATH
-{{- if eq .Values.env.default_storage "fs" }}
-            - name: BASE_FS_ADAPTER_DIRECTORY
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: BASE_FS_ADAPTER_DIRECTORY
-{{- else if eq .Values.env.default_storage "s3" }}
+{{- if eq .Values.env.default_storage "s3" }}
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -107,31 +84,6 @@ spec:
                   name: s3-secret
                   key: awsEndpointUrl
 {{- end }}                                    
-            - name: DEFAULT_STORAGE
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: DEFAULT_STORAGE
-            - name: STORAGE_ENCODING
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: STORAGE_ENCODING                  
-            - name: CLUSTER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: CLUSTER_NAME
-            - name: PIPELINE_DRIVER_CPU
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: PIPELINE_DRIVER_CPU
-            - name: PIPELINE_DRIVER_MEM
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: PIPELINE_DRIVER_MEM
 {{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
@@ -145,21 +97,6 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-            - name: INGRESS_PREFIX
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: INGRESS_PREFIX
-            - name: BODY_SIZE_LIMIT
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: BODY_SIZE_LIMIT
-            - name: STORAGE_RESULTS_THRESHOLD
-              valueFrom:
-                configMapKeyRef:
-                  name: api-server-configmap
-                  key: STORAGE_RESULTS_THRESHOLD
 {{- if .Values.mongodb.enable }}
             - name: MONGODB_SERVICE_USER_NAME
               valueFrom:

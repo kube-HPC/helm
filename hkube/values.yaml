@@ -260,6 +260,9 @@ api_server: # +doc-gen:ignore
     pipeline_driver_cpu: '0.2'
     pipeline_driver_mem: '512'
     maxBodySize: 500mb
+    rate_limit_ms: 1000
+    rate_limit_max: 5
+    rate_limit_delay: 0
   image:
     repository: hkube/api-server
     tag: v2.1.12
