@@ -21,4 +21,3 @@ data:
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
   API_SERVER_RATE_LIMIT_MS: {{ .Values.api_server.env.rate_limit_ms | quote}}
   API_SERVER_RATE_LIMIT_MAX: {{ .Values.api_server.env.rate_limit_max | quote}}
-  API_SERVER_RATE_LIMIT_DELAY: {{ .Values.api_server.env.rate_limit_delay | quote}}
