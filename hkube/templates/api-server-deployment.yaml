@@ -63,7 +63,7 @@ spec:
               protocol: TCP
           envFrom:
             - configMapRef:
-              name: api-server-configmap
+                name: api-server-configmap
           env:
             - name: HKUBE_SYSTEM_VERSION
               value: {{ .Values.systemversion | quote}}
