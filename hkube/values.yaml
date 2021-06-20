@@ -169,7 +169,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.32
+systemversion: 2.1.32-pdq-jobs.954599934
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -449,7 +449,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.1.4
+    tag: v2.1.4-pdq_jobs-954599934
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
