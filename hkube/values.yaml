@@ -169,7 +169,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.32
+systemversion: v2.1.33
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -285,7 +285,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.1.2
+    tag: v2.1.3
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -665,4 +665,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.32-1624206394317
+fullSystemVersion: v2.1.33-1624271447415
