@@ -422,7 +422,7 @@ monitor_server: # +doc-gen:ignore
     max_display_batch_size: 10
   image:
     repository: hkube/monitor-server
-    tag: v2.1.5
+    tag: v2.1.6
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -665,4 +665,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.34-1624273787122
+fullSystemVersion: v2.1.34-1624280485021
