@@ -169,7 +169,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.1.32-pdq-jobs.954599934
+systemversion: 2.1.32-pdq-jobs.956643595
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -439,7 +439,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.1.4
+    tag: v2.1.4-pdq_jobs-956643595
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -449,7 +449,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.1.4-pdq_jobs-954599934
+    tag: v2.1.4-pdq_jobs-956643595
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
