@@ -166,7 +166,7 @@ gitea:
 
 metrics:
   serviceMonitorSelector:
-    release: metrics
+    release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
 systemversion: v2.1.36
