@@ -169,7 +169,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.40
+systemversion: 2.1.40-caching-debug.978800879
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -264,7 +264,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.1.17
+    tag: v2.1.17-caching-debug-978800879
   ingress:
     enabled: true
     path: /hkube/api-server
