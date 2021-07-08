@@ -331,7 +331,7 @@ gc_service: # +doc-gen:ignore
     # debug
     debug_cron: '*/2 * * * *'
     debug_enabled: true
-    debug_max_age: 0.166
+    debug_max_age: 10
 
     # etcd
     etcd_cron: '0 1 * * *'
