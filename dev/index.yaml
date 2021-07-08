@@ -2,6 +2,56 @@ apiVersion: v1
 entries:
   hkube:
   - apiVersion: v1
+    appVersion: v2.1.47
+    created: "2021-07-08T13:35:25.212308493Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 3dfcdb335b70c0601deb6f18fd9befc925a1da955a7fd6cfe660f6d2870006b9
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.1.90.tgz
+    version: v2.1.90
+  - apiVersion: v1
     appVersion: v2.1.46
     created: "2021-07-07T11:23:52.419140438Z"
     dependencies:
@@ -19943,4 +19993,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: "2021-07-07T11:23:52.36473145Z"
+generated: "2021-07-08T13:35:25.179313489Z"
