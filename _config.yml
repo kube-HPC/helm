@@ -4,7 +4,7 @@
 # We make use of this theme, and it is what makes title and description have
 # meaning.
 # ref: https://github.com/pages-themes/minimal
-theme: jekyll-theme-minimal
+theme: jekyll-theme-cayman
 
 title: HKube's Helm chart repository
 description: |
