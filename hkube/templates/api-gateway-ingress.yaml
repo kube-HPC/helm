@@ -1,0 +1,52 @@
+{{- if index .Values "api_gateway" "ingress" "enabled" -}}
+{{- $ingressPath := .Values.api_gateway.ingress.path -}}
+{{- $fullName := "api-gateway" -}}
+{{- $servicePort := .Values.api_server.env.port | int -}}
+{{- $servicePortGc := .Values.gc_service.env.rest_port | int -}}
+{{- $servicePortDatasources := .Values.datasources_service.env.port | int -}}
+apiVersion:  {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  name: api-gateway
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1$2
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}    
+  labels:
+    app: {{ $fullName }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: {{ $fullName }}-tls-secret
+{{- end }}
+  rules:
+    - http:
+        paths:
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/(api/v./gc)(.*)
+          backend: {{- include "ingress.backend" (dict "serviceName" "gc-service" "servicePort" $servicePortGc "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
+          pathType: ImplementationSpecific
+          {{- end }}
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/(api/v./datasource)(.*)
+          backend: {{- include "ingress.backend" (dict "serviceName" "datasources-service" "servicePort" $servicePortDatasources "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
+          pathType: ImplementationSpecific
+          {{- end }}
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/(.*)(.*)
+          backend: {{- include "ingress.backend" (dict "serviceName" "api-server" "servicePort" $servicePort "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
+          pathType: ImplementationSpecific
+          {{- end }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}
+{{- end }}
