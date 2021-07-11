@@ -1,15 +1,26 @@
 ## Installation instructions for:
 [Hkube](https://hkube.io/learn/install/)
 
-Jump to:
-{%- for chartmap in site.data.devindex.entries %}
-- [Development Releases: {{ chartmap[0] }}](#development-releases-{{ chartmap[0] | slugify }})
-{%- endfor %}
+
 
 
 ## Stable releases
-
+{% for version in site.stableVersions %}
+### {{version}}
 {% for chartmap in site.data.index.entries %}
+{% if site.stableCharts contains chartmap[0] %}
+| Version | Date | App. version |
+|---------|----------|---------------------|
+{%- assign sortedcharts = chartmap[1] | where_exp:"item","item.version contains version" | sort: 'created' | reverse -%}
+{% for item in sortedcharts %}
+| [{{ item.version }}]({{ item.urls[0] }}) | {{ item.created | date_to_long_string }} | {{ item.appVersion }} |
+{% endfor %}
+{%- endif %}
+{% endfor %}
+{% endfor %}
+
+
+<!-- {% for chartmap in site.data.index.entries %}
   {% if site.stableCharts contains chartmap[0] %}
 ### {{ chartmap[0] }}
 
@@ -17,21 +28,9 @@ Jump to:
 |---------|------|---------------------|
     {%- assign sortedcharts = chartmap[1] | sort: 'created' | reverse -%}
     {%- for chart in sortedcharts -%}
-      {%- unless chart.version contains "-" %}
 | [{{ chart.version }}]({{ chart.urls[0] }}) | {{ chart.created | date_to_long_string }} | {{ chart.appVersion }} |
-      {%- endunless -%}
     {%- endfor %}
   {%- endif %}
 {% endfor %}
 
-
-{% for chartmap in site.data.devindex.entries %}
-### Development releases: {{ chartmap[0] }}
-
-| Version | Date | App. version |
-|---------|------|---------------------|
-  {%- assign sortedcharts = chartmap[1] | sort: 'created' | reverse %}
-  {%- for chart in sortedcharts %}
-| [{{ chart.version }}]({{ chart.urls[0] }}) | {{ chart.created | date_to_long_string }} | {{ chart.appVersion }} |
-  {%- endfor %}
-{% endfor %}
+ -->

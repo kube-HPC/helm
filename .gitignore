@@ -16,3 +16,8 @@ temp
 *.bak
 **/*.sw[pon]
 hkube/version.yaml
+Gemfile
+vendor
+.bundle
+_site
+Gemfile.lock
