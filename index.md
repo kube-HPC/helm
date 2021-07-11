@@ -1,20 +1,17 @@
 ## Installation instructions for:
 [Hkube](https://hkube.io/learn/install/)
 
-
-
-
 ## Stable releases
 {% for version in site.stableVersions %}
 ### {{version}}
 {% for chartmap in site.data.index.entries %}
 {% if site.stableCharts contains chartmap[0] %}
-| Version | Date | App. version |
+|Version | Date | App. version|
 |---------|----------|---------------------|
 {%- assign sortedcharts = chartmap[1] | where_exp:"item","item.version contains version" | sort: 'created' | reverse -%}
-{% for item in sortedcharts %}
-| [{{ item.version }}]({{ item.urls[0] }}) | {{ item.created | date_to_long_string }} | {{ item.appVersion }} |
-{% endfor %}
+{%- for item in sortedcharts %}
+|[{{ item.version }}]({{ item.urls[0] }}) | {{ item.created | date_to_long_string }} | {{ item.appVersion }}|
+{%- endfor %}
 {%- endif %}
 {% endfor %}
 {% endfor %}
