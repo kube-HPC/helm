@@ -27,7 +27,9 @@ apiVersion: monitoring.coreos.com/v1
 metadata:
   labels:
     app: hkube-etcd
-    release: metrics
+{{- if .Values.metrics.serviceMonitorSelector }}
+{{ toYaml .Values.metrics.serviceMonitorSelector | indent 4 }}
+{{- end }}
   name: hkube-etcd
   namespace: {{ .Release.Namespace }}
 spec:
