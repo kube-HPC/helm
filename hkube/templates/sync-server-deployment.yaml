@@ -95,6 +95,8 @@ apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   annotations:
+    kubever: {{ template "common.capabilities.kubeVersion" .}}
+    apiver:  {{ template "ingress.apiVersion" . }}
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 {{- else }}
