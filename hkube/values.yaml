@@ -60,6 +60,7 @@ global:
     use_regex: true
     requireTls: false
     maxBodySize: 500m
+    class: nginx
 env:
   # storage mode. can be s3 or fs. Set global.storage.fs or global.storage.s3 accordingly
   default_storage: s3
