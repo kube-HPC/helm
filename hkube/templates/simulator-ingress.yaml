@@ -22,7 +22,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 {{- end }}
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | default "nginx" | quote }}
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }}
