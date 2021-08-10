@@ -3,9 +3,9 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.3.1
-    created: "2021-06-13T17:50:34.499914+03:00"
+    created: "2021-08-10T16:29:57.087513+03:00"
     description: Distributed reliable key-value store for the most critical data of a distributed system.
-    digest: b5e2394cffea54c3418da098c15db211d3877aa19e971980172ddfe01565bd61
+    digest: f7edd9b4b4b5c32e7238b94a75143ba049f70e5b86b62c4652ceccdd3a81738d
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -249,7 +249,7 @@ entries:
   gitea:
   - apiVersion: v1
     appVersion: 1.13.0
-    created: "2021-06-01T17:43:25.961611+03:00"
+    created: "2021-08-10T16:29:57.096284+03:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -268,7 +268,7 @@ entries:
       repository: ""
       version: 8.0.0
     description: Gitea Helm chart for Kubernetes
-    digest: f4c51f4c5385dc74d2e1a678d1be0b6e515679518ab9e7ad3861c1ed3dd634eb
+    digest: e576efc4767be664e0ad92c8212ca1369d1c16015b4c79f8f978c4863209cb69
     icon: https://docs.gitea.io/images/gitea.png
     keywords:
     - git
@@ -1628,6 +1628,42 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
+    created: "2021-08-10T16:29:57.100516+03:00"
+    dependencies:
+    - condition: provisionDataStore.cassandra
+      name: cassandra
+      repository: https://kubernetes-charts-incubator.storage.googleapis.com/
+      version: ^0.15.0
+    - condition: provisionDataStore.elasticsearch
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: ^7.5.1
+    description: A Jaeger Helm chart for Kubernetes
+    digest: 3c15f79b1a64a6bdcabeb9ec61584bc7d846c2327330c60d2f152a33170b77ff
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    maintainers:
+    - email: david.vonthenen@dell.com
+      name: dvonthenen
+    - email: michael.lorant@fairfaxmedia.com.au
+      name: mikelorant
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: pavel.nikolov@fairfaxmedia.com.au
+      name: pavelnikolov
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    urls:
+    - jaeger-0.27.2006.tgz
+    version: 0.27.2006
+  - apiVersion: v1
+    appVersion: 1.17.1
     created: "2021-06-01T17:43:25.967334+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
@@ -1828,9 +1864,9 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: master
-    created: "2021-06-01T17:43:25.968957+03:00"
+    created: "2021-08-10T16:29:57.101853+03:00"
     description: MinIO is a high performance data infrastructure for machine learning, analytics and application data workloads.
-    digest: b1f050f32628be788429d5352e25e832022a5a4ad8e1fa2551639ab782fac275
+    digest: 553c4c71f0f41e794c89ae3642ea14deee82ae421d2436b531ad2ec251debd4c
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
     keywords:
@@ -1897,9 +1933,9 @@ entries:
       category: Database
     apiVersion: v1
     appVersion: 4.4.1
-    created: "2021-06-01T17:43:25.971626+03:00"
+    created: "2021-08-10T16:29:57.104908+03:00"
     description: NoSQL document-oriented database that stores JSON-like documents with dynamic schemas, simplifying the integration of data in content-driven applications.
-    digest: cf8ead1283c45f2775907e1b2c6503013141555355db71b8a73d66b7e5766a8a
+    digest: c05556fd6d0f6b0b44eb736cd2c96a22a64b60168a2e4ce264071ef0b4dc85cc
     home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
     keywords:
@@ -1948,9 +1984,9 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2021-06-01T17:43:25.973331+03:00"
+    created: "2021-08-10T16:29:57.106481+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx configuration.
-    digest: 333cb260d3906649437e4f8043adc5011513ac02cb5596e9c99295af526d0b6f
+    digest: 5a229970aeaa39835e931c805ff2d67ef162dfbc41960f56cc9ab603692600ef
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -2033,9 +2069,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2021-06-01T17:43:25.974232+03:00"
+    created: "2021-08-10T16:29:57.107266+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: 2e0ed56d68a1fedb10100364f93ac256a8bc53ab96a693ec3df1d24f3df3bfb3
+    digest: 47cf61bf328cf5c31960f7c2906ec541d8ab46658351aed9e1f7ebb5a80f793d
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -2183,4 +2219,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2021-06-28T12:24:27.125659+03:00"
+generated: "2021-08-10T16:29:57.086712+03:00"
