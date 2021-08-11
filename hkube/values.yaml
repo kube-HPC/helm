@@ -101,6 +101,10 @@ jaeger:
     ingress:
       enabled: true
   agent:
+    # set the deployment kind of the jaeger-agent. options are daemonset and deployment
+    deploymentKind: daemonset
+    deployment:
+      replicas: 1
     daemonset:
       # set to false to allow running in non privileged environment (e.g. openshift)
       useHostPort: true
@@ -170,7 +174,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.57
+systemversion: v2.1.62
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -219,7 +223,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.1.10
+    tag: v2.1.14
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -269,7 +273,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.1.25
+    tag: v2.1.27
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -611,7 +615,7 @@ algorithm_debug: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.1.6
+    tag: v2.1.7
   resources:
     requests:
       cpu: 100m
@@ -670,4 +674,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.57-1627802541381
+fullSystemVersion: v2.1.62-1628664964006

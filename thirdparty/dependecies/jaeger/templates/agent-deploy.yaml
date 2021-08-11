@@ -1,7 +1,7 @@
 {{- if .Values.agent.enabled -}}
-{{- if eq .Values.agent.deploymentKind "daemonset" -}}
+{{- if eq .Values.agent.deploymentKind "deployment" -}}
 apiVersion: apps/v1
-kind: DaemonSet
+kind: Deployment
 metadata:
   name: {{ template "jaeger.agent.name" . }}
   labels:
@@ -12,6 +12,7 @@ metadata:
     {{- toYaml .Values.agent.annotations | nindent 4 }}
 {{- end }}
 spec:
+  replicas: {{ .Values.agent.deployment.replicas }}
   selector:
     matchLabels:
       {{- include "jaeger.selectorLabels" . | nindent 6 }}
@@ -36,7 +37,6 @@ spec:
       securityContext:
         {{- toYaml .Values.agent.podSecurityContext | nindent 8 }}
       {{- if .Values.agent.useHostNetwork }}
-      hostNetwork: true
       {{- end }}
       dnsPolicy: {{ .Values.agent.dnsPolicy }}
       {{- with .Values.agent.priorityClassName }}
@@ -66,27 +66,15 @@ spec:
         - name: zipkin-compact
           containerPort: {{ .Values.agent.service.zipkinThriftPort }}
           protocol: UDP
-          {{- if .Values.agent.daemonset.useHostPort }}
-          hostPort: {{ .Values.agent.service.zipkinThriftPort }}
-          {{- end }}
         - name: jaeger-compact
           containerPort: {{ .Values.agent.service.compactPort }}
           protocol: UDP
-          {{- if .Values.agent.daemonset.useHostPort }}
-          hostPort: {{ .Values.agent.service.compactPort }}
-          {{- end }}
         - name: jaeger-binary
           containerPort: {{ .Values.agent.service.binaryPort }}
           protocol: UDP
-          {{- if .Values.agent.daemonset.useHostPort }}
-          hostPort: {{ .Values.agent.service.binaryPort }}
-          {{- end }}
         - name: http
           containerPort: {{ .Values.agent.service.samplingPort }}
           protocol: TCP
-          {{- if .Values.agent.daemonset.useHostPort }}
-          hostPort: {{ .Values.agent.service.samplingPort }}
-          {{- end }}
         - name: admin
           containerPort: 14271
           protocol: TCP

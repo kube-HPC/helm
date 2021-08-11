@@ -4,7 +4,7 @@ dependencies:
   version: 0.7.2017
 - name: jaeger
   repository: https://hkube.io/helm/
-  version: 0.27.2005
+  version: 0.27.2006
 - name: redis-ha
   repository: https://hkube.io/helm/
   version: 3.6.1005
@@ -20,5 +20,5 @@ dependencies:
 - name: gitea
   repository: https://hkube.io/helm/
   version: 2.1.3006
-digest: sha256:90b1d80020fe808d7b55f95c867db9c3ce0d5b15ffc5699b8d6ad3c157fcaa91
-generated: "2021-06-13T14:30:36.363284+03:00"
+digest: sha256:fd4a860f8ef74ef794433241a0f62c33a8e2f003368f05f4a992d7cc112ab530
+generated: "2021-08-10T16:41:17.650021+03:00"

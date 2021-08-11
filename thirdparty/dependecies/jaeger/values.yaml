@@ -168,6 +168,8 @@ ingester:
     additionalLabels: {}
 
 agent:
+  # can be daemonset or deployment
+  deploymentKind: daemonset 
   podSecurityContext: {}
   securityContext: {}
   enabled: true
@@ -178,6 +180,8 @@ agent:
   env: {}
   daemonset:
     useHostPort: false
+  deployment:
+    replicas: 1
   service:
     annotations: {}
     # List of IP ranges that are allowed to access the load balancer (if supported)
