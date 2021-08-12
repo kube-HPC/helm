@@ -29,7 +29,7 @@ rules:
 - apiGroups: ["batch"]
   resources: ["jobs"]
   verbs: [create, delete, deletecollection, get, list, patch, update, watch]
-- apiGroups: ["extensions"]
+- apiGroups: ["extensions", "networking.k8s.io"]
   resources: ["ingresses"]
   verbs: [create, delete, deletecollection, get, list, patch, update, watch]
 - apiGroups:
