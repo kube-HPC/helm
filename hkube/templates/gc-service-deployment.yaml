@@ -112,11 +112,6 @@ spec:
                 configMapKeyRef:
                   name: gc-service-configmap
                   key: DATASOURCE_FOLDER_IN_USE
-            - name: DEBUG_CRON
-              valueFrom:
-                configMapKeyRef:
-                  name: gc-service-configmap
-                  key: DEBUG_CRON
             - name: DEBUG_ENABLED
               valueFrom:
                 configMapKeyRef:

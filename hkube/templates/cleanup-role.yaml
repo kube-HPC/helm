@@ -26,9 +26,16 @@ rules:
 - apiGroups: ["extensions", "apps"]
   resources: ["deployments"]
   verbs: ["get", "list", "delete"]
+{{- if .Capabilities.APIVersions.Has "extensions/v1beta1/Ingress" }}
 - apiGroups: ["extensions"]
   resources: ["ingresses"]
   verbs: ["get", "list", "delete"]
+{{- end }}
+{{- if or (.Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress") (.Capabilities.APIVersions.Has "networking.k8s.io/v1beta1/Ingress") }}
+- apiGroups: ["networking.k8s.io"]
+  resources: ["ingresses"]
+  verbs: ["get", "list", "delete"]
+{{- end }}    
 ---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
