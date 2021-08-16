@@ -471,7 +471,7 @@ pipeline_driver_queue: # +doc-gen:ignore
       memory: 512Mi
 resource_manager: # +doc-gen:ignore
   healthcheck:
-    enabled: false
+    enabled: true
     port: 5000
     path: /healthz
     initialDelaySeconds: 100
