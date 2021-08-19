@@ -309,7 +309,7 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v2.1.15
+    tag: v2.1.17
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -674,4 +674,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.74-1629298250163
+fullSystemVersion: v2.1.74-1629354889119
