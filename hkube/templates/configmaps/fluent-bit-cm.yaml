@@ -1,0 +1,9 @@
+{{- if and .Values.global.sidecars.fluent_bit.enable .Values.global.sidecars.fluent_bit.config.create_cm  -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.global.sidecars.fluent_bit.config.name }}
+  namespace: {{ .Release.Namespace }}
+data:
+{{ include "hkube.fluent_bit.config" . | indent 2}}
+{{- end -}}

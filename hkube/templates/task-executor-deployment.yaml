@@ -146,4 +146,7 @@ spec:
                 secretKeyRef:
                   name: mongodb-secret
                   key: mongodb-database
-{{- end }}              
+{{- end }}
+{{ include "hkube.fluent_bit.volumemount_full" . | indent 10 }}
+{{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
+{{ include "hkube.fluent_bit.volume_full" . | indent 6 }}

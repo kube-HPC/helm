@@ -34,6 +34,7 @@ spec:
       volumes:
         - name: temp
           emptyDir: {}
+{{ include "hkube.fluent_bit.volume" . | indent 8 }}
 {{- if eq .Values.env.default_storage "fs" }}
         - name: storage-volume
           persistentVolumeClaim:
@@ -57,6 +58,7 @@ spec:
               mountPath: /hkube/datasources-storage
             - name: temp
               mountPath: /TEMP_DIRECTORY
+{{ include "hkube.fluent_bit.volumemount" . | indent 12 }}
 {{- if eq .Values.env.default_storage "fs" }}
             - name: storage-volume
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
@@ -182,3 +184,4 @@ spec:
                   key: password 
             - name: TEMP_DIRECTORY
               value: "/TEMP_DIRECTORY"
+{{ include "hkube.fluent_bit.sidecar" . | indent 8 }}

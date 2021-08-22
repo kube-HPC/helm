@@ -31,8 +31,9 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-{{- if eq .Values.env.default_storage "fs" }}
       volumes:
+{{ include "hkube.fluent_bit.volume" . | indent 8 }}
+{{- if eq .Values.env.default_storage "fs" }}
         - name: storage-volume
           persistentVolumeClaim:
             claimName: hkube-storage-pvc
@@ -58,8 +59,9 @@ spec:
 {{- else }}
           resources: {}
 {{- end }}
-{{- if eq .Values.env.default_storage "fs" }}
           volumeMounts:
+{{ include "hkube.fluent_bit.volumemount" . | indent 12 }}
+{{- if eq .Values.env.default_storage "fs" }}
             - name: storage-volume
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}
@@ -291,4 +293,4 @@ spec:
                   name: mongodb-secret
                   key: mongodb-database
 {{- end }}
-
+{{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
