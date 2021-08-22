@@ -38,27 +38,27 @@ spec:
             - name: http
               containerPort: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
               protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: pipeline-driver-queue-configmap
           env:
-            - name: NODE_ENV
+{{- if eq .Values.env.default_storage "s3" }}
+            - name: AWS_ACCESS_KEY_ID
               valueFrom:
-                configMapKeyRef:
-                  name: pipeline-driver-queue-configmap
-                  key: NODE_ENV
-            - name: HKUBE_LOG_LEVEL
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsKey
+            - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
-                configMapKeyRef:
-                  name: pipeline-driver-queue-configmap
-                  key: HKUBE_LOG_LEVEL
-            - name: METRICS_PORT
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsSecret
+            - name: S3_ENDPOINT_URL
               valueFrom:
-                configMapKeyRef:
-                  name: pipeline-driver-queue-configmap
-                  key: METRICS_PORT
-            - name: CHECK_QUEUE_INTERVAL
-              valueFrom:
-                configMapKeyRef:
-                  name: pipeline-driver-queue-configmap
-                  key: CHECK_QUEUE_INTERVAL
+                secretKeyRef:
+                  name: s3-secret
+                  key: awsEndpointUrl
+{{- end }}   
 {{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
