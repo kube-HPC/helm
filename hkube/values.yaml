@@ -174,7 +174,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.1.69-alg-queue-snapshot.1146308667
+systemversion: 2.1.69-alg-queue-snapshot.1155781274
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -223,7 +223,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.1.14-alg-queue-snapshot-1146308667
+    tag: v2.1.14-alg-queue-snapshot-1155781274
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -247,7 +247,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.1.8-alg-queue-snapshot-1146308667
+    tag: v2.1.8-alg-queue-snapshot-1155781274
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -273,7 +273,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.1.27-alg-queue-snapshot-1146308667
+    tag: v2.1.27-alg-queue-snapshot-1155781274
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -458,7 +458,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.1.5
+    tag: v2.1.5-alg-queue-snapshot-1155781274
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -489,7 +489,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.1.6-alg-queue-snapshot-1146308667
+    tag: v2.1.6-alg-queue-snapshot-1155781274
   service:
     type: ClusterIP
   resources:
