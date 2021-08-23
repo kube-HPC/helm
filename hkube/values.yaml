@@ -209,6 +209,7 @@ algorithm_operator:
   env: # +doc-gen:ignore
     metric_port: '3000'
     builder_cpu: 0.1
+    interval: 1000
     algorithm_builder_builder_memory: 1024
     algorithm_builder_main_cpu: 0.5
     algorithm_builder_main_memory: 512

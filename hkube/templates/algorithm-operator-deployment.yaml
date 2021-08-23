@@ -124,6 +124,11 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: BUILD_MODE
+            - name: INTERVAL_MS
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: INTERVAL_MS
             - name: ALGORITHM_BUILDER_BUILDER_CPU
               value: {{ .Values.algorithm_operator.env.algorithm_builder_builder_cpu | quote}}
             - name: ALGORITHM_BUILDER_BUILDER_MEMORY
