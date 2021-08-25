@@ -41,6 +41,7 @@ spec:
           ports:
             - containerPort: {{ .Values.trigger_service.env.metric_port }}
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:

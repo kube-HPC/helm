@@ -39,6 +39,7 @@ spec:
               containerPort: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
               protocol: TCP
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:

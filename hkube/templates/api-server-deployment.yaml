@@ -67,6 +67,7 @@ spec:
             - configMapRef:
                 name: api-server-configmap
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: HKUBE_SYSTEM_VERSION
               value: {{ .Values.systemversion | quote}}
 {{- if eq .Values.env.default_storage "s3" }}

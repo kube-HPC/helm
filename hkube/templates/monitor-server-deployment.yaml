@@ -48,6 +48,7 @@ spec:
           resources: {}
 {{- end }}
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:

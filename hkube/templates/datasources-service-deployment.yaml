@@ -69,6 +69,7 @@ spec:
             - containerPort: {{ .Values.datasources_service.env.port }}
               protocol: TCP
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: METRICS_PORT
               valueFrom:
                 configMapKeyRef:

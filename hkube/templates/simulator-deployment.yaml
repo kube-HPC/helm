@@ -39,6 +39,7 @@ spec:
           ports:
             - containerPort: {{ .Values.simulator.env.port }}
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: HKUBE_BASE_URL
               value: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}
             - name: HKUBE_SYSTEM_VERSION

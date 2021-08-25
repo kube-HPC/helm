@@ -69,6 +69,7 @@ spec:
             - containerPort: {{ .Values.gc_service.env.rest_port }}
               protocol: TCP
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:

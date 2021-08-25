@@ -3,7 +3,7 @@ fluent bit sidecar
 */}}
 {{- define "hkube.fluent_bit.sidecar" -}}
 {{- if .Values.global.sidecars.fluent_bit.enable -}}
-- name: sidecar-log-collector    
+- name: sidecar-log-collector
   image: "{{ .Values.global.registry }}{{ .Values.global.sidecars.fluent_bit.image.repository }}:{{ .Values.global.sidecars.fluent_bit.image.tag }}"
   imagePullPolicy: {{ .Values.image.pullPolicy }}
   env: []
@@ -15,6 +15,15 @@ fluent bit sidecar
 {{- end -}}
 {{- end -}}
 
+{{/* fluent bit environment */}}
+{{- define "hkube.fluent_bit.environment" -}}
+{{- if .Values.global.sidecars.fluent_bit.enable -}}
+- name: LOG_FILE_ENABLED
+  value: "true"
+- name: LOG_FILE_PATH
+  value: "{{ .Values.global.sidecars.fluent_bit.config.mount_path }}/hkube.log"
+{{- end -}}
+{{- end -}}
 {{/*
 fluent bit volume mount
 */}}
@@ -69,20 +78,31 @@ fluent-bit.conf: |-
         Daemon    off
         Log_Level {{ .Values.global.sidecars.fluent_bit.config.logLevel | default "info" }}
         Parsers_File parsers.conf
+        Config_Watch  true
     [INPUT]
         Name tail
         Path {{ .Values.global.sidecars.fluent_bit.config.mount_path }}/{{ .Values.global.sidecars.fluent_bit.config.log_file }}
         Parser json
-        Tag kube.*
+        Tag hkube.{{ .Release.Namespace }}_${HOSTNAME}_hkube.log
         Mem_Buf_Limit 5mb
-        Skip_Long_Lines On
+        # Skip_Long_Lines On
     [FILTER]
         Name modify
         Match kube.*
-        Add pod_name ${HOSTNAME}
+        Add my.pod_name ${HOSTNAME}
+    [FILTER]
+        Name             kubernetes
+        Match            hkube.*
+        Kube_URL         https://kubernetes.default.svc:443
+        Kube_CA_File     /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        Kube_Token_File  /var/run/secrets/kubernetes.io/serviceaccount/token
+        Kube_Tag_Prefix  hkube.
+        Merge_Log        On
+        Merge_Log_Key    log_processed
+        Regex_Parser     kube-custom
     [OUTPUT]
         Name es
-        Match kube.*
+        Match hkube.*
         Host {{ .Values.global.sidecars.fluent_bit.config.es.url }}
         Port {{ .Values.global.sidecars.fluent_bit.config.es.port }}
         Logstash_Format On
@@ -100,4 +120,8 @@ parsers.conf: |-
         Time_Keep off
         Time_Key time
         Time_Format %Y-%m-%d%T%H:%M:%S.%L
+    [PARSER]
+        Name    kube-custom
+        Format  regex
+        Regex   (?<namespace_name>.+)_(?<pod_name>.+)_hkube\.log$
 {{- end -}}

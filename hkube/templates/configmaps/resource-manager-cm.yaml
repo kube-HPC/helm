@@ -5,10 +5,10 @@ metadata:
   name: resource-manager-configmap
 data:
   NODE_ENV: {{.Values.env.node_env}}
-  HKUBE_LOG_LEVEL: "{{index .Values "resource_manager" "env" "hkube_log_level"}}"
-  ALGORITHMS_THRESHOLD_CPU: "{{ index .Values "resource_manager" "env" "algorithms_threshold_cpu"}}"
-  ALGORITHMS_THRESHOLD_MEM: "{{index .Values "resource_manager" "env" "algorithms_threshold_mem"}}"
-  DRIVERS_THRESHOLD_CPU: "{{index .Values "resource_manager" "env" "driver_threshold_cpu"}}"
-  DRIVERS_THRESHOLD_MEM: "{{ index .Values "resource_manager" "env" "driver_threshold_mem"}}"
-  METRICS_PORT: "{{index .Values "resource_manager" "env" "metric_port"}}"
-  PROMETHEUS_ENDPOINT: {{index .Values "resource_manager" "env" "prometheus_endpoint"}}
+  HKUBE_LOG_LEVEL: "{{ .Values.resource_manager.env.hkube_log_level}}"
+  ALGORITHMS_THRESHOLD_CPU: "{{  .Values.resource_manager.env.algorithms_threshold_cpu}}"
+  ALGORITHMS_THRESHOLD_MEM: "{{ .Values.resource_manager.env.algorithms_threshold_mem}}"
+  DRIVERS_THRESHOLD_CPU: "{{ .Values.resource_manager.env.driver_threshold_cpu}}"
+  DRIVERS_THRESHOLD_MEM: "{{  .Values.resource_manager.env.driver_threshold_mem}}"
+  METRICS_PORT: "{{ .Values.resource_manager.env.metric_port}}"
+  PROMETHEUS_ENDPOINT: {{ .Values.resource_manager.env.prometheus_endpoint}}
