@@ -247,7 +247,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.1.16-fluentbit-1169458484
+    tag: v2.1.16-xxx
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
