@@ -18,9 +18,9 @@ fluent bit sidecar
 {{/* fluent bit environment */}}
 {{- define "hkube.fluent_bit.environment" -}}
 {{- if .Values.global.sidecars.fluent_bit.enable -}}
-- name: LOG_FILE_ENABLED
+- name: HKUBE_LOG_FILE_ENABLED
   value: "true"
-- name: LOG_FILE_PATH
+- name: HKUBE_LOG_FILE_NAME
   value: "{{ .Values.global.sidecars.fluent_bit.config.mount_path }}/hkube.log"
 {{- end -}}
 {{- end -}}
