@@ -21,6 +21,7 @@ spec:
         app: trigger-service
         group: {{ .Values.labels.group.value }}
     spec:
+      serviceAccountName: trigger-service-serviceaccount
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}

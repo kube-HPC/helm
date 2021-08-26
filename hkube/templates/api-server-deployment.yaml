@@ -23,6 +23,7 @@ spec:
         release: api-server
         group: {{ .Values.labels.group.value }}
     spec:
+      serviceAccountName: api-server-serviceaccount
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}

@@ -23,6 +23,7 @@ spec:
         release: datasources-service
         group: {{ .Values.labels.group.value }}
     spec:
+      serviceAccountName: datasources-service-serviceaccount
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}

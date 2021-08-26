@@ -20,6 +20,7 @@ spec:
         app: pipeline-driver-queue
         group: {{ .Values.labels.group.value }}
     spec:
+      serviceAccountName: pipeline-driver-queue-serviceaccount
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}
