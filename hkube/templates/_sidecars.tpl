@@ -108,12 +108,16 @@ fluent-bit.conf: |-
         Port {{ .Values.global.sidecars.fluent_bit.config.es.port }}
         Logstash_Format On
         Logstash_Prefix {{ .Values.global.sidecars.fluent_bit.config.es.logStashPrefix }}
+{{- if .Values.global.sidecars.fluent_bit.config.es.user }}
         HTTP_User {{ .Values.global.sidecars.fluent_bit.config.es.user }}
         HTTP_Passwd {{ .Values.global.sidecars.fluent_bit.config.es.password }}
+{{- end }}
         Retry_Limit False
         Replace_Dots On
         tls {{ .Values.global.sidecars.fluent_bit.config.es.tls }}
+{{- if eq .Values.global.sidecars.fluent_bit.config.es.tls "On" }}
         tls.verify {{ .Values.global.sidecars.fluent_bit.config.es.tls_verify }}
+{{- end }}
 parsers.conf: |-
     [PARSER]
         Name json
