@@ -61,6 +61,30 @@ global:
     requireTls: false
     maxBodySize: 500m
     class: nginx
+  sidecars:
+    fluent_bit:
+      enable: false
+      config:
+        name: fluent-bit-cm
+        create_cm: true
+        log_file: "*.log"
+        mount_path: /mnt/log
+        es:
+          url: ""
+          port: "9200"
+          tls: "Off"
+          tls_verify: "Off"
+          logStashPrefix: "hkube-"
+          user: ""
+          password: ""
+      image: # +doc-gen:ignore
+        repository: fluent/fluent-bit
+        tag: "1.8.3"
+      resources:
+        limits:
+          cpu: 100m
+          memory: 200Mi
+
 env:
   # storage mode. can be s3 or fs. Set global.storage.fs or global.storage.s3 accordingly
   default_storage: s3
@@ -327,7 +351,7 @@ busybox: # +doc-gen:ignore
 gc_service: # +doc-gen:ignore
   # all maxAge are in minutes
   env:
-    hkube_log_level: '2'
+    hkube_log_level: 'info'
     rest_port: 7000
     base_url_path: /hkube/gc-service
 
@@ -454,7 +478,7 @@ pipeline_driver: # +doc-gen:ignore
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
   env:
-    hkube_log_level: '2'
+    hkube_log_level: 'info'
     metric_port: '3000'
     check_queue_interval: '500'
   image:
@@ -484,7 +508,7 @@ resource_manager: # +doc-gen:ignore
     algorithms_threshold_mem: '0.9'
     driver_threshold_cpu: '0.1'
     driver_threshold_mem: '1'
-    hkube_log_level: '2'
+    hkube_log_level: 'info'
     interval: '1000'
     metric_port: '3000'
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
@@ -499,7 +523,7 @@ resource_manager: # +doc-gen:ignore
       memory: 512Mi
 simulator: # +doc-gen:ignore
   env:
-    hkube_log_level: '2'
+    hkube_log_level: 'info'
     port: 9050
     monitor_backend_path: /hkube/monitor-server/
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io

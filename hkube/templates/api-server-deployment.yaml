@@ -23,6 +23,7 @@ spec:
         release: api-server
         group: {{ .Values.labels.group.value }}
     spec:
+      serviceAccountName: api-server-serviceaccount
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}
@@ -34,6 +35,7 @@ spec:
       volumes:
         - name: uploads
           emptyDir: {}
+{{ include "hkube.fluent_bit.volume" . | indent 8 }}
 {{- if eq .Values.env.default_storage "fs" }}
         - name: storage-volume
           persistentVolumeClaim:
@@ -52,6 +54,7 @@ spec:
           volumeMounts:
             - name: uploads
               mountPath: /hkube/api-server/uploads
+{{ include "hkube.fluent_bit.volumemount" . | indent 12 }}
 {{- if eq .Values.env.default_storage "fs" }}
             - name: storage-volume
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
@@ -65,6 +68,7 @@ spec:
             - configMapRef:
                 name: api-server-configmap
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: HKUBE_SYSTEM_VERSION
               value: {{ .Values.systemversion | quote}}
 {{- if eq .Values.env.default_storage "s3" }}
@@ -114,3 +118,4 @@ spec:
                   name: mongodb-secret
                   key: mongodb-database
 {{- end }}
+{{ include "hkube.fluent_bit.sidecar" . | indent 8 }}

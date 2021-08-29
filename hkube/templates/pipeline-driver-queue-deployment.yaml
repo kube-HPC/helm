@@ -20,6 +20,7 @@ spec:
         app: pipeline-driver-queue
         group: {{ .Values.labels.group.value }}
     spec:
+      serviceAccountName: pipeline-driver-queue-serviceaccount
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}
@@ -42,6 +43,7 @@ spec:
             - configMapRef:
                 name: pipeline-driver-queue-configmap
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
 {{- if eq .Values.env.default_storage "s3" }}
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
@@ -89,3 +91,6 @@ spec:
                   name: mongodb-secret
                   key: mongodb-database
 {{- end }}
+{{ include "hkube.fluent_bit.volumemount_full" . | indent 10 }}
+{{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
+{{ include "hkube.fluent_bit.volume_full" . | indent 6 }}
