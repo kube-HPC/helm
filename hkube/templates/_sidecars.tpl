@@ -85,6 +85,7 @@ fluent-bit.conf: |-
         Parser json
         Tag hkube.{{ .Release.Namespace }}_${HOSTNAME}_hkube.log
         Mem_Buf_Limit 5mb
+        Refresh_Interval 10
         # Skip_Long_Lines On
     [FILTER]
         Name modify
