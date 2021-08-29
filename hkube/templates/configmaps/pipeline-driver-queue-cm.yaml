@@ -8,3 +8,6 @@ data:
   HKUBE_LOG_LEVEL: {{ .Values.pipeline_driver_queue.env.hkube_log_level | quote}}
   METRICS_PORT: {{ .Values.pipeline_driver_queue.env.metric_port | quote}}
   CHECK_QUEUE_INTERVAL: {{ .Values.pipeline_driver_queue.env.check_queue_interval | quote }}
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
+  DEFAULT_STORAGE: {{ .Values.env.default_storage | quote}}
+  STORAGE_ENCODING: {{ .Values.global.storage.encoding | quote}}
