@@ -35,6 +35,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
@@ -43,6 +44,15 @@ jobs:
       - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+      - name: envs
+        run: |
+            echo BRANCH=${BRANCH:-master} >> $GITHUB_ENV
+            echo FROZEN_VERSION=${FROZEN_VERSION:-false} >> $GITHUB_ENV
+            echo TAG=$TAG >> $GITHUB_ENV
+        env:
+          TAG: '${{ github.event.client_payload.TAG || github.event.inputs.TAG }}'
+          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
+          FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
       - run: |
           git checkout $BRANCH
         env:
@@ -53,14 +63,7 @@ jobs:
       - run: git push --follow-tags
       - name: chart
         run: |
-            echo BRANCH=$BRANCH >> $GITHUB_ENV
-            echo FROZEN_VERSION=$FROZEN_VERSION >> $GITHUB_ENV
-            echo TAG=$TAG >> $GITHUB_ENV
             ./package.sh
-        env:
-          TAG: '${{ github.event.client_payload.TAG || github.event.inputs.TAG }}'
-          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
-          FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
       - name: trigger
         if: ${{ env.BRANCH == 'master' || github.event.inputs.DEPLOY }}
         id: trigger
