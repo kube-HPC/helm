@@ -11,7 +11,8 @@ data:
               "ingressHost": {{ .Values.global.ingress.hostname | quote }},
               "ingressPrefix": {{ .Values.global.ingress.prefix | quote }},
               "ingressUseRegex": {{ .Values.global.ingress.use_regex }},
-              "devModeEnabled": {{ .Values.sync_server.enabled }}
+              "devModeEnabled": {{ .Values.sync_server.enabled }},
+              "fluentbitSidecarEnabled": {{ .Values.global.sidecars.fluent_bit.enable }}
         }
   versions.json: |
         {

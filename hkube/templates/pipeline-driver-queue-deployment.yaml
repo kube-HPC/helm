@@ -20,6 +20,7 @@ spec:
         app: pipeline-driver-queue
         group: {{ .Values.labels.group.value }}
     spec:
+      serviceAccountName: pipeline-driver-queue-serviceaccount
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}
@@ -39,6 +40,7 @@ spec:
               containerPort: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
               protocol: TCP
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:
@@ -72,3 +74,6 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+{{ include "hkube.fluent_bit.volumemount_full" . | indent 10 }}
+{{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
+{{ include "hkube.fluent_bit.volume_full" . | indent 6 }}

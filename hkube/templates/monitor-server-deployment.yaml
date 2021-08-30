@@ -48,6 +48,7 @@ spec:
           resources: {}
 {{- end }}
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:
@@ -112,16 +113,19 @@ spec:
               mountPath: /hkube/monitor-server/uploads
             - name: versions-config
               mountPath: /versions
+{{ include "hkube.fluent_bit.volumemount" . | indent 12 }}
 {{- if eq .Values.env.default_storage "fs" }}
             - name: storage-volume
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}  
+{{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
       volumes:
         - name: versions-config
           configMap:
             name: hkube-versions
         - emptyDir: {}
           name: uploads
+{{ include "hkube.fluent_bit.volume" . | indent 8 }}
 {{- if eq .Values.env.default_storage "fs" }}
         - name: storage-volume
           persistentVolumeClaim:

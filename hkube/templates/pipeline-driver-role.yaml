@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pipeline-driver-serviceaccount
+  labels:
+    group: {{ .Values.labels.group.value }}
+    app: pipeline-driver
+    core: "true"
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: pipeline-driver
+  labels:
+    group: {{ .Values.labels.group.value }}
+    app: pipeline-driver
+    core: "true"
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pipeline-driver
+  namespace: {{ .Release.Namespace }}
+  labels:
+    group: {{ .Values.labels.group.value }}
+    app: pipeline-driver
+    core: "true"
+subjects:
+- kind: ServiceAccount
+  name: pipeline-driver-serviceaccount
+roleRef:
+  kind: Role
+  name: pipeline-driver
+  apiGroup: rbac.authorization.k8s.io
+---

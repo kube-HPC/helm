@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: caching-service-serviceaccount
+  labels:
+    group: {{ .Values.labels.group.value }}
+    app: caching-service
+    core: "true"
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: caching-service
+  labels:
+    group: {{ .Values.labels.group.value }}
+    app: caching-service
+    core: "true"
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: caching-service
+  namespace: {{ .Release.Namespace }}
+  labels:
+    group: {{ .Values.labels.group.value }}
+    app: caching-service
+    core: "true"
+subjects:
+- kind: ServiceAccount
+  name: caching-service-serviceaccount
+roleRef:
+  kind: Role
+  name: caching-service
+  apiGroup: rbac.authorization.k8s.io
+---
