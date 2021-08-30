@@ -58,7 +58,7 @@ jobs:
           BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
           FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
       - name: trigger
-        if: '${{ env.FROZEN_VERSION == false }}'
+        if: '${{ env.BRANCH == master }}'
         id: trigger
         uses: octokit/request-action@v2.x
         with:
