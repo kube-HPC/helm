@@ -5,11 +5,21 @@ name: CI-MAIN
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [master]
   repository_dispatch: 
       types: [trigger]
   workflow_dispatch:
+    inputs:
+      BRANCH:
+        description: Hkube branch to clone (e.g. master, release_v1_3)
+        required: true
+        default: master
+      TAG:
+        description: release-manager tag to get
+        required: false
+      FROZEN_VERSION:
+        description: if 'true' creates a frozen version. If false creates a dev version
+        required: true
+        default: 'false'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -30,18 +40,31 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
       - run: |
+          git checkout $BRANCH
+        env:
+          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
+      - run: |
           npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
-          echo TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
+          echo CHART_TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
       - run: git push --follow-tags
       - name: chart
-        run: ./package.sh
+        run: |
+            echo BRANCH=$BRANCH >> $GITHUB_ENV
+            echo FROZEN_VERSION=$FROZEN_VERSION >> $GITHUB_ENV
+            echo TAG=$TAG >> $GITHUB_ENV
+            ./package.sh
+        env:
+          TAG: '${{ github.event.client_payload.TAG || github.event.inputs.TAG }}'
+          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
+          FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
       - name: trigger
+        if: '${{ env.FROZEN_VERSION == false }}'
         id: trigger
         uses: octokit/request-action@v2.x
         with:
           route: POST /repos/kube-HPC/cd-manager/dispatches
           event_type: trigger
-          client_payload: "{\"version\": \"${{env.TAG}}\" }"
+          client_payload: "{\"version\": \"${{env.CHART_TAG}}\" }"
         env:
           GITHUB_TOKEN: '${{ secrets.GH_TOKEN }}'
   

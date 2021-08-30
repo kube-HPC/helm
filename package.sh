@@ -11,18 +11,23 @@ git stash
 git remote -v
 git fetch
 git checkout -b gh-pages origin/gh-pages
-cp /tmp/helm-charts/hkube-${CHART_VERSION}.tgz ./dev
-helm repo index --merge ./dev/index.yaml /tmp/helm-charts/
-cp /tmp/helm-charts/index.yaml ./dev
+if [[ FROZEN_VERSION = 'true' ]]; then
+  TARGET=.
+else
+  TARGET=./dev
+fi
+cp /tmp/helm-charts/hkube-${CHART_VERSION}.tgz $TARGET
+helm repo index --merge $TARGET/index.yaml /tmp/helm-charts/
+cp /tmp/helm-charts/index.yaml $TARGET
 git add .
 git commit -m "update charts"
 git push
-git checkout master
+git checkout $BRANCH
 git stash apply
 echo git add hkube/values.yaml
 git add hkube/values.yaml
 echo git commit -m "update version to ${CHART_VERSION} [skip ci]"
 git commit -m "update version to ${CHART_VERSION} [skip ci]"
 git pull --no-commit
-git commit -m "merge from master [skip ci]"
+git commit -m "merge from $BRANCH [skip ci]"
 git push
