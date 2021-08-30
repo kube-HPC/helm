@@ -1,0 +1,65 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI-MAIN
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  repository_dispatch: 
+      types: [trigger]
+  workflow_dispatch:
+    inputs:
+      BRANCH:
+        description: Hkube branch to clone (e.g. master, release_v1_3)
+        required: true
+        default: master
+      TAG:
+        description: release-manager tag to get
+        required: false
+      FROZEN_VERSION:
+        description: if 'true' creates a frozen version. If false creates a dev version
+        required: true
+        default: 'false'
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      # disable lint for now because of https://github.com/helm/helm/issues/8615
+      # - run: helm lint hkube/
+      - run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+      - run: |
+          git checkout $BRANCH
+        env:
+          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
+      - run: |
+          npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
+          echo TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
+      - run: git push --follow-tags
+      - name: chart
+        run: ./package.sh
+        env:
+          TAG: '${{ github.event.client_payload.TAG || github.event.inputs.TAG }}'
+          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
+          FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
+      - name: trigger
+        id: trigger
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/kube-HPC/cd-manager/dispatches
+          event_type: trigger
+          client_payload: "{\"version\": \"${{env.TAG}}\" }"
+        env:
+          GITHUB_TOKEN: '${{ secrets.GH_TOKEN }}'
+  

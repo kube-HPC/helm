@@ -23,6 +23,7 @@ spec:
         release: {{ .Release.Name }}
         group: {{ .Values.labels.group.value }}
     spec:
+      serviceAccountName: caching-service-serviceaccount
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}
@@ -31,8 +32,9 @@ spec:
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-{{- if eq .Values.env.default_storage "fs" }}
       volumes:
+{{ include "hkube.fluent_bit.volume" . | indent 8 }}
+{{- if eq .Values.env.default_storage "fs" }}
         - name: storage-volume
           persistentVolumeClaim:
             claimName: hkube-storage-pvc
@@ -47,8 +49,9 @@ spec:
 {{- else }}
           resources: {}
 {{- end }}          
-{{- if eq .Values.env.default_storage "fs" }}
           volumeMounts:
+{{ include "hkube.fluent_bit.volumemount" . | indent 12 }}
+{{- if eq .Values.env.default_storage "fs" }}
             - name: storage-volume
               mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}                
@@ -56,6 +59,7 @@ spec:
             - containerPort: {{ index .Values "caching_service" "env" "port" }}
               protocol: TCP
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:

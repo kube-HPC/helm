@@ -1,0 +1,17 @@
+{{- if and .Values.global.sidecars.fluent_bit.enable  -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentbit-container-spec
+  namespace: {{ .Release.Namespace }}
+data:
+  container.yaml: |-
+{{ include "hkube.fluent_bit.sidecar" . | indent 4 }}
+  volumes.yaml: |-
+{{ include "hkube.fluent_bit.volume" . | indent 4 }}
+  volumeMounts.yaml: |-
+{{ include "hkube.fluent_bit.volumemount" . | indent 4 }}
+  environments.yaml: |-
+{{ include "hkube.fluent_bit.environment" . | indent 4 }}
+
+{{- end -}}

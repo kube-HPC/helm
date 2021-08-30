@@ -51,6 +51,7 @@ spec:
           ports:
             - containerPort: {{ index .Values "resource_manager" "env" "metric_port" }}
           env:
+{{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:
@@ -106,3 +107,6 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+{{ include "hkube.fluent_bit.volumemount_full" . | indent 10 }}
+{{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
+{{ include "hkube.fluent_bit.volume_full" . | indent 6 }}
