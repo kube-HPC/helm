@@ -302,7 +302,7 @@ clean_old_jobs: # +doc-gen:ignore
     failureThreshold: 3
   image:
     repository: hkube/clean-old-jobs
-    tag: v1.3.1
+    tag: v1.3.2
   resources:
     requests:
       cpu: 100m
@@ -354,7 +354,7 @@ monitor_server: # +doc-gen:ignore
     jaeger_query_service_port: ''
   image:
     repository: hkube/monitor-server
-    tag: v1.3.7
+    tag: v1.3.9
   ingress:
     enabled: true
     path: /hkube/monitor-server
