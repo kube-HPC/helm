@@ -20,6 +20,10 @@ on:
         description: if 'true' creates a frozen version. If false creates a dev version
         required: true
         default: 'false'
+      DEPLOY:
+        description: if 'true' deploys to cd cluster
+        required: true
+        default: 'false'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -58,7 +62,7 @@ jobs:
           BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
           FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
       - name: trigger
-        if: '${{ env.BRANCH == master }}'
+        if: '${{ env.BRANCH == 'master' || github.event.inputs.DEPLOY }}'
         id: trigger
         uses: octokit/request-action@v2.x
         with:
