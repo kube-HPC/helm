@@ -1,0 +1,702 @@
+global:
+  # kubernetes cluster domain name
+  clusterName: cluster.local
+  # private registry to use
+  registry: ''
+  # private registry namespace for pulling images in builds
+  registry_namespace: hkube
+  # private registry username for pulling images
+  registry_username: ''
+  # private registry password for pulling images
+  registry_password: ''
+  # private registry insecure (http) for pulling base image in builds
+  registry_insecure: false
+  # private registry with self signed certificate for pulling base image in builds
+  registry_skip_tls_verify: false
+  image_pull_secret:
+    # name of imagepullsecret. If global.registry_password is not empty, it will be created
+    name: hkube-imagepullsecret
+    # use an existing imagepullsecret (doesn't create the secret)
+    use_existing: false
+  # If false, will not set resource request and limits on hkube pods. If true will set the values for each pod
+  resources_enable: false
+  storage:
+  # encoding for storage. can be msgpack, bson, json
+    encoding: msgpack
+    maxCacheSize: 500
+    storageResultsThreshold: 100Ki # +doc-gen:ignore
+    fs: # +doc-gen:ignore
+      pvc:
+        name: hkube-storage
+        capacity: 10Gi
+        storage_class: '-'
+      dev_pvc:
+        name: hkube-dev-sources
+        capacity: 10Gi
+        storage_class: ''
+      base_directory: /hkubedata
+    s3:
+      # s3 access and secret key. If using internal minio, must match minio.accessKey and secretKey
+      access_key: hkubeminiokey
+      secret_key: hkubeminiosecret
+      url: 'http://hkube-minio:9000'
+  discovery: # +doc-gen:ignore
+    encoding: msgpack
+    port: 9020
+    timeout: 60000
+    pingTimeout: 500
+    maxCacheSize: 500
+    servingReportInterval: 5000
+  # kubernetes environment. Possible values are k8s, openshift
+  k8senv: k8s
+  # use only namespace. Set to true in restricted environments such as openshift
+  namespaced: false
+  # run worker pods as privileged containers. Makes log aggregation easier
+  isPrivileged: true
+  ingress:
+    hostname: ''
+    prefix: ''
+    # set to false if using nginx-ingress-controller prior to 0.21
+    use_regex: true
+    requireTls: false
+    maxBodySize: 500m
+    class: nginx
+  sidecars:
+    fluent_bit:
+      enable: false
+      config:
+        name: fluent-bit-cm
+        create_cm: true
+        log_file: "*.log"
+        mount_path: /mnt/log
+        es:
+          url: ""
+          port: "9200"
+          tls: "Off"
+          tls_verify: "Off"
+          logStashPrefix: "hkube-"
+          user: ""
+          password: ""
+      image: # +doc-gen:ignore
+        repository: fluent/fluent-bit
+        tag: "1.8.3"
+      resources:
+        limits:
+          cpu: 100m
+          memory: 200Mi
+
+env:
+  # storage mode. can be s3 or fs. Set global.storage.fs or global.storage.s3 accordingly
+  default_storage: s3
+  node_env: production
+image:
+  # pull policy for images
+  pullPolicy: IfNotPresent
+labels: # +doc-gen:ignore
+  core:
+    value: 'true'
+  group:
+    value: hkube
+etcd:
+  enable: true
+  # set number of replicas. defualt 3
+  replicas: 3
+  persistentVolume:
+    enabled: true
+    storageClass: ''
+    storage: 10Gi
+redis-ha:
+  enable: true
+  # set number of replicas. defualt 3. If set to 1 also set min-slaves-to-write to 0
+  replicas: 3
+  redis:
+    config:
+      min-slaves-to-write: 1
+      client-output-buffer-limit: "replica 1024mb 512mb 60"
+  # set to true for multiple nodes
+  hardAntiAffinity: false
+jaeger:
+  # enable jaeger and cassandra
+  enable: false
+  fullnameOverride: jaeger
+  nameOverride: jaeger
+  query:
+    basePath: /jaeger
+    ingress:
+      enabled: true
+  agent:
+    # set the deployment kind of the jaeger-agent. options are daemonset and deployment
+    deploymentKind: daemonset
+    deployment:
+      replicas: 1
+    daemonset:
+      # set to false to allow running in non privileged environment (e.g. openshift)
+      useHostPort: true
+  cassandra:
+    persistence:
+      enabled: true
+      # cassandra data Persistent Volume Storage Class
+      # If defined, storageClassName: <storageClass>
+      # If set to "-", storageClassName: "", which disables dynamic provisioning
+      # If undefined (the default) or set to null, no storageClassName spec is
+      #   set, choosing the default provisioner.  (gp2 on AWS, standard on
+      #   GKE, AWS & OpenStack)
+      #
+      storageClass: null
+    config:
+      cluster_size: 1
+      cluster_domain: cluster.local
+  # optional external jaeger agent address. leave blank for defaults
+  external_agent_address: ''
+nginx-ingress:
+  # install nginx-ingress-controller with hkube
+  enable: false
+mongodb:
+  enable: true
+  useStatefulSet: true
+  auth:
+    rootPassword: ehtyTJj4mR
+    user_name: root
+    databaseName: hkube
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
+minio:
+  enable: true
+  accessKey: hkubeminiokey
+  secretKey: hkubeminiosecret
+  persistence:
+    enabled: true
+    storageClass: ''
+  serviceAccount: # +doc-gen:ignore
+    create: false
+gitea:
+  enable: true
+  service:
+    http:
+      port: '3000'
+  gitea:
+    config:
+      repository:
+        ENABLE_PUSH_CREATE_USER: true
+    admin:
+      username: hkube
+      password: '123456'
+      email: "hkube@hkube.io"
+  postgresql:
+    securityContext:
+      enabled: false
+    containerSecurityContext:
+      enabled: false
+  memcached:
+    securityContext:
+      enabled: false
+
+metrics:
+  serviceMonitorSelector:
+    release: metric
+  grafanaDashboardLabel:
+    grafana_dashboard: '1'
+systemversion: v2.1.79
+build_secret:
+# docker registry for algorithm builds. defaults to docker.io
+  docker_registry: ''
+# docker registry namespace for algorithm builds. defaults to username
+  docker_namespace: ''
+# docker registry username for algorithm builds.
+  docker_username: ''
+# docker registry password for algorithm builds.
+  docker_password: ''
+# docker registry is insecure for algorithm builds.
+  docker_registry_insecure: false
+# docker registry has self signed certificate for algorithm builds.
+  docker_registry_skip_tls_verify: false
+# npm registry for algorithm builds. Defaults to npmjs.com
+  npm_registry: ''
+# npm registry token for algorithm builds. Mutually exclusive with npm_user and npm_password
+  npm_token: ''
+# npm registry user for algorithm builds. Mutually exclusive with npm_token
+  npm_user: ''
+# npm registry password for algorithm builds. Mutually exclusive with npm_token
+  npm_password: ''
+# pip registry for algorithm builds. Defaults to pypi.org
+  pip_registry: ''
+# pip registry token for algorithm builds. Defaults to pypi.org
+  pip_token: ''
+  maven_registry: ''
+  maven_token: ''
+  maven_user: ''
+# node selector for hkube containers.
+nodeSelector: {}
+algorithm_operator:
+  env: # +doc-gen:ignore
+    metric_port: '3000'
+    builder_cpu: 0.1
+    interval: 1000
+    algorithm_builder_builder_memory: 1024
+    algorithm_builder_main_cpu: 0.5
+    algorithm_builder_main_memory: 512
+    resources_enable: false
+    algorithm_queue_interval: 1000
+    algorithm_queue_concurrency_limit: 5
+    pipeline_drivers_amount: 1
+    pipeline_drivers_concurrency_limit: 5
+    boards_timeout: 10800
+    producer_update_interval: 200
+    python_wrapper_version: ''
+    node_wrapper_version: ''
+  image: # +doc-gen:ignore
+    repository: hkube/algorithm-operator
+    tag: v2.1.17
+  ingress: # +doc-gen:ignore
+    enabled: false
+    path: /hkube/algorithm-operator
+  service: # +doc-gen:ignore
+    type: ClusterIP
+  # build mode for automatic builds. set to openshift if running on openshift
+  build_mode: kaniko
+  healthcheck: # +doc-gen:ignore
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 60
+    timeoutSeconds: 1
+    failureThreshold: 3
+  # Compute resources required for algorithm-operator
+  resources: # +doc-gen:break
+    requests:
+      cpu: 100m
+      memory: 512Mi
+algorithm_queue: # +doc-gen:ignore
+  image:
+    repository: hkube/algorithm-queue
+    tag: v2.1.9
+algorithm_queue_svc: # +doc-gen:ignore
+  env:
+    metric_port: '3000'
+  service:
+    type: ClusterIP
+algorunner: # +doc-gen:ignore
+  image:
+    repository: hkube/algorunner
+    tag: v2.1.1
+api_gateway:
+  ingress:
+    path: /hkube/api-server
+    enabled: true
+api_server: # +doc-gen:ignore
+  env:
+    base_url_path: /hkube/api-server
+    metric_port: '3001'
+    port: '3000'
+    pipeline_driver_cpu: '0.2'
+    pipeline_driver_mem: '512'
+    maxBodySize: 500mb
+    rate_limit_ms: 1000
+    rate_limit_max: 5
+  image:
+    repository: hkube/api-server
+    tag: v2.1.29
+  ingress:
+    enabled: false
+    path: /hkube/api-server
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+datasources_service: # +doc-gen:ignore
+  storage:
+    pvc:
+      capacity: 50Gi
+      storage_class: ''
+  env:
+    base_url_path: /hkube/datasources-service
+    metric_port: '3001'
+    port: '3005'
+  image:
+    repository: hkube/datasources-service
+    tag: v2.1.8
+  ingress:
+    enabled: true
+    path: /hkube/datasources-service
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+artifacts_registry: # +doc-gen:ignore
+  env:
+    port: '8081'
+  image:
+    repository: hkube/artifacts-registry
+    tag: v2.1.24
+  ingress:
+    enabled: true
+    path: /hkube/artifacts-registry
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
+busybox: # +doc-gen:ignore
+  image:
+    repository: busybox
+    tag: latest
+gc_service: # +doc-gen:ignore
+  # all maxAge are in minutes
+  env:
+    hkube_log_level: 'info'
+    rest_port: 7000
+    base_url_path: /hkube/gc-service
+
+    # datasource
+    datasource_cron: '0 0 * * *'
+    datasource_enabled: true
+    datasource_max_age: 2880
+    datasource_base_dir: "/hkube/datasources-storage"
+    datasource_folder_in_use: 'dataSources-in-use'
+
+    # debug
+    debug_cron: '*/2 * * * *'
+    debug_enabled: true
+    debug_max_age: 10
+
+    # etcd
+    etcd_cron: '0 1 * * *'
+    etcd_enabled: true
+    etcd_max_age: 1440
+
+    # gateway
+    gateway_cron: '*/2 * * * *'
+    gateway_enabled: true
+    gateway_max_age: 0.166
+
+    # jobs
+    jobs_cron: '*/1 * * * *'
+    jobs_enabled: true
+    jobs_completed_max_age: 1
+    jobs_failed_max_age: 1
+    jobs_pending_max_age: 1
+
+    # pipelines
+    pipelines_cron: '*/5 * * * *'
+    pipelines_enabled: true
+
+    # redis
+    redis_cron: '20 1 * * *'
+    redis_enabled: true
+    redis_max_age: 7200
+
+    # storage
+    storage_cron: 0 2 * * *
+    storage_enabled: true
+    storage_results_max_age: 14400
+    storage_temp_max_age: 7200
+  image:
+    repository: hkube/gc-service
+    tag: v2.1.11
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+  ingress:
+    enabled: true
+    path: /hkube/gc-service
+  service:
+    type: ClusterIP
+  healthcheck:
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 60
+    timeoutSeconds: 1
+    failureThreshold: 3
+cpu-load-algorithm: # +doc-gen:ignore
+  image:
+    repository: hkube/cpu-load-algorithm
+    tag: v2.0.2
+tensorboard: # +doc-gen:ignore
+  image:
+    repository: hkube/tensorboard
+    tag: v2.1.1
+delete_deployment_and_jobs: # +doc-gen:ignore
+  image:
+    repository: hkube/del-dep-and-jobs
+    tag: v1.0.8
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+monitor_server: # +doc-gen:ignore
+  healthcheck:
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 500
+    periodSeconds: 60
+    timeoutSeconds: 1
+    failureThreshold: 3
+  env:
+    port: 30010
+    log_external_requests: false
+    elasticsearch_service_url: ''
+    elasticsearch_logs_index: 'logstash-*'
+    elasticsearch_logs_doc_type: '_doc'
+    logs_view_source: k8s
+    jaeger_query_service_host: ''
+    jaeger_query_service_port: ''
+    show_streaming_metrics: false
+    max_display_batch_size: 10
+  image:
+    repository: hkube/monitor-server
+    tag: v2.1.8
+  ingress:
+    enabled: true
+    path: /hkube/monitor-server
+    datasource_proxy_path: /hkube/monitor-server/datasource
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+pipeline_driver: # +doc-gen:ignore
+  env:
+    metric_port: '3001'
+    storageResultsThreshold: '100Ki'
+  image:
+    repository: hkube/pipeline-driver
+    tag: v2.1.9
+  service:
+    type: ClusterIP
+pipeline_driver_queue: # +doc-gen:ignore
+  env:
+    hkube_log_level: 'info'
+    metric_port: '3000'
+    check_queue_interval: '500'
+  image:
+    repository: hkube/pipeline-driver-queue
+    tag: v2.1.6
+  ingress:
+    enabled: false
+    path: /hkube/pipeline-driver-queue
+  replicaCount: 1
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+resource_manager: # +doc-gen:ignore
+  healthcheck:
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 20
+    timeoutSeconds: 1
+    failureThreshold: 3
+  env:
+    algorithms_threshold_cpu: '0.9'
+    algorithms_threshold_mem: '0.9'
+    driver_threshold_cpu: '0.1'
+    driver_threshold_mem: '1'
+    hkube_log_level: 'info'
+    interval: '1000'
+    metric_port: '3000'
+    prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
+  image:
+    repository: hkube/resource-manager
+    tag: v2.1.7
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+simulator: # +doc-gen:ignore
+  env:
+    hkube_log_level: 'info'
+    port: 9050
+    monitor_backend_path: /hkube/monitor-server/
+    monitor_backend_path_socketio: /hkube/monitor-server/socket.io
+    monitor_backend_use_location: 'true'
+    monitor_backend_host: ''
+    monitor_backend_port: ''
+    board_host: ''
+    board_port: ''
+    board_path: /hkube/board
+    board_use_location: 'true'
+    is_secure: ''
+  image:
+    repository: hkube/simulator
+    tag: v2.1.12
+  ingress:
+    enabled: true
+    path: /hkube/dashboard
+    alt_path: /hkube/simulator
+  metrics:
+    port: 9050
+  service:
+    port: 9050
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+task_executor:
+  healthcheck: # +doc-gen:ignore
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 100
+    periodSeconds: 20
+    timeoutSeconds: 1
+    failureThreshold: 3
+  env:
+    metric_port: '3000' # +doc-gen:ignore
+    worker_socket_max_payload_bytes: 1000000000
+    worker_algorithm_start_timeout_ms: 300000
+    worker_algorithm_encoding: bson # +doc-gen:ignore
+    default_storage_protocol: v1 # +doc-gen:ignore
+    default_worker_algorithm_encoding: json # +doc-gen:ignore
+    # worker container memory request in MB. Only set if resources_enable=true
+    worker_memory: 512
+    # worker container cpu request. Only set if resources_enable=true
+    worker_cpu: 0.1
+    # if true, sets resource requests on worker container
+    resources_enable: false
+    # task executor internal processing interval in MS
+    interval: '1000'
+    log_external_requests: false # +doc-gen:ignore
+    # set to the number of CPUs in the cluster (or quota) when running on openshift
+    default_quota_cpu: 30
+    # set to the total amount of memory in the cluster (or quota) when running on openshift
+    default_quota_mem: 20Gi
+    # set to the total number of GPUs in the cluster (or quota) when running on openshift
+    default_quota_gpu: 0
+    # if running on openshift on labeled nodes, set to true and create a config-map named `hkube-nodes` with key `hkube-nodes` and value of the output of `kubectl get nodes -o json`
+    has_node_list: false
+    # set to true to set algorithm resource limit to equal resource request
+    use_resource_limits: false
+  image: # +doc-gen:ignore
+    repository: hkube/task-executor
+    tag: v2.1.12
+  service: # +doc-gen:ignore
+    type: ClusterIP
+  # Compute resources required for algorithm-operator
+  resources: # +doc-gen:break
+    requests:
+      cpu: 100m
+      memory: 512Mi
+thirdparty: # +doc-gen:ignore
+  enabled: true
+trigger_service: # +doc-gen:ignore
+  env:
+    metric_port: '3000'
+  image:
+    repository: hkube/trigger-service
+    tag: v2.1.2
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+worker: # +doc-gen:ignore
+  env:
+    metric_port: '3000'
+  image:
+    repository: hkube/worker
+    tag: v2.1.11
+  metrics:
+    port: 3001
+  service:
+    type: ClusterIP
+algorithm_gateway: # +doc-gen:ignore
+  env:
+    base_url_path: /hkube/gateway
+    port: 3005
+  image:
+    repository: hkube/algorithm-gateway
+    tag: v2.0.3
+  service:
+    type: ClusterIP
+algorithm_debug: # +doc-gen:ignore
+  env:
+    port: 3005
+  image:
+    repository: hkube/algorithm-debug
+    tag: v2.1.6
+  service:
+    type: ClusterIP
+algorithm_builder: # +doc-gen:ignore
+  image:
+    repository: hkube/algorithm-builder
+    tag: v2.1.17
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+kaniko: # +doc-gen:ignore
+  image:
+    repository: hkube/kaniko
+    tag: v2.1.1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 1Gi
+oc_builder: # +doc-gen:ignore
+  image:
+    repository: hkube/oc-builder
+    tag: v2.1.0
+  resources:
+    requests:
+      cpu: 100m
+      memory: 1Gi
+algorithm_example_python: # +doc-gen:ignore
+  image:
+    repository: hkube/algorithm-example-python
+    tag: v2.1.3
+etcd_defrag: # +doc-gen:ignore
+  enable: true
+  pattern: '0 0 * * *'
+  env:
+    etcd_name: etcd
+    etcd_protocol: http
+    etcd_port: 2379
+    sleep: 60
+  image:
+    repository: hkube/etcd-defrag-cron
+    tag: v1.0.3
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+sync_server: # +doc-gen:ignore
+  enabled: true
+  image:
+    repository: hkube/sync-server
+    tag: v2.1.1
+  ingress:
+    enabled: true
+    path: /hkube/sync
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+storage_migration: # +doc-gen:ignore
+  enable: false
+  env:
+    source_storage_encoding: bson
+  image:
+    repository: hkube/storage-migration
+    tag: v2.1.1
+fullSystemVersion: v2.1.79-1630334188923
