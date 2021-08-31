@@ -20,6 +20,10 @@ on:
         description: if 'true' creates a frozen version. If false creates a dev version
         required: true
         default: 'false'
+      DEPLOY:
+        description: if 'true' deploys to cd cluster
+        required: true
+        default: 'false'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -31,6 +35,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
@@ -39,27 +44,36 @@ jobs:
       - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+      - name: envs
+        run: |
+            echo BRANCH=${BRANCH:-master} >> $GITHUB_ENV
+            echo FROZEN_VERSION=${FROZEN_VERSION:-false} >> $GITHUB_ENV
+            echo TAG=$TAG >> $GITHUB_ENV
+        env:
+          TAG: '${{ github.event.client_payload.TAG || github.event.inputs.TAG }}'
+          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
+          FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
       - run: |
           git checkout $BRANCH
         env:
           BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
       - run: |
+          git status
+          npm version
           npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
-          echo TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
+          echo CHART_TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
       - run: git push --follow-tags
       - name: chart
-        run: ./package.sh
-        env:
-          TAG: '${{ github.event.client_payload.TAG || github.event.inputs.TAG }}'
-          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
-          FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
+        run: |
+            ./package.sh
       - name: trigger
+        if: ${{ env.BRANCH == 'master' || github.event.inputs.DEPLOY }}
         id: trigger
         uses: octokit/request-action@v2.x
         with:
           route: POST /repos/kube-HPC/cd-manager/dispatches
           event_type: trigger
-          client_payload: "{\"version\": \"${{env.TAG}}\" }"
+          client_payload: "{\"version\": \"${{env.CHART_TAG}}\" }"
         env:
           GITHUB_TOKEN: '${{ secrets.GH_TOKEN }}'
   
