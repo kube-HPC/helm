@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.79
+systemversion: v2.1.80
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -334,7 +334,7 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v2.1.24
+    tag: v2.1.25
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -640,7 +640,7 @@ algorithm_debug: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.1.17
+    tag: v2.1.18
   resources:
     requests:
       cpu: 100m
@@ -699,4 +699,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.79-1630334188923
+fullSystemVersion: v2.1.80-1630414597975
