@@ -49,10 +49,12 @@ jobs:
             echo BRANCH=${BRANCH:-master} >> $GITHUB_ENV
             echo FROZEN_VERSION=${FROZEN_VERSION:-false} >> $GITHUB_ENV
             echo TAG=$TAG >> $GITHUB_ENV
+            echo DEPLOY=$DEPLOY >> $GITHUB_ENV
         env:
           TAG: '${{ github.event.client_payload.TAG || github.event.inputs.TAG }}'
           BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
           FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
+          DEPLOY: ${{ github.event.inputs.DEPLOY || 'false' }}
       - run: |
           git checkout $BRANCH
         env:
@@ -67,7 +69,7 @@ jobs:
         run: |
             ./package.sh
       - name: trigger
-        if: ${{ env.BRANCH == 'master' || github.event.inputs.DEPLOY }}
+        if: ${{ env.BRANCH == 'master' || env.DEPLOY == 'true' }}
         id: trigger
         uses: octokit/request-action@v2.x
         with:
