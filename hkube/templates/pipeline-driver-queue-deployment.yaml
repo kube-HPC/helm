@@ -8,7 +8,7 @@ metadata:
     core: "true"
     metrics-group: pipeline-driver-queue
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       app: pipeline-driver-queue
@@ -24,7 +24,18 @@ spec:
 {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}
-{{- end }}     
+{{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+{{ include "hkube.fluent_bit.volume" . | indent 8 }}
+{{- if eq .Values.env.default_storage "fs" }}
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: hkube-storage-pvc
+{{- end }}      
       containers:
         - name: pipeline-driver-queue
           image: "{{ .Values.global.registry }}{{ index .Values "pipeline_driver_queue" "image" "repository" }}:{{ index .Values "pipeline_driver_queue" "image" "tag" }}"
@@ -34,7 +45,13 @@ spec:
 {{ toYaml .Values.pipeline_driver_queue.resources | indent 12 }}
 {{- else }}
           resources: {}
-{{- end }}             
+{{- end }}
+          volumeMounts:
+{{ include "hkube.fluent_bit.volumemount" . | indent 12 }}
+{{- if eq .Values.env.default_storage "fs" }}
+            - name: storage-volume
+              mountPath: {{ .Values.global.storage.fs.base_directory | quote}}
+{{- end }}                                        
           ports:
             - name: http
               containerPort: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
@@ -91,6 +108,4 @@ spec:
                   name: mongodb-secret
                   key: mongodb-database
 {{- end }}
-{{ include "hkube.fluent_bit.volumemount_full" . | indent 10 }}
 {{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
-{{ include "hkube.fluent_bit.volume_full" . | indent 6 }}
