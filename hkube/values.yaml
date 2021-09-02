@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.82
+systemversion: v2.1.83
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -248,7 +248,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.1.19
+    tag: v2.1.20
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -272,7 +272,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.1.9
+    tag: v2.1.10
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -298,7 +298,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.1.29
+    tag: v2.1.30
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -483,7 +483,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.1.6
+    tag: v2.1.7
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -514,7 +514,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.1.7
+    tag: v2.1.8
   service:
     type: ClusterIP
   resources:
@@ -699,4 +699,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.82-1630421557566
+fullSystemVersion: v2.1.83-1630563608290
