@@ -11,3 +11,4 @@ data:
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
   DEFAULT_STORAGE: {{ .Values.env.default_storage | quote}}
   STORAGE_ENCODING: {{ .Values.global.storage.encoding | quote}}
+  BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
