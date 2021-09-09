@@ -246,6 +246,8 @@ api_server: # +doc-gen:ignore
     port: '3000'
     pipeline_driver_cpu: '0.2'
     pipeline_driver_mem: '512'
+    rate_limit_ms: 60000
+    rate_limit_max: 500
   image:
     repository: hkube/api-server
     tag: v1.3.47

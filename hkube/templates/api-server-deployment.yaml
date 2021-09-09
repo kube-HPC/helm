@@ -77,11 +77,21 @@ spec:
               protocol: TCP
           env:
 {{ include "hkube.fluent_bit.environment" . | indent 12 }}
+            - name: API_SERVER_RATE_LIMIT_MAX
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: API_SERVER_RATE_LIMIT_MAX
+            - name: API_SERVER_RATE_LIMIT_MS
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: API_SERVER_RATE_LIMIT_MS
             - name: METRICS_PORT
               valueFrom:
                 configMapKeyRef:
                   name: api-server-configmap
-                  key: METRICS_PORT
+                  key: METRICS_PORT                                    
             - name: API_SERVER_REST_PORT
               valueFrom:
                 configMapKeyRef:

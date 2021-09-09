@@ -18,4 +18,5 @@ data:
   PIPELINE_DRIVER_MEM: {{index .Values "api_server" "env" "pipeline_driver_mem" | quote}}
   INGRESS_PREFIX: {{ .Values.global.ingress.prefix | quote}}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
-
+  API_SERVER_RATE_LIMIT_MS: {{ .Values.api_server.env.rate_limit_ms | quote}}
+  API_SERVER_RATE_LIMIT_MAX: {{ .Values.api_server.env.rate_limit_max | quote}}
