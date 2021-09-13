@@ -35,16 +35,13 @@ jobs:
         env:
           HKUBE_VERSION: '${{ github.event.inputs.HKUBE_VERSION }}'
       - run: |
-          git status
-          npm version
-          npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
-          echo CHART_TAG=$(git describe --abbrev=0) >> $GITHUB_ENV
-      - run: |
           git remote -v
           git fetch
           git checkout -b gh-pages origin/gh-pages
+          mkdir -p /tmp/charts
+          cp dev/hkube-${HKUBE_VERSION}.tgz /tmp/charts
+          helm repo index --merge ./index.yaml /tmp/charts/
           cp dev/hkube-${HKUBE_VERSION}.tgz .
-          helm repo index .
           git add .
           git commit -m "update charts"
           git push
