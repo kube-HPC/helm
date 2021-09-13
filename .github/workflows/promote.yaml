@@ -33,7 +33,7 @@ jobs:
         run: |
             echo HKUBE_VERSION=${HKUBE_VERSION} >> $GITHUB_ENV
         env:
-          HKUBE_VERSION: '${{ github.event.client_payload.HKUBE_VERSION }}'
+          HKUBE_VERSION: '${{ github.event.inputs.HKUBE_VERSION }}'
       - run: |
           git status
           npm version
