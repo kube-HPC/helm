@@ -42,6 +42,7 @@ jobs:
           cp dev/hkube-${HKUBE_VERSION}.tgz /tmp/charts
           helm repo index --merge ./index.yaml /tmp/charts/
           cp dev/hkube-${HKUBE_VERSION}.tgz .
+          cp /tmp/charts/index.yaml .
           git add .
           git commit -m "update charts"
           git push
