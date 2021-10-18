@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.1
+systemversion: 2.1.89-output.1354197563
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -298,7 +298,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.1
+    tag: v2.1.31-output-1354197563
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -319,7 +319,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.2.1
+    tag: v2.1.9-output-1354197563
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -514,7 +514,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.2.1
+    tag: v2.1.9-output-1354197563
   service:
     type: ClusterIP
   resources:
