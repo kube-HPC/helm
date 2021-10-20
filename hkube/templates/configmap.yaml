@@ -76,6 +76,11 @@ data:
                         "image": "{{ .Values.algorithm_gateway.image.repository }}"
                   },
                                     {
+                        "project": "algorithm-output",
+                        "tag": "{{ .Values.algorithm_output.image.tag }}",
+                        "image": "{{ .Values.algorithm_output.image.repository }}"
+                  },
+                                    {
                         "project": "algorithm-debug",
                         "tag": "{{ .Values.algorithm_debug.image.tag }}",
                         "image": "{{ .Values.algorithm_debug.image.repository }}"
