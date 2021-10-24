@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.2
+systemversion: v2.2.3
 
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
@@ -299,7 +299,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.2
+    tag: v2.2.3
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -516,7 +516,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.2.1-output-1354878798
+    tag: v2.2.2
   service:
     type: ClusterIP
   resources:
@@ -644,7 +644,7 @@ algorithm_output: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-output
-    tag: v2.2.1-output-1354878798
+    tag: v2.2.2
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore
@@ -674,7 +674,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v2.2.1
+    tag: v2.2.2
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '0 0 * * *'
@@ -709,4 +709,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.2.0
-fullSystemVersion: v2.2.2-1634725027553
+fullSystemVersion: v2.2.3-1635063126101
