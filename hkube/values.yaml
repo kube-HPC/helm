@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.2.3-optimizer.1380555991
+systemversion: 2.2.3-optimizer.1381067774
 
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
@@ -299,7 +299,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.3-optimizer-1380555991
+    tag: v2.2.3-optimizer-1381067774
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -320,7 +320,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.2.2-optimizer-1380555991
+    tag: v2.2.2-optimizer-1381067774
 
   ingress:
     enabled: true
@@ -652,7 +652,7 @@ algorithm_optimizer: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm_optimizer
-    tag: v2.2.1-optimizer-1380555991
+    tag: v2.2.1-optimizer-1381067774
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore
