@@ -647,6 +647,14 @@ algorithm_output: # +doc-gen:ignore
     tag: v2.2.2
   service:
     type: ClusterIP
+algorithm_optimizer: # +doc-gen:ignore
+  env:
+    port: 3005
+  image:
+    repository: hkube/algorithm_optimizer
+    tag: v2.2.1
+  service:
+    type: ClusterIP    
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder

@@ -80,6 +80,11 @@ data:
                         "tag": "{{ .Values.algorithm_output.image.tag }}",
                         "image": "{{ .Values.algorithm_output.image.repository }}"
                   },
+                  {
+                        "project": "algorithm-optimizer",
+                        "tag": "{{ .Values.algorithm_optimizer.image.tag }}",
+                        "image": "{{ .Values.algorithm_optimizer.image.repository }}"
+                  },
                                     {
                         "project": "algorithm-debug",
                         "tag": "{{ .Values.algorithm_debug.image.tag }}",
