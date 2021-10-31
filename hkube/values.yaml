@@ -192,6 +192,18 @@ gitea:
   memcached:
     securityContext:
       enabled: false
+jupyterhub:
+  hub:
+    baseUrl: /hkube/jupyterhub
+    allowNamedServers: true
+    config:
+      Authenticator:
+        admin_users:
+          - hkube_admin
+        allowed_users:
+          - hkube
+  ingress:
+    enabled: true
 
 metrics:
   serviceMonitorSelector:
