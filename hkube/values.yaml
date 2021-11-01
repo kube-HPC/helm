@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.91
+systemversion: v2.1.90
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -537,7 +537,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v2.1.14
+    tag: v2.1.15
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -699,4 +699,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.91-1635241439235
+fullSystemVersion: v2.1.90-1635761526971
