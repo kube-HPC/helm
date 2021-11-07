@@ -309,6 +309,10 @@ api_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
+dsmetrics_storage: # +doc-gen:ignore
+    pvc:
+      capacity: 50Gi
+      storage_class: ''
 datasources_service: # +doc-gen:ignore
   storage:
     pvc:
