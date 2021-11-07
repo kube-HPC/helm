@@ -1,29 +1,29 @@
-{{- if eq .Values.dsmetrics-storage.pvc.storage_class "-" }}
+{{- if eq .Values.datasciencemetrics-storage.pvc.storage_class "-" }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: hkube-dsmetrics
+  name: hkube-datasciencemetrics
   labels:
     group: {{ .Values.labels.group.value }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }} 
     type: nfs
-    role: hkube-dsmetrics
+    role: hkube-datasciencemetrics
 spec:
   capacity:
-    storage: {{ .Values.dsmetrics-storage.pvc.capacity }}
+    storage: {{ .Values.datasciencemetrics-storage.pvc.capacity }}
   accessModes:
     - ReadWriteMany
   nfs:
-    server: {{ .Values.dsmetrics-storage.pvc.nfs_server }}
-    path: "{{ .Values.dsmetrics-storage.pvc.nfs_root }}/{{ .Values.global.clusterName }}/hkube-dsmetrics-storage"
+    server: {{ .Values.datasciencemetrics-storage.pvc.nfs_server }}
+    path: "{{ .Values.datasciencemetrics-storage.pvc.nfs_root }}/{{ .Values.global.clusterName }}/hkube-datasciencemetrics-storage"
 {{- end }}
 ---
 
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: hkube-dsmetrics
+  name: hkube-datasciencemetrics
   namespace: {{ .Release.Namespace }} 
   labels:
     group: {{ .Values.labels.group.value }}
@@ -34,19 +34,19 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: {{ .Values.dsmetrics-storage.pvc.capacity }}
-{{- if .Values.dsmetrics-storage.pvc.pv_name }}  
-  volumeName: {{ .Values.dsmetrics-storage.pvc.pv_name }}
+      storage: {{ .Values.datasciencemetrics-storage.pvc.capacity }}
+{{- if .Values.datasciencemetrics-storage.pvc.pv_name }}  
+  volumeName: {{ .Values.datasciencemetrics-storage.pvc.pv_name }}
 {{- else }}
-{{- if eq .Values.dsmetrics-storage.pvc.storage_class "-" }}
+{{- if eq .Values.datasciencemetrics-storage.pvc.storage_class "-" }}
   storageClassName: ""
   selector:
     matchLabels:
       group: {{ .Values.labels.group.value }}
       type: nfs
       role: hkube-datasource
-{{- else if .Values.dsmetrics-storage.pvc.storage_class }}
-  storageClassName: {{ .Values.dsmetrics-storage.pvc.storage_class }}
+{{- else if .Values.datasciencemetrics-storage.pvc.storage_class }}
+  storageClassName: {{ .Values.datasciencemetrics-storage.pvc.storage_class }}
 {{- end }}
   
 {{- end }} 
