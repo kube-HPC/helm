@@ -1,4 +1,4 @@
-{{- if eq .Values.datasciencemetrics-storage.pvc.storage_class "-" }}
+{{- if eq .Values.datasciencemetrics_storage.pvc.storage_class "-" }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -11,12 +11,12 @@ metadata:
     role: hkube-datasciencemetrics
 spec:
   capacity:
-    storage: {{ .Values.datasciencemetrics-storage.pvc.capacity }}
+    storage: {{ .Values.datasciencemetrics_storage.pvc.capacity }}
   accessModes:
     - ReadWriteMany
   nfs:
-    server: {{ .Values.datasciencemetrics-storage.pvc.nfs_server }}
-    path: "{{ .Values.datasciencemetrics-storage.pvc.nfs_root }}/{{ .Values.global.clusterName }}/hkube-datasciencemetrics-storage"
+    server: {{ .Values.datasciencemetrics_storage.pvc.nfs_server }}
+    path: "{{ .Values.datasciencemetrics_storage.pvc.nfs_root }}/{{ .Values.global.clusterName }}/hkube-datasciencemetrics_storage"
 {{- end }}
 ---
 
@@ -34,19 +34,19 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: {{ .Values.datasciencemetrics-storage.pvc.capacity }}
-{{- if .Values.datasciencemetrics-storage.pvc.pv_name }}  
-  volumeName: {{ .Values.datasciencemetrics-storage.pvc.pv_name }}
+      storage: {{ .Values.datasciencemetrics_storage.pvc.capacity }}
+{{- if .Values.datasciencemetrics_storage.pvc.pv_name }}  
+  volumeName: {{ .Values.datasciencemetrics_storage.pvc.pv_name }}
 {{- else }}
-{{- if eq .Values.datasciencemetrics-storage.pvc.storage_class "-" }}
+{{- if eq .Values.datasciencemetrics_storage.pvc.storage_class "-" }}
   storageClassName: ""
   selector:
     matchLabels:
       group: {{ .Values.labels.group.value }}
       type: nfs
       role: hkube-datasource
-{{- else if .Values.datasciencemetrics-storage.pvc.storage_class }}
-  storageClassName: {{ .Values.datasciencemetrics-storage.pvc.storage_class }}
+{{- else if .Values.datasciencemetrics_storage.pvc.storage_class }}
+  storageClassName: {{ .Values.datasciencemetrics_storage.pvc.storage_class }}
 {{- end }}
   
 {{- end }} 
