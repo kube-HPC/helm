@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.6
+systemversion: v2.2.7
 
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
@@ -299,7 +299,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.5
+    tag: v2.2.6
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -458,7 +458,7 @@ monitor_server: # +doc-gen:ignore
     max_display_batch_size: 10
   image:
     repository: hkube/monitor-server
-    tag: v2.2.2
+    tag: v2.2.3
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -709,4 +709,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.2.0
-fullSystemVersion: v2.2.6-1636290715036
+fullSystemVersion: v2.2.7-1636444814383
