@@ -140,6 +140,11 @@ data:
                         "tag": "{{ .Values.tensorboard.image.tag }}",
                         "image": "{{ .Values.tensorboard.image.repository }}"
                   },
+                                    {
+                        "project": "optuna-dashboard",
+                        "tag": "{{ .Values.optuna-dashboard.image.tag }}",
+                        "image": "{{ .Values.optuna-dashboard.image.repository }}"
+                  },
                   {
                         "project": "storage-migration",
                         "tag": "{{ .Values.storage_migration.image.tag }}",
