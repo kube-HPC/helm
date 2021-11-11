@@ -651,12 +651,12 @@ algorithm_output: # +doc-gen:ignore
     tag: v2.2.2
   service:
     type: ClusterIP
-algorithm_optimizer: # +doc-gen:ignore
+algorithm_hyperparams_tuner: # +doc-gen:ignore
   env:
     port: 3005
   image:
-    repository: hkube/algorithm-optimizer
-    tag: v2.2.1-optimizer-1445064493
+    repository: hkube/algorithm-hyperparams-tuner
+    tag: v2.2.1-optimizer-1431846006
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore

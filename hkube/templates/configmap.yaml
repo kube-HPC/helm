@@ -81,9 +81,9 @@ data:
                         "image": "{{ .Values.algorithm_output.image.repository }}"
                   },
                   {
-                        "project": "algorithm-optimizer",
-                        "tag": "{{ .Values.algorithm_optimizer.image.tag }}",
-                        "image": "{{ .Values.algorithm_optimizer.image.repository }}"
+                        "project": "algorithm-hyperparams-tuner",
+                        "tag": "{{ .Values.algorithm_hyperparams_tuner.image.tag }}",
+                        "image": "{{ .Values.algorithm_hyperparams_tuner.image.repository }}"
                   },
                                     {
                         "project": "algorithm-debug",
