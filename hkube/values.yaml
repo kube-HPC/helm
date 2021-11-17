@@ -310,6 +310,7 @@ api_server: # +doc-gen:ignore
       cpu: 100m
       memory: 512Mi
 datasources_service: # +doc-gen:ignore
+  enabled: true
   storage:
     pvc:
       capacity: 50Gi
@@ -321,7 +322,6 @@ datasources_service: # +doc-gen:ignore
   image:
     repository: hkube/datasources-service
     tag: v2.2.3
-
   ingress:
     enabled: true
     path: /hkube/datasources-service

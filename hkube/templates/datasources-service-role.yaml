@@ -1,3 +1,4 @@
+{{- if .Values.datasources_service.enabled }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -38,3 +39,4 @@ roleRef:
   name: datasources-service
   apiGroup: rbac.authorization.k8s.io
 ---
+{{- end }}

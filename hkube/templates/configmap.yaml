@@ -14,6 +14,7 @@ data:
               "ingressClass": {{ .Values.global.ingress.class | quote }},
               "devModeEnabled": {{ .Values.sync_server.enabled }},
               "fluentbitSidecarEnabled": {{ .Values.global.sidecars.fluent_bit.enable }}
+              "datasourcesServiceEnabled": {{ .Values.datasources_service.enabled }}
         }
   versions.json: |
         {
