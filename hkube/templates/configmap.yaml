@@ -142,8 +142,8 @@ data:
                   },
                                     {
                         "project": "optuna-dashboard",
-                        "tag": "{{ .Values.optuna-dashboard.image.tag }}",
-                        "image": "{{ .Values.optuna-dashboard.image.repository }}"
+                        "tag": "{{ .Values.optuna_dashboard.image.tag }}",
+                        "image": "{{ .Values.optuna_dashboard.image.repository }}"
                   },
                   {
                         "project": "storage-migration",
