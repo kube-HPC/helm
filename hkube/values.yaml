@@ -432,7 +432,7 @@ tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
     tag: v2.2.1
-optuna-dashboard: # +doc-gen:ignore
+optuna_dashboard: # +doc-gen:ignore
   image:
     repository: hkube/optuna-dashboard
     tag: v2.2.1
