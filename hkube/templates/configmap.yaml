@@ -13,7 +13,7 @@ data:
               "ingressUseRegex": {{ .Values.global.ingress.use_regex }},
               "ingressClass": {{ .Values.global.ingress.class | quote }},
               "devModeEnabled": {{ .Values.sync_server.enabled }},
-              "fluentbitSidecarEnabled": {{ .Values.global.sidecars.fluent_bit.enable }}
+              "fluentbitSidecarEnabled": {{ .Values.global.sidecars.fluent_bit.enable }},
               "optunaDashboardEnabled": {{ .Values.optuna_dashboard.enable }}
         }
   versions.json: |
