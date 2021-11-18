@@ -14,7 +14,7 @@ data:
               "ingressClass": {{ .Values.global.ingress.class | quote }},
               "devModeEnabled": {{ .Values.sync_server.enabled }},
               "fluentbitSidecarEnabled": {{ .Values.global.sidecars.fluent_bit.enable }},
-              "optunaDashboardEnabled": {{ .Values.optuna_dashboard.enable }}
+              "optunaDashboardEnabled": {{ .Values.optuna_dashboard.enabled }}
         }
   versions.json: |
         {
