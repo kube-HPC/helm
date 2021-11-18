@@ -25,6 +25,8 @@ data:
   NODE_WRAPPER_VERSION : {{ .Values.algorithm_operator.env.node_wrapper_version | quote }}
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   INTERVAL_MS: {{ .Values.algorithm_operator.env.interval | quote}}
+  JUPYTERHUB_SERVICE_ENABLE: {{ .Values.jupyterhub.enable | quote}}
+  DEV_ENVS_ENABLE: {{ .Values.jupyterhub.enable | quote}}
 {{- if .Values.jupyterhub.enable }}
   JUPYTERHUB_SERVICE_PATH: {{ .Values.jupyterhub.hub.baseUrl | quote }}
 {{- end }}
