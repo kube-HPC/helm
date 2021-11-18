@@ -433,6 +433,7 @@ tensorboard: # +doc-gen:ignore
     repository: hkube/tensorboard
     tag: v2.2.1
 optuna_dashboard: # +doc-gen:ignore
+  enabled: true
   image:
     repository: hkube/optuna-dashboard
     tag: v2.2.1
