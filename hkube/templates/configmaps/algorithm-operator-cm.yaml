@@ -9,7 +9,9 @@ data:
   DEFAULT_STORAGE: {{index .Values "env" "default_storage" | quote}}
   STORAGE_ENCODING: {{index .Values.global.storage.encoding | quote}}
   DISCOVERY_ENCODING:  {{index .Values.global.discovery.encoding | quote}}
+{{- if eq .Values.env.default_storage "fs" }}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
+{{- end }}
   METRICS_PORT: {{ index .Values "algorithm_operator" "env" "metric_port" | quote }}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
   BUILD_MODE: {{ index .Values "algorithm_operator" "build_mode" | quote }}
@@ -23,4 +25,7 @@ data:
   NODE_WRAPPER_VERSION : {{ .Values.algorithm_operator.env.node_wrapper_version | quote }}
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   INTERVAL_MS: {{ .Values.algorithm_operator.env.interval | quote}}
+{{- if .Values.jupyterhub.enable }}
+  JUPYTERHUB_SERVICE_PATH: {{ .Values.jupyterhub.hub.baseUrl | quote }}
+{{- end }}
 

@@ -115,7 +115,7 @@
 
 {{- /* proxy-public Service */}}
 {{- define "jupyterhub.proxy-public.fullname" -}}
-    {{- include "jupyterhub.proxy.fullname" . }}-public
+    "jupyterhub"
 {{- end }}
 
 {{- /* proxy-public-tls Secret */}}
