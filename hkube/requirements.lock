@@ -20,5 +20,8 @@ dependencies:
 - name: gitea
   repository: https://hkube.io/helm/
   version: 2.1.3006
-digest: sha256:fd4a860f8ef74ef794433241a0f62c33a8e2f003368f05f4a992d7cc112ab530
-generated: "2021-08-10T16:41:17.650021+03:00"
+- name: jupyterhub
+  repository: https://hkube.io/helm/
+  version: 1.1.3000
+digest: sha256:34c6bda3cf03ab1042fa6f66eb622a8d3b6b3762442c78b0e4e6598ab0cbb126
+generated: "2021-11-18T14:28:17.277674+02:00"
