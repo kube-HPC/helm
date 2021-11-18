@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.2.9-optimizer.1471327968
+systemversion: 2.2.9-optimizer.1476500317
 
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
@@ -249,7 +249,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.2.2-optimizer-1471327968
+    tag: v2.2.2-optimizer-1476500317
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -299,7 +299,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.7-optimizer-1471327968
+    tag: v2.2.7-optimizer-1476500317
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -324,7 +324,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.2.3-optimizer-1471327968
+    tag: v2.2.3-optimizer-1476500317
 
   ingress:
     enabled: true
@@ -406,7 +406,7 @@ gc_service: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/gc-service
-    tag: v2.2.2-optimizer-1471327968
+    tag: v2.2.2-optimizer-1476500317
   resources:
     requests:
       cpu: 100m
@@ -483,7 +483,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.2.3-optimizer-1471327968
+    tag: v2.2.3-optimizer-1476500317
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -598,7 +598,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.2.2-optimizer-1471327968
+    tag: v2.2.2-optimizer-1476500317
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -660,7 +660,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-hyperparams-tuner
-    tag: v2.2.1-optimizer-1471327968
+    tag: v2.2.1-optimizer-1476500317
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore
