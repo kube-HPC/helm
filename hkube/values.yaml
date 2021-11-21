@@ -199,7 +199,6 @@ metrics:
   grafanaDashboardLabel:
     grafana_dashboard: '1'
 systemversion: v2.2.11
-
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -309,6 +308,10 @@ api_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
+datasciencemetrics_storage: # +doc-gen:ignore
+    pvc:
+      capacity: 50Gi
+      storage_class: ''
 datasources_service: # +doc-gen:ignore
   storage:
     pvc:
@@ -321,7 +324,6 @@ datasources_service: # +doc-gen:ignore
   image:
     repository: hkube/datasources-service
     tag: v2.2.3
-
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -427,6 +429,11 @@ cpu-load-algorithm: # +doc-gen:ignore
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
+    tag: v2.2.1
+optuna_dashboard: # +doc-gen:ignore
+  enabled: true
+  image:
+    repository: hkube/optuna-dashboard
     tag: v2.2.1
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
@@ -645,6 +652,14 @@ algorithm_output: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-output
     tag: v2.2.3
+  service:
+    type: ClusterIP
+algorithm_hyperparams_tuner: # +doc-gen:ignore
+  env:
+    port: 3005
+  image:
+    repository: hkube/algorithm-hyperparams-tuner
+    tag: v2.2.1-optimizer-1486277458
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore

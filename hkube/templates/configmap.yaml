@@ -13,7 +13,8 @@ data:
               "ingressUseRegex": {{ .Values.global.ingress.use_regex }},
               "ingressClass": {{ .Values.global.ingress.class | quote }},
               "devModeEnabled": {{ .Values.sync_server.enabled }},
-              "fluentbitSidecarEnabled": {{ .Values.global.sidecars.fluent_bit.enable }}
+              "fluentbitSidecarEnabled": {{ .Values.global.sidecars.fluent_bit.enable }},
+              "optunaDashboardEnabled": {{ .Values.optuna_dashboard.enabled }}
         }
   versions.json: |
         {
@@ -80,6 +81,11 @@ data:
                         "tag": "{{ .Values.algorithm_output.image.tag }}",
                         "image": "{{ .Values.algorithm_output.image.repository }}"
                   },
+                  {
+                        "project": "algorithm-hyperparams-tuner",
+                        "tag": "{{ .Values.algorithm_hyperparams_tuner.image.tag }}",
+                        "image": "{{ .Values.algorithm_hyperparams_tuner.image.repository }}"
+                  },
                                     {
                         "project": "algorithm-debug",
                         "tag": "{{ .Values.algorithm_debug.image.tag }}",
@@ -134,6 +140,11 @@ data:
                         "project": "tensorboard",
                         "tag": "{{ .Values.tensorboard.image.tag }}",
                         "image": "{{ .Values.tensorboard.image.repository }}"
+                  },
+                                    {
+                        "project": "optuna-dashboard",
+                        "tag": "{{ .Values.optuna_dashboard.image.tag }}",
+                        "image": "{{ .Values.optuna_dashboard.image.repository }}"
                   },
                   {
                         "project": "storage-migration",
