@@ -198,8 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.10
-
+systemversion: v2.2.12
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -299,7 +298,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.7
+    tag: v2.2.8
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -309,6 +308,10 @@ api_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
+datasciencemetrics_storage: # +doc-gen:ignore
+    pvc:
+      capacity: 50Gi
+      storage_class: ''
 datasources_service: # +doc-gen:ignore
   enabled: true
   storage:
@@ -427,6 +430,11 @@ cpu-load-algorithm: # +doc-gen:ignore
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
+    tag: v2.2.1
+optuna_dashboard: # +doc-gen:ignore
+  enabled: true
+  image:
+    repository: hkube/optuna-dashboard
     tag: v2.2.1
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
@@ -590,7 +598,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.2.2
+    tag: v2.2.3
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -645,6 +653,14 @@ algorithm_output: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-output
     tag: v2.2.3
+  service:
+    type: ClusterIP
+algorithm_hyperparams_tuner: # +doc-gen:ignore
+  env:
+    port: 3005
+  image:
+    repository: hkube/algorithm-hyperparams-tuner
+    tag: v2.2.1-optimizer-1486277458
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore
@@ -709,4 +725,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.2.0
-fullSystemVersion: v2.2.10-1637066837072
+fullSystemVersion: v2.2.12-1637505264575
