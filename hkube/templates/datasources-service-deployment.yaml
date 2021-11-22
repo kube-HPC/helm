@@ -1,3 +1,4 @@
+{{- if .Values.datasources_service.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -187,3 +188,4 @@ spec:
             - name: TEMP_DIRECTORY
               value: "/TEMP_DIRECTORY"
 {{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
+{{- end }}

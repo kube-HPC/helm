@@ -313,6 +313,7 @@ datasciencemetrics_storage: # +doc-gen:ignore
       capacity: 50Gi
       storage_class: ''
 datasources_service: # +doc-gen:ignore
+  enabled: true
   storage:
     pvc:
       capacity: 50Gi
