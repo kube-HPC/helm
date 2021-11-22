@@ -26,7 +26,8 @@ data:
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   INTERVAL_MS: {{ .Values.algorithm_operator.env.interval | quote}}
   JUPYTERHUB_SERVICE_ENABLE: {{ .Values.jupyterhub.enable | quote}}
-  DEV_ENVS_ENABLE: {{ .Values.jupyterhub.enable | quote}}
+  VSCODE_SERVICE_ENABLE: {{ .Values.vscode_workspace.enable | quote}}
+  DEV_ENVS_ENABLE: {{ or .Values.jupyterhub.enable .Values.vscode_workspace.enabled | quote}}
 {{- if .Values.jupyterhub.enable }}
   JUPYTERHUB_SERVICE_PATH: {{ .Values.jupyterhub.hub.baseUrl | quote }}
 {{- end }}
