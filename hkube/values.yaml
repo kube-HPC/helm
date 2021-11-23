@@ -214,7 +214,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.2.12-jupyter.1487358488
+systemversion: 2.2.12-jupyter.1495197381
 
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
@@ -265,7 +265,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.2.2-jupyter-1487358488
+    tag: v2.2.2-jupyter-1495197381
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -315,7 +315,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.8-jupyter-1487358488
+    tag: v2.2.8-jupyter-1495197381
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -336,7 +336,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.2.3-jupyter-1487358488
+    tag: v2.2.3-jupyter-1495197381
 
   ingress:
     enabled: true
@@ -418,7 +418,7 @@ gc_service: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/gc-service
-    tag: v2.2.2-jupyter-1487358488
+    tag: v2.2.2-jupyter-1495197381
   resources:
     requests:
       cpu: 100m
@@ -726,7 +726,7 @@ vscode_workspace:
   storage:
     enabled: true
     size_gb: 5
-    storageClass: 
+    storageClass:
   password: hkube
   resources:
     requests:
