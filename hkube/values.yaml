@@ -718,11 +718,16 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-vscode-workspace:
+vscode_workspace:
   enabled: true
   image:
     repository: hkube/vscode-workspace
     tag: v2.2.1
+  storage:
+    enabled: true
+    size_gb: 5
+    storageClass: 
+  password: hkube
   resources:
     requests:
       cpu: 500m

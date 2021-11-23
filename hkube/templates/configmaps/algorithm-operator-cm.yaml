@@ -26,9 +26,15 @@ data:
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   INTERVAL_MS: {{ .Values.algorithm_operator.env.interval | quote}}
   JUPYTERHUB_SERVICE_ENABLE: {{ .Values.jupyterhub.enable | quote}}
-  VSCODE_SERVICE_ENABLE: {{ .Values.vscode_workspace.enable | quote}}
+  VSCODE_SERVICE_ENABLE: {{ .Values.vscode_workspace.enabled | quote}}
   DEV_ENVS_ENABLE: {{ or .Values.jupyterhub.enable .Values.vscode_workspace.enabled | quote}}
 {{- if .Values.jupyterhub.enable }}
   JUPYTERHUB_SERVICE_PATH: {{ .Values.jupyterhub.hub.baseUrl | quote }}
 {{- end }}
-
+{{- if .Values.vscode_workspace.enabled}}
+  VSCODE_SERVICE_RESOURCES: {{ .Values.vscode_workspace.resources | toJson | quote }}
+  VSCODE_SERVICE_STORAGE_ENABLE: {{ .Values.vscode_workspace.storage.enabled | quote}}
+  VSCODE_SERVICE_STORAGE_SIZE_GB: {{ .Values.vscode_workspace.storage.size_gb | quote}}
+  VSCODE_SERVICE_STORAGE_CLASS: {{ .Values.vscode_workspace.storageClass | quote}}
+  VSCODE_SERVICE_PASSWORD: {{ .Values.vscode_workspace.password | quote}}
+{{- end }}
