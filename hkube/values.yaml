@@ -726,7 +726,7 @@ vscode_workspace:
   storage:
     enabled: true
     size_gb: 5
-    storageClass:
+    storageClass: ''
   password: hkube
   resources:
     requests:

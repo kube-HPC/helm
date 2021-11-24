@@ -35,6 +35,6 @@ data:
   VSCODE_SERVICE_RESOURCES: {{ .Values.vscode_workspace.resources | toJson | quote }}
   VSCODE_SERVICE_STORAGE_ENABLE: {{ .Values.vscode_workspace.storage.enabled | quote}}
   VSCODE_SERVICE_STORAGE_SIZE_GB: {{ .Values.vscode_workspace.storage.size_gb | quote}}
-  VSCODE_SERVICE_STORAGE_CLASS: {{ .Values.vscode_workspace.storageClass | quote}}
+  VSCODE_SERVICE_STORAGE_CLASS: {{ .Values.vscode_workspace.storage.storageClass | quote}}
   VSCODE_SERVICE_PASSWORD: {{ .Values.vscode_workspace.password | quote}}
 {{- end }}
