@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.15
+systemversion: v2.2.16
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -248,7 +248,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.2.3
+    tag: v2.2.4
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -298,7 +298,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.9
+    tag: v2.2.10
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -324,7 +324,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.2.3
+    tag: v2.2.4
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -405,7 +405,7 @@ gc_service: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/gc-service
-    tag: v2.2.2
+    tag: v2.2.3
   resources:
     requests:
       cpu: 100m
@@ -483,7 +483,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.2.3
+    tag: v2.2.4
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -598,7 +598,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.2.4
+    tag: v2.2.5
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -660,7 +660,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-hyperparams-tuner
-    tag: v2.2.1-optimizer-1486277458
+    tag: v2.2.2
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore
@@ -690,7 +690,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v2.2.2
+    tag: v2.2.3
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '0 0 * * *'
@@ -725,4 +725,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.2.0
-fullSystemVersion: v2.2.15-1637749449656
+fullSystemVersion: v2.2.16-1638267842793
