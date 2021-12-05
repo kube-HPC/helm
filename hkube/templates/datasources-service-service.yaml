@@ -27,5 +27,3 @@ spec:
     app: datasources-service
     release: datasources-service
 {{- end }}
-
-{{- if .Values.datasources_service.enabled }}
