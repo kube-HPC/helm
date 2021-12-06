@@ -61,9 +61,6 @@ jobs:
           DEPLOY: ${{ github.event.inputs.DEPLOY || 'false' }}
       - run: |
           git checkout $BRANCH
-        env:
-          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
-      - run: |
           git status
           npm version
           npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
