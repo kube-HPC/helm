@@ -248,7 +248,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.1.24
+    tag: v2.1.24-update-v2-1-1
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -589,7 +589,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.1.16
+    tag: v2.1.16-update-v2-1-1
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -641,7 +641,7 @@ algorithm_debug: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.1.23
+    tag: v2.1.23-update-v2-1-1
   resources:
     requests:
       cpu: 100m
@@ -665,7 +665,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v2.1.3
+    tag: v2.1.4
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '0 0 * * *'
@@ -700,4 +700,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.1.1
-fullSystemVersion: v2.1.93-1636279976554
+fullSystemVersion: v2.1.93-update-v2-1-1
