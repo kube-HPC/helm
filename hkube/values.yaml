@@ -309,6 +309,7 @@ api_server: # +doc-gen:ignore
       cpu: 100m
       memory: 512Mi
 datasources_service: # +doc-gen:ignore
+  enabled: true
   storage:
     pvc:
       capacity: 50Gi

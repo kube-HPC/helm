@@ -1,4 +1,4 @@
-{{- if .Values.datasources_service.ingress.enabled -}}
+{{- if and .Values.datasources_service.ingress.enabled .Values.datasources_service.enabled -}}
 {{- $fullName := "datasources-service" -}}
 {{- $servicePort := .Values.datasources_service.env.port | int -}}
 {{- $ingressPath := .Values.datasources_service.ingress.path -}}

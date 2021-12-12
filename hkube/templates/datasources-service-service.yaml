@@ -1,3 +1,4 @@
+{{- if .Values.datasources_service.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -25,3 +26,4 @@ spec:
   selector:
     app: datasources-service
     release: datasources-service
+{{- end }}
