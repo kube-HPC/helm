@@ -194,6 +194,7 @@ gitea:
       enabled: false
 
 metrics:
+  enabled: true
   serviceMonitorSelector:
     release: metric
   grafanaDashboardLabel:
