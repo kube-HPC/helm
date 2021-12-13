@@ -30,8 +30,7 @@ rules:
 - apiGroups: ["extensions"]
   resources: ["ingresses"]
   verbs: ["get", "list", "delete"]
-{{- end }}
-{{- if or (.Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress") (.Capabilities.APIVersions.Has "networking.k8s.io/v1beta1/Ingress") }}
+{{- else }}
 - apiGroups: ["networking.k8s.io"]
   resources: ["ingresses"]
   verbs: ["get", "list", "delete"]

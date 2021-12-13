@@ -241,6 +241,8 @@ algorithm_operator:
     resources_enable: false
     algorithm_queue_interval: 1000
     algorithm_queue_concurrency_limit: 5
+    algorithm_queue_memory: 512
+    algorithm_queue_cpu: 0.5
     pipeline_drivers_amount: 1
     pipeline_drivers_concurrency_limit: 5
     boards_timeout: 10800
