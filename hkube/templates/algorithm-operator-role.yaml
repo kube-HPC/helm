@@ -30,11 +30,12 @@ rules:
   resources: ["jobs"]
   verbs: [create, delete, deletecollection, get, list, patch, update, watch]
 
-{{- if .Capabilities.APIVersions.Has "extensions/v1beta1/Ingress" }}
+{{- if .Capabilities.APIVersions.Has "extensions/v1beta1" }}
 - apiGroups: ["extensions"]
   resources: ["ingresses"]
   verbs: [create, delete, deletecollection, get, list, patch, update, watch]
-{{- else }}
+{{- end }}
+{{- if or (.Capabilities.APIVersions.Has "networking.k8s.io/v1") (.Capabilities.APIVersions.Has "networking.k8s.io/v1beta1") }}
 - apiGroups: ["networking.k8s.io"]
   resources: ["ingresses"]
   verbs: [create, delete, deletecollection, get, list, patch, update, watch]
