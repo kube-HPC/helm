@@ -1,3 +1,4 @@
+{{- if .Values.datasources_service.enabled }}
 {{- if eq .Values.datasources_service.storage.pvc.storage_class "-" }}
 apiVersion: v1
 kind: PersistentVolume
@@ -48,5 +49,5 @@ spec:
 {{- else if .Values.datasources_service.storage.pvc.storage_class }}
   storageClassName: {{ .Values.datasources_service.storage.pvc.storage_class }}
 {{- end }}
-  
 {{- end }} 
+{{- end }}
