@@ -199,7 +199,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.1.93
+systemversion: v2.2.16
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -249,7 +249,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.1.24-update-v2-1-1
+    tag: v2.2.4
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -273,7 +273,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.1.13
+    tag: v2.2.3
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -282,7 +282,7 @@ algorithm_queue_svc: # +doc-gen:ignore
 algorunner: # +doc-gen:ignore
   image:
     repository: hkube/algorunner
-    tag: v2.1.1
+    tag: v2.2.1
 api_gateway:
   ingress:
     path: /hkube/api-server
@@ -299,7 +299,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.1.33
+    tag: v2.2.10
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -321,7 +321,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.1.11
+    tag: v2.2.4
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -336,7 +336,7 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v2.1.26
+    tag: v2.2.4
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -402,7 +402,7 @@ gc_service: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/gc-service
-    tag: v2.1.15
+    tag: v2.2.3
   resources:
     requests:
       cpu: 100m
@@ -427,7 +427,7 @@ cpu-load-algorithm: # +doc-gen:ignore
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
-    tag: v2.1.1
+    tag: v2.2.1
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
@@ -458,7 +458,7 @@ monitor_server: # +doc-gen:ignore
     max_display_batch_size: 10
   image:
     repository: hkube/monitor-server
-    tag: v2.1.9
+    tag: v2.2.3
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -475,7 +475,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.1.12
+    tag: v2.2.4
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -485,7 +485,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.1.10
+    tag: v2.2.3
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
@@ -516,7 +516,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.1.11
+    tag: v2.2.3
   service:
     type: ClusterIP
   resources:
@@ -539,7 +539,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v2.1.15
+    tag: v2.2.3
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -590,7 +590,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.1.16-update-v2-1-1
+    tag: v2.2.5
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -605,7 +605,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v2.1.5
+    tag: v2.2.2
   service:
     type: ClusterIP
   resources:
@@ -617,7 +617,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.1.16
+    tag: v2.2.3
   metrics:
     port: 3001
   service:
@@ -628,7 +628,7 @@ algorithm_gateway: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-gateway
-    tag: v2.0.7
+    tag: v2.2.2
   service:
     type: ClusterIP
 algorithm_debug: # +doc-gen:ignore
@@ -636,13 +636,13 @@ algorithm_debug: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-debug
-    tag: v2.1.9
+    tag: v2.2.2
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.1.23-update-v2-1-1
+    tag: v2.2.4
   resources:
     requests:
       cpu: 100m
@@ -650,7 +650,7 @@ algorithm_builder: # +doc-gen:ignore
 kaniko: # +doc-gen:ignore
   image:
     repository: hkube/kaniko
-    tag: v2.1.1
+    tag: v2.2.1
   resources:
     requests:
       cpu: 100m
@@ -658,7 +658,7 @@ kaniko: # +doc-gen:ignore
 oc_builder: # +doc-gen:ignore
   image:
     repository: hkube/oc-builder
-    tag: v2.1.0
+    tag: v2.2.0
   resources:
     requests:
       cpu: 100m
@@ -666,7 +666,7 @@ oc_builder: # +doc-gen:ignore
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v2.1.4
+    tag: v2.2.3
 etcd_defrag: # +doc-gen:ignore
   enable: true
   pattern: '0 0 * * *'
@@ -686,7 +686,7 @@ sync_server: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/sync-server
-    tag: v2.1.1
+    tag: v2.2.1
   ingress:
     enabled: true
     path: /hkube/sync
@@ -700,5 +700,5 @@ storage_migration: # +doc-gen:ignore
     source_storage_encoding: bson
   image:
     repository: hkube/storage-migration
-    tag: v2.1.1
-fullSystemVersion: v2.1.93-update-v2-1-1
+    tag: v2.2.0
+fullSystemVersion: v2.2.16-1638783636014
