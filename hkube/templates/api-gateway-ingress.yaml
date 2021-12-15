@@ -3,6 +3,7 @@
 {{- $fullName := "api-gateway" -}}
 {{- $servicePort := .Values.api_server.env.port | int -}}
 {{- $servicePortGc := .Values.gc_service.env.rest_port | int -}}
+{{- $servicePipelineDriverQueuePort := .Values.pipeline_driver.env.rest_port | int -}}
 {{- $servicePortDatasources := .Values.datasources_service.env.port | int -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
@@ -32,6 +33,11 @@ spec:
   rules:
     - http:
         paths:
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/(api/v./preferred)(.*)
+          backend: {{- include "ingress.backend" (dict "serviceName" "pipeline-driver-queue" "servicePort" $servicePipelineDriverQueuePort "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
+          pathType: ImplementationSpecific
+          {{- end }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/(api/v./gc)(.*)
           backend: {{- include "ingress.backend" (dict "serviceName" "gc-service" "servicePort" $servicePortGc "context" $) | nindent 12 }}
           {{- if eq "true" (include "ingress.supportsPathType" .) }}
