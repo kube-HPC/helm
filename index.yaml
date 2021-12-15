@@ -4,7 +4,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2021-08-10T16:29:57.087513+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: f7edd9b4b4b5c32e7238b94a75143ba049f70e5b86b62c4652ceccdd3a81738d
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -20,7 +21,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2021-06-01T17:43:25.94784+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: d57e6423aa968c828635da17fdb337bdd03385170c39fbb94e88023cc99c24a1
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -36,7 +38,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-09-30T15:18:32.953315933+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: 6ffa3bb646426f6c2d920bdbebb7ff5fb78b61622ec1678e08c2b9ab772b3a0d
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -52,7 +55,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-09-21T17:42:56.326829759+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: 0416e1cffa1714132e686f919a2cb670146aa536c4ca06d82bc70106d87f77b9
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -68,7 +72,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-09-21T15:17:49.905479804+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: bc6e0c9d254cce39e5fbacb269c0238eed8421d646ce7a84d931b06329964b5e
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -84,7 +89,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-09-16T13:50:09.76458719+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: b118e8c2d7a6af7a964a00b8ab5888cd309fe9871ed08f012af04ce429993afb
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -100,7 +106,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-09-16T13:48:47.510581818+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: 8e0875519e78825e714142cb264e805e475c052f1d66be4caef182ae238ac432
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -116,7 +123,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-08-23T10:35:31.307542438+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: 3c2c45d6490ea263d4d6b6d5b89d6fb521a1d4ef50a95d7311e7c128f362bc30
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -132,7 +140,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-08-19T11:06:17.535655717+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: d8908239ca771149bd607b2fef21f6b4348eb7f38e3185b9b4b90ec21e81e4b2
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -148,7 +157,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-07-23T08:46:03.101731375+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: 0ec8edc701e41bfc8f332707f1a208b5c82b7fbdcb8b987f5c41e40e280c70d7
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -164,7 +174,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-06-28T16:43:59.760576803+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: 06687b6b73399770013ee5c5fce379707c092641f1370217a6270182513c6dff
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -180,7 +191,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-05-07T16:22:53.815007618+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: a9eafddc9f36f7578e7531f55061f612ab918f9a56b22a63c3a173088ea5b011
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -196,7 +208,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.3.1
     created: "2020-04-30T12:56:59.075952781+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: e7334bb091caf5a2d704ed144157c27b1f3e27b654d3bbbd175d26610b70f6ad
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -212,7 +225,8 @@ entries:
   - apiVersion: v1
     appVersion: 3.2.26
     created: "2020-04-27T17:54:51.804237525+03:00"
-    description: Distributed reliable key-value store for the most critical data of a distributed system.
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
     digest: 97c2d9ef82f3b2d7c0abb1b30e9dbd11873b9371788a5b0f7245de5fffc5500a
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
@@ -584,6 +598,56 @@ entries:
     version: 2.1.3000
   hkube:
   - apiVersion: v1
+    appVersion: v2.1.94
+    created: "2021-12-15T14:41:49.237134376Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 3af84cc23a2f7b60cb2ef81ee7a13760f355c8ea893e8f05a3327384f2ec5765
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.1.186.tgz
+    version: v2.1.186
+  - apiVersion: v1
     appVersion: v2.1.93
     created: "2021-11-07T13:38:06.388687495Z"
     dependencies:
@@ -615,7 +679,10 @@ entries:
       name: gitea
       repository: https://hkube.io/helm/
       version: 2.1.3006
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 8866311621663fdfbe19a2eed7a4fed7a3f0ac61b5108f2496d98f27cab0e0a2
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -662,7 +729,10 @@ entries:
       name: gitea
       repository: https://hkube.io/helm/
       version: 2.1.3006
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 64b77a0a6ffb16ae3250731660882097b9c66523f41c597fa79ad34c9b59e5b7
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -713,7 +783,10 @@ entries:
       name: gitea
       repository: https://hkube.io/helm/
       version: 2.1.3005
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 3eeee929ac0e79a3aa2cb43942fcd7b30fbfa544794aac4c7124af23156475ba
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -764,7 +837,10 @@ entries:
       name: gitea
       repository: https://hkube.io/helm/
       version: 2.1.3005
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: d978b88e50d1dd354ea4507722c7b2f260214a51fc1ce84053dbd55214733c40
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -815,7 +891,10 @@ entries:
       name: gitea
       repository: https://hkube.io/helm/
       version: 2.1.3004
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: b117a6d4f4504532c451928591690dd078b25b8d420f667210aaadfa4f43946e
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -858,7 +937,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 47423f925324461ba0c00afd1729f4e8e0a1f61ac8ceef75caa7d55030f5479b
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -901,7 +983,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 22721f52e11844de48912a09e439cec65b28d7e7ca3195ef671b7d34b45f0cb4
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -944,7 +1029,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: f697601a273984f2a48c38946bbb601d0fc46a1064df1ea147784d5be59d96d5
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -987,7 +1075,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 689f51f69fff621d1297d3177c75b49c38c1e8c624aaaa5cf813a7bc0811d25e
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1030,7 +1121,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: f2477849618c165fe337a7e745e73ea0255df271353a735063a45fbb5b62363f
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1073,7 +1167,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: d45f24902ccebd36b6704c25ca6996a049455086ba44f5222dfd99acef4727b4
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1116,7 +1213,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 5aeb411bff42c61a34b3c4080c06fd4a137e662a451c360aeaff40a120fcb38d
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1159,7 +1259,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 2c3c05d42179eb6c92bbb35eb4e0c18edf5d0a7923868fef06edd2f96bf4e0e7
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1202,7 +1305,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 1ae9af44538d59b4e6510a4dcc3f56bc6296ba2232817fc9dd4ae148f0b99ad8
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1245,7 +1351,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: a5a23f93505b3e5a779727346ab5b67287b8ec4916db632735fae70db9e92219
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1288,7 +1397,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: f29b5cb96256924f308983723aedf5a540d47556c41899fabb86ba3b5d63fbdd
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1331,7 +1443,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 054199221f080c70edda8141025f5affa4791f0d12eeffdd8298fa857f2ab091
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1374,7 +1489,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: defe6e91935b77c4cb788d9513f7d36c4374ef5cdc716c682a0dd7efcbddc14e
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1417,7 +1535,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: abebda6ac25643edd34f12ab5ada39183c1f15778774d330518bd0ca3df810d1
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1460,7 +1581,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 08ff917fe7d8f42db70dcc6bff44e24e931a76b0f010ff07792004682377349e
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1503,7 +1627,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 374830343ace49cd542186ed83b540a75acc1b12d7e10475182909be6a5e0d27
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1546,7 +1673,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: d8fb23ab6119b8655c966c66a73c925c45758f93624b625c7a805163db181877
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1589,7 +1719,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 963c34afc45267127692bcc1c1995a824570a0432ed4be7f5d84616c6d425fa3
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1632,7 +1765,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.1024
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: e98ee6f358aaffb4af7c758699c4f5a79e753c19f7f19eee563c41f9e4377dcc
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1675,7 +1811,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.23
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 0af4a1fbae28d0bab956d41df0b24de3048de4271ece2d3e2b68762b034b3346
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1718,7 +1857,10 @@ entries:
       name: minio
       repository: http://hkube.io/helm/
       version: 5.0.23
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: f7cc3d9e4a632d4c3ef83721221224b6c10c106f7f2f82568cc6a882b049c1d9
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1736,7 +1878,10 @@ entries:
   - apiVersion: v1
     appVersion: v1.2.187
     created: "2020-05-25T10:59:13.258229827+03:00"
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 6a1f38a16de04a32baf2c4d73d7b1fcee40f081b7d4f18d4169a58866182af4d
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1754,7 +1899,10 @@ entries:
   - apiVersion: v1
     appVersion: v1.2.187
     created: "2020-05-04T18:38:12.761582473+03:00"
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 62cff5611651ca5a204a89939abd77c13aebe36a45d9602ada584c7e5a7eb484
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1772,7 +1920,10 @@ entries:
   - apiVersion: v1
     appVersion: v1.1.1086
     created: "2019-11-20T17:10:24.445046209+02:00"
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: f0ccdbf5151b286baa3c629771ba6ea3cc0519b8b0dcc3778ae00f9b36c04b10
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -1790,7 +1941,10 @@ entries:
   - apiVersion: v1
     appVersion: v1.1.1085
     created: "2019-08-29T12:39:07.514102575Z"
-    description: Open source project for HPC over kubernetes Hkube is a cloud native open source framework to run distributed pipeline of algorithms built on Kubernetes. Hkube allows to run pipelines of algorithms on kubernetes cluster optimally utilizing the available resources, based on user priorities and AI heuristics.
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
     digest: 015264e8fd43e27112e52a178cb855e0a41248eb76e36d0c9e9da3fbaad154da
     home: https://hkube.io/
     icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
@@ -2091,7 +2245,8 @@ entries:
   - apiVersion: v1
     appVersion: master
     created: "2021-08-10T16:29:57.101853+03:00"
-    description: MinIO is a high performance data infrastructure for machine learning, analytics and application data workloads.
+    description: MinIO is a high performance data infrastructure for machine learning,
+      analytics and application data workloads.
     digest: 553c4c71f0f41e794c89ae3642ea14deee82ae421d2436b531ad2ec251debd4c
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
@@ -2113,7 +2268,8 @@ entries:
   - apiVersion: v1
     appVersion: master
     created: "2020-09-16T13:48:47.519078972+03:00"
-    description: MinIO is a high performance data infrastructure for machine learning, analytics and application data workloads.
+    description: MinIO is a high performance data infrastructure for machine learning,
+      analytics and application data workloads.
     digest: c653f50e848eb1ca92439559bae833bb075fe4979f41ef140657f7032fd09f08
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
@@ -2135,7 +2291,8 @@ entries:
   - apiVersion: v1
     appVersion: master
     created: "2020-06-29T16:18:50.024656892+03:00"
-    description: MinIO is a high performance data infrastructure for machine learning, analytics and application data workloads.
+    description: MinIO is a high performance data infrastructure for machine learning,
+      analytics and application data workloads.
     digest: d9c47006e6be36b6a074956068e26261e376d06c30bf298779222f30d466ddc8
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
@@ -2160,7 +2317,9 @@ entries:
     apiVersion: v1
     appVersion: 4.4.1
     created: "2021-08-10T16:29:57.104908+03:00"
-    description: NoSQL document-oriented database that stores JSON-like documents with dynamic schemas, simplifying the integration of data in content-driven applications.
+    description: NoSQL document-oriented database that stores JSON-like documents
+      with dynamic schemas, simplifying the integration of data in content-driven
+      applications.
     digest: c05556fd6d0f6b0b44eb736cd2c96a22a64b60168a2e4ce264071ef0b4dc85cc
     home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
@@ -2186,7 +2345,9 @@ entries:
     apiVersion: v2
     appVersion: 4.4.1
     created: "2020-12-21T10:23:54.363045216+02:00"
-    description: NoSQL document-oriented database that stores JSON-like documents with dynamic schemas, simplifying the integration of data in content-driven applications.
+    description: NoSQL document-oriented database that stores JSON-like documents
+      with dynamic schemas, simplifying the integration of data in content-driven
+      applications.
     digest: bde505b1940327e5aa17396c7c9624296adb8c886b930d3f674abc2bd9ee3b70
     home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
@@ -2211,7 +2372,8 @@ entries:
   - apiVersion: v1
     appVersion: 0.29.0
     created: "2021-08-10T16:29:57.106481+03:00"
-    description: An nginx Ingress controller that uses ConfigMap to store the nginx configuration.
+    description: An nginx Ingress controller that uses ConfigMap to store the nginx
+      configuration.
     digest: 5a229970aeaa39835e931c805ff2d67ef162dfbc41960f56cc9ab603692600ef
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -2232,7 +2394,8 @@ entries:
   - apiVersion: v1
     appVersion: 0.29.0
     created: "2020-09-16T13:48:47.521327707+03:00"
-    description: An nginx Ingress controller that uses ConfigMap to store the nginx configuration.
+    description: An nginx Ingress controller that uses ConfigMap to store the nginx
+      configuration.
     digest: 9e97758126c9648df4bfcb00e3201d0744f0b412c30b6c09eb3c446f76e6f17f
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -2253,7 +2416,8 @@ entries:
   - apiVersion: v1
     appVersion: 0.29.0
     created: "2020-05-07T16:22:53.820898186+03:00"
-    description: An nginx Ingress controller that uses ConfigMap to store the nginx configuration.
+    description: An nginx Ingress controller that uses ConfigMap to store the nginx
+      configuration.
     digest: f8b35c0196e5e2b075f18b18d516fbe556d44a20f2e1b3075280ab8befacc212
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -2274,7 +2438,8 @@ entries:
   - apiVersion: v1
     appVersion: 0.29.0
     created: "2020-02-23T17:59:38.991842475+02:00"
-    description: An nginx Ingress controller that uses ConfigMap to store the nginx configuration.
+    description: An nginx Ingress controller that uses ConfigMap to store the nginx
+      configuration.
     digest: 531e4b93abee204870e031d9c3dd9ec4336a36384bee8d1876c89a6ec67d23ab
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
@@ -2445,4 +2610,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2021-11-18T13:54:17.510169+02:00"
+generated: "2021-12-15T14:41:49.201774813Z"
