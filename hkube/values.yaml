@@ -491,7 +491,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     hkube_log_level: 'info'
     metric_port: '3000'
     check_queue_interval: '500'
-    rest_port: 7000
+    rest_port: '7000'
     base_url_path: /hkube/preferred
   image:
     repository: hkube/pipeline-driver-queue
