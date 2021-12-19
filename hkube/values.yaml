@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.2.16-prioritized-jobs.1598168885
+systemversion: 2.2.16-prioritized-jobs.1598288985
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -298,7 +298,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.10-prioritized_jobs-1598168885
+    tag: v2.2.10-prioritized_jobs-1598288985
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -324,7 +324,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.2.4-prioritized_jobs-1598168885
+    tag: v2.2.4-prioritized_jobs-1598288985
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -405,7 +405,7 @@ gc_service: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/gc-service
-    tag: v2.2.3-prioritized_jobs-1598168885
+    tag: v2.2.3-prioritized_jobs-1598288985
   resources:
     requests:
       cpu: 100m
@@ -495,7 +495,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/preferred
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.2.3-prioritized_jobs-1598168885
+    tag: v2.2.3-prioritized_jobs-1598288985
   ingress:
     enabled: true
     path: /hkube/preferred
