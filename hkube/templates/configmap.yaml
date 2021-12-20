@@ -15,7 +15,7 @@ data:
               "devModeEnabled": {{ .Values.sync_server.enabled }},
               "fluentbitSidecarEnabled": {{ .Values.global.sidecars.fluent_bit.enable }},
               "datasourcesServiceEnabled": {{ .Values.datasources_service.enabled }},
-              "optunaDashboardEnabled": {{ .Values.optuna_dashboard.enabled }},
+              "optunaDashboardEnabled": {{ .Values.optuna_dashboard.enabled }}
         }
   versions.json: |
         {
