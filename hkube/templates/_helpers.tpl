@@ -47,6 +47,24 @@ Return the target Kubernetes version
 {{- end -}}
 {{- end -}}
 
+{{/*
+Return the appropriate apiVersion for cronjob.
+*/}}
+{{- define "cronjob.apiVersion" -}}
+{{- if .Values.cronjob -}}
+{{- if .Values.cronjob.apiVersion -}}
+{{- .Values.cronjob.apiVersion -}}
+{{- else if semverCompare "<1.21-0" (include "common.capabilities.kubeVersion" .) -}}
+{{- print "v1beta1" -}}
+{{- else -}}
+{{- print "batch/v1" -}}
+{{- end }}
+{{- else if semverCompare "<1.21-0" (include "common.capabilities.kubeVersion" .) -}}
+{{- print "v1beta1" -}}
+{{- else -}}
+{{- print "batch/v1" -}}
+{{- end -}}
+{{- end -}}
 
 {{/*
 Return the appropriate apiVersion for ingress.
