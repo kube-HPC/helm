@@ -339,7 +339,7 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v2.2.1
+    tag: v2.2.5
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -646,7 +646,7 @@ algorithm_debug: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-debug
-    tag: v2.2.2
+    tag: v2.2.3
   service:
     type: ClusterIP
 algorithm_output: # +doc-gen:ignore
@@ -668,7 +668,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.2.4
+    tag: v2.2.6
   resources:
     requests:
       cpu: 100m
@@ -727,4 +727,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.2.0
-fullSystemVersion: v2.2.16-1638267842793
+fullSystemVersion: v2.2.20-1640010039669

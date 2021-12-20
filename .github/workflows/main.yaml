@@ -46,6 +46,10 @@ jobs:
           git config --local user.name "GitHub Action"
       - name: envs
         run: |
+            if [[ $BRANCH = "main" ]]; then
+              echo changing $BRANCH to master
+              export BRANCH="master"
+            fi
             echo BRANCH=${BRANCH:-master} >> $GITHUB_ENV
             echo FROZEN_VERSION=${FROZEN_VERSION:-false} >> $GITHUB_ENV
             echo TAG=$TAG >> $GITHUB_ENV
@@ -57,9 +61,6 @@ jobs:
           DEPLOY: ${{ github.event.inputs.DEPLOY || 'false' }}
       - run: |
           git checkout $BRANCH
-        env:
-          BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
-      - run: |
           git status
           npm version
           npm version patch -m "$(git log -1 --pretty=%B) .... bump version"
