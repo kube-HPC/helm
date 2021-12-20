@@ -55,12 +55,12 @@ Return the appropriate apiVersion for cronjob.
 {{- if .Values.cronjob.apiVersion -}}
 {{- .Values.cronjob.apiVersion -}}
 {{- else if semverCompare "<1.21-0" (include "common.capabilities.kubeVersion" .) -}}
-{{- print "v1beta1" -}}
+{{- print "batch/v1beta1" -}}
 {{- else -}}
 {{- print "batch/v1" -}}
 {{- end }}
 {{- else if semverCompare "<1.21-0" (include "common.capabilities.kubeVersion" .) -}}
-{{- print "v1beta1" -}}
+{{- print "batch/v1beta1" -}}
 {{- else -}}
 {{- print "batch/v1" -}}
 {{- end -}}
