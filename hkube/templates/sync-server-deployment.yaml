@@ -90,7 +90,7 @@ spec:
     targetPort:  8080
 
 ---
-{{- $ingressPath := .Values.sync_server.ingress.path -}}
+{{- $ingressPath := .Values.sync_server.ingress.path }}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
