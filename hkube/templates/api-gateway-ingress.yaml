@@ -33,7 +33,7 @@ spec:
   rules:
     - http:
         paths:
-        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/(api/v./preferred)(.*)
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/(api/v./driver-queue)(.*)
           backend: {{- include "ingress.backend" (dict "serviceName" "pipeline-driver-queue" "servicePort" $servicePipelineDriverQueuePort "context" $) | nindent 12 }}
           {{- if eq "true" (include "ingress.supportsPathType" .) }}
           pathType: ImplementationSpecific
