@@ -492,13 +492,13 @@ pipeline_driver_queue: # +doc-gen:ignore
     metric_port: '3000'
     check_queue_interval: '500'
     rest_port: '7100'
-    base_url_path: /hkube/driver-queue
+    base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
     tag: v2.2.4-prioritized_jobs-1615333650
   ingress:
     enabled: true
-    path: /hkube/driver-queue
+    path: /hkube/queue
   replicaCount: 1
   service:
     type: ClusterIP
