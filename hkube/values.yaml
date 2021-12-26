@@ -298,7 +298,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.10
+    tag: v2.2.10-prioritized_jobs-1623784096
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -324,7 +324,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.2.4
+    tag: v2.2.4-prioritized_jobs-1623784096
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -405,7 +405,7 @@ gc_service: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/gc-service
-    tag: v2.2.3
+    tag: v2.2.3-prioritized_jobs-1623784096
   resources:
     requests:
       cpu: 100m
@@ -491,12 +491,14 @@ pipeline_driver_queue: # +doc-gen:ignore
     hkube_log_level: 'info'
     metric_port: '3000'
     check_queue_interval: '500'
+    rest_port: '7100'
+    base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.2.4
+    tag: v2.2.4-prioritized_jobs-1623784096
   ingress:
-    enabled: false
-    path: /hkube/pipeline-driver-queue
+    enabled: true
+    path: /hkube/queue
   replicaCount: 1
   service:
     type: ClusterIP
