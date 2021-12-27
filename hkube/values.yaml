@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.22
+systemversion: v2.2.24
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -405,7 +405,7 @@ gc_service: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/gc-service
-    tag: v2.2.4
+    tag: v2.2.5
   resources:
     requests:
       cpu: 100m
@@ -495,7 +495,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.2.5
+    tag: v2.2.6
   ingress:
     enabled: true
     path: /hkube/queue
@@ -727,4 +727,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.2.0
-fullSystemVersion: v2.2.22-1640597301683
+fullSystemVersion: v2.2.24-1640621226303
