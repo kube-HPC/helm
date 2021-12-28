@@ -161,7 +161,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 1.3.174-fail-recover.1626955819
+systemversion: 1.3.174-fail-recover.1630583322
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -207,7 +207,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v1.3.19-fail_recover-1626955819
+    tag: v1.3.19-fail_recover-1630583322
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -231,7 +231,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v1.3.12-fail_recover-1626955819
+    tag: v1.3.12-fail_recover-1630583322
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -250,7 +250,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 500
   image:
     repository: hkube/api-server
-    tag: v1.3.48-fail_recover-1626955819
+    tag: v1.3.48-fail_recover-1630583322
   ingress:
     enabled: true
     path: /hkube/api-server
@@ -381,7 +381,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.38-fail_recover-1626955819
+    tag: v1.3.38-fail_recover-1630583322
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -391,7 +391,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     check_queue_interval: '500'
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v1.3.9-fail_recover-1626955819
+    tag: v1.3.9-fail_recover-1630583322
   ingress:
     enabled: false
     path: /hkube/pipeline-driver-queue
