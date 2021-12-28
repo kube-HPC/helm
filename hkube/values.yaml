@@ -370,7 +370,7 @@ pipeline_cleaner: # +doc-gen:ignore
   pattern: '*/5 * * * *'
   image:
     repository: hkube/pipeline-cleaner
-    tag: v1.3.2
+    tag: v1.3.4
   resources:
     requests:
       cpu: 100m
