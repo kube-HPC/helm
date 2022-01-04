@@ -161,7 +161,7 @@ metrics:
     release: metrics
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v1.3.177
+systemversion: v1.3.178
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -381,7 +381,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v1.3.40
+    tag: v1.3.41
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -512,7 +512,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v1.3.29
+    tag: v1.3.30
   service: # +doc-gen:ignore
     type: ClusterIP
   # Compute resources required for algorithm-operator
@@ -613,4 +613,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.177-1641212494947
+fullSystemVersion: v1.3.178-1641293722349
