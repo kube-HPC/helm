@@ -154,6 +154,7 @@ nginx-ingress:
 mongodb:
   enable: true
   useStatefulSet: true
+  architecture: replicaset
   auth:
     rootPassword: ehtyTJj4mR
     user_name: root
