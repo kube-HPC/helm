@@ -199,7 +199,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.24
+systemversion: 2.2.26-design-refactor.1683063440
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -273,7 +273,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.2.4
+    tag: v2.2.4-design-refactor-1683063440
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -299,7 +299,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.11
+    tag: v2.2.11-design-refactor-1683063440
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -484,7 +484,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.2.4
+    tag: v2.2.4-design-refactor-1683063440
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -496,7 +496,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.2.6
+    tag: v2.2.6-design-refactor-1683063440
   ingress:
     enabled: true
     path: /hkube/queue
@@ -616,7 +616,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v2.2.2
+    tag: v2.2.2-design-refactor-1683063440
   service:
     type: ClusterIP
   resources:
@@ -628,7 +628,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.2.3
+    tag: v2.2.3-design-refactor-1683063440
   metrics:
     port: 3001
   service:
