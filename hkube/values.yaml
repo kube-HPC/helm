@@ -159,6 +159,7 @@ mongodb:
     rootPassword: ehtyTJj4mR
     user_name: root
     databaseName: hkube
+    replicaSetKey: PD6BHhapvk
   podSecurityContext:
     enabled: false
   containerSecurityContext:
