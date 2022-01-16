@@ -19540,6 +19540,52 @@ entries:
     - hkube-v2.0.1.tgz
     version: v2.0.1
   - apiVersion: v1
+    appVersion: v1.3.183
+    created: "2022-01-16T11:24:33.320789683Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 7ee7d1adc62e4e5f9e350c82031484e6bd71bd0a5ec4bf50b62a7e8fbe48ec46
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.255.tgz
+    version: v1.3.255
+  - apiVersion: v1
     appVersion: v1.3.182
     created: "2022-01-16T09:54:52.482781773Z"
     dependencies:
@@ -27893,4 +27939,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: "2022-01-16T09:54:52.467180586Z"
+generated: "2022-01-16T11:24:33.303779286Z"
