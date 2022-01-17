@@ -198,7 +198,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.28
+systemversion: v2.2.29
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -339,7 +339,7 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v2.2.8
+    tag: v2.2.18
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -638,7 +638,7 @@ algorithm_gateway: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-gateway
-    tag: v2.2.2
+    tag: v2.2.3
   service:
     type: ClusterIP
 algorithm_debug: # +doc-gen:ignore
@@ -646,7 +646,7 @@ algorithm_debug: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-debug
-    tag: v2.2.3
+    tag: v2.2.4
   service:
     type: ClusterIP
 algorithm_output: # +doc-gen:ignore
@@ -654,7 +654,7 @@ algorithm_output: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-output
-    tag: v2.2.3
+    tag: v2.2.4
   service:
     type: ClusterIP
 algorithm_hyperparams_tuner: # +doc-gen:ignore
@@ -727,4 +727,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v2.2.0
-fullSystemVersion: v2.2.28-1642061509920
+fullSystemVersion: v2.2.29-1642436912861
