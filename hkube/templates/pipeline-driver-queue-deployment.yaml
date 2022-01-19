@@ -62,6 +62,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: pipeline-driver-queue-configmap
+            - configMapRef:
+                name: mongodb-configmap
           env:
 {{ include "hkube.fluent_bit.environment" . | indent 12 }}
 {{- if eq .Values.env.default_storage "s3" }}

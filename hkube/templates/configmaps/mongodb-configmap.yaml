@@ -1,0 +1,9 @@
+{{- if .Values.mongodb.enable  }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongodb-configmap
+data:
+  MONGODB_CONNECTION_METHOD: {{ ternary "mongodb+srv" "mongodb" (eq .Values.mongodb.architecture "replicaset") }}
+  MONGODB_TLS: {{ .Values.mongodb.tls.enabled }}
+{{- end }}

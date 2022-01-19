@@ -155,6 +155,8 @@ mongodb:
   enable: true
   useStatefulSet: true
   architecture: replicaset
+  tls:
+    enabled: false
   auth:
     rootPassword: ehtyTJj4mR
     user_name: root

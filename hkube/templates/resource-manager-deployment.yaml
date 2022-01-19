@@ -50,6 +50,9 @@ spec:
 {{- end }}       
           ports:
             - containerPort: {{ index .Values "resource_manager" "env" "metric_port" }}
+          envFrom:
+            - configMapRef:
+                name: mongodb-configmap
           env:
 {{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV

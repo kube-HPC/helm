@@ -70,6 +70,9 @@ spec:
               protocol: TCP
             - containerPort: {{ .Values.datasources_service.env.port }}
               protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: mongodb-configmap
           env:
 {{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: METRICS_PORT

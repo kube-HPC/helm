@@ -67,6 +67,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: api-server-configmap
+            - configMapRef:
+                name: mongodb-configmap
           env:
 {{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: HKUBE_SYSTEM_VERSION
