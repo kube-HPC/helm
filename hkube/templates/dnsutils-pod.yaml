@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: busybox
+  name: dnsutils
   labels:
-    app: busybox
+    app: dnsutils
     group: {{ .Values.labels.group.value }}
     thirdparty: "true"
 spec:
@@ -12,12 +12,12 @@ spec:
     - name: {{ .Values.global.image_pull_secret.name }}
 {{- end }}  
   containers:
-  - image: "{{ .Values.global.registry }}{{ index .Values "busybox" "image" "repository" }}:{{ index .Values "busybox" "image" "tag" }}"
+  - image: "{{ .Values.global.registry }}{{ .Values.dnsutils.image.repository }}:{{ .Values.dnsutils.image.tag }}"
     command:
       - sleep
       - "3600"
     imagePullPolicy: IfNotPresent
-    name: busybox
+    name: dnsutils
 {{- if .Values.global.resources_enable }}          
     resources:
       limits:

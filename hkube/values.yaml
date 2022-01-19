@@ -353,10 +353,10 @@ artifacts_registry: # +doc-gen:ignore
     requests:
       cpu: 50m
       memory: 256Mi
-busybox: # +doc-gen:ignore
+dnsutils: # +doc-gen:ignore
   image:
-    repository: busybox
-    tag: latest
+    repository: k8s.gcr.io/e2e-test-images/jessie-dnsutils
+    tag: 1.3
 gc_service: # +doc-gen:ignore
   # all maxAge are in minutes
   env:
