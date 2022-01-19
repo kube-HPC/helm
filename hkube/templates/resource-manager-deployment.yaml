@@ -50,7 +50,7 @@ spec:
 {{- end }}       
           ports:
             - containerPort: {{ index .Values "resource_manager" "env" "metric_port" }}
-          envFrom:
+          envFrom:
             - configMapRef:
                 name: mongodb-configmap
           env:

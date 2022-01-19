@@ -5,5 +5,6 @@ metadata:
   name: mongodb-configmap
 data:
   MONGODB_CONNECTION_METHOD: {{ ternary "mongodb+srv" "mongodb" (eq .Values.mongodb.architecture "replicaset") }}
-  MONGODB_TLS: {{ .Values.mongodb.tls.enabled }}
+  MONGODB_SERVICE_HOST: {{ .Release.Name }}-mongodb-headless.{{ .Release.Namespace }}.svc.{{ .Values.global.clusterName }}
+  MONGODB_TLS: {{ .Values.mongodb.tls.enabled | quote}}
 {{- end }}
