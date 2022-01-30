@@ -46,7 +46,7 @@ spec:
             timeoutSeconds: {{ .Values.clean_old_jobs.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.clean_old_jobs.healthcheck.failureThreshold }}
 {{- end }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.clean_old_jobs.resources_enable }}          
           resources:
 {{ toYaml .Values.clean_old_jobs.resources | indent 12 }}
 {{- else }}

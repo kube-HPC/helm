@@ -35,7 +35,7 @@ spec:
       containers:
       - name: storage-migration
         image: {{ .Values.global.registry }}{{ .Values.storage_migration.image.repository }}:{{ .Values.storage_migration.image.tag }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.storage_migration.resources_enable }}          
         resources:
 {{ toYaml .Values.storage_migration.resources | indent 10 }}
 {{- else }}

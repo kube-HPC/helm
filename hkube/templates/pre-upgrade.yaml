@@ -29,7 +29,7 @@ spec:
       containers:
       - name: post-del-dep-and-jobs
         image: "{{ .Values.global.registry }}{{ index .Values "delete_deployment_and_jobs" "image" "repository" }}:{{ index .Values "delete_deployment_and_jobs" "image" "tag" }}"
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.delete_deployment_and_jobs.resources_enable }}          
         resources:
 {{ toYaml .Values.delete_deployment_and_jobs.resources | indent 10 }}
 {{- else }}

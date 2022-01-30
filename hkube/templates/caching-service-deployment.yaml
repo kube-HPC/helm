@@ -43,7 +43,7 @@ spec:
         - name: caching-service
           image: "{{ .Values.global.registry }}{{ index .Values "caching_service" "image" "repository" }}:{{ index .Values "caching_service" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.caching_service.resources_enable }}          
           resources:
 {{ toYaml .Values.caching_service.resources | indent 12 }}
 {{- else }}

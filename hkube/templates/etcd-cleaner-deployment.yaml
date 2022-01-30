@@ -20,7 +20,7 @@ spec:
           containers:
           - name: etcd-cleaner
             image: "{{ .Values.global.registry }}{{ index  .Values "etcd_cleaner" "image" "repository" }}:{{ index .Values "etcd_cleaner" "image" "tag" }}"
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.etcd_cleaner.resources_enable }}          
             resources:
 {{ toYaml .Values.etcd_cleaner.resources | indent 14 }}
 {{- else }}

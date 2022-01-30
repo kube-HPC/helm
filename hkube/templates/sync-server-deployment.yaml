@@ -45,7 +45,7 @@ spec:
             - name: ui
               containerPort: 8384
               protocol: TCP
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.sync_server.resources_enable }}
           resources:
 {{ toYaml .Values.sync_server.resources | indent 12 }}
 {{- else }}
@@ -64,79 +64,11 @@ spec:
           ports:
           - containerPort: 8080
             name: tunnel
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.sync_server.resources_enable }}         
           resources:
 {{ toYaml .Values.sync_server.resources | indent 12 }}
 {{- else }}
           resources: {}
 {{- end }}
 
----
-
-kind: Service
-apiVersion: v1
-metadata:
-  name:  sync-server
-spec:
-  selector:
-    app:  sync-server
-  type:  ClusterIP
-  ports:
-  - name:  rest
-    port:  8384
-    targetPort:  8384
-  - name:  sync
-    port:  8080
-    targetPort:  8080
-
----
-{{- $ingressPath := .Values.sync_server.ingress.path -}}
-
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-{{- if .Values.global.ingress.use_regex }}
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-{{- else }}
-    nginx.ingress.kubernetes.io/rewrite-target: /
-{{- end }}
-    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
-    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
-{{- if .Values.global.ingress.hostname }}
-    kubernetes.io/tls-acme: "true"
-{{- end }} 
-  labels:
-    app: sync-server
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    group: {{ .Values.labels.group.value }}
-    core: "true"
-  name: sync-server
-spec:
-{{- if .Values.global.ingress.hostname }}
-  tls:
-  - hosts:
-    - {{ .Values.global.ingress.hostname }}
-    secretName: sync-server-tls-secret
-{{- end }}
-  rules:
-  - http:
-      paths:
-      - backend:
-          serviceName: sync-server
-          servicePort: 8384
-{{- if .Values.global.ingress.use_regex }}
-        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/ui(/|$)(.*)
-{{- else }}
-        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/ui
-{{- end }}
-      - backend:
-          serviceName: sync-server
-          servicePort: 8080
-{{- if .Values.global.ingress.use_regex }}
-        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync(/|$)(.*)
-{{- else }}
-        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync
-{{- end }}
 {{- end }}
