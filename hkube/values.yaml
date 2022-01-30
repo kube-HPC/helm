@@ -409,7 +409,7 @@ etcd_cleaner: # +doc-gen:ignore
     object_expiration_days: '5'
   image:
     repository: hkube/etcd-cleaner
-    tag: v1.3.8
+    tag: v1.3.9
   resources_enable: false
   resources:
     limits:
@@ -750,4 +750,4 @@ storage_migration: # +doc-gen:ignore
   image:
     repository: hkube/storage-migration
     tag: v1.3.2
-fullSystemVersion: v1.3.184-1642578675841
+fullSystemVersion: v1.3.184-1643546272882
