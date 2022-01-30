@@ -1,0 +1,68 @@
+{{- if .Values.sync_server.enabled }}
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  sync-server
+spec:
+  selector:
+    app:  sync-server
+  type:  ClusterIP
+  ports:
+  - name:  rest
+    port:  8384
+    targetPort:  8384
+  - name:  sync
+    port:  8080
+    targetPort:  8080
+
+---
+
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  annotations:
+{{- if .Values.global.ingress.use_regex }}
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+{{- else }}
+    nginx.ingress.kubernetes.io/rewrite-target: /
+{{- end }}
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }} 
+  labels:
+    app: sync-server
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+  name: sync-server
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: sync-server-tls-secret
+{{- end }}
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: sync-server
+          servicePort: 8384
+{{- if .Values.global.ingress.use_regex }}
+        path: {{ .Values.global.ingress.prefix }}{{ .Values.sync_server.ingress.path }}/ui(/|$)(.*)
+{{- else }}
+        path: {{ .Values.global.ingress.prefix }}{{ .Values.sync_server.ingress.path }}/ui
+{{- end }}
+      - backend:
+          serviceName: sync-server
+          servicePort: 8080
+{{- if .Values.global.ingress.use_regex }}
+        path: {{ .Values.global.ingress.prefix }}{{ .Values.sync_server.ingress.path }}/sync(/|$)(.*)
+{{- else }}
+        path: {{ .Values.global.ingress.prefix }}{{ .Values.sync_server.ingress.path }}/sync
+{{- end }}
+{{- end }}

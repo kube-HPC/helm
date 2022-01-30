@@ -12,13 +12,13 @@ spec:
     - name: {{ .Values.global.image_pull_secret.name }}
 {{- end }}  
   containers:
-  - image: "{{ .Values.global.registry }}{{ index .Values "busybox" "image" "repository" }}:{{ index .Values "busybox" "image" "tag" }}"
+  - image: "{{ .Values.global.registry }}{{ .Values.busybox.image.repository }}:{{ .Values.busybox.image.tag }}"
     command:
       - sleep
       - "3600"
     imagePullPolicy: IfNotPresent
     name: busybox
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.busybox.resources_enable }}          
     resources:
       limits:
         cpu: 50m
