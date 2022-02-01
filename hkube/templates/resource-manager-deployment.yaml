@@ -31,7 +31,7 @@ spec:
       serviceAccountName: resource-manager-serviceaccount
       containers:
         - name: resource-manager
-          image: "{{ .Values.global.registry }}{{ index .Values "resource_manager" "image" "repository" }}:{{ index .Values "resource_manager" "image" "tag" }}"
+          image: "{{ .Values.global.registry }}{{ .Values.resource_manager.image.repository }}:{{ .Values.resource_manager.image.tag }}"
 {{- if .Values.resource_manager.healthcheck.enabled }}
           livenessProbe:
             httpGet:
@@ -42,14 +42,14 @@ spec:
             timeoutSeconds: {{ .Values.resource_manager.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.resource_manager.healthcheck.failureThreshold }}
 {{- end }}      
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.resource_manager.resources_enable }}
           resources:
 {{ toYaml .Values.resource_manager.resources | indent 12 }}
 {{- else }}
           resources: {}
 {{- end }}       
           ports:
-            - containerPort: {{ index .Values "resource_manager" "env" "metric_port" }}
+            - containerPort: {{ .Values.resource_manager.env.metric_port }}
           env:
 {{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: NODE_ENV

@@ -34,7 +34,7 @@ spec:
       containers:
         - name: algorithm-operator
           image: "{{ .Values.global.registry }}{{ index .Values "algorithm_operator" "image" "repository" }}:{{ index .Values "algorithm_operator" "image" "tag" }}"
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.algorithm_operator.resources_enable }}
           resources:
 {{ toYaml .Values.algorithm_operator.resources | indent 12 }}
 {{- else }}

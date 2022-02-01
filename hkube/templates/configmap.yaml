@@ -113,11 +113,6 @@ data:
                         "image": "{{ .Values.gc_service.image.repository }}"
                   },
                   {
-                        "project": "cpu-load-algorithm",
-                        "tag": "{{ index .Values "cpu-load-algorithm" "image" "tag" }}",
-                        "image": "{{ index .Values "cpu-load-algorithm" "image" "repository" }}"
-                  },
-                  {
                         "project": "algorithm-builder",
                         "tag": "{{ index .Values "algorithm_builder" "image" "tag" }}",
                         "image": "{{ index .Values "algorithm_builder" "image" "repository" }}"
@@ -146,13 +141,7 @@ data:
                         "project": "optuna-dashboard",
                         "tag": "{{ .Values.optuna_dashboard.image.tag }}",
                         "image": "{{ .Values.optuna_dashboard.image.repository }}"
-                  },
-                  {
-                        "project": "storage-migration",
-                        "tag": "{{ .Values.storage_migration.image.tag }}",
-                        "image": "{{ .Values.storage_migration.image.repository }}"
                   }
-
             ]
             }
 kind: ConfigMap

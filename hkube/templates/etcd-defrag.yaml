@@ -38,7 +38,7 @@ spec:
               value: {{ .Values.etcd_defrag.env.sleep | quote }}
             - name: RELEASE_NAME
               value: {{ .Release.Name }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.etcd_defrag.resources_enable }}
             resources:
 {{ toYaml .Values.etcd_defrag.resources | indent 14 }}
 {{- else }}
