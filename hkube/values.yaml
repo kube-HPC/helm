@@ -770,6 +770,13 @@ algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
     tag: v2.2.11-fix-resources-1789574894
+  # buildconfig_resources:
+  #   limits:
+  #     cpu: 300m
+  #     memory: 1024Mi
+  #   requests:
+  #     cpu: 100m
+  #     memory: 512Mi
 kaniko: # +doc-gen:ignore
   image:
     repository: hkube/kaniko
