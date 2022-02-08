@@ -38,7 +38,7 @@ spec:
         - name: artifacts-registry
           image: "{{ .Values.global.registry }}{{ index .Values "artifacts_registry" "image" "repository" }}:{{ index .Values "artifacts_registry" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.artifacts_registry.resources_enable }}
           resources:
 {{ toYaml .Values.artifacts_registry.resources | indent 12 }}
 {{- else }}

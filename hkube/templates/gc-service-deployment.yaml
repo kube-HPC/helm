@@ -53,7 +53,7 @@ spec:
             timeoutSeconds: {{ .Values.gc_service.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.gc_service.healthcheck.failureThreshold }}
 {{- end }}
-{{- if .Values.global.resources_enable }}
+{{- if or .Values.global.resources_enable .Values.gc_service.resources_enable }}
           resources:
 {{ toYaml .Values.gc_service.resources | indent 12 }}
 {{- else }}
