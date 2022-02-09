@@ -17,3 +17,7 @@ spec:
     - name: metrics
       port: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
       targetPort: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
+    - port: {{ .Values.pipeline_driver_queue.env.rest_port }}
+      targetPort: {{ .Values.pipeline_driver_queue.env.rest_port }}
+      protocol: TCP
+      name: rest      

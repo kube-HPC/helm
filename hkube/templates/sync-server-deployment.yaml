@@ -45,7 +45,7 @@ spec:
             - name: ui
               containerPort: 8384
               protocol: TCP
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.sync_server.resources_enable }}
           resources:
 {{ toYaml .Values.sync_server.resources | indent 12 }}
 {{- else }}
@@ -64,7 +64,7 @@ spec:
           ports:
           - containerPort: 8080
             name: tunnel
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.sync_server.resources_enable }}
           resources:
 {{ toYaml .Values.sync_server.resources | indent 12 }}
 {{- else }}
@@ -90,7 +90,7 @@ spec:
     targetPort:  8080
 
 ---
-{{- $ingressPath := .Values.sync_server.ingress.path -}}
+{{- $ingressPath := .Values.sync_server.ingress.path }}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:

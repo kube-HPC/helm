@@ -1,3 +1,4 @@
+{{- if .Values.datasources_service.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -48,7 +49,7 @@ spec:
         - name: datasources-service
           image: "{{ .Values.global.registry }}{{ .Values.datasources_service.image.repository }}:{{ .Values.datasources_service.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.datasources_service.resources_enable }}
           resources:
 {{ toYaml .Values.datasources_service.resources | indent 12 }}
 {{- else }}
@@ -187,3 +188,4 @@ spec:
             - name: TEMP_DIRECTORY
               value: "/TEMP_DIRECTORY"
 {{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
+{{- end }}

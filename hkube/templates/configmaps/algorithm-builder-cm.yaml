@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: algorithm-builder-configmap
+data: 
+{{- if .Values.algorithm_builder.buildconfig_resources }}
+  BUILDCONFIG_RESOURCES: {{ .Values.algorithm_builder.buildconfig_resources | toJson | quote }}
+{{- end }}
+  CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
+  BUILD_MODE: {{ .Values.algorithm_operator.build_mode | quote }}
+  NODE_ENV: {{ .Values.env.node_env }}
+  DEFAULT_STORAGE: {{.Values.env.default_storage | quote}}
+  NODE_WRAPPER_VERSION : {{ .Values.algorithm_operator.env.node_wrapper_version | quote }}
+  PYTHON_WRAPPER_VERSION : {{ .Values.algorithm_operator.env.python_wrapper_version | quote }}

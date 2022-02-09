@@ -40,7 +40,7 @@ spec:
         - name: pipeline-driver-queue
           image: "{{ .Values.global.registry }}{{ index .Values "pipeline_driver_queue" "image" "repository" }}:{{ index .Values "pipeline_driver_queue" "image" "tag" }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.pipeline_driver_queue.resources_enable }}
           resources:
 {{ toYaml .Values.pipeline_driver_queue.resources | indent 12 }}
 {{- else }}
@@ -56,6 +56,9 @@ spec:
             - name: http
               containerPort: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
               protocol: TCP
+            - name: rest
+              containerPort: {{ index .Values "pipeline_driver_queue" "env" "rest_port" }}
+              protocol: TCP              
           envFrom:
             - configMapRef:
                 name: pipeline-driver-queue-configmap

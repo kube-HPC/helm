@@ -45,7 +45,7 @@ spec:
         - name: api-server
           image: "{{ .Values.global.registry }}{{ index .Values "api_server" "image" "repository" }}:{{ index .Values "api_server" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.api_server.resources_enable }}
           resources:
 {{ toYaml .Values.api_server.resources | indent 12 }}
 {{- else }}

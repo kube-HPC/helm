@@ -33,7 +33,7 @@ spec:
       containers:
         - name: trigger-service
           image: "{{ .Values.global.registry }}{{ .Values.trigger_service.image.repository }}:{{ .Values.trigger_service.image.tag }}"
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.trigger_service.resources_enable }}
           resources:
 {{ toYaml .Values.trigger_service.resources | indent 12 }}
 {{- else }}

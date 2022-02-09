@@ -1,11 +1,11 @@
-{{- if and .Values.datasources_service.ingress.enabled .Values.datasources_service.enabled -}}
-{{- $fullName := "datasources-service" -}}
-{{- $servicePort := .Values.datasources_service.env.port | int -}}
-{{- $ingressPath := .Values.datasources_service.ingress.path -}}
+{{- if .Values.pipeline_driver_queue.ingress.enabled -}}
+{{- $fullName := "pipeline-driver-queue" -}}
+{{- $servicePort := .Values.pipeline_driver_queue.env.rest_port | int -}}
+{{- $ingressPath := .Values.pipeline_driver_queue.ingress.path -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
-  name: datasources-service
+  name: pipeline-driver-queue
   annotations:
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -14,11 +14,12 @@ metadata:
 {{- end }}
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }}    
   labels:
-    app: datasources-service
+    app: pipeline-driver-queue
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     group: {{ .Values.labels.group.value }}
