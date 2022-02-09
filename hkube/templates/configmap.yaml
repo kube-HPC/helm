@@ -143,11 +143,6 @@ data:
                         "image": "{{ .Values.vscode_workspace.image.repository }}"
                   },                  
                   {
-                        "project": "storage-migration",
-                        "tag": "{{ .Values.storage_migration.image.tag }}",
-                        "image": "{{ .Values.storage_migration.image.repository }}"
-                  },
-                  {
                         "project": "optuna-dashboard",
                         "tag": "{{ .Values.optuna_dashboard.image.tag }}",
                         "image": "{{ .Values.optuna_dashboard.image.repository }}"
