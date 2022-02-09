@@ -273,7 +273,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.35
+systemversion: 2.2.35-jupyter.1818388296
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -323,7 +323,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.2.5
+    tag: v2.2.5-jupyter-1818388296
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -378,7 +378,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.2.14
+    tag: v2.2.14-jupyter-1818388296
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -408,7 +408,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.2.8
+    tag: v2.2.8-jupyter-1818388296
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -497,7 +497,7 @@ gc_service: # +doc-gen:ignore
     storage_temp_max_age: 7200
   image:
     repository: hkube/gc-service
-    tag: v2.2.8
+    tag: v2.2.8-jupyter-1818388296
   resources_enable: false
   resources:
     limits:
@@ -595,7 +595,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.2.8
+    tag: v2.2.8-jupyter-1818388296
   ingress:
     enabled: true
     path: /hkube/queue
@@ -712,7 +712,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.2.5
+    tag: v2.2.5-jupyter-1818388296
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
