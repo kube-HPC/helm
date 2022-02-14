@@ -562,7 +562,7 @@ monitor_server: # +doc-gen:ignore
     max_display_batch_size: 10
   image:
     repository: hkube/monitor-server
-    tag: v2.2.3
+    tag: v2.2.3-a
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -657,7 +657,7 @@ simulator: # +doc-gen:ignore
     is_secure: ''
   image:
     repository: hkube/simulator
-    tag: v2.2.3
+    tag: jupyter
   ingress:
     enabled: true
     path: /hkube/dashboard
