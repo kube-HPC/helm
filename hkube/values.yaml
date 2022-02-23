@@ -257,7 +257,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.2.44
+systemversion: v2.2.45
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -576,7 +576,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.2.6
+    tag: v2.2.7
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -833,4 +833,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.2.44-1645607966319
+fullSystemVersion: v2.2.45-1645610255014
