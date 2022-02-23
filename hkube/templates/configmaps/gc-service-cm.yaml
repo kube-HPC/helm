@@ -28,6 +28,11 @@ data:
   DEBUG_ENABLED: {{ .Values.gc_service.env.debug_enabled | quote }}
   DEBUG_MAX_AGE: {{ .Values.gc_service.env.debug_max_age | quote }}
 
+  # output
+  OUTPUT_CRON: {{ .Values.gc_service.env.output_cron | quote }}
+  OUTPUT_ENABLED: {{ .Values.gc_service.env.output_enabled | quote }}
+  OUTPUT_MAX_AGE: {{ .Values.gc_service.env.output_max_age | quote }}
+
   # etcd
   ETCD_CRON: {{ .Values.gc_service.env.etcd_cron | quote }}
   ETCD_ENABLED: {{ .Values.gc_service.env.etcd_enabled | quote }}
@@ -58,4 +63,5 @@ data:
   STORAGE_CRON: {{ .Values.gc_service.env.storage_cron | quote }}
   STORAGE_ENABLED: {{ .Values.gc_service.env.storage_enabled | quote }}
   STORAGE_RESULT_MAX_AGE: {{ .Values.gc_service.env.storage_results_max_age | quote }}
+  BUILDS_MAX_AGE: {{ .Values.gc_service.env.builds_max_age | quote }}
   STORAGE_TEMP_MAX_AGE: {{ .Values.gc_service.env.storage_temp_max_age | quote }}

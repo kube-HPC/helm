@@ -450,6 +450,12 @@ gc_service: # +doc-gen:ignore
     debug_enabled: true
     debug_max_age: 10
 
+    # output
+    output_cron: '*/2 * * * *'
+    output_enabled: true
+    output_max_age: 10
+
+
     # etcd
     etcd_cron: '0 1 * * *'
     etcd_enabled: true
@@ -481,6 +487,7 @@ gc_service: # +doc-gen:ignore
     storage_enabled: true
     storage_results_max_age: 14400
     storage_temp_max_age: 7200
+    builds_max_age: 14400
   image:
     repository: hkube/gc-service
     tag: v2.2.10
