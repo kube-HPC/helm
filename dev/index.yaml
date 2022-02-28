@@ -2,6 +2,2206 @@ apiVersion: v1
 entries:
   hkube:
   - apiVersion: v1
+    appVersion: v2.2.45
+    created: "2022-02-28T09:40:46.964600353Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 0531679a12f0961fab6197f7702534f1c701e36ed7bd4979ea468102fab5d98d
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.64.tgz
+    version: v2.2.64
+  - apiVersion: v1
+    appVersion: v2.2.45
+    created: "2022-02-23T10:22:44.315605982Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: d006ffcf03d48784b073e4863ccc8a01538fb5df9045379b35605f4957d188ea
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.63.tgz
+    version: v2.2.63
+  - apiVersion: v1
+    appVersion: v2.2.45
+    created: "2022-02-23T09:58:38.168605416Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: e4a7021615dda547a07cfcc6d1b6f1366c80020f711516c9a96167984314624c
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.62.tgz
+    version: v2.2.62
+  - apiVersion: v1
+    appVersion: v2.2.44
+    created: "2022-02-23T09:20:33.983789912Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: ba13f71b50946887f89de60d5ac63e5a0e2ed26c87678cf8277181822547b243
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.61.tgz
+    version: v2.2.61
+  - apiVersion: v1
+    appVersion: v2.2.43
+    created: "2022-02-23T08:31:02.383071736Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: d7ea74c1122fc175fe311ba8969526185c4bf62e4215cbfa743c596b29f88d3a
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.60.tgz
+    version: v2.2.60
+  - apiVersion: v1
+    appVersion: v2.2.42
+    created: "2022-02-21T08:23:11.713168734Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 904ad8fa8042d682162b26b5ce7e959a719c425872f687e7b3f9fe8054a7a91a
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.59.tgz
+    version: v2.2.59
+  - apiVersion: v1
+    appVersion: v2.2.41
+    created: "2022-02-16T15:29:26.80113247Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 7c8769232654c343f80beb21cad539637cb590d9ff017092ec8312a8835d17a7
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.58.tgz
+    version: v2.2.58
+  - apiVersion: v1
+    appVersion: v2.2.41
+    created: "2022-02-16T14:39:56.795666806Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 407a7bc68c0371e0ce9a482c95e17f3b4b721b46032fe4c53feadad3a0415b38
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.57.tgz
+    version: v2.2.57
+  - apiVersion: v1
+    appVersion: v2.2.41
+    created: "2022-02-15T08:12:50.456677993Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: badd038025d3ed659cb475e57e83db9813b2a21c61a15a62d875a3b1b2e8201c
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.56.tgz
+    version: v2.2.56
+  - apiVersion: v1
+    appVersion: v2.2.40
+    created: "2022-02-14T10:27:56.356905415Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: fd587504873c78fe336b3c728952d5a111fd84995cb2e457064fa18f97f5dd73
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.55.tgz
+    version: v2.2.55
+  - apiVersion: v1
+    appVersion: v2.2.39
+    created: "2022-02-14T06:41:32.125912487Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 25e8038ca3ce6f182829589c65c3267a5a5b030b2de48735befb00b1fd5b4247
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.54.tgz
+    version: v2.2.54
+  - apiVersion: v1
+    appVersion: v2.2.38
+    created: "2022-02-13T10:13:50.090353708Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 11e513dc626e059cfe4c1f88987b7986d8a718d4b485d1bf87e3b6d6b9f808dd
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.53.tgz
+    version: v2.2.53
+  - apiVersion: v1
+    appVersion: v2.2.38
+    created: "2022-02-13T08:34:25.555757815Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 46cc1a9b73817c26fae63b4e22fe6c36501ae471d69f737a9e56e4d4a508c5a9
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.52.tgz
+    version: v2.2.52
+  - apiVersion: v1
+    appVersion: v2.2.37
+    created: "2022-02-13T07:52:07.155641734Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: cfe6c44b61e2d00272f1532dee69aed455687055c55d77924b10ee9be9068cf6
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.51.tgz
+    version: v2.2.51
+  - apiVersion: v1
+    appVersion: v2.2.36
+    created: "2022-02-13T07:41:15.471331281Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 827606a62f8922a82010043893a9d850a3a71e18718d14a5a1c4dd3b7cc9e949
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.50.tgz
+    version: v2.2.50
+  - apiVersion: v1
+    appVersion: v2.2.36
+    created: "2022-02-13T07:24:36.88418387Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: cf1edeec399b299d2143117e41fc0923d40813032efa1074d2850a3cd51a6372
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.49.tgz
+    version: v2.2.49
+  - apiVersion: v1
+    appVersion: v2.2.36
+    created: "2022-02-09T18:48:58.865975296Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 68b416c1f52cee2287f316e66258f4a864ba68d8eaa7e8078a9232d26361ec29
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.48.tgz
+    version: v2.2.48
+  - apiVersion: v1
+    appVersion: v2.2.35
+    created: "2022-02-08T09:47:53.952908425Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 730318612b13b5a7864b357ecd2146d58a387ea67d5cb7f25a32e7f091d4fe73
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.47.tgz
+    version: v2.2.47
+  - apiVersion: v1
+    appVersion: v2.2.34
+    created: "2022-02-08T09:08:01.291410205Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 144ec23eb1f249aaaaf7c9ffa0a36878ffa0318ac1e603a6bdf05cf3c211b99f
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.46.tgz
+    version: v2.2.46
+  - apiVersion: v1
+    appVersion: v2.2.34
+    created: "2022-02-07T13:15:58.105960519Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: e9f592536747175fe4fc1cd66150cc04e5dd50059bbf8f69294a01b23768255d
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.45.tgz
+    version: v2.2.45
+  - apiVersion: v1
+    appVersion: v2.2.33
+    created: "2022-02-07T13:00:11.009672034Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 4d6bd8e95a046b45ea62ac6b6bc7c0801c279b1fc7929a13c480a3a0a80c1352
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.44.tgz
+    version: v2.2.44
+  - apiVersion: v1
+    appVersion: v2.2.32
+    created: "2022-01-31T13:37:19.386129516Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 563ae16f24269fbaa84cf74b496a94496f5a9a3c6c771cf20642f148cc678161
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.43.tgz
+    version: v2.2.43
+  - apiVersion: v1
+    appVersion: v2.2.31
+    created: "2022-01-19T13:57:16.432754711Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 7cc39252400c838a2a2bb11d24898849ce63021769dce13375d03398bd15347d
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.42.tgz
+    version: v2.2.42
+  - apiVersion: v1
+    appVersion: v2.2.30
+    created: "2022-01-17T20:05:48.748076953Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 358138cb2fa3f7047cc8be6e08aa73d1f48c61b0bf8cec07f7adc13cfe664a52
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.41.tgz
+    version: v2.2.41
+  - apiVersion: v1
+    appVersion: v2.2.29
+    created: "2022-01-17T16:29:58.84804529Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 20e26802af760107e8c257fffa3b3a6e1f411a37e5e781bf92b29e233ecbdec6
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.40.tgz
+    version: v2.2.40
+  - apiVersion: v1
+    appVersion: v2.2.28
+    created: "2022-01-13T08:12:56.53228643Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 60bc32aef48bfaeec9dc12a694b88f5802b5e52bae9a334e31210efd1e1c5260
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.39.tgz
+    version: v2.2.39
+  - apiVersion: v1
+    appVersion: v2.2.27
+    created: "2022-01-12T09:45:07.749665304Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 32746fdaa75602cd1d71caccb8408c926496486eaef6412c83725d1705c4942a
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.38.tgz
+    version: v2.2.38
+  - apiVersion: v1
+    appVersion: v2.2.26
+    created: "2022-01-10T14:50:01.544285882Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 95d2f1bf72656a8f5e4b395d6e3135805b01dcb1c26a929d54690e1a58b7fe76
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.37.tgz
+    version: v2.2.37
+  - apiVersion: v1
+    appVersion: v2.2.25
+    created: "2022-01-10T10:53:22.475620284Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: cf749fb1b6a42aa17201062429dea222d3a7446bd6b504184162192bf0562da3
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.36.tgz
+    version: v2.2.36
+  - apiVersion: v1
+    appVersion: v2.2.24
+    created: "2021-12-28T08:38:25.400077111Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 25335a081c8a6d8c063e4db4177875812f4ec49b78e9197d691f359057645c19
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.35.tgz
+    version: v2.2.35
+  - apiVersion: v1
+    appVersion: v2.2.24
+    created: "2021-12-27T16:08:10.351998549Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 286d15e27a61a06ae2e195b91f3a1258211f2dc7c5d37c369ab762bdbe6835aa
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.34.tgz
+    version: v2.2.34
+  - apiVersion: v1
+    appVersion: v2.2.22
+    created: "2021-12-27T10:28:27.229782775Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 989d417108abd2302d1904ffa1a8fed86bf4cd5236f03a47b8f0cbb16905d313
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.33.tgz
+    version: v2.2.33
+  - apiVersion: v1
+    appVersion: v2.2.21
+    created: "2021-12-21T09:12:42.254218306Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: f1cbbcc1aac33cfca2e8ceda590892ece4459d61a026a5c0ed0ce609e22cb84b
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.32.tgz
+    version: v2.2.32
+  - apiVersion: v1
+    appVersion: v2.2.20
+    created: "2021-12-20T14:21:41.019402956Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 8ff1ad6e0166bab7fa2086e34ae28651f9ba3c9528f7353550498e43ddb26c40
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.31.tgz
+    version: v2.2.31
+  - apiVersion: v1
+    appVersion: v2.2.19
+    created: "2021-12-20T12:35:32.341345989Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: d01f9a2fdf1ab2ab6a149c294d2d2ec957a8fbdc6d1c97b7d2390e9d936a4390
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.30.tgz
+    version: v2.2.30
+  - apiVersion: v1
+    appVersion: v2.2.18
+    created: "2021-12-20T12:25:21.281887245Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: e95ccfad746638de6feb481d7b3b4ef013e927580d88d97b461cf585ba49bf00
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.29.tgz
+    version: v2.2.29
+  - apiVersion: v1
+    appVersion: v2.2.17
+    created: "2021-12-20T10:41:46.135098258Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 170c3bd172348f257dfa9b892b07863892a9814d72f26993fd53a0e45eb91a7a
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.28.tgz
+    version: v2.2.28
+  - apiVersion: v1
+    appVersion: v2.2.16
+    created: "2021-12-06T10:16:51.935382086Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: cac1e962d91188cb4fdf41e6b428a4b0e53a448c7c7db4f8f9978dbb06ea09c2
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.27.tgz
+    version: v2.2.27
+  - apiVersion: v1
+    appVersion: v2.2.16
+    created: "2021-11-30T10:25:13.869951737Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: e0e891ce43a5576d66b6b50a43d237988188655a4b3eac82decfa98f54a14bca
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.26.tgz
+    version: v2.2.26
+  - apiVersion: v1
+    appVersion: v2.2.15
+    created: "2021-11-24T10:25:30.74289449Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: a4cad049ed6a1f2dda688285fe9c39f1bb84ee8eb315254db4fa53412d20ff65
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.25.tgz
+    version: v2.2.25
+  - apiVersion: v1
+    appVersion: v2.2.14
+    created: "2021-11-23T13:34:00.10509269Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 2a2c5afeae33eb403d24b2bf039c6494d129329c5cb24ea4729a170dde5baa4c
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.24.tgz
+    version: v2.2.24
+  - apiVersion: v1
+    appVersion: v2.2.13
+    created: "2021-11-23T13:28:38.630324595Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: c514da1648022b7b9dc2a2adf750334546dd12cb4d6dd83b87408bd114efc9c4
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.23.tgz
+    version: v2.2.23
+  - apiVersion: v1
+    appVersion: v2.2.12
+    created: "2021-11-21T14:35:20.215262009Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 645a997853dc2603c24467b1109054900b9c8917a18060b33981f7a602f4af69
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.22.tgz
+    version: v2.2.22
+  - apiVersion: v1
+    appVersion: v2.2.11
+    created: "2021-11-21T09:53:17.150664725Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 73c994f1a103079e719a5563879b2ea49414b3faa8732e582700a99d84872c25
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.2.21.tgz
+    version: v2.2.21
+  - apiVersion: v1
     appVersion: v2.2.11
     created: "2021-11-17T10:00:26.910102467Z"
     dependencies:
@@ -1001,6 +3201,356 @@ entries:
     urls:
     - hkube-v2.2.1.tgz
     version: v2.2.1
+  - apiVersion: v1
+    appVersion: v2.1.94
+    created: "2021-12-14T07:34:43.423391727Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 3af84cc23a2f7b60cb2ef81ee7a13760f355c8ea893e8f05a3327384f2ec5765
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.1.186.tgz
+    version: v2.1.186
+  - apiVersion: v1
+    appVersion: v2.1.94
+    created: "2021-12-13T14:33:48.152992105Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: a7430b3e4d0ec2c04ffdc971679de5773e666c8d372bb5ce754baf933d1146e4
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.1.185.tgz
+    version: v2.1.185
+  - apiVersion: v1
+    appVersion: v2.1.94
+    created: "2021-12-13T14:06:17.731935647Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: ebd759bd0e36b9c59359e95971458723c55a678616f77028c3c9f8d22cd1c46c
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.1.184.tgz
+    version: v2.1.184
+  - apiVersion: v1
+    appVersion: v2.1.94
+    created: "2021-12-13T13:50:34.656177411Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 7116af89c73c97484c698cc46cd0bc90de56d58a8e51d98a007f1e4c96d7cbe5
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.1.183.tgz
+    version: v2.1.183
+  - apiVersion: v1
+    appVersion: v2.1.94
+    created: "2021-12-13T07:35:08.07186324Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 70f684e709fac812d7bcf6f210013c92328d1662dac8579c787d0ec325f3dc2c
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.1.182.tgz
+    version: v2.1.182
+  - apiVersion: v1
+    appVersion: v2.2.16
+    created: "2021-12-13T07:13:18.596560682Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 864ca8873d0b948c01b5d5473853ed59a2630375379cf08c7a6fd71a94ac1d45
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.1.181.tgz
+    version: v2.1.181
+  - apiVersion: v1
+    appVersion: v2.2.14
+    created: "2021-11-24T08:39:59.772388663Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2017
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: cc730dc2da41881db96294fec63e695898dd120f54706e13c5b5f2eb2e8020e5
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.1.180.tgz
+    version: v2.1.180
   - apiVersion: v1
     appVersion: v2.1.93
     created: "2021-11-07T10:13:56.864018804Z"
@@ -18240,6 +20790,834 @@ entries:
     - hkube-v2.0.1.tgz
     version: v2.0.1
   - apiVersion: v1
+    appVersion: v1.3.186
+    created: "2022-02-01T16:01:11.966367154Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 218beb9130c8348f39bf2161dedea336f8061211d5f55aa8f036986708b1f576
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.259.tgz
+    version: v1.3.259
+  - apiVersion: v1
+    appVersion: v1.3.185
+    created: "2022-01-30T14:28:36.762232206Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 35f4c8616f4cdae6fa22cefc3646c4dfa76f1931a5ba73d297cd82d55ba0564f
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.258.tgz
+    version: v1.3.258
+  - apiVersion: v1
+    appVersion: v1.3.184
+    created: "2022-01-30T12:38:52.582495634Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 540828f2cbe8145025741465b9afce1aef77de677a20901e81bd89e69b2a3540
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.257.tgz
+    version: v1.3.257
+  - apiVersion: v1
+    appVersion: v1.3.184
+    created: "2022-01-19T07:52:14.12364537Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 1eb6302800c5f01cd2d5103632b03cd441f3b3a1b5b34137129ab5daf67fae8e
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.256.tgz
+    version: v1.3.256
+  - apiVersion: v1
+    appVersion: v1.3.183
+    created: "2022-01-16T11:24:33.320789683Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 7ee7d1adc62e4e5f9e350c82031484e6bd71bd0a5ec4bf50b62a7e8fbe48ec46
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.255.tgz
+    version: v1.3.255
+  - apiVersion: v1
+    appVersion: v1.3.182
+    created: "2022-01-16T09:54:52.482781773Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 0f75aad6711646ecda5877c8bcbf5c71ebf2a2d99d8aeeec0fbbbcc93f13c527
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.254.tgz
+    version: v1.3.254
+  - apiVersion: v1
+    appVersion: v1.3.181
+    created: "2022-01-09T10:13:58.686199412Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 37f16fb7b06e1bb910e8786a05ffcdf9c4e45ff45df8c425172c36c9ed0f05c3
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.253.tgz
+    version: v1.3.253
+  - apiVersion: v1
+    appVersion: v1.3.180
+    created: "2022-01-06T08:10:06.787746102Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 78fd184a3349aa48a39e7832c218c83f7daeff9f35518c8d35c03dd4b612a005
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.252.tgz
+    version: v1.3.252
+  - apiVersion: v1
+    appVersion: v1.3.179
+    created: "2022-01-06T08:02:39.274241646Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: d6ed2c2a79e4b3853a7b62a7eb7ee07fd350c2485a495c02fbe9695039d4bd83
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.251.tgz
+    version: v1.3.251
+  - apiVersion: v1
+    appVersion: v1.3.178
+    created: "2022-01-04T10:56:18.255916222Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 9979c6a084f0bcb4a5e2b1cf2816ab438278dbc82d3f96475d9e1ca69c63041c
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.250.tgz
+    version: v1.3.250
+  - apiVersion: v1
+    appVersion: v1.3.177
+    created: "2022-01-03T12:22:36.297871077Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 409491d2f196f69a76f4ee927a3030f1d50e904a73b826e390e1465e19ff196b
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.249.tgz
+    version: v1.3.249
+  - apiVersion: v1
+    appVersion: v1.3.176
+    created: "2022-01-02T10:56:29.185550163Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 7d4090d1701bfaddc872428f53e3ce1594d54bf6a8ede47e3c6f5635e3824775
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.248.tgz
+    version: v1.3.248
+  - apiVersion: v1
+    appVersion: v1.3.175
+    created: "2021-12-29T12:15:30.831358705Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 32480c66c3e11bcee2d216464387094cfc23717b104a6982913c0ebf0a292271
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.247.tgz
+    version: v1.3.247
+  - apiVersion: v1
+    appVersion: v1.3.174
+    created: "2021-12-28T14:49:29.069037038Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: bbe66c61baada50e732f390b4ff9bde662b2fcc144c025e66ce435b90b95c55b
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.246.tgz
+    version: v1.3.246
+  - apiVersion: v1
+    appVersion: v1.3.174
+    created: "2021-12-28T14:47:13.642076348Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: c79ce83c8d574ac82b0a5d0d650fc5895eef5a053db8fb97d4f729f75ffbb52e
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.245.tgz
+    version: v1.3.245
+  - apiVersion: v1
+    appVersion: v1.3.174
+    created: "2021-12-23T15:30:03.864038612Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 1c1ada556027d244238b2e391c0082f0451d795a0e3e644328006e6dd73a3310
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.244.tgz
+    version: v1.3.244
+  - apiVersion: v1
+    appVersion: v1.3.174
+    created: "2021-12-23T14:35:18.141781748Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 022dabdc3e61cb3e69f6675bae04403c9dfef7dc83a436431dd79c1d101c872c
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.243.tgz
+    version: v1.3.243
+  - apiVersion: v1
+    appVersion: v1.3.173
+    created: "2021-12-23T14:28:08.827104678Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: http://hkube.io/helm/
+      version: 0.7.2015
+    - condition: etcd-operator.enable
+      name: etcd-operator
+      repository: http://hkube.io/helm/
+      version: 0.9.7
+    - condition: jaeger.enable
+      name: jaeger
+      repository: http://hkube.io/helm/
+      version: 0.27.2005
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: http://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: http://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: http://hkube.io/helm/
+      version: 5.0.1024
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: e857aba0e2b440258f8623b7496c170b23788ea740673be808a423aafe594288
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v1.3.242.tgz
+    version: v1.3.242
+  - apiVersion: v1
     appVersion: v1.3.173
     created: "2021-10-19T10:39:03.736990285Z"
     dependencies:
@@ -25995,4 +29373,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: "2021-11-17T10:00:26.881060453Z"
+generated: "2022-02-28T09:40:46.931516015Z"
