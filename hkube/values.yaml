@@ -257,7 +257,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.3.0
+systemversion: v2.3.1
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -520,7 +520,7 @@ optuna_dashboard: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/optuna-dashboard
-    tag: v2.2.1
+    tag: v2.3.1
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
@@ -833,4 +833,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.3.0-1646129431480
+fullSystemVersion: v2.3.1-1646133231244
