@@ -555,7 +555,7 @@ monitor_server: # +doc-gen:ignore
     max_display_batch_size: 10
   image:
     repository: hkube/monitor-server
-    tag: v2.3.1
+    tag: v2.3.2
   ingress:
     enabled: true
     path: /hkube/monitor-server
@@ -833,4 +833,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.3.2-1646139099489
+fullSystemVersion: v2.3.2-1646140195491
