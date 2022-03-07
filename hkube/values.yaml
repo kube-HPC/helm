@@ -370,6 +370,14 @@ api_server: # +doc-gen:ignore
     path: /hkube/api-server
   service:
     type: ClusterIP
+  healthcheck: # +doc-gen:ignore
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 240
+    periodSeconds: 120
+    timeoutSeconds: 2
+    failureThreshold: 5
   resources_enable: false
   resources:
     limits:
