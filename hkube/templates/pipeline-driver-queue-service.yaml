@@ -12,7 +12,6 @@ metadata:
 spec:
   selector:
     app: pipeline-driver-queue
-  clusterIP: None
   ports:
     - name: metrics
       port: {{ index .Values "pipeline_driver_queue" "env" "metric_port" }}
