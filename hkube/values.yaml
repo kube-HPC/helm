@@ -204,6 +204,8 @@ nginx-ingress:
 
 mongodb:
   enable: true
+  persistence:
+    storageClass: null
   useStatefulSet: true
   auth:
     rootPassword: ehtyTJj4mR
@@ -232,6 +234,8 @@ minio:
 
 gitea:
   enable: true
+  persistence:
+    storageClass: null
   service:
     http:
       port: '3000'
@@ -244,6 +248,8 @@ gitea:
       password: '123456'
       email: "hkube@hkube.io"
   postgresql:
+    persistence:
+      storageClass: null
     securityContext:
       enabled: false
     containerSecurityContext:
