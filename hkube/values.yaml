@@ -485,6 +485,9 @@ gc_service: # +doc-gen:ignore
     pipelines_cron: '*/5 * * * *'
     pipelines_enabled: true
 
+    # status
+    status_cron: '*/5 * * * *'
+    status_enabled: true
     # redis
     redis_cron: '20 1 * * *'
     redis_enabled: true

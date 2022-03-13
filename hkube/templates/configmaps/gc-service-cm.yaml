@@ -54,6 +54,10 @@ data:
   PIPELINES_CRON:  {{ .Values.gc_service.env.pipelines_cron | quote }}
   PIPELINES_ENABLED:  {{ .Values.gc_service.env.pipelines_enabled | quote }}
 
+  # status
+  STATUS_CRON:  {{ .Values.gc_service.env.status_cron | quote }}
+  STATUS_ENABLED:  {{ .Values.gc_service.env.status_enabled | quote }}
+
   # redis
   REDIS_CRON: {{ .Values.gc_service.env.redis_cron | quote }}
   REDIS_ENABLED: {{ .Values.gc_service.env.redis_enabled | quote }}
