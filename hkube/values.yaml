@@ -406,6 +406,7 @@ datasources_service: # +doc-gen:ignore
     base_url_path: /hkube/datasources-service
     metric_port: '3001'
     port: '3005'
+    consumer_concurrency: 5
   image:
     repository: hkube/datasources-service
     tag: v2.3.2-datasource-consumer-concurrency-1992112614
