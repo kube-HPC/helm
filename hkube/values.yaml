@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.3.14
+systemversion: 2.3.14-datasource-consumer-concurrency.1992112614
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -408,7 +408,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.3.2
+    tag: v2.3.2-datasource-consumer-concurrency-1992112614
   ingress:
     enabled: true
     path: /hkube/datasources-service
