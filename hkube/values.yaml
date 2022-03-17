@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.3.14
+systemversion: 2.3.14-watch-error.1998685352
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -370,7 +370,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.3.6
+    tag: v2.3.6-watch-error-1998685352
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -738,7 +738,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v2.3.0
+    tag: v2.3.0-watch-error-1998685352
   service:
     type: ClusterIP
   resources_enable: false
