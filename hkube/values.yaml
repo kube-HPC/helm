@@ -537,7 +537,7 @@ optuna_dashboard: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/optuna-dashboard
-    tag: v2.3.1
+    tag: v2.3.2
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
@@ -850,4 +850,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.3.15-1647770640854
+fullSystemVersion: v2.3.15-1647863277095
