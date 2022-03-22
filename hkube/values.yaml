@@ -436,11 +436,11 @@ artifacts_registry: # +doc-gen:ignore
   resources_enable: false
   resources:
     limits:
-      cpu: 300m
-      memory: 1024Mi
+      cpu: 600m
+      memory: 4Gi
     requests:
-      cpu: 50m
-      memory: 256Mi
+      cpu: 150m
+      memory: 2Gi
 busybox: # +doc-gen:ignore
   image:
     repository: busybox
