@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.3.16
+systemversion: 2.3.16-fix-kaniko-for-cgroups-v2.2047358356
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -795,7 +795,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.3.0
+    tag: v2.3.0-fix-kaniko-for-cgroups-v2-2047358356
   # buildconfig_resources:
   #   limits:
   #     cpu: 300m
