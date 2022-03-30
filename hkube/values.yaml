@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.3.18
+systemversion: v2.3.19
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -754,7 +754,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.3.2
+    tag: v2.3.3
   metrics:
     port: 3001
   service:
@@ -773,7 +773,7 @@ algorithm_debug: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-debug
-    tag: v2.3.0
+    tag: v2.3.1
   service:
     type: ClusterIP
 algorithm_output: # +doc-gen:ignore
@@ -850,4 +850,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.3.18-1648462268639
+fullSystemVersion: v2.3.19-1648627993481
