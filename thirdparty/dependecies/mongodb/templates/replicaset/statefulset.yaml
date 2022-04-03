@@ -336,6 +336,9 @@ spec:
             - name: scripts
               mountPath: /scripts/setup.sh
               subPath: setup.sh
+            - name: scripts
+              mountPath: /opt/bitnami/scripts/libmongodb.sh
+              subPath: libmongodb.sh
             {{- if and .Values.externalAccess.enabled .Values.externalAccess.autoDiscovery.enabled (eq .Values.externalAccess.service.type "LoadBalancer") }}
             - name: shared
               mountPath: /shared
