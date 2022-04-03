@@ -2429,6 +2429,34 @@ entries:
       category: Database
     apiVersion: v1
     appVersion: 4.4.1
+    created: "2022-04-03T15:19:39.190978+03:00"
+    description: NoSQL document-oriented database that stores JSON-like documents
+      with dynamic schemas, simplifying the integration of data in content-driven
+      applications.
+    digest: 64f0fa5beb785d2d3714ea36929191d812881069f3fbf63add8e11929e7270da
+    home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
+    icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
+    keywords:
+    - mongodb
+    - database
+    - nosql
+    - cluster
+    - replicaset
+    - replication
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    name: mongodb
+    sources:
+    - https://github.com/bitnami/bitnami-docker-mongodb
+    - https://mongodb.org
+    urls:
+    - mongodb-10.0.1002.tgz
+    version: 10.0.1002
+  - annotations:
+      category: Database
+    apiVersion: v1
+    appVersion: 4.4.1
     created: "2021-08-10T16:29:57.104908+03:00"
     description: NoSQL document-oriented database that stores JSON-like documents
       with dynamic schemas, simplifying the integration of data in content-driven
@@ -2723,4 +2751,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2022-03-01T09:49:54.140890657Z"
+generated: "2022-04-03T15:19:39.184698+03:00"
