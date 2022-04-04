@@ -427,7 +427,7 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v2.3.1
+    tag: v2.3.2
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -850,4 +850,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.3.20-1649050806050
+fullSystemVersion: v2.3.20-1649054883335
