@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.4.1
+systemversion: 2.3.18-update-instead_of_create.2106858625
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -344,7 +344,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.4.0
+    tag: v2.3.2-update_instead_of_create-2106858625
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -593,7 +593,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.4.0
+    tag: v2.3.3-update_instead_of_create-2106858625
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -754,7 +754,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.4.0
+    tag: v2.3.2-update_instead_of_create-2106858625
   metrics:
     port: 3001
   service:
