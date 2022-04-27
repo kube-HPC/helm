@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.4.4-redirect-logs.2227368271
+systemversion: 2.4.4-redirect-logs.2231673771
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -795,7 +795,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.4.1-redirect-logs-2227368271
+    tag: v2.4.1-redirect-logs-2231673771
   # buildconfig_resources:
   #   limits:
   #     cpu: 300m
