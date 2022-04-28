@@ -71,7 +71,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: mongodb-configmap
-          envFrom:
             - configMapRef:
                 name: gc-service-configmap
           env:
