@@ -470,7 +470,7 @@ monitor_server: # +doc-gen:ignore
     max_display_batch_size: 10
   image:
     repository: hkube/monitor-server
-    tag: v2.2.3-design-refactor-1
+    tag: v2.2.3-design-refactor-2
   ingress:
     enabled: true
     path: /hkube/monitor-server
