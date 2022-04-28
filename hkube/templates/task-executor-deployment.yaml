@@ -42,7 +42,7 @@ spec:
             timeoutSeconds: {{ .Values.task_executor.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.task_executor.healthcheck.failureThreshold }}
 {{- end }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.task_executor.resources_enable }}
           resources:
 {{ toYaml .Values.task_executor.resources | indent 12 }}
 {{- else }}

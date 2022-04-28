@@ -34,7 +34,7 @@ spec:
       containers:
         - name: algorithm-operator
           image: "{{ .Values.global.registry }}{{ index .Values "algorithm_operator" "image" "repository" }}:{{ index .Values "algorithm_operator" "image" "tag" }}"
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.algorithm_operator.resources_enable }}
           resources:
 {{ toYaml .Values.algorithm_operator.resources | indent 12 }}
 {{- else }}
@@ -141,6 +141,10 @@ spec:
               value: {{ .Values.algorithm_operator.env.algorithm_builder_main_cpu | quote}}
             - name: ALGORITHM_BUILDER_MAIN_MEMORY
               value: {{ .Values.algorithm_operator.env.algorithm_builder_main_memory | quote}}
+            - name: ALGORITHM_QUEUE_MEMORY
+              value: {{ .Values.algorithm_operator.env.algorithm_queue_memory | quote}}
+            - name: ALGORITHM_QUEUE_CPU
+              value: {{ .Values.algorithm_operator.env.algorithm_queue_cpu | quote}}
             - name: RESOURCES_ENABLE
               value: {{ .Values.algorithm_operator.env.resources_enable | quote}}
 {{- if eq .Values.env.default_storage "fs" }}

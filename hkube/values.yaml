@@ -105,6 +105,17 @@ etcd:
     enabled: true
     storageClass: ''
     storage: 10Gi
+  resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 1000m
+    #   memory: 4Gi
+    # requests:
+    #   cpu: 500m
+    #   memory: 2Gi
 redis-ha:
   enable: true
   # set number of replicas. defualt 3. If set to 1 also set min-slaves-to-write to 0
@@ -113,6 +124,29 @@ redis-ha:
     config:
       min-slaves-to-write: 1
       client-output-buffer-limit: "replica 1024mb 512mb 60"
+    resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+      # limits:
+      #   cpu: 1000m
+      #   memory: 4Gi
+      # requests:
+      #   cpu: 500m
+      #   memory: 2Gi
+  sentinel:
+    resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+      # limits:
+      #   cpu: 300m
+      #   memory: 512Mi
+      # requests:
+      #   cpu: 100m
+      #   memory: 256Mi
   # set to true for multiple nodes
   hardAntiAffinity: false
 jaeger:
@@ -151,8 +185,27 @@ jaeger:
 nginx-ingress:
   # install nginx-ingress-controller with hkube
   enable: false
+  # controller:
+  #   resources:
+  #     limits:
+  #       cpu: 300m
+  #       memory: 512Mi
+  #     requests:
+  #       cpu: 100m
+  #       memory: 256Mi
+  # defaultBackend:
+  #   resources:
+  #     limits:
+  #       cpu: 10m
+  #       memory: 20Mi
+  #     requests:
+  #       cpu: 10m
+  #       memory: 20Mi
+
 mongodb:
   enable: true
+  persistence:
+    storageClass: null
   useStatefulSet: true
   architecture: replicaset
   tls:
@@ -175,8 +228,18 @@ minio:
     storageClass: ''
   serviceAccount: # +doc-gen:ignore
     create: false
+  resources: {}
+    # limits:
+    #   cpu: 300m
+    #   memory: 600Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 200Mi
+
 gitea:
   enable: true
+  persistence:
+    storageClass: null
   service:
     http:
       port: '3000'
@@ -189,6 +252,8 @@ gitea:
       password: '123456'
       email: "hkube@hkube.io"
   postgresql:
+    persistence:
+      storageClass: null
     securityContext:
       enabled: false
     containerSecurityContext:
@@ -241,6 +306,8 @@ algorithm_operator:
     algorithm_builder_builder_memory: 1024
     algorithm_builder_main_cpu: 0.5
     algorithm_builder_main_memory: 512
+    algorithm_queue_cpu: 0.5
+    algorithm_queue_memory: 512
     resources_enable: false
     algorithm_queue_interval: 1000
     algorithm_queue_concurrency_limit: 5
@@ -268,8 +335,13 @@ algorithm_operator:
     periodSeconds: 60
     timeoutSeconds: 1
     failureThreshold: 3
+  # enable resource limits for algorithm operator
+  resources_enable: false
   # Compute resources required for algorithm-operator
   resources: # +doc-gen:break
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
@@ -285,7 +357,7 @@ algorithm_queue_svc: # +doc-gen:ignore
 algorunner: # +doc-gen:ignore
   image:
     repository: hkube/algorunner
-    tag: v2.2.1
+    tag: v2.4.1
 api_gateway:
   ingress:
     path: /hkube/api-server
@@ -308,11 +380,23 @@ api_server: # +doc-gen:ignore
     path: /hkube/api-server
   service:
     type: ClusterIP
+  healthcheck: # +doc-gen:ignore
+    enabled: true
+    port: 5000
+    path: /healthz
+    initialDelaySeconds: 240
+    periodSeconds: 120
+    timeoutSeconds: 2
+    failureThreshold: 5
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
-datasciencemetrics_storage: # +doc-gen:ignore
+data_science_metrics_storage: # +doc-gen:ignore
     pvc:
       capacity: 50Gi
       storage_class: ''
@@ -334,7 +418,11 @@ datasources_service: # +doc-gen:ignore
     path: /hkube/datasources-service
   service:
     type: ClusterIP
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
@@ -343,13 +431,17 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v2.2.6
+    tag: v2.4.3
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
   service:
     type: ClusterIP
+  resources_enable: false
   resources:
+    limits:
+      cpu: 600m
+      memory: 4Gi
     requests:
       cpu: 50m
       memory: 256Mi
@@ -376,6 +468,12 @@ gc_service: # +doc-gen:ignore
     debug_enabled: true
     debug_max_age: 10
 
+    # output
+    output_cron: '*/2 * * * *'
+    output_enabled: true
+    output_max_age: 10
+
+
     # etcd
     etcd_cron: '0 1 * * *'
     etcd_enabled: true
@@ -397,6 +495,9 @@ gc_service: # +doc-gen:ignore
     pipelines_cron: '*/5 * * * *'
     pipelines_enabled: true
 
+    # status
+    status_cron: '*/5 * * * *'
+    status_enabled: true
     # redis
     redis_cron: '20 1 * * *'
     redis_enabled: true
@@ -407,10 +508,14 @@ gc_service: # +doc-gen:ignore
     storage_enabled: true
     storage_results_max_age: 14400
     storage_temp_max_age: 7200
+    builds_max_age: 14400
   image:
     repository: hkube/gc-service
     tag: v2.4.0-design-refactor-2143691059
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
@@ -427,24 +532,24 @@ gc_service: # +doc-gen:ignore
     periodSeconds: 60
     timeoutSeconds: 1
     failureThreshold: 3
-cpu-load-algorithm: # +doc-gen:ignore
-  image:
-    repository: hkube/cpu-load-algorithm
-    tag: v2.0.2
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
-    tag: v2.2.1
+    tag: v2.4.1
 optuna_dashboard: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/optuna-dashboard
-    tag: v2.2.1
+    tag: v2.4.1
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
     tag: v1.0.8
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
@@ -470,14 +575,18 @@ monitor_server: # +doc-gen:ignore
     max_display_batch_size: 10
   image:
     repository: hkube/monitor-server
-    tag: v2.2.3-design-refactor-2
+    tag: v2.4.1-design-refactor-3
   ingress:
     enabled: true
     path: /hkube/monitor-server
     datasource_proxy_path: /hkube/monitor-server/datasource
   service:
     type: ClusterIP
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
@@ -506,7 +615,11 @@ pipeline_driver_queue: # +doc-gen:ignore
   replicaCount: 1
   service:
     type: ClusterIP
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
@@ -533,7 +646,11 @@ resource_manager: # +doc-gen:ignore
     tag: v2.4.0-design-refactor-2143691059
   service:
     type: ClusterIP
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
@@ -563,7 +680,11 @@ simulator: # +doc-gen:ignore
   service:
     port: 9050
     type: ClusterIP
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
@@ -607,13 +728,14 @@ task_executor:
     tag: v2.4.0-design-refactor-2143691059
   service: # +doc-gen:ignore
     type: ClusterIP
-  # Compute resources required for algorithm-operator
+  resources_enable: false
   resources: # +doc-gen:break
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
-thirdparty: # +doc-gen:ignore
-  enabled: true
 trigger_service: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -622,7 +744,11 @@ trigger_service: # +doc-gen:ignore
     tag: v2.4.0-design-refactor-2143691059
   service:
     type: ClusterIP
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 256Mi
@@ -642,7 +768,7 @@ algorithm_gateway: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-gateway
-    tag: v2.2.2
+    tag: v2.4.0
   service:
     type: ClusterIP
 algorithm_debug: # +doc-gen:ignore
@@ -650,7 +776,7 @@ algorithm_debug: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-debug
-    tag: v2.2.3
+    tag: v2.4.1
   service:
     type: ClusterIP
 algorithm_output: # +doc-gen:ignore
@@ -658,7 +784,7 @@ algorithm_output: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-output
-    tag: v2.2.3
+    tag: v2.4.0
   service:
     type: ClusterIP
 algorithm_hyperparams_tuner: # +doc-gen:ignore
@@ -666,7 +792,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-hyperparams-tuner
-    tag: v2.2.2
+    tag: v2.4.0
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore
@@ -677,28 +803,27 @@ algorithm_builder: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
+  # buildconfig_resources:
+  #   limits:
+  #     cpu: 300m
+  #     memory: 1024Mi
+  #   requests:
+  #     cpu: 100m
+  #     memory: 512Mi
 kaniko: # +doc-gen:ignore
   image:
     repository: hkube/kaniko
-    tag: v2.2.1
-  resources:
-    requests:
-      cpu: 100m
-      memory: 1Gi
+    tag: v2.4.1
 oc_builder: # +doc-gen:ignore
   image:
     repository: hkube/oc-builder
-    tag: v2.2.0
-  resources:
-    requests:
-      cpu: 100m
-      memory: 1Gi
+    tag: v2.4.1
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v2.2.4
+    tag: v2.4.1
 etcd_defrag: # +doc-gen:ignore
-  enable: true
+  enable: false
   pattern: '0 0 * * *'
   env:
     etcd_name: etcd
@@ -708,7 +833,11 @@ etcd_defrag: # +doc-gen:ignore
   image:
     repository: hkube/etcd-defrag-cron
     tag: v1.0.3
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 1024Mi
     requests:
       cpu: 100m
       memory: 512Mi
@@ -716,19 +845,16 @@ sync_server: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/sync-server
-    tag: v2.2.1
+    tag: v2.4.1
   ingress:
     enabled: true
     path: /hkube/sync
+  resources_enable: false
   resources:
+    limits:
+      cpu: 300m
+      memory: 512Mi
     requests:
       cpu: 100m
       memory: 256Mi
-storage_migration: # +doc-gen:ignore
-  enable: false
-  env:
-    source_storage_encoding: bson
-  image:
-    repository: hkube/storage-migration
-    tag: v2.2.0
-fullSystemVersion: v2.2.24-1640680644948
+fullSystemVersion: v2.4.4-1650889779528

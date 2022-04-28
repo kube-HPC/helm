@@ -41,9 +41,9 @@ spec:
             timeoutSeconds: {{ .Values.monitor_server.healthcheck.timeoutSeconds }}
             failureThreshold: {{ .Values.monitor_server.healthcheck.failureThreshold }}
 {{- end }}
-{{- if .Values.global.resources_enable }}          
+{{- if or .Values.global.resources_enable .Values.monitor_server.resources_enable }}
           resources:
-{{ toYaml .Values.trigger_service.resources | indent 12 }}
+{{ toYaml .Values.monitor_server.resources | indent 12 }}
 {{- else }}
           resources: {}
 {{- end }}

@@ -45,7 +45,17 @@ spec:
         - name: api-server
           image: "{{ .Values.global.registry }}{{ index .Values "api_server" "image" "repository" }}:{{ index .Values "api_server" "image" "tag" }}"
           imagePullPolicy: {{ index .Values "image" "pullPolicy" }}
-{{- if .Values.global.resources_enable }}          
+{{- if .Values.api_server.healthcheck.enabled }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.api_server.healthcheck.path }}
+              port: {{ .Values.api_server.healthcheck.port }}
+            initialDelaySeconds: {{ .Values.api_server.healthcheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.api_server.healthcheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.api_server.healthcheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.api_server.healthcheck.failureThreshold }}
+{{- end }}
+{{- if or .Values.global.resources_enable .Values.api_server.resources_enable }}
           resources:
 {{ toYaml .Values.api_server.resources | indent 12 }}
 {{- else }}
