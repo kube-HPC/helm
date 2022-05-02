@@ -267,7 +267,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.4.1-design-refactor.2143691059
+systemversion: 2.4.4-design-refactor.2256372413
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -319,7 +319,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -348,7 +348,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -374,7 +374,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.1-design-refactor-2256372413
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -412,7 +412,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -511,7 +511,7 @@ gc_service: # +doc-gen:ignore
     builds_max_age: 14400
   image:
     repository: hkube/gc-service
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
   resources:
     limits:
       cpu: 300m
@@ -596,7 +596,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -608,7 +608,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
   ingress:
     enabled: true
     path: /hkube/queue
@@ -643,7 +643,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: 'http://monitoring-prometheus-server.monitoring:9090/api/v1'
   image:
     repository: hkube/resource-manager
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
   service:
     type: ClusterIP
   resources_enable: false
@@ -725,7 +725,7 @@ task_executor:
     use_resource_limits: false
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
@@ -741,7 +741,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/trigger-service
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
   service:
     type: ClusterIP
   resources_enable: false
@@ -757,7 +757,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.0-design-refactor-2256372413
   metrics:
     port: 3001
   service:
@@ -798,7 +798,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.4.0-design-refactor-2143691059
+    tag: v2.4.1-design-refactor-2256372413
   resources:
     requests:
       cpu: 100m
