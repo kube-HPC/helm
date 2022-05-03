@@ -267,7 +267,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.4.4-design-refactor.2256372413
+systemversion: 2.4.4-cache-bug.2262304205
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -596,7 +596,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: '100Ki'
   image:
     repository: hkube/pipeline-driver
-    tag: v2.4.0-design-refactor-2256372413
+    tag: v2.4.0-cache_bug-2262304205
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
