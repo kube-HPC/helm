@@ -219,6 +219,9 @@ mongodb:
     enabled: false
   containerSecurityContext:
     enabled: false
+  arbiter:
+    enabled: false
+  replicaCount: 3
 minio:
   enable: true
   accessKey: hkubeminiokey
