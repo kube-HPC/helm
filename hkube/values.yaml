@@ -353,7 +353,7 @@ algorithm_queue_svc: # +doc-gen:ignore
 algorunner: # +doc-gen:ignore
   image:
     repository: hkube/algorunner
-    tag: v2.4.1
+    tag: v2.4.1-upgrade-node-to-18
 api_gateway:
   ingress:
     path: /hkube/api-server
