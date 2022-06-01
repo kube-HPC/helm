@@ -18,7 +18,7 @@ metadata:
     core: "true"
 rules:
 - apiGroups: [""]
-  resources: ["pods"]
+  resources: ["pods","pods/log"]
   verbs: ["get", "list", "watch"]
 ---
 kind: RoleBinding
