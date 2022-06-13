@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.4.13
+systemversion: 2.4.8-algorithms-new_paging_api.2487758978
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -315,7 +315,7 @@ algorithm_operator:
     node_wrapper_version: ''
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.4.1
+    tag: v2.4.1-algorithms_new_paging_api-2487758978
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -370,7 +370,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.4.4
+    tag: v2.4.4-algorithms_new_paging_api-2487758978
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -408,7 +408,7 @@ datasources_service: # +doc-gen:ignore
     port: '3005'
   image:
     repository: hkube/datasources-service
-    tag: v2.4.2
+    tag: v2.4.2-algorithms_new_paging_api-2487758978
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -507,7 +507,7 @@ gc_service: # +doc-gen:ignore
     builds_max_age: 14400
   image:
     repository: hkube/gc-service
-    tag: v2.4.2
+    tag: v2.4.2-algorithms_new_paging_api-2487758978
   resources_enable: false
   resources:
     limits:
@@ -605,7 +605,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.4.2
+    tag: v2.4.2-algorithms_new_paging_api-2487758978
   ingress:
     enabled: true
     path: /hkube/queue
