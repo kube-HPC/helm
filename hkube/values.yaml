@@ -427,7 +427,7 @@ artifacts_registry: # +doc-gen:ignore
     port: '8081'
   image:
     repository: hkube/artifacts-registry
-    tag: v2.4.12
+    tag: v2.4.13
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -765,7 +765,7 @@ algorithm_gateway: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-gateway
-    tag: v2.4.1
+    tag: v2.4.2
   service:
     type: ClusterIP
 algorithm_debug: # +doc-gen:ignore
@@ -773,7 +773,7 @@ algorithm_debug: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-debug
-    tag: v2.4.2
+    tag: v2.4.3
   service:
     type: ClusterIP
 algorithm_output: # +doc-gen:ignore
@@ -781,7 +781,7 @@ algorithm_output: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-output
-    tag: v2.4.1
+    tag: v2.4.2
   service:
     type: ClusterIP
 algorithm_hyperparams_tuner: # +doc-gen:ignore
@@ -795,7 +795,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.4.9
+    tag: v2.4.10
   # buildconfig_resources:
   #   limits:
   #     cpu: 300m
@@ -850,4 +850,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.4.14-1655624450347
+fullSystemVersion: v2.4.14-1655629126253
