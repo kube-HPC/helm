@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.4.6-graphql.2644483111
+systemversion: 2.4.19-graphql.2825006729
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -344,7 +344,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.4.0-graphql-2644483111
+    tag: v2.4.1-graphql-2825006729
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: '3000'
@@ -370,7 +370,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.4.3-graphql-2644483111
+    tag: v2.4.5-graphql-2825006729
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -754,7 +754,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.4.0-graphql-2644483111
+    tag: v2.4.1-graphql-2825006729
   metrics:
     port: 3001
   service:
