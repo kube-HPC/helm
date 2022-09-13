@@ -575,8 +575,8 @@ monitor_server: # +doc-gen:ignore
     tag: v2.4.2
   ingress:
     enabled: true
-    path: /hkube/monitor-server
-    datasource_proxy_path: /hkube/monitor-server/datasource
+    path: /hkube/api-server
+    datasource_proxy_path: /hkube/api-server/datasource
   service:
     type: ClusterIP
   resources_enable: false
@@ -655,7 +655,7 @@ simulator: # +doc-gen:ignore
   env:
     hkube_log_level: 'info'
     port: 9050
-    monitor_backend_path: /hkube/monitor-server/
+    monitor_server_backend_path: /hkube/api-server/
     monitor_backend_path_socketio: /hkube/monitor-server/socket.io
     monitor_backend_use_location: 'true'
     monitor_backend_host: ''
