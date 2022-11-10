@@ -353,7 +353,7 @@ algorithm_queue_svc: # +doc-gen:ignore
 algorunner: # +doc-gen:ignore
   image:
     repository: hkube/algorunner
-    tag: v2.5.1
+    tag: v2.5.2
 api_gateway:
   ingress:
     path: /hkube/api-server
@@ -850,4 +850,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.5.3-1668002382906
+fullSystemVersion: v2.5.3-1668084040138
