@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.5.6-parsedlog.3612954750
+systemversion: 2.5.6-parsedlog.3613448306
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -656,7 +656,7 @@ simulator: # +doc-gen:ignore
     hkube_log_level: 'info'
     port: 9050
     api_server_backend_path: /hkube/api-server/
-  
+
     api_server_backend_use_location: 'true'
     api_server_backend_host: ''
     api_server_backend_port: ''
@@ -754,7 +754,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.5.0-parsedlog-3612954750
+    tag: v2.5.0-parsedlog-3613448306
   metrics:
     port: 3001
   service:
