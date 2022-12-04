@@ -4,9 +4,9 @@ kind: ConfigMap
 metadata:
   name: simulator-configmap
 data:
-  API_SERVER_BACKEND_PATH: {{ printf "%s%s" .Values.global.ingress.prefix .Values.simulator.env.api_server_path | quote }} 
-  MONITOR_BACKEND_PATH_SOCKETIO: {{ printf "%s%s" .Values.global.ingress.prefix .Values.simulator.env.monitor_backend_path_socketio | quote }} 
-  API_SERVER_USE_LOCATION: {{ .Values.simulator.env.api_server_backend_use_location | quote }}
+  API_SERVER_BACKEND_PATH: {{ printf "%s%s" .Values.global.ingress.prefix .Values.simulator.env.api_server_backend_path | quote }} 
+
+  API_SERVER_BACKEND_USE_LOCATION: {{ .Values.simulator.env.api_server_backend_use_location | quote }}
   API_SERVER_BACKEND_HOST: {{ .Values.simulator.env.api_server_backend_host | quote }}
   API_SERVER_BACKEND_PORT: {{ .Values.simulator.env.api_server_backend_port | quote }}
 

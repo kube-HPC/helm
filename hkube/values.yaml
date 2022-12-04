@@ -656,7 +656,7 @@ simulator: # +doc-gen:ignore
     hkube_log_level: 'info'
     port: 9050
     api_server_backend_path: /hkube/api-server/
-    monitor_backend_path_socketio: '' #/hkube/monitor-server/socket.io
+  
     api_server_backend_use_location: 'true'
     api_server_backend_host: ''
     api_server_backend_port: ''
