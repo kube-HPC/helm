@@ -550,43 +550,6 @@ delete_deployment_and_jobs: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 512Mi
-monitor_server: # +doc-gen:ignore
-  healthcheck:
-    enabled: true
-    port: 5000
-    path: /healthz
-    initialDelaySeconds: 500
-    periodSeconds: 60
-    timeoutSeconds: 1
-    failureThreshold: 3
-  env:
-    port: 30010
-    log_external_requests: false
-    elasticsearch_service_url: ''
-    elasticsearch_logs_index: 'logstash-*'
-    elasticsearch_logs_doc_type: '_doc'
-    logs_view_source: k8s
-    jaeger_query_service_host: ''
-    jaeger_query_service_port: ''
-    show_streaming_metrics: false
-    max_display_batch_size: 10
-  image:
-    repository: hkube/monitor-server
-    tag: v2.5.1
-  ingress:
-    enabled: true
-    path: /hkube/monitor-server
-    datasource_proxy_path: /hkube/monitor-server/datasource
-  service:
-    type: ClusterIP
-  resources_enable: false
-  resources:
-    limits:
-      cpu: 300m
-      memory: 1024Mi
-    requests:
-      cpu: 100m
-      memory: 512Mi
 pipeline_driver: # +doc-gen:ignore
   env:
     metric_port: '3001'

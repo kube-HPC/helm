@@ -52,11 +52,7 @@ data:
                         "tag": "{{ index .Values "simulator" "image" "tag" }}",
                         "image": "{{ .Values.simulator.image.repository }}"
                   },
-                  {
-                        "project": "monitor-server",
-                        "tag": "{{ index .Values "monitor_server" "image" "tag" }}",
-                        "image": "{{ .Values.monitor_server.image.repository }}"
-                  },
+                 
                   {
                         "project": "algorithm-queue",
                         "tag": "{{ index .Values "algorithm_queue" "image" "tag" }}",
