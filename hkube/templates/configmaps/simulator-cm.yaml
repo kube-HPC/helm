@@ -4,12 +4,13 @@ kind: ConfigMap
 metadata:
   name: simulator-configmap
 data:
-  MONITOR_BACKEND_PATH: {{ printf "%s%s" .Values.global.ingress.prefix .Values.simulator.env.monitor_backend_path | quote }} 
-  MONITOR_BACKEND_PATH_SOCKETIO: {{ printf "%s%s" .Values.global.ingress.prefix .Values.simulator.env.monitor_backend_path_socketio | quote }} 
-  MONITOR_BACKEND_USE_LOCATION: {{ .Values.simulator.env.monitor_backend_use_location | quote }}
-  MONITOR_BACKEND_HOST: {{ .Values.simulator.env.monitor_backend_host | quote }}
-  MONITOR_BACKEND_PORT: {{ .Values.simulator.env.monitor_backend_port | quote }}
-  MONITOR_BACKEND_IS_SECURE: {{ .Values.simulator.env.is_secure | quote }}
+  API_SERVER_BACKEND_PATH: {{ printf "%s%s" .Values.global.ingress.prefix .Values.simulator.env.api_server_backend_path | quote }} 
+
+  API_SERVER_BACKEND_USE_LOCATION: {{ .Values.simulator.env.api_server_backend_use_location | quote }}
+  API_SERVER_BACKEND_HOST: {{ .Values.simulator.env.api_server_backend_host | quote }}
+  API_SERVER_BACKEND_PORT: {{ .Values.simulator.env.api_server_backend_port | quote }}
+
+  API_SERVER_BACKEND_IS_SECURE: {{ .Values.simulator.env.is_secure | quote }}
   
   BOARD_PATH: {{ printf "%s%s" .Values.global.ingress.prefix .Values.simulator.env.board_path | quote }} 
   BOARD_USE_LOCATION: {{ .Values.simulator.env.board_use_location | quote }}

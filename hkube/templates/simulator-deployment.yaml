@@ -43,36 +43,32 @@ spec:
               value: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}
             - name: HKUBE_SYSTEM_VERSION
               value: {{ .Values.systemversion | quote}}
-            - name: MONITOR_BACKEND_PATH
+            - name: API_SERVER_BACKEND_PATH
               valueFrom:
                 configMapKeyRef:
                   name: simulator-configmap
-                  key: MONITOR_BACKEND_PATH
-            - name: MONITOR_BACKEND_PATH_SOCKETIO
+                  key: API_SERVER_BACKEND_PATH
+   
+            - name: API_SERVER_BACKEND_USE_LOCATION
               valueFrom:
                 configMapKeyRef:
                   name: simulator-configmap
-                  key: MONITOR_BACKEND_PATH_SOCKETIO
-            - name: MONITOR_BACKEND_USE_LOCATION
+                  key: API_SERVER_BACKEND_USE_LOCATION
+            - name: API_SERVER_BACKEND_HOST
               valueFrom:
                 configMapKeyRef:
                   name: simulator-configmap
-                  key: MONITOR_BACKEND_USE_LOCATION
-            - name: MONITOR_BACKEND_HOST
+                  key: API_SERVER_BACKEND_HOST
+            - name: API_SERVER_BACKEND_PORT
               valueFrom:
                 configMapKeyRef:
                   name: simulator-configmap
-                  key: MONITOR_BACKEND_HOST
-            - name: MONITOR_BACKEND_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: simulator-configmap
-                  key: MONITOR_BACKEND_PORT
+                  key: API_SERVER_BACKEND_PORT
             - name: isSecure
               valueFrom:
                 configMapKeyRef:
                   name: simulator-configmap
-                  key: MONITOR_BACKEND_IS_SECURE
+                  key: API_SERVER_BACKEND_IS_SECURE
             - name: BOARD_PATH
               valueFrom:
                 configMapKeyRef:
