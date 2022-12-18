@@ -97,7 +97,7 @@
       "repeatDirection": "h",
       "targets": [
         {
-          "expr": "count(mixin_pod_workload{workload=~\".+$hkube3rdparty.*\"})",
+          "expr": "count(namespace_workload_pod:kube_pod_owner:relabel{workload=~\".+$hkube3rdparty.*\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -188,7 +188,7 @@
       "repeatDirection": "h",
       "targets": [
         {
-          "expr": "count(mixin_pod_workload{workload=\"$hkubeservices\"})",
+          "expr": "count(namespace_workload_pod:kube_pod_owner:relabel{workload=\"$hkubeservices\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -249,7 +249,11 @@
             "text": "gc-service",
             "value": "gc-service"
           },
-          
+          {
+            "selected": false,
+            "text": "monitor-server",
+            "value": "monitor-server"
+          },
           {
             "selected": false,
             "text": "pipeline-driver-queue",
@@ -281,7 +285,7 @@
             "value": "trigger-service"
           }
         ],
-        "query": "algorithm-operator,api-server,artifacts-registry,datasources-service,pipeline-driver-queue,resource-manager,simulator,sync-server,task-executor,trigger-service",
+        "query": "algorithm-operator,api-server,artifacts-registry,datasources-service,gc-service,monitor-server,pipeline-driver-queue,resource-manager,simulator,sync-server,task-executor,trigger-service",
         "skipUrlSync": false,
         "type": "custom"
       },
