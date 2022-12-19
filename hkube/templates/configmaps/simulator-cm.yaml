@@ -17,4 +17,4 @@ data:
   BOARD_HOST: {{ .Values.simulator.env.board_host | quote }}
   BOARD_PORT: {{ .Values.simulator.env.board_port | quote }}
   
-  DATA_SOURCE_IS_ENABLE: {{ .Values.simulator.env.datasources_service.enabled | quote }}
+  DATA_SOURCE_IS_ENABLE: {{ .Values.datasources_service.enabled | quote }}
