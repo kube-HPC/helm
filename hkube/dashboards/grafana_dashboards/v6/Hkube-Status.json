@@ -1,0 +1,366 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1627471353459,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": "Prometheus",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 51,
+      "panels": [],
+      "title": "Hkube 3rd-party",
+      "type": "row"
+    },
+    {
+      "datasource": "Prometheus",
+      "description": "",
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "id": 15,
+      "maxPerRow": 6,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "mappings": [
+              {
+                "from": "",
+                "id": 1,
+                "operator": "",
+                "text": "❌",
+                "to": "",
+                "type": 1,
+                "value": "null"
+              },
+              {
+                "from": "1",
+                "id": 2,
+                "operator": "",
+                "text": "✅",
+                "to": "1000",
+                "type": 2,
+                "value": ""
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [],
+          "values": false
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto"
+      },
+      "pluginVersion": "6.7.3",
+      "repeat": "hkube3rdparty",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "expr": "count(mixin_pod_workload{workload=~\".+$hkube3rdparty.*\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$hkube3rdparty",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": "Prometheus",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 33,
+      "panels": [],
+      "title": "Hkube core",
+      "type": "row"
+    },
+    {
+      "datasource": "Prometheus",
+      "description": "",
+      "gridPos": {
+        "h": 9,
+        "w": 2,
+        "x": 0,
+        "y": 10
+      },
+      "id": 2,
+      "maxPerRow": 12,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "mappings": [
+              {
+                "from": "",
+                "id": 1,
+                "operator": "",
+                "text": "❌",
+                "to": "",
+                "type": 1,
+                "value": "null"
+              },
+              {
+                "from": "1",
+                "id": 2,
+                "operator": "",
+                "text": "✅",
+                "to": "10000",
+                "type": 2,
+                "value": "!null"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "overrides": [],
+          "values": false
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto"
+      },
+      "pluginVersion": "6.7.3",
+      "repeat": "hkubeservices",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "expr": "count(mixin_pod_workload{workload=\"$hkubeservices\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$hkubeservices",
+      "type": "stat"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 22,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": false,
+        "name": "hkubeservices",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "algorithm-operator",
+            "value": "algorithm-operator"
+          },
+          {
+            "selected": false,
+            "text": "api-server",
+            "value": "api-server"
+          },
+          {
+            "selected": false,
+            "text": "artifacts-registry",
+            "value": "artifacts-registry"
+          },
+          {
+            "selected": false,
+            "text": "datasources-service",
+            "value": "datasources-service"
+          },
+          {
+            "selected": false,
+            "text": "gc-service",
+            "value": "gc-service"
+          },
+          {
+            "selected": false,
+            "text": "monitor-server",
+            "value": "monitor-server"
+          },
+          {
+            "selected": false,
+            "text": "pipeline-driver-queue",
+            "value": "pipeline-driver-queue"
+          },
+          {
+            "selected": false,
+            "text": "resource-manager",
+            "value": "resource-manager"
+          },
+          {
+            "selected": false,
+            "text": "simulator",
+            "value": "simulator"
+          },
+          {
+            "selected": false,
+            "text": "sync-server",
+            "value": "sync-server"
+          },
+          {
+            "selected": false,
+            "text": "task-executor",
+            "value": "task-executor"
+          },
+          {
+            "selected": false,
+            "text": "trigger-service",
+            "value": "trigger-service"
+          }
+        ],
+        "query": "algorithm-operator,api-server,artifacts-registry,datasources-service,gc-service,monitor-server,pipeline-driver-queue,resource-manager,simulator,sync-server,task-executor,trigger-service",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": false,
+        "name": "hkube3rdparty",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "etcd",
+            "value": "etcd"
+          },
+          {
+            "selected": false,
+            "text": "mongodb",
+            "value": "mongodb"
+          },
+          {
+            "selected": false,
+            "text": "redis",
+            "value": "redis"
+          }
+        ],
+        "query": "etcd,mongodb,redis",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "datasource": null,
+        "filters": [],
+        "hide": 0,
+        "label": "",
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Hkube Services",
+  "uid": "uXoXQ8Z7k",
+  "variables": {
+    "list": []
+  },
+  "version": 24
+}
