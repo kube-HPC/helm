@@ -264,7 +264,7 @@ metrics:
   grafanaDashboardLabel:
     grafana_dashboard: '1'
 # set to '7' when use Grafana version >= 7, default '6'
-    grafana_version: '6'
+  grafana_version: '6'
 systemversion: v2.5.7
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
