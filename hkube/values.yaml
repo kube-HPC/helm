@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: 2.5.7-elastic.3730270694
+systemversion: 2.5.7-elastic.3757499772
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -370,7 +370,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.5.5-elastic-3730270694
+    tag: v2.5.5-elastic-3757499772
   ingress:
     enabled: false
     path: /hkube/api-server
