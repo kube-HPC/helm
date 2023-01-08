@@ -265,7 +265,7 @@ metrics:
     grafana_dashboard: '1'
 # set to '7' when use Grafana version >= 7, default '6'
   grafana_version: '6'
-systemversion: 2.5.8-check-pod-exist.3822338579
+systemversion: 2.5.8-check-pod-exist.3865967141
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -372,7 +372,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.5.6-check-pod-exist-3822338579
+    tag: v2.5.6-check-pod-exist-3865967141
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -719,7 +719,7 @@ worker: # +doc-gen:ignore
     metric_port: '3000'
   image:
     repository: hkube/worker
-    tag: v2.5.0
+    tag: v2.5.0-check-pod-exist-3865967141
   metrics:
     port: 3001
   service:
