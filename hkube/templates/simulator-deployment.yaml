@@ -59,6 +59,11 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: API_SERVER_BACKEND_HOST
+            - name: KIBANA_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: KIBANA_URL
             - name: API_SERVER_BACKEND_PORT
               valueFrom:
                 configMapKeyRef:

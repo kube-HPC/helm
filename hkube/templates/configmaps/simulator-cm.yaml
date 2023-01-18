@@ -18,3 +18,4 @@ data:
   BOARD_PORT: {{ .Values.simulator.env.board_port | quote }}
   
   DATA_SOURCE_IS_ENABLE: {{ .Values.datasources_service.enabled | quote }}
+  KIBANA_URL: {{ .Values.simulator.env.kibana_url | quote }}
