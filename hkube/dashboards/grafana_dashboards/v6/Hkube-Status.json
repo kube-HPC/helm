@@ -65,7 +65,7 @@
                 "from": "1",
                 "id": 2,
                 "operator": "",
-                "text": "✅",
+                "text": "✔",
                 "to": "1000",
                 "type": 2,
                 "value": ""
@@ -156,7 +156,7 @@
                 "from": "1",
                 "id": 2,
                 "operator": "",
-                "text": "✅",
+                "text": "✔",
                 "to": "10000",
                 "type": 2,
                 "value": "!null"
@@ -249,7 +249,6 @@
             "text": "gc-service",
             "value": "gc-service"
           },
-          
           {
             "selected": false,
             "text": "pipeline-driver-queue",
@@ -281,7 +280,7 @@
             "value": "trigger-service"
           }
         ],
-        "query": "algorithm-operator,api-server,artifacts-registry,datasources-service,pipeline-driver-queue,resource-manager,simulator,sync-server,task-executor,trigger-service",
+        "query": "algorithm-operator,api-server,artifacts-registry,datasources-service,gc-service,pipeline-driver-queue,resource-manager,simulator,sync-server,task-executor,trigger-service",
         "skipUrlSync": false,
         "type": "custom"
       },
