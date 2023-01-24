@@ -64,6 +64,11 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: KIBANA_URL
+            - name: DATA_SOURCE_IS_ENABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: DATA_SOURCE_IS_ENABLE
             - name: API_SERVER_BACKEND_PORT
               valueFrom:
                 configMapKeyRef:

@@ -263,9 +263,9 @@ metrics:
   serviceMonitorSelector:
     release: metric
   grafanaDashboardLabel:
-    grafana_dashboard: '1'
-# set to '7' when use Grafana version >= 7, default '6'
-  grafana_version: '6'
+    grafana_dashboard: "1"
+  # set to '7' when use Grafana version >= 7, default '6'
+  grafana_version: "6"
 systemversion: v2.5.10
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
@@ -630,7 +630,7 @@ simulator: # +doc-gen:ignore
     board_path: /hkube/board
     board_use_location: "true"
     is_secure: ""
-    kibana_url: "https://dev1.hkube.io/system/kibana/"
+    kibana_url: "https://cd.hkube.io/system/kibana/"
   image:
     repository: hkube/simulator
     tag: v2.5.17
