@@ -633,7 +633,7 @@ simulator: # +doc-gen:ignore
     kibana_url: "https://cd.hkube.io/system/kibana/"
   image:
     repository: hkube/simulator
-    tag: v2.5.24
+    tag: v2.5.25
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -816,4 +816,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.5.14-1675166540623
+fullSystemVersion: v2.5.14-1675175829457
