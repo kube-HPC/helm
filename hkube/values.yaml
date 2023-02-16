@@ -266,7 +266,7 @@ metrics:
     grafana_dashboard: "1"
   # set to '7' when use Grafana version >= 7, default '6'
   grafana_version: "6"
-systemversion: v2.5.17
+systemversion: v2.5.18
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -761,7 +761,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.5.1
+    tag: v2.5.2
   # buildconfig_resources:
   #   limits:
   #     cpu: 300m
@@ -816,4 +816,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.5.17-1676549337649
+fullSystemVersion: v2.5.18-1676551707791
