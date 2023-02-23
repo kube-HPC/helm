@@ -266,7 +266,7 @@ metrics:
     grafana_dashboard: "1"
   # set to '7' when use Grafana version >= 7, default '6'
   grafana_version: "6"
-systemversion: 2.5.17-change-msg-build-add-file-checksum.4126482684
+systemversion: 2.5.17-change-msg-build-add-file-checksum.4251349406
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -373,7 +373,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.5.13-change-msg-build-add-file-checksum-4126482684
+    tag: v2.5.13-change-msg-build-add-file-checksum-4251349406
   ingress:
     enabled: false
     path: /hkube/api-server
