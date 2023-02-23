@@ -266,7 +266,7 @@ metrics:
     grafana_dashboard: "1"
   # set to '7' when use Grafana version >= 7, default '6'
   grafana_version: "6"
-systemversion: 2.5.18-node-version-algorithem.4251667016
+systemversion: 2.5.18-node-version-algorithem.4252153899
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -558,7 +558,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: "100Ki"
   image:
     repository: hkube/pipeline-driver
-    tag: v2.5.0-node-version-algorithem-4251667016
+    tag: v2.5.0-node-version-algorithem-4252153899
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
