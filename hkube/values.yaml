@@ -686,6 +686,8 @@ task_executor:
     has_node_list: false
     # set to true to set algorithm resource limit to equal resource request
     use_resource_limits: false
+    # path where kubernetes stores the pods output logs.
+    pods_output_log_folder : '/var/lib/docker/containers'
   image: # +doc-gen:ignore
     repository: hkube/task-executor
     tag: v2.5.1

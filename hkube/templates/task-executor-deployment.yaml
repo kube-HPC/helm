@@ -111,6 +111,11 @@ spec:
                 configMapKeyRef:
                   name: task-executor-configmap
                   key: HAS_NODE_LIST
+            - name: PODS_OUTPUT_LOGS_FOLDER
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: PODS_OUTPUT_LOGS_FOLDER            
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
