@@ -26,4 +26,6 @@ data:
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   HAS_NODE_LIST: {{ .Values.task_executor.env.has_node_list | quote }}
   USE_RESOURCE_LIMITS: {{ .Values.task_executor.env.use_resource_limits | quote}}
+  PODS_OUTPUT_LOG_FOLDER: {{ .Values.task_executor.env.pods_output_log_folder | quote}}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
+  

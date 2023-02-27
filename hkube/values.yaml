@@ -266,7 +266,7 @@ metrics:
     grafana_dashboard: "1"
   # set to '7' when use Grafana version >= 7, default '6'
   grafana_version: "6"
-systemversion: v2.5.20
+systemversion: 2.5.20-docker-log_configurable.4282651954
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -686,9 +686,11 @@ task_executor:
     has_node_list: false
     # set to true to set algorithm resource limit to equal resource request
     use_resource_limits: false
+    # path where kubernetes stores the pods output logs.
+    pods_output_log_folder : '/var/lib/docker/containers'
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.5.1
+    tag: v2.5.1-docker_log_configurable-4282651954
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
