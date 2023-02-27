@@ -263,7 +263,7 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: '1'
-systemversion: v2.3.20
+systemversion: v2.3.21
 build_secret:
 # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ''
@@ -724,7 +724,7 @@ task_executor:
     pods_output_log_folder : '/var/lib/docker/containers'
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.3.0
+    tag: v2.3.1
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
@@ -852,4 +852,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.3.20-1649054883335
+fullSystemVersion: v2.3.21-1677515804132
