@@ -266,7 +266,7 @@ metrics:
     grafana_dashboard: "1"
   # set to '7' when use Grafana version >= 7, default '6'
   grafana_version: "6"
-systemversion: v2.5.22
+systemversion: v2.5.23
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -373,7 +373,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.5.14
+    tag: v2.5.15
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -558,7 +558,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: "100Ki"
   image:
     repository: hkube/pipeline-driver
-    tag: v2.5.2
+    tag: v2.5.3
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -818,4 +818,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.5.22-1678272452221
+fullSystemVersion: v2.5.23-1678272869289
