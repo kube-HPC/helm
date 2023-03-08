@@ -1,0 +1,41 @@
+{{- if index .Values "site" "ingress" "enabled" -}}
+{{- $servicePort := .Values.site.service.port | int -}}
+{{- $ingressPath := .Values.site.ingress.path -}}
+apiVersion:  {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  name: hkube-site
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}    
+  labels:
+    app: hkube-site
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: hkube-site-tls-secret
+{{- end }}
+  rules:
+  - http:
+      paths:
+        - backend:
+            service:
+              name: hkube-site
+              port:
+                number: {{ $servicePort }}
+          path: /hkube/site(/|$)(.*)
+          pathType: ImplementationSpecific
+{{- if .Values.global.ingress.hostname }}
+  host: {{ .Values.global.ingress.hostname }}
+  {{- end }}
+  {{- end }}

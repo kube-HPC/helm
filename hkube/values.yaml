@@ -297,6 +297,24 @@ build_secret:
   maven_user: ""
 # node selector for hkube containers.
 nodeSelector: {}
+site:
+  env: {}
+  image:
+    repository: hkube/hkube-site
+    tag: v1.0.1
+  ingress:
+    enabled: true
+    path: hkube/site
+  service:
+    port: 80
+    type: ClusterIP
+  resources:
+    limits:
+      cpu: 200m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
 algorithm_operator:
   env: # +doc-gen:ignore
     metric_port: "3000"

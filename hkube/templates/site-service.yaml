@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hkube-site
+  labels:
+    app: hkube-site
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+  selector:
+    app: hkube-site
+  ports:
+    - protocol: TCP
+      port: {{ .Values.site.service.port }}
+      targetPort: {{ .Values.site.service.port }}
