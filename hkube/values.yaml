@@ -266,7 +266,7 @@ metrics:
     grafana_dashboard: "1"
   # set to '7' when use Grafana version >= 7, default '6'
   grafana_version: "6"
-systemversion: v2.5.21
+systemversion: v2.5.22
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -373,7 +373,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.5.13
+    tag: v2.5.14
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -430,7 +430,7 @@ artifacts_registry: # +doc-gen:ignore
     port: "8081"
   image:
     repository: hkube/artifacts-registry
-    tag: v2.5.4
+    tag: v2.5.8
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -818,4 +818,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.5.21-1677511672100
+fullSystemVersion: v2.5.22-1678269769310
