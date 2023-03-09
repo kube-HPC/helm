@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  hkube-site
+  labels:
+    app:  hkube-site
+    group: {{ .Values.labels.group.value }}
+spec:
+  selector:
+    matchLabels:
+      app: hkube-site
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  hkube-site
+    spec:
+      containers:
+      - name:  hkube-site
+        image:  "{{ .Values.global.registry }}{{ .Values.site.image.repository }}:{{ .Values.site.image.tag }}"
+
+        resources:
+          limits:
+            cpu: 200m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        ports:
+        - containerPort: {{ .Values.site.service.port }}
+      restartPolicy: Always
