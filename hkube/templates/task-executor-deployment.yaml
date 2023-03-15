@@ -120,6 +120,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+            - name: CREATED_JOBS_TTL
+              value : {{ .Values.task_executor.env.created_jobs_ttl | quote}}
             - name: WORKER_MEMORY
               value: {{ .Values.task_executor.env.worker_memory | quote}}
             - name: WORKER_CPU

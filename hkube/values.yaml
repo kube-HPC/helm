@@ -685,6 +685,8 @@ task_executor:
     worker_algorithm_encoding: bson # +doc-gen:ignore
     default_storage_protocol: v1 # +doc-gen:ignore
     default_worker_algorithm_encoding: json # +doc-gen:ignore
+    # interval in MS, in which we verify if a job was deployed
+    created_jobs_ttl: 15000
     # worker container memory request in MB. Only set if resources_enable=true
     worker_memory: 512
     # worker container cpu request. Only set if resources_enable=true
