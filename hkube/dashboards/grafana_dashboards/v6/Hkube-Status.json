@@ -21,7 +21,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": "Prometheus",
+      "datasource": "${placeHolderSource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -34,7 +34,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${placeHolderSource}",
       "description": "",
       "gridPos": {
         "h": 8,
@@ -112,7 +112,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "Prometheus",
+      "datasource": "${placeHolderSource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -125,7 +125,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${placeHolderSource}",
       "description": "",
       "gridPos": {
         "h": 9,

@@ -16,7 +16,7 @@ items:
       app: hkube
 {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
   data:
-    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson }}
+    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source)}}
 {{- end }}
 {{- end }}
 {{- end }}
@@ -38,7 +38,7 @@ items:
       app: hkube
 {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
   data:
-    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson }}
+    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) }}
 {{- end }}
 {{- end }}
 {{- end }}
