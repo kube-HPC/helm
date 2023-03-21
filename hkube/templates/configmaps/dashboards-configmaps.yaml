@@ -1,5 +1,5 @@
 ---
-{{- $files := .Files.Glob "dashboards/grafana_dashboards/v6/*.json" }}
+{{- $files := .Files.Glob "dashboards/grafana_dashboards/*.json" }}
 {{- if eq $.Values.metrics.grafana_version "6" -}}
 {{- if $files }}
 apiVersion: v1
@@ -16,12 +16,12 @@ items:
       app: hkube
 {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
   data:
-    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source)}}
+    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "{thirdParty}" (toString $.Values.metrics.hkube_3rdparty_v6) | replace "{services}" (toString $.Values.metrics.hkubeservices_v6) }}
 {{- end }}
 {{- end }}
 {{- end }}
 ---
-{{- $files := .Files.Glob "dashboards/grafana_dashboards/v7/*.json" }}
+{{- $files := .Files.Glob "dashboards/grafana_dashboards/*.json" }}
 {{- if eq $.Values.metrics.grafana_version "7" -}}
 {{- if $files }}
 apiVersion: v1
@@ -38,7 +38,7 @@ items:
       app: hkube
 {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
   data:
-    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) }}
+    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "{thirdParty}" (toString $.Values.metrics.hkube_3rdparty_v7) | replace "{services}" (toString $.Values.metrics.hkubeservices_v7) }}
 {{- end }}
 {{- end }}
 {{- end }}

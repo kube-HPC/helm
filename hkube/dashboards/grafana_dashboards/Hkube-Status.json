@@ -97,7 +97,7 @@
       "repeatDirection": "h",
       "targets": [
         {
-          "expr": "count(mixin_pod_workload{workload=~\".+$hkube3rdparty.*\"})",
+          "expr": "${thirdParty}\".+$hkube3rdparty.*\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -188,7 +188,7 @@
       "repeatDirection": "h",
       "targets": [
         {
-          "expr": "count(mixin_pod_workload{workload=\"$hkubeservices\"})",
+          "expr": "${services}\"$hkubeservices\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"

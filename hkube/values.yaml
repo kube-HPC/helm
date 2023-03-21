@@ -265,9 +265,17 @@ metrics:
   grafanaDashboardLabel:
     grafana_dashboard: "1"
   # set to '7' when use Grafana version >= 7, default '6'
-  grafana_version: "6"
+  grafana_version: "7"
   # set your data source here, replaces "${placeHolderSource}" values in all ./dashboards/grafana_dashboards/../*.json files
   data_source: Prometheus
+  # used to set 'expr' value in HKube_status.json, replaces the partial string "${thirdParty} for grafana_version == 6"
+  hkube_3rdparty_v6: "count(mixin_pod_workload{workload=~"
+  # used to set 'expr' value in HKube_status.json, replaces the partial string "${thirdParty} for grafana_version == 7"
+  hkube_3rdparty_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload=~"
+  # used to set 'expr' value in HKube_status.json, replaces the partial string "${services} for grafana_version == 6"
+  hkubeservices_v6: "count(mixin_pod_workload{workload="
+  # used to set 'expr' value in HKube_status.json, replaces the partial string "${services} for grafana_version == 7"
+  hkubeservices_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
 systemversion: v2.5.24
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
