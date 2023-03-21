@@ -124,3 +124,17 @@ Usage:
 {{- print "true" -}}
 {{- end -}}
 {{- end -}}
+
+
+{{- define "grafanaVersionUtility" -}}
+  {{- $exprDict := dict }}
+  {{- if eq $.Values.metrics.grafana_version "6" -}}
+    {{- $_ := set $exprDict "thirdParty" (toString $.Values.metrics.hkube_3rdparty_v6) -}}
+    {{- $_ := set $exprDict  "services" (toString $.Values.metrics.hkubeservices_v6) -}}
+  {{- else if eq $.Values.metrics.grafana_version "7" -}}
+    {{- $_ := set $exprDict "thirdParty" (toString $.Values.metrics.hkube_3rdparty_v7) -}}
+    {{- $_ := set $exprDict "services" (toString $.Values.metrics.hkubeservices_v7) -}}
+  {{- end -}}
+  {{ $exprDict | toJson}}
+  
+{{- end -}}

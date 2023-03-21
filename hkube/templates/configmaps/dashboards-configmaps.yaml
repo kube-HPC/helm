@@ -1,44 +1,22 @@
----
+{{- $exprDict := include "grafanaVersionUtility" . | fromJson }}
+  {{- $thirdParty := index $exprDict "thirdParty" }}
+  {{- $services := index $exprDict "services" }}
 {{- $files := .Files.Glob "dashboards/grafana_dashboards/*.json" }}
-{{- if eq $.Values.metrics.grafana_version "6" -}}
 {{- if $files }}
 apiVersion: v1
 kind: ConfigMapList
 items:
 {{- range $path, $fileContents := $files }}
-{{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: {{ printf "dashboard-%s" $dashboardName | lower | trunc 63 | trimSuffix "-" }}
-    namespace: {{ $.Release.Namespace }}
-    labels:
-      app: hkube
-{{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
-  data:
-    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "${thirdParty}" (toString $.Values.metrics.hkube_3rdparty_v6) | replace "${services}" (toString $.Values.metrics.hkubeservices_v6) }}
-{{- end }}
-{{- end }}
-{{- end }}
----
-{{- $files := .Files.Glob "dashboards/grafana_dashboards/*.json" }}
-{{- if eq $.Values.metrics.grafana_version "7" -}}
-{{- if $files }}
-apiVersion: v1
-kind: ConfigMapList
-items:
-{{- range $path, $fileContents := $files }}
-{{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: {{ printf "dashboard-%s" $dashboardName | lower | trunc 63 | trimSuffix "-" }}
-    namespace: {{ $.Release.Namespace }}
-    labels:
-      app: hkube
-{{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
-  data:
-    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "${thirdParty}" (toString $.Values.metrics.hkube_3rdparty_v7) | replace "${services}" (toString $.Values.metrics.hkubeservices_v7) }}
-{{- end }}
-{{- end }}
+  {{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: {{ printf "dashboard-%s" $dashboardName | lower | trunc 63 | trimSuffix "-" }}
+      namespace: {{ $.Release.Namespace }}
+      labels:
+        app: hkube
+  {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
+    data:
+      {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "${thirdParty}" (toString $thirdParty) | replace "${services}" (toString $services) }}
+  {{- end }}
 {{- end }}
