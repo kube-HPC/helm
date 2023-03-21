@@ -16,7 +16,7 @@ items:
       app: hkube
 {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
   data:
-    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "{thirdParty}" (toString $.Values.metrics.hkube_3rdparty_v6) | replace "{services}" (toString $.Values.metrics.hkubeservices_v6) }}
+    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "${thirdParty}" (toString $.Values.metrics.hkube_3rdparty_v6) | replace "${services}" (toString $.Values.metrics.hkubeservices_v6) }}
 {{- end }}
 {{- end }}
 {{- end }}
@@ -38,7 +38,7 @@ items:
       app: hkube
 {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
   data:
-    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "{thirdParty}" (toString $.Values.metrics.hkube_3rdparty_v7) | replace "{services}" (toString $.Values.metrics.hkubeservices_v7) }}
+    {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "${thirdParty}" (toString $.Values.metrics.hkube_3rdparty_v7) | replace "${services}" (toString $.Values.metrics.hkubeservices_v7) }}
 {{- end }}
 {{- end }}
 {{- end }}
