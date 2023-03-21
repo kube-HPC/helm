@@ -265,7 +265,7 @@ metrics:
   grafanaDashboardLabel:
     grafana_dashboard: "1"
   # set to '7' when use Grafana version >= 7, default '6'
-  grafana_version: "7"
+  grafana_version: "6"
   # set your data source here, replaces "${placeHolderSource}" values in all ./dashboards/grafana_dashboards/../*.json files
   data_source: Prometheus
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${thirdParty} for grafana_version == 6"
