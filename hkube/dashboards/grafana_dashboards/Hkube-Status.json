@@ -97,7 +97,7 @@
       "repeatDirection": "h",
       "targets": [
         {
-          "expr": "${thirdParty}\".+$hkube3rdparty.*\"})",
+          "expr": "${podCountExpr}~\".+$hkube3rdparty.*\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -188,7 +188,7 @@
       "repeatDirection": "h",
       "targets": [
         {
-          "expr": "${services}\"$hkubeservices\"})",
+          "expr": "${podCountExpr}\"$hkubeservices\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"

@@ -1,6 +1,6 @@
-{{- $exprDict := include "grafanaVersionUtility" . | fromJson }}
-  {{- $thirdParty := index $exprDict "thirdParty" }}
-  {{- $services := index $exprDict "services" }}
+{{- $placeHolderDict := include "grafanaVersionUtility" . | fromJson }}
+  {{- $podCountExpr := index $placeHolderDict "podCountExpr" }}
+  {{- $grafanaDataSource := index $placeHolderDict "grafanaDataSource" }}
 {{- $files := .Files.Glob "dashboards/grafana_dashboards/*.json" }}
 {{- if $files }}
 apiVersion: v1
@@ -17,6 +17,6 @@ items:
         app: hkube
   {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
     data:
-      {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${placeHolderSource}" (toString $.Values.metrics.data_source) | replace "${thirdParty}" (toString $thirdParty) | replace "${services}" (toString $services) }}
+      {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${grafana_data_source}" $grafanaDataSource | replace "${podCountExpr}" (toString $podCountExpr) }}
   {{- end }}
 {{- end }}
