@@ -124,3 +124,21 @@ Usage:
 {{- print "true" -}}
 {{- end -}}
 {{- end -}}
+
+
+{{/*
+Returns a Json-formatted dictionary containing "thirdParty" and "services" to replace according
+to the $.Values.metrics.grafana_version ( currently supports 6/7)
+Usage:
+{{ include "grafanaVersionUtility" . | fromJson }}
+*/}}
+{{- define "grafanaVersionUtility" -}}
+  {{- $placeHolderDict := dict }}
+  {{- if eq $.Values.metrics.grafana_version "6" -}}
+    {{- $_ := set $placeHolderDict "podCountExpr" (toString $.Values.metrics.pod_count_expr_v6) -}}
+  {{- else if eq $.Values.metrics.grafana_version "7" -}}
+    {{- $_ := set $placeHolderDict "podCountExpr" (toString $.Values.metrics.pod_count_expr_v7) -}}
+  {{- end -}}
+  {{- $_ := set $placeHolderDict "grafanaDataSource" (toString $.Values.metrics.grafana_data_source) -}}
+  {{ $placeHolderDict | toJson}}
+{{- end -}}

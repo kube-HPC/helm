@@ -21,7 +21,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": "Prometheus",
+      "datasource": "${grafana_data_source}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -34,7 +34,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${grafana_data_source}",
       "description": "",
       "gridPos": {
         "h": 8,
@@ -97,7 +97,7 @@
       "repeatDirection": "h",
       "targets": [
         {
-          "expr": "count(mixin_pod_workload{workload=~\".+$hkube3rdparty.*\"})",
+          "expr": "${podCountExpr}~\".+$hkube3rdparty.*\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -112,7 +112,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "Prometheus",
+      "datasource": "${grafana_data_source}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -125,7 +125,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${grafana_data_source}",
       "description": "",
       "gridPos": {
         "h": 9,
@@ -188,7 +188,7 @@
       "repeatDirection": "h",
       "targets": [
         {
-          "expr": "count(mixin_pod_workload{workload=\"$hkubeservices\"})",
+          "expr": "${podCountExpr}\"$hkubeservices\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"

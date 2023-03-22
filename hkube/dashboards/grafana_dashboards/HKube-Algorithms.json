@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 34,
+  "id": 31,
   "links": [],
   "panels": [
     {
@@ -23,8 +23,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "Current number of pipelines (by type) waiting in pipeline driver queues.\nNotice it doesn't include pipeline which are handled quicker than scrape interval!",
+      "datasource": "${grafana_data_source}",
+      "description": "Current number of algorithms (by type) waiting in algorithm queues.\nNotice it doesn't include algorithms which are handled quicker than scrape interval!",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -34,7 +34,7 @@
         "y": 0
       },
       "hiddenSeries": false,
-      "id": 18,
+      "id": 25,
       "legend": {
         "avg": false,
         "current": false,
@@ -61,11 +61,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(hkube_pipeline_driver_queue_amount_gauge) by (pipeline_name)",
+          "expr": "sum(hkube_algorithm_queue_queue_amount_gauge) by (algorithm_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -73,7 +73,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Number of Queued Pipelines",
+      "title": "Number of Queued Algorithms",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -115,8 +115,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "Start rate (pipelines per minute) for each pipeline type, measured over 5 min",
+      "datasource": "${grafana_data_source}",
+      "description": "Start rate (algorithms per minute) for each algorithm type, measured over 5 min",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -153,11 +153,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(hkube_pipeline_driver_queue_counter_counter[5m])) by (pipeline_name) * 60",
+          "expr": "sum(rate(hkube_worker_started_counter[5m])) by (algorithm_name) * 60",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -165,7 +165,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pipelines Start Rate [5 min]",
+      "title": "Algorithms Start Rate [5 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -182,7 +182,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "pipelines / min",
+          "label": "algorithms / min",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -207,8 +207,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "Success rate (pipelines per minute) for each pipeline type, measured over 5 min",
+      "datasource": "${grafana_data_source}",
+      "description": "Success rate (algorithms per minute) for each algorithm type, measured over 5 min",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -218,7 +218,7 @@
         "y": 9
       },
       "hiddenSeries": false,
-      "id": 24,
+      "id": 20,
       "legend": {
         "avg": false,
         "current": false,
@@ -245,11 +245,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(hkube_api_server_pipelines_gross_counter{status='completed'}[5m])) by (pipeline_name) * 60",
+          "expr": "sum(rate(hkube_worker_succeeded_counter[5m])) by (algorithm_name) * 60",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -257,7 +257,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pipelines Success Rate [5 min]",
+      "title": "Algorithms Success Rate [5 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -274,7 +274,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "pipelines / min",
+          "label": "algorithms / min",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -299,8 +299,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "Failure rate (pipelines per minute) for each pipeline type, measured over 5 min",
+      "datasource": "${grafana_data_source}",
+      "description": "Failure rate (algorithms per minute) for each algorithm type, measured over 5 min",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -337,11 +337,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(hkube_api_server_pipelines_gross_counter{status='failed'}[5m])) by (pipeline_name) * 60",
+          "expr": "sum(rate(hkube_worker_failed_counter[5m])) by (algorithm_name) * 60",
           "format": "time_series",
-          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -349,7 +348,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pipelines Failure Rate [5 min]",
+      "title": "Algorithms Failure Rate [5 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -366,7 +365,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "pipelines / min",
+          "label": "algorithms / min",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -391,8 +390,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "Total average time-in-queue for each pipeline type",
+      "datasource": "${grafana_data_source}",
+      "description": "Total average time-in-queue for each algorithm type",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -429,11 +428,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(hkube_pipeline_driver_queue_time_in_queue_histogram_sum) by (le, pipeline_name) /sum(hkube_pipeline_driver_queue_time_in_queue_histogram_count) by (le, pipeline_name)",
+          "expr": "sum(hkube_algorithm_queue_time_in_queue_histogram_sum) by (algorithm_name) / sum(hkube_algorithm_queue_time_in_queue_histogram_count) by (algorithm_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -441,7 +440,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pipelines Average Time in Queue",
+      "title": "Algorithms Average Time in Queue",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -483,8 +482,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "Median (50% percentile) value of time-in-queue for each pipeline type, measured over 5 min",
+      "datasource": "${grafana_data_source}",
+      "description": "Median (50% percentile) value of time-in-queue for each algorithm type, measured over 5 min",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -521,11 +520,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.5, sum(rate(hkube_pipeline_driver_queue_time_in_queue_histogram_bucket[5m])) by (le, pipeline_name))",
+          "expr": "histogram_quantile(0.5, sum(rate(hkube_algorithm_queue_time_in_queue_histogram_bucket[5m])) by (le, algorithm_name))",
           "format": "time_series",
-          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -533,7 +531,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pipelines Median Time in  Queue [5 min]",
+      "title": "Algorithms Median Time in  Queue [5 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -575,8 +573,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "95% percentile value of time-in-queue for each pipeline type, measured over 5 min",
+      "datasource": "${grafana_data_source}",
+      "description": "95% percentile value of time-in-queue for each algorithm type, measured over 5 min",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -613,10 +611,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.95, sum(rate(hkube_pipeline_driver_queue_time_in_queue_histogram_bucket[5m])) by (le, pipeline_name))",
+          "expr": "histogram_quantile(0.95, sum(rate(hkube_algorithm_queue_time_in_queue_histogram_bucket[5m])) by (le, algorithm_name))",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -624,7 +622,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pipelines 95% Percentile Time in  Queue [5 min]",
+      "title": "Algorithms 95% Percentile Time in  Queue [5 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -641,7 +639,7 @@
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
+          "label": "",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -666,8 +664,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "Total average runtime for each pipeline type",
+      "datasource": "${grafana_data_source}",
+      "description": "Total average runtime for each algorithm type",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -704,11 +702,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(hkube_pipeline_driver_pipelines_net_histogram_sum) by (pipeline_name) / sum(hkube_pipeline_driver_pipelines_net_histogram_count) by (pipeline_name)",
+          "expr": "sum(hkube_worker_net_histogram_sum) by (algorithm_name) / sum(hkube_worker_net_histogram_count) by (algorithm_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -716,7 +714,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pipelines Average Total Runtime",
+      "title": "Algorithms Average Total Runtime",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -758,8 +756,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "Median (50% percentile) value of time-in-queue for each pipeline type, measured over 5 min",
+      "datasource": "${grafana_data_source}",
+      "description": "Median (50% percentile) value of time-in-queue for each algorithm type, measured over 5 min",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -796,11 +794,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.5, sum(rate(hkube_pipeline_driver_pipelines_net_histogram_bucket[5m])) by (le, pipeline_name))",
+          "expr": "histogram_quantile(0.5, sum(rate(hkube_worker_net_histogram_bucket[5m])) by (le, algorithm_name))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -808,7 +806,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pipelines Median Total Runtime [5 min]",
+      "title": "Algorithms Median Total Runtime [5 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -850,8 +848,8 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "description": "95% percentile value of time-in-queue for each pipeline type, measured over 5 min",
+      "datasource": "${grafana_data_source}",
+      "description": "95% percentile value of time-in-queue for each algorithm type, measured over 5 min",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -888,11 +886,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.95, sum(rate(hkube_pipeline_driver_pipelines_net_histogram_bucket[5m])) by (le, pipeline_name))",
+          "expr": "histogram_quantile(0.95, sum(rate(hkube_worker_net_histogram_bucket[5m])) by (le, algorithm_name))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{pipeline_name}}",
+          "legendFormat": "{{algorithm_name}}",
           "refId": "A"
         }
       ],
@@ -900,7 +898,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Jobs 95% Percentile Total Runtime [5 min]",
+      "title": "Algorithms 95% Percentile Total Runtime [5 min]",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -936,6 +934,178 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${grafana_data_source}",
+      "description": "How many CPU cores are used for each algorithm",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "id": 27,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(\nmax(kube_pod_labels{label_algorithm_name!~\"\"}) by (label_algorithm_name, pod)\n                   * on(pod)\n                   group_right(label_algorithm_name)\n                       sum by(pod) (\n                           rate(container_cpu_usage_seconds_total{container=\"algorunner\"}[5m])\n                       )\n                   ) by (label_algorithm_name)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{label_algorithm_name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "CPU Usage by Algorithms [5 min]",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "cores",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${grafana_data_source}",
+      "description": "How much memory is used by each algorithm",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 36
+      },
+      "id": 28,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(\nmax(kube_pod_labels{label_algorithm_name!~\"\"}) by (label_algorithm_name, pod)\n                   * on(pod)\n                   group_right(label_algorithm_name)\n                       sum by(pod) (\n                           container_memory_working_set_bytes\n                       )\n                   ) by (label_algorithm_name) / 1000",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{label_algorithm_name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory Usage by Algorithms",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "kbytes",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "5s",
@@ -946,7 +1116,7 @@
     "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
@@ -975,8 +1145,8 @@
     ]
   },
   "timezone": "",
-  "title": "HKube Pipelines",
-  "uid": "syMRbv1iz",
+  "title": "HKube Algorithms",
+  "uid": "ZoDbnm1mz",
   "variables": {
     "list": []
   },
