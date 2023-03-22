@@ -126,6 +126,12 @@ Usage:
 {{- end -}}
 
 
+{{/*
+Returns a Json-formatted dictionary containing "thirdParty" and "services" to replace according
+to the $.Values.metrics.grafana_version ( currently supports 6/7)
+Usage:
+{{ include "grafanaVersionUtility" . | fromJson }}
+*/}}
 {{- define "grafanaVersionUtility" -}}
   {{- $exprDict := dict }}
   {{- if eq $.Values.metrics.grafana_version "6" -}}
