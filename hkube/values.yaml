@@ -272,7 +272,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: v2.5.26
+systemversion: v2.5.27
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -397,7 +397,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.5.18
+    tag: v2.5.19
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -657,7 +657,7 @@ simulator: # +doc-gen:ignore
     kibana_url: "https://cd.hkube.io/system/kibana/"
   image:
     repository: hkube/simulator
-    tag: v2.5.45
+    tag: v2.5.46
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -844,4 +844,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.5.26-1679836139284
+fullSystemVersion: v2.5.27-1680018761351
