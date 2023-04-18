@@ -308,7 +308,8 @@ site:
   image:
     repository: hkube/site
     tag: v1.0.15
-
+  # base_url for site-related links, default is /hkube/site
+  base_url: "/hkube/site"
   ingress:
     enabled: true
     path: hkube/site
