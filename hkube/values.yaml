@@ -306,13 +306,15 @@ nodeSelector: {}
 site:
   env: {}
   image:
-    repository: hkube/hkube-site
-    tag: v1.0.1
+    repository: hkube/site
+    tag: v1.0.15
+  # base_url for site-related links, default is /hkube/site
+  base_url: "/hkube/site"
   ingress:
     enabled: true
     path: hkube/site
   service:
-    port: 80
+    port: 8444
     type: ClusterIP
   resources:
     limits:
