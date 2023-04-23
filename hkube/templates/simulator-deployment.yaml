@@ -99,6 +99,11 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: BOARD_PORT
+            - name: REACT_APP_SITEBASEURL
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: REACT_APP_SITEBASEURL
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
