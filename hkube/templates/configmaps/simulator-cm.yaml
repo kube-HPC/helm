@@ -19,3 +19,5 @@ data:
   
   DATA_SOURCE_IS_ENABLE: {{ .Values.datasources_service.enabled | quote }}
   KIBANA_URL: {{ .Values.simulator.env.kibana_url | quote }}
+  
+  REACT_APP_SITEBASEURL: {{ .Values.site.base_url }}
