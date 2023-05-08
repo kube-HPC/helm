@@ -6,12 +6,13 @@ kind: Ingress
 metadata:
   name: dashboard
   annotations:
-{{- if .Values.simulator.ingress.alt_path }}
     nginx.ingress.kubernetes.io/configuration-snippet: |
+{{- if .Values.simulator.ingress.alt_path }}
       if ( $request_filename ~ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }} ){
         rewrite ^ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}/ permanent;
       }
 {{- end }}      
+      rewrite ^({{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }})$ $1/ redirect;
 {{- if .Values.global.ingress.use_regex }}
 {{- if and (eq .Values.simulator.ingress.path "/") (not .Values.global.ingress.prefix) }}
     nginx.ingress.kubernetes.io/rewrite-target: /$1
