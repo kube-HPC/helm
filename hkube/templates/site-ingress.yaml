@@ -6,6 +6,8 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^(/hkube/site/learn)$ $1/ redirect;
   labels:
     app: hkube-site
     app.kubernetes.io/managed-by: Helm
