@@ -657,6 +657,7 @@ simulator: # +doc-gen:ignore
     board_use_location: "true"
     is_secure: ""
     kibana_url: "https://cd.hkube.io/system/kibana/"
+    grafana_url: "https://cd.hkube.io/grafana"
   image:
     repository: hkube/simulator
     tag: v2.5.60
