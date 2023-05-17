@@ -272,7 +272,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: 2.5.30-resource-logging-upgrade.5003356472
+systemversion: 2.5.30-resource-logging-upgrade.5003726472
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -399,7 +399,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.5.22-resource-logging-upgrade-5003356472
+    tag: v2.5.22-resource-logging-upgrade-5003726472
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -584,7 +584,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: "100Ki"
   image:
     repository: hkube/pipeline-driver
-    tag: v2.5.3-resource-logging-upgrade-5003356472
+    tag: v2.5.3-resource-logging-upgrade-5003726472
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -718,7 +718,7 @@ task_executor:
     pods_output_log_folder : '/var/lib/docker/containers'
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.5.2-resource-logging-upgrade-5003356472
+    tag: v2.5.2-resource-logging-upgrade-5003726472
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
