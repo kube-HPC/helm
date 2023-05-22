@@ -660,7 +660,7 @@ simulator: # +doc-gen:ignore
     grafana_url: "https://cd.hkube.io/grafana"
   image:
     repository: hkube/simulator
-    tag: v2.5.61
+    tag: v2.5.62
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -847,4 +847,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.5.30-1684300900041
+fullSystemVersion: v2.5.30-1684741615092
