@@ -272,7 +272,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: v2.5.30
+systemversion: v2.5.31
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -399,7 +399,7 @@ api_server: # +doc-gen:ignore
     rate_limit_max: 5
   image:
     repository: hkube/api-server
-    tag: v2.5.22
+    tag: v2.5.23
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -437,7 +437,7 @@ datasources_service: # +doc-gen:ignore
     port: "3005"
   image:
     repository: hkube/datasources-service
-    tag: v2.5.2
+    tag: v2.5.3
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -535,7 +535,7 @@ gc_service: # +doc-gen:ignore
     builds_max_age: 14400
   image:
     repository: hkube/gc-service
-    tag: v2.5.1
+    tag: v2.5.2
   resources_enable: false
   resources:
     limits:
@@ -584,7 +584,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: "100Ki"
   image:
     repository: hkube/pipeline-driver
-    tag: v2.5.3
+    tag: v2.5.4
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -596,7 +596,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.5.1
+    tag: v2.5.2
   ingress:
     enabled: true
     path: /hkube/queue
@@ -719,7 +719,7 @@ task_executor:
     pods_output_log_folder : '/var/lib/docker/containers'
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.5.2
+    tag: v2.5.3
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
@@ -847,4 +847,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.5.30-1684756464115
+fullSystemVersion: v2.5.31-1684919604991
