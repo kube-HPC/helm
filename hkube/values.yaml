@@ -397,7 +397,7 @@ api_server: # +doc-gen:ignore
     maxBodySize: 500mb
     rate_limit_ms: 1000
     rate_limit_max: 5
-    elastic_structured_prefix: ""
+    elastic_structured_prefix: "structured"
   image:
     repository: hkube/api-server
     tag: v2.5.25-elastic-openshift-5111069690
