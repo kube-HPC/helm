@@ -97,7 +97,11 @@ spec:
                 secretKeyRef:
                   name: s3-secret
                   key: awsEndpointUrl
-{{- end }}                                    
+{{- end }}       
+{{- if .Values.api_server.elastic_structured_prefix }}
+            - name: ELASTICSEARCH_STRUCTURED_PREFIX
+              value: .Values.api_server.elastic_structured_prefix
+{{- end }}                                   
 {{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
               valueFrom:
