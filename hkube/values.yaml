@@ -272,7 +272,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: 2.5.34-error-or-warning-resourcemessage.5174954262
+systemversion: 2.5.34-error-or-warning-resourcemessage.5176526752
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -585,7 +585,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: "100Ki"
   image:
     repository: hkube/pipeline-driver
-    tag: v2.5.4-error-or-warning-resourcemessage-5174954262
+    tag: v2.5.4-error-or-warning-resourcemessage-5176526752
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -720,7 +720,7 @@ task_executor:
     pods_output_log_folder : '/var/lib/docker/containers'
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.5.3-error-or-warning-resourcemessage-5174954262
+    tag: v2.5.3-error-or-warning-resourcemessage-5176526752
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
