@@ -393,7 +393,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "description": "Pod count per node",
+      "description": "Pod count per stateless node",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
