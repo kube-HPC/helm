@@ -272,7 +272,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: 2.5.38-pod-count-streaming-metric.5236097931
+systemversion: 2.5.38-pod-count-streaming-metric.5239522721
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -585,7 +585,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: "100Ki"
   image:
     repository: hkube/pipeline-driver
-    tag: v2.5.7-pod-count-streaming-metric-5236097931
+    tag: v2.5.7-pod-count-streaming-metric-5239522721
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
