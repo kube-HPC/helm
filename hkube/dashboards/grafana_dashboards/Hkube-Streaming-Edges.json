@@ -62,7 +62,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (hkube_pipeline_driver_streaming_edge_throughput_gauge{pipelineId=\"$Job_ID\"}) by (pipelineName,pipelineId,source,target)",
+          "expr": "sum (hkube_pipeline_driver_streaming_edge_throughput_gauge{jobId=\"$Job_ID\"}) by (pipelineName,jobId,source,target)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -154,7 +154,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (hkube_pipeline_driver_streaming_edge_queue_size_gauge{pipelineId=\"$Job_ID\"}) by (pipelineId,source,target)",
+          "expr": "sum (hkube_pipeline_driver_streaming_edge_queue_size_gauge{jobId=\"$Job_ID\"}) by (jobId,source,target)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -246,7 +246,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (hkube_pipeline_driver_streaming_edge_queue_time_gauge{pipelineId=\"$Job_ID\"}) by (pipelineId,source,target)",
+          "expr": "sum (hkube_pipeline_driver_streaming_edge_queue_time_gauge{jobId=\"$Job_ID\"}) by (jobId,source,target)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -338,7 +338,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (hkube_pipeline_driver_streaming_edge_processing_time_gauge{pipelineId=\"$Job_ID\"}) by (pipelineId,source,target)",
+          "expr": "sum (hkube_pipeline_driver_streaming_edge_processing_time_gauge{jobId=\"$Job_ID\"}) by (jobId,source,target)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -423,7 +423,7 @@
         "current": {
         },
         "datasource": "${grafana_data_source}",
-        "definition": "label_values(hkube_pipeline_driver_streaming_edge_throughput_gauge{pipelineName=\"$Pipeline_Name\"}, pipelineId)",
+        "definition": "label_values(hkube_pipeline_driver_streaming_edge_throughput_gauge{pipelineName=\"$Pipeline_Name\"}, jobId)",
         "hide": 0,
         "includeAll": false,
         "index": -1,
@@ -431,7 +431,7 @@
         "multi": false,
         "name": "Job_ID",
         "options": [],
-        "query": "label_values(hkube_pipeline_driver_streaming_edge_throughput_gauge{pipelineName=\"$Pipeline_Name\"}, pipelineId)",
+        "query": "label_values(hkube_pipeline_driver_streaming_edge_throughput_gauge{pipelineName=\"$Pipeline_Name\"}, jobId)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
