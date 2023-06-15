@@ -398,6 +398,9 @@ api_server: # +doc-gen:ignore
     rate_limit_ms: 1000
     rate_limit_max: 5
     elastic_structured_prefix: ""
+    elasticsearch_service_url: ""
+    elasticsearch_logs_index: "logstash-*"
+    elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
     tag: v2.6.0

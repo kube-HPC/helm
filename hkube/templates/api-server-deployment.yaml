@@ -81,6 +81,12 @@ spec:
 {{ include "hkube.fluent_bit.environment" . | indent 12 }}
             - name: HKUBE_SYSTEM_VERSION
               value: {{ .Values.systemversion | quote}}
+            - name: ELASTICSEARCH_SERVICE_URL
+              value: {{ .Values.api_server.env.elasticsearch_service_url | quote}}
+            - name: ELASTICSEARCH_LOGS_INDEX
+              value: {{ .Values.api_server.env.elasticsearch_logs_index | quote}}
+            - name: ELASTICSEARCH_LOGS_DOC_TYPE
+              value: {{ .Values.api_server.env.elasticsearch_logs_doc_type | quote}}
 {{- if eq .Values.env.default_storage "s3" }}
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
