@@ -307,7 +307,7 @@ site:
   env: {}
   image:
     repository: hkube/site
-    tag: v2.6.1
+    tag: v2.6.3
   # base_url for site-related links, default is /hkube/site
   base_url: "/hkube/site"
   ingress:
@@ -460,7 +460,7 @@ artifacts_registry: # +doc-gen:ignore
     port: "8081"
   image:
     repository: hkube/artifacts-registry
-    tag: v2.6.1
+    tag: v2.6.2
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -851,4 +851,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.6.4-1687876901854
+fullSystemVersion: v2.6.4-1688394611603
