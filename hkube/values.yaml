@@ -84,8 +84,9 @@ global:
         limits:
           cpu: 100m
           memory: 200Mi
-
 env:
+  kibana_url: "https://cd.hkube.io/system/kibana/"
+  grafana_url: "https://cd.hkube.io/grafana"
   # storage mode. can be s3 or fs. Set global.storage.fs or global.storage.s3 accordingly
   default_storage: s3
   node_env: production
@@ -651,7 +652,6 @@ simulator: # +doc-gen:ignore
     hkube_log_level: "info"
     port: 9050
     api_server_backend_path: /hkube/api-server/
-
     api_server_backend_use_location: "true"
     api_server_backend_host: ""
     api_server_backend_port: ""
@@ -660,8 +660,6 @@ simulator: # +doc-gen:ignore
     board_path: /hkube/board
     board_use_location: "true"
     is_secure: ""
-    kibana_url: "https://cd.hkube.io/system/kibana/"
-    grafana_url: "https://cd.hkube.io/grafana"
   image:
     repository: hkube/simulator
     tag: v2.6.7

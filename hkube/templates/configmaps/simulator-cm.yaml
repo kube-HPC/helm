@@ -18,6 +18,6 @@ data:
   BOARD_PORT: {{ .Values.simulator.env.board_port | quote }}
   
   DATA_SOURCE_IS_ENABLE: {{ .Values.datasources_service.enabled | quote }}
-  KIBANA_URL: {{ .Values.simulator.env.kibana_url | quote }}
-  GRAFANA_URL: {{ .Values.simulator.env.grafana_url | quote }}
+  KIBANA_URL: {{ .Values.env.kibana_url | quote }}
+  GRAFANA_URL: {{ .Values.env.grafana_url | quote }}
   REACT_APP_SITEBASEURL: {{ .Values.site.base_url }}
