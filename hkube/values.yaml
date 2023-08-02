@@ -273,7 +273,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: v2.6.7
+systemversion: 2.6.7-stateless-nodes_scale.5739016059
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -404,7 +404,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.6.2
+    tag: v2.6.2-stateless_nodes_scale-5739016059
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -442,7 +442,7 @@ datasources_service: # +doc-gen:ignore
     port: "3005"
   image:
     repository: hkube/datasources-service
-    tag: v2.6.1
+    tag: v2.6.1-stateless_nodes_scale-5739016059
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -540,7 +540,7 @@ gc_service: # +doc-gen:ignore
     builds_max_age: 14400
   image:
     repository: hkube/gc-service
-    tag: v2.6.1
+    tag: v2.6.1-stateless_nodes_scale-5739016059
   resources_enable: false
   resources:
     limits:
@@ -589,7 +589,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: "100Ki"
   image:
     repository: hkube/pipeline-driver
-    tag: v2.6.0
+    tag: v2.6.0-stateless_nodes_scale-5739016059
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -601,7 +601,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.6.1
+    tag: v2.6.1-stateless_nodes_scale-5739016059
   ingress:
     enabled: true
     path: /hkube/queue
