@@ -273,7 +273,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: v2.6.8
+systemversion: v2.6.9
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -404,7 +404,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.6.3
+    tag: v2.6.4
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -589,7 +589,7 @@ pipeline_driver: # +doc-gen:ignore
     storageResultsThreshold: "100Ki"
   image:
     repository: hkube/pipeline-driver
-    tag: v2.6.1
+    tag: v2.6.2
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -849,4 +849,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.6.8-1691993972690
+fullSystemVersion: v2.6.9-1692010411606
