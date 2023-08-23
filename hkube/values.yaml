@@ -273,7 +273,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: 2.6.10-autoscaler-statelessCount-changes.5918096796
+systemversion: 2.6.10-autoscaler-statelessCount-changes.5950178828
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -404,7 +404,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.6.4-autoscaler-statelessCount-changes-5918096796
+    tag: v2.6.4-autoscaler-statelessCount-changes-5950178828
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -753,7 +753,7 @@ worker: # +doc-gen:ignore
     metric_port: "3000"
   image:
     repository: hkube/worker
-    tag: v2.6.0-autoscaler-statelessCount-changes-5918096796
+    tag: v2.6.0-autoscaler-statelessCount-changes-5950178828
   metrics:
     port: 3001
   service:
