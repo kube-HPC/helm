@@ -653,6 +653,7 @@ simulator: # +doc-gen:ignore
     hkube_log_level: "info"
     port: 9050
     api_server_backend_path: /hkube/api-server/
+    api_server_backend_datasources_service_path: /hkube/datasources-service/
     api_server_backend_use_location: "true"
     api_server_backend_host: ""
     api_server_backend_port: ""
