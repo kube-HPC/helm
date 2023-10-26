@@ -715,6 +715,56 @@ entries:
     - hkube-v2.5.125.tgz
     version: v2.5.125
   - apiVersion: v1
+    appVersion: v2.4.48
+    created: "2023-10-26T12:55:47.576917699Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.io/helm/
+      version: 0.7.2018
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.io/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.io/helm/
+      version: 3.6.1005
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.io/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.io/helm/
+      version: 5.0.1024
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.io/helm/
+      version: 10.0.1001
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.io/helm/
+      version: 2.1.3006
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 386f90cd009d9d4db6a38b00516df5a49309f9a0323c53e6355ef4d27df4eeaf
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.4.70.tgz
+    version: v2.4.70
+  - apiVersion: v1
     appVersion: v2.4.47
     created: "2023-02-07T15:19:43.734199196Z"
     dependencies:
@@ -3301,4 +3351,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2023-06-20T13:49:19.52023162Z"
+generated: "2023-10-26T12:55:47.519122158Z"
