@@ -268,7 +268,8 @@ metrics:
   # set to '7' when use Grafana version >= 7, default '6'
   grafana_version: "6"
   # set the name of the data source defined in grafana, where hkube metrics are collected ./dashboards/grafana_dashboards/*.json files
-  grafana_data_source: Prometheus
+  grafana_data_source:
+    Prometheus
     # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 6
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
@@ -720,7 +721,7 @@ task_executor:
     # set to true to set algorithm resource limit to equal resource request
     use_resource_limits: false
     # path where kubernetes stores the pods output logs.
-    pods_output_log_folder : '/var/lib/docker/containers'
+    pods_output_log_folder: "/var/lib/docker/containers"
   image: # +doc-gen:ignore
     repository: hkube/task-executor
     tag: v2.6.4
