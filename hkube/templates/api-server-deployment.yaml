@@ -104,9 +104,9 @@ spec:
                   name: s3-secret
                   key: awsEndpointUrl
 {{- end }}       
-{{- if .Values.api_server.elastic_structured_prefix }}
+{{- if .Values.api_server.env.elasticsearch_structured_prefix }}
             - name: ELASTICSEARCH_STRUCTURED_PREFIX
-              value: .Values.api_server.elastic_structured_prefix
+              value: {{ .Values.api_server.env.elasticsearch_structured_prefix }}
 {{- end }}                                   
 {{- if .Values.global.isPrivileged }}            
             - name: JAEGER_AGENT_SERVICE_HOST
@@ -115,7 +115,7 @@ spec:
                   fieldPath: status.hostIP
 {{- else if .Values.jaeger.external_agent_address }}
             - name: JAEGER_AGENT_SERVICE_HOST
-              value: .Values.jaeger.external_agent_address
+              value: {{ .Values.jaeger.external_agent_address }}
 {{- end }}    
             - name: NAMESPACE
               valueFrom:

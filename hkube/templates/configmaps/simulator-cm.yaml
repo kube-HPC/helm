@@ -22,4 +22,4 @@ data:
   GRAFANA_URL: {{ .Values.env.grafana_url | quote }}
   REACT_APP_SITEBASEURL: {{ .Values.site.base_url }}
 
-  ELASTICSEARCH_STRUCTURED_PREFIX: {{ .Values.api_server.elasticsearch_structured_prefix }}
+  ELASTICSEARCH_STRUCTURED_PREFIX: {{ .Values.api_server.env.elasticsearch_structured_prefix }}
