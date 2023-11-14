@@ -21,3 +21,5 @@ data:
   KIBANA_URL: {{ .Values.env.kibana_url | quote }}
   GRAFANA_URL: {{ .Values.env.grafana_url | quote }}
   REACT_APP_SITEBASEURL: {{ .Values.site.base_url }}
+
+  ELASTICSEARCH_STRUCTURED_PREFIX: {{ .Values.api_server.elasticsearch_structured_prefix }}
