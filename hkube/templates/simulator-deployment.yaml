@@ -113,6 +113,11 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: REACT_APP_SITEBASEURL
+            - name: ELASTICSEARCH_STRUCTURED_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: ELASTICSEARCH_STRUCTURED_PREFIX
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
