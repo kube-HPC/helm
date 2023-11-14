@@ -399,7 +399,8 @@ api_server: # +doc-gen:ignore
     maxBodySize: 500mb
     rate_limit_ms: 1000
     rate_limit_max: 5
-    elastic_structured_prefix: ""
+    # prefix should be without '.' suffix , i.e for 'struct.' , prefix should be 'struct'
+    elasticsearch_structured_prefix: ""
     elasticsearch_service_url: ""
     elasticsearch_logs_index: "logstash-*"
     elasticsearch_logs_doc_type: "_doc"
