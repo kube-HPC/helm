@@ -273,7 +273,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: v2.7.6
+systemversion: 2.7.6-statelessCount-optimization.6956980907
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -756,7 +756,7 @@ worker: # +doc-gen:ignore
     metric_port: "3000"
   image:
     repository: hkube/worker
-    tag: v2.7.3
+    tag: v2.7.3-statelessCount-optimization-6956980907
   metrics:
     port: 3001
   service:
