@@ -406,7 +406,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.6.11
+    tag: v2.6.13
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -757,7 +757,7 @@ worker: # +doc-gen:ignore
     metric_port: "3000"
   image:
     repository: hkube/worker
-    tag: v2.6.2
+    tag: v2.6.3
   metrics:
     port: 3001
   service:
@@ -853,4 +853,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.6.20-1701254544287
+fullSystemVersion: v2.6.20-1701261440329
