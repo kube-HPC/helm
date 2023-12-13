@@ -273,7 +273,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(namespace_workload_pod:kube_pod_owner:relabel{workload="
-systemversion: 2.7.6-stopped-status-after-pipeline-stop.7166676870
+systemversion: 2.7.6-stopped-status-after-pipeline-stop.7191615661
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
