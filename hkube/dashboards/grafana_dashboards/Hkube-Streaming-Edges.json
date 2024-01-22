@@ -25,7 +25,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${grafana_data_source}",
-      "description": "Rate of messages sent from source",
+      "description": "Rate of messages produced by source",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -117,7 +117,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${grafana_data_source}",
-      "description": "Rate of messages withdrew from source by the target",
+      "description": "Withdrawal rate of messages from source by the target",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
