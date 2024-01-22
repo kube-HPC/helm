@@ -62,7 +62,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (hkube_pipeline_driver_streaming_edge_req_rate{jobId=\"$Job_ID\"}) by (pipelineName,jobId,source,target)",
+          "expr": "sum (hkube_pipeline_driver_streaming_edge_req_rate_gauge{jobId=\"$Job_ID\"}) by (pipelineName,jobId,source,target)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -154,7 +154,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (hkube_pipeline_driver_streaming_edge_res_rate{jobId=\"$Job_ID\"}) by (pipelineName,jobId,source,target)",
+          "expr": "sum (hkube_pipeline_driver_streaming_edge_res_rate_gauge{jobId=\"$Job_ID\"}) by (pipelineName,jobId,source,target)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
