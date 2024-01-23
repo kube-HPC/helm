@@ -13,6 +13,7 @@ metadata:
       }
 {{- end }}      
       rewrite ^({{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }})$ $1/ redirect;
+{{- if eq .Values.global.ingress.class "nginx"}}
 {{- if .Values.global.ingress.use_regex }}
 {{- if and (eq .Values.simulator.ingress.path "/") (not .Values.global.ingress.prefix) }}
     nginx.ingress.kubernetes.io/rewrite-target: /$1
@@ -23,6 +24,18 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 {{- end }}
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+{{- else if eq .Values.global.ingress.class "haproxy"}}
+{{- if .Values.global.ingress.use_regex }}
+{{- if and (eq .Values.simulator.ingress.path "/") (not .Values.global.ingress.prefix) }}
+    haproxy.router.openshift.io/rewrite-target: /$1
+{{- else }}
+    haproxy.router.openshift.io/rewrite-target: /$2
+{{- end }}
+{{- else }}
+    haproxy.router.openshift.io/rewrite-target: /
+{{- end }}
+    haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+{{- end}}
     kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
