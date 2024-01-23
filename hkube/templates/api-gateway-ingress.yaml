@@ -6,18 +6,16 @@
 {{- $servicePipelineDriverQueuePort := .Values.pipeline_driver_queue.env.rest_port | int -}}
 {{- $servicePortDatasources := .Values.datasources_service.env.port | int -}}
 {{- $ingressClass := .Values.global.ingress.class | quote -}}
-# {{- if $ingressClass eq "nginx" -}}
-# {{-$ingressIo := nginx.ingress.kubernetes.io-}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: api-gateway
   annotations:
-{{-if $ingressClass eq "nginx"}}
+{{- if eq .Values.global.ingress.class "nginx"}}
     nginx.ingress.kubernetes.io/rewrite-target: /$1$2
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
-{{- else if $ingressClass eq "haproxy"}}
+{{- else if eq .Values.global.ingress.class "haproxy"}}
     haproxy.router.openshift.io/rewrite-target: /$1$2
     haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
