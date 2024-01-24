@@ -5,10 +5,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+{{- if eq .Values.global.ingress.class "nginx"}}
     kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite   ^(?!.*(?:\.css|\/|\.js|\.svg|\.gif|\.png)$)(.*) $1/ redirect;
+{{- else if eq .Values.global.ingress.class "haproxy"}}
+    nginx.ingress.kubernetes.io/rewrite-target: /
+{{- end }}
   labels:
     app: hkube-site
     app.kubernetes.io/managed-by: Helm
