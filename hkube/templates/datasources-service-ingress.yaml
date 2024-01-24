@@ -18,9 +18,6 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.datasources_service.env.maxBodySize | quote }}
 {{- else if eq .Values.global.ingress.class "haproxy"}}
-{{- if .Values.global.ingress.use_regex }}
-    haproxy.router.openshift.io/rewrite-target: /$2
-{{- else }}
     haproxy.router.openshift.io/rewrite-target: /
 {{- end }}
     haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}

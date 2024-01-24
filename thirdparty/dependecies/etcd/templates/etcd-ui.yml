@@ -62,19 +62,16 @@ kind: Ingress
 metadata:
   name: etcd-ui
   annotations:
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
+    
 {{- if eq .Values.global.ingress.class "nginx"}}
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 {{- else }}
     nginx.ingress.kubernetes.io/rewrite-target: /
 {{- end }}
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- else if eq .Values.global.ingress.class "haproxy"}}
-{{- if .Values.global.ingress.use_regex }}
-    haproxy.router.openshift.io/rewrite-target: /$2
-{{- else }}
     haproxy.router.openshift.io/rewrite-target: /
-{{- end }}
 {{- end }}
   labels:
     app: etcd-ui
