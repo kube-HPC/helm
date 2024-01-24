@@ -7,6 +7,8 @@ kind: Ingress
 metadata:
   name: gc-service
   annotations:
+{{- if eq .Values.global.ingress.class "nginx"}}
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 {{- else }}
@@ -14,7 +16,12 @@ metadata:
 {{- end }}
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
+{{- else if eq .Values.global.ingress.class "haproxy"}}
+    haproxy.router.openshift.io/rewrite-target: /
+    haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+{{- end }}
+    
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }}    
