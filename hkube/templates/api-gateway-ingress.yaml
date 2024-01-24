@@ -5,7 +5,6 @@
 {{- $servicePortGc := .Values.gc_service.env.rest_port | int -}}
 {{- $servicePipelineDriverQueuePort := .Values.pipeline_driver_queue.env.rest_port | int -}}
 {{- $servicePortDatasources := .Values.datasources_service.env.port | int -}}
-{{- $ingressClass := .Values.global.ingress.class | quote -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
@@ -20,7 +19,7 @@ metadata:
     haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
 {{- end}}
-    kubernetes.io/ingress.class: {{ $ingressClass }}
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }}    
