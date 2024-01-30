@@ -47,7 +47,7 @@ spec:
 {{- if .Values.global.ingress.use_regex }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
 {{- else }}
-        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/
 {{- end }}
           backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
           {{- if eq "true" (include "ingress.supportsPathType" .) }}
