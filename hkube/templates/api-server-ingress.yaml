@@ -1,4 +1,4 @@
-{{- if index .Values "api_server" "ingress" "enabled" -}}
+{{- if eq .Values.global.ingress.class "haproxy"}}
 {{- $ingressPath := .Values.api_server.ingress.path -}}
 {{- $fullName := "api-server" -}}
 {{- $servicePort := .Values.api_server.env.port | int -}}
@@ -50,7 +50,9 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/
 {{- end }}
           backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
-          {{- if eq "true" (include "ingress.supportsPathType" .) }}
+          {{- if eq .Values.global.ingress.class "haproxy"}}   
+          pathType: Prefix
+          {{- else if eq "true" (include "ingress.supportsPathType" .) }}
           pathType: ImplementationSpecific
           {{- end }}
 {{- if .Values.global.ingress.hostname }}
