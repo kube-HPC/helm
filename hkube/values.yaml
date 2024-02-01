@@ -665,7 +665,7 @@ simulator: # +doc-gen:ignore
     is_secure: ""
   image:
     repository: hkube/simulator
-    tag: v2.7.18
+    tag: v2.7.19
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -852,4 +852,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.7.19-1706701100649
+fullSystemVersion: v2.7.19-1706800371234
