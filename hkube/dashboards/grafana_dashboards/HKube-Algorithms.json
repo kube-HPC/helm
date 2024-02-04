@@ -428,7 +428,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(hkube_algorithm_queue_time_in_queue_histogram_sum) by (algorithm_name) / sum(hkube_algorithm_queue_time_in_queue_histogram_count) by (algorithm_name)",
+          "expr": "sum(hkube_algorithm_queue_time_in_queue_histogram_sum{jobId=\"$Job_ID\"}) by (pipeline_name,jobId,algorithm_name) / sum(hkube_algorithm_queue_time_in_queue_histogram_count{jobId=\"$Job_ID\"}) by (pipeline_name,jobId,algorithm_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -520,7 +520,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.5, sum(rate(hkube_algorithm_queue_time_in_queue_histogram_bucket[5m])) by (le, algorithm_name))",
+          "expr": "histogram_quantile(0.5, sum(rate(hkube_algorithm_queue_time_in_queue_histogram_bucket{jobId=\"$Job_ID\"}[5m])) by (pipeline_name,jobId,le, algorithm_name))",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{algorithm_name}}",
@@ -611,7 +611,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.95, sum(rate(hkube_algorithm_queue_time_in_queue_histogram_bucket[5m])) by (le, algorithm_name))",
+          "expr": "histogram_quantile(0.95, sum(rate(hkube_algorithm_queue_time_in_queue_histogram_bucket{jobId=\"$Job_ID\"}[5m])) by (pipeline_name,jobId,le, algorithm_name))",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{algorithm_name}}",
