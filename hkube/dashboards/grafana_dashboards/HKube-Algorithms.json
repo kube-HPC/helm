@@ -973,7 +973,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(\nmax(kube_pod_labels{label_algorithm_name!~\"\"}) by (label_algorithm_name, pod)\n                   * on(pod)\n                   group_right(label_algorithm_name)\n                       sum by(pod) (\n                           rate(container_cpu_usage_seconds_total{container=\"algorunner\"}[5m])\n                       )\n                   ) by (label_algorithm_name)",
+          "expr": "sum(\nmax((hkube_worker_started_counter{jobId=\"$Job_ID\"}) * on (pod) group_left(label_algorithm_name) (kube_pod_labels{label_algorithm_name!~\"\"}) ) by (label_algorithm_name, pod,jobId)\n                   * on(pod)\n                   group_right(label_algorithm_name,jobId)\n                       sum by(pod) (\n                           rate(container_cpu_usage_seconds_total{container=\"algorunner\"}[5m])\n                       )\n                   ) by (label_algorithm_name,jobId,pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -984,7 +984,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "CPU Usage by Algorithms [5 min]",
+      "title": "CPU Usage by Algorithms [5 min] by jobId",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1059,7 +1059,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(\nmax(kube_pod_labels{label_algorithm_name!~\"\"}) by (label_algorithm_name, pod)\n                   * on(pod)\n                   group_right(label_algorithm_name)\n                       sum by(pod) (\n                           container_memory_working_set_bytes\n                       )\n                   ) by (label_algorithm_name) / 1000",
+          "expr": "sum(\nmax((hkube_worker_started_counter{jobId=\"$Job_ID\"}) * on (pod) group_left(label_algorithm_name) (kube_pod_labels{label_algorithm_name!~\"\"}) ) by (label_algorithm_name, pod,jobId)                   * on(pod)\n                   group_right(label_algorithm_name)\n                       sum by(pod) (\n                           container_memory_working_set_bytes\n                       )\n                   ) by (label_algorithm_name) / 1000",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1070,7 +1070,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Memory Usage by Algorithms",
+      "title": "Memory Usage by Algorithms by JobId",
       "tooltip": {
         "shared": true,
         "sort": 0,
