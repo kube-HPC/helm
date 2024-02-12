@@ -984,7 +984,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "CPU Usage by Algorithms [5 min] by jobId",
+      "title": "CPU Usage by Algorithms [5 min] by JobId",
       "tooltip": {
         "shared": true,
         "sort": 0,
