@@ -794,7 +794,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.5, sum(rate(hkube_worker_net_histogram_bucket{jobId=~\"$Job_ID|\"}[5m])) by (pipelineName,jobId,le, algorithm_name))",
+          "expr": "histogram_quantile(0.5, sum(rate(hkube_worker_net_histogram_bucket{jobId=~\"$Job_ID|\"}[5m])) by (pipelineName,le, algorithm_name))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
