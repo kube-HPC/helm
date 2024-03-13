@@ -7,6 +7,7 @@ data:
   NODE_ENV: {{.Values.env.node_env}}
   DEFAULT_STORAGE: {{index .Values "env" "default_storage"}}
   STORAGE_RESULTS_THRESHOLD: {{index .Values.pipeline_driver.env.storageResultsThreshold | quote}}
+  STATUS_DELAY_MS:  {{ .Values.pipeline_driver.env.status_delay_ms | quote }}
 {{- if eq .Values.env.default_storage "fs" }}
   BASE_FS_ADAPTER_DIRECTORY: {{ .Values.global.storage.fs.base_directory | quote}}
 {{- end }}   
