@@ -589,7 +589,7 @@ pipeline_driver:
   env:
     metric_port: "3001"
     storageResultsThreshold: "100Ki"
-    # time pipeline driver tries to waits for the status of a pod to change when stopping
+    # time pipeline driver tries to wait for the status of a pod to change when stopping
     status_delay_ms: "25000"
   image:
     repository: hkube/pipeline-driver
