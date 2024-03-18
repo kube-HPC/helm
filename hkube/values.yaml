@@ -463,7 +463,7 @@ artifacts_registry: # +doc-gen:ignore
     port: "8081"
   image:
     repository: hkube/artifacts-registry
-    tag: v2.8.0
+    tag: v2.8.1
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -572,7 +572,7 @@ optuna_dashboard: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/optuna-dashboard
-    tag: v2.8.0
+    tag: v2.8.1
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
@@ -854,4 +854,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.8.0-1710776153581
+fullSystemVersion: v2.8.0-1710776284426
