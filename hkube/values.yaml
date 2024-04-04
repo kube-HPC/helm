@@ -724,6 +724,10 @@ task_executor:
     use_resource_limits: false
     # path where kubernetes stores the pods output logs.
     pods_output_log_folder : '/var/lib/docker/containers'
+    # defines the amount of reserved cpu , should be between 0 and 1, reserved amount is (1-value)
+    cpu_ratio_pressure: 0.9
+    # defines the amount of reserved memory , should be between 0 and 1, reserved amount is (1-value)
+    memory_ratio_pressure: 0.8
   image: # +doc-gen:ignore
     repository: hkube/task-executor
     tag: v2.8.0

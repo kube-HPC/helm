@@ -115,7 +115,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: task-executor-configmap
-                  key: PODS_OUTPUT_LOG_FOLDER            
+                  key: PODS_OUTPUT_LOG_FOLDER
+            - name: CPU_RATIO_PRESSURE
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: CPU_RATIO_PRESSURE
+            - name: MEMORY_RATIO_PRESSURE
+              valueFrom:
+                configMapKeyRef:
+                  name: task-executor-configmap
+                  key: MEMORY_RATIO_PRESSURE              
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
