@@ -273,7 +273,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(kube_pod_status_phase{phase='Running',pod="
-systemversion: 2.8.8-concurrency-drivers_queue.8721666415
+systemversion: 2.8.8-concurrency-drivers_queue.8732885815
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -605,7 +605,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.8.1-concurrency_drivers_queue-8721666415
+    tag: v2.8.1-concurrency_drivers_queue-8732885815
   ingress:
     enabled: true
     path: /hkube/queue
@@ -640,7 +640,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
   image:
     repository: hkube/resource-manager
-    tag: v2.8.0-concurrency_drivers_queue-8721666415
+    tag: v2.8.0-concurrency_drivers_queue-8732885815
   service:
     type: ClusterIP
   resources_enable: false
