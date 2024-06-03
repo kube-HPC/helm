@@ -85,8 +85,8 @@ global:
           cpu: 100m
           memory: 200Mi
 env:
-  kibana_url: "https://cd.hkube.io/system/kibana/"
-  grafana_url: "https://cd.hkube.io/grafana"
+  kibana_url: "https://cicd.hkube.org/system/kibana/"
+  grafana_url: "https://cicd.hkube.org/grafana"
   # storage mode. can be s3 or fs. Set global.storage.fs or global.storage.s3 accordingly
   default_storage: s3
   node_env: production
