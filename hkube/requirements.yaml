@@ -1,6 +1,6 @@
 dependencies:
   - name: etcd
-    version: "0.7.2018"
+    version: "0.7.2019"
     repository: "https://hkube.io/helm/"
     condition: etcd.enable
   - name: jaeger
