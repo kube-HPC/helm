@@ -1,4 +1,6 @@
 {{- if index .Values "simulator" "ingress" "enabled" -}}
+{{/* -------------------- nginx configuration - Ingress -------------------- */}}
+{{- if eq .Values.global.ingress.class "nginx" -}}
 {{- $fullName := "simulator" -}}
 {{- $servicePort := .Values.simulator.env.port | int -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
@@ -11,9 +13,8 @@ metadata:
       if ( $request_filename ~ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }} ){
         rewrite ^ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}/ permanent;
       }
-{{- end }}      
+{{- end }}
       rewrite ^({{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }})$ $1/ redirect;
-{{- if eq .Values.global.ingress.class "nginx"}}
 {{- if .Values.global.ingress.use_regex }}
 {{- if and (eq .Values.simulator.ingress.path "/") (not .Values.global.ingress.prefix) }}
     nginx.ingress.kubernetes.io/rewrite-target: /$1
@@ -24,18 +25,6 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 {{- end }}
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
-{{- else if eq .Values.global.ingress.class "haproxy"}}
-{{- if .Values.global.ingress.use_regex }}
-{{- if and (eq .Values.simulator.ingress.path "/") (not .Values.global.ingress.prefix) }}
-    haproxy.router.openshift.io/rewrite-target: /$1
-{{- else }}
-    haproxy.router.openshift.io/rewrite-target: /$2
-{{- end }}
-{{- else }}
-    haproxy.router.openshift.io/rewrite-target: /
-{{- end }}
-    haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
-{{- end}}
     kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
@@ -83,8 +72,61 @@ spec:
 
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
-{{- end }}            
 {{- end }}
 
----
+{{/* -------------------- haproxy configuration - Ingress -------------------- */}}
+{{- else if eq .Values.global.ingress.class "haproxy" -}}
+{{- $fullName := "simulator" -}}
+{{- $servicePort := .Values.simulator.env.port | int -}}
+apiVersion:  {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  name: dashboard
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+{{- if .Values.simulator.ingress.alt_path }}
+      if ( $request_filename ~ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }} ){
+        rewrite ^ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}/ permanent;
+      }
+{{- end }}
+      rewrite ^({{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }})$ $1/ redirect;
+    haproxy.router.openshift.io/rewrite-target: /
+    haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}
+  labels:
+    app: simulator
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: {{ $fullName }}-tls-secret
+{{- end }}
+  rules:
+    - http:
+        paths:
+        - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
+          pathType: ImplementationSpecific
+          {{- end }}
+{{- if .Values.simulator.ingress.alt_path }}
+        - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
+          pathType: ImplementationSpecific
+          {{- end }}
+{{- end }}
 
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}
+{{- end }}
+{{- end }}
