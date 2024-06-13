@@ -1,24 +1,29 @@
 dependencies:
 - name: etcd
+<<<<<<< haproxy_templates_configuration
   repository: https://hkube.io/helm/
   version: 0.7.2019
+=======
+  repository: https://hkube.org/helm/
+  version: 0.7.2018
+>>>>>>> master
 - name: jaeger
-  repository: https://hkube.io/helm/
+  repository: https://hkube.org/helm/
   version: 0.27.2006
 - name: redis-ha
-  repository: https://hkube.io/helm/
+  repository: https://hkube.org/helm/
   version: 3.6.1005
 - name: nginx-ingress
-  repository: https://hkube.io/helm/
+  repository: https://hkube.org/helm/
   version: 1.31.1002
 - name: minio
-  repository: https://hkube.io/helm/
+  repository: https://hkube.org/helm/
   version: 5.0.1024
 - name: mongodb
-  repository: https://hkube.io/helm/
+  repository: https://hkube.org/helm/
   version: 10.0.1001
 - name: gitea
-  repository: https://hkube.io/helm/
+  repository: https://hkube.org/helm/
   version: 2.1.3006
-digest: sha256:fc33f68b7610fe8d9bd640d925f005fe87e2d88bdfa823df43b0832fdb2a3a0f
-generated: "2022-02-28T16:31:57.991691+02:00"
+digest: sha256:64e2af393c820e5bcef6ceeb28e73877d787c539825d79ecade5848caf0fde1c
+generated: "2024-06-06T14:20:23.464936132+03:00"
