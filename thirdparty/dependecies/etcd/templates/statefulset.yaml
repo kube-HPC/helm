@@ -54,8 +54,10 @@ spec:
           name: peer
         - containerPort: {{ .Values.clientPort }}
           name: client
+{{- if .Values.global.resources_enable }}
         resources:
-{{ toYaml .Values.resources | indent 10 }}          
+{{ toYaml .Values.resources | indent 10 }}  
+          {{- end }}
         env:
         - name: ETCD_HEARTBEAT_INTERVAL
           value: "1000"
