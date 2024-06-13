@@ -72,10 +72,6 @@ metadata:
 {{- end }}    
   labels:
     app: {{ $fullName }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    group: {{ .Values.labels.group.value }}
-    core: "true"
 spec:
 {{- if .Values.global.ingress.hostname }}
   tls:
