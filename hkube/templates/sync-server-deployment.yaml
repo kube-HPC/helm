@@ -154,7 +154,6 @@ metadata:
     kubever: {{ template "common.capabilities.kubeVersion" .}}
     apiver:  {{ template "ingress.apiVersion" . }}
     haproxy.router.openshift.io/rewrite-target: /
-    haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
