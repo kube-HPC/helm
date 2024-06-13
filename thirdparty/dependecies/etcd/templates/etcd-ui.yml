@@ -34,8 +34,8 @@ spec:
           ports:
             - containerPort: {{ .Values.etcd_ui.service.port }}
 {{- if .Values.global.resources_enable }}
-        resources:
-{{ toYaml .Values.resources | indent 10 }}  
+          resources:
+{{ toYaml .Values.resources | indent 12 }}  
 {{- end }}
 ---
 kind: Service
