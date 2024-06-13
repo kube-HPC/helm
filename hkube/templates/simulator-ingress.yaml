@@ -86,11 +86,7 @@ metadata:
     kubernetes.io/tls-acme: "true"
 {{- end }}
   labels:
-    app: simulator
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    group: {{ .Values.labels.group.value }}
-    core: "true"
+    app: hkube
 spec:
 {{- if .Values.global.ingress.hostname }}
   tls:
