@@ -1,7 +1,7 @@
 dependencies:
 - name: etcd
   repository: https://hkube.org/helm/
-  version: 0.7.2018
+  version: 0.7.2019
 - name: jaeger
   repository: https://hkube.org/helm/
   version: 0.27.2006
@@ -20,5 +20,5 @@ dependencies:
 - name: gitea
   repository: https://hkube.org/helm/
   version: 2.1.3006
-digest: sha256:dfb85b4586551b6200e533e4699ea2ddab1d106b10dd61ae72be9c4e6a703914
-generated: "2024-06-13T07:51:15.685665596+03:00"
+digest: sha256:9ccb97005b1d1bdfcee6edb462c40e44d7aab0ca73ae4f0e5526ec17fb9d0c26
+generated: "2024-06-13T16:04:00.951395998+03:00"

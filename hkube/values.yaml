@@ -19,7 +19,7 @@ global:
     # use an existing imagepullsecret (doesn't create the secret)
     use_existing: false
   # If false, will not set resource request and limits on hkube pods. If true will set the values for each pod
-  resources_enable: true
+  resources_enable: false
   storage:
     # encoding for storage. can be msgpack, bson, json
     encoding: msgpack
