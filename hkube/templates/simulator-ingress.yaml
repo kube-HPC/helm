@@ -81,7 +81,6 @@ kind: Ingress
 metadata:
   name: dashboard
   annotations:
-    haproxy.router.openshift.io/proxy-body-size: 500m
     haproxy.router.openshift.io/rewrite-target: /
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
