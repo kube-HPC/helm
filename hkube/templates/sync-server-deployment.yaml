@@ -39,7 +39,7 @@ spec:
         - name: sync-server-syncthing
           image: "{{ .Values.global.registry }}{{ .Values.sync_server.image.repository }}:{{ .Values.sync_server.image.tag }}"
           command:
-            - /syncthing/startSyncthing.sh       
+            - /syncthing/startSyncthing.sh
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: ui
@@ -90,6 +90,8 @@ spec:
     targetPort:  8080
 
 ---
+{{/* -------------------- nginx configuration - Ingress -------------------- */}}
+{{- if eq .Values.global.ingress.class "nginx" -}}
 {{- $ingressPath := .Values.sync_server.ingress.path }}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
@@ -97,8 +99,6 @@ metadata:
   annotations:
     kubever: {{ template "common.capabilities.kubeVersion" .}}
     apiver:  {{ template "ingress.apiVersion" . }}
-{{- if eq .Values.global.ingress.class "nginx"}}
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 {{- else }}
@@ -106,11 +106,6 @@ metadata:
 {{- end }}
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
-{{- else if eq .Values.global.ingress.class "haproxy"}}
-    haproxy.router.openshift.io/rewrite-target: /
-    haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
-    haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
-{{- end }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }} 
@@ -147,6 +142,43 @@ spec:
 {{- if .Values.global.ingress.use_regex }}
         path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync(/|$)(.*)
 {{- else }}
+        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync
+{{- end }}
+{{/* -------------------- haproxy configuration - Ingress -------------------- */}}
+{{- else if eq .Values.global.ingress.class "haproxy" -}}
+{{- $ingressPath := .Values.sync_server.ingress.path }}
+apiVersion:  {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  annotations:
+    haproxy.router.openshift.io/rewrite-target: /
+    haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+  labels:
+    app: sync-server
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+  name: sync-server
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: sync-server-tls-secret
+{{- end }}
+  rules:
+  - http:
+      paths:
+      - backend: {{- include "ingress.backend" (dict "serviceName" "sync-server" "servicePort" 8384 "context" $) | nindent 10 }}
+        {{- if eq "true" (include "ingress.supportsPathType" .) }}
+        pathType: ImplementationSpecific
+        {{- end }}
+        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/ui
+      - backend: {{- include "ingress.backend" (dict "serviceName" "sync-server" "servicePort" 8080 "context" $) | nindent 10 }}
+        {{- if eq "true" (include "ingress.supportsPathType" .) }}
+        pathType: ImplementationSpecific
+        {{- end }}
         path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync
 {{- end }}
 {{- end }}

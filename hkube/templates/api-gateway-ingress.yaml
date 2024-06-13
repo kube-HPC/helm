@@ -5,21 +5,17 @@
 {{- $servicePortGc := .Values.gc_service.env.rest_port | int -}}
 {{- $servicePipelineDriverQueuePort := .Values.pipeline_driver_queue.env.rest_port | int -}}
 {{- $servicePortDatasources := .Values.datasources_service.env.port | int -}}
+{{/* -------------------- nginx configuration - Service -------------------- */}}
+{{- if eq .Values.global.ingress.class "nginx" -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: api-gateway
   annotations:
-{{- if eq .Values.global.ingress.class "nginx"}}
     nginx.ingress.kubernetes.io/rewrite-target: /$1$2
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
     kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
-{{- else if eq .Values.global.ingress.class "haproxy"}}
-    haproxy.router.openshift.io/rewrite-target: /$1$2
-    haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
-    haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
-{{- end}}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }}    
@@ -61,5 +57,35 @@ spec:
           {{- end }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
+{{- end }}
+{{/* -------------------- haproxy configuration - Service -------------------- */}}
+{{- else if eq .Values.global.ingress.class "haproxy" -}}
+apiVersion:  {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  name: api-gateway
+  annotations:
+    haproxy.router.openshift.io/rewrite-target: /
+    haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }} 
+  labels:
+    app: {{ $fullName }}
+spec:
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: {{ $fullName }}-tls-secret
+{{- end }}
+  rules:
+    - http:
+        paths:
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/
+          backend: {{- include "ingress.backend" (dict "serviceName" "api-server" "servicePort" $servicePort "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
+          pathType: Prefix
+          {{- end }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}
 {{- end }}
 {{- end }}
