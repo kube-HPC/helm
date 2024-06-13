@@ -151,8 +151,6 @@ apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   annotations:
-    kubever: {{ template "common.capabilities.kubeVersion" .}}
-    apiver:  {{ template "ingress.apiVersion" . }}
     haproxy.router.openshift.io/rewrite-target: /
     haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
 {{- if .Values.global.ingress.hostname }}
