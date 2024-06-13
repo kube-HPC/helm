@@ -1,8 +1,8 @@
 {{- if index .Values "simulator" "ingress" "enabled" -}}
-{{/* -------------------- nginx configuration - Ingress -------------------- */}}
-{{- if eq .Values.global.ingress.class "nginx" -}}
 {{- $fullName := "simulator" -}}
 {{- $servicePort := .Values.simulator.env.port | int -}}
+{{/* -------------------- nginx configuration - Ingress -------------------- */}}
+{{- if eq .Values.global.ingress.class "nginx" -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
@@ -76,8 +76,6 @@ spec:
 
 {{/* -------------------- haproxy configuration - Ingress -------------------- */}}
 {{- else if eq .Values.global.ingress.class "haproxy" -}}
-{{- $fullName := "simulator" -}}
-{{- $servicePort := .Values.simulator.env.port | int -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
