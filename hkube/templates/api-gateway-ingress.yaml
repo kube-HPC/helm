@@ -1,12 +1,12 @@
 {{- if index .Values "api_gateway" "ingress" "enabled" -}}
-{{/* -------------------- nginx configuration - Service -------------------- */}}
-{{- if eq .Values.global.ingress.class "nginx" -}}
 {{- $ingressPath := .Values.api_gateway.ingress.path -}}
 {{- $fullName := "api-gateway" -}}
 {{- $servicePort := .Values.api_server.env.port | int -}}
 {{- $servicePortGc := .Values.gc_service.env.rest_port | int -}}
 {{- $servicePipelineDriverQueuePort := .Values.pipeline_driver_queue.env.rest_port | int -}}
 {{- $servicePortDatasources := .Values.datasources_service.env.port | int -}}
+{{/* -------------------- nginx configuration - Service -------------------- */}}
+{{- if eq .Values.global.ingress.class "nginx" -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
@@ -60,12 +60,6 @@ spec:
 {{- end }}
 {{/* -------------------- haproxy configuration - Service -------------------- */}}
 {{- else if eq .Values.global.ingress.class "haproxy" -}}
-{{- $ingressPath := .Values.api_gateway.ingress.path -}}
-{{- $fullName := "api-gateway" -}}
-{{- $servicePort := .Values.api_server.env.port | int -}}
-{{- $servicePortGc := .Values.gc_service.env.rest_port | int -}}
-{{- $servicePipelineDriverQueuePort := .Values.pipeline_driver_queue.env.rest_port | int -}}
-{{- $servicePortDatasources := .Values.datasources_service.env.port | int -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
