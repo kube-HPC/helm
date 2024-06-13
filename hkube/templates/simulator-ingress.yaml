@@ -100,13 +100,13 @@ spec:
         - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}
           backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
           {{- if eq "true" (include "ingress.supportsPathType" .) }}
-          pathType: ImplementationSpecific
+          pathType: Prefix
           {{- end }}
 {{- if .Values.simulator.ingress.alt_path }}
         - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}
           backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
           {{- if eq "true" (include "ingress.supportsPathType" .) }}
-          pathType: ImplementationSpecific
+          pathType: Prefix
           {{- end }}
 {{- end }}
 
