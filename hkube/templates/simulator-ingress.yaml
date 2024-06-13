@@ -81,16 +81,8 @@ kind: Ingress
 metadata:
   name: dashboard
   annotations:
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-{{- if .Values.simulator.ingress.alt_path }}
-      if ( $request_filename ~ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }} ){
-        rewrite ^ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}/ permanent;
-      }
-{{- end }}
-      rewrite ^({{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }})$ $1/ redirect;
+    haproxy.router.openshift.io/proxy-body-size: 500m
     haproxy.router.openshift.io/rewrite-target: /
-    haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }}
