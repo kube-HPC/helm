@@ -82,9 +82,6 @@ metadata:
   name: dashboard
   annotations:
     haproxy.router.openshift.io/rewrite-target: /
-{{- if .Values.global.ingress.hostname }}
-    kubernetes.io/tls-acme: "true"
-{{- end }}
   labels:
     app: hkube
 spec:

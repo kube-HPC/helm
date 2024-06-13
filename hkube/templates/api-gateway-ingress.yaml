@@ -66,10 +66,7 @@ metadata:
   name: api-gateway
   annotations:
     haproxy.router.openshift.io/rewrite-target: /
-    haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
-{{- if .Values.global.ingress.hostname }}
-    kubernetes.io/tls-acme: "true"
-{{- end }}    
+    haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }} 
   labels:
     app: {{ $fullName }}
 spec:
