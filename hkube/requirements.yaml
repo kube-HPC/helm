@@ -20,7 +20,7 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: minio.enable
   - name: mongodb
-    version: "10.0.1003"
+    version: "10.0.1004"
     repository: "https://hkube.org/helm/"
     condition: mongodb.enable
   - name: gitea
