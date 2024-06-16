@@ -33,6 +33,10 @@ spec:
               value: "0.0.0.0"
           ports:
             - containerPort: {{ .Values.etcd_ui.service.port }}
+{{- if .Values.global.resources_enable }}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}  
+{{- end }}
 ---
 kind: Service
 apiVersion: v1

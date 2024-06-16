@@ -66,12 +66,13 @@ redis:
   # customConfig: |-
       # Define configuration here
 
-  resources: {}
-  #  requests:
-  #    memory: 200Mi
-  #    cpu: 100m
-  #  limits:
-  #    memory: 700Mi
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 200m
+    limits:
+      memory: 512Mi
+      cpu: 400m
 
 ## Sentinel specific configuration options
 sentinel:
@@ -92,12 +93,13 @@ sentinel:
   # customConfig: |-
       # Define configuration here
 
-  resources: {}
-  #  requests:
-  #    memory: 200Mi
-  #    cpu: 100m
-  #  limits:
-  #    memory: 200Mi
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 200m
+    limits:
+      memory: 512Mi
+      cpu: 400m
 
 securityContext:
   runAsUser: 1000
