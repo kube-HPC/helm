@@ -233,6 +233,8 @@ minio:
     # requests:
     #   cpu: 100m
     #   memory: 200Mi
+keycloak:
+  enable: true
 
 gitea:
   enable: true
