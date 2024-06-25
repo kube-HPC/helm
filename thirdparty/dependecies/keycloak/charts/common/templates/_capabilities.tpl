@@ -87,7 +87,7 @@ Return the appropriate apiVersion for statefulset.
 {{/*
 Return the appropriate apiVersion for ingress.
 */}}
-{{- define "common.capabilities.ingress.apiVersion" -}}
+{{- define "common.capabilities.ingress.apiVersionKeycloak" -}}
 {{- $kubeVersion := include "common.capabilities.kubeVersion" . -}}
 {{- if (.Values.ingress).apiVersion -}}
 {{- .Values.ingress.apiVersion -}}

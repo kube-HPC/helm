@@ -210,7 +210,7 @@ proxy: passthrough
 ## @param httpRelativePath Set the path relative to '/' for serving resources. Useful if you are migrating from older version which were using '/auth/'
 ## ref: https://www.keycloak.org/migration/migrating-to-quarkus#_default_context_path_changed
 ##
-httpRelativePath: "/"
+httpRelativePath: "/hkube/keycloak"
 ## Keycloak Service Discovery settings
 ## ref: https://github.com/bitnami/containers/tree/main/bitnami/keycloak#cluster-configuration
 ##
@@ -369,7 +369,7 @@ livenessProbe:
 ## @param readinessProbe.successThreshold Success threshold for readinessProbe
 ##
 readinessProbe:
-  enabled: true
+  enabled: false
   initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 1
@@ -612,7 +612,7 @@ ingress:
   ## @param ingress.servicePort Backend service port to use
   ## Default is http. Alternative is https.
   ##
-  servicePort: http
+  servicePort: 80
   ## @param ingress.annotations [object] Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.
   ## Use this parameter to set the required annotations for cert-manager, see
   ## ref: https://cert-manager.io/docs/usage/ingress/#supported-annotations

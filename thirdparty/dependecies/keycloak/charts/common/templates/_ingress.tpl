@@ -16,12 +16,15 @@ Params:
   - servicePort - String/Int. Port name (or number) of the service. It will be translated to different yaml depending if it is a string or an integer.
   - context - Dict - Required. The context for the template evaluation.
 */}}
-{{- define "common.ingress.backend" -}}
-{{- $apiVersion := (include "common.capabilities.ingress.apiVersion" .context) -}}
+{{/*
 {{- if or (eq $apiVersion "extensions/v1beta1") (eq $apiVersion "networking.k8s.io/v1beta1") -}}
 serviceName: {{ .serviceName }}
 servicePort: {{ .servicePort }}
 {{- else -}}
+
+*/}}
+{{- define "common.ingress.backendkeycloak" -}}
+{{- $apiVersion := (include "common.capabilities.ingress.apiVersion" .context) -}}
 service:
   name: {{ .serviceName }}
   port:
@@ -30,7 +33,6 @@ service:
     {{- else if or (typeIs "int" .servicePort) (typeIs "float64" .servicePort) }}
     number: {{ .servicePort | int }}
     {{- end }}
-{{- end -}}
 {{- end -}}
 
 {{/*
