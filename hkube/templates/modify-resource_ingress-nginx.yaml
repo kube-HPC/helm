@@ -1,7 +1,13 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: modify-configmap-job
+  name: modify-resource-job
+  labels:
+    app.kubernetes.io/name: "{{ .Chart.Name }}"
+    app.kubernetes.io/instance: "{{ .Release.Name }}"
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   ttlSecondsAfterFinished: 60
   template:
