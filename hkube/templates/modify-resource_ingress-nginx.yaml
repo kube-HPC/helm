@@ -2,12 +2,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: modify-resource-job
-  labels:
-    app.kubernetes.io/name: "{{ .Chart.Name }}"
-    app.kubernetes.io/instance: "{{ .Release.Name }}"
-  annotations:
-    "helm.sh/hook": post-install,post-upgrade
-    "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   ttlSecondsAfterFinished: 60
   template:
@@ -20,7 +14,7 @@ spec:
             - /bin/sh
             - -c
             - |
-              kubectl patch configmap ingress-nginx-controller -n ingress-nginx --patch '{"data": {"allow-snippet-annotations": "true"}}'
+                kubectl patch configmap ingress-nginx-controller -n ingress-nginx --patch '{"data": {"allow-snippet-annotations": "true"}}'
       restartPolicy: Never
 ---
 apiVersion: v1
@@ -50,3 +44,4 @@ rules:
 - apiGroups: [""]
   resources: ["configmaps"]
   verbs: ["get", "patch"]
+  
