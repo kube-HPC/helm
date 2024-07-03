@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: modify-configmap-job
+spec:
+  ttlSecondsAfterFinished: 60
+  template:
+    spec:
+      serviceAccountName: modify-job-sa
+      containers:
+        - name: modify-configmap
+          image: bitnami/kubectl:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              kubectl patch configmap ingress-nginx-controller -n ingress-nginx --patch '{"data": {"allow-snippet-annotations": "true"}}'
+      restartPolicy: Never
+---
