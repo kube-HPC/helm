@@ -1,3 +1,4 @@
+{{- if .Values.isMinikube }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -44,4 +45,4 @@ rules:
 - apiGroups: [""]
   resources: ["configmaps"]
   verbs: ["get", "patch"]
-  
+{{- end }}
