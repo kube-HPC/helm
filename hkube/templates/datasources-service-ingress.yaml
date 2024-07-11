@@ -7,7 +7,7 @@ kind: Ingress
 metadata:
   name: datasources-service
   annotations:
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
+    ingressClassName: {{ .Values.global.ingress.class | quote }}
 
 {{- if eq .Values.global.ingress.class "nginx"}}
 {{- if .Values.global.ingress.use_regex }}

@@ -8,7 +8,7 @@ metadata:
   name: pipeline-driver-queue
   annotations:
 {{- if eq .Values.global.ingress.class "nginx"}}
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
+    ingressClassName: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 {{- else }}
