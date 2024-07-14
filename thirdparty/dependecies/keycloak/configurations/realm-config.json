@@ -5,7 +5,7 @@
     "clients": [
       {
         "clientId": "api-server",
-        "secret": "{{ .Values.keycloak.api_server.client_secretKey }}",
+        "secret": "r3gmlUZ2Bx3vL7iB79rNKMQjaYTqshVK",
         "redirectUris": [],
         "directAccessGrantsEnabled": true,
         "publicClient": false,
