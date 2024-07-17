@@ -1,4 +1,4 @@
-{{- if .Values.isMinikube }}
+{{- if eq .Values.build_secret.docker_registry "registry.minikube" }}
 apiVersion: batch/v1
 kind: Job
 metadata:
