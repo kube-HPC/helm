@@ -15,7 +15,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$1$2
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
-    ingressClassName: {{ .Values.global.ingress.class | quote }}
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
 {{- end }}    

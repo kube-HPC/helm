@@ -1,7 +1,7 @@
 dependencies:
 - name: etcd
   repository: https://hkube.org/helm/
-  version: 0.7.2021
+  version: 0.7.2020
 - name: jaeger
   repository: https://hkube.org/helm/
   version: 0.27.2006
