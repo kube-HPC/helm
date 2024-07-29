@@ -1,12 +1,7 @@
 dependencies:
 - name: etcd
-<<<<<<< haproxy_templates_configuration
-  repository: https://hkube.io/helm/
-  version: 0.7.2019
-=======
   repository: https://hkube.org/helm/
-  version: 0.7.2018
->>>>>>> master
+  version: 0.7.2019
 - name: jaeger
   repository: https://hkube.org/helm/
   version: 0.27.2006
