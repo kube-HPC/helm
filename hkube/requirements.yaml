@@ -1,6 +1,6 @@
 dependencies:
   - name: etcd
-    version: "0.7.2019"
+    version: "0.7.2020"
     repository: "https://hkube.org/helm/"
     condition: etcd.enable
   - name: jaeger
@@ -8,7 +8,7 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: jaeger.enable
   - name: redis-ha
-    version: "3.6.1005"
+    version: "3.6.1006"
     repository: "https://hkube.org/helm/"
     condition: redis-ha.enable
   - name: nginx-ingress
@@ -16,14 +16,18 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: nginx-ingress.enable
   - name: minio
-    version: "5.0.1024"
+    version: "5.0.1026"
     repository: "https://hkube.org/helm/"
     condition: minio.enable
   - name: mongodb
-    version: "10.0.1001"
+    version: "10.0.1004"
     repository: "https://hkube.org/helm/"
     condition: mongodb.enable
   - name: gitea
     version: "2.1.3006"
     repository: "https://hkube.org/helm/"
     condition: gitea.enable
+  - name: keycloak
+    version: "21.4.2"
+    repository: "https://hkube.org/helm/"
+    condition: keycloak.enable

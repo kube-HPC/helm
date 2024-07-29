@@ -1,24 +1,27 @@
 dependencies:
 - name: etcd
   repository: https://hkube.org/helm/
-  version: 0.7.2019
+  version: 0.7.2020
 - name: jaeger
   repository: https://hkube.org/helm/
   version: 0.27.2006
 - name: redis-ha
   repository: https://hkube.org/helm/
-  version: 3.6.1005
+  version: 3.6.1006
 - name: nginx-ingress
   repository: https://hkube.org/helm/
   version: 1.31.1002
 - name: minio
   repository: https://hkube.org/helm/
-  version: 5.0.1024
+  version: 5.0.1026
 - name: mongodb
   repository: https://hkube.org/helm/
-  version: 10.0.1001
+  version: 10.0.1004
 - name: gitea
   repository: https://hkube.org/helm/
   version: 2.1.3006
-digest: sha256:64e2af393c820e5bcef6ceeb28e73877d787c539825d79ecade5848caf0fde1c
-generated: "2024-06-06T14:20:23.464936132+03:00"
+- name: keycloak
+  repository: https://hkube.org/helm/
+  version: 21.4.2
+digest: sha256:6ecb056ddba9ae7effa69712fd6077bcddf3565fb2dc067e23e4b97afe954cdc
+generated: "2024-06-30T13:49:32.86330413+03:00"
