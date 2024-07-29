@@ -10,4 +10,5 @@ maintainers:
 name: etcd
 sources:
 - https://github.com/coreos/etcd
-version: 0.7.2018
+version: 0.7.2068
+

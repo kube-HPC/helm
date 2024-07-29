@@ -33,6 +33,10 @@ spec:
               value: "0.0.0.0"
           ports:
             - containerPort: {{ .Values.etcd_ui.service.port }}
+{{- if .Values.global.resources_enable }}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}  
+{{- end }}
 ---
 kind: Service
 apiVersion: v1
@@ -51,8 +55,9 @@ spec:
       protocol: TCP
       port: {{ .Values.etcd_ui.service.port }}
       targetPort: {{ .Values.etcd_ui.service.port }}
-
 ---
+{{/* -------------------- nginx configuration - Ingress -------------------- */}}
+{{- if eq .Values.global.ingress.class "nginx" -}}
 {{- if .Values.etcd_ui.ingress.enabled -}}
 {{- $fullName := "etcd-ui" -}}
 {{- $servicePort := .Values.etcd_ui.service.port | int -}}
@@ -90,6 +95,31 @@ spec:
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}      
 {{- end }}
-
-
-
+{{/* -------------------- haproxy configuration - Ingress -------------------- */}}
+{{- else if eq .Values.global.ingress.class "haproxy" -}}
+{{- if .Values.etcd_ui.ingress.enabled -}}
+{{- $fullName := "etcd-ui" -}}
+{{- $servicePort := .Values.etcd_ui.service.port | int -}}
+{{- $ingressPath := .Values.etcd_ui.ingress.path -}}
+apiVersion:  {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  name: etcd-ui
+  annotations:
+    haproxy.router.openshift.io/rewrite-target: /
+  labels:
+    app: etcd-ui
+spec:
+  rules:
+    - http:
+        paths:      
+        - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
+          {{- if eq "true" (include "ingress.supportsPathType" .) }}
+          pathType: ImplementationSpecific
+          {{- end }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}      
+{{- end }}
+{{- end }}
