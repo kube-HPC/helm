@@ -23,4 +23,4 @@ sources:
 - https://gitea.com/gitea/helm-chart
 - https://github.com/go-gitea/gitea
 - https://hub.docker.com/r/gitea/gitea/
-version: 2.1.3006
+version: 2.1.3068
