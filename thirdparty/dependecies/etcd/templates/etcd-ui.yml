@@ -38,8 +38,6 @@ spec:
 {{ toYaml .Values.resources | indent 12 }}  
 {{- end }}
 ---
-{{/* -------------------- nginx configuration - Service -------------------- */}}
-{{- if eq .Values.global.ingress.class "nginx" -}}
 kind: Service
 apiVersion: v1
 metadata:
@@ -57,26 +55,6 @@ spec:
       protocol: TCP
       port: {{ .Values.etcd_ui.service.port }}
       targetPort: {{ .Values.etcd_ui.service.port }}
-{{/* -------------------- haproxy configuration - Service -------------------- */}}
-{{- else if eq .Values.global.ingress.class "haproxy" -}}
-kind: Service
-apiVersion: v1
-metadata:
-  name: etcd-ui
-  labels:
-    app: etcd-ui
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    third-party: "true"
-spec:
-  selector:
-    app: etcd-ui
-  ports:
-    - name: server
-      protocol: TCP
-      port: {{ .Values.etcd_ui.service.port }}
-      targetPort: {{ .Values.etcd_ui.service.port }}
-{{- end }}
 ---
 {{/* -------------------- nginx configuration - Ingress -------------------- */}}
 {{- if eq .Values.global.ingress.class "nginx" -}}

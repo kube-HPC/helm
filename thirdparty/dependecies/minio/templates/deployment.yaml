@@ -189,8 +189,10 @@ spec:
             timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
             successThreshold: {{ .Values.readinessProbe.successThreshold }}
             failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+{{- if .Values.global.resources_enable }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          {{- end }}
 {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
