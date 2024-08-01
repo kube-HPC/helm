@@ -1,0 +1,48 @@
+{{- if eq .Values.build_secret.docker_registry "registry.minikube" }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: modify-resource-job
+spec:
+  ttlSecondsAfterFinished: 60
+  template:
+    spec:
+      serviceAccountName: modify-job-sa
+      containers:
+        - name: modify-configmap
+          image: bitnami/kubectl:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+                kubectl patch configmap ingress-nginx-controller -n ingress-nginx --patch '{"data": {"allow-snippet-annotations": "true"}}'
+      restartPolicy: Never
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: modify-job-sa
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: configmap-clusterrolebinding
+subjects:
+- kind: ServiceAccount
+  name: modify-job-sa
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: configmap-clusterrole
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: configmap-clusterrole
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "patch"]
+{{- end }}
