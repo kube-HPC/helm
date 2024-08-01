@@ -1298,7 +1298,7 @@ postgresql:
 ## @param externalDatabase.annotations Additional custom annotations for external database secret object
 ##
 externalDatabase:
-  host: "hkube-postgresql.default.svc.cluster.local"
+  host: "hkube-postgresql"
   port: 5432
   user: gitea
   database: gitea
