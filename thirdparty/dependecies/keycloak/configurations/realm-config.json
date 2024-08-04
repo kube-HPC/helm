@@ -1,0 +1,15 @@
+{
+    "id": "master",
+    "realm": "master",
+    "enabled": true,
+    "clients": [
+      {
+        "clientId": "api-server",
+        "secret": "r3gmlUZ2Bx3vL7iB79rNKMQjaYTqshVK",
+        "redirectUris": [],
+        "directAccessGrantsEnabled": true,
+        "publicClient": false,
+        "serviceAccountsEnabled": true
+      }
+    ]
+  }

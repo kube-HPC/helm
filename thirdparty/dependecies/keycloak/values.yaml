@@ -225,6 +225,7 @@ httpRelativePath: "/hkube/keycloak"
 ##    baz:
 ##
 configuration: ""
+## @param existingSecret Name of existing Secret with Keycloak configuration
 ## @param existingConfigmap Name of existing ConfigMap with Keycloak configuration
 ## NOTE: When it's set the configuration parameter is ignored
 ##
@@ -621,7 +622,9 @@ ingress:
   ##   kubernetes.io/ingress.class: nginx
   ##   cert-manager.io/cluster-issuer: cluster-issuer-name
   ##
-  annotations: {}
+  annotations: {
+    kubernetes.io/ingress.class: nginx
+    }
   ## @param ingress.labels Additional labels for the Ingress resource.
   ## e.g:
   ## labels:
@@ -1066,7 +1069,7 @@ metrics:
 keycloakConfigCli:
   ## @param keycloakConfigCli.enabled Whether to enable keycloak-config-cli job
   ##
-  enabled: false
+  enabled: true
   ## Bitnami keycloak-config-cli image
   ## ref: https://hub.docker.com/r/bitnami/keycloak-config-cli/tags/
   ## @param keycloakConfigCli.image.registry [default: REGISTRY_NAME] keycloak-config-cli container image registry
@@ -1246,11 +1249,12 @@ keycloakConfigCli:
   ##     realm: realm2
   ##     clients: []
   ##
-  configuration: {}
+  configuration: 
+    "configurations/realm-config.json" : ""
   ## @param keycloakConfigCli.existingConfigmap ConfigMap with keycloak-config-cli configuration
   ## NOTE: This will override keycloakConfigCli.configuration
   ##
-  existingConfigmap: ""
+  existingConfigmap:
   ## Automatic Cleanup for Finished Jobs
   ## @param keycloakConfigCli.cleanupAfterFinished.enabled Enables Cleanup for Finished Jobs
   ## @param keycloakConfigCli.cleanupAfterFinished.seconds Sets the value of ttlSecondsAfterFinished
