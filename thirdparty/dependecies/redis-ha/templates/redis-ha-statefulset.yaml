@@ -120,8 +120,10 @@ spec:
       - name: config-init
         image: {{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+{{- if .Values.global.resources_enable }}
         resources:
 {{ toYaml .Values.init.resources | indent 10 }}
+          {{- end }}
         command:
         - sh
         args:

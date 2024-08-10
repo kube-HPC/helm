@@ -202,7 +202,13 @@ persistentVolume:
   size: 10Gi
   annotations: {}
 init:
-  resources: {}
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 200m
+    limits:
+      memory: 512Mi
+      cpu: 400m
 
 # To use a hostPath for data, set persistentVolume.enabled to false
 # and define hostPath.path.
