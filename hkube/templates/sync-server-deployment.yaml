@@ -144,7 +144,7 @@ spec:
 {{- else }}
         path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync
 {{- end }}
-{{/* -------------------- haproxy configuration - Ingress -------------------- */}}
+{{/* -------------------- haproxy configurations - Ingress -------------------- */}}
 {{- else if eq .Values.global.ingress.class "haproxy" -}}
 {{- $ingressPath := .Values.sync_server.ingress.path }}
 apiVersion:  {{ template "ingress.apiVersion" . }}
@@ -153,6 +153,7 @@ metadata:
   annotations:
     haproxy.router.openshift.io/rewrite-target: /
     haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+    route.openshift.io/termination: edge
   labels:
     app: sync-server
     release: {{ .Release.Name }}
@@ -161,24 +162,45 @@ metadata:
     core: "true"
   name: sync-server
 spec:
-{{- if .Values.global.ingress.hostname }}
-  tls:
-  - hosts:
-    - {{ .Values.global.ingress.hostname }}
-    secretName: sync-server-tls-secret
-{{- end }}
   rules:
-  - http:
+  - http: 
       paths:
       - backend: {{- include "ingress.backend" (dict "serviceName" "sync-server" "servicePort" 8384 "context" $) | nindent 10 }}
-        {{- if eq "true" (include "ingress.supportsPathType" .) }}
+{{- if eq "true" (include "ingress.supportsPathType" .) }}
         pathType: ImplementationSpecific
-        {{- end }}
-        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/ui
+{{- end }}
+        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/ui/
+{{- if .Values.global.ingress.hostname }}
+    host: {{ .Values.global.ingress.hostname }}
+{{- end }}
+
+---
+
+apiVersion: {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  annotations:
+    haproxy.router.openshift.io/rewrite-target: /
+    haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+    route.openshift.io/termination: edge
+  labels:
+    app: sync-server
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+  name: sync-server-sync
+spec:
+  rules:
+  - http: 
+      paths:
       - backend: {{- include "ingress.backend" (dict "serviceName" "sync-server" "servicePort" 8080 "context" $) | nindent 10 }}
-        {{- if eq "true" (include "ingress.supportsPathType" .) }}
+{{- if eq "true" (include "ingress.supportsPathType" .) }}
         pathType: ImplementationSpecific
-        {{- end }}
-        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync
+{{- end }}
+        path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync/
+{{- if .Values.global.ingress.hostname }}
+    host: {{ .Values.global.ingress.hostname }}
+{{- end }}
 {{- end }}
 {{- end }}
