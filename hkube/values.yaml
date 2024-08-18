@@ -197,7 +197,10 @@ nginx-ingress:
   # defaultBackend:
   #   resources:
   #     limits:
-  #       cpu: 10m
+  #       cpu: 10moverride: true
+  runAsUser: 3000
+  runAsGroup: 4000
+  fsGroup: 5000
   #       memory: 20Mi
   #     requests:
   #       cpu: 10m
@@ -233,6 +236,13 @@ minio:
     # requests:
     #   cpu: 100m
     #   memory: 200Mi
+  # Set overrideMinio=true to override subcharts default securityContext
+  secContext:
+    overrideMinio: false
+    runAsUser: 3000
+    runAsGroup: 4000
+    fsGroup: 5000
+
 keycloak:
   enable: true
   api_server:
