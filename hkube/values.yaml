@@ -198,9 +198,6 @@ nginx-ingress:
   #   resources:
   #     limits:
   #       cpu: 10moverride: true
-  runAsUser: 3000
-  runAsGroup: 4000
-  fsGroup: 5000
   #       memory: 20Mi
   #     requests:
   #       cpu: 10m
