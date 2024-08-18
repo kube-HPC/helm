@@ -83,9 +83,15 @@ spec:
       serviceAccountName: {{ include "minio.serviceAccountName" . | quote }}
 {{- if and .Values.securityContext.enabled .Values.persistence.enabled }}
       securityContext:
+      {{- if .Values.secContext.overrideMinio }}
+        runAsUser: {{ .Values.secContext.runAsUser }}
+        runAsGroup: {{ .Values.secContext.runAsGroup }}
+        fsGroup: {{ .Values.secContext.fsGroup }}
+      {{- else }}
         runAsUser: {{ .Values.securityContext.runAsUser }}
         runAsGroup: {{ .Values.securityContext.runAsGroup }}
         fsGroup: {{ .Values.securityContext.fsGroup }}
+      {{- end }}
 {{- end }}
       containers:
         - name: {{ .Chart.Name }}
