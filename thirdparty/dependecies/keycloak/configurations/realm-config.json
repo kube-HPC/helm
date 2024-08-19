@@ -5,7 +5,7 @@
     "clients": [
       {
         "clientId": "api-server",
-        "secret": "r3gmlUZ2Bx3vL7iB79rNKMQjaYTqshVK",
+        "secret": "myApiSecret",
         "redirectUris": [],
         "directAccessGrantsEnabled": true,
         "publicClient": false,
