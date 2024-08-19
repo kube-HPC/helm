@@ -16,7 +16,7 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: nginx-ingress.enable
   - name: minio
-    version: "5.0.1027"
+    version: "5.0.1069"
     repository: "https://hkube.org/helm/"
     condition: minio.enable
   - name: mongodb

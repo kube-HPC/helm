@@ -13,15 +13,12 @@ dependencies:
   version: 1.31.1002
 - name: minio
   repository: https://hkube.org/helm/
-  version: 5.0.1027
+  version: 5.0.1069
 - name: mongodb
   repository: https://hkube.org/helm/
   version: 10.0.1068
 - name: gitea
   repository: https://hkube.org/helm/
   version: 2.1.3068
-- name: keycloak
-  repository: https://hkube.org/helm/
-  version: 21.4.4
-digest: sha256:205717ae771008ae9dddaba2f9a2ab9b1b2fc4c0d0794c06fcc914cbd6458db2
-generated: "2024-08-18T11:01:37.126291284+03:00"
+digest: sha256:206a72fedf1f11245bb1ff277423a06b2e23ef46ec9147e41a64cfd9e79eec35
+generated: "2024-08-19T11:36:11.767999613+03:00"
