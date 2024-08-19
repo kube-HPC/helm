@@ -3,10 +3,10 @@ entries:
   etcd:
   - apiVersion: v1
     appVersion: 3.3.1
-    created: "2024-08-10T20:59:58.642670488+03:00"
+    created: "2024-08-19T11:34:27.702826841+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
-    digest: 70b52f55f671a433f356abda6c1d44e6b8ffb6cdedde15dab627f07a2625b5ba
+    digest: 471a70ece1f8f77844a2962b9db7f270728b01acc801ce7515a709f63efd483a
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -331,7 +331,7 @@ entries:
   gitea:
   - apiVersion: v1
     appVersion: 1.13.0
-    created: "2024-08-10T20:59:58.651590848+03:00"
+    created: "2024-08-19T11:34:27.710445085+03:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -350,7 +350,7 @@ entries:
       repository: ""
       version: 8.0.0
     description: Gitea Helm chart for Kubernetes
-    digest: d6413a5c8c7c5a77d3f7380a458b7aeddce3baed239f58f446ca3861a72062d4
+    digest: ce3b696f839c4d6ca8e6354b76c8d1bda1a3860518eb31c6017e4b7fa4ed0a2e
     icon: https://docs.gitea.io/images/gitea.png
     keywords:
     - git
@@ -3127,7 +3127,7 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
-    created: "2024-08-18T15:30:47.809334009+03:00"
+    created: "2024-08-19T11:34:27.713855788+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
       name: cassandra
@@ -3138,7 +3138,7 @@ entries:
       repository: https://helm.elastic.co
       version: ^7.5.1
     description: A Jaeger Helm chart for Kubernetes
-    digest: dcaad28c07e827e9fe77f3da3db9260637c10de6c2411d091a1062d7d8885e2f
+    digest: 3e043319afacc4f6568d63f0b708ddd2012579e6f45ac79d692ff05b9a5aa20f
     home: https://jaegertracing.io
     icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
     keywords:
@@ -3566,6 +3566,29 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: master
+    created: "2024-08-19T11:34:27.714978815+03:00"
+    description: MinIO is a high performance data infrastructure for machine learning,
+      analytics and application data workloads.
+    digest: a69a8bab8941a77833a10a4b4e831f7ef05e11dfd6969b74fc946ab2d0e5a476
+    home: https://min.io
+    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+    keywords:
+    - storage
+    - object-storage
+    - S3
+    maintainers:
+    - email: dev@minio.io
+      name: Minio
+    - email: hello@acale.ph
+      name: Acaleph
+    name: minio
+    sources:
+    - https://github.com/minio/minio
+    urls:
+    - minio-5.0.1069.tgz
+    version: 5.0.1069
+  - apiVersion: v1
+    appVersion: master
     created: "2024-08-10T20:59:58.657947558+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
@@ -3730,11 +3753,11 @@ entries:
       category: Database
     apiVersion: v1
     appVersion: 4.4.1
-    created: "2024-08-10T20:59:58.660312701+03:00"
+    created: "2024-08-19T11:34:27.718079599+03:00"
     description: NoSQL document-oriented database that stores JSON-like documents
       with dynamic schemas, simplifying the integration of data in content-driven
       applications.
-    digest: dde79fc3610f8edae155a2778e7e65dd7ad7fe4f4f2190d850ce8a26a0d2ae2d
+    digest: ddf556e07129847736259298992f7a033a06d4041ab64f4d253dcc93821e775d
     home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
     keywords:
@@ -3897,10 +3920,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2024-08-18T15:30:47.821916421+03:00"
+    created: "2024-08-19T11:34:27.720175231+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 2d1d8463277972d61a93b72fd0b9a30bd0adfc6822bde70c9bb2a6e6426ac991
+    digest: 505fa7d745c2651da8557cb7f93bfb5dcf734dfc28ed90e86989e08bf548fe46
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -3986,9 +4009,9 @@ entries:
   redis-ha:
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2024-08-10T20:59:58.662378892+03:00"
+    created: "2024-08-19T11:34:27.721378866+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: 8e679107fdfb504a0af5746ad406a5cb12225675986b70585e038b1b28666d1b
+    digest: b0f7e5079f7bec05742affb52bb95d24c2200b8342d8f3de8152bd8e6c14a9cf
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -4202,4 +4225,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2024-08-18T15:30:47.798505394+03:00"
+generated: "2024-08-19T11:34:27.702244799+03:00"
