@@ -97,6 +97,7 @@ apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   annotations:
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
     kubever: {{ template "common.capabilities.kubeVersion" .}}
     apiver:  {{ template "ingress.apiVersion" . }}
 {{- if .Values.global.ingress.use_regex }}
