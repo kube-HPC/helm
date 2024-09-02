@@ -475,7 +475,7 @@ artifacts_registry: # +doc-gen:ignore
     port: "8081"
   image:
     repository: hkube/artifacts-registry
-    tag: v2.8.11
+    tag: v2.8.12
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -679,7 +679,7 @@ simulator: # +doc-gen:ignore
     is_secure: ""
   image:
     repository: hkube/simulator
-    tag: v2.8.23
+    tag: v2.8.24
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -870,4 +870,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.8.26-1725263711191
+fullSystemVersion: v2.8.26-1725281927525
