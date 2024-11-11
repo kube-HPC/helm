@@ -870,4 +870,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.8.39-1731312045518
+fullSystemVersion: v2.8.39-1731317923608
