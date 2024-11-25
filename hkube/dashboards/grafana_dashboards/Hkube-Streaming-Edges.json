@@ -618,7 +618,7 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{node}}",
+          "legendFormat": "On {{target}} from {{source}}",
           "refId": "A"
         }
       ],
@@ -710,7 +710,7 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{node}}",
+          "legendFormat": "On {{target}} from {{source}}",
           "refId": "A"
         }
       ],
