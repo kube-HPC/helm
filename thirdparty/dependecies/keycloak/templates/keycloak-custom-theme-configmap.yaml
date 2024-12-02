@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-custom-theme
+  labels:
+    app.kubernetes.io/name: keycloak
+data:
+{{ (.Files.Glob "themes/hkube/**").AsConfig | indent 2 }}
