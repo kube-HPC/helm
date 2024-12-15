@@ -21,7 +21,7 @@ rules:
   resources: ["pods", "resourcequotas"]
   verbs: ["get", "list", "watch"]
 - apiGroups: [""]
-  resources: ["configmaps, "persistentvolumeclaims", "secrets"]
+  resources: ["configmaps", "persistentvolumeclaims", "secrets"]
   verbs: ["get", "list", "watch"]
 - apiGroups: ["batch"]
   resources: ["jobs"]
