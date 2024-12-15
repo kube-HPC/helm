@@ -89,7 +89,7 @@ spec:
       initContainers:
         - name: init-customtheme
           image: busybox:1.28
-          command: ['sh', '-c', 'mkdir -p /themes && cp -rL /themes/custom.tar /shared && cd /shared/ && tar -xvf custom.tar --strip-components=1 && rm -rf custom.tar']
+          command: ['sh', '-c', 'mkdir -p /themes && cp -rL /themes/custom.tar /shared && cd /shared/ && tar -xvf custom.tar --strip-components=0 && rm -rf custom.tar']
           volumeMounts:
           - mountPath: /shared
             name: shared-volume          
