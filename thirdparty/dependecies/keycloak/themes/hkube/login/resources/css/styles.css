@@ -25,6 +25,8 @@ body {
   justify-content: center;
   margin: 0;
   opacity: 0.92;
+  background-repeat: no-repeat;
+  background-position-y: center;
 }
 body::before {
   content: '';
@@ -95,13 +97,21 @@ body > div:first-child > div:nth-child(2) {
   position: relative;
 }
 
-#kc-form-login > div:nth-child(2)::after {
-  content: "Don’t ever use easy cracked password!";
-  position: absolute;
-  left: 8px;
-  bottom: 12px;
-  font-size: 12px;
-  color: #8593a4;
+
+
+#kc-form-login > div:nth-child(2) > div > button {
+	height: 50px;
+    width: 50px;
+    position: absolute;
+    right: 0px;
+    background: #ffffff;
+    border: 0px;
+}
+button[aria-label="Hide password"] i::before {
+			  background-image: url("../img/eyeoff.svg");
+}
+button[aria-label="Show password"] i::before {
+			  background-image: url("../img/eyeon.svg");
 }
 
 #kc-form #kc-login {
