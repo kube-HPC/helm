@@ -107,10 +107,10 @@ body > div:first-child > div:nth-child(2) {
     background: #ffffff;
     border: 0px;
 }
-button[aria-label="Hide password"] i::before {
+button[aria-label="Hide password"] i {
 			  background-image: url("../img/eyeoff.svg");
 }
-button[aria-label="Show password"] i::before {
+button[aria-label="Show password"] i {
 			  background-image: url("../img/eyeon.svg");
 }
 
