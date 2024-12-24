@@ -118,6 +118,11 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: ELASTICSEARCH_STRUCTURED_PREFIX
+            - name: KEYCLOAK_ENABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: KEYCLOAK_ENABLE
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
