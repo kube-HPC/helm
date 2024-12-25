@@ -11,7 +11,8 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite   ^(?!.*(?:\.css|\/|\.js|\.svg|\.gif|\.png)$)(.*) $1/ redirect;
 {{- else if eq .Values.global.ingress.class "haproxy"}}
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    haproxy.router.openshift.io/rewrite-target: /
+    router.openshift.io/termination: edge
 {{- end }}
   labels:
     app: hkube-site
@@ -20,6 +21,7 @@ metadata:
     heritage: Helm
     release: hkube
   name: hkube-site
+{{ if eq .Values.global.ingress.class "nginx"}}
 spec:
   rules:
   - http:
@@ -31,4 +33,20 @@ spec:
               number: {{ $servicePort }}
         path: /hkube/site(/|$)(.*)
         pathType: ImplementationSpecific
+{{- else if eq .Values.global.ingress.class "haproxy" }}
+spec:
+  rules:
+  - {{- if .Values.global.ingress.hostname }}
+    host: {{ .Values.global.ingress.hostname }}
+    {{- end }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: hkube-site
+            port:
+              number: {{ $servicePort }}
+        path: /hkube/site
+        pathType: Prefix
+{{- end }}
 {{ end }}        
