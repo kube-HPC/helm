@@ -87,6 +87,14 @@ spec:
       {{- end }}
       {{- if or .Values.enableDefaultInitContainers .Values.initContainers }}
       initContainers:
+        - name: init-customtheme
+          image: busybox:1.28
+          command: ['sh', '-c', 'mkdir -p /themes && cp -rL /themes/custom.tar /shared && cd /shared/ && tar -xvf custom.tar --strip-components=0 && rm -rf custom.tar']
+          volumeMounts:
+          - mountPath: /shared
+            name: shared-volume          
+          - mountPath: /themes
+            name: theme-volume          
         {{- if .Values.enableDefaultInitContainers }}
         - name: init-quarkus-directory
           image: {{ template "keycloak.image" . }}
@@ -279,6 +287,8 @@ spec:
           {{- end }}
           {{- end }}
           volumeMounts:
+            - name: shared-volume   
+              mountPath: /opt/bitnami/keycloak/themes
             - name: empty-dir
               mountPath: /tmp
               subPath: tmp-dir
@@ -319,6 +329,11 @@ spec:
       volumes:
         - name: empty-dir
           emptyDir: {}
+        - name: shared-volume
+          emptyDir: {}
+        - name: theme-volume
+          configMap:
+            name: keycloak-custom-theme 
         {{- if or .Values.configuration .Values.existingConfigmap }}
         - name: keycloak-config
           configMap:
