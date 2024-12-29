@@ -577,7 +577,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "description": "Round Trip Time in ms",
+      "description": "Required Pods",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -587,7 +587,7 @@
         "y": 27
       },
       "hiddenSeries": false,
-      "id": 35,
+      "id": 34,
       "legend": {
         "avg": false,
         "current": false,
@@ -614,11 +614,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (hkube_pipeline_driver_streaming_edge_round_trip_gauge{jobId=\"$Job_ID\"}) by (pipelineName,jobId,source,target)",
+          "expr": "sum (hkube_pipeline_driver_streaming_edge_required_gauge{jobId=\"$Job_ID\"}) by (pipelineName,jobId,source,target)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{node}}",
+          "legendFormat": "{{target}}",
           "refId": "A"
         }
       ],
@@ -626,7 +626,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Round Trip Time",
+      "title": "Required",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -669,7 +669,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "description": "Required Pods",
+      "description": "Round Trip Time in ms",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -679,7 +679,7 @@
         "y": 27
       },
       "hiddenSeries": false,
-      "id": 34,
+      "id": 35,
       "legend": {
         "avg": false,
         "current": false,
@@ -706,11 +706,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (hkube_pipeline_driver_streaming_edge_required_gauge{jobId=\"$Job_ID\"}) by (pipelineName,jobId,source,target)",
+          "expr": "sum (hkube_pipeline_driver_streaming_edge_round_trip_gauge{jobId=\"$Job_ID\"}) by (pipelineName,jobId,source,target)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{node}}",
+          "legendFormat": "On {{target}} from {{source}}",
           "refId": "A"
         }
       ],
@@ -718,7 +718,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Required",
+      "title": "Round Trip Time",
       "tooltip": {
         "shared": true,
         "sort": 0,
