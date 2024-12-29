@@ -417,7 +417,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.8.20-sidecar_feature-12338130231
+    tag: v2.8.20
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -456,7 +456,7 @@ datasources_service: # +doc-gen:ignore
     maxBodySize: 2500m
   image:
     repository: hkube/datasources-service
-    tag: v2.8.4-sidecar_feature-12338130231
+    tag: v2.8.4
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -554,7 +554,7 @@ gc_service: # +doc-gen:ignore
     builds_max_age: 14400
   image:
     repository: hkube/gc-service
-    tag: v2.8.5-sidecar_feature-12338130231
+    tag: v2.8.5
   resources_enable: false
   resources:
     limits:
@@ -617,7 +617,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.8.5-sidecar_feature-12338130231
+    tag: v2.8.5
   ingress:
     enabled: true
     path: /hkube/queue
@@ -742,7 +742,7 @@ task_executor:
     memory_ratio_pressure: 0.8
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.8.4-sidecar_feature-12338130231
+    tag: v2.8.4
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
@@ -774,7 +774,7 @@ worker: # +doc-gen:ignore
     metric_port: "3000"
   image:
     repository: hkube/worker
-    tag: v2.8.7-sidecar_feature-12338130231
+    tag: v2.8.7
   metrics:
     port: 3001
   service:
