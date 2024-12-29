@@ -25,6 +25,8 @@ spec:
         env :
           - name: BASE_URL
             value: "{{ .Values.site.base_url }}"
+          - name: BABEL_DISABLE_CACHE
+            value: "1"
         resources:
           limits:
             cpu: 200m
