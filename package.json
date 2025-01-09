@@ -1,6 +1,6 @@
 {
   "name": "helm",
-  "version": "2.8.100",
+  "version": "2.8.101",
   "description": "Installing and Deleting hkube with helm charts",
   "main": "index.js",
   "scripts": {
