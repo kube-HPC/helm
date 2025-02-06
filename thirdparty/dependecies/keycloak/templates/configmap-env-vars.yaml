@@ -18,6 +18,10 @@ data:
   KEYCLOAK_HTTP_PORT: {{ .Values.containerPorts.http | quote }}
   KEYCLOAK_PROXY: {{ .Values.proxy | quote }}
   KEYCLOAK_ENABLE_STATISTICS: {{ ternary "true" "false" .Values.metrics.enabled | quote }}
+  KC_HOSTNAME_STRICT: {{ .Values.env.hostname_strict | quote }}
+  KC_HTTP_ENABLED: {{ .Values.env.http_enabled | quote }}
+  KC_HOSTNAME_URL: {{ .Values.env.hostname_url | quote }}
+  KC_HOSTNAME_ADMIN_URL: {{ .Values.env.hostname_admin_url | quote }}
   {{- if not .Values.externalDatabase.existingSecretHostKey }}
   KEYCLOAK_DATABASE_HOST: {{ include "keycloak.databaseHost" . | quote }}
   {{- end }}
