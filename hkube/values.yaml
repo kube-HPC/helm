@@ -245,6 +245,13 @@ keycloak:
   api_server:
     #override value if needed
     client_secretKey: r3gmlUZ2Bx3vL7iB79rNKMQjaYTqshVK
+  env:
+    hostname_strict: true
+    http_enabled: true
+    #replace with keycloak's domain and full url, for keycloak ingress to operate correctly.
+    hostname_url: https://env.hkube.org/hkube/keycloak
+    hostname_admin_url: https://env.hkube.org/hkube/keycloak
+  
 
 gitea:
   enable: true
