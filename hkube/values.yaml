@@ -20,6 +20,7 @@ global:
     use_existing: false
   # If false, will not set resource request and limits on hkube pods. If true will set the values for each pod
   resources_enable: false
+  hkube_url: "https://cicd.hkube.org/hkube"
   storage:
     # encoding for storage. can be msgpack, bson, json
     encoding: msgpack
@@ -248,10 +249,6 @@ keycloak:
   env:
     hostname_strict: true
     http_enabled: true
-    #replace with keycloak's domain and full url, for keycloak ingress to operate correctly.
-    hostname_url: https://cicd.hkube.org/hkube/keycloak
-    hostname_admin_url: https://cicd.hkube.org/hkube/keycloak
-  
 
 gitea:
   enable: true
