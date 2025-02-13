@@ -118,11 +118,11 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: ELASTICSEARCH_STRUCTURED_PREFIX
-            - name: KEYCLOAK_ENABLE
+            - name: REACT_APP_KEYCLOAK_ENABLE
               valueFrom:
                 configMapKeyRef:
                   name: simulator-configmap
-                  key: KEYCLOAK_ENABLE
+                  key: REACT_APP_KEYCLOAK_ENABLE
             - name: NAMESPACE
               valueFrom:
                 fieldRef:

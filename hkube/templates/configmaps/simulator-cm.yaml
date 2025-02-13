@@ -23,4 +23,4 @@ data:
   REACT_APP_SITEBASEURL: {{ .Values.site.base_url | quote }}
   ELASTICSEARCH_STRUCTURED_PREFIX: {{ .Values.api_server.env.elasticsearch_structured_prefix | quote }}
   
-  KEYCLOAK_ENABLE: {{ .Values.keycloak.enable | quote }}
+  REACT_APP_KEYCLOAK_ENABLE: {{ .Values.keycloak.enable | quote }}
