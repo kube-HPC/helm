@@ -152,6 +152,26 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: metadata.namespace
+            - name: KC_HOSTNAME_STRICT
+              valueFrom:
+                configMapKeyRef:
+                  name: hkube-keycloak-env-vars
+                  key: KC_HOSTNAME_STRICT
+            - name: KC_HTTP_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: hkube-keycloak-env-vars
+                  key: KC_HTTP_ENABLED
+            - name: KC_HOSTNAME_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: hkube-keycloak-env-vars
+                  key: KC_HOSTNAME_URL
+            - name: KC_HOSTNAME_ADMIN_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: hkube-keycloak-env-vars
+                  key: KC_HOSTNAME_ADMIN_URL
             - name: BITNAMI_DEBUG
               value: {{ ternary "true" "false" .Values.image.debug | quote }}
             - name: KEYCLOAK_ADMIN_PASSWORD

@@ -126,6 +126,11 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: KEYCLOAK_ENABLE
+            - name: KC_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: KC_URL
 {{- if .Values.mongodb.enable }}
             - name: MONGODB_SERVICE_USER_NAME
               valueFrom:
