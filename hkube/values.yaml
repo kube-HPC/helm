@@ -20,7 +20,7 @@ global:
     use_existing: false
   # If false, will not set resource request and limits on hkube pods. If true will set the values for each pod
   resources_enable: false
-  hkube_url: "http://192.168.49.2/hkube"
+  hkube_url: "https://cicd.hkube.org/hkube"
   storage:
     # encoding for storage. can be msgpack, bson, json
     encoding: msgpack
