@@ -1251,7 +1251,7 @@ keycloakConfigCli:
   ##     clients: []
   ##
   configuration: 
-    "configurations/realm-config.json" : ""
+    "configurations/hkube-realm-config.json" : ""
   ## @param keycloakConfigCli.existingConfigmap ConfigMap with keycloak-config-cli configuration
   ## NOTE: This will override keycloakConfigCli.configuration
   ##
