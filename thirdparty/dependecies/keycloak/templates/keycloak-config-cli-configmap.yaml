@@ -15,10 +15,14 @@ data:
   {{- range $fileName, $fileContent := .Values.keycloakConfigCli.configuration }}
   {{- if $fileContent }}
   {{- $updatedContent := regexReplaceAllLiteral "myApiSecret" $fileContent $.Values.api_server.client_secretKey }}
+  {{- $updatedContent := regexReplaceAllLiteral "myHkubeUrl" $updatedContent $.Values.global.hkube_url }}
   {{ $fileName }}: |
     {{- include "keycloak.common.tplvalues.render" (dict "value" $updatedContent "context" $) | nindent 4 }}
   {{- else }}
-    {{- ($.Files.Glob $fileName).AsConfig | replace "myApiSecret" $.Values.api_server.client_secretKey | nindent 2 }}
+    {{- ($.Files.Glob $fileName).AsConfig 
+        | replace "myApiSecret" $.Values.api_server.client_secretKey 
+        | replace "myHkubeUrl" $.Values.global.hkube_url 
+        | nindent 2 }}
   {{- end }}
   {{- end }}
 {{- end }}
