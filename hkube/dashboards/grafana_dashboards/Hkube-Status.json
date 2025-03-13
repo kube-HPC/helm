@@ -8,16 +8,23 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1627471353459,
+  "id": 37,
+  "iteration": 1741692441615,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
@@ -36,6 +43,50 @@
     {
       "datasource": "${grafana_data_source}",
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 1,
+                  "text": "❌"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "index": 0,
+                  "text": "✔"
+                },
+                "to": 6666
+              },
+              "type": "range"
+            }
+          ],
+          "noValue": "Invalid",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 8,
         "w": 8,
@@ -46,67 +97,32 @@
       "maxPerRow": 6,
       "options": {
         "colorMode": "value",
-        "fieldOptions": {
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
           "calcs": [
             "last"
           ],
-          "defaults": {
-            "mappings": [
-              {
-                "from": "",
-                "id": 1,
-                "operator": "",
-                "text": "❌",
-                "to": "",
-                "type": 1,
-                "value": "null"
-              },
-              {
-                "from": "1",
-                "id": 2,
-                "operator": "",
-                "text": "✔",
-                "to": "1000",
-                "type": 2,
-                "value": ""
-              }
-            ],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": [],
+          "fields": "",
           "values": false
         },
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto"
+        "textMode": "auto"
       },
-      "pluginVersion": "6.7.3",
+      "pluginVersion": "8.4.2",
       "repeat": "hkube3rdparty",
       "repeatDirection": "h",
       "targets": [
         {
+          "datasource": "${grafana_data_source}",
           "expr": "count(kube_pod_status_phase{phase='Running',pod=~'.+$hkube3rdparty.*'})",
           "format": "time_series",
           "instant": true,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "$hkube3rdparty Status",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "$hkube3rdparty",
       "type": "stat"
     },
@@ -127,9 +143,53 @@
     {
       "datasource": "${grafana_data_source}",
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "index": 1,
+                  "text": "❌"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "index": 0,
+                  "text": "✔"
+                },
+                "to": 6666
+              },
+              "type": "range"
+            }
+          ],
+          "noValue": "Invalid",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 9,
-        "w": 2,
+        "w": 2.1818181818181817,
         "x": 0,
         "y": 10
       },
@@ -137,77 +197,41 @@
       "maxPerRow": 12,
       "options": {
         "colorMode": "value",
-        "fieldOptions": {
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
           "calcs": [
             "last"
           ],
-          "defaults": {
-            "mappings": [
-              {
-                "from": "",
-                "id": 1,
-                "operator": "",
-                "text": "❌",
-                "to": "",
-                "type": 1,
-                "value": "null"
-              },
-              {
-                "from": "1",
-                "id": 2,
-                "operator": "",
-                "text": "✔",
-                "to": "10000",
-                "type": 2,
-                "value": "!null"
-              }
-            ],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                },
-                {
-                  "color": "green",
-                  "value": 1
-                }
-              ]
-            }
-          },
-          "overrides": [],
+          "fields": "",
           "values": false
         },
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto"
+        "textMode": "auto"
       },
-      "pluginVersion": "6.7.3",
+      "pluginVersion": "8.4.2",
       "repeat": "hkubeservices",
       "repeatDirection": "h",
       "targets": [
         {
+          "datasource": "${grafana_data_source}",
           "expr": "count(kube_pod_status_phase{phase='Running',pod=~'$hkubeservices.*'})",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "$hkubeservices Status",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "$hkubeservices",
       "type": "stat"
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 22,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": "All",
@@ -215,7 +239,6 @@
         },
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": false,
         "name": "hkubeservices",
         "options": [
@@ -285,7 +308,6 @@
         "type": "custom"
       },
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": "All",
@@ -293,7 +315,6 @@
         },
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": false,
         "name": "hkube3rdparty",
         "options": [
@@ -323,7 +344,6 @@
         "type": "custom"
       },
       {
-        "datasource": null,
         "filters": [],
         "hide": 0,
         "label": "",
@@ -354,8 +374,6 @@
   "timezone": "",
   "title": "Hkube Services",
   "uid": "uXoXQ8Z7k",
-  "variables": {
-    "list": []
-  },
-  "version": 24
+  "version": 1,
+  "weekStart": ""
 }
