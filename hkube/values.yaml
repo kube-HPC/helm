@@ -324,7 +324,7 @@ site:
   env: {}
   image:
     repository: hkube/site
-    tag: v2.8.13
+    tag: v2.8.14
   # base_url for site-related links, default is /hkube/site
   base_url: "/hkube/site"
   ingress:
