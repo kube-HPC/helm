@@ -289,7 +289,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(kube_pod_status_phase{phase='Running',pod="
-systemversion: 2.8.61-tasks-executor-logs-2.13882065155
+systemversion: 2.8.61-tasks-executor-logs-2.13884217153
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -746,7 +746,7 @@ task_executor:
     memory_ratio_pressure: 0.8
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.8.11-tasks-executor-logs-2-13882065155
+    tag: v2.8.11-tasks-executor-logs-2-13884217153
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
