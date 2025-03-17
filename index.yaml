@@ -713,6 +713,60 @@ entries:
     version: 2.1.3000
   hkube:
   - apiVersion: v1
+    appVersion: v2.9.1
+    created: "2025-03-17T14:23:07.679958201Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.org/helm/
+      version: 0.7.2020
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.org/helm/
+      version: 0.27.2006
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.org/helm/
+      version: 3.6.1006
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.org/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.org/helm/
+      version: 5.0.1027
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.org/helm/
+      version: 10.0.1004
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.org/helm/
+      version: 2.1.3006
+    - condition: keycloak.enable
+      name: keycloak
+      repository: https://hkube.org/helm/
+      version: 21.4.12
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: adf4307131be5b230687ac504b15371af9d1c908665a53cc6e7dfbc6eeae363b
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.8.146.tgz
+    version: v2.8.146
+  - apiVersion: v1
     appVersion: v2.8.63
     created: "2025-03-17T12:45:14.602881098Z"
     dependencies:
@@ -4602,4 +4656,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2025-03-17T12:45:14.568584044Z"
+generated: "2025-03-17T14:23:07.65081133Z"
