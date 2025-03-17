@@ -242,7 +242,7 @@ minio:
     fsGroup: 5000
 
 keycloak:
-  enable: true
+  enable: false
   api_server:
     #override value if needed
     client_secretKey: r3gmlUZ2Bx3vL7iB79rNKMQjaYTqshVK
