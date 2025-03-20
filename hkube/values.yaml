@@ -281,8 +281,8 @@ metrics:
     release: metric
   grafanaDashboardLabel:
     grafana_dashboard: "1"
-  # set to '7' when use Grafana version >= 7, default '6'
-  grafana_version: "7"
+  # Set to '8' if your version >=  8.2.2, else set to 7 
+  grafana_version: "8"
   # set the name of the data source defined in grafana, where hkube metrics are collected ./dashboards/grafana_dashboards/*.json files
   grafana_data_source: Prometheus
     # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 6

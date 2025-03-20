@@ -23,3 +23,4 @@ data:
   API_SERVER_RATE_LIMIT_MAX: {{ .Values.api_server.env.rate_limit_max | quote}}
   KEYCLOAK_ENABLE: {{ .Values.keycloak.enable | quote }}
   KC_URL: {{ printf "%s/keycloak" .Values.global.hkube_url | quote }}
+  KC_CLIENT_SECRET: {{ .Values.keycloak.api_server.client_secretKey | quote }}

@@ -131,6 +131,11 @@ spec:
                 configMapKeyRef:
                   name: api-server-configmap
                   key: KC_URL
+            - name: KC_CLIENT_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: KC_CLIENT_SECRET
 {{- if .Values.mongodb.enable }}
             - name: MONGODB_SERVICE_USER_NAME
               valueFrom:
