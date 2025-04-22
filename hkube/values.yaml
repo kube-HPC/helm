@@ -285,9 +285,17 @@ metrics:
   grafana_version: "8"
   # set the name of the data source defined in grafana, where hkube metrics are collected ./dashboards/grafana_dashboards/*.json files
   grafana_data_source: Prometheus
+
+  # Prefix for hkube 3rd party services (only used in 3rd party queries)
+  grafana_pod_prefix: "hkube"
+
+  # Namespace where HKube is deployed
+  grafana_hkube_namespace: "default"
+
   # Optional per-dashboard datasource overrides
   custom_dashboard_datasources:
     Hkube-Status: ""
+
     # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 6
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7

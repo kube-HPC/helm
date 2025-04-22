@@ -10,6 +10,8 @@ items:
   {{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
   {{- $customDatasourceMap := $.Values.metrics.custom_dashboard_datasources | default dict }}
   {{- $finalDatasource := get $customDatasourceMap $dashboardName | default $grafanaDataSource }}
+  {{- $namespace := $.Values.metrics.grafana_hkube_namespace | default $.Release.Namespace }}
+  {{- $podPrefix := $.Values.metrics.grafana_pod_prefix | default "hkube" }}
   - apiVersion: v1
     kind: ConfigMap
     metadata:
@@ -19,6 +21,12 @@ items:
         app: hkube
 {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
     data:
-      {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${grafana_data_source}" $finalDatasource | replace "${podCountExpr}" (toString $podCountExpr) }}
+      {{ $dashboardName }}.json: >-
+        {{ $.Files.Get $path | toJson
+          | replace "${grafana_data_source}" $finalDatasource
+          | replace "${namespace}" $namespace
+          | replace "${podPrefix}" $podPrefix
+          | replace "${podCountExpr}" (toString $podCountExpr)
+        }}
 {{- end }}
 {{- end }}

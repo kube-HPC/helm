@@ -115,7 +115,7 @@
       "targets": [
         {
           "datasource": "${grafana_data_source}",
-          "expr": "count(kube_pod_status_phase{phase='Running',pod=~'.+$hkube3rdparty.*'})",
+          "expr": "count(kube_pod_status_phase{phase='Running', namespace='${namespace}', pod=~'^${podPrefix}-${hkube3rdparty}.*'})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -215,7 +215,7 @@
       "targets": [
         {
           "datasource": "${grafana_data_source}",
-          "expr": "count(kube_pod_status_phase{phase='Running',pod=~'$hkubeservices.*'})",
+          "expr": "count(kube_pod_status_phase{phase='Running', namespace='${namespace}', pod=~'$hkubeservices.*'})",
           "interval": "",
           "legendFormat": "$hkubeservices Status",
           "refId": "A"
