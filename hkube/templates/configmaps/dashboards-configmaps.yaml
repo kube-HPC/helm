@@ -21,12 +21,6 @@ items:
         app: hkube
   {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
     data:
-      {{ $dashboardName }}.json: >-
-        {{ $.Files.Get $path | toJson
-          | replace "${grafana_data_source}" $finalDatasource
-          | replace "${namespace}" $namespace
-          | replace "${podPrefix}" $podPrefix
-          | replace "${podCountExpr}" (toString $podCountExpr)
-        }}
+      {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${grafana_data_source}" $finalDatasource | replace "${namespace}" $namespace | replace "${podPrefix}" $podPrefix | replace "${podCountExpr}" (toString $podCountExpr) }}
   {{- end }}
 {{- end }}
