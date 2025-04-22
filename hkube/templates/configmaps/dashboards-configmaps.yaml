@@ -1,6 +1,6 @@
 {{- $placeHolderDict := include "grafanaVersionUtility" . | fromJson }}
-  {{- $podCountExpr := index $placeHolderDict "podCountExpr" }}
-  {{- $grafanaDataSource := index $placeHolderDict "grafanaDataSource" }}
+{{- $podCountExpr := index $placeHolderDict "podCountExpr" }}
+{{- $grafanaDataSource := index $placeHolderDict "grafanaDataSource" }}
 {{- $files := .Files.Glob "dashboards/grafana_dashboards/*.json" }}
 {{- if $files }}
 apiVersion: v1
@@ -8,6 +8,8 @@ kind: ConfigMapList
 items:
 {{- range $path, $fileContents := $files }}
   {{- $dashboardName := regexReplaceAll "(^.*/)(.*)\\.json$" $path "${2}" }}
+  {{- $customDatasourceMap := $.Values.metrics.custom_dashboard_datasources | default dict }}
+  {{- $finalDatasource := get $customDatasourceMap $dashboardName | default $grafanaDataSource }}
   - apiVersion: v1
     kind: ConfigMap
     metadata:
@@ -15,8 +17,8 @@ items:
       namespace: {{ $.Release.Namespace }}
       labels:
         app: hkube
-  {{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
+{{ toYaml $.Values.metrics.grafanaDashboardLabel | indent 6 }}
     data:
-      {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${grafana_data_source}" $grafanaDataSource | replace "${podCountExpr}" (toString $podCountExpr) }}
-  {{- end }}
+      {{ $dashboardName }}.json: {{ $.Files.Get $path | toJson | replace "${grafana_data_source}" $finalDatasource | replace "${podCountExpr}" (toString $podCountExpr) }}
+{{- end }}
 {{- end }}
