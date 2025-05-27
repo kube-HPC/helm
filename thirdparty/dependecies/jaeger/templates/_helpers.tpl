@@ -362,3 +362,18 @@ Cassandra or Elasticsearch related command line options depending on which is us
 {{- include "elasticsearch.cmdArgs" . -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Render the backend section for an Ingress resource.
+Supports numeric and named ports.
+*/}}
+{{- define "ingress.backend" -}}
+service:
+  name: {{ .serviceName }}
+  port:
+    {{- if (kindIs "string" .servicePort) }}
+    name: {{ .servicePort }}
+    {{- else }}
+    number: {{ .servicePort }}
+    {{- end }}
+{{- end -}}
