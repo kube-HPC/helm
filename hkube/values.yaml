@@ -335,7 +335,7 @@ site:
   env: {}
   image:
     repository: hkube/site
-    tag: v2.9.7
+    tag: v2.9.8
   # base_url for site-related links, default is /hkube/site
   base_url: "/hkube/site"
   ingress:
@@ -694,7 +694,7 @@ simulator: # +doc-gen:ignore
     is_secure: ""
   image:
     repository: hkube/simulator
-    tag: v2.9.38
+    tag: v2.9.39
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -885,4 +885,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.9.17-1748183220801
+fullSystemVersion: v2.9.17-1748505242433
