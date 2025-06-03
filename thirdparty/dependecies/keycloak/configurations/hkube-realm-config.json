@@ -1,6 +1,7 @@
 {
   "realm": "Hkube",
   "enabled": true,
+  "loginTheme": "custom",
   "roles": {
     "client": {
       "api-server": [
