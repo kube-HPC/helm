@@ -16,6 +16,10 @@
         {
           "name": "hkube_api_view",
           "description": "Allows viewing of hkube objects"
+        },
+        {
+          "name": "hkube_api_execute",
+          "description": "Allows execution of hkube objects"
         }
       ]
     }
@@ -51,7 +55,8 @@
         "api-server": [
           "hkube_api_delete",
           "hkube_api_edit",
-          "hkube_api_view"
+          "hkube_api_view",
+          "hkube_api_execute"
         ]
       }
     },
