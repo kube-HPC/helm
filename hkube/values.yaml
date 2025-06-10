@@ -300,7 +300,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(kube_pod_status_phase{phase='Running',pod="
-systemversion: v2.9.20
+systemversion: 2.9.20-trigger-user_for_audits.15560858644
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -432,7 +432,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.9.16
+    tag: v2.9.16-trigger_user_for_audits-15560858644
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -773,7 +773,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: "3000"
   image:
     repository: hkube/trigger-service
-    tag: v2.9.0
+    tag: v2.9.0-trigger_user_for_audits-15560858644
   service:
     type: ClusterIP
   resources_enable: false
