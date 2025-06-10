@@ -20,4 +20,4 @@ maintainers:
 name: jaeger
 sources:
 - https://hub.docker.com/u/jaegertracing/
-version: 0.27.2006
+version: 0.27.2007
