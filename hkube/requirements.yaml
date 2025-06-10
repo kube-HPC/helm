@@ -4,7 +4,7 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: etcd.enable
   - name: jaeger
-    version: "0.27.2006"
+    version: "0.27.2007"
     repository: "https://hkube.org/helm/"
     condition: jaeger.enable
   - name: redis-ha
