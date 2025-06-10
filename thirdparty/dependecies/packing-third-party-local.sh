@@ -11,6 +11,9 @@ CHARTS_DIR="/home/$USER/dev/hkube/helm/hkube/charts/"
 
 cd "$THIRD_PARTY_DIR"
 
+echo "*** Important: Run this script only after you incremented the version of the related third party in the Chart.yaml file."
+echo
+
 echo "Third party folders:"
 ls -d */ | sed 's#/##'
 echo 
@@ -19,4 +22,6 @@ read folder
 
 helm package $folder -d $CHARTS_DIR
 echo
-echo "To apply the changes into helm, run: helm upgrade hkube /home/$USER/dev/hkube/helm/hkube"
+echo "Note: dont forget to remove the older version."
+echo
+echo "To apply the changes into hkube, run: helm upgrade hkube /home/$USER/dev/hkube/helm/hkube"
