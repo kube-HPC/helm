@@ -4,7 +4,7 @@ dependencies:
   version: 0.7.2020
 - name: jaeger
   repository: https://hkube.org/helm/
-  version: 0.27.2006
+  version: 0.27.2007
 - name: redis-ha
   repository: https://hkube.org/helm/
   version: 3.6.1006
@@ -23,5 +23,5 @@ dependencies:
 - name: keycloak
   repository: https://hkube.org/helm/
   version: 21.4.15
-digest: sha256:b0aa223bd1321d95445a2bb2de50f738f692b21f9327c6824cdc3ce47ed6740b
-generated: "2025-06-08T16:22:50.448138115+03:00"
+digest: sha256:6aba30612071297258c825d3fa664b2148d05fd35f295ce1338f29eded35ebfe
+generated: "2025-06-10T14:22:35.512215081+03:00"
