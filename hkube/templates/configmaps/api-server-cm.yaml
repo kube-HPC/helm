@@ -17,6 +17,7 @@ data:
   PIPELINE_DRIVER_CPU: {{ .Values.api_server.env.pipeline_driver_cpu | quote}}
   PIPELINE_DRIVER_MEM: {{ .Values.api_server.env.pipeline_driver_mem | quote}}
   INGRESS_PREFIX: {{ .Values.global.ingress.prefix | quote}}
+  API_INGRESS_PATH: {{ .Values.api_server.ingress.path }}
   BODY_SIZE_LIMIT: {{ .Values.api_server.env.maxBodySize | quote}}
   CLUSTER_NAME: {{ .Values.global.clusterName | quote}}
   API_SERVER_RATE_LIMIT_MS: {{ .Values.api_server.env.rate_limit_ms | quote}}
