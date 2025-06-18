@@ -431,8 +431,8 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_index: "logstash-*"
     elasticsearch_logs_doc_type: "_doc"
   image:
-    repository: hkube/api-server
-    tag: v2.9.16
+    repository: adir987/api-server-minikube
+    tag: v1
   ingress:
     enabled: false
     path: /hkube/api-server

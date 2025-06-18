@@ -1225,7 +1225,18 @@ keycloakConfigCli:
   ##       - name: portname
   ##         containerPort: 1234
   ##
-  initContainers: []
+  initContainers:
+    - name: wait-for-keycloak
+      image: busybox
+      command:
+        - sh
+        - -c
+        - |
+          echo "Waiting for Keycloak to be ready..."
+          until wget -qO- http://hkube-keycloak-headless:8080/hkube/keycloak; do
+            echo "Still waiting..."
+            sleep 5
+          done
   ## @param keycloakConfigCli.sidecars Add additional sidecar containers to the Keycloak config cli pod
   ## Example:
   ## sidecars:
