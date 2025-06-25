@@ -155,4 +155,7 @@ spec:
 {{- end }}
 {{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
             - name: ALLOW_SELF_SIGNED_CERT
-              value: "{{ if eq .Values.build_secret.docker_registry "registry.minikube" }}true{{ else }}false{{ end }}"
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: ALLOW_SELF_SIGNED_CERT
