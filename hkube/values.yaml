@@ -58,6 +58,7 @@ global:
     hostname: ""
     prefix: ""
     # set to false if using nginx-ingress-controller prior to 0.21
+    use_snippet: false
     use_regex: true
     requireTls: false
     maxBodySize: 500m
