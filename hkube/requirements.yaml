@@ -12,7 +12,7 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: redis-ha.enable
   - name: nginx-ingress
-    version: "1.31.1002"
+    version: "1.31.1003"
     repository: "https://hkube.org/helm/"
     condition: nginx-ingress.enable
   - name: minio
@@ -28,6 +28,6 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: gitea.enable
   - name: keycloak
-    version: "21.4.12"
+    version: "21.4.16"
     repository: "https://hkube.org/helm/"
     condition: keycloak.enable
