@@ -24,7 +24,7 @@ Return the keycloak-config-cli configuration configmap.
 {{- if .Values.keycloakConfigCli.existingConfigmap -}}
     {{- printf "%s" (tpl .Values.keycloakConfigCli.existingConfigmap $) -}}
 {{- else -}}
-    {{- printf "%s-keycloak-config-cli-configmap" (include "common.names.fullname" .) -}}
+    {{- printf "%s-keycloak-config-cli-configmap" (include "keycloak.common.names.fullname" .) -}}
 {{- end -}}
 {{- end -}}
 
@@ -57,7 +57,7 @@ Create the name of the service account to use
 */}}
 {{- define "keycloak.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (include "common.names.fullname" .) .Values.serviceAccount.name }}
+    {{ default (include "keycloak.common.names.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
@@ -239,7 +239,7 @@ Return the secret containing the Keycloak admin password
 {{- if $secretName -}}
     {{- printf "%s" (tpl $secretName $) -}}
 {{- else -}}
-    {{- printf "%s" (include "common.names.fullname" .) | trunc 63 | trimSuffix "-" -}}
+    {{- printf "%s" (include "keycloak.common.names.fullname" .) | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 {{- end -}}
 

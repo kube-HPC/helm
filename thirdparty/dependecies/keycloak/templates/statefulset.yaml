@@ -18,7 +18,7 @@ spec:
   {{- end }}
   revisionHistoryLimit: {{ .Values.revisionHistoryLimitCount }}
   podManagementPolicy: {{ .Values.podManagementPolicy }}
-  serviceName: {{ printf "%s-headless" (include "common.names.fullname" .) | trunc 63 | trimSuffix "-" }}
+  serviceName: {{ printf "%s-headless" (include "keycloak.common.names.fullname" .) | trunc 63 | trimSuffix "-" }}
   updateStrategy:
     {{- include "keycloak.common.tplvalues.render" (dict "value" .Values.updateStrategy "context" $ ) | nindent 4 }}
   {{- $podLabels := include "keycloak.common.tplvalues.merge" ( dict "values" ( list .Values.podLabels .Values.commonLabels ) "context" . ) }}
@@ -252,7 +252,7 @@ spec:
             {{- end }}
           envFrom:
             - configMapRef:
-                name: {{ printf "%s-env-vars" (include "common.names.fullname" .) }}
+                name: {{ printf "%s-env-vars" (include "keycloak.common.names.fullname" .) }}
             {{- if .Values.extraEnvVarsCM }}
             - configMapRef:
                 name: {{ include "keycloak.common.tplvalues.render" (dict "value" .Values.extraEnvVarsCM "context" $) }}
