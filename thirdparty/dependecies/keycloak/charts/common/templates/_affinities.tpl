@@ -70,7 +70,7 @@ Return a soft podAffinity/podAntiAffinity definition
 preferredDuringSchedulingIgnoredDuringExecution:
   - podAffinityTerm:
       labelSelector:
-        matchLabels: {{- (include "common.labels.matchLabels" ( dict "customLabels" $customLabels "context" .context )) | nindent 10 }}
+        matchLabels: {{- (include "keycloak.common.labels.matchLabels" ( dict "customLabels" $customLabels "context" .context )) | nindent 10 }}
           {{- if not (empty $component) }}
           {{ printf "app.kubernetes.io/component: %s" $component }}
           {{- end }}
