@@ -8,7 +8,7 @@ metadata:
 {{- if eq .Values.global.ingress.class "nginx"}}
     kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
-{{- if .Values.global.ingress.use_snippet }}
+{{- if ne .Values.build_secret.docker_registry "registry.minikube" }}
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^(?!.*(?:\.css|\/|\.js|\.svg|\.gif|\.png|\.exe|hkubectl-linux$|hkubectl-macos$)$)(.*) $1/ redirect;
 {{- end }}
