@@ -154,8 +154,8 @@ spec:
                   key: mongodb-database
 {{- end }}
 {{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
-            - name: ALLOW_SELF_SIGNED_CERT
+            - name: NODE_TLS_REJECT_UNAUTHORIZED
               valueFrom:
                 configMapKeyRef:
                   name: api-server-configmap
-                  key: ALLOW_SELF_SIGNED_CERT
+                  key: NODE_TLS_REJECT_UNAUTHORIZED
