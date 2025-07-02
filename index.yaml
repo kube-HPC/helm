@@ -20,10 +20,10 @@ entries:
     version: 0.7.2068
   - apiVersion: v1
     appVersion: 3.3.1
-    created: "2025-06-25T16:10:16.448520398+03:00"
+    created: "2025-07-02T14:34:09.860222438+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
-    digest: 1b0274b870ee351c23832718faae4e517e5d20df7d45427e36b60784016a39cd
+    digest: 7639fd4f640cc9b7841bce9d644cda0a347a7e3a855bcee6d9ac597e8829a9d6
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -376,6 +376,53 @@ entries:
     urls:
     - gitea-2.1.3068.tgz
     version: 2.1.3068
+  - apiVersion: v1
+    appVersion: 1.13.0
+    created: "2025-07-02T14:34:09.866955469+03:00"
+    dependencies:
+    - condition: gitea.cache.builtIn.enabled
+      name: memcached
+      repository: ""
+      version: 4.2.20
+    - condition: gitea.database.builtIn.mysql.enabled
+      name: mysql
+      repository: ""
+      version: 6.14.10
+    - condition: gitea.database.builtIn.postgresql.enabled
+      name: postgresql
+      repository: ""
+      version: 9.7.2
+    - condition: gitea.database.builtIn.mariadb.enabled
+      name: mariadb
+      repository: ""
+      version: 8.0.0
+    description: Gitea Helm chart for Kubernetes
+    digest: b0f0a3868219c9fb592fbfc81e2bf4c5bd49b7476389eed794819f31eae78f8a
+    icon: https://docs.gitea.io/images/gitea.png
+    keywords:
+    - git
+    - issue tracker
+    - code review
+    - wiki
+    - gitea
+    - gogs
+    maintainers:
+    - email: charlie@charliedrage.com
+      name: Charlie Drage
+    - email: maintainers@gitea.io
+      name: Gitea Authors
+    - email: konrad.lother@novum-rgi.de
+      name: Konrad Lother
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    name: gitea
+    sources:
+    - https://gitea.com/gitea/helm-chart
+    - https://github.com/go-gitea/gitea
+    - https://hub.docker.com/r/gitea/gitea/
+    urls:
+    - gitea-2.1.3007.tgz
+    version: 2.1.3007
   - apiVersion: v1
     appVersion: 1.13.0
     created: "2025-06-25T16:10:16.455190513+03:00"
@@ -3393,7 +3440,7 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
-    created: "2025-06-10T11:14:17.78172078+03:00"
+    created: "2025-07-02T14:34:09.870571208+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
       name: cassandra
@@ -3404,7 +3451,7 @@ entries:
       repository: https://helm.elastic.co
       version: ^7.5.1
     description: A Jaeger Helm chart for Kubernetes
-    digest: 98dc422251ac09db41b56c9ed9abd15b90e9007e0c4ea3b183dbb056a9342b45
+    digest: a86aea5d8138d7058ebddfee08ab7c4b23c137e69e397cfe18046ddb4ac42ba8
     home: https://jaegertracing.io
     icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
     keywords:
@@ -3709,7 +3756,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 24.0.5
-    created: "2025-06-25T16:10:16.467003091+03:00"
+    created: "2025-07-02T14:34:09.880151914+03:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -3723,7 +3770,7 @@ entries:
     description: Keycloak is a high performance Java-based identity and access management
       solution. It lets developers add an authentication layer to their applications
       with minimum effort.
-    digest: 07481beb41af54d9ad184aa91cc0bf48c8c052840aeb7925465a6278b542f259
+    digest: cd823af3d67bdb276285e02775bb016f2f2624a2ac33cd35567b2134fa8dc7ce
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/keycloak/img/keycloak-stack-220x234.png
     keywords:
@@ -4304,10 +4351,10 @@ entries:
     version: 5.0.1068
   - apiVersion: v1
     appVersion: master
-    created: "2025-06-25T16:10:16.468128158+03:00"
+    created: "2025-07-02T14:34:09.881326021+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
-    digest: 215dc979f7b26a32dcf107dea7291500dffbe7ef8ee55a42a4eee03c40b6c0a3
+    digest: 70d7d35d00c7f9fea1fce370713be4c090fe68d05e5de70532f1b6072411377a
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
     keywords:
@@ -4473,11 +4520,11 @@ entries:
       category: Database
     apiVersion: v1
     appVersion: 4.4.1
-    created: "2025-06-25T16:10:16.470115312+03:00"
+    created: "2025-07-02T14:34:09.884880288+03:00"
     description: NoSQL document-oriented database that stores JSON-like documents
       with dynamic schemas, simplifying the integration of data in content-driven
       applications.
-    digest: 5cba930dd52ff2cb45bede09b2c30677d32f976f6d3a42a683e1d1f88b6ccd92
+    digest: 143f1f7f91aeaebd624ac3f837876b2b5a9e18ffa505c3ed06894335724be90e
     home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
     keywords:
@@ -4634,10 +4681,10 @@ entries:
     version: 1.31.1003
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2025-06-10T11:14:17.79512875+03:00"
+    created: "2025-07-02T14:34:09.887250663+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 95ae62dadc4d11c91723bc87aee83ea2cb650983762193c28a773db560291143
+    digest: 6784acf0f39d4cfdedcb0934de318b44afa12e5dfed7f19d816be53e0d9cabee
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -4765,6 +4812,28 @@ entries:
     urls:
     - redis-ha-3.6.1068.tgz
     version: 3.6.1068
+  - apiVersion: v1
+    appVersion: 5.0.5
+    created: "2025-07-02T14:34:09.888501358+03:00"
+    description: Highly available Kubernetes implementation of Redis
+    digest: 3bb2b6e6da1e33cb9fbe33b3a4d8f6cc91b0f63b47b7a962416002bc061a0bee
+    home: http://redis.io/
+    icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: salimsalaues@gmail.com
+      name: ssalaues
+    name: redis-ha
+    sources:
+    - https://redis.io/download
+    - https://github.com/scality/Zenko/tree/development/1.0/kubernetes/zenko/charts/redis-ha
+    - https://github.com/oliver006/redis_exporter
+    urls:
+    - redis-ha-3.6.1007.tgz
+    version: 3.6.1007
   - apiVersion: v1
     appVersion: 5.0.5
     created: "2025-06-25T16:10:16.471955626+03:00"
@@ -4939,4 +5008,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2025-06-25T13:51:15.743237701Z"
+generated: "2025-07-02T14:34:09.859668446+03:00"
