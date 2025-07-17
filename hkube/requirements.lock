@@ -7,7 +7,7 @@ dependencies:
   version: 0.27.2007
 - name: redis-ha
   repository: https://hkube.org/helm/
-  version: 3.6.1006
+  version: 3.6.1007
 - name: nginx-ingress
   repository: https://hkube.org/helm/
   version: 1.31.1002
@@ -19,9 +19,9 @@ dependencies:
   version: 10.0.1004
 - name: gitea
   repository: https://hkube.org/helm/
-  version: 2.1.3006
+  version: 2.1.3007
 - name: keycloak
   repository: https://hkube.org/helm/
-  version: 21.4.15
-digest: sha256:6aba30612071297258c825d3fa664b2148d05fd35f295ce1338f29eded35ebfe
-generated: "2025-06-10T14:22:35.512215081+03:00"
+  version: 21.4.16
+digest: sha256:baafa6efa90a8d7336de0b09ca240cffe335ac36a1046f38a919eeca6c73c1c6
+generated: "2025-07-02T14:40:37.809971345+03:00"

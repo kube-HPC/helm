@@ -8,7 +8,7 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: jaeger.enable
   - name: redis-ha
-    version: "3.6.1006"
+    version: "3.6.1007"
     repository: "https://hkube.org/helm/"
     condition: redis-ha.enable
   - name: nginx-ingress
@@ -24,10 +24,10 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: mongodb.enable
   - name: gitea
-    version: "2.1.3006"
+    version: "2.1.3007"
     repository: "https://hkube.org/helm/"
     condition: gitea.enable
   - name: keycloak
-    version: "21.4.15"
+    version: "21.4.16"
     repository: "https://hkube.org/helm/"
     condition: keycloak.enable
