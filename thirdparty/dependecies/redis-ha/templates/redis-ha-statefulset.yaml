@@ -174,11 +174,13 @@ spec:
             command: [ "sh", "/probes/liveness.sh", "{{ .Values.redis.port }}"]
           initialDelaySeconds: 15
           periodSeconds: 5
+          timeoutSeconds: 5
         readinessProbe:
           exec:
             command: ["sh", "/probes/readiness.sh", "{{ .Values.redis.port }}"]
           initialDelaySeconds: 15
           periodSeconds: 5
+          timeoutSeconds: 5
 {{- if .Values.global.resources_enable }}
         resources:
 {{ toYaml .Values.redis.resources | indent 10 }}
@@ -215,11 +217,13 @@ spec:
             command: [ "sh", "/probes/readiness.sh", "{{ .Values.sentinel.port }}"]
           initialDelaySeconds: 15
           periodSeconds: 5
+          timeoutSeconds: 5
         readinessProbe:
           exec:
             command: ["sh", "/probes/readiness.sh", "{{ .Values.sentinel.port }}"]
           initialDelaySeconds: 15
           periodSeconds: 5
+          timeoutSeconds: 5
 {{- if .Values.global.resources_enable }}
         resources:
 {{ toYaml .Values.sentinel.resources | indent 10 }}

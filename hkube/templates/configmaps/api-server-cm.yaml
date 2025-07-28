@@ -25,3 +25,4 @@ data:
   KEYCLOAK_ENABLE: {{ .Values.keycloak.enable | quote }}
   KC_URL: {{ printf "%s/keycloak" .Values.global.hkube_url | quote }}
   KC_CLIENT_SECRET: {{ .Values.keycloak.api_server.client_secretKey | quote }}
+  NODE_TLS_REJECT_UNAUTHORIZED: {{ if eq .Values.build_secret.docker_registry "registry.minikube" }}"0"{{ else }}"1"{{ end }}

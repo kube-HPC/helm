@@ -159,3 +159,8 @@ spec:
                   key: mongodb-database
 {{- end }}
 {{ include "hkube.fluent_bit.sidecar" . | indent 8 }}
+            - name: NODE_TLS_REJECT_UNAUTHORIZED
+              valueFrom:
+                configMapKeyRef:
+                  name: api-server-configmap
+                  key: NODE_TLS_REJECT_UNAUTHORIZED

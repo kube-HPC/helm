@@ -1225,7 +1225,18 @@ keycloakConfigCli:
   ##       - name: portname
   ##         containerPort: 1234
   ##
-  initContainers: []
+  initContainers:
+    - name: wait-for-keycloak
+      image: curlimages/curl:8.4.0
+      command:
+        - sh
+        - -c
+        - |
+          echo "Waiting for Keycloak to be ready..."
+          until curl -I --fail http://hkube-keycloak-0.hkube-keycloak-headless.default.svc.cluster.local:8080/hkube/keycloak; do
+            echo "Still waiting..."
+            sleep 5
+          done
   ## @param keycloakConfigCli.sidecars Add additional sidecar containers to the Keycloak config cli pod
   ## Example:
   ## sidecars:

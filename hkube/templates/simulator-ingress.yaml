@@ -8,6 +8,7 @@ kind: Ingress
 metadata:
   name: dashboard
   annotations:
+{{- if ne .Values.build_secret.docker_registry "registry.minikube" }}
     nginx.ingress.kubernetes.io/configuration-snippet: |
 {{- if .Values.simulator.ingress.alt_path }}
       if ( $request_filename ~ {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }} ){
@@ -15,6 +16,7 @@ metadata:
       }
 {{- end }}
       rewrite ^({{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }})$ $1/ redirect;
+{{- end }}
 {{- if .Values.global.ingress.use_regex }}
 {{- if and (eq .Values.simulator.ingress.path "/") (not .Values.global.ingress.prefix) }}
     nginx.ingress.kubernetes.io/rewrite-target: /$1
