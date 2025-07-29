@@ -335,7 +335,7 @@ site:
   env: {}
   image:
     repository: hkube/site
-    tag: v2.9.11
+    tag: v2.9.12
   # base_url for site-related links, default is /hkube/site
   base_url: "/hkube/site"
   ingress:
@@ -471,7 +471,7 @@ datasources_service: # +doc-gen:ignore
     maxBodySize: 2500m
   image:
     repository: hkube/datasources-service
-    tag: v2.9.4
+    tag: v2.9.5
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -885,4 +885,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.9.24-1753700495213
+fullSystemVersion: v2.9.24-1753794943633
