@@ -471,7 +471,7 @@ datasources_service: # +doc-gen:ignore
     maxBodySize: 2500m
   image:
     repository: hkube/datasources-service
-    tag: v2.9.5
+    tag: v2.9.4
   ingress:
     enabled: true
     path: /hkube/datasources-service

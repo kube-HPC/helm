@@ -1233,10 +1233,11 @@ keycloakConfigCli:
         - -c
         - |
           echo "Waiting for Keycloak to be ready..."
-          until curl -I --fail http://hkube-keycloak-0.hkube-keycloak-headless.default.svc.cluster.local:8080/hkube/keycloak; do
+          until [ "$(curl -s -o /dev/null -w '%{http_code}' http://hkube-keycloak-headless:8080/hkube/keycloak/)" -lt 400 ]; do
             echo "Still waiting..."
             sleep 5
           done
+          echo "Keycloak is ready."
   ## @param keycloakConfigCli.sidecars Add additional sidecar containers to the Keycloak config cli pod
   ## Example:
   ## sidecars:
