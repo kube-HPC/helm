@@ -1,0 +1,65 @@
+
+name: CI-PR
+
+on:
+  pull_request:
+    branches: [master, release*]
+  workflow_dispatch:
+
+jobs:
+  helm-template:
+    name: Helm Template for Changed Charts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Needed for full diff
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.14.0
+
+      - name: Detect changed Helm chart files
+        id: changes
+        run: |
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          echo "$CHANGED"
+          echo "changed=$(echo "$CHANGED" | tr '\n' ' ')" >> $GITHUB_OUTPUT
+
+      - name: Run Helm Template on Changed Charts
+        run: |
+          changed_files="${{ steps.changes.outputs.changed }}"
+          echo "Changed files: $changed_files"
+
+          charts_to_template=()
+
+          for file in $changed_files; do
+            if [[ "$file" == hkube/* ]]; then
+              charts_to_template+=("hkube")
+            elif [[ "$file" == third-party/* ]]; then
+              chart_dir=$(echo "$file" | cut -d'/' -f1,2)
+              charts_to_template+=("$chart_dir")
+            fi
+          done
+
+          # Remove duplicates
+          unique_charts=($(printf "%s\n" "${charts_to_template[@]}" | sort -u))
+
+          if [ ${#unique_charts[@]} -eq 0 ]; then
+            echo "No chart-specific changes found. Falling back to base chart (hkube)."
+            unique_charts=("hkube")
+          fi
+
+          for chart in "${unique_charts[@]}"; do
+            echo "::group::Helm Template Output for $chart"
+            values_file="$chart/values.yaml"
+            if [[ -f "$values_file" ]]; then
+              helm template "$chart" -f "$values_file"
+            else
+              helm template "$chart"
+            fi
+            echo "::endgroup::"
+          done
