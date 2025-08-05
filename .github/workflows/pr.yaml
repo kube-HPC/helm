@@ -49,8 +49,8 @@ jobs:
           unique_charts=($(printf "%s\n" "${charts_to_template[@]}" | sort -u))
 
           if [ ${#unique_charts[@]} -eq 0 ]; then
-            echo "No chart-specific changes found. Falling back to base chart (hkube)."
-            unique_charts=("hkube")
+            echo "No chart-specific changes found. Skipping helm template step."
+            exit 0
           fi
 
           for chart in "${unique_charts[@]}"; do
