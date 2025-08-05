@@ -21,7 +21,7 @@ spec:
 {{- end }}  
       containers:
       - name:  hkube-site
-        image:  "{{ .Values.global.registry }}{{ .Values.site.image.repository }}:{{ .Values.site.image.tag }}"
+        image:  "{{ .Values.global.registr }}{{ .Values.site.image.repository }}:{{ .Values.site.image.tag }}"
         env :
           - name: BASE_URL
             value: "{{ .Values.site.base_url }}"
