@@ -59,7 +59,7 @@ jobs:
             if [[ -f "$values_file" ]]; then
               helm template ./hkube "$chart" -f "$values_file" --strict --show-only "$chart"
             else
-              helm template ./hkube $chart"
+              helm template ./hkube "$chart"
             fi
             echo "::endgroup::"
           done
