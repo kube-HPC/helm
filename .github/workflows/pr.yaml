@@ -37,8 +37,9 @@ jobs:
           charts_to_template=()
 
           for file in $changed_files; do
-            if [[ "$file" == hkube/* ]]; then
-              charts_to_template+=("hkube")
+            if [[ "$file" == hkube/templates/*.yaml ]]; then
+            charts_to_template+=("$file")
+          fi
             elif [[ "$file" == third-party/* ]]; then
               chart_dir=$(echo "$file" | cut -d'/' -f1,2)
               charts_to_template+=("$chart_dir")
@@ -57,7 +58,7 @@ jobs:
             echo "::group::Helm Template Output for $chart"
             values_file="$chart/values.yaml"
             if [[ -f "$values_file" ]]; then
-              helm template "$chart" -f "$values_file"
+              helm template "$chart" -f "$values_file" --strict
             else
               helm template "$chart"
             fi
