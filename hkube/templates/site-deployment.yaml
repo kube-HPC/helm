@@ -4,7 +4,7 @@ metadata:
   name:  hkube-site
   labels:
     app:  hkube-site
-    group: {{ .Values.labels.group.value }}
+group: {{ required "labels.group.value is required" .Values.labels.group.value }}
 spec:
   selector:
     matchLabels:
@@ -21,7 +21,7 @@ spec:
 {{- end }}  
       containers:
       - name:  hkube-site
-        image:  "{{ .Values.global.registr }}{{ .Values.site.image.repository }}:{{ .Values.site.image.tag }}"
+        image:  "{{ .Values.global.registry }}{{ .Values.site.image.repository }}:{{ .Values.site.image.tag }}"
         env :
           - name: BASE_URL
             value: "{{ .Values.site.base_url }}"

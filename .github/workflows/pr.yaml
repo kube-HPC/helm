@@ -38,10 +38,12 @@ jobs:
 
           for file in $changed_files; do
             if [[ "$file" == hkube/templates/*.yaml ]]; then
-            charts_to_template+=("$file")
+              relative_path="${file#hkube/}"  # strip 'hkube/'
+              charts_to_template+=("hkube::$relative_path")
             elif [[ "$file" == third-party/* ]]; then
-              chart_dir=$(echo "$file" | cut -d'/' -f1,2)
-              charts_to_template+=("$chart_dir")
+              chart_dir=$(echo "$file" | cut -d'/' -f1,2) # e.g. third-party/foo
+              relative_path="${file#$chart_dir/}"         # strip 'third-party/foo/'
+              charts_to_template+=("$chart_dir::$relative_path")
             fi
           done
 
@@ -53,13 +55,16 @@ jobs:
             exit 0
           fi
 
-          for chart in "${unique_charts[@]}"; do
-            echo "::group::Helm Template Output for $chart"
+          for entry in "${charts_to_template[@]}"; do
+            chart="${entry%%::*}"        # part before ::
+            template="${entry##*::}"     # part after ::
+
+            echo "::group::Helm Template Output for $chart $template"
             values_file="$chart/values.yaml"
             if [[ -f "$values_file" ]]; then
-              helm template ./hkube "$chart" -f "$values_file" --strict --show-only "$chart"
+              helm template "$chart" -f "$values_file" --show-only "$template"
             else
-              helm template ./hkube "$chart"
+              helm template "$chart" --show-only "$template"
             fi
             echo "::endgroup::"
           done
