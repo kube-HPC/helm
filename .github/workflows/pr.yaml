@@ -57,9 +57,9 @@ jobs:
             echo "::group::Helm Template Output for $chart"
             values_file="$chart/values.yaml"
             if [[ -f "$values_file" ]]; then
-              helm template "$chart" -f "$values_file" --strict
+              helm template ./hkube "$chart" -f "$values_file" --strict --show-only "$chart"
             else
-              helm template "$chart"
+              helm template ./hkube $chart"
             fi
             echo "::endgroup::"
           done
