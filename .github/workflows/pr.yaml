@@ -62,9 +62,9 @@ jobs:
             echo "::group::Helm Template Output for $chart $template"
             values_file="$chart/values.yaml"
             if [[ -f "$values_file" ]]; then
-              helm template "$chart" -f "$values_file" --show-only "$template"
+              helm template "$chart" -f "$values_file" --show-only "$template" --debug
             else
-              helm template "$chart" --show-only "$template"
+              helm template "$chart" --show-only "$template" --debug
             fi
             echo "::endgroup::"
           done
