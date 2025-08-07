@@ -4,7 +4,7 @@ metadata:
   name:  hkube-site
   labels:
     app:  hkube-site
-group: {{ required "labels.asdasd.asdasd is required" .Values.asdasd.asdasd.value }}
+    group: {{ .Values.labels.group.value }}
 spec:
   selector:
     matchLabels:
