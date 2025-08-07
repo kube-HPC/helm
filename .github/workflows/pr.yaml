@@ -56,15 +56,17 @@ jobs:
           fi
 
           for entry in "${charts_to_template[@]}"; do
-            chart="${entry%%::*}"        # part before ::
-            template="${entry##*::}"     # part after ::
+            chart="${entry%%::*}"        
+            template="${entry##*::}"     
 
             echo "::group::Helm Template Output for $chart $template"
             values_file="$chart/values.yaml"
             if [[ -f "$values_file" ]]; then
-              helm template "$chart" -f "$values_file" --show-only "$template" --debug
+              echo "running with values file: $values_file"
+              helm template "$chart" -f "$values_file" --debug
             else
-              helm template "$chart" --show-only "$template" --debug
+              echo "running without values file"
+              helm template "$chart" --debug
             fi
             echo "::endgroup::"
           done
