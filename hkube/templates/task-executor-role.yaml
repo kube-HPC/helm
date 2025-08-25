@@ -55,10 +55,7 @@ metadata:
     core: "true"
 rules:
 - apiGroups: [""]
-  resources: ["nodes"]
-  verbs: ["get", "watch", "list"]
-- apiGroups: [""]
-  resources: ["pods", "configmaps", "secrets", "persistentvolumeclaims"]
+  resources: ["nodes", "pods", "configmaps", "secrets", "persistentvolumeclaims", "limitranges"]
   verbs: ["get", "list", "watch"]
 - apiGroups: ["apiextensions.k8s.io"]
   resources: ["customresourcedefinitions"]
