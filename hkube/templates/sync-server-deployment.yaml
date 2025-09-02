@@ -97,7 +97,6 @@ apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
     kubever: {{ template "common.capabilities.kubeVersion" .}}
     apiver:  {{ template "ingress.apiVersion" . }}
 {{- if .Values.global.ingress.use_regex }}
@@ -118,6 +117,7 @@ metadata:
     core: "true"
   name: sync-server
 spec:
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.hostname }}
   tls:
   - hosts:
