@@ -16,6 +16,9 @@ metadata:
     {{- toYaml .Values.query.ingress.annotations | nindent 4 }}
   {{- end }}
 spec:
+{{- if eq .Values.global.ingress.class "nginx"}}
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
+{{- end }}
 {{- if .Values.global.ingress.hostname }}
   tls:
   - hosts:

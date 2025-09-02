@@ -31,7 +31,7 @@ spec:
   - name: admin
     port: 14271
     protocol: TCP
-    targetPort: admin
+    targetPort: admin-agent
   type: {{ .Values.agent.service.type }}
   selector:
     {{- include "jaeger.selectorLabels" . | nindent 4 }}
