@@ -20,6 +20,23 @@ entries:
     version: 0.7.2068
   - apiVersion: v1
     appVersion: 3.3.1
+    created: "2025-09-02T15:06:55.151193524+03:00"
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
+    digest: 124837d89f38b22d92c897579b008a5a7ceb7b843270db8770da73cb1a079f4c
+    home: https://github.com/coreos/etcd
+    icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
+    maintainers:
+    - email: lachlan@deis.com
+      name: lachie83
+    name: etcd
+    sources:
+    - https://github.com/coreos/etcd
+    urls:
+    - etcd-0.7.2021.tgz
+    version: 0.7.2021
+  - apiVersion: v1
+    appVersion: 3.3.1
     created: "2025-07-29T12:27:51.66129329+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
@@ -376,6 +393,53 @@ entries:
     urls:
     - gitea-2.1.3068.tgz
     version: 2.1.3068
+  - apiVersion: v1
+    appVersion: 1.13.0
+    created: "2025-09-02T15:06:55.166883263+03:00"
+    dependencies:
+    - condition: gitea.cache.builtIn.enabled
+      name: memcached
+      repository: ""
+      version: 4.2.20
+    - condition: gitea.database.builtIn.mysql.enabled
+      name: mysql
+      repository: ""
+      version: 6.14.10
+    - condition: gitea.database.builtIn.postgresql.enabled
+      name: postgresql
+      repository: ""
+      version: 9.7.2
+    - condition: gitea.database.builtIn.mariadb.enabled
+      name: mariadb
+      repository: ""
+      version: 8.0.0
+    description: Gitea Helm chart for Kubernetes
+    digest: 9fed69ba5e3a766addeffefddc81b098920d5b1d7f3b8429a196ce5cd9cc7b32
+    icon: https://docs.gitea.io/images/gitea.png
+    keywords:
+    - git
+    - issue tracker
+    - code review
+    - wiki
+    - gitea
+    - gogs
+    maintainers:
+    - email: charlie@charliedrage.com
+      name: Charlie Drage
+    - email: maintainers@gitea.io
+      name: Gitea Authors
+    - email: konrad.lother@novum-rgi.de
+      name: Konrad Lother
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    name: gitea
+    sources:
+    - https://gitea.com/gitea/helm-chart
+    - https://github.com/go-gitea/gitea
+    - https://hub.docker.com/r/gitea/gitea/
+    urls:
+    - gitea-2.1.3008.tgz
+    version: 2.1.3008
   - apiVersion: v1
     appVersion: 1.13.0
     created: "2025-07-29T12:27:51.669578048+03:00"
@@ -3648,6 +3712,42 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
+    created: "2025-09-02T15:06:55.172879116+03:00"
+    dependencies:
+    - condition: provisionDataStore.cassandra
+      name: cassandra
+      repository: https://kubernetes-charts-incubator.storage.googleapis.com/
+      version: ^0.15.0
+    - condition: provisionDataStore.elasticsearch
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: ^7.5.1
+    description: A Jaeger Helm chart for Kubernetes
+    digest: 6814b3df9213b2fe3100f0472877f1c8497adc4f3308eff5e9bc6cab30e5fd77
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    maintainers:
+    - email: david.vonthenen@dell.com
+      name: dvonthenen
+    - email: michael.lorant@fairfaxmedia.com.au
+      name: mikelorant
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: pavel.nikolov@fairfaxmedia.com.au
+      name: pavelnikolov
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    urls:
+    - jaeger-0.27.2008.tgz
+    version: 0.27.2008
+  - apiVersion: v1
+    appVersion: 1.17.1
     created: "2025-07-29T12:27:51.676036828+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
@@ -3954,6 +4054,45 @@ entries:
     - jupyterhub-1.1.3000.tgz
     version: 1.1.3000
   keycloak:
+  - annotations:
+      category: DeveloperTools
+      images: |
+        - name: keycloak
+          image: docker.io/bitnami/keycloak:24.0.5-debian-12-r0
+        - name: keycloak-config-cli
+          image: docker.io/bitnami/keycloak-config-cli:5.12.0-debian-12-r5
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 24.0.5
+    created: "2025-09-02T15:06:55.191915499+03:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 15.x.x
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Keycloak is a high performance Java-based identity and access management
+      solution. It lets developers add an authentication layer to their applications
+      with minimum effort.
+    digest: 1fc69c0ad1f31543daa125548c39c1b995a2d5ab09110dc88ac1392adbcbb3fb
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/keycloak/img/keycloak-stack-220x234.png
+    keywords:
+    - keycloak
+    - access-management
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: keycloak
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/keycloak
+    urls:
+    - keycloak-21.4.18.tgz
+    version: 21.4.18
   - annotations:
       category: DeveloperTools
       images: |
@@ -4598,10 +4737,10 @@ entries:
     version: 5.0.1068
   - apiVersion: v1
     appVersion: master
-    created: "2025-07-29T12:27:51.6916806+03:00"
+    created: "2025-09-02T15:06:55.193388938+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
-    digest: dda13d62bafe0f58d0920f603dc305856618412ba4b6f4a2ca0485a26de39f53
+    digest: c5f7896e2a63dc15b96edbfc723dd702815b364853bb738ed16436898f9c64d2
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
     keywords:
@@ -4767,11 +4906,11 @@ entries:
       category: Database
     apiVersion: v1
     appVersion: 4.4.1
-    created: "2025-07-29T12:27:51.693705128+03:00"
+    created: "2025-09-02T15:06:55.196156655+03:00"
     description: NoSQL document-oriented database that stores JSON-like documents
       with dynamic schemas, simplifying the integration of data in content-driven
       applications.
-    digest: 258dc5aa1f7104f9b12333454183dadf314f9b05ed570f069a92a29ba009f48e
+    digest: fc86f5728f4bd72928dd70a130a3b0ba500dfe0594314dae6ea1094b00911b16
     home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
     keywords:
@@ -4928,10 +5067,10 @@ entries:
     version: 1.31.1003
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2025-07-29T12:27:51.695004115+03:00"
+    created: "2025-09-02T15:06:55.197533007+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 409d9fcd092ef046d095ad1816b93c9fddd4fdfdd832f5b24f4e91195557e0c0
+    digest: 42d849f465b2df09292a922533fbc3d3fadfd4e72671decd41e7256bb2ec09eb
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -5061,9 +5200,9 @@ entries:
     version: 3.6.1068
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2025-07-29T12:27:51.695727806+03:00"
+    created: "2025-09-02T15:06:55.19860199+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: cca38d97cff4d29c0d8a08543807fd8500a229d71926aeff9d598b32393d874b
+    digest: 786df1153a1a381b8b9782fe96ed3f0707c99baac494be5dabee92e23a2c822a
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -5255,4 +5394,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2025-08-17T10:21:09.408110889Z"
+generated: "2025-09-02T15:06:55.150234308+03:00"
