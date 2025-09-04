@@ -6,7 +6,6 @@ kind: Ingress
 metadata:
   annotations:
 {{- if eq .Values.global.ingress.class "nginx"}}
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 {{- if ne .Values.build_secret.docker_registry "registry.minikube" }}
     nginx.ingress.kubernetes.io/configuration-snippet: |
@@ -25,6 +24,7 @@ metadata:
   name: hkube-site
 {{ if eq .Values.global.ingress.class "nginx"}}
 spec:
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
   rules:
   - http:
       paths:

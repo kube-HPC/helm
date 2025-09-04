@@ -10,7 +10,6 @@ metadata:
 {{- if eq .Values.global.ingress.class "nginx"}}
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- else if eq .Values.global.ingress.class "haproxy"}}
     haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     haproxy.router.openshift.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
@@ -25,6 +24,9 @@ metadata:
     group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
+{{- if eq .Values.global.ingress.class "nginx"}}
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
+{{- end }}
 {{- if .Values.global.ingress.hostname }}
   tls:
   - hosts:
