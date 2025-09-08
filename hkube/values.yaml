@@ -432,7 +432,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.9.26
+    tag: v2.9.24
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -694,7 +694,7 @@ simulator: # +doc-gen:ignore
     is_secure: ""
   image:
     repository: hkube/simulator
-    tag: v2.9.56
+    tag: v2.9.57
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -757,7 +757,7 @@ task_executor:
     memory_ratio_pressure: 0.8
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.9.8
+    tag: v2.9.7
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
@@ -885,4 +885,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.9.35-1756968979719
+fullSystemVersion: v2.9.35-1757318468976
