@@ -102,11 +102,11 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: admin
+            port: admin-query
         readinessProbe:
           httpGet:
             path: /
-            port: admin
+            port: admin-query
 {{- if .Values.query.agentSidecar.enabled }}
       - name: {{ template "jaeger.agent.name" . }}-sidecar
         securityContext:
@@ -146,11 +146,11 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: admin
+            port: admin-agent
         readinessProbe:
           httpGet:
             path: /
-            port: admin
+            port: admin-agent
 {{- end }}
       dnsPolicy: {{ .Values.query.dnsPolicy }}
       restartPolicy: Always
