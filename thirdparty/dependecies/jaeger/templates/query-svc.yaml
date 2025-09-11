@@ -22,7 +22,7 @@ spec:
   - name: admin
     port: 16687
     protocol: TCP
-    targetPort: admin
+    targetPort: admin-query
   selector:
     {{- include "jaeger.selectorLabels" . | nindent 4 }}
     app.kubernetes.io/component: query

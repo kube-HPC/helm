@@ -67,7 +67,7 @@ spec:
         - name: query
           containerPort: 16686
           protocol: TCP
-        - name: admin
+        - name: admin-query
           containerPort: 16687
           protocol: TCP
         resources:
@@ -127,7 +127,7 @@ spec:
           value: {{ include "jaeger.collector.name" . }}:{{ .Values.collector.service.grpc.port }}
         {{- end }}
         ports:
-        - name: admin
+        - name: admin-agent
           containerPort: 14271
           protocol: TCP
         volumeMounts:

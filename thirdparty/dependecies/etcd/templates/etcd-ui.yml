@@ -67,7 +67,6 @@ kind: Ingress
 metadata:
   name: etcd-ui
   annotations:
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 {{- else }}
@@ -79,6 +78,7 @@ metadata:
     heritage: {{ .Release.Service }}
     core: "true"
 spec:
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
   rules:
     - http:
         paths:

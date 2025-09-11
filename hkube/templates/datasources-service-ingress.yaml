@@ -7,8 +7,6 @@ kind: Ingress
 metadata:
   name: datasources-service
   annotations:
-    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | quote }}
-
 {{- if eq .Values.global.ingress.class "nginx"}}
 {{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -32,6 +30,9 @@ metadata:
     group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
+{{- if eq .Values.global.ingress.class "nginx"}}
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
+{{- end }}
 {{- if .Values.global.ingress.hostname }}
   tls:
   - hosts:
