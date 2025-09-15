@@ -9,11 +9,7 @@ metadata:
   name: dashboard
   annotations:
 {{- if .Values.global.ingress.use_regex }}
-{{- if and (eq .Values.simulator.ingress.path "/") (not .Values.global.ingress.prefix) }}
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-{{- else }}
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-{{- end }}
 {{- else }}
     nginx.ingress.kubernetes.io/rewrite-target: /
 {{- end }}
