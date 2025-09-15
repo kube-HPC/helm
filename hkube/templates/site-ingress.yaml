@@ -6,10 +6,9 @@ kind: Ingress
 metadata:
   annotations:
 {{- if eq .Values.global.ingress.class "nginx"}}
+{{- if .Values.global.ingress.use_regex }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
-{{- if ne .Values.build_secret.docker_registry "registry.minikube" }}
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^(?!.*(?:\.css|\/|\.js|\.svg|\.gif|\.png|\.exe|hkubectl-linux$|hkubectl-macos$)$)(.*) $1/ redirect;
+    nginx.ingress.kubernetes.io/use-regex: "{{ .Values.global.ingress.use_regex }}"
 {{- end }}
 {{- else if eq .Values.global.ingress.class "haproxy"}}
     haproxy.router.openshift.io/rewrite-target: /
@@ -22,19 +21,36 @@ metadata:
     heritage: Helm
     release: hkube
   name: hkube-site
-{{ if eq .Values.global.ingress.class "nginx"}}
+{{- if eq .Values.global.ingress.class "nginx" }}
 spec:
   ingressClassName: {{ .Values.global.ingress.class | quote }}
   rules:
   - http:
       paths:
-      - backend:
+      - path: /{{ $ingressPath }}(/|$)(.*\.(css|js|svg|gif|png|exe))
+        pathType: ImplementationSpecific
+        backend:
           service:
             name: hkube-site
             port:
               number: {{ $servicePort }}
-        path: /hkube/site(/|$)(.*)
+
+      - path: /{{ $ingressPath }}(/|$)(hkubectl-(linux|macos))
         pathType: ImplementationSpecific
+        backend:
+          service:
+            name: hkube-site
+            port:
+              number: {{ $servicePort }}
+
+      - path: /{{ $ingressPath }}(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: hkube-site
+            port:
+              number: {{ $servicePort }}
+
 {{- else if eq .Values.global.ingress.class "haproxy" }}
 spec:
   rules:
@@ -51,4 +67,4 @@ spec:
         path: /hkube/site
         pathType: Prefix
 {{- end }}
-{{ end }}        
+{{- end }}

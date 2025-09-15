@@ -1,0 +1,42 @@
+{{- if index .Values "simulator" "ingress" "enabled" -}}
+{{- $fullName := "simulator" -}}
+{{- $servicePort := .Values.simulator.env.port | int -}}
+apiVersion: {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  name: redirect-to-dashboard
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: {{ .Values.simulator.ingress.path }}/
+  labels:
+    app: simulator
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
+  rules:
+    - http:
+        paths:
+        - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.path }}
+          pathType: Prefix
+          backend:
+            service:
+              name: {{ $fullName }}
+              port:
+                number: {{ $servicePort }}
+{{- if .Values.simulator.ingress.alt_path }}
+        - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path | default "" }}
+          pathType: Prefix
+          backend:
+            service:
+              name: {{ $fullName }}
+              port:
+                number: {{ $servicePort }}
+{{- end }}
+
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}
+{{- end }}
