@@ -278,7 +278,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(kube_pod_status_phase{phase='Running',pod="
-systemversion: v2.7.36
+systemversion: v2.7.37
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -410,7 +410,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.7.13
+    tag: v2.7.14
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -449,7 +449,7 @@ datasources_service: # +doc-gen:ignore
     maxBodySize: 2500m
   image:
     repository: hkube/datasources-service
-    tag: v2.7.5
+    tag: v2.7.6
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -547,7 +547,7 @@ gc_service: # +doc-gen:ignore
     builds_max_age: 14400
   image:
     repository: hkube/gc-service
-    tag: v2.7.7
+    tag: v2.7.8
   resources_enable: false
   resources:
     limits:
@@ -610,7 +610,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.7.5
+    tag: v2.7.6
   ingress:
     enabled: true
     path: /hkube/queue
@@ -863,4 +863,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.7.36-1759214104535
+fullSystemVersion: v2.7.37-1759659823458
