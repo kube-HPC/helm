@@ -24,7 +24,7 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: mongodb.enable
   - name: gitea
-    version: "2.1.3009"
+    version: "2.1.3010"
     repository: "https://hkube.org/helm/"
     condition: gitea.enable
   - name: keycloak
