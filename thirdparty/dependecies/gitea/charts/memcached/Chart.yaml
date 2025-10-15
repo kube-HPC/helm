@@ -14,4 +14,4 @@ maintainers:
 name: memcached
 sources:
 - https://github.com/bitnami/bitnami-docker-memcached
-version: 4.2.21
+version: 4.2.20
