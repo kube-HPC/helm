@@ -1,0 +1,66 @@
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+
+# ServiceAccount for the job
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: modify-default-sa-image-pull
+  namespace: {{ .Release.Namespace }}
+{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+imagePullSecrets:
+  - name: {{ .Values.global.image_pull_secret.name }}
+{{- end }}
+
+---
+# Role to allow patching default SA
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: modify-default-sa-role
+  namespace: {{ .Release.Namespace }}
+rules:
+  - apiGroups: [""]
+    resources: ["serviceaccounts"]
+    verbs: ["get", "patch", "update"]
+
+---
+# RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: modify-default-sa-rb
+  namespace: {{ .Release.Namespace }}
+subjects:
+  - kind: ServiceAccount
+    name: modify-job-sa
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: modify-default-sa-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# Job to patch default SA
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: patch-default-sa-job
+  namespace: {{ .Release.Namespace }}
+spec:
+  ttlSecondsAfterFinished: 60
+  template:
+    spec:
+      serviceAccountName: modify-job-sa
+      containers:
+        - name: patch-default-sa
+          image: bitnami/kubectl:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              kubectl patch serviceaccount default -n {{ .Release.Namespace }} \
+                --patch '{"imagePullSecrets":[{"name":"{{ .Values.global.image_pull_secret.name }}"}]}' \
+                --type=merge
+      restartPolicy: Never
+
+{{- end }}
