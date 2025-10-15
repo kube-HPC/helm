@@ -22,6 +22,6 @@ dependencies:
   version: 2.1.3008
 - name: keycloak
   repository: https://hkube.org/helm/
-  version: 21.4.18
-digest: sha256:44f985a0dc52277abca46bc2563bcae430528f28b1f007fc2d53e4412eb3feb8
-generated: "2025-09-11T17:24:01.844695096+03:00"
+  version: 21.4.19
+digest: sha256:93ce93a8df45acc0ca30da7362fbbe3bc984b0a29c9c88f9dc368cd4dc103b99
+generated: "2025-10-15T11:04:44.063616005+03:00"
