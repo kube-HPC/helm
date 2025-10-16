@@ -6,10 +6,8 @@ kind: ServiceAccount
 metadata:
   name: modify-default-sa-image-pull
   namespace: {{ .Release.Namespace }}
-{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
 imagePullSecrets:
   - name: {{ .Values.global.image_pull_secret.name }}
-{{- end }}
 
 ---
 # Role to allow patching default SA
@@ -32,7 +30,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
 subjects:
   - kind: ServiceAccount
-    name: modify-job-sa
+    name: modify-default-sa-image-pull
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
@@ -50,7 +48,7 @@ spec:
   ttlSecondsAfterFinished: 60
   template:
     spec:
-      serviceAccountName: modify-job-sa
+      serviceAccountName: modify-default-sa-image-pull
       containers:
         - name: patch-default-sa
           image: bitnami/kubectl:latest
