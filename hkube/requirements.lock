@@ -19,9 +19,9 @@ dependencies:
   version: 10.0.1004
 - name: gitea
   repository: https://hkube.org/helm/
-  version: 2.1.3006
+  version: 2.1.3010
 - name: keycloak
   repository: https://hkube.org/helm/
-  version: 21.4.16
-digest: sha256:020c618818dfa185947a34d1432ab5668be4e6b41dd6090ce3db89d0ca567f24
-generated: "2025-06-25T16:12:13.915238965+03:00"
+  version: 21.4.19
+digest: sha256:34401f38f19a28ce52b7f1c7150354cbd35a099e051763a0aed590517ccf4c69
+generated: "2025-11-20T15:40:19.814204931+02:00"

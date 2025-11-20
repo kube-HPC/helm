@@ -24,7 +24,7 @@ servicePort: {{ .servicePort }}
 
 */}}
 {{- define "common.ingress.backendkeycloak" -}}
-{{- $apiVersion := (include "common.capabilities.ingress.apiVersionKeycloak" .context) -}}
+{{- $apiVersion := (include "common.capabilities.ingress.apiVersion" .context) -}}
 service:
   name: {{ .serviceName }}
   port:

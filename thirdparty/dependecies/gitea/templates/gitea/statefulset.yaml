@@ -20,18 +20,33 @@ spec:
       labels:
         {{- include "gitea.selectorLabels" . | nindent 8 }}
     spec:
-{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+      {{- $dnsSvc := (lookup "v1" "Service" "kube-system" "kube-dns") }}
+      {{- $minikubeNode := (lookup "v1" "Node" "" "minikube") }}
+      {{- if and $dnsSvc $minikubeNode }}
+      dnsPolicy: None
+      dnsConfig:
+        nameservers:
+          - {{ $dnsSvc.spec.clusterIP }}
+        searches:
+          - default.svc.cluster.local
+          - svc.cluster.local
+          - cluster.local
+      {{- end }}
+
+      {{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
       imagePullSecrets:
         - name: {{ .Values.global.image_pull_secret.name }}
-{{- end }}  
-{{- if not (eq .Values.global.k8senv "openshift") }}
+      {{- end }}
+
+      {{- if not (eq .Values.global.k8senv "openshift") }}
       securityContext:
         fsGroup: 1000
-{{- end }}
+      {{- end }}
+
       initContainers:
         - name: init
           image: "{{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.version }}"
-          command: ["sh", "-c","/usr/sbin/init_gitea.sh"]
+          command: ["sh", "-c", "/usr/sbin/init_gitea.sh"]
           volumeMounts:
             - name: init
               mountPath: /usr/sbin
@@ -39,13 +54,14 @@ spec:
               mountPath: /etc/gitea/conf
             - name: data
               mountPath: /var/lib/gitea
+
       terminationGracePeriodSeconds: {{ .Values.statefulset.terminationGracePeriodSeconds }}
+
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.global.registry }}{{ .Values.image.repository }}:{{ .Values.image.version }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            # SSH Port values have to be set here as well for openssh configuration
             - name: SSH_LISTEN_PORT
               value: {{ .Values.gitea.config.server.SSH_LISTEN_PORT | quote }}
             - name: SSH_PORT
@@ -79,18 +95,22 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/lib/gitea
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-    {{- with .Values.affinity }}
+
+      {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
+      {{- end }}
+
+      {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
+      {{- end }}
+
       volumes:
         - name: ssh
           emptyDir: {}
@@ -101,6 +121,7 @@ spec:
         - name: config
           secret:
             secretName: {{ include "gitea.fullname" . }}
+
   {{- if and .Values.persistence.enabled .Values.persistence.existingClaim }}
         - name: data
           persistentVolumeClaim:

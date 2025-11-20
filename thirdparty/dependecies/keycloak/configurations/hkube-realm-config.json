@@ -1,0 +1,128 @@
+{
+  "realm": "Hkube",
+  "enabled": true,
+  "loginTheme": "custom",
+  "roles": {
+    "client": {
+      "api-server": [
+        {
+          "name": "hkube_api_delete",
+          "description": "Allows deletion of hkube objects"
+        },
+        {
+          "name": "hkube_api_edit",
+          "description": "Allows editing of hkube objects"
+        },
+        {
+          "name": "hkube_api_view",
+          "description": "Allows viewing of hkube objects"
+        },
+        {
+          "name": "hkube_api_execute",
+          "description": "Allows execution of hkube objects"
+        }
+      ]
+    }
+  },
+  "clients": [
+    {
+      "clientId": "api-server",
+      "secret": "myApiSecret",
+      "directAccessGrantsEnabled": true,
+      "publicClient": false,
+      "serviceAccountsEnabled": true
+    },
+    {
+      "clientId": "simulator-ui-app",
+      "rootUrl": "myHkubeUrl/dashboard/",
+      "baseUrl": "myHkubeUrl/dashboard/#/",
+      "redirectUris": [
+        "myHkubeUrl/dashboard/*",
+        "http://localhost:9050/*"
+      ],
+      "webOrigins": [
+        "*",
+        "http://localhost:9050/*"
+      ],
+      "publicClient": true,
+      "frontchannelLogout": true
+    }
+  ],
+  "groups": [
+    {
+      "name": "hkube-developers",
+      "clientRoles": {
+        "api-server": [
+          "hkube_api_delete",
+          "hkube_api_edit",
+          "hkube_api_view",
+          "hkube_api_execute"
+        ]
+      }
+    },
+    {
+      "name": "hkube-guests",
+      "clientRoles": {
+        "api-server": [
+          "hkube_api_view"
+        ]
+      }
+    },
+    {
+      "name": "hkube-viewers",
+      "clientRoles": {
+        "api-server": [
+          "hkube_api_view",
+          "hkube_api_edit"
+        ]
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "guest",
+      "enabled": true,
+      "email": "guest@hkube.org",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "guestPassword",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "hkube-guests"
+      ]
+    },
+    {
+      "username": "viewer",
+      "enabled": true,
+      "email": "viewer@hkube.org",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "viewerPassword",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "hkube-viewers"
+      ]
+    },
+    {
+      "username": "developer",
+      "enabled": true,
+      "email": "developer@hkube.org",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "developerPassword",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "hkube-developers"
+      ]
+    }
+  ]
+}
