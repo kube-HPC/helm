@@ -597,7 +597,7 @@ ingress:
   ## This is supported in Kubernetes 1.18+ and required if you have more than one IngressClass marked as the default for your cluster .
   ## ref: https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/
   ##
-  ingressClassName: ""
+  ingressClassName: "nginx"
   ## @param ingress.pathType Ingress path type
   ##
   pathType: ImplementationSpecific
@@ -623,7 +623,6 @@ ingress:
   ##   cert-manager.io/cluster-issuer: cluster-issuer-name
   ##
   annotations: 
-    kubernetes.io/ingress.class: nginx 
     nginx.ingress.kubernetes.io/proxy-set-headers: keycloak-headers
     
   ## @param ingress.labels Additional labels for the Ingress resource.
@@ -707,7 +706,7 @@ adminIngress:
   ## This is supported in Kubernetes 1.18+ and required if you have more than one IngressClass marked as the default for your cluster .
   ## ref: https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/
   ##
-  ingressClassName: ""
+  ingressClassName: "nginx"
   ## @param adminIngress.pathType Ingress path type
   ##
   pathType: ImplementationSpecific
@@ -1082,7 +1081,7 @@ keycloakConfigCli:
   ##
   image:
     registry: docker.io
-    repository: bitnami/keycloak-config-cli
+    repository: bitnamilegacy/keycloak-config-cli
     tag: 5.12.0-debian-12-r5
     digest: ""
     ## Specify a imagePullPolicy
@@ -1225,7 +1224,19 @@ keycloakConfigCli:
   ##       - name: portname
   ##         containerPort: 1234
   ##
-  initContainers: []
+  initContainers:
+    - name: wait-for-keycloak
+      image: curlimages/curl:8.4.0
+      command:
+        - sh
+        - -c
+        - |
+          echo "Waiting for Keycloak to be ready..."
+          until [ "$(curl -s -o /dev/null -w '%{http_code}' http://hkube-keycloak-headless:8080/hkube/keycloak/)" -lt 400 ]; do
+            echo "Still waiting..."
+            sleep 5
+          done
+          echo "Keycloak is ready."
   ## @param keycloakConfigCli.sidecars Add additional sidecar containers to the Keycloak config cli pod
   ## Example:
   ## sidecars:
@@ -1251,7 +1262,7 @@ keycloakConfigCli:
   ##     clients: []
   ##
   configuration: 
-    "configurations/realm-config.json" : ""
+    "configurations/hkube-realm-config.json" : ""
   ## @param keycloakConfigCli.existingConfigmap ConfigMap with keycloak-config-cli configuration
   ## NOTE: This will override keycloakConfigCli.configuration
   ##
