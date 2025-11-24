@@ -320,7 +320,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(kube_pod_status_phase{phase='Running',pod="
-systemversion: v2.9.52
+systemversion: v2.10.0
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -355,7 +355,7 @@ site:
   env: {}
   image:
     repository: hkube/site
-    tag: v2.9.15
+    tag: v2.10.1
   # base_url for site-related links, default is /hkube/site
   base_url: "/hkube/site"
   ingress:
@@ -392,7 +392,7 @@ algorithm_operator:
     node_wrapper_version: ""
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.9.0
+    tag: v2.10.0
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -421,7 +421,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.9.0
+    tag: v2.10.0
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: "3000"
@@ -430,7 +430,7 @@ algorithm_queue_svc: # +doc-gen:ignore
 algorunner: # +doc-gen:ignore
   image:
     repository: hkube/algorunner
-    tag: v2.9.1
+    tag: v2.10.1
 api_gateway:
   ingress:
     path: /hkube/api-server
@@ -452,7 +452,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.9.39
+    tag: v2.10.0
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -491,7 +491,7 @@ datasources_service: # +doc-gen:ignore
     maxBodySize: 2500m
   image:
     repository: hkube/datasources-service
-    tag: v2.9.12
+    tag: v2.10.0
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -510,7 +510,7 @@ artifacts_registry: # +doc-gen:ignore
     port: "8081"
   image:
     repository: hkube/artifacts-registry
-    tag: v2.9.1
+    tag: v2.10.1
   ingress:
     enabled: true
     path: /hkube/artifacts-registry
@@ -589,7 +589,7 @@ gc_service: # +doc-gen:ignore
     builds_max_age: 14400
   image:
     repository: hkube/gc-service
-    tag: v2.9.14
+    tag: v2.10.0
   resources_enable: false
   resources:
     limits:
@@ -614,12 +614,12 @@ gc_service: # +doc-gen:ignore
 tensorboard: # +doc-gen:ignore
   image:
     repository: hkube/tensorboard
-    tag: v2.9.1
+    tag: v2.10.1
 optuna_dashboard: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/optuna-dashboard
-    tag: v2.9.1
+    tag: v2.10.1
 delete_deployment_and_jobs: # +doc-gen:ignore
   image:
     repository: hkube/del-dep-and-jobs
@@ -640,7 +640,7 @@ pipeline_driver:
     status_delay_ms: "25000"
   image:
     repository: hkube/pipeline-driver
-    tag: v2.9.3
+    tag: v2.10.0
   service:
     type: ClusterIP
 pipeline_driver_queue: # +doc-gen:ignore
@@ -652,7 +652,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.9.14
+    tag: v2.10.0
   ingress:
     enabled: true
     path: /hkube/queue
@@ -687,7 +687,7 @@ resource_manager: # +doc-gen:ignore
     prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090/api/v1"
   image:
     repository: hkube/resource-manager
-    tag: v2.9.0
+    tag: v2.10.0
   service:
     type: ClusterIP
   resources_enable: false
@@ -714,7 +714,7 @@ simulator: # +doc-gen:ignore
     is_secure: ""
   image:
     repository: hkube/simulator
-    tag: v2.9.80
+    tag: v2.10.1
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -777,7 +777,7 @@ task_executor:
     memory_ratio_pressure: 0.8
   image: # +doc-gen:ignore
     repository: hkube/task-executor
-    tag: v2.9.13
+    tag: v2.10.0
   service: # +doc-gen:ignore
     type: ClusterIP
   resources_enable: false
@@ -793,7 +793,7 @@ trigger_service: # +doc-gen:ignore
     metric_port: "3000"
   image:
     repository: hkube/trigger-service
-    tag: v2.9.2
+    tag: v2.10.0
   service:
     type: ClusterIP
   resources_enable: false
@@ -809,7 +809,7 @@ worker: # +doc-gen:ignore
     metric_port: "3000"
   image:
     repository: hkube/worker
-    tag: v2.9.7
+    tag: v2.10.0
   metrics:
     port: 3001
   service:
@@ -820,7 +820,7 @@ algorithm_gateway: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-gateway
-    tag: v2.9.0
+    tag: v2.10.0
   service:
     type: ClusterIP
 algorithm_debug: # +doc-gen:ignore
@@ -828,7 +828,7 @@ algorithm_debug: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-debug
-    tag: v2.9.0
+    tag: v2.10.0
   service:
     type: ClusterIP
 algorithm_output: # +doc-gen:ignore
@@ -836,7 +836,7 @@ algorithm_output: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-output
-    tag: v2.9.0
+    tag: v2.10.0
   service:
     type: ClusterIP
 algorithm_hyperparams_tuner: # +doc-gen:ignore
@@ -844,13 +844,13 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
     port: 3005
   image:
     repository: hkube/algorithm-hyperparams-tuner
-    tag: v2.9.0
+    tag: v2.10.0
   service:
     type: ClusterIP
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.9.0
+    tag: v2.10.0
   # buildconfig_resources:
   #   limits:
   #     cpu: 300m
@@ -861,15 +861,15 @@ algorithm_builder: # +doc-gen:ignore
 kaniko: # +doc-gen:ignore
   image:
     repository: hkube/kaniko
-    tag: v2.9.1
+    tag: v2.10.1
 oc_builder: # +doc-gen:ignore
   image:
     repository: hkube/oc-builder
-    tag: v2.9.1
+    tag: v2.10.1
 algorithm_example_python: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-example-python
-    tag: v2.9.1
+    tag: v2.10.1
 etcd_defrag: # +doc-gen:ignore
   enable: false
   pattern: "0 0 * * *"
@@ -893,7 +893,7 @@ sync_server: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/sync-server
-    tag: v2.9.1
+    tag: v2.10.1
   ingress:
     enabled: true
     path: /hkube/sync
@@ -905,4 +905,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.9.52-1763900469019
+fullSystemVersion: v2.10.0-1763966884617
