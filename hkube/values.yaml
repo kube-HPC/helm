@@ -893,7 +893,7 @@ sync_server: # +doc-gen:ignore
   enabled: true
   image:
     repository: hkube/sync-server
-    tag: v2.10.1
+    tag: v2.10.2
   ingress:
     enabled: true
     path: /hkube/sync
@@ -905,4 +905,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.10.2-1763993549989
+fullSystemVersion: v2.10.2-1764065055096
