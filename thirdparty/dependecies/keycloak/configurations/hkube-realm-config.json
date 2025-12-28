@@ -20,6 +20,10 @@
         {
           "name": "hkube_api_execute",
           "description": "Allows execution of hkube objects"
+        },
+        {
+          "name": "hkube_api_admin",
+          "description": "Allows viewing objects under administration scope in the UI"
         }
       ]
     }
@@ -56,7 +60,8 @@
           "hkube_api_delete",
           "hkube_api_edit",
           "hkube_api_view",
-          "hkube_api_execute"
+          "hkube_api_execute",
+          "hkube_api_admin"
         ]
       }
     },
