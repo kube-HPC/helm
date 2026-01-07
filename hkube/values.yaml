@@ -355,7 +355,7 @@ site:
   env: {}
   image:
     repository: hkube/site
-    tag: v2.10.1
+    tag: v2.10.2
   # base_url for site-related links, default is /hkube/site
   base_url: "/hkube/site"
   ingress:
@@ -905,4 +905,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.10.5-1767602890987
+fullSystemVersion: v2.10.5-1767792016208
