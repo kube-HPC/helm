@@ -20,7 +20,7 @@ data:
   DATA_SOURCE_IS_ENABLE: {{ .Values.datasources_service.enabled | quote }}
   KIBANA_URL: {{ .Values.env.kibana_url | quote }}
   GRAFANA_URL: {{ .Values.env.grafana_url | quote }}
-  REACT_APP_SITEBASEURL: {{ .Values.site.base_url | quote }}
+  VITE_SITEBASEURL: {{ .Values.site.base_url | quote }}
   ELASTICSEARCH_STRUCTURED_PREFIX: {{ .Values.api_server.env.elasticsearch_structured_prefix | quote }}
   
-  REACT_APP_KEYCLOAK_ENABLE: {{ .Values.keycloak.enable | quote }}
+  VITE_KEYCLOAK_ENABLE: {{ .Values.keycloak.enable | quote }}
