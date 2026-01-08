@@ -108,21 +108,21 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: BOARD_PORT
-            - name: REACT_APP_SITEBASEURL
+            - name: VITE_SITEBASEURL
               valueFrom:
                 configMapKeyRef:
                   name: simulator-configmap
-                  key: REACT_APP_SITEBASEURL
+                  key: VITE_SITEBASEURL
             - name: ELASTICSEARCH_STRUCTURED_PREFIX
               valueFrom:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: ELASTICSEARCH_STRUCTURED_PREFIX
-            - name: REACT_APP_KEYCLOAK_ENABLE
+            - name: VITE_KEYCLOAK_ENABLE
               valueFrom:
                 configMapKeyRef:
                   name: simulator-configmap
-                  key: REACT_APP_KEYCLOAK_ENABLE
+                  key: VITE_KEYCLOAK_ENABLE
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
