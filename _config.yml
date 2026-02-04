@@ -17,6 +17,7 @@ stableCharts:
   - hkube
 
 stableVersions:
+  - v2.10
   - v2.9
   - v2.8
   - v2.7
