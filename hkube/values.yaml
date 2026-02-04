@@ -263,6 +263,15 @@ keycloak:
     pullPolicy: IfNotPresent
     pullSecrets: []
     debug: false
+  #External Postgres db support
+  externalDatabase:
+    host: "hkube-postgresql"
+    port: 5432
+    user: gitea
+    database: gitea
+    password: "gitea"
+    existingSecret: "hkube-postgresql"
+    existingSecretPasswordKey: "postgresql-password"
 
 gitea:
   enable: true
