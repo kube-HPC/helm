@@ -919,6 +919,60 @@ entries:
   hkube:
   - apiVersion: v1
     appVersion: v2.10.7
+    created: "2026-02-17T09:08:19.817349374Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.org/helm/
+      version: 0.7.2021
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.org/helm/
+      version: 0.27.2009
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.org/helm/
+      version: 3.6.1007
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.org/helm/
+      version: 1.31.1002
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.org/helm/
+      version: 5.0.1027
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.org/helm/
+      version: 10.0.1004
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.org/helm/
+      version: 2.1.3010
+    - condition: keycloak.enable
+      name: keycloak
+      repository: https://hkube.org/helm/
+      version: 21.4.20
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: 5518d8a796bf66d612f3eef9eb8e8fbb5a7d3a46e0b14d5d1a9f88c023fa59ec
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.10.42.tgz
+    version: v2.10.42
+  - apiVersion: v1
+    appVersion: v2.10.7
     created: "2026-02-15T09:54:49.277036962Z"
     dependencies:
     - condition: etcd.enable
@@ -5976,4 +6030,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2026-02-15T09:54:49.220951601Z"
+generated: "2026-02-17T09:08:19.783626842Z"
