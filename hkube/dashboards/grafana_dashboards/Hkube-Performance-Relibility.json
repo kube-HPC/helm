@@ -116,7 +116,7 @@
         {
           "datasource": "${grafana_data_source}",
           "editorMode": "code",
-          "expr": "sum by (pipeline_name) (hkube_pipeline_driver_pipeline_ended_counter{status=\"completed\"})\nand on(pipeline_name)\n(\n sum by (pipeline_name) (changes(hkube_pipeline_driver_pipeline_net_time_took_gauge[1m])) > 0\n or\n sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_gauge unless hkube_pipeline_driver_pipeline_net_time_took_gauge offset 1m)\n)",
+          "expr": "sum by (pipeline_name) (hkube_pipeline_driver_pipeline_ended_counter{pipeline_name=~\"$pipeline_name\",status=\"completed\"})\nand on(pipeline_name)\n(\n sum by (pipeline_name) (changes(hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"}[1m])) > 0\n or\n sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"} unless hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"} offset 1m)\n)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -213,7 +213,7 @@
         {
           "datasource": "${grafana_data_source}",
           "editorMode": "code",
-          "expr": "avg by (pipeline_name) (avg_over_time(hkube_pipeline_driver_pipeline_net_time_took_gauge[10s]))\nand on(pipeline_name)\n(\n sum by (pipeline_name) (changes(hkube_pipeline_driver_pipeline_net_time_took_gauge[1m])) > 0\n or\n sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_gauge unless hkube_pipeline_driver_pipeline_net_time_took_gauge offset 1m)\n)",
+          "expr": "avg by (pipeline_name) (avg_over_time(hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"}[10s]))\nand on(pipeline_name)\n(\n sum by (pipeline_name) (changes(hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"}[1m])) > 0\n or\n sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"} unless hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"} offset 1m)\n)",
           "format": "time_series",
           "interval": "10s",
           "intervalFactor": 1,
@@ -311,7 +311,7 @@
           "datasource": "${grafana_data_source}",
           "editorMode": "code",
           "exemplar": false,
-          "expr": "quantile_over_time(0.9, hkube_pipeline_driver_pipeline_net_time_took_gauge{status=\"completed\"}[$__range])\n",
+          "expr": "quantile_over_time(0.9, hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n",
           "format": "time_series",
           "instant": false,
           "interval": "10s",
@@ -409,7 +409,7 @@
         {
           "datasource": "${grafana_data_source}",
           "editorMode": "code",
-          "expr": "quantile_over_time(0.1, hkube_pipeline_driver_pipeline_net_time_took_gauge{status=\"completed\"}[$__range])",
+          "expr": "quantile_over_time(0.1, hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\",status=\"completed\",pipeline_name=~\"$pipeline_name\"}[$__range])",
           "legendFormat": "{{pipeline_name}}",
           "range": true,
           "refId": "A"
@@ -450,7 +450,32 @@
   "schemaVersion": 40,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "${grafana_data_source}",
+        "definition": "label_values(hkube_pipeline_driver_pipeline_net_time_took_gauge, pipeline_name)",
+        "hide": 0,
+        "includeAll": true,
+        "allValue": ".+",
+        "multi": true,
+        "name": "pipeline_name",
+        "label": "Pipeline Name",
+        "options": [],
+        "query": {
+          "query": "label_values(hkube_pipeline_driver_pipeline_net_time_took_gauge, pipeline_name)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-30m",
