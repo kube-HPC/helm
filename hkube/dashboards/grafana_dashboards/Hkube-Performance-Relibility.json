@@ -438,7 +438,7 @@
       "panels": [
         {
           "datasource": "${grafana_data_source}",
-          "description": "Total completed pipelines per pipeline name.",
+          "description": "Total queued pipelines per pipeline name.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -521,7 +521,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{\npipeline_name=~\"$pipeline_name\"\n}\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
+              "expr": "sum by (pipeline_name) (\nmax_over_time(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[$__range])\n  -\nmin_over_time(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[$__range])\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)\n",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -530,12 +530,12 @@
               "refId": "A"
             }
           ],
-          "title": "Completed Pipelines Count",
+          "title": "Pipelines In Queue Count",
           "type": "timeseries"
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average queue time (time pipeline spent waiting in queue before execution) for completed pipelines, over a 30 seconds window.",
+          "description": "Average queue time (time pipeline spent waiting in queue before execution) for queued pipelines, over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -635,7 +635,7 @@
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "p90 approximation of queue time for completed pipelines(slowest)",
+          "description": "p90 approximation of queue time for queued pipelines(slowest)",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -734,7 +734,7 @@
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "p10 approximation of queue time for completed pipelines(fastest)",
+          "description": "p10 approximation of queue time for queued pipelines(fastest)",
           "fieldConfig": {
             "defaults": {
               "color": {
