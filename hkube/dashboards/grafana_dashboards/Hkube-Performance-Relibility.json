@@ -116,7 +116,7 @@
         {
           "datasource": "${grafana_data_source}",
           "editorMode": "code",
-          "expr": "sum by (pipeline_name) (hkube_pipeline_driver_pipeline_ended_counter{pipeline_name=~\"$pipeline_name\",status=\"completed\"})\nand on(pipeline_name)\n(\n sum by (pipeline_name) (changes(hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"}[1m])) > 0\n or\n sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"} unless hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"} offset 1m)\n)",
+          "expr": "sum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{\npipeline_name=~\"$pipeline_name\",\nstatus=\"completed\"\n}\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -216,7 +216,7 @@
         {
           "datasource": "${grafana_data_source}",
           "editorMode": "code",
-          "expr": "rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum[1m]) / rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count[1m])",
+          "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)",
           "format": "time_series",
           "interval": "30s",
           "intervalFactor": 1,
@@ -244,7 +244,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "barWidthFactor": 0.6,
-            "drawStyle": "line",
+            "drawStyle": "bars",
             "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
@@ -283,7 +283,7 @@
               }
             ]
           },
-          "unit": "s"
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -314,10 +314,10 @@
           "datasource": "${grafana_data_source}",
           "editorMode": "code",
           "exemplar": false,
-          "expr": "quantile_over_time(0.9, hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n",
+          "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_net_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
           "format": "time_series",
           "instant": false,
-          "interval": "10s",
+          "interval": "30s",
           "intervalFactor": 1,
           "legendFormat": "{{pipeline_name}}",
           "range": true,
@@ -343,7 +343,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "barWidthFactor": 0.6,
-            "drawStyle": "line",
+            "drawStyle": "bars",
             "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
@@ -382,7 +382,7 @@
               }
             ]
           },
-          "unit": "s"
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -412,7 +412,11 @@
         {
           "datasource": "${grafana_data_source}",
           "editorMode": "code",
-          "expr": "quantile_over_time(0.1, hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\",status=\"completed\",pipeline_name=~\"$pipeline_name\"}[$__range])",
+          "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_net_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
+          "format": "time_series",
+          "instant": false,
+          "interval": "30s",
+          "intervalFactor": 1,
           "legendFormat": "{{pipeline_name}}",
           "range": true,
           "refId": "A"
@@ -461,7 +465,7 @@
           "value": "$__all"
         },
         "datasource": "${grafana_data_source}",
-        "definition": "label_values(hkube_pipeline_driver_pipeline_net_time_took_gauge, pipeline_name)",
+        "definition": "label_values(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum, pipeline_name)",
         "hide": 0,
         "includeAll": true,
         "allValue": ".+",
@@ -470,7 +474,7 @@
         "label": "Pipeline Name",
         "options": [],
         "query": {
-          "query": "label_values(hkube_pipeline_driver_pipeline_net_time_took_gauge, pipeline_name)",
+          "query": "label_values(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum, pipeline_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
