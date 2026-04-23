@@ -113,7 +113,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{\npipeline_name=~\"$pipeline_name\",\nstatus=\"completed\"\n}\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
+              "expr": "sum by (pipeline_name) (\nmax_over_time(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n-\nmin_over_time(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -929,7 +929,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_gross_time_took_histogram_count{\npipeline_name=~\"$pipeline_name\",\nstatus=\"completed\"\n}\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
+              "expr": "sum by (pipeline_name) (\nmax_over_time(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n-\nmin_over_time(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
