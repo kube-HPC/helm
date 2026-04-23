@@ -130,7 +130,7 @@
     },
     {
       "datasource": "${grafana_data_source}",
-      "description": "Average net execution time (time from pipeline driver start to completion) for completed pipelines, over a 10 seconds window.",
+      "description": "Average net execution time (time from pipeline driver start to completion) for completed pipelines, over a 30 seconds window.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -146,7 +146,7 @@
             "barWidthFactor": 0.6,
             "drawStyle": "bars",
             "fillOpacity": 100,
-            "gradientMode": "none",
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -154,6 +154,9 @@
             },
             "insertNulls": false,
             "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -183,7 +186,7 @@
               }
             ]
           },
-          "unit": "s"
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -194,7 +197,7 @@
         "y": 7
       },
       "id": 1,
-      "interval": "10s",
+      "interval": "30s",
       "options": {
         "dataLinks": [],
         "legend": {
@@ -213,16 +216,16 @@
         {
           "datasource": "${grafana_data_source}",
           "editorMode": "code",
-          "expr": "avg by (pipeline_name) (avg_over_time(hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"}[10s]))\nand on(pipeline_name)\n(\n sum by (pipeline_name) (changes(hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"}[1m])) > 0\n or\n sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"} unless hkube_pipeline_driver_pipeline_net_time_took_gauge{pipeline_name=~\"$pipeline_name\"} offset 1m)\n)",
+          "expr": "rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum[1m]) / rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count[1m])",
           "format": "time_series",
-          "interval": "10s",
+          "interval": "30s",
           "intervalFactor": 1,
           "legendFormat": "{{pipeline_name}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Pipeline Net Time - Avg (completed) [10s]",
+      "title": "Pipeline Net Time - Avg (completed) [30s]",
       "type": "timeseries"
     },
     {
