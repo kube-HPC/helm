@@ -435,8 +435,403 @@
         "y": 25
       },
       "id": 20,
-      "panels": [],
-      "title": "Pipeline queuetime metrics",
+      "panels": [
+        {
+          "datasource": "${grafana_data_source}",
+          "description": "Total completed pipelines per pipeline name.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "id": 21,
+          "options": {
+            "legend": {
+              "calcs": [
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.0",
+          "targets": [
+            {
+              "datasource": "${grafana_data_source}",
+              "editorMode": "code",
+              "expr": "sum by (pipeline_name) (\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{\npipeline_name=~\"$pipeline_name\",\nstatus=\"completed\"\n}\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "{{pipeline_name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Completed Pipelines Count",
+          "type": "timeseries"
+        },
+        {
+          "datasource": "${grafana_data_source}",
+          "description": "Average queue time (time pipeline spent waiting in queue before execution) for completed pipelines, over a 30 seconds window.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 100,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 7
+          },
+          "id": 22,
+          "interval": "30s",
+          "options": {
+            "dataLinks": [],
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.0",
+          "targets": [
+            {
+              "datasource": "${grafana_data_source}",
+              "editorMode": "code",
+              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)",
+              "format": "time_series",
+              "interval": "30s",
+              "intervalFactor": 1,
+              "legendFormat": "{{pipeline_name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Pipeline Queue Time - Avg (completed) [30s]",
+          "type": "timeseries"
+        },
+        {
+          "datasource": "${grafana_data_source}",
+          "description": "p90 approximation of queue time for completed pipelines(slowest)",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 16
+          },
+          "id": 23,
+          "options": {
+            "legend": {
+              "calcs": [
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.0",
+          "targets": [
+            {
+              "datasource": "${grafana_data_source}",
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_queue_time_in_queue_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
+              "format": "time_series",
+              "instant": false,
+              "interval": "30s",
+              "intervalFactor": 1,
+              "legendFormat": "{{pipeline_name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Pipeline Queue Time - Max/p90 (Slowest)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": "${grafana_data_source}",
+          "description": "p10 approximation of queue time for completed pipelines(fastest)",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 12,
+            "y": 16
+          },
+          "id": 24,
+          "options": {
+            "legend": {
+              "calcs": [
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.0",
+          "targets": [
+            {
+              "datasource": "${grafana_data_source}",
+              "editorMode": "code",
+              "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_queue_time_in_queue_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
+              "format": "time_series",
+              "instant": false,
+              "interval": "30s",
+              "intervalFactor": 1,
+              "legendFormat": "{{pipeline_name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Pipeline Queue Time - Min/p10 (Fastest)",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Pipeline queue time metrics",
       "type": "row"
     },
     {
