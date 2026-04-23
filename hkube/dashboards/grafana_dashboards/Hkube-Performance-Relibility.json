@@ -521,7 +521,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{\npipeline_name=~\"$pipeline_name\",\nstatus=\"completed\"\n}\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
+              "expr": "sum by (pipeline_name) (\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{\npipeline_name=~\"$pipeline_name\"\n}\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -621,7 +621,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)",
+              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -719,7 +719,7 @@
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
               "exemplar": false,
-              "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_queue_time_in_queue_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
+              "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_queue_time_in_queue_histogram_bucket{pipeline_name=~\"$pipeline_name\"}[1m])\n)\n)",
               "format": "time_series",
               "instant": false,
               "interval": "30s",
@@ -817,7 +817,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_queue_time_in_queue_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
+              "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_queue_time_in_queue_histogram_bucket{pipeline_name=~\"$pipeline_name\"}[1m])\n)\n)",
               "format": "time_series",
               "instant": false,
               "interval": "30s",
