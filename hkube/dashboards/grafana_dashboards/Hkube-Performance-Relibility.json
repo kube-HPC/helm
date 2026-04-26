@@ -30,7 +30,7 @@
       "panels": [
         {
           "datasource": "${grafana_data_source}",
-          "description": "Total completed pipelines per pipeline name.",
+          "description": "Total pipelines per pipeline name.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -127,7 +127,7 @@
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average net execution time (time from pipeline driver start to completion) for completed pipelines, over a 30 seconds window.",
+          "description": "Average net execution time (time from pipeline driver start to completed/failed) for completed/failed pipelines, over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -222,7 +222,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Net Time - Avg ($status) [30s]",
+          "title": "Pipeline Net Time - Avg[30s]",
           "type": "timeseries"
         },
         {
@@ -326,7 +326,7 @@
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "p10 approximation of net execution time for completed pipelines(fastest)",
+          "description": "p10 approximation of net execution time for completed/failed pipelines(fastest)",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -630,7 +630,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Queue Time - Avg (completed) [30s]",
+          "title": "Pipeline Queue Time - Avg [30s]",
           "type": "timeseries"
         },
         {
@@ -846,7 +846,7 @@
       "panels": [
         {
           "datasource": "${grafana_data_source}",
-          "description": "Total completed pipelines per pipeline name.",
+          "description": "Total pipelines per pipeline name.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1038,12 +1038,12 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Gross Time - Avg ($status) [30s]",
+          "title": "Pipeline Gross Time - Avg[30s]",
           "type": "timeseries"
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "p90 approximation of gross execution time for completed pipelines(slowest)",
+          "description": "p90 approximation of gross execution time for pipelines(slowest)",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1142,7 +1142,7 @@
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "p10 approximation of gross execution time for completed pipelines(fastest)",
+          "description": "p10 approximation of gross execution time for pipelines(fastest)",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1254,7 +1254,7 @@
       "panels": [
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average net execution time (time from pipeline driver start to completion) for completed pipelines, over a 30 seconds window.",
+          "description": "Average net execution time (time from pipeline driver start to completion/failure) for completed/failed pipelines, over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1316,7 +1316,7 @@
           },
           "gridPos": {
             "h": 9,
-            "w": 8,
+            "w": 24,
             "x": 0,
             "y": 1
           },
@@ -1349,12 +1349,12 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Net Time - Avg (completed) [30s]",
+          "title": "Pipeline Net Time - Avg [30s]",
           "type": "timeseries"
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average queue time (time pipeline spent waiting in queue before execution) for completed pipelines, over a 30 seconds window.",
+          "description": "Average queue time (time pipeline spent waiting in queue before execution) for completed/failed pipelines, over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1416,9 +1416,9 @@
           },
           "gridPos": {
             "h": 9,
-            "w": 8,
-            "x": 8,
-            "y": 1
+            "w": 24,
+            "x": 0,
+            "y": 10
           },
           "id": 52,
           "interval": "30s",
@@ -1449,12 +1449,12 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Queue Time - Avg (completed) [30s]",
+          "title": "Pipeline Queue Time - Avg [30s]",
           "type": "timeseries"
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average gross execution time (time from pipeline start to completion including queue time) for completed pipelines, over a 30 seconds window.",
+          "description": "Average gross execution time (time from pipeline start to completion including queue time) for completed/failed pipelines, over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1516,9 +1516,9 @@
           },
           "gridPos": {
             "h": 9,
-            "w": 8,
-            "x": 16,
-            "y": 1
+            "w": 24,
+            "x": 0,
+            "y": 19
           },
           "id": 53,
           "interval": "30s",
@@ -1549,11 +1549,11 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Gross Time - Avg (completed) [30s]",
+          "title": "Pipeline Gross Time - Avg [30s]",
           "type": "timeseries"
         }
       ],
-      "title": "Pipeline avg time comparison ($status)",
+      "title": "Pipeline avg time comparison",
       "type": "row"
     }
   ],
