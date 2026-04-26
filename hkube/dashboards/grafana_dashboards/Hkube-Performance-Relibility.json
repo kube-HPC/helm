@@ -423,7 +423,7 @@
           "type": "timeseries"
         }
       ],
-      "title": "Pipeline net time metrics($status)",
+      "title": "Pipeline net time metrics(status: $status)",
       "type": "row"
     },
     {
@@ -1239,7 +1239,7 @@
           "type": "timeseries"
         }
       ],
-      "title": "Pipeline gross time metrics($status)",
+      "title": "Pipeline gross time metrics(status: $status)",
       "type": "row"
     },
     {
@@ -1553,7 +1553,7 @@
           "type": "timeseries"
         }
       ],
-      "title": "Pipeline avg time comparison",
+      "title": "Pipeline avg time comparison(status: $status)",
       "type": "row"
     }
   ],
