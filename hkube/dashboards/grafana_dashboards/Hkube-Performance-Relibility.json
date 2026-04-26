@@ -1254,7 +1254,7 @@
       "panels": [
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average net execution time (time from pipeline driver start to completion/failure) for completed/failed pipelines, over a 30 seconds window.",
+          "description": "Average net, queue(all statuses), and gross execution times for pipelines over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1344,99 +1344,10 @@
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
-              "legendFormat": "{{pipeline_name}}",
+              "legendFormat": "net - {{pipeline_name}}",
               "range": true,
               "refId": "A"
-            }
-          ],
-          "title": "Pipeline Net Time - Avg [30s]",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "${grafana_data_source}",
-          "description": "Average queue time (time pipeline spent waiting in queue before execution) for completed/failed pipelines, over a 30 seconds window.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "bars",
-                "fillOpacity": 100,
-                "gradientMode": "opacity",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
             },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 24,
-            "x": 0,
-            "y": 10
-          },
-          "id": 52,
-          "interval": "30s",
-          "options": {
-            "dataLinks": [],
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.3.0",
-          "targets": [
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
@@ -1444,99 +1355,10 @@
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
-              "legendFormat": "{{pipeline_name}}",
+              "legendFormat": "queue - {{pipeline_name}}",
               "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Pipeline Queue Time - Avg [30s](all statuses)",
-          "type": "timeseries"
-        },
-        {
-          "datasource": "${grafana_data_source}",
-          "description": "Average gross execution time (time from pipeline start to completion including queue time) for completed/failed pipelines, over a 30 seconds window.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "bars",
-                "fillOpacity": 100,
-                "gradientMode": "opacity",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
+              "refId": "B"
             },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 24,
-            "x": 0,
-            "y": 19
-          },
-          "id": 53,
-          "interval": "30s",
-          "options": {
-            "dataLinks": [],
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.3.0",
-          "targets": [
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
@@ -1544,12 +1366,12 @@
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
-              "legendFormat": "{{pipeline_name}}",
+              "legendFormat": "gross - {{pipeline_name}}",
               "range": true,
-              "refId": "A"
+              "refId": "C"
             }
           ],
-          "title": "Pipeline Gross Time - Avg [30s]",
+          "title": "Pipeline Avg Time Comparison (Net / Queue / Gross) [30s]",
           "type": "timeseries"
         }
       ],
