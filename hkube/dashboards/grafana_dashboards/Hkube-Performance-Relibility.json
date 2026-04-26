@@ -423,7 +423,7 @@
           "type": "timeseries"
         }
       ],
-      "title": "Pipeline net time metrics",
+      "title": "Pipeline net time metrics($status)",
       "type": "row"
     },
     {
@@ -831,7 +831,7 @@
           "type": "timeseries"
         }
       ],
-      "title": "Pipeline queue time metrics",
+      "title": "Pipeline queue time metrics(all statuses)",
       "type": "row"
     },
     {
@@ -1239,7 +1239,7 @@
           "type": "timeseries"
         }
       ],
-      "title": "Pipeline gross time metrics",
+      "title": "Pipeline gross time metrics($status)",
       "type": "row"
     },
     {
@@ -1449,7 +1449,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Queue Time - Avg [30s]",
+          "title": "Pipeline Queue Time - Avg [30s](all statuses)",
           "type": "timeseries"
         },
         {
@@ -1590,8 +1590,8 @@
       {
         "current": {
           "selected": true,
-          "text": ["All"],
-          "value": ["$__all"]
+          "text": ["Completed"],
+          "value": ["completed"]
         },
         "hide": 0,
         "includeAll": true,
@@ -1601,7 +1601,7 @@
         "label": "Pipeline Status",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "All",
             "value": "$__all"
           },
@@ -1611,7 +1611,7 @@
             "value": "failed"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "Completed",
             "value": "completed"
           }
