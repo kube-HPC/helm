@@ -100,7 +100,7 @@
                 "max"
               ],
               "displayMode": "table",
-              "placement": "right",
+              "placement": "bottom",
               "showLegend": true
             },
             "tooltip": {
@@ -113,7 +113,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\nmax_over_time(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n-\nmin_over_time(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
+              "expr": "sum(hkube_pipeline_driver_pipeline_ended_counter{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}) by (pipeline_name)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -122,7 +122,7 @@
               "refId": "A"
             }
           ],
-          "title": "Completed Pipelines Count",
+          "title": "Pipelines Count by Status",
           "type": "timeseries"
         },
         {
@@ -213,7 +213,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)",
+              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -222,7 +222,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Net Time - Avg (completed) [30s]",
+          "title": "Pipeline Net Time - Avg ($status) [30s]",
           "type": "timeseries"
         },
         {
@@ -297,7 +297,7 @@
                 "max"
               ],
               "displayMode": "table",
-              "placement": "right",
+              "placement": "bottom",
               "showLegend": true
             },
             "tooltip": {
@@ -311,7 +311,7 @@
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
               "exemplar": false,
-              "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_net_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
+              "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_net_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)\n)",
               "format": "time_series",
               "instant": false,
               "interval": "30s",
@@ -321,7 +321,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Net Time - Max/p90 (Slowest)",
+          "title": "Estimated Pipeline Net Time - Max/p90 (Slowest)",
           "type": "timeseries"
         },
         {
@@ -396,7 +396,7 @@
                 "min"
               ],
               "displayMode": "table",
-              "placement": "right",
+              "placement": "bottom",
               "showLegend": true
             },
             "tooltip": {
@@ -409,7 +409,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_net_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
+              "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_net_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)\n)",
               "format": "time_series",
               "instant": false,
               "interval": "30s",
@@ -419,7 +419,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Net Time - Min/p10 (Fastest)",
+          "title": "Estimated Pipeline Net Time - Min/p10 (Fastest)",
           "type": "timeseries"
         }
       ],
@@ -508,7 +508,7 @@
                 "max"
               ],
               "displayMode": "table",
-              "placement": "right",
+              "placement": "bottom",
               "showLegend": true
             },
             "tooltip": {
@@ -705,7 +705,7 @@
                 "max"
               ],
               "displayMode": "table",
-              "placement": "right",
+              "placement": "bottom",
               "showLegend": true
             },
             "tooltip": {
@@ -729,7 +729,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Queue Time - Max/p90 (Slowest)",
+          "title": "Estimated Pipeline Queue Time - Max/p90 (Slowest)",
           "type": "timeseries"
         },
         {
@@ -804,7 +804,7 @@
                 "min"
               ],
               "displayMode": "table",
-              "placement": "right",
+              "placement": "bottom",
               "showLegend": true
             },
             "tooltip": {
@@ -827,7 +827,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Queue Time - Min/p10 (Fastest)",
+          "title": "Estimated Pipeline Queue Time - Min/p10 (Fastest)",
           "type": "timeseries"
         }
       ],
@@ -916,7 +916,7 @@
                 "max"
               ],
               "displayMode": "table",
-              "placement": "right",
+              "placement": "bottom",
               "showLegend": true
             },
             "tooltip": {
@@ -929,7 +929,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\nmax_over_time(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n-\nmin_over_time(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[$__range])\n)\nand on(pipeline_name)\n(\nsum by (pipeline_name) (\nchanges(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n) > 0\n  or\nsum by (pipeline_name) (\nhkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"}\nunless\nhkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\"} offset 1m\n)\n)",
+              "expr": "sum(hkube_pipeline_driver_pipeline_ended_counter{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}) by (pipeline_name)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -938,7 +938,7 @@
               "refId": "A"
             }
           ],
-          "title": "Completed Pipelines Count",
+          "title": "Pipelines Count by Status",
           "type": "timeseries"
         },
         {
@@ -1029,7 +1029,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)",
+              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -1038,7 +1038,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Gross Time - Avg (completed) [30s]",
+          "title": "Pipeline Gross Time - Avg ($status) [30s]",
           "type": "timeseries"
         },
         {
@@ -1113,7 +1113,7 @@
                 "max"
               ],
               "displayMode": "table",
-              "placement": "right",
+              "placement": "bottom",
               "showLegend": true
             },
             "tooltip": {
@@ -1127,7 +1127,7 @@
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
               "exemplar": false,
-              "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
+              "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)\n)",
               "format": "time_series",
               "instant": false,
               "interval": "30s",
@@ -1137,7 +1137,7 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Gross Time - Max/p90 (Slowest)",
+          "title": "Estimated Pipeline Gross Time - Max/p90 (Slowest)",
           "type": "timeseries"
         },
         {
@@ -1212,7 +1212,7 @@
                 "min"
               ],
               "displayMode": "table",
-              "placement": "right",
+              "placement": "bottom",
               "showLegend": true
             },
             "tooltip": {
@@ -1225,7 +1225,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=\"completed\"}[1m])\n)\n)",
+              "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)\n)",
               "format": "time_series",
               "instant": false,
               "interval": "30s",
@@ -1235,11 +1235,325 @@
               "refId": "A"
             }
           ],
-          "title": "Pipeline Gross Time - Min/p10 (Fastest)",
+          "title": "Estimated Pipeline Gross Time - Min/p10 (Fastest)",
           "type": "timeseries"
         }
       ],
       "title": "Pipeline gross time metrics",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 50,
+      "panels": [
+        {
+          "datasource": "${grafana_data_source}",
+          "description": "Average net execution time (time from pipeline driver start to completion) for completed pipelines, over a 30 seconds window.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 100,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 0,
+            "y": 1
+          },
+          "id": 51,
+          "interval": "30s",
+          "options": {
+            "dataLinks": [],
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.0",
+          "targets": [
+            {
+              "datasource": "${grafana_data_source}",
+              "editorMode": "code",
+              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)",
+              "format": "time_series",
+              "interval": "30s",
+              "intervalFactor": 1,
+              "legendFormat": "{{pipeline_name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Pipeline Net Time - Avg (completed) [30s]",
+          "type": "timeseries"
+        },
+        {
+          "datasource": "${grafana_data_source}",
+          "description": "Average queue time (time pipeline spent waiting in queue before execution) for completed pipelines, over a 30 seconds window.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 100,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 8,
+            "y": 1
+          },
+          "id": 52,
+          "interval": "30s",
+          "options": {
+            "dataLinks": [],
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.0",
+          "targets": [
+            {
+              "datasource": "${grafana_data_source}",
+              "editorMode": "code",
+              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n)",
+              "format": "time_series",
+              "interval": "30s",
+              "intervalFactor": 1,
+              "legendFormat": "{{pipeline_name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Pipeline Queue Time - Avg (completed) [30s]",
+          "type": "timeseries"
+        },
+        {
+          "datasource": "${grafana_data_source}",
+          "description": "Average gross execution time (time from pipeline start to completion including queue time) for completed pipelines, over a 30 seconds window.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 100,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 16,
+            "y": 1
+          },
+          "id": 53,
+          "interval": "30s",
+          "options": {
+            "dataLinks": [],
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.0",
+          "targets": [
+            {
+              "datasource": "${grafana_data_source}",
+              "editorMode": "code",
+              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)",
+              "format": "time_series",
+              "interval": "30s",
+              "intervalFactor": 1,
+              "legendFormat": "{{pipeline_name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Pipeline Gross Time - Avg (completed) [30s]",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Pipeline avg time comparison ($status)",
       "type": "row"
     }
   ],
@@ -1272,6 +1586,38 @@
         "regex": "",
         "sort": 1,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "hide": 0,
+        "includeAll": true,
+        "allValue": "failed|completed",
+        "multi": true,
+        "name": "status",
+        "label": "Pipeline Status",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "Failed",
+            "value": "failed"
+          },
+          {
+            "selected": false,
+            "text": "Completed",
+            "value": "completed"
+          }
+        ],
+        "query": "failed,completed",
+        "type": "custom"
       }
     ]
   },
