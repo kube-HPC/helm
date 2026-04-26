@@ -1379,7 +1379,9 @@
             "tooltip": {
               "mode": "multi",
               "sort": "none"
-            }
+            },
+            "xTickLabelRotation": 0,
+            "xTickLabelSpacing": 100
           },
           "pluginVersion": "11.3.0",
           "targets": [
