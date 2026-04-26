@@ -1312,60 +1312,53 @@
               },
               "unit": "ms"
             },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "A"
-            },
-            "properties": [
+            "overrides": [
               {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-green",
-                  "mode": "fixed"
-                }
+                "matcher": {
+                  "id": "byFrameRefID",
+                  "options": "A"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "dark-green",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byFrameRefID",
+                  "options": "B"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "semi-dark-yellow",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byFrameRefID",
+                  "options": "C"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "dark-red",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
               }
             ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "B"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "semi-dark-yellow",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "C"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": ""
-            },
-            "properties": []
-          }
-        ]
           },
           "gridPos": {
             "h": 9,
@@ -1425,7 +1418,7 @@
             }
           ],
           "title": "Pipeline Avg Time Comparison (Net / Queue / Gross) [30s]",
-          "type": "timeseries"
+          "type": "barchart"
         }
       ],
       "title": "Pipeline avg time comparison(status: $status)",
