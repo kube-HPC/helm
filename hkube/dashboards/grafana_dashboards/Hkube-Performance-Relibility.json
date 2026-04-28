@@ -30,7 +30,7 @@
       "panels": [
         {
           "datasource": "${grafana_data_source}",
-          "description": "Total pipelines per pipeline name.",
+          "description": "Delta count of pipelines per pipeline name in the selected time range. This reflects changes in count, not absolute totals.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -438,7 +438,7 @@
       "panels": [
         {
           "datasource": "${grafana_data_source}",
-          "description": "Total queued pipelines per pipeline name.",
+          "description": "Delta count of queued pipelines per pipeline name in the selected time range. This reflects changes in count, not absolute totals.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -846,7 +846,7 @@
       "panels": [
         {
           "datasource": "${grafana_data_source}",
-          "description": "Total pipelines per pipeline name.",
+          "description": "Delta count of pipelines per pipeline name in the selected time range. This reflects changes in count, not absolute totals.",
           "fieldConfig": {
             "defaults": {
               "color": {
