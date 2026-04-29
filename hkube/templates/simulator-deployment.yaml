@@ -123,6 +123,11 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: VITE_KEYCLOAK_ENABLE
+            - name: HEALTH_MONITORING_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: HEALTH_MONITORING_ENABLED
             - name: NAMESPACE
               valueFrom:
                 fieldRef:

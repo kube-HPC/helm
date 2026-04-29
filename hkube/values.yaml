@@ -444,6 +444,8 @@ api_gateway:
   ingress:
     path: /hkube/api-server
     enabled: true
+health_monitoring: # +doc-gen:ignore
+  enabled: true # Set to true if you are able to fetch data FROM prometheus
 api_server: # +doc-gen:ignore
   env:
     base_url_path: /hkube/api-server

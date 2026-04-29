@@ -24,3 +24,4 @@ data:
   ELASTICSEARCH_STRUCTURED_PREFIX: {{ .Values.api_server.env.elasticsearch_structured_prefix | quote }}
   
   VITE_KEYCLOAK_ENABLE: {{ .Values.keycloak.enable | quote }}
+  HEALTH_MONITORING_ENABLED: {{ .Values.health_monitoring.enabled | quote }}
