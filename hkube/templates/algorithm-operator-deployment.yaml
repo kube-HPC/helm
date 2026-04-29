@@ -130,6 +130,11 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: INTERVAL_MS
+            - name: RESOURCES_ENABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: algorithm-operator-configmap
+                  key: RESOURCES_ENABLE
             - name: ALGORITHM_BUILDER_BUILDER_CPU
               value: {{ .Values.algorithm_operator.env.algorithm_builder_builder_cpu | quote}}
             - name: ALGORITHM_BUILDER_BUILDER_MEMORY
@@ -142,8 +147,6 @@ spec:
               value: {{ .Values.algorithm_operator.env.algorithm_queue_memory | quote}}
             - name: ALGORITHM_QUEUE_CPU
               value: {{ .Values.algorithm_operator.env.algorithm_queue_cpu | quote}}
-            - name: RESOURCES_ENABLE
-              value: {{ .Values.algorithm_operator.env.resources_enable | quote}}
 {{- if eq .Values.env.default_storage "fs" }}
             - name: BASE_FS_ADAPTER_DIRECTORY
               valueFrom:
