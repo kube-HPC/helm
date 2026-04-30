@@ -721,6 +721,8 @@ simulator: # +doc-gen:ignore
     board_path: /hkube/board
     board_use_location: "true"
     is_secure: ""
+    #Define this as the time the UI stops making network requests, resets on refresh / various mouse events.
+    inactive_time_ms: "300000"
   image:
     repository: hkube/simulator
     tag: v2.11.35
