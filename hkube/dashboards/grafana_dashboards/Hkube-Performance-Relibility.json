@@ -127,7 +127,7 @@
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average net execution time (time from pipeline driver start to completed/failed) for completed/failed pipelines, over a 30 seconds window.",
+          "description": "Estimated average net execution time (time from pipeline driver start to completed/failed) for completed/failed pipelines, over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -213,7 +213,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)",
+              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n  /\n  sum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n)\nOR\n(\n  sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n  /\n  sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -535,7 +535,7 @@
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average queue time (time pipeline spent waiting in queue before execution) for queued pipelines, over a 30 seconds window.",
+          "description": "Estimated average queue time (time pipeline spent waiting in queue before execution) for queued pipelines, over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -621,7 +621,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n)",
+              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\"}[1m]))\n  /\n  sum by (pipeline_name) (rate(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m]))\n)\nOR\n(\n  sum by (pipeline_name) (hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\"})\n  /\n  sum by (pipeline_name) (hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"})\n)\n\n",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -943,7 +943,7 @@
         },
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average gross execution time (time from pipeline start to completion including queue time) for completed pipelines, over a 30 seconds window.",
+          "description": "Estimated average gross execution time (time from pipeline start to completion including queue time) for completed pipelines, over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1029,7 +1029,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)",
+              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n  /\n  sum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n)\nOR\n(\n  sum by (pipeline_name) (hkube_pipeline_driver_pipeline_gross_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n  /\n  sum by (pipeline_name) (hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -1254,7 +1254,7 @@
       "panels": [
         {
           "datasource": "${grafana_data_source}",
-          "description": "Average net, queue(all statuses), and gross execution times for pipelines over a 30 seconds window.",
+          "description": "Estimated average net, queue(all statuses), and gross execution times for pipelines over a 30 seconds window.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1388,7 +1388,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)",
+              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n/\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n)\nOR\n(\nsum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n/\nsum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -1399,7 +1399,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m])\n)",
+              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\"}[1m]))\n/\nsum by (pipeline_name) (rate(hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"}[1m]))\n)\nOR\n(\nsum by (pipeline_name) (hkube_pipeline_driver_queue_time_in_queue_histogram_sum{pipeline_name=~\"$pipeline_name\"})\n/\nsum by (pipeline_name) (hkube_pipeline_driver_queue_time_in_queue_histogram_count{pipeline_name=~\"$pipeline_name\"})\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -1410,7 +1410,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "sum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n) \n/ \nsum by (pipeline_name) (\n  rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)",
+              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n/\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n)\nOR\n(\nsum by (pipeline_name) (hkube_pipeline_driver_pipeline_gross_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n/\nsum by (pipeline_name) (hkube_pipeline_driver_pipeline_gross_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
