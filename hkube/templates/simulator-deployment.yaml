@@ -123,6 +123,11 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: VITE_KEYCLOAK_ENABLE
+            - name: VITE_INACTIVE_CHECK_MS
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: VITE_INACTIVE_CHECK_MS
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
