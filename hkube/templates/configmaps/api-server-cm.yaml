@@ -28,5 +28,5 @@ data:
   NODE_TLS_REJECT_UNAUTHORIZED: {{ if eq .Values.build_secret.docker_registry "registry.minikube" }}"0"{{ else }}"1"{{ end }}
   HEALTH_MONITORING_ENABLED: {{ .Values.health_monitoring.enabled | quote }}
 {{- if .Values.health_monitoring.enabled }}
-  PROMETHEUS_ENDPOINT: {{ .Values.resource_manager.env.prometheus_endpoint | quote }}
+  PROMETHEUS_ENDPOINT: {{ .Values.api_server.env.prometheus_endpoint | quote }}
 {{- end }}
