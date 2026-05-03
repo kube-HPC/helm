@@ -62,6 +62,9 @@ global:
     requireTls: false
     maxBodySize: 500m
     class: nginx
+  health_monitoring:
+    enabled: true
+    dataSourceUrl: "http://monitoring-prometheus-server.monitoring:9090"
   sidecars:
     fluent_bit:
       enable: false
@@ -444,8 +447,6 @@ api_gateway:
   ingress:
     path: /hkube/api-server
     enabled: true
-health_monitoring: # +doc-gen:ignore
-  enabled: true # Set to true if you are able to fetch data FROM prometheus
 api_server: # +doc-gen:ignore
   env:
     base_url_path: /hkube/api-server
@@ -456,7 +457,6 @@ api_server: # +doc-gen:ignore
     maxBodySize: 500mb
     rate_limit_ms: 1000
     rate_limit_max: 5
-    prometheus_endpoint: "http://monitoring-prometheus-server.monitoring:9090"
     # prefix should be without '.' suffix , i.e for 'struct.' , prefix should be 'struct'
     elasticsearch_structured_prefix: ""
     elasticsearch_service_url: ""
