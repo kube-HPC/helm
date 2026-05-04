@@ -29,4 +29,5 @@ data:
   HEALTH_MONITORING_ENABLED: {{ .Values.global.health_monitoring.enabled | quote }}
 {{- if .Values.global.health_monitoring.enabled }}
   PROMETHEUS_ENDPOINT: {{ .Values.global.health_monitoring.dataSourceUrl | quote }}
+  HEALTH_MONITORING_DATASOURCE_TOKEN: {{ .Values.global.health_monitoring.dataSourceToken | quote }}
 {{- end }}
