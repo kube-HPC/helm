@@ -30,4 +30,5 @@ data:
 {{- if .Values.global.health_monitoring.enabled }}
   PROMETHEUS_ENDPOINT: {{ .Values.global.health_monitoring.dataSourceUrl | quote }}
   HEALTH_MONITORING_DATASOURCE_TOKEN: {{ .Values.global.health_monitoring.dataSourceToken | quote }}
+  HEALTH_MONITORING_ERROR_COOLDOWN_MINUTES: {{ .Values.global.health_monitoring.errorCooldownMinutes | quote }}
 {{- end }}
