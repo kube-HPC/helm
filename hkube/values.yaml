@@ -472,7 +472,7 @@ api_server: # +doc-gen:ignore
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.11.2-health_monitoring_2348-25363582679
+    tag: v2.11.2
   ingress:
     enabled: false
     path: /hkube/api-server
