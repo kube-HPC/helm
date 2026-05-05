@@ -25,3 +25,4 @@ data:
   
   VITE_KEYCLOAK_ENABLE: {{ .Values.keycloak.enable | quote }}
   VITE_HEALTH_MONITORING_ENABLED: {{ .Values.global.health_monitoring.enabled | quote }}
+  VITE_INACTIVE_CHECK_MS: {{ .Values.simulator.env.inactive_time_ms | quote }}

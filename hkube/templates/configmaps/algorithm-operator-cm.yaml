@@ -21,4 +21,5 @@ data:
   ALGORITHM_QUEUE_PRODUCER_UPDATE_INTERVAL : {{ .Values.algorithm_operator.env.producer_update_interval | quote }}
   IS_PRIVILEGED: {{ .Values.global.isPrivileged | quote}}
   INTERVAL_MS: {{ .Values.algorithm_operator.env.interval | quote}}
+  RESOURCES_ENABLE: {{ .Values.algorithm_operator.env.resources_enable | quote}}
 
