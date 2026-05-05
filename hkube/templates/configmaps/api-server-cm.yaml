@@ -26,3 +26,9 @@ data:
   KC_URL: {{ printf "%s/keycloak" .Values.global.hkube_url | quote }}
   KC_CLIENT_SECRET: {{ .Values.keycloak.api_server.client_secretKey | quote }}
   NODE_TLS_REJECT_UNAUTHORIZED: {{ if eq .Values.build_secret.docker_registry "registry.minikube" }}"0"{{ else }}"1"{{ end }}
+  HEALTH_MONITORING_ENABLED: {{ .Values.global.health_monitoring.enabled | quote }}
+{{- if .Values.global.health_monitoring.enabled }}
+  PROMETHEUS_ENDPOINT: {{ .Values.global.health_monitoring.dataSourceUrl | quote }}
+  HEALTH_MONITORING_DATASOURCE_TOKEN: {{ .Values.global.health_monitoring.dataSourceToken | quote }}
+  HEALTH_MONITORING_ERROR_COOLDOWN_MINUTES: {{ .Values.global.health_monitoring.errorCooldownMinutes | quote }}
+{{- end }}

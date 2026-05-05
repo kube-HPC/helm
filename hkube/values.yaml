@@ -62,6 +62,17 @@ global:
     requireTls: false
     maxBodySize: 500m
     class: nginx
+  # Monitors hkube services(algorithm-operator, api-server etc.) and 3rd-party pods (etcd, mongodb, redis) by querying grafana data source.
+  # Reports per-service running status and an overall health status
+  health_monitoring:
+    # set to true to enable hkube health monitoring feature(default false)
+    enabled: true
+    # address of svc for the datasource
+    dataSourceUrl: "http://monitoring-prometheus-server.monitoring:9090"
+    # add token content incase of auth header needed for datasource
+    dataSourceToken: ""
+    # minutes to disable health monitoring after a non-401 dataSource error (default 30)
+    errorCooldownMinutes: 30
   sidecars:
     fluent_bit:
       enable: false
