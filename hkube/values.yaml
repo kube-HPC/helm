@@ -340,7 +340,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(kube_pod_status_phase{phase='Running',pod="
-systemversion: v2.11.6
+systemversion: 2.11.6-duplicate-algo_2250.25622410477
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -412,7 +412,7 @@ algorithm_operator:
     node_wrapper_version: ""
   image: # +doc-gen:ignore
     repository: hkube/algorithm-operator
-    tag: v2.11.1
+    tag: v2.11.1-duplicate_algo_2250-25622410477
   ingress: # +doc-gen:ignore
     enabled: false
     path: /hkube/algorithm-operator
@@ -441,7 +441,7 @@ algorithm_operator:
 algorithm_queue: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-queue
-    tag: v2.11.0
+    tag: v2.11.0-duplicate_algo_2250-25622410477
 algorithm_queue_svc: # +doc-gen:ignore
   env:
     metric_port: "3000"
