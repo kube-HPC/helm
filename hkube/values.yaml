@@ -455,7 +455,7 @@ api_gateway:
   ingress:
     path: /hkube/api-server
     enabled: true
-api_server: # +doc-gen:ignore
+api_server:
   env:
     base_url_path: /hkube/api-server
     metric_port: "3001"
