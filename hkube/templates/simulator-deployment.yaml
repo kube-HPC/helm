@@ -118,6 +118,11 @@ spec:
                 configMapKeyRef:
                   name: simulator-configmap
                   key: ELASTICSEARCH_STRUCTURED_PREFIX
+            - name: ELASTICSEARCH_LOGS_INDEX
+              valueFrom:
+                configMapKeyRef:
+                  name: simulator-configmap
+                  key: ELASTICSEARCH_LOGS_INDEX
             - name: VITE_KEYCLOAK_ENABLE
               valueFrom:
                 configMapKeyRef:
