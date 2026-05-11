@@ -468,6 +468,7 @@ api_server: # +doc-gen:ignore
     # prefix should be without '.' suffix , i.e for 'struct.' , prefix should be 'struct'
     elasticsearch_structured_prefix: ""
     elasticsearch_service_url: ""
+    # write your environment's elasticsearch logs index here, for example "logstash-*"
     elasticsearch_logs_index: "logstash-*"
     elasticsearch_logs_doc_type: "_doc"
   image:
