@@ -20,10 +20,10 @@ entries:
     version: 0.7.2068
   - apiVersion: v1
     appVersion: 3.3.1
-    created: "2025-12-28T14:34:58.235801157+02:00"
+    created: "2026-05-14T13:22:54.919232352+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
-    digest: 7cb12979ca970db7db27bc6a887b4af6cbc15100f44b1116888493ca31509d03
+    digest: 1f4050f81d5ad87e89571d133c0dec3707a1951ce4d95516b5b94e1d3a578245
     home: https://github.com/coreos/etcd
     icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
     maintainers:
@@ -395,7 +395,7 @@ entries:
     version: 2.1.3068
   - apiVersion: v1
     appVersion: 1.13.0
-    created: "2025-12-28T14:34:58.2407742+02:00"
+    created: "2026-05-14T13:22:54.925658677+03:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -414,7 +414,7 @@ entries:
       repository: ""
       version: 8.0.0
     description: Gitea Helm chart for Kubernetes
-    digest: e91ebb646c5ce7e244d929bf46919e2cb65cfc07d59ee8cb96f94ea1573408fa
+    digest: 7ac19eda845d5f28c99db579905f613ca2d12740445fc0f5a2f04671da879f78
     icon: https://docs.gitea.io/images/gitea.png
     keywords:
     - git
@@ -4450,7 +4450,7 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
-    created: "2025-12-28T14:34:58.242914439+02:00"
+    created: "2026-05-14T13:22:54.928310649+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
       name: cassandra
@@ -4461,7 +4461,7 @@ entries:
       repository: https://helm.elastic.co
       version: ^7.5.1
     description: A Jaeger Helm chart for Kubernetes
-    digest: dc3157e8912eb39962c6a707da3f75d5b7aec4a0b578b082cc3e6aa1da07a4b4
+    digest: 9d7411476a1715673a70e6fbac3f7c54fdab1a98d924024184c7505b0092ad16
     home: https://jaegertracing.io
     icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
     keywords:
@@ -4828,6 +4828,45 @@ entries:
     - jupyterhub-1.1.3000.tgz
     version: 1.1.3000
   keycloak:
+  - annotations:
+      category: DeveloperTools
+      images: |
+        - name: keycloak
+          image: docker.io/bitnamilegacy/keycloak:24.0.5-debian-12-r0
+        - name: keycloak-config-cli
+          image: docker.io/bitnamilegacy/keycloak-config-cli:5.12.0-debian-12-r5
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 24.0.5
+    created: "2026-05-14T13:22:54.936977303+03:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 15.x.x
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Keycloak is a high performance Java-based identity and access management
+      solution. It lets developers add an authentication layer to their applications
+      with minimum effort.
+    digest: 038a216e14001bc05ad8a8e51711f1c3006ca83492e3c9ba3459ded6dac207e6
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/keycloak/img/keycloak-stack-220x234.png
+    keywords:
+    - keycloak
+    - access-management
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: keycloak
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/keycloak
+    urls:
+    - keycloak-21.4.21.tgz
+    version: 21.4.21
   - annotations:
       category: DeveloperTools
       images: |
@@ -5589,10 +5628,10 @@ entries:
     version: 5.0.1068
   - apiVersion: v1
     appVersion: master
-    created: "2025-12-28T14:34:58.25171461+02:00"
+    created: "2026-05-14T13:22:54.937892816+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
-    digest: 8743bc7c416614aa3d7e23ccb96b2b51e851bd18a415a83d856317820003011a
+    digest: b2455e3f2b3fbcb1ba1a94de885d5e46f741b8190340fe6b36330eae36d8bbfc
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
     keywords:
@@ -5758,6 +5797,34 @@ entries:
       category: Database
     apiVersion: v1
     appVersion: 4.4.1
+    created: "2026-05-14T13:22:54.939608891+03:00"
+    description: NoSQL document-oriented database that stores JSON-like documents
+      with dynamic schemas, simplifying the integration of data in content-driven
+      applications.
+    digest: b5883db0311e1ce1e503a29c1377d32ef1bf1d625a179091d1c4bfd798a766f7
+    home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
+    icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
+    keywords:
+    - mongodb
+    - database
+    - nosql
+    - cluster
+    - replicaset
+    - replication
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    name: mongodb
+    sources:
+    - https://github.com/bitnami/bitnami-docker-mongodb
+    - https://mongodb.org
+    urls:
+    - mongodb-10.0.1005.tgz
+    version: 10.0.1005
+  - annotations:
+      category: Database
+    apiVersion: v1
+    appVersion: 4.4.1
     created: "2025-12-28T14:34:58.253145613+02:00"
     description: NoSQL document-oriented database that stores JSON-like documents
       with dynamic schemas, simplifying the integration of data in content-driven
@@ -5919,10 +5986,10 @@ entries:
     version: 1.31.1003
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2025-12-28T14:34:58.254009575+02:00"
+    created: "2026-05-14T13:22:54.940724451+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 7c7e8e9474d93ea6685b6392ba4cc879f534c85a69ed808b11669f6e92e571d0
+    digest: 9f3d7548069f476e302397fb3470791997ece563f37b8a6409f7860739f8282f
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -6052,9 +6119,9 @@ entries:
     version: 3.6.1068
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2025-12-28T14:34:58.254917845+02:00"
+    created: "2026-05-14T13:22:54.941310217+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: c877ffccdda31764738d167ff452baa131f4b35e6f1fbbf8e442f16916aeda40
+    digest: a40ac2c893a4ff9aee603fb0a0e346cae0590be05e3a679d24fc07d146185c9c
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -6246,4 +6313,4 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2026-05-12T12:01:24.482725299Z"
+generated: "2026-05-14T13:22:54.918736213+03:00"
