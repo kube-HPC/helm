@@ -274,6 +274,9 @@ keycloak:
     pullPolicy: IfNotPresent
     pullSecrets: []
     debug: false
+  # set to true to use the postgresql subchart for keycloak. If false, set externalDatabase values accordingly  
+  postgresql:
+    enabled: true
   #External Postgres db support
   externalDatabase:
     host: "hkube-postgresql"
