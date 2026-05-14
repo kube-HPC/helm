@@ -1288,13 +1288,18 @@ keycloakConfigCli:
 ## @param postgresql.architecture PostgreSQL architecture (`standalone` or `replication`)
 ##
 postgresql:
-  enabled: false
+  enabled: true
+  fullnameOverride: hkube-keycloak-postgresql
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
+    tag: 16.3.0-debian-12-r14
   auth:
-    postgresPassword: ""
+    postgresPassword: "keycloak"
     username: bn_keycloak
-    password: ""
+    password: "keycloak"
     database: bitnami_keycloak
-    existingSecret: "hkube-postgresql"
+    existingSecret: ""
   architecture: standalone
 ## External PostgreSQL configuration
 ## All of these values are only used when postgresql.enabled is set to false
@@ -1312,17 +1317,17 @@ postgresql:
 ## @param externalDatabase.annotations Additional custom annotations for external database secret object
 ##
 externalDatabase:
-  host: "hkube-postgresql"
+  host: ""
   port: 5432
-  user: gitea
-  database: gitea
-  password: "gitea"
-  existingSecret: "hkube-postgresql"
+  user: ""
+  database: ""
+  password: ""
+  existingSecret: ""
   existingSecretHostKey: ""
   existingSecretPortKey: ""
   existingSecretUserKey: ""
   existingSecretDatabaseKey: ""
-  existingSecretPasswordKey: "postgresql-password"
+  existingSecretPasswordKey: ""
   annotations: {}
 ## @section Keycloak Cache parameters
 

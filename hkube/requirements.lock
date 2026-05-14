@@ -16,12 +16,12 @@ dependencies:
   version: 5.0.1027
 - name: mongodb
   repository: https://hkube.org/helm/
-  version: 10.0.1004
+  version: 10.0.1005
 - name: gitea
   repository: https://hkube.org/helm/
   version: 2.1.3010
 - name: keycloak
   repository: https://hkube.org/helm/
-  version: 21.4.20
-digest: sha256:6b2fa2282a859253eb059e364e72926f5d3c3f9c0ce64edbc2c1ca8f42006183
-generated: "2025-12-28T14:36:38.838496923+02:00"
+  version: 21.4.21
+digest: sha256:1cb28b3426057af7cb31c031e234403ba2afa0a7a4042a013ac99215cca903d4
+generated: "2026-05-14T13:25:28.750742826+03:00"
