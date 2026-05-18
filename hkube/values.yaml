@@ -277,6 +277,9 @@ keycloak:
   # set to true to use the postgresql subchart for keycloak. If false, set externalDatabase values accordingly
   postgresql:
     enabled: true
+    primary:
+      persistence:
+        storageClass: null
   #External Postgres db support
   externalDatabase:
     host: "hkube-postgresql"
