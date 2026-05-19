@@ -1,0 +1,34 @@
+name: Docgen
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  docgen:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Download chart-doc-gen
+        run: |
+          curl -sSLo /usr/local/bin/chart-doc \
+            https://github.com/kubepack/chart-doc-gen/releases/download/v0.5.0/chart-doc-gen-linux-amd64
+          chmod +x /usr/local/bin/chart-doc
+
+      - name: Regenerate README (docgen)
+        run: |
+          cd chart-doc
+          chart-doc -d ./docs.yaml -v ../hkube/values.yaml -t ./readme.tpl > ../hkube/README.md
+          cp ../hkube/README.md ../README.md
+          cd ..
+          git add hkube/README.md README.md
+          git diff --staged --quiet || git commit -m "docs: regenerate README [skip ci]"
+
+      - name: Push changes
+        run: git push
