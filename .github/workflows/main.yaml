@@ -59,6 +59,21 @@ jobs:
           BRANCH: '${{ github.event.client_payload.BRANCH || github.event.inputs.BRANCH }}'
           FROZEN_VERSION: '${{ github.event.client_payload.FROZEN_VERSION || github.event.inputs.FROZEN_VERSION }}'
           DEPLOY: ${{ github.event.inputs.DEPLOY || 'false' }}
+      - name: Download chart-doc-gen
+        if: ${{ env.BRANCH == 'master' }}
+        run: |
+          curl -sSLo /usr/local/bin/chart-doc \
+            https://github.com/kubepack/chart-doc-gen/releases/download/v0.5.0/chart-doc-gen-linux-amd64
+          chmod +x /usr/local/bin/chart-doc
+      - name: Regenerate README (docgen)
+        if: ${{ env.BRANCH == 'master' }}
+        run: |
+          cd chart-doc
+          chart-doc -d ./docs.yaml -v ../hkube/values.yaml -t ./readme.tpl > ../hkube/README.md
+          cp ../hkube/README.md ../README.md
+          cd ..
+          git add hkube/README.md README.md
+          git diff --staged --quiet || git commit -m "docs: regenerate README [skip ci]"
       - run: |
           git checkout $BRANCH
           git status
