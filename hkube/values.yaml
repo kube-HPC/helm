@@ -18,6 +18,9 @@ global:
     name: hkube-imagepullsecret
     # use an existing imagepullsecret (doesn't create the secret)
     use_existing: false
+  patch_default_sa_job:
+    # enable the patch-default-sa-job that adds image pull secrets to the default service account
+    enabled: false
   # If false, will not set resource request and limits on hkube pods. If true will set the values for each pod
   resources_enable: false
   hkube_url: "https://cicd.hkube.org/hkube"
