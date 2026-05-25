@@ -1,4 +1,4 @@
-{{- if or .Values.global.registry_password .Values.global.image_pull_secret.use_existing }}
+{{- if and .Values.global.patch_default_sa_job.enabled (or .Values.global.registry_password .Values.global.image_pull_secret.use_existing) }}
 
 # ServiceAccount for the job
 apiVersion: v1
