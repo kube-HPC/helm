@@ -746,7 +746,7 @@ simulator: # +doc-gen:ignore
     inactive_time_ms: "300000"
   image:
     repository: hkube/simulator
-    tag: v2.11.46
+    tag: v2.11.47
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -937,4 +937,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.11.8-1780482879708
+fullSystemVersion: v2.11.8-1780822181131
