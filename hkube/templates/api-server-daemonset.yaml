@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: api-server
   labels:
@@ -9,7 +9,6 @@ metadata:
     group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: api-server
