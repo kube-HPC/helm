@@ -474,7 +474,7 @@ api_server:
     maxBodySize: 500mb
     rate_limit_ms: 1000
     rate_limit_max: 5
-    rate_limit_redis_enabled: true
+    rate_limit_redis_enabled: false
     # prefix should be without '.' suffix , i.e for 'struct.' , prefix should be 'struct'
     elasticsearch_structured_prefix: ""
     elasticsearch_service_url: ""
