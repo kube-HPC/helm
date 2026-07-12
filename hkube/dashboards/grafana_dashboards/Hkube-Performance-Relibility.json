@@ -213,7 +213,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n  /\n  sum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n)\nOR\n(\n  sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n  /\n  sum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n)",
+              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipelines_net_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n  /\n  sum by (pipeline_name) (rate(hkube_pipeline_driver_pipelines_net_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n)\nOR\n(\n  sum by (pipeline_name) (hkube_pipeline_driver_pipelines_net_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n  /\n  sum by (pipeline_name) (hkube_pipeline_driver_pipelines_net_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -311,7 +311,7 @@
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
               "exemplar": false,
-              "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_net_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)\n)",
+              "expr": "histogram_quantile(0.9,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipelines_net_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)\n)",
               "format": "time_series",
               "instant": false,
               "interval": "30s",
@@ -409,7 +409,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipeline_net_time_took_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)\n)",
+              "expr": "histogram_quantile(0.1,\nsum by (le, pipeline_name) (\nrate(hkube_pipeline_driver_pipelines_net_histogram_bucket{pipeline_name=~\"$pipeline_name\",status=~\"$status\"}[1m])\n)\n)",
               "format": "time_series",
               "instant": false,
               "interval": "30s",
@@ -1388,7 +1388,7 @@
             {
               "datasource": "${grafana_data_source}",
               "editorMode": "code",
-              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n/\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n)\nOR\n(\nsum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n/\nsum by (pipeline_name) (hkube_pipeline_driver_pipeline_net_time_took_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n)",
+              "expr": "(\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipelines_net_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n/\nsum by (pipeline_name) (rate(hkube_pipeline_driver_pipelines_net_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"}[1m]))\n)\nOR\n(\nsum by (pipeline_name) (hkube_pipeline_driver_pipelines_net_histogram_sum{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n/\nsum by (pipeline_name) (hkube_pipeline_driver_pipelines_net_histogram_count{pipeline_name=~\"$pipeline_name\", status=~\"$status\"})\n)",
               "format": "time_series",
               "interval": "30s",
               "intervalFactor": 1,
@@ -1440,7 +1440,7 @@
           "value": "$__all"
         },
         "datasource": "${grafana_data_source}",
-        "definition": "label_values(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum, pipeline_name)",
+        "definition": "label_values(hkube_pipeline_driver_pipelines_net_histogram_sum, pipeline_name)",
         "hide": 0,
         "includeAll": true,
         "allValue": ".+",
@@ -1449,7 +1449,7 @@
         "label": "Pipeline Name",
         "options": [],
         "query": {
-          "query": "label_values(hkube_pipeline_driver_pipeline_net_time_took_histogram_sum, pipeline_name)",
+          "query": "label_values(hkube_pipeline_driver_pipelines_net_histogram_sum, pipeline_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
