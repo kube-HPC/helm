@@ -792,6 +792,9 @@ task_executor:
     resources_enable: false
     # task executor internal processing interval in MS
     interval: "1000"
+    # per-request timeout in MS for Kubernetes API calls, independent of the reconcile interval above.
+    # raise this in slow or namespaced clusters where API calls get throttled.
+    kubernetes_request_timeout_ms: "10000"
     log_external_requests: false # +doc-gen:ignore
     # set to the number of CPUs in the cluster (or quota) when running on openshift
     default_quota_cpu: 30
