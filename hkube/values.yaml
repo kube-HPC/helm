@@ -349,7 +349,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(kube_pod_status_phase{phase='Running',pod="
-systemversion: 2.11.11-test-cicd-lz.31009592270
+systemversion: 2.11.11-test-cicd-lz.31303055454
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -884,7 +884,7 @@ algorithm_hyperparams_tuner: # +doc-gen:ignore
 algorithm_builder: # +doc-gen:ignore
   image:
     repository: hkube/algorithm-builder
-    tag: v2.11.0-test-cicd-lz-31009592270
+    tag: v2.11.0-test-cicd-lz-31303055454
   # buildconfig_resources:
   #   limits:
   #     cpu: 300m
