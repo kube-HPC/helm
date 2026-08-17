@@ -895,7 +895,7 @@ algorithm_builder: # +doc-gen:ignore
 kaniko: # +doc-gen:ignore
   image:
     repository: hkube/kaniko
-    tag: v2.11.1
+    tag: v2.11.3
 oc_builder: # +doc-gen:ignore
   image:
     repository: hkube/oc-builder
