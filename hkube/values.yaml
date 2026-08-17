@@ -895,7 +895,7 @@ algorithm_builder: # +doc-gen:ignore
 kaniko: # +doc-gen:ignore
   image:
     repository: hkube/kaniko
-    tag: v2.11.2
+    tag: v2.11.3
 oc_builder: # +doc-gen:ignore
   image:
     repository: hkube/oc-builder
@@ -939,4 +939,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.11.11-1786951882872
+fullSystemVersion: v2.11.11-1786952116973
