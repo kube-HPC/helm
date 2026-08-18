@@ -263,6 +263,9 @@ minio:
 
 keycloak:
   enable: true
+  # set to true when the ingress TLS certificate does not match the hkube_url host
+  # (disables TLS certificate verification for all api-server outbound https calls)
+  allow_insecure_tls: false
   api_server:
     #override value if needed
     client_secretKey: r3gmlUZ2Bx3vL7iB79rNKMQjaYTqshVK
