@@ -41,7 +41,7 @@
       "rootUrl": "myHkubeUrl/dashboard/",
       "baseUrl": "myHkubeUrl/dashboard/#/",
       "redirectUris": [
-        "myHkubeUrl/dashboard/*",
+        "myHkubeUrl/dashboard*",
         "http://localhost:9050/*"
       ],
       "webOrigins": [
