@@ -12,19 +12,22 @@ clusterDomain: cluster.local
 
 ## Set default image, imageTag, and imagePullPolicy. mode is used to indicate the
 ##
-# upstream minio/minio was deleted from Docker Hub 2026-09; mirrored here
+# upstream minio/minio was deleted from Docker Hub 2026-09; repackaged here.
+# pinned to the 2020 fs-backend build: minio >= 2022.10.29 refuses to start on
+# existing `format: fs` volumes, so newer tags require wiping the PVC.
 image:
   repository: hkube/minio
-  tag: RELEASE.2025-09-07T16-13-09Z
+  tag: RELEASE.2020-03-25T07-03-04Z
   pullPolicy: IfNotPresent
 
 ## Set default image, imageTag, and imagePullPolicy for the `mc` (the minio
 ## client used to create a default bucket).
 ##
-# upstream minio/mc was deleted from Docker Hub 2026-09; mirrored here
+# must stay paired with the server tag above: the bucket helper calls the
+# pre-2022 `mc policy set` syntax
 mcImage:
   repository: hkube/mc
-  tag: RELEASE.2025-08-13T08-35-41Z
+  tag: RELEASE.2020-03-14T01-23-37Z
   pullPolicy: IfNotPresent
 
 ## Set default image, imageTag, and imagePullPolicy for the `jq` (the JSON
