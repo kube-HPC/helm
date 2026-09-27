@@ -55,6 +55,10 @@ global:
   k8senv: k8s
   # use only namespace. Set to true in restricted environments such as openshift
   namespaced: false
+  rbac:
+    # Create HKube Roles and RoleBindings (and ClusterRoles when namespaced=false).
+    # Disable only when an administrator pre-provisions equivalent permissions.
+    create: true
   # run worker pods as privileged containers. Makes log aggregation easier
   isPrivileged: true
   ingress:
@@ -163,6 +167,9 @@ redis-ha:
   # requests:
   #   cpu: 100m
   #   memory: 256Mi
+  # resources for the Redis config-init container (separate from Redis and Sentinel)
+  init:
+    resources: {}
   # set to true for multiple nodes
   hardAntiAffinity: false
 jaeger:

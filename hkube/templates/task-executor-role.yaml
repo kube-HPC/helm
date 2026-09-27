@@ -7,6 +7,7 @@ metadata:
     app: task-executor
     core: "true"
 ---
+  {{- if .Values.global.rbac.create }}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -82,6 +83,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ---
 {{- end }}
+{{- end }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -95,6 +97,7 @@ imagePullSecrets:
   - name: {{ .Values.global.image_pull_secret.name }}
 {{- end }}   
 ---
+{{- if .Values.global.rbac.create }}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -168,4 +171,5 @@ roleRef:
   kind: ClusterRole
   name: worker-clusterrole
   apiGroup: rbac.authorization.k8s.io
+{{- end }}
 {{- end }}

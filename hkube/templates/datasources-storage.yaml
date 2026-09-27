@@ -1,5 +1,5 @@
 {{- if .Values.datasources_service.enabled }}
-{{- if eq .Values.datasources_service.storage.pvc.storage_class "-" }}
+{{- if and (not .Values.global.namespaced) (eq .Values.datasources_service.storage.pvc.storage_class "-") }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:

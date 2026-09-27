@@ -10,6 +10,7 @@ imagePullSecrets:
   - name: {{ .Values.global.image_pull_secret.name }}
 
 ---
+{{- if .Values.global.rbac.create }}
 # Role to allow patching default SA
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -38,6 +39,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 ---
+{{- end }}
 # Job to patch default SA
 apiVersion: batch/v1
 kind: Job

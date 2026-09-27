@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
   name: gc-service
 ---
+{{- if .Values.global.rbac.create }}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -39,3 +40,4 @@ roleRef:
   kind: Role
   name: gc-service
   apiGroup: rbac.authorization.k8s.io
+{{- end }}
