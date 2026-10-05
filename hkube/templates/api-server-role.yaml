@@ -7,7 +7,7 @@ metadata:
     app: api-server
     core: "true"
 ---
-  {{- if .Values.global.rbac.create }}
+{{- if .Values.global.rbac.create }}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
