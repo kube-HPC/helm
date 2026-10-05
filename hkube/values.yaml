@@ -54,10 +54,13 @@ global:
   # kubernetes environment. Possible values are k8s, openshift
   k8senv: k8s
   # use only namespace. Set to true in restricted environments such as openshift
+  # When true, static NFS PersistentVolumes (storage_class: "-") are not created; an
+  # administrator must pre-provision PVs with matching labels or set a dynamic storage_class.
   namespaced: false
   rbac:
     # Create HKube Roles and RoleBindings (and ClusterRoles when namespaced=false).
-    # Disable only when an administrator pre-provisions equivalent permissions.
+    # Disable only when an administrator pre-provisions equivalent permissions
+    # (render with create=true to get the full set, incl. patch_default_sa_job's Role).
     create: true
   # run worker pods as privileged containers. Makes log aggregation easier
   isPrivileged: true

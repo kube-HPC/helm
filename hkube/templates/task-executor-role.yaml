@@ -7,7 +7,7 @@ metadata:
     app: task-executor
     core: "true"
 ---
-  {{- if .Values.global.rbac.create }}
+  {{- if include "hkube.rbac.create" . }}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -97,7 +97,7 @@ imagePullSecrets:
   - name: {{ .Values.global.image_pull_secret.name }}
 {{- end }}   
 ---
-{{- if .Values.global.rbac.create }}
+{{- if include "hkube.rbac.create" . }}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
