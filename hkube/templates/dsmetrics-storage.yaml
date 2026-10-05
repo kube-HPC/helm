@@ -1,5 +1,5 @@
 {{- if .Values.optuna_dashboard.enabled }}
-{{- if eq .Values.data_science_metrics_storage.pvc.storage_class "-" }}
+{{- if and (not .Values.global.namespaced) (eq .Values.data_science_metrics_storage.pvc.storage_class "-") }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:

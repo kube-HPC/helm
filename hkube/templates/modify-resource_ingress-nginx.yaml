@@ -24,6 +24,7 @@ metadata:
   name: modify-job-sa
   namespace: default
 ---
+{{- if include "hkube.rbac.create" . }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -45,4 +46,5 @@ rules:
 - apiGroups: [""]
   resources: ["configmaps"]
   verbs: ["get", "patch"]
+{{- end }}
 {{- end }}
