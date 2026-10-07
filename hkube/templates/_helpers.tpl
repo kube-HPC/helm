@@ -125,6 +125,61 @@ Usage:
 {{- end -}}
 {{- end -}}
 
+{{/*
+Return the apiVersion for Traefik CRDs (Middleware).
+*/}}
+{{- define "ingress.traefik.apiVersion" -}}
+{{- .Values.global.ingress.traefik.apiVersion | default "traefik.io/v1alpha1" -}}
+{{- end -}}
+
+{{/*
+Render traefik router annotations: entrypoints and middleware chain.
+Prepends the shared redirect-to-https middleware when global.ingress.requireTls is set.
+Usage:
+{{ include "ingress.traefik.annotations" (dict "middlewares" (list "gc-service-strip-prefix") "context" $) }}
+*/}}
+{{- define "ingress.traefik.annotations" -}}
+{{- $ns := .context.Release.Namespace -}}
+{{- $names := .middlewares | default list -}}
+{{- if .context.Values.global.ingress.requireTls }}
+{{- $names = prepend $names "redirect-to-https" }}
+{{- end }}
+{{- $refs := list -}}
+{{- range $names }}
+{{- $refs = append $refs (printf "%s-%s@kubernetescrd" $ns .) }}
+{{- end }}
+{{- with .context.Values.global.ingress.traefik.entrypoints }}
+traefik.ingress.kubernetes.io/router.entrypoints: {{ . | quote }}
+{{- end }}
+{{- if $refs }}
+traefik.ingress.kubernetes.io/router.middlewares: {{ join "," $refs | quote }}
+{{- end }}
+{{- end -}}
+
+{{/*
+Render a traefik stripPrefix Middleware (replacement for nginx rewrite-target: /$2).
+Usage:
+{{ include "ingress.traefik.stripPrefixMiddleware" (dict "name" "gc-service" "prefixes" (list "/hkube/gc-service") "context" $) }}
+*/}}
+{{- define "ingress.traefik.stripPrefixMiddleware" -}}
+apiVersion: {{ include "ingress.traefik.apiVersion" .context }}
+kind: Middleware
+metadata:
+  name: {{ .name }}-strip-prefix
+  labels:
+    app: {{ .app | default .name }}
+    release: {{ .context.Release.Name }}
+    heritage: {{ .context.Release.Service }}
+    group: {{ .context.Values.labels.group.value }}
+    core: "true"
+spec:
+  stripPrefix:
+    prefixes:
+    {{- range .prefixes }}
+    - {{ . | quote }}
+    {{- end }}
+{{- end -}}
+
 
 {{/*
 Returns a Json-formatted dictionary containing "thirdParty" and "services" to replace according

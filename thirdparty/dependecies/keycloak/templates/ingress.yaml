@@ -4,6 +4,16 @@ SPDX-License-Identifier: APACHE-2.0
 */}}
 
 {{- if .Values.ingress.enabled }}
+{{- $isTraefik := eq .Values.global.ingress.class "traefik" }}
+{{- $traefik := .Values.global.ingress.traefik | default dict }}
+{{- /* Traefik forwards X-Forwarded-* headers by default, so the nginx proxy-set-headers annotation is not needed */}}
+{{- $ingressAnnotations := .Values.ingress.annotations }}
+{{- if $isTraefik }}
+{{- $ingressAnnotations = dict }}
+{{- with $traefik.entrypoints }}
+{{- $_ := set $ingressAnnotations "traefik.ingress.kubernetes.io/router.entrypoints" . }}
+{{- end }}
+{{- end }}
 apiVersion: {{ include "common.capabilities.ingress.apiVersionKeycloak" . }}
 kind: Ingress
 metadata:
@@ -12,12 +22,14 @@ metadata:
   {{- $labels := include "keycloak.common.tplvalues.merge" ( dict "values" ( list .Values.ingress.labels .Values.commonLabels ) "context" . ) }}
   labels: {{- include "keycloak.common.labels.standard" ( dict "customLabels" $labels "context" $ ) | nindent 4 }}
     app.kubernetes.io/component: keycloak
-  {{- if or .Values.ingress.annotations .Values.commonAnnotations }}
-  {{- $annotations := include "keycloak.common.tplvalues.merge" ( dict "values" ( list .Values.ingress.annotations .Values.commonAnnotations ) "context" . ) }}
+  {{- if or $ingressAnnotations .Values.commonAnnotations }}
+  {{- $annotations := include "keycloak.common.tplvalues.merge" ( dict "values" ( list $ingressAnnotations .Values.commonAnnotations ) "context" . ) }}
   annotations: {{- include "keycloak.common.tplvalues.render" ( dict "value" $annotations "context" $) | nindent 4 }}
   {{- end }}
 spec:
-  {{- if and .Values.ingress.ingressClassName (eq "true" (include "common.ingress.supportsIngressClassname" .)) }}
+  {{- if $isTraefik }}
+  ingressClassName: "traefik"
+  {{- else if and .Values.ingress.ingressClassName (eq "true" (include "common.ingress.supportsIngressClassname" .)) }}
   ingressClassName: {{ .Values.ingress.ingressClassName | quote }}
   {{- end }}
   rules:
@@ -27,9 +39,9 @@ spec:
           {{- if .Values.ingress.extraPaths }}
           {{- toYaml .Values.ingress.extraPaths | nindent 10 }}
           {{- end }}
-          - path: {{ include "keycloak.common.tplvalues.render" ( dict "value" .Values.ingress.path "context" $) }}(/|$)(.*)
+          - path: {{ include "keycloak.common.tplvalues.render" ( dict "value" .Values.ingress.path "context" $) }}{{ if not $isTraefik }}(/|$)(.*){{ end }}
             {{- if eq "true" (include "common.ingress.supportsPathType" .) }}
-            pathType: {{ .Values.ingress.pathType }}
+            pathType: {{ if $isTraefik }}Prefix{{ else }}{{ .Values.ingress.pathType }}{{ end }}
             {{- end }}
             backend: {{- include "common.ingress.backendkeycloak" (dict "serviceName" (include "keycloak.common.names.fullname" .) "servicePort" .Values.ingress.servicePort "context" $)  | nindent 14 }}
     {{- end }}
