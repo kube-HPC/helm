@@ -10,6 +10,11 @@ SPDX-License-Identifier: APACHE-2.0
 {{- $ingressAnnotations := .Values.ingress.annotations }}
 {{- if $isTraefik }}
 {{- $ingressAnnotations = dict }}
+{{- range $k, $v := .Values.ingress.annotations }}
+{{- if not (hasPrefix "nginx.ingress.kubernetes.io/" $k) }}
+{{- $_ := set $ingressAnnotations $k $v }}
+{{- end }}
+{{- end }}
 {{- with $traefik.entrypoints }}
 {{- $_ := set $ingressAnnotations "traefik.ingress.kubernetes.io/router.entrypoints" . }}
 {{- end }}
@@ -48,13 +53,14 @@ spec:
     {{- range .Values.ingress.extraHosts }}
     - http:
         paths:
-        {{- if .Values.global.ingress.use_regex }}
-          - path: {{ .Values.global.ingress.prefix }}{{ .Values.ingress.path }}(/|$)(.*)
-        {{- else }}        
-          - path: {{ .Values.global.ingress.prefix }}{{ .Values.ingress.path }}
+        {{- $extraPath := include "keycloak.common.tplvalues.render" ( dict "value" $.Values.ingress.path "context" $) }}
+        {{- if and $.Values.global.ingress.use_regex (not $isTraefik) }}
+          - path: {{ $.Values.global.ingress.prefix }}{{ $extraPath }}(/|$)(.*)
+        {{- else }}
+          - path: {{ $.Values.global.ingress.prefix }}{{ $extraPath }}
         {{- end }}
             {{- if eq "true" (include "common.ingress.supportsPathType" $) }}
-            pathType: {{ default "ImplementationSpecific" .pathType }}
+            pathType: {{ if $isTraefik }}Prefix{{ else }}{{ default "ImplementationSpecific" .pathType }}{{ end }}
             {{- end }}
             backend: {{- include "common.ingress.backend" (dict "serviceName" (include "keycloak.common.names.fullname" $) "servicePort" $.Values.ingress.servicePort "context" $) | nindent 14 }}
     {{- end }}
