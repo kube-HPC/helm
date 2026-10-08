@@ -64,7 +64,14 @@ global:
     use_regex: true
     requireTls: false
     maxBodySize: 500m
+    # ingress controller class. Possible values are nginx, haproxy, traefik
     class: nginx
+    # used only when class is traefik
+    traefik:
+      # apiVersion of Traefik CRDs (Middleware). traefik.io/v1alpha1 for Traefik v3, traefik.containo.us/v1alpha1 for Traefik v2
+      apiVersion: traefik.io/v1alpha1
+      # comma separated Traefik entrypoints to bind routers to (e.g. "web,websecure"). leave empty for Traefik defaults
+      entrypoints: ""
   # Monitors hkube services(algorithm-operator, api-server etc.) and 3rd-party pods (etcd, mongodb, redis) by querying grafana data source.
   # Reports per-service running status and an overall health status
   health_monitoring:

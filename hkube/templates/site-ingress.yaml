@@ -1,6 +1,11 @@
 {{- if index .Values "site" "ingress" "enabled" -}}
 {{- $servicePort := .Values.site.service.port | int -}}
 {{- $ingressPath := .Values.site.ingress.path -}}
+{{- $isTraefik := eq .Values.global.ingress.class "traefik" -}}
+{{- if $isTraefik }}
+{{ include "ingress.traefik.stripPrefixMiddleware" (dict "name" "hkube-site" "prefixes" (list (printf "/%s" $ingressPath)) "context" $) }}
+---
+{{- end }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -13,6 +18,8 @@ metadata:
 {{- else if eq .Values.global.ingress.class "haproxy"}}
     haproxy.router.openshift.io/rewrite-target: /
     router.openshift.io/termination: edge
+{{- else if $isTraefik }}
+{{- include "ingress.traefik.annotations" (dict "middlewares" (list "hkube-site-strip-prefix") "context" $) | nindent 4 }}
 {{- end }}
   labels:
     app: hkube-site
@@ -45,6 +52,20 @@ spec:
 
       - path: /{{ $ingressPath }}(/|$)(.*)
         pathType: ImplementationSpecific
+        backend:
+          service:
+            name: hkube-site
+            port:
+              number: {{ $servicePort }}
+
+{{- else if $isTraefik }}
+spec:
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
+  rules:
+  - http:
+      paths:
+      - path: /{{ $ingressPath }}
+        pathType: Prefix
         backend:
           service:
             name: hkube-site

@@ -19,6 +19,14 @@ global:
   ##
   imagePullSecrets: []
   storageClass: ""
+  ## hkube ingress settings, overridden by the parent chart
+  ingress:
+    prefix: ""
+    use_regex: true
+    class: nginx
+    traefik:
+      apiVersion: traefik.io/v1alpha1
+      entrypoints: ""
   ## Compatibility adaptations for Kubernetes platforms
   ##
   compatibility:
