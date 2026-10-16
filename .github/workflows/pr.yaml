@@ -29,6 +29,15 @@ jobs:
           echo "$CHANGED"
           echo "changed=$(echo "$CHANGED" | tr '\n' ' ')" >> $GITHUB_OUTPUT
 
+      - name: Helm Template hkube with Traefik ingress
+        if: contains(steps.changes.outputs.changed, 'hkube/')
+        run: |
+          helm template hkube hkube \
+            --set global.ingress.class=traefik \
+            --set global.ingress.requireTls=true \
+            --set keycloak.enable=true \
+            --set jaeger.enable=true > /dev/null
+
       - name: Run Helm Template on Changed Charts
         run: |
           changed_files="${{ steps.changes.outputs.changed }}"

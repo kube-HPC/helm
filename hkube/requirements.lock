@@ -1,10 +1,10 @@
 dependencies:
 - name: etcd
   repository: https://hkube.org/helm/
-  version: 0.7.2021
+  version: 0.7.2022
 - name: jaeger
   repository: https://hkube.org/helm/
-  version: 0.27.2009
+  version: 0.27.2010
 - name: redis-ha
   repository: https://hkube.org/helm/
   version: 3.6.1007
@@ -22,6 +22,6 @@ dependencies:
   version: 2.1.3010
 - name: keycloak
   repository: https://hkube.org/helm/
-  version: 21.4.21
+  version: 21.4.22
 digest: sha256:1cb28b3426057af7cb31c031e234403ba2afa0a7a4042a013ac99215cca903d4
 generated: "2026-05-14T13:25:28.750742826+03:00"

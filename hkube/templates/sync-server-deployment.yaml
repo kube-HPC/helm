@@ -145,6 +145,48 @@ spec:
 {{- else }}
         path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}/sync
 {{- end }}
+{{/* -------------------- traefik configuration - Ingress -------------------- */}}
+{{- else if eq .Values.global.ingress.class "traefik" -}}
+{{- $ingressPath := .Values.sync_server.ingress.path }}
+{{- $uiPath := printf "%s%s/ui" .Values.global.ingress.prefix $ingressPath }}
+{{- $syncPath := printf "%s%s/sync" .Values.global.ingress.prefix $ingressPath }}
+{{ include "ingress.traefik.stripPrefixMiddleware" (dict "name" "sync-server" "prefixes" (list $uiPath $syncPath) "context" $) }}
+---
+apiVersion:  {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  annotations:
+{{- include "ingress.traefik.annotations" (dict "middlewares" (list "sync-server-strip-prefix") "context" $) | nindent 4 }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}
+  labels:
+    app: sync-server
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+  name: sync-server
+spec:
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: sync-server-tls-secret
+{{- end }}
+  rules:
+  - http:
+      paths:
+      - backend: {{- include "ingress.backend" (dict "serviceName" "sync-server" "servicePort" 8384 "context" $) | nindent 10 }}
+        pathType: Prefix
+        path: {{ $uiPath }}
+      - backend: {{- include "ingress.backend" (dict "serviceName" "sync-server" "servicePort" 8080 "context" $) | nindent 10 }}
+        pathType: Prefix
+        path: {{ $syncPath }}
+{{- if .Values.global.ingress.hostname }}
+    host: {{ .Values.global.ingress.hostname }}
+{{- end }}
 {{/* -------------------- haproxy configurations - Ingress -------------------- */}}
 {{- else if eq .Values.global.ingress.class "haproxy" -}}
 {{- $ingressPath := .Values.sync_server.ingress.path }}

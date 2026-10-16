@@ -5,6 +5,9 @@ global:
   ingress:
     use_regex: true
     class: nginx
+    traefik:
+      apiVersion: traefik.io/v1alpha1
+      entrypoints: ""
   image_pull_secret: {}
 
 etcd_ui:

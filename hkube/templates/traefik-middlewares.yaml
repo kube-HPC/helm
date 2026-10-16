@@ -1,0 +1,16 @@
+{{- if and (eq .Values.global.ingress.class "traefik") .Values.global.ingress.requireTls -}}
+apiVersion: {{ include "ingress.traefik.apiVersion" . }}
+kind: Middleware
+metadata:
+  name: redirect-to-https
+  labels:
+    app: hkube
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+{{- end }}
