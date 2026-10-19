@@ -31,6 +31,15 @@ Create chart name and version as used by the chart label.
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
+{{/*
+Whether HKube should create its RBAC objects. Returns "true" or "" (empty = false).
+Defaults to true when global.rbac.create is absent (e.g. upgrade --reuse-values from an older release).
+*/}}
+{{- define "hkube.rbac.create" -}}
+{{- $rbac := ((.Values.global).rbac) | default dict -}}
+{{- if or (not (hasKey $rbac "create")) (ne (toString $rbac.create) "false") -}}true{{- end -}}
+{{- end -}}
+
 
 {{/*
 Return the target Kubernetes version
