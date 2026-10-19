@@ -2,6 +2,11 @@
 {{- $fullName := "datasources-service" -}}
 {{- $servicePort := .Values.datasources_service.env.port | int -}}
 {{- $ingressPath := .Values.datasources_service.ingress.path -}}
+{{- $isTraefik := eq .Values.global.ingress.class "traefik" -}}
+{{- if $isTraefik }}
+{{ include "ingress.traefik.stripPrefixMiddleware" (dict "name" $fullName "prefixes" (list (printf "%s%s" .Values.global.ingress.prefix $ingressPath)) "context" $) }}
+---
+{{- end }}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
@@ -19,6 +24,8 @@ metadata:
     haproxy.router.openshift.io/rewrite-target: /
     haproxy.router.openshift.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     haproxy.router.openshift.io/proxy-body-size: {{ .Values.datasources_service.env.maxBodySize | quote }}
+{{- else if $isTraefik }}
+{{- include "ingress.traefik.annotations" (dict "middlewares" (list (printf "%s-strip-prefix" $fullName)) "context" $) | nindent 4 }}
 {{- end}}
 {{- if .Values.global.ingress.hostname }}
     kubernetes.io/tls-acme: "true"
@@ -30,7 +37,7 @@ metadata:
     group: {{ .Values.labels.group.value }}
     core: "true"
 spec:
-{{- if eq .Values.global.ingress.class "nginx"}}
+{{- if or (eq .Values.global.ingress.class "nginx") $isTraefik }}
   ingressClassName: {{ .Values.global.ingress.class | quote }}
 {{- end }}
 {{- if .Values.global.ingress.hostname }}
@@ -42,14 +49,14 @@ spec:
   rules:
     - http:
         paths:
-{{- if .Values.global.ingress.use_regex }}
+{{- if and .Values.global.ingress.use_regex (not $isTraefik) }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}(/|$)(.*)
 {{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ $ingressPath }}
 {{- end }}
           backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
           {{- if eq "true" (include "ingress.supportsPathType" .) }}
-          pathType: ImplementationSpecific
+          pathType: {{ if $isTraefik }}Prefix{{ else }}ImplementationSpecific{{ end }}
           {{- end }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
