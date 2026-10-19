@@ -87,5 +87,52 @@ spec:
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}
+{{/* -------------------- traefik configuration - Service -------------------- */}}
+{{- else if eq .Values.global.ingress.class "traefik" -}}
+{{- $gatewayPath := printf "%s%s" .Values.global.ingress.prefix $ingressPath -}}
+{{ include "ingress.traefik.stripPrefixMiddleware" (dict "name" $fullName "prefixes" (list $gatewayPath) "context" $) }}
+---
+apiVersion:  {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  name: api-gateway
+  annotations:
+{{- include "ingress.traefik.annotations" (dict "middlewares" (list (printf "%s-strip-prefix" $fullName)) "context" $) | nindent 4 }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}
+  labels:
+    app: {{ $fullName }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: {{ $fullName }}-tls-secret
+{{- end }}
+  rules:
+    - http:
+        paths:
+        {{- /* traefik picks the longest matching prefix, so the sub-service routes win over the api-server catch-all */}}
+        - path: {{ $gatewayPath }}/api/v1/queue
+          pathType: Prefix
+          backend: {{- include "ingress.backend" (dict "serviceName" "pipeline-driver-queue" "servicePort" $servicePipelineDriverQueuePort "context" $) | nindent 12 }}
+        - path: {{ $gatewayPath }}/api/v1/gc
+          pathType: Prefix
+          backend: {{- include "ingress.backend" (dict "serviceName" "gc-service" "servicePort" $servicePortGc "context" $) | nindent 12 }}
+        - path: {{ $gatewayPath }}/api/v1/datasource
+          pathType: Prefix
+          backend: {{- include "ingress.backend" (dict "serviceName" "datasources-service" "servicePort" $servicePortDatasources "context" $) | nindent 12 }}
+        - path: {{ $gatewayPath }}
+          pathType: Prefix
+          backend: {{- include "ingress.backend" (dict "serviceName" "api-server" "servicePort" $servicePort "context" $) | nindent 12 }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}
 {{- end }}
 {{- end }}

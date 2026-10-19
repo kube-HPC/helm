@@ -2,6 +2,39 @@
 {{- $servicePort := .Values.query.service.port -}}
 {{- $basePath := .Values.query.basePath -}}
 {{- $serviceName := (include "jaeger.query.name" .) -}}
+{{- $isTraefik := eq .Values.global.ingress.class "traefik" -}}
+{{- $traefik := .Values.global.ingress.traefik | default dict -}}
+{{- $traefikApiVersion := $traefik.apiVersion | default "traefik.io/v1alpha1" -}}
+{{- $middlewares := list (printf "%s-%s-strip-prefix@kubernetescrd" .Release.Namespace $serviceName) -}}
+{{- if $isTraefik }}
+{{- if .Values.global.ingress.requireTls }}
+{{- $middlewares = prepend $middlewares (printf "%s-%s-redirect-to-https@kubernetescrd" .Release.Namespace $serviceName) }}
+apiVersion: {{ $traefikApiVersion }}
+kind: Middleware
+metadata:
+  name: {{ $serviceName }}-redirect-to-https
+  labels:
+    {{- include "jaeger.labels" . | nindent 4 }}
+    app.kubernetes.io/component: query
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+{{- end }}
+apiVersion: {{ $traefikApiVersion }}
+kind: Middleware
+metadata:
+  name: {{ $serviceName }}-strip-prefix
+  labels:
+    {{- include "jaeger.labels" . | nindent 4 }}
+    app.kubernetes.io/component: query
+spec:
+  stripPrefix:
+    prefixes:
+    - {{ printf "%s%s" (.Values.global.ingress.prefix | default "") $basePath | quote }}
+---
+{{- end }}
 apiVersion:  {{ template "ingress.apiVersion" . }}
 kind: Ingress
 metadata:
@@ -10,13 +43,20 @@ metadata:
     {{- include "jaeger.labels" . | nindent 4 }}
     app.kubernetes.io/component: query
   annotations:
+{{- if $isTraefik }}
+{{- with $traefik.entrypoints }}
+    traefik.ingress.kubernetes.io/router.entrypoints: {{ . | quote }}
+{{- end }}
+    traefik.ingress.kubernetes.io/router.middlewares: {{ join "," $middlewares | quote }}
+{{- else }}
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.global.ingress.requireTls | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.global.ingress.maxBodySize | quote }}
+{{- end }}
   {{- if .Values.query.ingress.annotations }}
     {{- toYaml .Values.query.ingress.annotations | nindent 4 }}
   {{- end }}
 spec:
-{{- if eq .Values.global.ingress.class "nginx"}}
+{{- if or (eq .Values.global.ingress.class "nginx") $isTraefik }}
   ingressClassName: {{ .Values.global.ingress.class | quote }}
 {{- end }}
 {{- if .Values.global.ingress.hostname }}
@@ -28,14 +68,14 @@ spec:
   rules:
     - http:
         paths:
-{{- if .Values.global.ingress.use_regex }}
+{{- if and .Values.global.ingress.use_regex (not $isTraefik) }}
         - path: {{ .Values.global.ingress.prefix }}{{ $basePath }}(/|$)(.*)
 {{- else }}
         - path: {{ .Values.global.ingress.prefix }}{{ $basePath }}
 {{- end }}
           backend: {{- include "ingress.backend" (dict "serviceName" $serviceName "servicePort" $servicePort "context" $) | nindent 12 }}
           {{- if eq "true" (include "ingress.supportsPathType" .) }}
-          pathType: ImplementationSpecific
+          pathType: {{ if $isTraefik }}Prefix{{ else }}ImplementationSpecific{{ end }}
           {{- end }}
 {{- if .Values.global.ingress.hostname }}
       host: {{ .Values.global.ingress.hostname }}

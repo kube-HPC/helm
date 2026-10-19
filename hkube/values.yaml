@@ -71,7 +71,14 @@ global:
     use_regex: true
     requireTls: false
     maxBodySize: 500m
+    # ingress controller class. Possible values are nginx, haproxy, traefik
     class: nginx
+    # used only when class is traefik
+    traefik:
+      # apiVersion of Traefik CRDs (Middleware). traefik.io/v1alpha1 for Traefik v3, traefik.containo.us/v1alpha1 for Traefik v2
+      apiVersion: traefik.io/v1alpha1
+      # comma separated Traefik entrypoints to bind routers to (e.g. "web,websecure"). leave empty for Traefik defaults
+      entrypoints: ""
   # Monitors hkube services(algorithm-operator, api-server etc.) and 3rd-party pods (etcd, mongodb, redis) by querying grafana data source.
   # Reports per-service running status and an overall health status
   health_monitoring:
@@ -227,7 +234,9 @@ nginx-ingress:
   #     requests:
   #       cpu: 10m
   #       memory: 20Mi
-
+traefik:
+  # install traefik ingress controller with hkube. Use with global.ingress.class=traefik
+  enable: false
 mongodb:
   enable: true
   persistence:
@@ -362,7 +371,7 @@ metrics:
   pod_count_expr_v6: "count(mixin_pod_workload{workload="
   # used to set 'expr' value in HKube_status.json, replaces the partial string "${podCountExpr}" for grafana_version == 7
   pod_count_expr_v7: "count(kube_pod_status_phase{phase='Running',pod="
-systemversion: 2.11.14-multiple-issues_2428.37411735967
+systemversion: v2.11.14
 build_secret:
   # docker registry for algorithm builds. defaults to docker.io
   docker_registry: ""
@@ -497,7 +506,7 @@ api_server:
     elasticsearch_logs_doc_type: "_doc"
   image:
     repository: hkube/api-server
-    tag: v2.11.8-multiple_issues_2428-37411735967
+    tag: v2.11.8
   ingress:
     enabled: false
     path: /hkube/api-server
@@ -536,7 +545,7 @@ datasources_service: # +doc-gen:ignore
     maxBodySize: 2500m
   image:
     repository: hkube/datasources-service
-    tag: v2.11.2-multiple_issues_2428-37411735967
+    tag: v2.11.2
   ingress:
     enabled: true
     path: /hkube/datasources-service
@@ -634,7 +643,7 @@ gc_service: # +doc-gen:ignore
     builds_max_age: 14400
   image:
     repository: hkube/gc-service
-    tag: v2.11.2-multiple_issues_2428-37411735967
+    tag: v2.11.2
   resources_enable: false
   resources:
     limits:
@@ -697,7 +706,7 @@ pipeline_driver_queue: # +doc-gen:ignore
     base_url_path: /hkube/queue
   image:
     repository: hkube/pipeline-driver-queue
-    tag: v2.11.3-multiple_issues_2428-37411735967
+    tag: v2.11.3
   ingress:
     enabled: true
     path: /hkube/queue
@@ -761,7 +770,7 @@ simulator: # +doc-gen:ignore
     inactive_time_ms: "300000"
   image:
     repository: hkube/simulator
-    tag: v2.11.73
+    tag: v2.11.75
   ingress:
     enabled: true
     path: /hkube/dashboard
@@ -952,4 +961,4 @@ sync_server: # +doc-gen:ignore
     requests:
       cpu: 100m
       memory: 256Mi
-fullSystemVersion: v2.11.14-1791196614590
+fullSystemVersion: v2.11.14-1792317535056

@@ -53,6 +53,53 @@ spec:
       host: {{ .Values.global.ingress.hostname }}
 {{- end }}
 
+{{/* -------------------- traefik configuration - Ingress -------------------- */}}
+{{- else if eq .Values.global.ingress.class "traefik" -}}
+{{- $dashboardPath := printf "%s%s" .Values.global.ingress.prefix .Values.simulator.ingress.path -}}
+{{- $middlewares := list "redirect-to-dashboard" -}}
+{{- if ne $dashboardPath "/" }}
+{{- $middlewares = append $middlewares "dashboard-strip-prefix" }}
+{{ include "ingress.traefik.stripPrefixMiddleware" (dict "name" "dashboard" "app" "simulator" "prefixes" (list $dashboardPath) "context" $) }}
+---
+{{- end }}
+apiVersion:  {{ template "ingress.apiVersion" . }}
+kind: Ingress
+metadata:
+  name: dashboard
+  annotations:
+{{- include "ingress.traefik.annotations" (dict "middlewares" $middlewares "context" $) | nindent 4 }}
+{{- if .Values.global.ingress.hostname }}
+    kubernetes.io/tls-acme: "true"
+{{- end }}
+  labels:
+    app: simulator
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    group: {{ .Values.labels.group.value }}
+    core: "true"
+spec:
+  ingressClassName: {{ .Values.global.ingress.class | quote }}
+{{- if .Values.global.ingress.hostname }}
+  tls:
+  - hosts:
+    - {{ .Values.global.ingress.hostname }}
+    secretName: {{ $fullName }}-tls-secret
+{{- end }}
+  rules:
+    - http:
+        paths:
+        - path: {{ $dashboardPath }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
+          pathType: Prefix
+{{- if .Values.simulator.ingress.alt_path }}
+        - path: {{ .Values.global.ingress.prefix }}{{ .Values.simulator.ingress.alt_path }}
+          backend: {{- include "ingress.backend" (dict "serviceName" $fullName "servicePort" $servicePort "context" $) | nindent 12 }}
+          pathType: Prefix
+{{- end }}
+{{- if .Values.global.ingress.hostname }}
+      host: {{ .Values.global.ingress.hostname }}
+{{- end }}
+
 {{/* -------------------- haproxy configuration - Ingress -------------------- */}}
 {{- else if eq .Values.global.ingress.class "haproxy" -}}
 apiVersion:  {{ template "ingress.apiVersion" . }}
