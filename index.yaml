@@ -20,6 +20,23 @@ entries:
     version: 0.7.2068
   - apiVersion: v1
     appVersion: 3.3.1
+    created: "2026-10-19T11:06:38.123327076+03:00"
+    description: Distributed reliable key-value store for the most critical data of
+      a distributed system.
+    digest: d9b2fa104d95e7a79092e2b8164e0e4fcdc540477235ca6a2aa9ef8dd3effa0c
+    home: https://github.com/coreos/etcd
+    icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
+    maintainers:
+    - email: lachlan@deis.com
+      name: lachie83
+    name: etcd
+    sources:
+    - https://github.com/coreos/etcd
+    urls:
+    - etcd-0.7.2022.tgz
+    version: 0.7.2022
+  - apiVersion: v1
+    appVersion: 3.3.1
     created: "2026-09-17T16:56:05.065596335+03:00"
     description: Distributed reliable key-value store for the most critical data of
       a distributed system.
@@ -395,7 +412,7 @@ entries:
     version: 2.1.3068
   - apiVersion: v1
     appVersion: 1.13.0
-    created: "2026-09-17T16:56:05.072881154+03:00"
+    created: "2026-10-19T11:06:38.130505175+03:00"
     dependencies:
     - condition: gitea.cache.builtIn.enabled
       name: memcached
@@ -414,7 +431,7 @@ entries:
       repository: ""
       version: 8.0.0
     description: Gitea Helm chart for Kubernetes
-    digest: e2678c5b83076b5d87124af9fc711e0a5972496f0ec19750c711c9bb4c42b6f8
+    digest: ea89c3d93d7759a60787162218790583f453ea05812326c71282a3ed1befd7ed
     icon: https://docs.gitea.io/images/gitea.png
     keywords:
     - git
@@ -4504,6 +4521,42 @@ entries:
   jaeger:
   - apiVersion: v1
     appVersion: 1.17.1
+    created: "2026-10-19T11:06:38.134269742+03:00"
+    dependencies:
+    - condition: provisionDataStore.cassandra
+      name: cassandra
+      repository: https://kubernetes-charts-incubator.storage.googleapis.com/
+      version: ^0.15.0
+    - condition: provisionDataStore.elasticsearch
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: ^7.5.1
+    description: A Jaeger Helm chart for Kubernetes
+    digest: 58b0dc4fabddcc5656f963e3e45be724af74f01226f044f528c7f939f6b2b7a9
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    maintainers:
+    - email: david.vonthenen@dell.com
+      name: dvonthenen
+    - email: michael.lorant@fairfaxmedia.com.au
+      name: mikelorant
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: pavel.nikolov@fairfaxmedia.com.au
+      name: pavelnikolov
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    urls:
+    - jaeger-0.27.2010.tgz
+    version: 0.27.2010
+  - apiVersion: v1
+    appVersion: 1.17.1
     created: "2026-09-17T16:56:05.07580196+03:00"
     dependencies:
     - condition: provisionDataStore.cassandra
@@ -4882,6 +4935,45 @@ entries:
     - jupyterhub-1.1.3000.tgz
     version: 1.1.3000
   keycloak:
+  - annotations:
+      category: DeveloperTools
+      images: |
+        - name: keycloak
+          image: docker.io/bitnamilegacy/keycloak:24.0.5-debian-12-r0
+        - name: keycloak-config-cli
+          image: docker.io/bitnamilegacy/keycloak-config-cli:5.12.0-debian-12-r5
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 24.0.5
+    created: "2026-10-19T11:06:38.14321337+03:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 15.x.x
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Keycloak is a high performance Java-based identity and access management
+      solution. It lets developers add an authentication layer to their applications
+      with minimum effort.
+    digest: 415a1430ebfa5445dbc70a488780be84d638a392e657dc87cd36bfb51b73c73d
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/keycloak/img/keycloak-stack-220x234.png
+    keywords:
+    - keycloak
+    - access-management
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: keycloak
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/keycloak
+    urls:
+    - keycloak-21.4.22.tgz
+    version: 21.4.22
   - annotations:
       category: DeveloperTools
       images: |
@@ -5636,10 +5728,10 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: master
-    created: "2026-09-17T16:56:05.085805359+03:00"
+    created: "2026-10-19T11:06:38.144277769+03:00"
     description: MinIO is a high performance data infrastructure for machine learning,
       analytics and application data workloads.
-    digest: ef4b84c4fc83a1bb64b8f6fedec2b4b3a741f74096b2ef010d05878aaa58b004
+    digest: 807a6b187f623b76cccba6b099106432e0281d6ad6af7687c85d4032e07f72e2
     home: https://min.io
     icon: https://min.io/resources/img/logo/MINIO_wordmark.png
     keywords:
@@ -5897,11 +5989,11 @@ entries:
       category: Database
     apiVersion: v1
     appVersion: 4.4.1
-    created: "2026-09-17T16:56:05.087381801+03:00"
+    created: "2026-10-19T11:06:38.146298246+03:00"
     description: NoSQL document-oriented database that stores JSON-like documents
       with dynamic schemas, simplifying the integration of data in content-driven
       applications.
-    digest: fb6cf307dac5c73e4eebbb709b8755b4636a8192235c91d4d8a094a11c6cc01f
+    digest: 52d2f3fc54fec69024ef5316a8cb707ff9f893dbe952099a196b44264ab0e0e5
     home: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
     keywords:
@@ -6086,10 +6178,10 @@ entries:
     version: 1.31.1003
   - apiVersion: v1
     appVersion: 0.29.0
-    created: "2026-09-17T16:56:05.088873287+03:00"
+    created: "2026-10-19T11:06:38.147575055+03:00"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 01bae8a234dbea6d6f34a5c2ad7a31d5d6d3cd335a5f5ca1dd8a84ef8483522f
+    digest: 55ef678d827023de1c19586e16ecc3ab185e80e4423f496a20b438b3af31769b
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -6219,9 +6311,9 @@ entries:
     version: 3.6.1068
   - apiVersion: v1
     appVersion: 5.0.5
-    created: "2026-09-17T16:56:05.089444638+03:00"
+    created: "2026-10-19T11:06:38.148248206+03:00"
     description: Highly available Kubernetes implementation of Redis
-    digest: 429685d81fdbde5c8f90f9230c961b0759d7e06ce6d30b23c7536d09b9d1f925
+    digest: dfed3de0dfcaa7ed035a1d268bae46177e2a6a2fca2d700c2acc62944ea6a67c
     home: http://redis.io/
     icon: https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png
     keywords:
@@ -6413,4 +6505,39 @@ entries:
     urls:
     - thirdparty-0.5.4.tgz
     version: 0.5.4
-generated: "2026-09-17T16:56:05.065077142+03:00"
+  traefik:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: "feat(hub): support traefik hub v3.21.0"
+      traefik.io/hub-max-version: v3.21.0
+      traefik.io/hub-min-version: v3.19.3
+      traefik.io/proxy-max-version: v3.7.13
+      traefik.io/proxy-min-version: v3.6.0
+    apiVersion: v2
+    appVersion: v3.7.13
+    created: "2026-10-19T11:06:38.160421192+03:00"
+    description: A Traefik based Kubernetes ingress controller
+    digest: 964fd4342b9aec3afd0996e10c970ea12b97da4f165a203bc288d93f3a6d88a5
+    home: https://traefik.io/
+    icon: https://raw.githubusercontent.com/traefik/traefik/master/docs/content/assets/img/traefik.logo.png
+    keywords:
+    - traefik
+    - ingress
+    - networking
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - email: michel.loiseleur@traefik.io
+      name: mloiseleur
+    - email: remi.buisson@traefik.io
+      name: darkweaver87
+    - name: jnoordsij
+    name: traefik
+    sources:
+    - https://github.com/traefik/traefik-helm-chart
+    - https://github.com/traefik/traefik
+    type: application
+    urls:
+    - traefik-41.6.1001.tgz
+    version: 41.6.1001
+generated: "2026-10-19T11:06:38.122646088+03:00"
