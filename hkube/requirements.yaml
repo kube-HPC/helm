@@ -15,6 +15,10 @@ dependencies:
     version: "1.31.1002"
     repository: "https://hkube.org/helm/"
     condition: nginx-ingress.enable
+  - name: traefik
+    version: "41.6.1001"
+    repository: "https://hkube.org/helm/"
+    condition: traefik.enable
   - name: minio
     version: "5.0.1071"
     repository: "https://hkube.org/helm/"

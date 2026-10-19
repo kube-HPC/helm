@@ -11,6 +11,9 @@ dependencies:
 - name: nginx-ingress
   repository: https://hkube.org/helm/
   version: 1.31.1002
+- name: traefik
+  repository: https://hkube.org/helm/
+  version: 41.6.1001
 - name: minio
   repository: https://hkube.org/helm/
   version: 5.0.1071

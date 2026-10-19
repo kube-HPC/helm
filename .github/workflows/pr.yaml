@@ -36,7 +36,8 @@ jobs:
             --set global.ingress.class=traefik \
             --set global.ingress.requireTls=true \
             --set keycloak.enable=true \
-            --set jaeger.enable=true > /dev/null
+            --set jaeger.enable=true \
+            --set traefik.enable=true > /dev/null
 
       - name: Run Helm Template on Changed Charts
         run: |
