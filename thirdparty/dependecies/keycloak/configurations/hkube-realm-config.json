@@ -42,11 +42,11 @@
       "baseUrl": "myHkubeUrl/dashboard/#/",
       "redirectUris": [
         "myHkubeUrl/dashboard/*",
-        "http://localhost:9050/*"
+        "http://simulator.localhost:9050/*"
       ],
       "webOrigins": [
         "*",
-        "http://localhost:9050/*"
+        "http://simulator.localhost:9050/*"
       ],
       "publicClient": true,
       "frontchannelLogout": true
