@@ -32,6 +32,6 @@ dependencies:
     repository: "https://hkube.org/helm/"
     condition: gitea.enable
   - name: keycloak
-    version: "21.4.22"
+    version: "21.4.23"
     repository: "https://hkube.org/helm/"
     condition: keycloak.enable
