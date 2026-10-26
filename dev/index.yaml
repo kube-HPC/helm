@@ -2,6 +2,64 @@ apiVersion: v1
 entries:
   hkube:
   - apiVersion: v1
+    appVersion: v2.11.16
+    created: "2026-10-26T08:11:31.090828916Z"
+    dependencies:
+    - condition: etcd.enable
+      name: etcd
+      repository: https://hkube.org/helm/
+      version: 0.7.2022
+    - condition: jaeger.enable
+      name: jaeger
+      repository: https://hkube.org/helm/
+      version: 0.27.2010
+    - condition: redis-ha.enable
+      name: redis-ha
+      repository: https://hkube.org/helm/
+      version: 3.6.1007
+    - condition: nginx-ingress.enable
+      name: nginx-ingress
+      repository: https://hkube.org/helm/
+      version: 1.31.1002
+    - condition: traefik.enable
+      name: traefik
+      repository: https://hkube.org/helm/
+      version: 41.6.1001
+    - condition: minio.enable
+      name: minio
+      repository: https://hkube.org/helm/
+      version: 5.0.1071
+    - condition: mongodb.enable
+      name: mongodb
+      repository: https://hkube.org/helm/
+      version: 10.0.1005
+    - condition: gitea.enable
+      name: gitea
+      repository: https://hkube.org/helm/
+      version: 2.1.3010
+    - condition: keycloak.enable
+      name: keycloak
+      repository: https://hkube.org/helm/
+      version: 21.4.23
+    description: Open source project for HPC over kubernetes Hkube is a cloud native
+      open source framework to run distributed pipeline of algorithms built on Kubernetes.
+      Hkube allows to run pipelines of algorithms on kubernetes cluster optimally
+      utilizing the available resources, based on user priorities and AI heuristics.
+    digest: a03affc6d853ea2d72e4b9b30c21b30e772c6fbacd3d77c97d1eb32c88089b73
+    home: https://hkube.io/
+    icon: https://avatars3.githubusercontent.com/u/33659277?s=400&u=76702dc2a77eca668b3b4ccb82882398ec2edf9d&v=4
+    maintainers:
+    - email: yehiyam@gmail.com
+      name: Yehiyam Livne
+    - email: linuxem@gmail.com
+      name: Eli Maor
+    name: hkube
+    sources:
+    - https://github.com/kube-HPC
+    urls:
+    - hkube-v2.11.97.tgz
+    version: v2.11.97
+  - apiVersion: v1
     appVersion: v2.11.15
     created: "2026-10-22T08:56:50.534086418Z"
     dependencies:
@@ -72257,4 +72315,4 @@ entries:
     urls:
     - thirdparty-v0.0.2.tgz
     version: v0.0.2
-generated: "2026-10-22T08:56:50.508546912Z"
+generated: "2026-10-26T08:11:31.05280335Z"
