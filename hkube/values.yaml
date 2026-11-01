@@ -427,6 +427,10 @@ algorithm_operator:
     metric_port: "3000"
     builder_cpu: 0.1
     interval: 1000
+    # timeout in MS per Kubernetes API request attempt (independent of interval)
+    kubernetes_request_timeout_ms: 10000
+    # liveness fails when no successful pipeline-drivers reconcile within this time (MS)
+    healthcheck_reconcile_max_diff: 120000
     algorithm_builder_builder_memory: 1024
     algorithm_builder_main_cpu: 0.5
     algorithm_builder_main_memory: 512
@@ -814,6 +818,8 @@ task_executor:
     resources_enable: false
     # task executor internal processing interval in MS
     interval: "1000"
+    # timeout in MS per Kubernetes API request attempt (independent of interval)
+    kubernetes_request_timeout_ms: 10000
     log_external_requests: false # +doc-gen:ignore
     # set to the number of CPUs in the cluster (or quota) when running on openshift
     default_quota_cpu: 30

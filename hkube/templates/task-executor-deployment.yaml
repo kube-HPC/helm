@@ -140,6 +140,8 @@ spec:
               value: {{ .Values.task_executor.env.resources_enable | quote}}        
             - name: INTERVAL_MS
               value: {{ .Values.task_executor.env.interval | quote}}
+            - name: KUBERNETES_REQUEST_TIMEOUT_MS
+              value: {{ .Values.task_executor.env.kubernetes_request_timeout_ms | quote}}
             - name: LOG_EXTERNAL_REQUESTS
               value: {{ .Values.task_executor.env.log_external_requests | quote}}
             - name: DEFAULT_QUOTA_CPU
