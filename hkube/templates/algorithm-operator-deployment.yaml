@@ -130,16 +130,6 @@ spec:
                 configMapKeyRef:
                   name: algorithm-operator-configmap
                   key: INTERVAL_MS
-            - name: KUBERNETES_REQUEST_TIMEOUT_MS
-              valueFrom:
-                configMapKeyRef:
-                  name: algorithm-operator-configmap
-                  key: KUBERNETES_REQUEST_TIMEOUT_MS
-            - name: HEALTHCHECK_RECONCILE_MAX_DIFF
-              valueFrom:
-                configMapKeyRef:
-                  name: algorithm-operator-configmap
-                  key: HEALTHCHECK_RECONCILE_MAX_DIFF
             - name: RESOURCES_ENABLE
               valueFrom:
                 configMapKeyRef:
